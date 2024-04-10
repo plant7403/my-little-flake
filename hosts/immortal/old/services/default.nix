@@ -1,0 +1,55 @@
+{
+  # TODO - Better look
+  imports = [
+    ./../../common/global/acme/wc-dns-egor.nix
+    ./../../common/global/acme/wc-egor.nix
+    ./../../common/global/acme/wc-xoxo.nix
+    ./../../common/global/backup/borg.nix
+    ./../../common/global/backup/restic.nix
+    ./../../common/global/cleanup.nix
+    #./../../common/global/encryption/luks-with-keyfile.nix
+    ./../../common/optional/tpm.nix
+    ./../../common/global/encryption/hdd.nix
+    #./../../common/global/hardening.nix
+    ./../../common/global/impermanence/default.nix
+    ./../../common/global/impermanence/erase.nix
+    ./../../common/global/ssh.nix
+    ./../../common/optional/adguard/default.nix
+    ./../../common/optional/adguard/unbound.nix
+    ./../../common/optional/cfdyndns.nix
+    ./../../common/optional/dolibarr/default.nix
+    ./../../common/optional/forgejo.nix
+    ./../../common/optional/grocy/default.nix
+    ./../../common/optional/headscale/default.nix
+    ./../../common/optional/headscale/tailscale.nix
+    ./../../common/optional/jellyfin/default.nix
+    #./../../common/optional/jellyseer.nix
+    #./../../common/optional/nextcloud.nix
+    ./../../common/optional/nginx/authelia.nix
+    ./../../common/optional/nginx/default.nix
+    #./../../common/optional/ntfy-sh/default.nix
+    ./../../common/optional/paperless/default.nix
+    ./../../common/optional/photoprism/default.nix
+    ./../../common/optional/searx-ng/default.nix
+    #./../../common/optional/transmission/default.nix
+    ./../../common/optional/vaultwarden/default.nix
+    ./../../common/optional/wordpress/default.nix
+    #./../../common/optional/matrix-conduit.nix
+    #./syncthing.nix
+    #./../../common/optional/hass/default.nix
+    #./../../common/optional/immich.nix
+    #./../../common/optional/matrix-synapse.nix
+    #./../../common/optional/wireguard/default.nix
+    #./../common/global/encryption/luks-with-keyfile.nix
+    #./../common/global/networking.nix
+    #./../common/optional/caddy.nix
+    #./../common/optional/containers/collabora/default.nix
+    #./../common/optional/containers/headscale-ui.nix
+    #./../common/optional/containers/wordpress.nix
+    #./../common/optional/i2p.nix
+    #./../common/optional/lemmy/default.nix
+    #./../common/optional/libretranslate/default.nix
+    #./../common/optional/minecraft/default.nix
+    #./../common/optional/tor.nix
+  ];
+}

@@ -1,0 +1,72 @@
+# This example uses YAML anchors which allows reuse of multiple keys
+# without having to repeat yourself.
+# Also see https://github.com/Mic92/dotfiles/blob/master/nixos/.sops.yaml
+# for a more complex example.
+# TODO - Improve
+keys:
+  - &admin_egorgpg CD427CA6CAD8AF84C6CE716DECCA6AE34DAC8326
+  - &admin_egor age16m2p23ma7y2ecpaq04c79kwcc2h9knw6qs9nj0duywsy67ecjf3spvfa4v
+  #- &admin_egory age1yubikey1q2ajh35q4pmmwrhd3ae0qj2n8zgev2afrf0x4x6edxpj40s09pp079k5y8k
+  - &server_immortal age163tnqzxk0e0ut8dh6umz6cgwpwqnfhe3d2r494vue37vdqpwqgystraeyn
+  - &server_saturn age1sw2v3laq27tx30m2jhufqr2umgekk5nds3stpk4ez5r2xv2zye8qxexld8
+  - &server_luna age1lzx7cm46kxflweytq43ruca5xmxl48qfr34yk3ctcywhp57ueqvsgjelzu
+  - &server_pluto age1vwf8e43njvv9kx7m42plc50x8ws0awd07qhk2wrqn2emral9nfsq43hfrs
+creation_rules:
+  - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+    - pgp:
+        - *admin_egorgpg
+      age:
+        - *admin_egor
+   #     - *admin_egory
+        - *server_immortal
+        - *server_saturn
+        - *server_luna
+        - *server_pluto
+
+  - path_regex: secrets/immortal/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+    - pgp:
+      - *admin_egorgpg
+      #  - *server_azmidi
+      age:
+        - *admin_egor
+    #    - *admin_egory
+        - *server_immortal
+
+  - path_regex: secrets/saturn/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+    - pgp:
+      - *admin_egorgpg
+      #  - *server_azmidi
+      age:
+        - *admin_egor
+     #   - *admin_egory
+        - *server_saturn
+
+  - path_regex: secrets/luna/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+    - pgp:
+      - *admin_egorgpg
+      #  - *server_azmidi
+      age:
+        - *admin_egor
+#        - *admin_egory
+        - *server_luna
+  - path_regex: secrets/pluto/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+    - pgp:
+      - *admin_egorgpg
+      #  - *server_azmidi
+      age:
+        - *admin_egor
+#        - *admin_egory
+        - *server_pluto
+  - path_regex: home-manager/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+    - pgp:
+      #- *admin_egorgpg
+      age:
+        #- *admin_egor
+        - *server_pluto
+        

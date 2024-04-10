@@ -1,0 +1,101 @@
+{...}: {
+  sops.secrets."services/adguard-home/admin/password" = {};
+
+  networking = {
+    firewall = {
+      allowedTCPPorts = [853];
+      allowedUDPPorts = [53 853];
+    };
+  };
+  services = {
+    adguardhome = {
+      enable = true;
+      openFirewall = true;
+      settings.bind_port = 3000;
+      mutableSettings = false;
+      settings = {
+        schema_version = 0;
+        upstream_dns = "127.0.0.1:5335";
+        cache_optimistic = true;
+        enable_dnssec = true;
+        dns = {
+          bind_host = "0.0.0.0";
+          bootstrap_dns = "9.9.9.9";
+        };
+        users = [
+          {
+            name = "egor";
+            # FIXME - It's still better to put in in the sops
+            password = "$2b$05$xJ4zgZweQkQufrWCCNMwLOANYz7ky6Es6xmFx.zo5DiRxGQNisoxS";
+            #            password = config.sops.secrets."services/adguard-home/admin/password".path; #BCrypt
+          }
+        ];
+        tls = {
+          enabled = true;
+          server_name = "dns.egor.wtf";
+          allow_unencrypted_doh = true;
+          certificate_path = "/var/lib/acme/dns.egor.wtf/fullchain.pem";
+          private_key_path = "/var/lib/acme/dns.egor.wtf/key.pem";
+          port_https = 0;
+        };
+        safe_search = {
+          #FIXME - It still turns safe search on
+          enabled = false;
+        };
+        user_rules = [
+          "||egor.wtf^$client=192.168.1.0/24,dnsrewrite=NOERROR;A;192.168.1.100"
+          "||*.egor.wtf^$client=192.168.1.0/24,dnsrewrite=NOERROR;A;192.168.1.100"
+          "||*.*.egor.wtf^$client=192.168.1.0/24,dnsrewrite=NOERROR;A;192.168.1.100"
+          "@@||mail.egor.wtf^$client=192.168.1.0/24"
+          "||egor.wtf^$client=127.0.0.1,dnsrewrite=NOERROR;A;127.0.0.1"
+          "||*.egor.wtf^$client=127.0.0.1,dnsrewrite=NOERROR;A;127.0.0.1"
+          "||*.*.egor.wtf^$client=127.0.0.1,dnsrewrite=NOERROR;A;127.0.0.1"
+          "||egor.wtf^$client=100.64.0.0/24,dnsrewrite=NOERROR;A;100.64.0.1"
+          "||*.egor.wtf^$client=100.64.0.0/24,dnsrewrite=NOERROR;A;100.64.0.1"
+          "||*.*.egor.wtf^$client=100.64.0.0/24,dnsrewrite=NOERROR;A;100.64.0.1"
+          "||mail.egor.wtf^$client=100.64.0.0/24,dnsrewrite=NOERROR;A;100.64.0.5"
+        ];
+      };
+    };
+  };
+  services.nginx = {
+    enable = true;
+    # Use recommended settings
+    recommendedGzipSettings = true;
+    virtualHosts."dns.egor.wtf" = {
+      enableACME = true;
+      forceSSL = true;
+      extraConfig = ''
+        ${builtins.readFile ./../nginx/authelia/vh.conf}
+      '';
+      locations."/" = {
+        proxyPass = "http://127.0.0.1:3000";
+        extraConfig = ''
+          ${builtins.readFile ./../nginx/authelia/locations.conf}
+        '';
+      };
+
+      # FIXME - This doesn't make much sense
+      locations."/dns-query" = {
+        extraConfig = ''
+          proxy_set_header Host $host;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_bind 192.168.1.100;
+        '';
+      };
+    };
+  };
+  services.authelia.instances.prod = {
+    settings = {
+      access_control = {
+        rules = [
+          {
+            domain = ["dns.egor.wtf"];
+            policy = "bypass";
+            resources = ["^/s([/?].*)?$"];
+          }
+        ];
+      };
+    };
+  };
+}
