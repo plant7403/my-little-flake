@@ -72,4 +72,11 @@
       };
     };
   };
+
+  environment.persistence."/persist".directories = [
+    "/var/lib/jackett"
+    "/var/lib/private/jellyseer"
+    "/var/lib/sonarr"
+    "/var/lib/radarr"
+  ];
 }

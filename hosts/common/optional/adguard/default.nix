@@ -98,4 +98,7 @@
       };
     };
   };
+  environment.persistence."/persist".directories = [
+    "/var/lib/private/AdGuardHome"
+  ];
 }

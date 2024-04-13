@@ -140,6 +140,10 @@ in {
     };
   };
 
+  environment.persistence."/persist".directories = [
+    "/var/lib/private/matrix-conduit"
+  ];
+
   # Open firewall ports for HTTP, HTTPS, and Matrix federation
   networking.firewall.allowedTCPPorts = [80 443 8448];
   networking.firewall.allowedUDPPorts = [80 443 8448];

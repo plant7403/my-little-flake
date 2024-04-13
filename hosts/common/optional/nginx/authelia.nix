@@ -134,4 +134,8 @@
   sops.secrets."services/authelia/postgres" = {
     owner = "authelia-prod";
   };
+
+  environment.persistence."/persist".directories = [
+    "/var/lib/authelia-prod"
+  ];
 }

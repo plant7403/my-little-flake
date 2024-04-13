@@ -25,4 +25,9 @@
       };
     };
   };
+
+  environment.persistence."/persist".directories = [
+    "/var/lib/paperless"
+    "/var/lib/redis-paperless"
+  ];
 }

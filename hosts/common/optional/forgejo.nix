@@ -85,4 +85,7 @@
     sopsFile = ./../../../secrets/example.yaml; # bring your own password file
     owner = config.services.forgejo.user;
   };
+  environment.persistence."/persist".directories = [
+    "/var/lib/forgejo"
+  ];
 }

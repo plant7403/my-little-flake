@@ -24,7 +24,7 @@
     #./../../common/optional/grocy/default.nix
     #./../../common/optional/headscale/default.nix
     #./../../common/optional/jellyfin/default.nix
-    #./../../common/optional/nextcloud.nix
+    ./../../common/optional/nextcloud.nix
     ./../../common/optional/nginx/default.nix
     #./../../common/optional/nginx/authelia.nix
     ./../../common/optional/ntfy-sh/default.nix

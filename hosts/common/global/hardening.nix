@@ -44,4 +44,8 @@
   ## USBGuard
   # Load "/var/lib/usbguard/rules.conf" by default
   services.usbguard.enable = true;
+
+  environment.persistence."/persist".directories = [
+    "/var/lib/usbguard"
+  ];
 }

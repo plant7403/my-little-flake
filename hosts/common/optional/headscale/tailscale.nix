@@ -7,4 +7,7 @@
     allowedUDPPorts = [config.services.tailscale.port];
   };
   boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
+  environment.persistence."/persist".directories = [
+    "/var/lib/tailscale"
+  ];
 }

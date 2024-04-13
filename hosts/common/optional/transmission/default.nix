@@ -64,4 +64,7 @@
   sops.secrets."services/transmission" = {
     owner = "nginx";
   };
+  environment.persistence."/persist".directories = [
+    "/var/lib/transmission"
+  ];
 }

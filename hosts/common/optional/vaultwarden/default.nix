@@ -44,4 +44,8 @@
       };
     };
   };
+
+  environment.persistence."/persist".directories = [
+    "/var/lib/bitwarden_rs"
+  ];
 }

@@ -25,4 +25,7 @@
       #      remote-control.control-enable = true;
     };
   };
+  environment.persistence."/persist".directories = [
+    "/var/lib/unbound"
+  ];
 }
