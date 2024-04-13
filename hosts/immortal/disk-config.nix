@@ -66,38 +66,38 @@
           };
         };
       };
-            sda = {
-              type = "disk";
-              device = "/dev/sda"; #/dev/disk/by-uuid/faaf4823-7b06-4aec-9f6e-701ffc1390c6
+      sda = {
+        type = "disk";
+        device = "/dev/sda"; #/dev/disk/by-uuid/faaf4823-7b06-4aec-9f6e-701ffc1390c6
+        content = {
+          type = "gpt";
+          partitions = {
+            luks = {
+              size = "100%";
               content = {
-                type = "gpt";
-                partitions = {
-                  luks = {
-                    size = "100%";
-                    content = {
-                      type = "luks";
-                     name = "hdd-crypt";
-                     #disable settings.keyFile if you want to use interactive password entry
-                    #passwordFile = "/tmp/password";   Interactive
-                   settings = {
-                    allowDiscards = true;
-                   # keyFile = "/tmp/secret.key";
+                type = "luks";
+                name = "hdd-crypt";
+                #disable settings.keyFile if you want to use interactive password entry
+                #passwordFile = "/tmp/password";   Interactive
+                settings = {
+                  allowDiscards = true;
+                  # keyFile = "/tmp/secret.key";
                 };
-               #additionalKeyFiles = ["/tmp/keyfile"];
-              content = {
-               type = "btrfs";
-              extraArgs = ["-f"];
-             subvolumes = {
-              "/" = {
-               mountpoint = "/hdd";
-              mountOptions = ["compress=zstd" "noatime"];
-           };
+                #additionalKeyFiles = ["/tmp/keyfile"];
+                content = {
+                  type = "btrfs";
+                  extraArgs = ["-f"];
+                  subvolumes = {
+                    "/" = {
+                      mountpoint = "/hdd";
+                      mountOptions = ["compress=zstd" "noatime"];
+                    };
+                  };
+                };
+              };
+            };
+          };
         };
-      };
-      };
-      };
-      };
-      };
       };
     };
   };

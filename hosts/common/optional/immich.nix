@@ -1,4 +1,4 @@
-{ ...}: let
+{...}: let
   immichHost = "test.egor.wtf"; # TODO: put your immich domain name here
 
   immichRoot = "/data/immich"; # TODO: Tweak these to your desired storage locations

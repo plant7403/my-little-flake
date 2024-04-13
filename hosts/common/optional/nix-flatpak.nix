@@ -1,4 +1,4 @@
-{ ... }:
+{...}:
 # TODO - Should disable if the problem with other package was fixed
 {
   services.flatpak.enable = true;

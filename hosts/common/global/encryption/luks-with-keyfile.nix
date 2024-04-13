@@ -1,7 +1,5 @@
 # FIXME - This probably causes boot to break
-{
-  ...
-}: {
+{...}: {
   #"..."
 
   # Kernel modules needed for mounting USB VFAT devices in initrd stage

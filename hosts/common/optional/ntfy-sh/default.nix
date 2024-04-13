@@ -20,14 +20,14 @@
       enableACME = true;
       forceSSL = true;
       #extraConfig = ''
-        # ${builtins.readFile ./../nginx/authelia/vh.conf}
+      # ${builtins.readFile ./../nginx/authelia/vh.conf}
       #'';
       locations."/" = {
         proxyPass = "http://127.0.0.1:8085";
         proxyWebsockets = true;
-       # extraConfig = ''
-          # ${builtins.readFile ./../nginx/authelia/locations.conf}
-       # '';
+        # extraConfig = ''
+        # ${builtins.readFile ./../nginx/authelia/locations.conf}
+        # '';
       };
     };
   };

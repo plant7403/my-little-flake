@@ -1,7 +1,4 @@
-{
-  config,
-  ...
-}: {
+{config, ...}: {
   sops.secrets."cloudflare/cfdyndns" = {};
   sops.secrets."cloudflare/cf-dns.env" = {};
 

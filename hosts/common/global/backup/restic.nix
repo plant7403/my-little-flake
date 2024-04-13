@@ -6,8 +6,8 @@
 }: {
   sops.secrets = {
     "system/restic/encryption" = {};
-#    "system/restic/b2-id" = {};
-#    "system/restic/b2-key" = {};
+    #    "system/restic/b2-id" = {};
+    #    "system/restic/b2-key" = {};
     "system/restic/s3.env" = {};
   };
   environment.systemPackages = [pkgs.restic];
@@ -52,10 +52,10 @@
   # If you specified a user above, you need to change it to:
   # systemd.services.user.restic-backups-myaccount = { ... }
   #
-#  systemd.services.restic-backups-myaccount = {
-#    environment = {
-#      B2_ACCOUNT_ID = config.sops.secrets."system/restic/b2-id".path;
-#      B2_ACCOUNT_KEY = config.sops.secrets."system/restic/b2-key".path;
-#    };
-#  };
+  #  systemd.services.restic-backups-myaccount = {
+  #    environment = {
+  #      B2_ACCOUNT_ID = config.sops.secrets."system/restic/b2-id".path;
+  #      B2_ACCOUNT_KEY = config.sops.secrets."system/restic/b2-key".path;
+  #    };
+  #  };
 }

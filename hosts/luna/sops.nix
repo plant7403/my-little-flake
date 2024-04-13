@@ -1,4 +1,4 @@
-{ ...}: {
+{...}: {
   #FIXME - Improve
   #  imports = [inputs.sops-nix.nixosModules.sops];
   # This will add secrets.yml to the nix store

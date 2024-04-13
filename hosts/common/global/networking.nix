@@ -1,7 +1,6 @@
 # FIXME - Fix ipv6 address
-
 ## DNS-over-TLS
-{ ... }: {
+{...}: {
   networking = {
     interfaces = {
       ens3.ipv6.addresses = [

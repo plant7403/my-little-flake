@@ -29,15 +29,16 @@
   #powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   # High-DPI console
   #console.font = lib.mkDefault "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
-            environment.persistence."/persist" = {
-              directories = ["/etc/secureboot"
-"/var/lib/private/ntfy-sh"
-"/var/lib/postgresql"
-"/var/lib/forgejo"
-"/var/lib/bitwarden_rs"
-"/var/lib/authelia-prod"
-];
-            };
+  environment.persistence."/persist" = {
+    directories = [
+      "/etc/secureboot"
+      "/var/lib/private/ntfy-sh"
+      "/var/lib/postgresql"
+      "/var/lib/forgejo"
+      "/var/lib/bitwarden_rs"
+      "/var/lib/authelia-prod"
+    ];
+  };
   # Bootloader.
   #boot.loader.grub.devices = ["/dev/vda3"];
   services.logrotate.checkConfig = false;

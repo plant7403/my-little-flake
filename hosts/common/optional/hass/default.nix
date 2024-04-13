@@ -1,4 +1,4 @@
-{ ...}: {
+{...}: {
   # TODO - It needs way more configuration
   services.home-assistant = {
     enable = true;

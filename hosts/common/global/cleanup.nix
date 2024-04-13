@@ -1,6 +1,5 @@
 # TODO - Check if it's even working
-
-{ pkgs, ... }: {
+{pkgs, ...}: {
   ## Unattended upgrade
   system.autoUpgrade = {
     enable = true;
@@ -31,8 +30,8 @@
       };
     };
     timers.clear-log = {
-      wantedBy = [ "timers.target" ];
-      partOf = [ "clear-log.service" ];
+      wantedBy = ["timers.target"];
+      partOf = ["clear-log.service"];
       timerConfig.OnCalendar = "weekly UTC";
     };
   };

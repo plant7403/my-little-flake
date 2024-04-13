@@ -1,7 +1,4 @@
-{
-  config,
-  ...
-}: {
+{config, ...}: {
   services.tailscale.enable = true;
   services.tailscale.useRoutingFeatures = "both";
   networking.firewall = {

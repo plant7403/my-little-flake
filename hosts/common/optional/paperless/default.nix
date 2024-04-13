@@ -1,7 +1,4 @@
-{
-  config,
-  ...
-}: {
+{config, ...}: {
   services.paperless = {
     enable = true;
     settings = {PAPERLESS_OCR_LANGUAGE = "eng";};

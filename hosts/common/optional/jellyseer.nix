@@ -1,4 +1,4 @@
-{ ...}: {
+{...}: {
   # TODO - General setup, still not working
   services.jellyseerr = {
     openFirewall = true;

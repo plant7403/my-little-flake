@@ -1,4 +1,4 @@
-{ ...}: {
+{...}: {
   ## Hardened kernel
   #  boot.kernelPackages = pkgs.linuxPackages_hardened;
 
