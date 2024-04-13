@@ -13,10 +13,7 @@
   environment.persistence."/persist" = {
     hideMounts = true;
     directories = [
-      #"/etc/nixos"
-      #"/var/lib"
       "/etc/ssh"
-      #"/data"
       "/root"
     ];
     files = [

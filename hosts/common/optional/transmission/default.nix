@@ -60,6 +60,7 @@
       };
     };
   };
+users.groups.media = {};
 
   sops.secrets."services/transmission" = {
     owner = "nginx";
