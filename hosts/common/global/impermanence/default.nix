@@ -5,7 +5,9 @@
   config,
   ...
 }: {
-  imports = [inputs.impermanence.nixosModules.impermanence];
+  imports = [inputs.impermanence.nixosModules.impermanence
+  #./sops-fix.nix
+];
 
   environment.persistence."/persist" = {
     hideMounts = true;

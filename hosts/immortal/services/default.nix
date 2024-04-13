@@ -26,12 +26,13 @@
     #./../../common/optional/jellyfin/default.nix
     #./../../common/optional/nextcloud.nix
     ./../../common/optional/nginx/default.nix
+    ./../../common/optional/nginx/authelia.nix
     ./../../common/optional/ntfy-sh/default.nix
     #./../../common/optional/paperless/default.nix
     #./../../common/optional/photoprism/default.nix
     #./../../common/optional/searx-ng/default.nix
     #./../../common/optional/transmission/default.nix
-    #./../../common/optional/vaultwarden/default.nix
+    ./../../common/optional/vaultwarden/default.nix
     #./../../common/optional/wireguard/default.nix
     #./../../common/optional/wordpress/default.nix
     #./../common/global/encryption/luks-with-keyfile.nix

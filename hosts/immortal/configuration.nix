@@ -15,6 +15,7 @@
     ./../common/users/root.nix
     ./../common/users/egor.nix
     ./clevis.nix
+    #./postgres-migrate.nix
   ];
 
   nix = {
@@ -33,12 +34,14 @@
 "/var/lib/private/ntfy-sh"
 "/var/lib/postgresql"
 "/var/lib/forgejo"
+"/var/lib/bitwarden_rs"
+"/var/lib/authelia-prod"
 ];
             };
   # Bootloader.
   #boot.loader.grub.devices = ["/dev/vda3"];
   services.logrotate.checkConfig = false;
-
+  #services.postgresql.package = pkgs.postgresql_14;
   networking.hostName = "immortal"; # Define your hostname.
   services.fwupd.enable = true;
 

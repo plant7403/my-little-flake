@@ -33,14 +33,14 @@
     virtualHosts."password.egor.wtf" = {
       enableACME = true;
       forceSSL = true;
-      extraConfig = ''
-        ${builtins.readFile ./../nginx/authelia/vh.conf}
-      '';
+      #extraConfig = ''
+      #  ${builtins.readFile ./../nginx/authelia/vh.conf}
+      #'';
       locations."/" = {
         proxyPass = "http://127.0.0.1:8000";
-        extraConfig = ''
-          ${builtins.readFile ./../nginx/authelia/locations.conf}
-        '';
+       # extraConfig = ''
+       #   ${builtins.readFile ./../nginx/authelia/locations.conf}
+       # '';
       };
     };
   };
