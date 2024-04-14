@@ -68,20 +68,20 @@ ${builtins.readFile ./nginx/authelia/vh.conf}
     allowedTCPPorts = [2222];
   };
 
-  #services.authelia.instances.prod = {
-  #  settings = {
-  #    access_control = {
-  #      default_policy = "deny";
-  #      rules = [
-  #        {
-  #          domain = ["git.egor.wtf"];
-  #          policy = "bypass";
-  #          resources = ["^/me/my-little-flake([/?].*)?$"];
-  #        }
-  #      ];
-  #    };
-  #  };
-  #};
+  services.authelia.instances.prod = {
+    settings = {
+      access_control = {
+        default_policy = "deny";
+        rules = [
+          {
+            domain = ["git.egor.wtf"];
+            policy = "bypass";
+            resources = ["^/me/my-little-flake([/?].*)?$"];
+          }
+        ];
+      };
+    };
+  };
 
   sops.secrets."postgres/forgejo" = {
     sopsFile = ./../../../secrets/example.yaml; # bring your own password file

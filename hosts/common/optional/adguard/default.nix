@@ -80,7 +80,7 @@
         extraConfig = ''
           proxy_set_header Host $host;
           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-          proxy_bind 192.168.1.100;
+          proxy_bind 127.0.0.1;
         '';
       };
     };
@@ -92,7 +92,7 @@
           {
             domain = ["dns.egor.wtf"];
             policy = "bypass";
-            resources = ["^/s([/?].*)?$"];
+            #resources = ["^/s([/?].*)?$"];
           }
         ];
       };

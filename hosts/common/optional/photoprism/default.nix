@@ -79,7 +79,7 @@
     device = "/data/Import";
     options = ["bind"];
   };
-  environment.persistence."/persist".directories = [
-    "/var/lib/private/photoprism"
-  ];
+  #environment.persistence."/persist".directories = [
+  #  "/var/lib/private/photoprism"
+  #];
 }
