@@ -31,10 +31,10 @@
             id = ".DecSync";
             devices = ["immortal" "surface" "pixel6"];
           };
-          #"/home/egor/DCIM" = {
-          #  id = "DCIM";
-          #  devices = [ "immortal" "pixel6" ];
-          #};
+          "/home/egor/DCIM" = {
+            id = "DCIM";
+            devices = ["immortal" "pixel6"];
+          };
         };
       };
     };
