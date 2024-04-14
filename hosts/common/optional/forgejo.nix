@@ -76,7 +76,7 @@ ${builtins.readFile ./nginx/authelia/vh.conf}
           {
             domain = ["git.egor.wtf"];
             policy = "bypass";
-            resources = ["^/me/my-little-flake([/?].*)?$"];
+            #resources = ["^/me/my-little-flake([/?].*)?$"];
           }
         ];
       };
