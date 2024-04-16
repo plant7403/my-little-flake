@@ -65,9 +65,9 @@
       access_control = {
         rules = [
           {
-            domain = ["cloud.egor.wtf"];
+            domain = ["head.egor.wtf"];
             policy = "bypass";
-            resources = ["^/s([/?].*)?$"];
+            #resources = ["^/s([/?].*)?$"];
           }
         ];
       };

@@ -90,11 +90,11 @@
           description = "NextCloud";
           secret = "$pbkdf2-sha512$310000$c8p78n7pUMln0jzvd4aK4Q$JNRBzwAo0ek5qKn50cFzzvE9RXV88h1wJn5KGiHrD0YKtZaR/nCb2CJPOsKaPK0hjf.9yHxzQGZziziccp6Yng"; # The digest of 'insecure_secret'.
           #public = false;
-          #authorization_policy = "two_factor";
+          authorization_policy = "one_factor";
           #require_pkce = true;
           #pkce_challenge_method = "S256";
-          issuer_private_key = config.sops.secrets."services/authelia/oidc/nextcloud/private.pem".path;
-          redirect_uris = [
+          #issuer_private_key = config.sops.secrets."services/authelia/oidc/nextcloud/private.pem".path;
+	  redirect_uris = [
             "https://nextcloud.example.com/apps/oidc_login/oidc"
           ];
           scopes = [
@@ -107,6 +107,9 @@
           #token_endpoint_auth_method = "client_secret_basic";
         }
       ];
+      identity_providers.oidc = {
+      
+      };
     };
 
     # TODO: Change this to currently used user & group
