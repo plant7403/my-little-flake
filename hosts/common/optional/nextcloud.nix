@@ -23,7 +23,7 @@
     # Instead of using pkgs.nextcloud27Packages.apps,
     # we'll reference the package version specified above
     extraApps = with config.services.nextcloud.package.packages.apps; {
-      inherit contacts calendar deck cospend previewgenerator twofactor_webauthn;
+      inherit contacts calendar cospend previewgenerator; # twofactor_webauthn deck
     };
     extraAppsEnable = true;
     # Enable built-in virtual host management

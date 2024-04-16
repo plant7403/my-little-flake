@@ -84,7 +84,31 @@
           };
         };
       };
+      identity_providers.oidc.clients = [
+        {
+          id = "nextcloud";
+          description = "NextCloud";
+          secret = "$pbkdf2-sha512$310000$c8p78n7pUMln0jzvd4aK4Q$JNRBzwAo0ek5qKn50cFzzvE9RXV88h1wJn5KGiHrD0YKtZaR/nCb2CJPOsKaPK0hjf.9yHxzQGZziziccp6Yng"; # The digest of 'insecure_secret'.
+          #public = false;
+          #authorization_policy = "two_factor";
+          #require_pkce = true;
+          #pkce_challenge_method = "S256";
+          issuer_private_key = config.sops.secrets."services/authelia/oidc/nextcloud/private.pem".path;
+          redirect_uris = [
+            "https://nextcloud.example.com/apps/oidc_login/oidc"
+          ];
+          scopes = [
+            "openid"
+            "profile"
+            "email"
+            "groups"
+          ];
+          #userinfo_signed_response_alg = "none";
+          #token_endpoint_auth_method = "client_secret_basic";
+        }
+      ];
     };
+
     # TODO: Change this to currently used user & group
     # user = "";
     # group = "";
@@ -132,6 +156,9 @@
     owner = "authelia-prod";
   };
   sops.secrets."services/authelia/postgres" = {
+    owner = "authelia-prod";
+  };
+  sops.secrets."services/authelia/oidc/nextcloud/private.pem" = {
     owner = "authelia-prod";
   };
 
