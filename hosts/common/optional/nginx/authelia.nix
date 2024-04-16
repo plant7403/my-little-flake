@@ -45,11 +45,11 @@
               "127.0.0.1/24"
             ];
           }
-          {
-            domain = ["*.egor.wtf" "egor.wtf" "*.xoxo.green" "xoxo.green"];
-            resources = [];
-            policy = "one_factor";
-          }
+          #{
+          #  domain = ["*.egor.wtf" "egor.wtf" "*.xoxo.green" "xoxo.green"];
+          #  resources = [];
+          #  policy = "one_factor";
+          #}
         ];
       };
       notifier.filesystem = {

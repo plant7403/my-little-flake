@@ -22,9 +22,9 @@
     hostName = "cloud.egor.wtf";
     # Instead of using pkgs.nextcloud27Packages.apps,
     # we'll reference the package version specified above
-    #extraApps = with config.services.nextcloud.package.packages.apps; {
-    #  inherit contacts calendar deck cospend previewgenerator twofactor_webauthn;
-    #};
+    extraApps = with config.services.nextcloud.package.packages.apps; {
+      inherit contacts calendar deck cospend previewgenerator twofactor_webauthn;
+    };
     extraAppsEnable = true;
     # Enable built-in virtual host management
     # Takes care of somewhat complicated setup
@@ -120,7 +120,7 @@
   };
   environment.persistence."/persist".directories = [
     "/var/lib/nextcloud"
-    "/var/lib/nextcloud-redis"
-    "/var/lib/redis-nextcloud"
+    #"/var/lib/nextcloud-redis"
+    #"/var/lib/redis-nextcloud"
   ];
 }

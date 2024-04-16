@@ -89,6 +89,8 @@
     nano
     borgbackup
     restic
+    tmux
+    mosh
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
