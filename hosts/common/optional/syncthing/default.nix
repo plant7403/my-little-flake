@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, config, ...}: {
   # TODO - Review
   services = {
     syncthing = {
