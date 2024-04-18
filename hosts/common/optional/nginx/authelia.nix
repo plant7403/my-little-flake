@@ -5,6 +5,7 @@
     secrets = {
       jwtSecretFile = config.sops.secrets."services/authelia/jwt".path;
       storageEncryptionKeyFile = config.sops.secrets."services/authelia/storage".path;
+      oidcIssuerPrivateKeyFile = config.sops.secrets."services/authelia/oidc/nextcloud/private.pem".path;
     };
     settings = {
       default_2fa_method = "";
@@ -29,7 +30,7 @@
         secret_size = "32";
       };
       access_control = {
-        default_policy = "deny";
+        default_policy = "two_factor";
         rules = [
           {
             domain = ["auth.egor.wtf"];
@@ -41,7 +42,7 @@
             networks = [
               #"internal"
               "100.64.0.0/24"
-              "192.168.1.0/24"
+              #"192.168.1.0/24"
               "127.0.0.1/24"
             ];
           }
@@ -88,14 +89,16 @@
         {
           id = "nextcloud";
           description = "NextCloud";
-          secret = "$pbkdf2-sha512$310000$c8p78n7pUMln0jzvd4aK4Q$JNRBzwAo0ek5qKn50cFzzvE9RXV88h1wJn5KGiHrD0YKtZaR/nCb2CJPOsKaPK0hjf.9yHxzQGZziziccp6Yng"; # The digest of 'insecure_secret'.
-          #public = false;
-          authorization_policy = "one_factor";
+          #secret = "$pbkdf2-sha512$310000$JPD3TdBJ73D2fW1cSstviQ$3gJsrRXvYW692/3bhYDR1uUJq.2AwFTb/p968LW4w7Y5J.HlxgARXuXdsYd5zrKw3EVKxZn18yEM8kpQYroiIw"; # The digest of 'insecure_secret'.
+          secret = "I0BQ4pULuZvwFSiEq4GA3gFr.TpykfZrHC03FMXCQcU4JU6PPvbn2HrnAtOygvAGxrBEC4p-";
+          public = false;
+          authorization_policy = "two_factor";
           #require_pkce = true;
           #pkce_challenge_method = "S256";
           #issuer_private_key = config.sops.secrets."services/authelia/oidc/nextcloud/private.pem".path;
-	  redirect_uris = [
-            "https://nextcloud.example.com/apps/oidc_login/oidc"
+	  #consent_mode = "implicit";
+          redirect_uris = [
+            "https://cloud.egor.wtf/apps/user_oidc/code"
           ];
           scopes = [
             "openid"
@@ -104,12 +107,43 @@
             "groups"
           ];
           #userinfo_signed_response_alg = "none";
-          #token_endpoint_auth_method = "client_secret_basic";
+          #token_endpoint_auth_method = "client_secret_post";
+        }
+        {
+          id = "headscale";
+          description = "Headscale";
+          secret = config.sops.secrets."services/authelia/oidc/headscale/client_secret_enc".path;
+          public = false;
+          authorization_policy = "one_factor";
+          #require_pkce = true;
+          #pkce_challenge_method = "S256";
+          #consent_mode = "implicit";
+          redirect_uris = [
+            "https://head.egor.wtf/a/oauth_response"
+            "https://head.egor.wtf/oidc/callback"
+            "https://head.egor.wtf/admin/oidc/callback"
+          ];
+          scopes = [
+            "openid"
+            "profile"
+            "email"
+            #"custom"
+          ];
+          #userinfo_signed_response_alg = "none";
+          #token_endpoint_auth_method = "client_secret_post";
         }
       ];
-      identity_providers.oidc = {
       
-      };
+      #identity_providers.oidc = {
+      #  jwks = [
+      #    {
+      #    key_id = "example";
+      #    algorithm = "RS256";
+      #    use = "sig";
+      #    key = config.sops.secrets."services/authelia/oidc/nextcloud/private.pem".path;
+      #    }
+      #  ];
+      #};
     };
 
     # TODO: Change this to currently used user & group
@@ -164,6 +198,17 @@
   sops.secrets."services/authelia/oidc/nextcloud/private.pem" = {
     owner = "authelia-prod";
   };
+  #sops.secrets."services/authelia/oidc/headscale/client_id" = {
+    #owner = "authelia-prod";
+  #};
+  #sops.secrets."services/authelia/oidc/headscale/client_secret" = {
+    #owner = "authelia-prod";
+  #};
+  sops.secrets."services/authelia/oidc/headscale/client_secret_enc" = {
+    owner = "authelia-prod";
+  };
+
+
 
   environment.persistence."/persist".directories = [
     "/var/lib/authelia-prod"

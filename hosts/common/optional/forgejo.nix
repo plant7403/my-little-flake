@@ -71,7 +71,7 @@ ${builtins.readFile ./nginx/authelia/vh.conf}
   services.authelia.instances.prod = {
     settings = {
       access_control = {
-        default_policy = "deny";
+        #default_policy = "deny";
         rules = [
           {
             domain = ["git.egor.wtf"];

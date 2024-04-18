@@ -23,7 +23,12 @@
     # Instead of using pkgs.nextcloud27Packages.apps,
     # we'll reference the package version specified above
     extraApps = with config.services.nextcloud.package.packages.apps; {
-      inherit contacts calendar cospend previewgenerator; # twofactor_webauthn deck
+      inherit contacts calendar cospend previewgenerator user_oidc; # twofactor_webauthn deck
+      #oidc_login = pkgs.fetchNextcloudApp {
+      #  sha256 = "sha256:00hraam87v4faj6xxy3kzshkj7rmshky6x9aas8z4a71ak75mpkh";
+      #  url = "https://github.com/pulsejet/nextcloud-oidc-login/archive/refs/tags/v3.0.2.tar.gz";
+      #  license = "gpl3";
+    #};
     };
     extraAppsEnable = true;
     # Enable built-in virtual host management
@@ -105,19 +110,19 @@
     requires = ["postgresql.service"];
     after = ["postgresql.service"];
   };
-  services.authelia.instances.prod = {
-    settings = {
-      access_control = {
-        rules = [
-          {
-            domain = ["cloud.egor.wtf"];
-            policy = "bypass";
-            resources = ["^/s([/?].*)?$"];
-          }
-        ];
-      };
-    };
-  };
+  #services.authelia.instances.prod = {
+  #  settings = {
+  #    access_control = {
+  #      rules = [
+  #        {
+  #          domain = ["cloud.egor.wtf"];
+  #          policy = "bypass";
+  #          resources = ["^/s([/?].*)?$"];
+  #        }
+  #      ];
+  #    };
+  #  };
+  #};
   environment.persistence."/persist".directories = [
     "/var/lib/nextcloud"
     #"/var/lib/nextcloud-redis"
