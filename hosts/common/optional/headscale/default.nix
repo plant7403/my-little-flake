@@ -19,7 +19,7 @@
         enabled = false;
       };
       log = {
-        level = "warn";
+        level = "debug";
       };
       ip_prefixes = [
         "100.64.0.0/10"
@@ -30,6 +30,25 @@
         region_id = 999;
         stun_listen_addr = "0.0.0.0:3478";
       };
+      ocid = {
+        #issuer = "https://auth.egor.wtf/.well-known/openid-configuration";
+        issuer = "https://auth.egor.wtf";
+        client_secret_path = config.sops.secrets."services/authelia/oidc/headscale/client_secret".path;
+        client_id = config.sops.secrets."services/authelia/oidc/headscale/client_id".path;
+        #allowed_domains = "egor.wtf";
+        #allowed_users = "egor";
+        only_start_if_oidc_is_available = true;
+        extra_params = {
+          domain_hint = "egor.wtf";
+        };
+      };
+      #db_user = "headscale";
+      #db_type = "postgres";
+      #db_port = "1234";
+      #db_path = "/run/something";
+      #db_password_file = config.sops.lalalalal;
+      #db_name = "headscale";
+      #db_host = "127.0.0.1";
     };
   };
   services.nginx = {
@@ -65,14 +84,27 @@
       access_control = {
         rules = [
           {
-            domain = ["cloud.egor.wtf"];
+            domain = ["head.egor.wtf"];
             policy = "bypass";
-            resources = ["^/s([/?].*)?$"];
+            resources = [
+              "^/ts2021([/?].*)?$"
+              "^/key([/?].*)?$"
+              #"^/register([/?].*)?$"
+            ];
           }
         ];
       };
     };
   };
+  sops.secrets."services/authelia/oidc/headscale/client_id" = {
+    #owner = "authelia-prod";
+  };
+  sops.secrets."services/authelia/oidc/headscale/client_secret" = {
+    #owner = "authelia-prod";
+  };
+  #sops.secrets."services/authelia/oidc/headscale/client_secret_enc" = {
+  #  owner = "authelia-prod";
+  #};
 
   environment.persistence."/persist".directories = [
     "/var/lib/headscale"
