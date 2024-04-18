@@ -39,4 +39,7 @@
       };
     };
   };
+  environment.persistence."/persist".directories = [
+    "/var/lib/syncthing"
+  ];
 }

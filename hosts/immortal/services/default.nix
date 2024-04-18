@@ -5,7 +5,7 @@
     ./../../common/global/hardening.nix
     ./../../common/global/ssh.nix
     ./../../common/optional/headscale/default.nix
-    ./../../common/optional/headscale/tailscale.nix
+    ./tailscale.nix
     #./../../common/optional/mailserver.nix
     #./syncthing.nix
     ./../../common/global/acme/wc-dns-egor.nix
