@@ -65,6 +65,9 @@
         password = config.sops.secrets."services/authelia/postgres".path;
       };
       authentication_backend = {
+        password_reset = {
+          disable = false;
+        };
         file = {
           path = config.sops.secrets."services/authelia/users.yaml".path;
           watch = false;
