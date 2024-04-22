@@ -1,6 +1,7 @@
 # TODO - Same with immortal's default
 {
   imports = [
+    ./asteriks.nix
     ./../../common/global/cleanup.nix
     ./../../common/global/hardening.nix
     ./../../common/global/ssh.nix
