@@ -78,6 +78,17 @@
       '';
     };
   };
+  services.udev.packages = [
+    pkgs.usb-modeswitch-data
+  ];
+  programs.dconf.enable = true;
+
+  services.pcscd.enable = true;
+  services.pppd.enable = true;
+  security.polkit.enable = true;
+  services.accounts-daemon.enable = true;
+  services.udisks2.enable = true;
+  hardware.usbWwan.enable = true;
   # we had a sepearte VLAN for this, so *shrug*
   # makes things easier if I don't have to keep track of ports
   #networking.firewall.enable = false;
