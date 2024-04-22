@@ -96,4 +96,7 @@
     allowedTCPPorts = [5060];
     allowedUDPPorts = [5060];
   };
+  environment.systemPackages = with pkgs; [
+    ppp
+  ];
 }
