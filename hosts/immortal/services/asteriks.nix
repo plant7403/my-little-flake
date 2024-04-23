@@ -80,6 +80,7 @@
   };
   services.udev.packages = [
     pkgs.usb-modeswitch-data
+    modem-manager-gui
   ];
   programs.dconf.enable = true;
 
