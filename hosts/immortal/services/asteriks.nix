@@ -80,7 +80,7 @@
   };
   services.udev.packages = [
     pkgs.usb-modeswitch-data
-    modem-manager-gui
+    pkgs.modem-manager-gui
   ];
   programs.dconf.enable = true;
 
@@ -89,7 +89,7 @@
   security.polkit.enable = true;
   services.accounts-daemon.enable = true;
   services.udisks2.enable = true;
-  hardware.usbWwan.enable = true;
+  hardware.usb-modeswitch.enable = true;
   # we had a sepearte VLAN for this, so *shrug*
   # makes things easier if I don't have to keep track of ports
   #networking.firewall.enable = false;

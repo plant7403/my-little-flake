@@ -9,10 +9,11 @@
     };
     extraConfig = ''
       AllowTcpForwarding yes
-      X11Forwarding no
+      X11Forwarding yes
       AllowAgentForwarding yes
       AllowStreamLocalForwarding yes
       AuthenticationMethods publickey
+      X11UseLocalhost no
     '';
   };
   networking.firewall = {

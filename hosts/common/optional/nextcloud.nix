@@ -123,6 +123,7 @@
   #    };
   #  };
   #};
+
   environment.persistence."/persist".directories = [
     "/var/lib/nextcloud"
     #"/var/lib/nextcloud-redis"
