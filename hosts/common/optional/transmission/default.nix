@@ -1,4 +1,8 @@
-{pkgs, ...}:
+{
+  pkgs,
+  config,
+  ...
+}:
 # TODO - Check alternatives
 {
   services.transmission = {
@@ -29,7 +33,7 @@
       basicAuth = {
         #  #egor = config.sops.secrets."services/transmission".path;
         #  # FIXME - [IMPORTANT] Move to SOPS
-        egor = config.sops.secrets."services/transmission".path;
+        #egor = config.sops.secrets."services/transmission".path;
       };
       enableACME = true;
       forceSSL = true;

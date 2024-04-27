@@ -29,6 +29,8 @@
         enable = true;
         region_id = 999;
         stun_listen_addr = "0.0.0.0:3478";
+        autoUpdate = true;
+        updateFrequency = "5m";
       };
       ocid = {
         #issuer = "https://auth.egor.wtf/.well-known/openid-configuration";
