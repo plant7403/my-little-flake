@@ -1,4 +1,8 @@
-{config, ...}: {
+{
+  config,
+  lib,
+  ...
+}: {
   services.tailscale.enable = true;
   services.tailscale = {
     useRoutingFeatures = lib.mkDefault "client";
