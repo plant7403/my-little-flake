@@ -46,6 +46,14 @@
               "127.0.0.1/24"
             ];
           }
+
+          {
+            domain = ["*.egor.wtf"];
+            policy = "bypass";
+            resources = [
+              "^/.well-known([/?].*)?$"
+            ];
+          }
           #{
           #  domain = ["*.egor.wtf" "egor.wtf" "*.xoxo.green" "xoxo.green"];
           #  resources = [];
@@ -99,7 +107,7 @@
           #require_pkce = true;
           #pkce_challenge_method = "S256";
           #issuer_private_key = config.sops.secrets."services/authelia/oidc/nextcloud/private.pem".path;
-	  #consent_mode = "implicit";
+          #consent_mode = "implicit";
           redirect_uris = [
             "https://cloud.egor.wtf/apps/user_oidc/code"
           ];
@@ -136,7 +144,7 @@
           #token_endpoint_auth_method = "client_secret_post";
         }
       ];
-      
+
       #identity_providers.oidc = {
       #  jwks = [
       #    {
@@ -202,16 +210,14 @@
     owner = "authelia-prod";
   };
   #sops.secrets."services/authelia/oidc/headscale/client_id" = {
-    #owner = "authelia-prod";
+  #owner = "authelia-prod";
   #};
   #sops.secrets."services/authelia/oidc/headscale/client_secret" = {
-    #owner = "authelia-prod";
+  #owner = "authelia-prod";
   #};
   sops.secrets."services/authelia/oidc/headscale/client_secret_enc" = {
     owner = "authelia-prod";
   };
-
-
 
   environment.persistence."/persist".directories = [
     "/var/lib/authelia-prod"

@@ -20,7 +20,7 @@
         enable_dnssec = true;
         dns = {
           bind_host = "0.0.0.0";
-          bootstrap_dns = "9.9.9.9";
+          bootstrap_dns = "9.9.9.10";
         };
         users = [
           {
