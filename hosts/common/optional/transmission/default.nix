@@ -11,7 +11,7 @@
     #openRPCPort = true;
     settings = {
       #home = "/data/.transmission";
-      download-dir = "/data/Media";
+      download-dir = "/hdd/Media";
       #incomplete-dir = "/data/Media";
       incomplete-dir-enabled = false;
       #watch-dir = "/DATA/D1/TM/watch";
@@ -26,12 +26,11 @@
     enable = true;
     recommendedGzipSettings = true;
     virtualHosts."torr.egor.wtf" = {
-      #basicAuth = {
-      #  #egor = config.sops.secrets."services/transmission".path;
-      #  # FIXME - [IMPORTANT] Move to SOPS
-      #  egor = config.sops.secrets."services/transmission".path;
-      #  #"qtrnws1B1xl1qB91eX2tz6FPXV45dhTbqQckdmtjOo7ROsSWMa99smXixzcnvED4";
-      #};
+      basicAuth = {
+        #  #egor = config.sops.secrets."services/transmission".path;
+        #  # FIXME - [IMPORTANT] Move to SOPS
+        egor = config.sops.secrets."services/transmission".path;
+      };
       enableACME = true;
       forceSSL = true;
       extraConfig = ''
@@ -44,23 +43,8 @@
         '';
       };
     };
-
-    # FIXME - [ IMPORTANT ] Move it somewhere else
-    virtualHosts."router.egor.wtf" = {
-      enableACME = true;
-      forceSSL = true;
-      extraConfig = ''
-        ${builtins.readFile ./../nginx/authelia/vh.conf}
-      '';
-      locations."/" = {
-        proxyPass = "http://192.168.1.1";
-        extraConfig = ''
-          ${builtins.readFile ./../nginx/authelia/locations.conf}
-        '';
-      };
-    };
   };
-users.groups.media = {};
+  users.groups.media = {};
 
   sops.secrets."services/transmission" = {
     owner = "nginx";
