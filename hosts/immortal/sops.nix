@@ -15,21 +15,22 @@
   #environment.persistence."/persist" = {
   #    directories = ["/var/lib/sops-nix"];
   #};
-#  systemd.services.npcnix-force-rebuild-sops-hack = {
-#    wantedBy = [ "multi-user.target" ];
-#    serviceConfig = {
-#      ExecStart = ''
-#        /run/current-system/activate
-#      '';
-#      Type = "oneshot";
-#      Restart = "on-failure"; # because oneshot
-#      RestartSec = "10s";
-#    };
-#  };
+  #  systemd.services.npcnix-force-rebuild-sops-hack = {
+  #    wantedBy = [ "multi-user.target" ];
+  #    serviceConfig = {
+  #      ExecStart = ''
+  #        /run/current-system/activate
+  #      '';
+  #      Type = "oneshot";
+  #      Restart = "on-failure"; # because oneshot
+  #      RestartSec = "10s";
+  #    };
+  #  };
   systemd.services.decrypt-sops = {
     description = "Decrypt sops secrets";
-    wantedBy = [ "multi-user.target" ];
-    after = [ "network-online.target" ];
+    wantedBy = ["multi-user.target"];
+    after = ["network-online.target"];
+    depend = ["network-online.target"];
     serviceConfig = {
       Type = "oneshot";
       RemainAfterExit = true;
@@ -38,5 +39,5 @@
       RestartSec = "2s";
     };
     script = config.system.activationScripts.setupSecrets.text;
-   };
+  };
 }
