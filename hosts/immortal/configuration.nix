@@ -19,7 +19,7 @@
     ./../common/optional/postgresql/default.nix
     ./../common/optional/mysql/default.nix
   ];
-
+  systemd.services.nix-daemon.environment.TMPDIR = "/tmp";
   nix = {
     settings = {
       # Enable flakes and new 'nix' command
@@ -28,6 +28,9 @@
       auto-optimise-store = true;
     };
   };
+  #boot.runSize =
+  boot.tmp.cleanOnBoot = true;
+  boot.tmp.useTmpfs = true;
   #powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   # High-DPI console
   #console.font = lib.mkDefault "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";

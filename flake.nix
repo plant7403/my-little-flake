@@ -170,11 +170,11 @@
             };
           })
 
-          vscode-server.nixosModules.default
-          ({...}: {
-            services.vscode-server.enable = true;
-            services.vscode-server.installPath = "~/.vscodium-server";
-          })
+          #vscode-server.nixosModules.default
+          #({...}: {
+          #  services.vscode-server.enable = true;
+          #  services.vscode-server.installPath = "~/.vscodium-server";
+          #})
         ];
       };
       #saturn = nixpkgs.lib.nixosSystem {
