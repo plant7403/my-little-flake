@@ -26,11 +26,20 @@
       experimental-features = "nix-command flakes";
       # Deduplicate and optimize nix store
       auto-optimise-store = true;
+      substituters = [
+        "https://nix-community.cachix.org"
+        "https://cache.nixos.org/"
+        "https://nixpkgs-unfree.cachix.org"
+      ];
+      trusted-public-keys = [
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        "nixpkgs-unfree.cachix.org-1:hqvoInulhbV4nJ9yJOEr+4wxhDV4xq2d1DK7S6Nj6rs="
+      ];
     };
   };
   #boot.runSize =
-  boot.tmp.cleanOnBoot = true;
-  boot.tmp.useTmpfs = true;
+  #boot.tmp.cleanOnBoot = true;
+  #boot.tmp.useTmpfs = true;
   #powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   # High-DPI console
   #console.font = lib.mkDefault "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
@@ -94,6 +103,7 @@
     restic
     tmux
     mosh
+    deploy-rs
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

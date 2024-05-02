@@ -1,11 +1,23 @@
 # TODO - Check if it's even working
-{pkgs, ...}: {
+{pkgs, inputs,...}: {
   ## Unattended upgrade
+  #system.autoUpgrade = {
+  #  enable = true;
+  #  allowReboot = true;
+  #  dates = "weekly UTC";
+  #};
   system.autoUpgrade = {
     enable = true;
-    allowReboot = true;
-    dates = "weekly UTC";
+    flake = inputs.self.outPath;
+    flags = [
+      "--update-input"
+      "nixpkgs-unstable"
+      "-L" # print build logs
+    ];
+    dates = "05:00";
+    randomizedDelaySec = "45min";
   };
+
 
   ## Garbage collection
   # https://nixos.wiki/wiki/Storage_optimization#Automation

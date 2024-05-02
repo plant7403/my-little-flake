@@ -296,7 +296,7 @@
       #};
       luna = {
         sshOpts = ["-p" "3370"];
-        hostname = "100.64.0.4";
+        hostname = "100.64.0.3";
         fastConnection = true;
         profiles = {
           system = {
