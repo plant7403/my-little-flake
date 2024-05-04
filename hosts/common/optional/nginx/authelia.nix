@@ -46,7 +46,7 @@
               "127.0.0.1/24"
               "fd7a:115c:a1e0::/48"
               #"fe80::f4b0:1a6c:/64"
-              "2001:ee0:41a1:5511::/64"
+              "2001:ee0:41a1:317d::/64"
             ];
           }
 
@@ -134,7 +134,7 @@
           #token_endpoint_auth_method = "client_secret_post";
         }
         {
-          id = "headscale";
+          id = "Ef~I143cYnw7VJwAz1~nGp-UaGYBT9bOdRssM-69gwg6uqyjSAVT6xOZIPfad6an47UI9amw";
           description = "Headscale";
           secret = config.sops.secrets."services/authelia/oidc/headscale/client_secret_enc".path;
           public = false;
@@ -151,6 +151,7 @@
             "openid"
             "profile"
             "email"
+            "groups"
             #"custom"
           ];
           #userinfo_signed_response_alg = "none";

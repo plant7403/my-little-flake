@@ -32,17 +32,19 @@
         autoUpdate = true;
         updateFrequency = "5m";
       };
-      ocid = {
+      oidc = {
         #issuer = "https://auth.egor.wtf/.well-known/openid-configuration";
         issuer = "https://auth.egor.wtf";
         client_secret_path = config.sops.secrets."services/authelia/oidc/headscale/client_secret".path;
-        client_id = config.sops.secrets."services/authelia/oidc/headscale/client_id".path;
-        allowed_domains = "egor.wtf";
+        client_id = "Ef~I143cYnw7VJwAz1~nGp-UaGYBT9bOdRssM-69gwg6uqyjSAVT6xOZIPfad6an47UI9amw";
+        #allowed_domains = "egor.wtf";
         #allowed_users = "egor";
-        only_start_if_oidc_is_available = false;
+        only_start_if_oidc_is_available = true;
         extra_params = {
           domain_hint = "egor.wtf";
         };
+        scope = ["openid" "profile" "email" "groups"];
+        strip_email_domain = true;
       };
       #db_user = "headscale";
       #db_type = "postgres";
