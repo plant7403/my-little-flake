@@ -6,8 +6,8 @@
     settings = {
       dns_config = {
         override_local_dns = true;
-        #        base_domain = "private";
-        #        magic_dns = true;
+        base_domain = "head";
+        magic_dns = true;
         #        domains = ["dns.egor.wtf"];
         nameservers = [
           "100.64.0.1"
