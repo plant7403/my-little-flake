@@ -5,4 +5,7 @@
   environment.persistence."/persist".directories = [
     "/var/lib/tailscale"
   ];
+  services.tailscale.extraUpFlags = [
+    "--hostname immortal"
+  ];
 }
