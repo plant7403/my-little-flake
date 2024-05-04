@@ -45,6 +45,8 @@
               "192.168.1.0/24"
               "127.0.0.1/24"
               "fd7a:115c:a1e0::/48"
+              #"fe80::f4b0:1a6c:/64"
+              "2001:ee0:41a1:5511::/64"
             ];
           }
 
@@ -54,6 +56,11 @@
             resources = [
               "^/.well-known([/?].*)?$"
             ];
+          }
+          {
+            domain = ["*.egor.wtf"];
+            policy = "one_factor";
+            subject = "group:users";
           }
           #{
           #  domain = ["*.egor.wtf" "egor.wtf" "*.xoxo.green" "xoxo.green"];
@@ -72,6 +79,11 @@
         database = "authelia-prod";
         username = "authelia-prod";
         password = config.sops.secrets."services/authelia/postgres".path;
+      };
+      regulation = {
+        max_retries = 3;
+        find_time = 120;
+        ban_time = 300;
       };
       authentication_backend = {
         password_reset = {
@@ -126,7 +138,7 @@
           description = "Headscale";
           secret = config.sops.secrets."services/authelia/oidc/headscale/client_secret_enc".path;
           public = false;
-          authorization_policy = "one_factor";
+          authorization_policy = "two_factor";
           #require_pkce = true;
           #pkce_challenge_method = "S256";
           #consent_mode = "implicit";

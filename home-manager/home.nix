@@ -42,7 +42,7 @@
     gnomeExtensions.tailscale-qs
     gnomeExtensions.tailscale-status
     gnomeExtensions.touch-x
-    gnomeExtensions.syncthing-indicator
+    #gnomeExtensions.syncthing-indicator
     inkscape
     jellyfin-media-player
     krita

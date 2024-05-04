@@ -37,9 +37,9 @@
         issuer = "https://auth.egor.wtf";
         client_secret_path = config.sops.secrets."services/authelia/oidc/headscale/client_secret".path;
         client_id = config.sops.secrets."services/authelia/oidc/headscale/client_id".path;
-        #allowed_domains = "egor.wtf";
+        allowed_domains = "egor.wtf";
         #allowed_users = "egor";
-        only_start_if_oidc_is_available = true;
+        only_start_if_oidc_is_available = false;
         extra_params = {
           domain_hint = "egor.wtf";
         };
@@ -99,10 +99,10 @@
     };
   };
   sops.secrets."services/authelia/oidc/headscale/client_id" = {
-    #owner = "authelia-prod";
+    owner = "headscale";
   };
   sops.secrets."services/authelia/oidc/headscale/client_secret" = {
-    #owner = "authelia-prod";
+    owner = "headscale";
   };
   #sops.secrets."services/authelia/oidc/headscale/client_secret_enc" = {
   #  owner = "authelia-prod";
