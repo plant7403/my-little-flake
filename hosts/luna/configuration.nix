@@ -26,9 +26,9 @@ in {
     inputs.nixos-hardware.nixosModules.microsoft-surface-go
   ];
   #services.pppd.enable = true;
-  security.polkit.enable = true;
-  services.accounts-daemon.enable = true;
-  services.udisks2.enable = true;
+  #security.polkit.enable = true;
+  #services.accounts-daemon.enable = true;
+  #services.udisks2.enable = true;
   #hardware.usbWwan.enable = true;
 
   microsoft-surface.surface-control.enable = true;
@@ -41,7 +41,7 @@ in {
     pkgs.yubikey-personalization
     pkgs.gnome.gnome-settings-daemon
     pkgs.yubikey-touch-detector
-    pkgs.usb-modeswitch-data
+    #pkgs.usb-modeswitch-data
   ];
   programs.dconf.enable = true;
 
@@ -138,7 +138,7 @@ in {
   };
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
+  #services.printing.enable = true;
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -234,7 +234,7 @@ in {
   # Open ports in the firewall.
   #networking.firewall.allowedTCPPorts = [22];
   # networking.firewall.allowedUDPPorts = [ ... ];
-  networking.firewall.enable = false;
+  networking.firewall.enable = true;
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave

@@ -8,7 +8,7 @@
     ./../../common/optional/headscale/default.nix
     ./tailscale.nix
     #./../../common/optional/mailserver.nix
-    #./syncthing.nix
+    ./syncthing.nix
     ./../../common/global/acme/wc-dns-egor.nix
     ./../../common/global/acme/wc-egor.nix
     ./../../common/optional/tpm.nix
@@ -34,6 +34,7 @@
     ./../../common/optional/searx-ng/default.nix
     ./../../common/optional/transmission/default.nix
     ./../../common/optional/vaultwarden/default.nix
+    ./../../common/optional/jellyseer.nix
     #./../../common/optional/wireguard/default.nix
     #./../../common/optional/wordpress/default.nix
     #./../common/global/encryption/luks-with-keyfile.nix

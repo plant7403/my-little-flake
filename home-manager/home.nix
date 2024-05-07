@@ -66,6 +66,7 @@
     yubikey-touch-detector
     gnomeExtensions.appindicator
     mullvad-vpn
+    logseq
   ];
 
   programs.home-manager.enable = true;

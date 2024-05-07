@@ -15,7 +15,7 @@
     openFirewall = true;
   };
   services.jackett = {
-    group = "media";
+    #group = "media";
     enable = true;
     openFirewall = true;
   };
@@ -24,41 +24,53 @@
     recommendedGzipSettings = true;
     virtualHosts = {
       "seerr.egor.wtf" = {
-        enableACME = true;
         forceSSL = true;
+        useACMEHost = "egor.wtf";
         extraConfig = ''
           ${builtins.readFile ./nginx/authelia/vh.conf}
         '';
         locations."/" = {
           proxyPass = "http://127.0.0.1:5055";
           proxyWebsockets = true;
+          extraConfig = ''
+            ${builtins.readFile ./nginx/authelia/locations.conf}
+          '';
         };
       };
       "radarr.egor.wtf" = {
-        enableACME = true;
         forceSSL = true;
+        useACMEHost = "egor.wtf";
+
         extraConfig = ''
           ${builtins.readFile ./nginx/authelia/vh.conf}
         '';
         locations."/" = {
           proxyPass = "http://127.0.0.1:7878";
           proxyWebsockets = true;
+          extraConfig = ''
+            ${builtins.readFile ./nginx/authelia/locations.conf}
+          '';
         };
       };
       "sonarr.egor.wtf" = {
-        enableACME = true;
         forceSSL = true;
+        useACMEHost = "egor.wtf";
+
         extraConfig = ''
           ${builtins.readFile ./nginx/authelia/vh.conf}
         '';
         locations."/" = {
           proxyPass = "http://127.0.0.1:8989";
           proxyWebsockets = true;
+          extraConfig = ''
+            ${builtins.readFile ./nginx/authelia/locations.conf}
+          '';
         };
       };
       "jackett.egor.wtf" = {
-        enableACME = true;
         forceSSL = true;
+        useACMEHost = "egor.wtf";
+
         extraConfig = ''
           ${builtins.readFile ./nginx/authelia/vh.conf}
         '';
