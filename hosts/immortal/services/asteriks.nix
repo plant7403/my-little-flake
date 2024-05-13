@@ -100,4 +100,5 @@
   environment.systemPackages = with pkgs; [
     ppp
   ];
+  services.freeswitch.enable = true;
 }

@@ -31,7 +31,7 @@
     recommendedGzipSettings = true;
     virtualHosts."torr.egor.wtf" = {
       basicAuth = {
-        #  #egor = config.sops.secrets."services/transmission".path;
+        #  #egor = config.sops.secarets."services/transmission".path;
         #  # FIXME - [IMPORTANT] Move to SOPS
         #egor = config.sops.secrets."services/transmission".path;
       };

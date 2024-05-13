@@ -57,11 +57,11 @@
               "^/.well-known([/?].*)?$"
             ];
           }
-          {
-            domain = ["*.egor.wtf"];
-            policy = "one_factor";
-            subject = "group:users";
-          }
+          #{
+          #  #domain = ["*.egor.wtf"];
+          #  policy = "one_factor";
+          #  subject = "group:users";
+          #}
           #{
           #  domain = ["*.egor.wtf" "egor.wtf" "*.xoxo.green" "xoxo.green"];
           #  resources = [];
