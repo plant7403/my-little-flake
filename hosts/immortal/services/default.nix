@@ -13,6 +13,7 @@
     ./../../common/global/acme/wc-egor.nix
     ./../../common/optional/tpm.nix
     ./../../common/optional/forgejo.nix
+    ./../../common/optional/containers/simplex.nix
     #./../../common/global/acme/wc-xoxo.nix
     ./../../common/global/backup/borg.nix
     ./../../common/global/backup/restic.nix

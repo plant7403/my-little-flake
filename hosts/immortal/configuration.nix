@@ -104,7 +104,11 @@
     tmux
     mosh
     deploy-rs
+    #rpi build
+    rsync
+    qemu
   ];
+  boot.binfmt.emulatedSystems = ["aarch64-linux"];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

@@ -4,7 +4,7 @@
 
   services.cfdyndns = {
     enable = true;
-    records = ["jelly.egor.wtf" "git.egor.wtf" "head.egor.wtf"];
+    records = ["jelly.egor.wtf" "git.egor.wtf" "head.egor.wtf" "smp.egor.wtf" "xftp.egor.wtf"];
     apiTokenFile = config.sops.secrets."cloudflare/cfdyndns".path;
   };
   # TODO - Check if any other setup is possible

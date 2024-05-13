@@ -25,6 +25,13 @@ in {
     inputs.nixos-hardware.nixosModules.microsoft-surface-common
     inputs.nixos-hardware.nixosModules.microsoft-surface-go
   ];
+  programs.nix-ld.enable = true;
+
+  programs.nix-ld.libraries = with pkgs; [
+    # Add any missing dynamic libraries for unpackaged programs
+
+    # here, NOT in environment.systemPackages
+  ];
   #services.pppd.enable = true;
   #security.polkit.enable = true;
   #services.accounts-daemon.enable = true;

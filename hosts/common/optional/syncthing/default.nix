@@ -19,6 +19,9 @@
   users.groups.sync = {};
   #users.groups.sync.members = [ "syncthing" "egor"];
   #users.groups.syncthing.members = [ "syncthing" "egor"];
+  #users.users.nginx.extraGroups = [
+  #  "acme"
+  #];
   # Syncthing ports
   networking.firewall.allowedTCPPorts = [22000];
   networking.firewall.allowedUDPPorts = [22000 21027];

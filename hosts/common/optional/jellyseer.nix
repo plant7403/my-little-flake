@@ -1,23 +1,28 @@
 {...}: {
   # TODO - General setup, still not working
   services.jellyseerr = {
-    openFirewall = true;
+    #openFirewall = true;
     enable = true;
   };
   services.sonarr = {
     group = "media";
     enable = true;
-    openFirewall = true;
+    #openFirewall = true;
   };
   services.radarr = {
     group = "media";
     enable = true;
-    openFirewall = true;
+    #openFirewall = true;
   };
   services.jackett = {
     #group = "media";
     enable = true;
-    openFirewall = true;
+    #openFirewall = true;
+  };
+  services.lidarr = {
+    group = "media";
+    enable = true;
+    #openFirewall = true;
   };
   services.nginx = {
     enable = true;
@@ -40,7 +45,6 @@
       "radarr.egor.wtf" = {
         forceSSL = true;
         useACMEHost = "egor.wtf";
-
         extraConfig = ''
           ${builtins.readFile ./nginx/authelia/vh.conf}
         '';
@@ -55,7 +59,6 @@
       "sonarr.egor.wtf" = {
         forceSSL = true;
         useACMEHost = "egor.wtf";
-
         extraConfig = ''
           ${builtins.readFile ./nginx/authelia/vh.conf}
         '';
@@ -70,12 +73,25 @@
       "jackett.egor.wtf" = {
         forceSSL = true;
         useACMEHost = "egor.wtf";
-
         extraConfig = ''
           ${builtins.readFile ./nginx/authelia/vh.conf}
         '';
         locations."/" = {
           proxyPass = "http://127.0.0.1:9117";
+          proxyWebsockets = true;
+          extraConfig = ''
+            ${builtins.readFile ./nginx/authelia/locations.conf}
+          '';
+        };
+      };
+      "lidarr.egor.wtf" = {
+        forceSSL = true;
+        useACMEHost = "egor.wtf";
+        extraConfig = ''
+          ${builtins.readFile ./nginx/authelia/vh.conf}
+        '';
+        locations."/" = {
+          proxyPass = "http://127.0.0.1:8686";
           proxyWebsockets = true;
           extraConfig = ''
             ${builtins.readFile ./nginx/authelia/locations.conf}
@@ -90,5 +106,6 @@
     "/var/lib/private/jellyseer"
     "/var/lib/sonarr"
     "/var/lib/radarr"
+    "/var/lib/lidarr"
   ];
 }

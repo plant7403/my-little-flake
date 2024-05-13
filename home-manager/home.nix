@@ -67,6 +67,7 @@
     gnomeExtensions.appindicator
     mullvad-vpn
     logseq
+    light
   ];
 
   programs.home-manager.enable = true;

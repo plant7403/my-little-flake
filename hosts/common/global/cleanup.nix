@@ -1,5 +1,9 @@
 # TODO - Check if it's even working
-{pkgs, inputs,...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   ## Unattended upgrade
   #system.autoUpgrade = {
   #  enable = true;
@@ -11,13 +15,12 @@
     flake = inputs.self.outPath;
     flags = [
       "--update-input"
-      "nixpkgs-unstable"
+      "nixpkgs"
       "-L" # print build logs
     ];
     dates = "05:00";
     randomizedDelaySec = "45min";
   };
-
 
   ## Garbage collection
   # https://nixos.wiki/wiki/Storage_optimization#Automation

@@ -13,6 +13,7 @@
     ./services
     ./sops.nix
     ./../common/users/egor.nix
+    ./../common/users/root.nix
   ];
 
   programs.adb.enable = true;
@@ -26,7 +27,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   services.logrotate.checkConfig = false;
 
-  boot.initrd.luks.devices."luks-f874fbd5-bbdd-4a34-ba52-55660678ee41".device = "/dev/disk/by-uuid/f874fbd5-bbdd-4a34-ba52-55660678ee41";
+  #boot.initrd.luks.devices."luks-f874fbd5-bbdd-4a34-ba52-55660678ee41".device = "/dev/disk/by-uuid/f874fbd5-bbdd-4a34-ba52-55660678ee41";
   networking.hostName = "saturn"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -182,13 +183,13 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+  #services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
-  networking.firewall.enable = false;
+  networking.firewall.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

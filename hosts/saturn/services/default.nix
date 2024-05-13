@@ -2,8 +2,10 @@
 {
   imports = [
     ./../../common/global/cleanup.nix
-    ./../../common/global/hardening.nix
+    #./../../common/global/hardening.nix
     ./../../common/global/ssh.nix
+    ./../../common/optional/headscale/tailscale.nix
+    #./../../common/optional/tpm.nix
     ./syncthing.nix
     #./../../common/global/acme/wc-dns-egor.nix
     #./../../common/global/acme/wc-xoxo.nix
