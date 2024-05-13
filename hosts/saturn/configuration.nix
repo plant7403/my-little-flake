@@ -12,6 +12,7 @@
     ./hardware-configuration.nix
     ./services
     ./sops.nix
+    ./disk-config.nix
     ./../common/users/egor.nix
     ./../common/users/root.nix
   ];
@@ -93,31 +94,20 @@
   users.users.egor = {
     packages = with pkgs; [
       inkscape
-      krita
-      blender
       arduino
       nextcloud-client
       bitwarden
-      #  thunderbird
       librewolf
-      element
-      element-desktop
       fractal
-      davinci-resolve
       transmission-qt
       sirikali
       jellyfin
       alejandra
       vscodium
-      godot_4
       chromium
       libreoffice
-      gimp-with-plugins
       simplex-chat-desktop
       jellyfin-media-player
-      direnv
-      nixpkgs-fmt
-      thefuck
     ];
   };
 
@@ -135,7 +125,6 @@
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     git
-    guitarix
     # support both 32- and 64-bit applications
     wineWowPackages.stable
 
