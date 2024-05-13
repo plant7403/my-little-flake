@@ -177,14 +177,6 @@
           #})
         ];
       };
-      #saturn = nixpkgs.lib.nixosSystem {
-      #  system = "x86_64-linux";
-      #  specialArgs = {inherit inputs outputs;};
-      #  modules = [
-      #    ./hosts/saturn/configuration.nix
-      #    sops-nix.nixosModules.sops
-      #  ];
-      #};
       luna = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {inherit inputs outputs;};
@@ -226,12 +218,13 @@
           })
         ];
       };
-      luna = nixpkgs.lib.nixosSystem {
+      saturn = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {inherit inputs outputs;};
         modules = [
           ./hosts/saturn/configuration.nix
           sops-nix.nixosModules.sops
+          disko.nixosModules.disko
           #nixos-hardware.nixosModules.microsoft-surface-common
           #home-manager.nixosModules.home-manager
           #{
@@ -300,18 +293,18 @@
           };
         };
       };
-      #saturn = {
-      #  sshOpts = ["-p" "3370"];
-      #  hostname = "192.168.1.17";
-      #  fastConnection = true;
-      #  profiles = {
-      #    system = {
-      #      sshUser = "root";
-      #      path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.saturn;
-      #      user = "root";
-      #    };
-      #  };
-      #};
+      saturn = {
+        sshOpts = ["-p" "3370"];
+        hostname = "100.64.0.4";
+        fastConnection = true;
+        profiles = {
+          system = {
+            sshUser = "root";
+            path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.saturn;
+            user = "root";
+          };
+        };
+      };
       luna = {
         sshOpts = ["-p" "3370"];
         hostname = "100.64.0.3";
