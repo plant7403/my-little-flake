@@ -65,7 +65,8 @@
   };
   #users.groups.sync = {};
   #users.groups.sync.members = ["egor" "photoprism"];
-  users.groups.photoprism.members = ["photoprism" "egor"];
+  #users.groups.photoprism.members = ["photoprism" "egor"];
+  users.users.egor = {extraGroups = ["photoprism"];};
   #users.users.photoprism.extraGroups = ["sync"];
   #  "acme"
   #];

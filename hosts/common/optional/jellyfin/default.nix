@@ -60,6 +60,9 @@
       };
     };
   };
+  environment.systemPackages = with pkgs; [
+    ffmpeg-full
+  ];
   environment.persistence."/persist".directories = [
     "/var/lib/jellyfin"
   ];

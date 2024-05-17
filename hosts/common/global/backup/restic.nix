@@ -29,6 +29,7 @@
     ];
     exclude = [
       "/persist/data/Media"
+      "/persist/var/lib/monero"
     ];
     # the name of your repository.
     repository = "s3:https://s3.eu-central-003.backblazeb2.com/immortal-server-backup";

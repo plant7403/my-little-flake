@@ -18,7 +18,7 @@
   services.nextcloud = {
     enable = true;
     #    maxUploadSize = "1G";
-    package = pkgs.nextcloud28;
+    package = pkgs.nextcloud29;
     hostName = "cloud.egor.wtf";
     # Instead of using pkgs.nextcloud27Packages.apps,
     # we'll reference the package version specified above
@@ -28,7 +28,7 @@
       #  sha256 = "sha256:00hraam87v4faj6xxy3kzshkj7rmshky6x9aas8z4a71ak75mpkh";
       #  url = "https://github.com/pulsejet/nextcloud-oidc-login/archive/refs/tags/v3.0.2.tar.gz";
       #  license = "gpl3";
-    #};
+      #};
     };
     extraAppsEnable = true;
     # Enable built-in virtual host management

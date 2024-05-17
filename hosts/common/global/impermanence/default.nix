@@ -15,6 +15,7 @@
     directories = [
       "/etc/ssh"
       "/root"
+      "/var/lib/nixos"
     ];
     files = [
       #      "/etc/machine-id"

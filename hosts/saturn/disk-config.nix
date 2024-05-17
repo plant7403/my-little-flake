@@ -3,7 +3,7 @@
     disk = {
       nvme0n1 = {
         type = "disk";
-        device = "/dev/nvme0n1";
+        device = "/dev/sda";
         content = {
           type = "gpt";
           partitions = {
@@ -23,7 +23,7 @@
               size = "100%";
               content = {
                 type = "luks";
-                name = "nvme-crypt";
+                name = "ssd-crypt";
                 # disable settings.keyFile if you want to use interactive password entry
                 #passwordFile = "/tmp/secret.key"; # Interactive
                 settings = {
@@ -58,39 +58,6 @@
                     "/@SWAP" = {
                       mountpoint = "/.swapvol";
                       swap.swapfile.size = "8G";
-                    };
-                  };
-                };
-              };
-            };
-          };
-        };
-      };
-      sda = {
-        type = "disk";
-        device = "/dev/sda"; #/dev/disk/by-uuid/faaf4823-7b06-4aec-9f6e-701ffc1390c6
-        content = {
-          type = "gpt";
-          partitions = {
-            luks = {
-              size = "100%";
-              content = {
-                type = "luks";
-                name = "hdd-crypt";
-                #disable settings.keyFile if you want to use interactive password entry
-                #passwordFile = "/tmp/password";   Interactive
-                settings = {
-                  allowDiscards = true;
-                  # keyFile = "/tmp/secret.key";
-                };
-                #additionalKeyFiles = ["/tmp/keyfile"];
-                content = {
-                  type = "btrfs";
-                  extraArgs = ["-f"];
-                  subvolumes = {
-                    "/" = {
-                      mountpoint = "/hdd";
-                      mountOptions = ["compress=zstd" "noatime"];
                     };
                   };
                 };

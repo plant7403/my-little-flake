@@ -36,6 +36,7 @@
     ./../../common/optional/transmission/default.nix
     ./../../common/optional/vaultwarden/default.nix
     ./../../common/optional/jellyseer.nix
+    ./../../common/optional/crypto/monero-node.nix
     #./../../common/optional/wireguard/default.nix
     #./../../common/optional/wordpress/default.nix
     #./../common/global/encryption/luks-with-keyfile.nix

@@ -10,18 +10,21 @@
   services = {
     adguardhome = {
       enable = true;
-      #port = "";
+      port = 3000;
+      host = "0.0.0.0";
       openFirewall = true;
-      #settings.bind_port = 3000;
       mutableSettings = false;
       settings = {
-        schema_version = 0;
+        schema_version = 28;
         upstream_dns = "127.0.0.1:5335";
         cache_optimistic = true;
         enable_dnssec = true;
         dns = {
-          #bind_host = "0.0.0.0";
-          bootstrap_dns = ["9.9.9.10"];
+          bind_host = "0.0.0.0";
+          bootstrap_dns = [
+            "9.9.9.10"
+            "1.1.1.1"
+          ];
         };
         users = [
           {
