@@ -103,9 +103,13 @@
 
   environment.persistence."/persist".directories = [
     "/var/lib/jackett"
-    "/var/lib/private/jellyseer"
+    "/var/lib/jellyseer"
     "/var/lib/sonarr"
     "/var/lib/radarr"
     "/var/lib/lidarr"
   ];
+  fileSystems."/var/lib/private/jellyseer" = {
+    device = "/var/lib/jellyseer";
+    options = ["bind"];
+  };
 }

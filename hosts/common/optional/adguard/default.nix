@@ -10,7 +10,7 @@
   services = {
     adguardhome = {
       enable = true;
-      port = 3000;
+      port = 3050;
       host = "0.0.0.0";
       openFirewall = true;
       mutableSettings = false;
@@ -73,7 +73,7 @@
         ${builtins.readFile ./../nginx/authelia/vh.conf}
       '';
       locations."/" = {
-        proxyPass = "http://127.0.0.1:3000";
+        proxyPass = "http://127.0.0.1:3050";
         extraConfig = ''
           ${builtins.readFile ./../nginx/authelia/locations.conf}
         '';
