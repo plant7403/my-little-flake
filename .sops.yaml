@@ -8,7 +8,7 @@ keys:
   - &admin_egor age16m2p23ma7y2ecpaq04c79kwcc2h9knw6qs9nj0duywsy67ecjf3spvfa4v
   #- &admin_egory age1yubikey1q2ajh35q4pmmwrhd3ae0qj2n8zgev2afrf0x4x6edxpj40s09pp079k5y8k
   - &server_immortal age163tnqzxk0e0ut8dh6umz6cgwpwqnfhe3d2r494vue37vdqpwqgystraeyn
-  - &server_saturn age1sw2v3laq27tx30m2jhufqr2umgekk5nds3stpk4ez5r2xv2zye8qxexld8
+  - &server_saturn age17jwlfp3c54anzmlv4g890p7sx2ape0va09vahe4l94hgzl4kfu7sx9e22a
   - &server_luna age1lzx7cm46kxflweytq43ruca5xmxl48qfr34yk3ctcywhp57ueqvsgjelzu
   - &server_pluto age1vwf8e43njvv9kx7m42plc50x8ws0awd07qhk2wrqn2emral9nfsq43hfrs
 creation_rules:
@@ -69,4 +69,3 @@ creation_rules:
       age:
         #- *admin_egor
         - *server_pluto
-        
