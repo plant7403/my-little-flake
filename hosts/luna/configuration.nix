@@ -22,6 +22,7 @@ in {
     ./sops.nix
     ./clevis.nix
     ./../common/users/egor.nix
+    #./camera.nix
     inputs.nixos-hardware.nixosModules.microsoft-surface-common
     inputs.nixos-hardware.nixosModules.microsoft-surface-go
   ];
@@ -197,6 +198,7 @@ in {
     wl-clipboard
     ppp
     modem-manager-gui
+    libacmera
   ];
 
   programs.steam = {
