@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: {
   services.tailscale.enable = true;
@@ -15,4 +16,9 @@
   };
   boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
   #networking.firewall.allowedUDPPorts = [41641];
+  systemd.services.NetworkManager-wait-online = {
+    serviceConfig = {
+      ExecStart = ["" "${pkgs.networkmanager}/bin/nm-online -q"];
+    };
+  };
 }

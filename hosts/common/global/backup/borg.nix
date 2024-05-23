@@ -8,6 +8,9 @@
         "/home"
         "/root"
       ];
+      exclude = [
+        "/persist/var/lib/monero"
+      ];
       repo = "/hdd/Backup";
       prune.keep = {
         daily = 7;

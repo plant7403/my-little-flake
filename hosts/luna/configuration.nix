@@ -22,6 +22,7 @@ in {
     ./sops.nix
     ./clevis.nix
     ./../common/users/egor.nix
+    ./ssh.nix
     #./camera.nix
     inputs.nixos-hardware.nixosModules.microsoft-surface-common
     inputs.nixos-hardware.nixosModules.microsoft-surface-go
