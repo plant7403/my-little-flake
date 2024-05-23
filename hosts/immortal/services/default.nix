@@ -7,7 +7,7 @@
     ./../../common/global/ssh.nix
     ./../../common/optional/headscale/default.nix
     ./tailscale.nix
-    #./../../common/optional/mailserver.nix
+    ./../../common/optional/mailserver.nix
     ./syncthing.nix
     ./../../common/global/acme/wc-dns-egor.nix
     ./../../common/global/acme/wc-egor.nix
