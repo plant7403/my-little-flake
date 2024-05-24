@@ -42,7 +42,7 @@
   # loki: port 3030 (8030)
   #
   services.loki = {
-    enable = true;
+    enable = false;
     configuration = {
       server.http_listen_port = 3030;
       auth_enabled = false;
@@ -67,10 +67,10 @@
       schema_config = {
         configs = [
           {
-            from = "2024-04-01";
+            from = "2024-01-01";
             store = "boltdb-shipper";
             object_store = "filesystem";
-            schema = "v13";
+            schema = "v11";
             index = {
               prefix = "index_";
               period = "24h";
@@ -116,7 +116,6 @@
         };
       };
     };
-    # user, group, dataDir, extraFlags, (configFile)
   };
 
   # promtail: port 3031 (8031)
@@ -143,7 +142,7 @@
             max_age = "12h";
             labels = {
               job = "systemd-journal";
-              host = "pihole";
+              host = "immortal";
             };
           };
           relabel_configs = [
@@ -164,7 +163,7 @@
     port = 3010;
     # WARNING: this should match nginx setup!
     # prevents "Request origin is not authorized"
-    rootUrl = "http://192.168.1.10:8010"; # helps with nginx / ws / live
+    rootUrl = "http://192.168.1.100:8010"; # helps with nginx / ws / live
 
     protocol = "http";
     addr = "127.0.0.1";
@@ -228,7 +227,7 @@
       };
       listen = [
         {
-          addr = "192.168.1.10";
+          addr = "192.168.1.100";
           port = 8010;
         }
       ];
@@ -238,19 +237,19 @@
       locations."/".proxyPass = "http://prometheus";
       listen = [
         {
-          addr = "192.168.1.10";
+          addr = "192.168.1.100";
           port = 8020;
         }
       ];
     };
 
-    # confirm with http://192.168.1.10:8030/loki/api/v1/status/buildinfo
+    # confirm with http://192.168.1.100:8030/loki/api/v1/status/buildinfo
     #     (or)     /config /metrics /ready
     virtualHosts.loki = {
       locations."/".proxyPass = "http://loki";
       listen = [
         {
-          addr = "192.168.1.10";
+          addr = "192.168.1.100";
           port = 8030;
         }
       ];
@@ -260,7 +259,7 @@
       locations."/".proxyPass = "http://promtail";
       listen = [
         {
-          addr = "192.168.1.10";
+          addr = "192.168.1.100";
           port = 8031;
         }
       ];
