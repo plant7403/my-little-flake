@@ -226,15 +226,15 @@
           sops-nix.nixosModules.sops
           disko.nixosModules.disko
           #nixos-hardware.nixosModules.microsoft-surface-common
-          #home-manager.nixosModules.home-manager
-          #{
-          #  home-manager.useGlobalPkgs = true;
-          #  home-manager.useUserPackages = true;
-          #  home-manager.users.egor = import ./home-manager/home.nix;
-          #  home-manager.extraSpecialArgs = {inherit inputs;};
-          #  # Optionally, use home-manager.extraSpecialArgs to pass
-          #  # arguments to home.nix
-          #}
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.egor = import ./home-manager/home.nix;
+            home-manager.extraSpecialArgs = {inherit inputs;};
+            # Optionally, use home-manager.extraSpecialArgs to pass
+            # arguments to home.nix
+          }
         ];
       };
       pluto = nixpkgs.lib.nixosSystem {
@@ -303,6 +303,7 @@
             sshUser = "root";
             path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.saturn;
             user = "root";
+            remoteBuild = true;
           };
         };
       };
