@@ -61,6 +61,7 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+  # FIXME - SOPS
   boot.kernelParams = ["systemd.machine_id=c13317057dead3d74b8938a46544e8f3" "systemd.condition-first-boot=false"];
   services.localtimed.enable = true;
 

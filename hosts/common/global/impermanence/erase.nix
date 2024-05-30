@@ -1,4 +1,4 @@
-{...}: {
+{
   boot.initrd = {
     enable = true;
     systemd.enable = true;
@@ -8,13 +8,13 @@
       description = "Rollback btrfs rootfs";
       wantedBy = ["initrd.target"];
       requires = [
-        "dev-mapper-nvme\\x2dcrypt.device"
+        "dev-mapper-${disk}\\x2dcrypt.device"
       ];
       after = [
-        "dev-mapper-nvme\\x2dcrypt.device"
+        "dev-mapper-${disk}\\x2dcrypt.device"
         # for luks
         #"systemd-cryptsetup@${config.networking.hostName}.service"
-        "systemd-cryptsetup@nvme\\x2dcrypt.service"
+        "systemd-cryptsetup@${disk}\\x2dcrypt.service"
       ];
       before = ["sysroot.mount"];
       unitConfig.DefaultDependencies = "no";
@@ -24,7 +24,7 @@
 
         # We first mount the btrfs root to /mnt
         # so we can manipulate btrfs subvolumes.
-        mount -o subvol=/ /dev/mapper/nvme-crypt /mnt
+        mount -o subvol=/ /dev/mapper/${disk}-crypt /mnt
 
         # While we're tempted to just delete /@ROOT and create
         # a new snapshot from /@ROOT-BLANK, /@ROOT is already

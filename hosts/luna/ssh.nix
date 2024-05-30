@@ -1,4 +1,4 @@
-{configs, ...}: {
+{config, ...}: {
   services.openssh.hostKeys = [
     {
       bits = 4096;

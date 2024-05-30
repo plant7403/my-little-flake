@@ -12,7 +12,7 @@
     ./../../common/global/encryption/hdd.nix
     #./../../common/global/hardening.nix
     ./../../common/global/impermanence/default.nix
-    ./../../common/global/impermanence/erase.nix
+    #./../../common/global/impermanence/erase.nix
     ./../../common/global/ssh.nix
     ./../../common/optional/adguard/default.nix
     ./../../common/optional/adguard/unbound.nix

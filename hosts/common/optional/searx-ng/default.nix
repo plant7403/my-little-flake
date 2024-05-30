@@ -32,6 +32,7 @@
       debug = true;
       server.port = 8086;
       server.bind_address = "0.0.0.0";
+      # FIXME secret
       server.secret_key = "@SEARX_SECRET_KEY@";
       #config.sops.secrets."services/searx".path;
     };

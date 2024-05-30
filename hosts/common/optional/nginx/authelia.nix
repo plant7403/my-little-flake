@@ -113,7 +113,7 @@
         {
           id = "nextcloud";
           description = "NextCloud";
-          #secret = "$pbkdf2-sha512$310000$JPD3TdBJ73D2fW1cSstviQ$3gJsrRXvYW692/3bhYDR1uUJq.2AwFTb/p968LW4w7Y5J.HlxgARXuXdsYd5zrKw3EVKxZn18yEM8kpQYroiIw"; # The digest of 'insecure_secret'.
+          # FIXME secret
           secret = "I0BQ4pULuZvwFSiEq4GA3gFr.TpykfZrHC03FMXCQcU4JU6PPvbn2HrnAtOygvAGxrBEC4p-";
           public = false;
           authorization_policy = "two_factor";

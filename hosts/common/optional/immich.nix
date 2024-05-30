@@ -8,7 +8,8 @@
   #immichExternalVolume1 = "/data/BackupData/Google Photos/someone@example.com"; # TODO: if external volumes are desired
 
   postgresRoot = "${immichAppdataRoot}/pgsql";
-  postgresPassword = "HelloKitty228"; # TODO: put a random password here
+  # TODO: put a random password here
+  postgresPassword = "HelloKitty228";
   postgresUser = "immich";
   postgresDb = "immich";
 in {

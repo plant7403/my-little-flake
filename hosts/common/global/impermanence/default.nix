@@ -8,6 +8,7 @@
   imports = [
     inputs.impermanence.nixosModules.impermanence
     #./sops-fix.nix
+    ./../../../../modules/nixos/impermanence-erase.nix
   ];
 
   environment.persistence."/persist" = {

@@ -19,8 +19,9 @@
     ./../../common/global/backup/borg.nix
     ./../../common/global/backup/restic.nix
     #./../../common/global/encryption/luks-with-keyfile.nix
-    ./../../common/global/impermanence/default.nix
-    ./../../common/global/impermanence/erase.nix
+    #./../../common/global/impermanence/default.nix
+    #./../../common/global/impermanence/erase.nix
+    ./impermanence.nix
     ./../../common/optional/adguard/default.nix
     ./../../common/optional/adguard/unbound.nix
     ./../../common/optional/cfdyndns.nix

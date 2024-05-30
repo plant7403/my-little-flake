@@ -50,14 +50,14 @@
           "||egor.wtf^$client=192.168.1.0/24,dnsrewrite=NOERROR;A;192.168.1.100"
           "||*.egor.wtf^$client=192.168.1.0/24,dnsrewrite=NOERROR;A;192.168.1.100"
           "||*.*.egor.wtf^$client=192.168.1.0/24,dnsrewrite=NOERROR;A;192.168.1.100"
-          "@@||mail.egor.wtf^$client=192.168.1.0/24"
+          #"@@||mail.egor.wtf^$client=192.168.1.0/24"
           "||egor.wtf^$client=127.0.0.1,dnsrewrite=NOERROR;A;127.0.0.1"
           "||*.egor.wtf^$client=127.0.0.1,dnsrewrite=NOERROR;A;127.0.0.1"
           "||*.*.egor.wtf^$client=127.0.0.1,dnsrewrite=NOERROR;A;127.0.0.1"
           "||egor.wtf^$client=100.64.0.0/24,dnsrewrite=NOERROR;A;100.64.0.1"
           "||*.egor.wtf^$client=100.64.0.0/24,dnsrewrite=NOERROR;A;100.64.0.1"
           "||*.*.egor.wtf^$client=100.64.0.0/24,dnsrewrite=NOERROR;A;100.64.0.1"
-          "||mail.egor.wtf^$client=100.64.0.0/24,dnsrewrite=NOERROR;A;100.64.0.5"
+          #"||mail.egor.wtf^$client=100.64.0.0/24,dnsrewrite=NOERROR;A;100.64.0.5"
         ];
       };
     };
@@ -88,6 +88,9 @@
         '';
       };
     };
+  };
+  systemd.services."kresd@1" = {
+    enable = false;
   };
   services.authelia.instances.prod = {
     settings = {
