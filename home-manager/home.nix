@@ -68,10 +68,36 @@
     mullvad-vpn
     logseq
     light
+
+    gnomeExtensions.user-themes
+    gnomeExtensions.tray-icons-reloaded
+    gnomeExtensions.vitals
+    gnomeExtensions.dash-to-panel
+    gnomeExtensions.sound-output-device-chooser
+    gnomeExtensions.space-bar
+
+    palenight-theme
+    #gnome-terminal
+
+
+    yubico-piv-tool
+    yubikey-manager
+    yubikey-manager-qt
+    yubikey-personalization
+    yubikey-personalization-gui
+    yubioath-flutter
+    yubikey-touch-detector
+
+    gnome.gnome-tweaks
+    gnomeExtensions.appindicator
+    gnupg
   ];
 
   programs.home-manager.enable = true;
-
+  services.gpg-agent = {
+    enable = true;
+    enableSshSupport = true;
+  };
   programs.git = {
     enable = true;
     userEmail = "me@egor.wtf";
@@ -104,6 +130,107 @@
   #programs.bash.bashrcExtra = ''
   #  TEST="$(cat ${config.sops.secrets."example".path})"
   #'';
+
+
+  gtk = {
+    enable = true;
+
+    iconTheme = {
+      name = "Papirus-Dark";
+      package = pkgs.papirus-icon-theme;
+    };
+
+    theme = {
+      name = "palenight";
+      package = pkgs.palenight-theme;
+    };
+
+    cursorTheme = {
+      name = "Numix-Cursor";
+      package = pkgs.numix-cursor-theme;
+    };
+
+    gtk3.extraConfig = {
+      Settings = ''
+        gtk-application-prefer-dark-theme=1
+      '';
+    };
+
+    gtk4.extraConfig = {
+      Settings = ''
+        gtk-application-prefer-dark-theme=1
+      '';
+    };
+  };
+
+  home.sessionVariables.GTK_THEME = "palenight";
+  # ...
+dconf.settings = {
+    # ...
+    "org/gnome/shell" = {
+      disable-user-extensions = false;
+
+      # `gnome-extensions list` for a list
+      enabled-extensions = [
+        "user-theme@gnome-shell-extensions.gcampax.github.com"
+        "trayIconsReloaded@selfmade.pl"
+        "Vitals@CoreCoding.com"
+        "dash-to-panel@jderose9.github.com"
+        "sound-output-device-chooser@kgshank.net"
+        "space-bar@luchrioh"
+        "caffeine@patapon.info"
+        "tailscale-status@maxgallup.github.com"
+        "drive-menu@gnome-shell-extensions.gcampax.github.com"
+        "appindicatorsupport@rgcjonas.gmail.com"
+
+      ];
+
+      favorite-apps = [
+"org.gnome.Console.desktop"
+"librewolf.desktop"
+"codium.desktop"
+"org.gnome.Nautilus.desktop"
+"org.gnome.Fractal.desktop" 
+"bitwarden.desktop" 
+"logseq.desktop" 
+"com.github.iwalton3.jellyfin-media-player.desktop"
+      ];
+    };
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+      enable-hot-corners = false;
+    };
+    "org/gnome/desktop/wm/preferences" = {
+      workspace-names = [ "Main" ];
+    };
+    "org/gnome/desktop/background" = {
+      picture-uri = "file:///run/current-system/sw/share/backgrounds/gnome/vnc-l.png";
+      picture-uri-dark = "file:///run/current-system/sw/share/backgrounds/gnome/vnc-d.png";
+    };
+    "org/gnome/desktop/screensaver" = {
+      picture-uri = "file:///run/current-system/sw/share/backgrounds/gnome/vnc-d.png";
+      primary-color = "#3465a4";
+      secondary-color = "#000000";
+    };
+  };
+
+
+
+  home.file.".config/gpg-agent.conf".text = ''
+      # https://github.com/drduh/config/blob/master/gpg-agent.conf
+      # https://www.gnupg.org/documentation/manuals/gnupg/Agent-Options.html
+      pinentry-program /usr/bin/pinentry-gnome3
+      #pinentry-program /usr/bin/pinentry-tty
+      #pinentry-program /usr/bin/pinentry-x11
+      #pinentry-program /usr/local/bin/pinentry-curses
+      #pinentry-program /usr/local/bin/pinentry-mac
+      #pinentry-program /opt/homebrew/bin/pinentry-mac
+      #pinentry-program /usr/bin/pinentry-curses
+      enable-ssh-support
+      ttyname $GPG_TTY
+      default-cache-ttl 60
+      max-cache-ttl 120
+  '';
 
   programs.librewolf = {
     enable = true;

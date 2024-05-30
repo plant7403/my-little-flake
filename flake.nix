@@ -221,7 +221,7 @@
       saturn = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {inherit inputs outputs;};
-        modules = [
+        modules = with self.nixosModules; [
           ./hosts/saturn/configuration.nix
           sops-nix.nixosModules.sops
           disko.nixosModules.disko
@@ -230,11 +230,25 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.egor = import ./home-manager/home.nix;
+            home-manager.users.egor = import ./home-manager/saturn.nix;
             home-manager.extraSpecialArgs = {inherit inputs;};
             # Optionally, use home-manager.extraSpecialArgs to pass
             # arguments to home.nix
           }
+          #({ config = { nix.registry.nixpkgs.flake = nixpkgs; }; })
+          # ...
+          #home-manager.nixosModules.home-manager
+          gnome
+          impermanence-erase
+          #{
+          #  services.restore-root = {
+          #  enable = true;
+          #  disk = "ssd";
+          #  };
+          #}
+          #declarativeHome
+          #users-ana
+
         ];
       };
       pluto = nixpkgs.lib.nixosSystem {

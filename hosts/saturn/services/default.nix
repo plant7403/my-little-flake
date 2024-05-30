@@ -7,7 +7,7 @@
     ./../../common/optional/headscale/tailscale.nix
     #./../../common/optional/tpm.nix
     ./syncthing.nix
-    ./impermanence.nix
+    #./impermanence.nix
     #./../../common/global/acme/wc-dns-egor.nix
     #./../../common/global/acme/wc-xoxo.nix
     #./../../common/global/backup/borg.nix

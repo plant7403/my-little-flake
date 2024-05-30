@@ -16,13 +16,21 @@
     ./../common/users/egor.nix
     ./../common/users/root.nix
   ];
+nix.settings.experimental-features = [ "flakes" "nix-command" ];
 
   programs.adb.enable = true;
   users.users.egor.extraGroups = ["adbusers"];
   services.udev.packages = [
     pkgs.android-udev-rules
+        pkgs.yubikey-personalization
+    pkgs.gnome.gnome-settings-daemon
+    pkgs.yubikey-touch-detector
+    #pkgs.usb-modeswitch-data
   ];
 
+  programs.dconf.enable = true;
+
+  services.pcscd.enable = true;
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -87,10 +95,7 @@
     #wireplumber.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.egor = {
     packages = with pkgs; [
       inkscape

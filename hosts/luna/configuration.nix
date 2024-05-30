@@ -27,6 +27,7 @@ in {
     inputs.nixos-hardware.nixosModules.microsoft-surface-common
     inputs.nixos-hardware.nixosModules.microsoft-surface-go
   ];
+
   programs.nix-ld.enable = true;
 
   programs.nix-ld.libraries = with pkgs; [
@@ -43,8 +44,8 @@ in {
   microsoft-surface.surface-control.enable = true;
   microsoft-surface.kernelVersion = "6.6";
   #hardware.microsoft-surface.firmware.surface-go-ath10k.replace = true;
-  hardware.enableRedistributableFirmware = true;
-  nixpkgs.config.allowUnfree = true;
+  #hardware.enableRedistributableFirmware = true;
+  #nixpkgs.config.allowUnfree = true;
 
   services.udev.packages = [
     pkgs.yubikey-personalization
@@ -56,10 +57,10 @@ in {
 
   services.pcscd.enable = true;
 
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
+  #programs.gnupg.agent = {
+  #  enable = true;
+  #  enableSSHSupport = true;
+  #};
 
   boot.kernelParams = [
     "mem_sleep_default=deep"
@@ -182,8 +183,7 @@ in {
     age-plugin-yubikey
     deploy-rs
     git
-    gnome.gnome-tweaks
-    gnomeExtensions.appindicator
+
     ntfs3g
     python3
     (pkgs.python3.withPackages my-python-packages)
@@ -199,7 +199,7 @@ in {
     wl-clipboard
     ppp
     modem-manager-gui
-    libacmera
+    libacamera
   ];
 
   programs.steam = {
