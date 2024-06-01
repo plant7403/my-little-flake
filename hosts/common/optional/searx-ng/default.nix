@@ -34,6 +34,7 @@
       server.bind_address = "0.0.0.0";
       # FIXME secret
       server.secret_key = "@SEARX_SECRET_KEY@";
+      sops.secrets."services/searx" = {};
       #config.sops.secrets."services/searx".path;
     };
     #    runInUwsgi = true;

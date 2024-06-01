@@ -137,6 +137,7 @@
           id = "Ef~I143cYnw7VJwAz1~nGp-UaGYBT9bOdRssM-69gwg6uqyjSAVT6xOZIPfad6an47UI9amw";
           description = "Headscale";
           #secret = config.sops.secrets."services/authelia/oidc/headscale/client_secret_enc".path;
+          # FIXME SECRET
           secret = "ahQvGBBGnGDu78bFPTRia0Q0BYMvgGOzU-pcODcp2uvxl2-4ylAvLcJj4GNLWTF4-bID~121";
           public = false;
           authorization_policy = "two_factor";
@@ -155,28 +156,9 @@
             "groups"
             #"custom"
           ];
-          #userinfo_signed_response_alg = "none";
-          #token_endpoint_auth_method = "client_secret_post";
         }
       ];
-
-      #identity_providers.oidc = {
-      #  jwks = [
-      #    {
-      #    key_id = "example";
-      #    algorithm = "RS256";
-      #    use = "sig";
-      #    key = config.sops.secrets."services/authelia/oidc/nextcloud/private.pem".path;
-      #    }
-      #  ];
-      #};
     };
-
-    # TODO: Change this to currently used user & group
-    # user = "";
-    # group = "";
-    #settingsFiles = {};
-    #environmentVariables = {};
   };
 
   services.postgresql = {
@@ -205,7 +187,17 @@
       proxyWebsockets = true;
     };
   };
-
+  sops.secrets = {
+    "services/authelia/jwt".owner = "authelia-prod";
+    "services/authelia/storage".owner = "authelia-prod";
+    "services/authelia/users.yaml".owner = "authelia-prod";
+    "services/authelia/postgres".owner = "authelia-prod";
+    "services/authelia/oidc/nextcloud/private.pem".owner = "authelia-prod";
+    "services/authelia/oidc/headscale/client_secret_enc".owner = "authelia-prod";
+  }
+  
+  
+  
   sops.secrets."services/authelia/jwt" = {
     owner = "authelia-prod";
   };
