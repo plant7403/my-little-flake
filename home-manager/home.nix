@@ -1,6 +1,6 @@
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
-{pkgs, ...}: {
+{pkgs, config, ...}: {
   # You can import other home-manager modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
@@ -72,11 +72,9 @@
     gnomeExtensions.user-themes
     gnomeExtensions.tray-icons-reloaded
     gnomeExtensions.vitals
-    gnomeExtensions.dash-to-panel
-    gnomeExtensions.sound-output-device-chooser
-    gnomeExtensions.space-bar
 
     palenight-theme
+    dracula-theme
     #gnome-terminal
 
 
@@ -91,6 +89,13 @@
     gnome.gnome-tweaks
     gnomeExtensions.appindicator
     gnupg
+
+
+
+
+    gnome.gnome-boxes
+    #virtualbox
+    mullvad-browser
   ];
 
   programs.home-manager.enable = true;
@@ -131,7 +136,7 @@
   #  TEST="$(cat ${config.sops.secrets."example".path})"
   #'';
 
-
+  
   gtk = {
     enable = true;
 
@@ -141,8 +146,8 @@
     };
 
     theme = {
-      name = "palenight";
-      package = pkgs.palenight-theme;
+      name = "Dracula";
+      package = pkgs.dracula-theme;
     };
 
     cursorTheme = {
@@ -162,10 +167,18 @@
       '';
     };
   };
+  #systemd.user.sessionVariables = config.home-manager.users.egor.home.sessionVariables;
+  
+  #qt = {
+  #  enable = true;
+  #  platformTheme.name = "dracula";
+  #  style.name = "dracula";
+  #};
 
-  home.sessionVariables.GTK_THEME = "palenight";
+  home.sessionVariables.GTK_THEME = "Dracula";
   # ...
-dconf.settings = {
+
+  dconf.settings = {
     # ...
     "org/gnome/shell" = {
       disable-user-extensions = false;
@@ -175,25 +188,21 @@ dconf.settings = {
         "user-theme@gnome-shell-extensions.gcampax.github.com"
         "trayIconsReloaded@selfmade.pl"
         "Vitals@CoreCoding.com"
-        "dash-to-panel@jderose9.github.com"
-        "sound-output-device-chooser@kgshank.net"
-        "space-bar@luchrioh"
         "caffeine@patapon.info"
         "tailscale-status@maxgallup.github.com"
         "drive-menu@gnome-shell-extensions.gcampax.github.com"
         "appindicatorsupport@rgcjonas.gmail.com"
-
       ];
 
       favorite-apps = [
-"org.gnome.Console.desktop"
-"librewolf.desktop"
-"codium.desktop"
-"org.gnome.Nautilus.desktop"
-"org.gnome.Fractal.desktop" 
-"bitwarden.desktop" 
-"logseq.desktop" 
-"com.github.iwalton3.jellyfin-media-player.desktop"
+        "org.gnome.Console.desktop"
+        "librewolf.desktop"
+        "codium.desktop"
+        "org.gnome.Nautilus.desktop"
+        "org.gnome.Fractal.desktop" 
+        "bitwarden.desktop" 
+        "logseq.desktop" 
+        "com.github.iwalton3.jellyfin-media-player.desktop"
       ];
     };
     "org/gnome/desktop/interface" = {
@@ -212,7 +221,12 @@ dconf.settings = {
       primary-color = "#3465a4";
       secondary-color = "#000000";
     };
+    "org/gnome/shell/extensions/user-theme" = {
+      name = "Dracula";
+    };
+
   };
+  
 
 
 
