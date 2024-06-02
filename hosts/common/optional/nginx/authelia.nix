@@ -111,10 +111,10 @@
       };
       identity_providers.oidc.clients = [
         {
-          id = "nextcloud";
+          id = config.sops.secrets."services/authelia/oidc/nextcloud/client_id".path;
           description = "NextCloud";
           # FIXME secret
-          secret = "I0BQ4pULuZvwFSiEq4GA3gFr.TpykfZrHC03FMXCQcU4JU6PPvbn2HrnAtOygvAGxrBEC4p-";
+          secret = config.sops.secrets."services/authelia/oidc/nextcloud/client_secret".path;
           public = false;
           authorization_policy = "two_factor";
           #require_pkce = true;
@@ -134,10 +134,10 @@
           #token_endpoint_auth_method = "client_secret_post";
         }
         {
-          id = "Ef~I143cYnw7VJwAz1~nGp-UaGYBT9bOdRssM-69gwg6uqyjSAVT6xOZIPfad6an47UI9amw";
+          id = config.sops.secrets."services/authelia/oidc/headscale/client_id".path;
           description = "Headscale";
-          #secret = config.sops.secrets."services/authelia/oidc/headscale/client_secret_enc".path;
-          secret = "ahQvGBBGnGDu78bFPTRia0Q0BYMvgGOzU-pcODcp2uvxl2-4ylAvLcJj4GNLWTF4-bID~121";
+          secret = config.sops.secrets."services/authelia/oidc/headscale/client_secret".path;
+          #secret = "ahQvGBBGnGDu78bFPTRia0Q0BYMvgGOzU-pcODcp2uvxl2-4ylAvLcJj4GNLWTF4-bID~121";
           public = false;
           authorization_policy = "two_factor";
           #require_pkce = true;

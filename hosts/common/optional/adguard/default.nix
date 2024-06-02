@@ -1,4 +1,9 @@
 {...}: {
+  #config.sops.secrets."postgres/forgejo".path;
+  #sops.secrets."postgres/forgejo" = {
+  #  sopsFile = ./../../../secrets/example.yaml; # bring your own password file
+  #  owner = config.services.forgejo.user;
+  #};
   sops.secrets."services/adguard-home/admin/password" = {};
 
   networking = {
@@ -7,6 +12,7 @@
       allowedUDPPorts = [53 853];
     };
   };
+
   services = {
     adguardhome = {
       enable = true;
@@ -30,8 +36,8 @@
           {
             name = "egor";
             # FIXME - It's still better to put in in the sops
-            password = "$2b$05$xJ4zgZweQkQufrWCCNMwLOANYz7ky6Es6xmFx.zo5DiRxGQNisoxS";
-            #            password = config.sops.secrets."services/adguard-home/admin/password".path; #BCrypt
+            #password = "$2b$05$xJ4zgZweQkQufrWCCNMwLOANYz7ky6Es6xmFx.zo5DiRxGQNisoxS";
+            password = config.sops.secrets."services/adguard-home/admin/password".path; #BCrypt
           }
         ];
         tls = {

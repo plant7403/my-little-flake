@@ -8,13 +8,13 @@
     #      proxyPass = "http://localhost:3001/";
     #    };
     extraConfig = ''
-${builtins.readFile ./nginx/authelia/vh.conf}    
-''; #${builtins.readFile ./nginx/authelia/vh.conf}
+      ${builtins.readFile ./nginx/authelia/vh.conf}
+    ''; #${builtins.readFile ./nginx/authelia/vh.conf}
     locations."/".extraConfig = ''
-      include ${config.services.nginx.package}/conf/fastcgi.conf;
-      fastcgi_pass unix:${config.services.forgejo.settings.server.HTTP_ADDR};
-    ${builtins.readFile ./nginx/authelia/locations.conf}
-''; #${builtins.readFile ./nginx/authelia/locations.conf}
+        include ${config.services.nginx.package}/conf/fastcgi.conf;
+        fastcgi_pass unix:${config.services.forgejo.settings.server.HTTP_ADDR};
+      ${builtins.readFile ./nginx/authelia/locations.conf}
+    ''; #${builtins.readFile ./nginx/authelia/locations.conf}
   };
 
   services.forgejo = {
@@ -82,7 +82,7 @@ ${builtins.readFile ./nginx/authelia/vh.conf}
       };
     };
   };
-
+  #config.sops.secrets."postgres/forgejo".path;
   sops.secrets."postgres/forgejo" = {
     sopsFile = ./../../../secrets/example.yaml; # bring your own password file
     owner = config.services.forgejo.user;
