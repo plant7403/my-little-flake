@@ -16,13 +16,22 @@
     ./../common/users/egor.nix
     ./../common/users/root.nix
   ];
+nix.settings.experimental-features = [ "flakes" "nix-command" ];
 
   programs.adb.enable = true;
-  users.users.egor.extraGroups = ["adbusers"];
+  #users.users.egor.extraGroups = ["adbusers"];
   services.udev.packages = [
     pkgs.android-udev-rules
+    pkgs.yubikey-personalization
+    pkgs.gnome.gnome-settings-daemon
+    pkgs.yubikey-touch-detector
+    
+    #pkgs.usb-modeswitch-data
   ];
 
+  programs.dconf.enable = true;
+
+  services.pcscd.enable = true;
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -35,6 +44,41 @@
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+  virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = [ "egor" ];
+  
+  virtualisation.libvirtd = {
+  enable = true;
+  qemu = {
+    package = pkgs.qemu_kvm;
+    runAsRoot = true;
+    swtpm.enable = true;
+    ovmf = {
+      enable = true;
+      packages = [(pkgs.OVMF.override {
+        secureBoot = true;
+        tpmSupport = true;
+      }).fd];
+    };
+  };
+};
+users.users.egor = {
+  extraGroups = [ "libvirtd" ];
+};
+
+services.mullvad-vpn = {
+  enable = true;
+  package = pkgs.mullvad-vpn;
+};
+
+
+
+
+
+
+
+
+
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -87,10 +131,7 @@
     #wireplumber.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.egor = {
     packages = with pkgs; [
       inkscape
