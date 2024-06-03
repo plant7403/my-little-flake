@@ -1,6 +1,4 @@
-{...}:
-# TODO - Review
-{
+{...}: {
   imports = [
     ../../common/optional/syncthing
   ];

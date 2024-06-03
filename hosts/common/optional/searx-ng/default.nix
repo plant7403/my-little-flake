@@ -32,10 +32,7 @@
       debug = true;
       server.port = 8086;
       server.bind_address = "0.0.0.0";
-      # FIXME secret
-      server.secret_key = "@SEARX_SECRET_KEY@";
-      sops.secrets."services/searx" = {};
-      #config.sops.secrets."services/searx".path;
+      server.secret_key = config.sops.secrets."services/searx".path;
     };
     #    runInUwsgi = true;
     #    uwsgiConfig = {
@@ -58,7 +55,6 @@
         ${builtins.readFile ./../nginx/authelia/vh.conf}
       '';
       locations."/" = {
-        # FIXME - Change to socket
         proxyPass = "http://127.0.0.1:8086";
         extraConfig = ''
           ${builtins.readFile ./../nginx/authelia/locations.conf}
@@ -66,4 +62,6 @@
       };
     };
   };
+
+  sops.secrets."services/searx" = {};
 }

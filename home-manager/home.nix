@@ -1,6 +1,10 @@
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
-{pkgs, config, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   # You can import other home-manager modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
@@ -15,7 +19,6 @@
     ./sops.nix
   ];
 
-  # TODO: Set your username
   home = {
     username = "egor";
     homeDirectory = "/home/egor";
@@ -77,7 +80,6 @@
     dracula-theme
     #gnome-terminal
 
-
     yubico-piv-tool
     yubikey-manager
     yubikey-manager-qt
@@ -89,9 +91,6 @@
     gnome.gnome-tweaks
     gnomeExtensions.appindicator
     gnupg
-
-
-
 
     gnome.gnome-boxes
     #virtualbox
@@ -136,7 +135,6 @@
   #  TEST="$(cat ${config.sops.secrets."example".path})"
   #'';
 
-  
   gtk = {
     enable = true;
 
@@ -168,7 +166,7 @@
     };
   };
   #systemd.user.sessionVariables = config.home-manager.users.egor.home.sessionVariables;
-  
+
   #qt = {
   #  enable = true;
   #  platformTheme.name = "dracula";
@@ -199,9 +197,9 @@
         "librewolf.desktop"
         "codium.desktop"
         "org.gnome.Nautilus.desktop"
-        "org.gnome.Fractal.desktop" 
-        "bitwarden.desktop" 
-        "logseq.desktop" 
+        "org.gnome.Fractal.desktop"
+        "bitwarden.desktop"
+        "logseq.desktop"
         "com.github.iwalton3.jellyfin-media-player.desktop"
       ];
     };
@@ -210,7 +208,7 @@
       enable-hot-corners = false;
     };
     "org/gnome/desktop/wm/preferences" = {
-      workspace-names = [ "Main" ];
+      workspace-names = ["Main"];
     };
     "org/gnome/desktop/background" = {
       picture-uri = "file:///run/current-system/sw/share/backgrounds/gnome/vnc-l.png";
@@ -224,26 +222,22 @@
     "org/gnome/shell/extensions/user-theme" = {
       name = "Dracula";
     };
-
   };
-  
-
-
 
   home.file.".config/gpg-agent.conf".text = ''
-      # https://github.com/drduh/config/blob/master/gpg-agent.conf
-      # https://www.gnupg.org/documentation/manuals/gnupg/Agent-Options.html
-      pinentry-program /usr/bin/pinentry-gnome3
-      #pinentry-program /usr/bin/pinentry-tty
-      #pinentry-program /usr/bin/pinentry-x11
-      #pinentry-program /usr/local/bin/pinentry-curses
-      #pinentry-program /usr/local/bin/pinentry-mac
-      #pinentry-program /opt/homebrew/bin/pinentry-mac
-      #pinentry-program /usr/bin/pinentry-curses
-      enable-ssh-support
-      ttyname $GPG_TTY
-      default-cache-ttl 60
-      max-cache-ttl 120
+    # https://github.com/drduh/config/blob/master/gpg-agent.conf
+    # https://www.gnupg.org/documentation/manuals/gnupg/Agent-Options.html
+    pinentry-program /usr/bin/pinentry-gnome3
+    #pinentry-program /usr/bin/pinentry-tty
+    #pinentry-program /usr/bin/pinentry-x11
+    #pinentry-program /usr/local/bin/pinentry-curses
+    #pinentry-program /usr/local/bin/pinentry-mac
+    #pinentry-program /opt/homebrew/bin/pinentry-mac
+    #pinentry-program /usr/bin/pinentry-curses
+    enable-ssh-support
+    ttyname $GPG_TTY
+    default-cache-ttl 60
+    max-cache-ttl 120
   '';
 
   programs.librewolf = {

@@ -1,4 +1,3 @@
-# TODO - Switch to some other storage hetzner/storj
 {
   config,
   pkgs,

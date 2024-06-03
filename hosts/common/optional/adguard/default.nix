@@ -35,8 +35,6 @@
         users = [
           {
             name = "egor";
-            # FIXME - It's still better to put in in the sops
-            #password = "$2b$05$xJ4zgZweQkQufrWCCNMwLOANYz7ky6Es6xmFx.zo5DiRxGQNisoxS";
             password = config.sops.secrets."services/adguard-home/admin/password".path; #BCrypt
           }
         ];
@@ -49,7 +47,6 @@
           port_https = 0;
         };
         safe_search = {
-          #FIXME - It still turns safe search on
           enabled = false;
         };
         user_rules = [

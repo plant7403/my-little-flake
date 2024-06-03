@@ -1,5 +1,4 @@
 {...}: {
-  # TODO - See if any other confugaration avaliable
   services.grocy = {
     enable = true;
     hostName = "grocy.egor.wtf";

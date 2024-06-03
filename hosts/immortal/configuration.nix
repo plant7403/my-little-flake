@@ -62,7 +62,7 @@
   # Enable networking
   networking.networkmanager.enable = true;
   # FIXME - SOPS
-  boot.kernelParams = ["systemd.machine_id=c13317057dead3d74b8938a46544e8f3" "systemd.condition-first-boot=false"];
+  #boot.kernelParams = ["systemd.machine_id=c13317057dead3d74b8938a46544e8f3" "systemd.condition-first-boot=false"];
   services.localtimed.enable = true;
 
   # Set your time zone.
@@ -130,8 +130,8 @@
   #networking.firewall.allowedUDPPorts = [ 22 ];
   # Or disable the firewall altogether.
   networking.firewall.enable = true;
-  
- sops.secrets."system/immortal/id" = {};
-  
+
+  sops.secrets."system/immortal/id" = {};
+
   system.stateVersion = "23.11"; # Did you read the comment?
 }

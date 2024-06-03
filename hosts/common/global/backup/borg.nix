@@ -1,4 +1,3 @@
-#TODO - CHecking and making backups work
 {...}: {
   services.borgbackup.jobs = {
     libraries = {

@@ -4,8 +4,6 @@
   ...
 }: {
   sops.secrets."services/photoprism/admin/password" = {};
-  # FIXME - Change paths so it works with syncthing
-  # TODO - Check other similar projects
   services.photoprism = {
     enable = true;
     port = 2342;

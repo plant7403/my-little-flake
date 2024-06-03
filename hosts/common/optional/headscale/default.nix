@@ -8,7 +8,6 @@
         override_local_dns = true;
         base_domain = "head";
         magic_dns = true;
-        #        domains = ["dns.egor.wtf"];
         nameservers = [
           "100.64.0.1"
         ];
@@ -33,7 +32,6 @@
         updateFrequency = "5m";
       };
       oidc = {
-        #issuer = "https://auth.egor.wtf/.well-known/openid-configuration";
         issuer = "https://auth.egor.wtf";
         client_secret_path = config.sops.secrets."services/authelia/oidc/headscale/client_secret".path;
         client_id = "Ef~I143cYnw7VJwAz1~nGp-UaGYBT9bOdRssM-69gwg6uqyjSAVT6xOZIPfad6an47UI9amw";
@@ -55,51 +53,51 @@
       #db_host = "127.0.0.1";
     };
   };
+
   services.nginx = {
     enable = true;
-    virtualHosts."head.egor.wtf" = {
-      enableACME = true;
-      forceSSL = true;
-      extraConfig = ''
-        ${builtins.readFile ./../nginx/authelia/vh.conf}
-      '';
-      locations."/" = {
-        proxyPass = "http://127.0.0.1:8089";
-        proxyWebsockets = true;
+    virtualHosts = {
+      "head.egor.wtf" = {
+        forceSSL = true;
+        useACMEHost = "egor.wtf";
         extraConfig = ''
-          ${builtins.readFile ./../nginx/authelia/locations.conf}
+          ${builtins.readFile ./nginx/authelia/vh.conf}
         '';
-      };
-      locations."/metrics" = {
-        proxyPass = "http://127.0.0.1:8095";
-        proxyWebsockets = true;
-        extraConfig = ''
-          ${builtins.readFile ./../nginx/authelia/locations.conf}
-        '';
+        locations."/" = {
+          proxyPass = "http://127.0.0.1:8089";
+          proxyWebsockets = true;
+          extraConfig = ''
+            ${builtins.readFile ./nginx/authelia/locations.conf}
+          '';
+        };
+        locations."/metrics" = {
+          proxyPass = "http://127.0.0.1:8095";
+          proxyWebsockets = true;
+          extraConfig = ''
+            ${builtins.readFile ./nginx/authelia/locations.conf}
+          '';
+        };
       };
     };
   };
+
   networking.firewall.allowedUDPPorts = [3478];
+
   environment.systemPackages = [
     config.services.headscale.package
   ];
-  services.authelia.instances.prod = {
-    settings = {
-      access_control = {
-        rules = [
-          {
-            domain = ["head.egor.wtf"];
-            policy = "bypass";
-            resources = [
-              "^/ts2021([/?].*)?$"
-              "^/key([/?].*)?$"
-              #"^/register([/?].*)?$"
-            ];
-          }
-        ];
-      };
-    };
-  };
+
+  services.authelia.instances.prod.settings.access_control.rules = [
+    {
+      domain = ["head.egor.wtf"];
+      policy = "bypass";
+      resources = [
+        "^/ts2021([/?].*)?$"
+        "^/key([/?].*)?$"
+      ];
+    }
+  ];
+
   sops.secrets."services/authelia/oidc/headscale/client_id" = {
     owner = "headscale";
   };

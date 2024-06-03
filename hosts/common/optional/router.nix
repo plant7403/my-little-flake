@@ -1,5 +1,4 @@
 {...}: {
-  # FIXME - [ IMPORTANT ] Move it somewhere else
   virtualHosts."router.egor.wtf" = {
     enableACME = true;
     forceSSL = true;

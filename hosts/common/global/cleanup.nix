@@ -1,15 +1,8 @@
-# TODO - Check if it's even working
 {
   pkgs,
   inputs,
   ...
 }: {
-  ## Unattended upgrade
-  #system.autoUpgrade = {
-  #  enable = true;
-  #  allowReboot = true;
-  #  dates = "weekly UTC";
-  #};
   system.autoUpgrade = {
     enable = true;
     flake = inputs.self.outPath;

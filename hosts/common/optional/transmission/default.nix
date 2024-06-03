@@ -2,9 +2,7 @@
   pkgs,
   config,
   ...
-}:
-# TODO - Check alternatives
-{
+}: {
   services.transmission = {
     enable = true;
     user = "transmission";
@@ -32,7 +30,7 @@
     virtualHosts."torr.egor.wtf" = {
       basicAuth = {
         #  #egor = config.sops.secarets."services/transmission".path;
-        #  # FIXME - [IMPORTANT] Move to SOPS
+
         #egor = config.sops.secrets."services/transmission".path;
       };
       enableACME = true;

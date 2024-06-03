@@ -1,5 +1,4 @@
 {...}: {
-  # TODO - It needs way more configuration
   services.home-assistant = {
     enable = true;
     extraComponents = [
@@ -17,7 +16,6 @@
       default_config = {};
     };
   };
-  # FIXME - Not working 400:Bad Request
   services.nginx = {
     recommendedProxySettings = true;
     virtualHosts."home.egor.wtf" = {

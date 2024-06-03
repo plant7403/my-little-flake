@@ -1,44 +1,9 @@
 # TODO - Same with immortal's default
 {
   imports = [
-    ./asteriks.nix
-    ./../../common/global/cleanup.nix
-    ./../../common/global/hardening.nix
-    ./../../common/global/ssh.nix
-    ./../../common/optional/headscale/default.nix
-    ./tailscale.nix
-    ./../../common/optional/mailserver.nix
-    ./syncthing.nix
-    ./../../common/global/acme/wc-dns-egor.nix
-    ./../../common/global/acme/wc-egor.nix
-    ./../../common/optional/tpm.nix
-    ./../../common/optional/forgejo.nix
-    ./../../common/optional/containers/simplex.nix
-    ./../../common/optional/grafana.nix
-    #./../../common/global/acme/wc-xoxo.nix
-    ./../../common/global/backup/borg.nix
-    ./../../common/global/backup/restic.nix
-    #./../../common/global/encryption/luks-with-keyfile.nix
-    #./../../common/global/impermanence/default.nix
-    #./../../common/global/impermanence/erase.nix
-    ./impermanence.nix
-    ./../../common/optional/adguard/default.nix
-    ./../../common/optional/adguard/unbound.nix
-    ./../../common/optional/cfdyndns.nix
     #./../../common/optional/dolibarr/default.nix
     #./../../common/optional/grocy/default.nix
-    ./../../common/optional/jellyfin/default.nix
-    ./../../common/optional/nextcloud.nix
-    ./../../common/optional/nginx/default.nix
-    ./../../common/optional/nginx/authelia.nix
-    ./../../common/optional/ntfy-sh/default.nix
-    ./../../common/optional/paperless/default.nix
-    ./../../common/optional/photoprism/default.nix
-    ./../../common/optional/searx-ng/default.nix
-    ./../../common/optional/transmission/default.nix
-    ./../../common/optional/vaultwarden/default.nix
-    ./../../common/optional/jellyseer.nix
-    ./../../common/optional/crypto/monero-node.nix
+    #./../../common/optional/minecraft/default.nix
     #./../../common/optional/wireguard/default.nix
     #./../../common/optional/wordpress/default.nix
     #./../common/global/encryption/luks-with-keyfile.nix
@@ -50,8 +15,39 @@
     #./../common/optional/i2p.nix
     #./../common/optional/lemmy/default.nix
     #./../common/optional/libretranslate/default.nix
-    #./../../common/optional/minecraft/default.nix
     #./../common/optional/tor.nix
     #./nix-flatpak.nix
+    ./../../common/global/acme/wc-dns-egor.nix
+    ./../../common/global/acme/wc-egor.nix
+    ./../../common/global/backup/borg.nix
+    ./../../common/global/backup/restic.nix
+    ./../../common/global/cleanup.nix
+    ./../../common/global/hardening.nix
+    ./../../common/global/ssh.nix
+    ./../../common/optional/adguard/default.nix
+    ./../../common/optional/adguard/unbound.nix
+    ./../../common/optional/cfdyndns.nix
+    ./../../common/optional/containers/simplex.nix
+    ./../../common/optional/crypto/monero-node.nix
+    ./../../common/optional/forgejo.nix
+    ./../../common/optional/grafana.nix
+    ./../../common/optional/headscale/default.nix
+    ./../../common/optional/jellyfin/default.nix
+    ./../../common/optional/jellyseer.nix
+    ./../../common/optional/mailserver.nix
+    ./../../common/optional/nextcloud.nix
+    ./../../common/optional/nginx/authelia.nix
+    ./../../common/optional/nginx/default.nix
+    ./../../common/optional/ntfy-sh/default.nix
+    ./../../common/optional/paperless/default.nix
+    ./../../common/optional/photoprism/default.nix
+    ./../../common/optional/searx-ng/default.nix
+    ./../../common/optional/tpm.nix
+    ./../../common/optional/transmission/default.nix
+    ./../../common/optional/vaultwarden/default.nix
+    ./asteriks.nix
+    ./impermanence.nix
+    ./syncthing.nix
+    ./tailscale.nix
   ];
 }

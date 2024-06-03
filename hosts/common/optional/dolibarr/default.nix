@@ -1,5 +1,4 @@
 {...}: {
-  # TODO - Check if it's working, and test for the use again
   services.dolibarr = {
     enable = true;
     domain = "doli.egor.wtf";

@@ -3,7 +3,6 @@
   config,
   ...
 }: {
-  # TODO - Review
   services = {
     syncthing = {
       enable = true;
@@ -11,7 +10,7 @@
       user = "egor";
       group = "sync";
       dataDir = "/home/egor/.config/syncthing";
-      #configDir = "/home/egor/Documents/.config/syncthing";
+      #configDir = "/home/egor/.config/syncthing";
       overrideDevices = true; # overrides any devices added or deleted through the WebUI
       overrideFolders = true; # overrides any folders added or deleted through the WebUI
     };

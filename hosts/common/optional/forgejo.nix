@@ -1,6 +1,4 @@
-{config, ...}:
-# TODO - Built-in SSH
-{
+{config, ...}: {
   services.nginx.virtualHosts."git.egor.wtf" = {
     enableACME = true;
     forceSSL = true;
@@ -9,12 +7,12 @@
     #    };
     extraConfig = ''
       ${builtins.readFile ./nginx/authelia/vh.conf}
-    ''; #${builtins.readFile ./nginx/authelia/vh.conf}
+    '';
     locations."/".extraConfig = ''
         include ${config.services.nginx.package}/conf/fastcgi.conf;
         fastcgi_pass unix:${config.services.forgejo.settings.server.HTTP_ADDR};
       ${builtins.readFile ./nginx/authelia/locations.conf}
-    ''; #${builtins.readFile ./nginx/authelia/locations.conf}
+    '';
   };
 
   services.forgejo = {
@@ -53,7 +51,6 @@
     ensureUsers = [
       {
         name = config.services.forgejo.database.user;
-        #ensurePermissions."DATABASE ${config.services.forgejo.database.name}" = "ALL PRIVILEGES";
         ensureDBOwnership = true;
       }
     ];
@@ -71,12 +68,10 @@
   services.authelia.instances.prod = {
     settings = {
       access_control = {
-        #default_policy = "deny";
         rules = [
           {
             domain = ["git.egor.wtf"];
             policy = "bypass";
-            #resources = ["^/me/my-little-flake([/?].*)?$"];
           }
         ];
       };

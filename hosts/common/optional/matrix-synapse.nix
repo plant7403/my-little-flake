@@ -2,9 +2,7 @@
   pkgs,
   config,
   ...
-}:
-# FIXME - Not working at all, errors
-let
+}: let
   fqdn = "mtrx.${config.networking.domain}";
   baseUrl = "https://${fqdn}";
   clientConfig."m.homeserver".base_url = baseUrl;

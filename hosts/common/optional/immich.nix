@@ -9,7 +9,7 @@
 
   postgresRoot = "${immichAppdataRoot}/pgsql";
   # TODO: put a random password here
-  postgresPassword = "HelloKitty228";
+  postgresPassword = "fewmygwdf28e3hf82e3fg82ef8h2e8fj29ef92jef9j2f9";
   postgresUser = "immich";
   postgresDb = "immich";
 in {

@@ -1,5 +1,4 @@
 {config, ...}: {
-  # TODO - A lot of fixing needed
   services.authelia.instances.prod = {
     enable = true;
     secrets = {
@@ -41,15 +40,14 @@
             policy = "bypass";
             networks = [
               #"internal"
+              "127.0.0.1/24"
               "100.64.0.0/24"
               "192.168.1.0/24"
-              "127.0.0.1/24"
               "fd7a:115c:a1e0::/48"
               #"fe80::f4b0:1a6c:/64"
               "2001:ee0:41a1:317d::/64"
             ];
           }
-
           {
             domain = ["*.egor.wtf"];
             policy = "bypass";
@@ -113,7 +111,6 @@
         {
           id = config.sops.secrets."services/authelia/oidc/nextcloud/client_id".path;
           description = "NextCloud";
-          # FIXME secret
           secret = config.sops.secrets."services/authelia/oidc/nextcloud/client_secret".path;
           public = false;
           authorization_policy = "two_factor";
@@ -133,16 +130,14 @@
           #userinfo_signed_response_alg = "none";
           #token_endpoint_auth_method = "client_secret_post";
         }
+
+        # Headscale
         {
           id = config.sops.secrets."services/authelia/oidc/headscale/client_id".path;
           description = "Headscale";
           secret = config.sops.secrets."services/authelia/oidc/headscale/client_secret".path;
-          #secret = "ahQvGBBGnGDu78bFPTRia0Q0BYMvgGOzU-pcODcp2uvxl2-4ylAvLcJj4GNLWTF4-bID~121";
           public = false;
           authorization_policy = "two_factor";
-          #require_pkce = true;
-          #pkce_challenge_method = "S256";
-          #consent_mode = "implicit";
           redirect_uris = [
             "https://head.egor.wtf/a/oauth_response"
             "https://head.egor.wtf/oidc/callback"
@@ -153,7 +148,6 @@
             "profile"
             "email"
             "groups"
-            #"custom"
           ];
         }
       ];
@@ -191,36 +185,15 @@
     "services/authelia/storage".owner = "authelia-prod";
     "services/authelia/users.yaml".owner = "authelia-prod";
     "services/authelia/postgres".owner = "authelia-prod";
-    "services/authelia/oidc/nextcloud/private.pem".owner = "authelia-prod";
-    "services/authelia/oidc/headscale/client_secret_enc".owner = "authelia-prod";
-  };
 
-  sops.secrets."services/authelia/jwt" = {
-    owner = "authelia-prod";
-  };
-  sops.secrets."services/authelia/storage" = {
-    owner = "authelia-prod";
-  };
-  sops.secrets."services/authelia/users.yaml" = {
-    owner = "authelia-prod";
-  };
-  sops.secrets."system/ip/pluto" = {
-    owner = "authelia-prod";
-  };
-  sops.secrets."services/authelia/postgres" = {
-    owner = "authelia-prod";
-  };
-  sops.secrets."services/authelia/oidc/nextcloud/private.pem" = {
-    owner = "authelia-prod";
-  };
-  #sops.secrets."services/authelia/oidc/headscale/client_id" = {
-  #owner = "authelia-prod";
-  #};
-  #sops.secrets."services/authelia/oidc/headscale/client_secret" = {
-  #owner = "authelia-prod";
-  #};
-  sops.secrets."services/authelia/oidc/headscale/client_secret_enc" = {
-    owner = "authelia-prod";
+    #"services/authelia/oidc/nextcloud/private.pem".owner = "authelia-prod";
+    "services/authelia/oidc/nextcloud/client_id".owner = "authelia-prod";
+    "services/authelia/oidc/nextcloud/client_secret".owner = "authelia-prod";
+    "services/authelia/oidc/nextcloud/client_secret_enc".owner = "authelia-prod";
+
+    "services/authelia/oidc/headscale/client_id".owner = "authelia-prod";
+    "services/authelia/oidc/headscale/client_secret".owner = "authelia-prod";
+    "services/authelia/oidc/headscale/client_secret_enc".owner = "authelia-prod";
   };
 
   environment.persistence."/persist".directories = [
