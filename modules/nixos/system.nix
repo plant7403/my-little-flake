@@ -57,7 +57,10 @@ in {
         git
         nano
       ];
+      services.fwupd.enable = true;
 
+  # Enable networking
+  networking.networkmanager.enable = true;
       networking.firewall.enable = true;
     }
     (mkIf cfg.printing {
@@ -70,7 +73,7 @@ in {
         ports = [3370];
         openFirewall = true;
         settings = {
-          PasswordAuthentication = true;
+          PasswordAuthentication = false;
           #allowSFTP = false; # Don't set this if you need sftp
           challengeResponseAuthentication = false;
         };

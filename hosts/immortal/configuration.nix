@@ -57,14 +57,11 @@
   services.logrotate.checkConfig = false;
   #services.postgresql.package = pkgs.postgresql_14;
 
-  services.fwupd.enable = true;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  # Enable networking
-  networking.networkmanager.enable = true;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
