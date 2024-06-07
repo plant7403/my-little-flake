@@ -10,9 +10,7 @@ with lib; let
   # cfg is a typical convention.
   cfg = config.modules.tailscale;
 in {
-  imports = [
-    inputs.impermanence.nixosModules.impermanence
-  ];
+
   # Declare what settings a user of this "ts-custom.nix" module CAN SET.
   options.modules.tailscale = {
     enable = mkEnableOption "ts-custom service";

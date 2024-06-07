@@ -6,6 +6,7 @@
   pkgs,
   lib,
   inputs,
+  outputs,
   ...
 }: let
   my-python-packages = ps:
@@ -22,12 +23,12 @@ in {
     ./sops.nix
     ./clevis.nix
     ./../common/users/egor.nix
-    ./ssh.nix
+    #./ssh.nix
     #./camera.nix
     inputs.nixos-hardware.nixosModules.microsoft-surface-common
     inputs.nixos-hardware.nixosModules.microsoft-surface-go
     outputs.nixosModules.gnome
-    #outputs.nixosModules.impermanence
+    outputs.nixosModules.impermanence
     outputs.nixosModules.mullvad
     outputs.nixosModules.sound
     outputs.nixosModules.steam

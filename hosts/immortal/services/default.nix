@@ -7,7 +7,6 @@
     ./../../common/global/backup/restic.nix
     ./../../common/global/cleanup.nix
     ./../../common/global/hardening.nix
-    ./../../common/global/ssh.nix
     ./../../common/optional/adguard/default.nix
     ./../../common/optional/adguard/unbound.nix
     ./../../common/optional/cfdyndns.nix

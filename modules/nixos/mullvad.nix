@@ -7,10 +7,6 @@
 with lib; let
   cfg = config.modules.mullvad;
 in {
-  imports = [
-    inputs.impermanence.nixosModules.impermanence
-  ];
-
   options.modules.mullvad = {
     enable = mkEnableOption "service";
     impermanence = mkOption {
