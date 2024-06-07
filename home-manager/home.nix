@@ -98,10 +98,7 @@
   ];
 
   programs.home-manager.enable = true;
-  services.gpg-agent = {
-    enable = true;
-    enableSshSupport = true;
-  };
+
   programs.git = {
     enable = true;
     userEmail = "me@egor.wtf";
@@ -224,21 +221,37 @@
     };
   };
 
-  home.file.".config/gpg-agent.conf".text = ''
-    # https://github.com/drduh/config/blob/master/gpg-agent.conf
-    # https://www.gnupg.org/documentation/manuals/gnupg/Agent-Options.html
-    pinentry-program /usr/bin/pinentry-gnome3
-    #pinentry-program /usr/bin/pinentry-tty
-    #pinentry-program /usr/bin/pinentry-x11
-    #pinentry-program /usr/local/bin/pinentry-curses
-    #pinentry-program /usr/local/bin/pinentry-mac
-    #pinentry-program /opt/homebrew/bin/pinentry-mac
-    #pinentry-program /usr/bin/pinentry-curses
-    enable-ssh-support
-    ttyname $GPG_TTY
-    default-cache-ttl 60
-    max-cache-ttl 120
-  '';
+  #home.file.".gnupg/gpg-agent.conf" = {
+  #  onChange = true;
+  #  text = ''
+  #    # https://github.com/drduh/config/blob/master/gpg-agent.conf
+  #    # https://www.gnupg.org/documentation/manuals/gnupg/Agent-Options.html
+  #    pinentry-program /usr/bin/pinentry-gnome3
+  #pinentry-program /usr/bin/pinentry-tty
+  #pinentry-program /usr/bin/pinentry-x11
+  #pinentry-program /usr/local/bin/pinentry-curses
+  #pinentry-program /usr/local/bin/pinentry-mac
+  #pinentry-program /opt/homebrew/bin/pinentry-mac
+  #pinentry-program /usr/bin/pinentry-curses
+  #    enable-ssh-support
+  #    ttyname $GPG_TTY
+  #    default-cache-ttl 60
+  #    max-cache-ttl 120
+  #  '';
+  #};
+  programs.gpg.scdaemonSettings.disable-ccid = true;
+  services.gpg-agent = {
+    enable = true;
+    enableSshSupport = true;
+    defaultCacheTtl = 60;
+    maxCacheTtl = 120;
+    enableZshIntegration = true;
+    enableScDaemon = true;
+    pinentryPackage = pkgs.pinentry-gnome3;
+    extraConfig = ''
+      ttyname $GPG_TTY
+    '';
+  };
 
   programs.librewolf = {
     enable = true;
