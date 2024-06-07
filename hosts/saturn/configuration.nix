@@ -24,6 +24,7 @@
     outputs.nixosModules.steam
     outputs.nixosModules.tailscale
     outputs.nixosModules.system
+    outputs.nixosModules.yubikey
   ];
 
   modules.gnome = {
@@ -51,6 +52,8 @@
     ssh = true;
     printing = true;
   };
+
+  modules.yubikey.enable = true;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;

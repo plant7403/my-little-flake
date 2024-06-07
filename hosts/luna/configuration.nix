@@ -34,6 +34,7 @@ in {
     outputs.nixosModules.steam
     outputs.nixosModules.tailscale
     outputs.nixosModules.system
+    outputs.nixosModules.yubikey
   ];
 
   modules.gnome = {
@@ -61,6 +62,8 @@ in {
     ssh = true;
     printing = false;
   };
+  modules.yubikey.enable = true;
+
   programs.nix-ld.enable = true;
 
   programs.nix-ld.libraries = with pkgs; [
