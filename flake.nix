@@ -15,13 +15,8 @@
 
     conduit = {
       url = "gitlab:famedly/conduit";
-
-      # Assuming you have an input for nixpkgs called `nixpkgs`. If you experience
-      # build failures while using this, try commenting/deleting this line. This
-      # will probably also require you to always build from source.
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # TODO: Add any other flake you might need
     hardware.url = "github:nixos/nixos-hardware";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     impermanence.url = "github:nix-community/impermanence";
@@ -136,16 +131,12 @@
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
-      # FIXME replace with your hostname
       immortal = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {inherit inputs outputs;};
         modules = [
-          # > Our main nixos configuration file <
           ./hosts/immortal/configuration.nix
-
           sops-nix.nixosModules.sops
-          #agenix.nixosModules.default
           disko.nixosModules.disko
           lanzaboote.nixosModules.lanzaboote
           ({
@@ -154,14 +145,9 @@
             ...
           }: {
             environment.systemPackages = [
-              # For debugging and troubleshooting Secure Boot.
               pkgs.sbctl
             ];
 
-            # Lanzaboote currently replaces the systemd-boot module.
-            # This setting is usually set to true in configuration.nix
-            # generated at installation time. So we force it to false
-            # for now.
             boot.loader.systemd-boot.enable = lib.mkForce false;
 
             boot.lanzaboote = {
@@ -191,8 +177,6 @@
             home-manager.useUserPackages = true;
             home-manager.users.egor = import ./home-manager/home.nix;
             home-manager.extraSpecialArgs = {inherit inputs;};
-            # Optionally, use home-manager.extraSpecialArgs to pass
-            # arguments to home.nix
           }
           lanzaboote.nixosModules.lanzaboote
           ({
@@ -201,14 +185,9 @@
             ...
           }: {
             environment.systemPackages = [
-              # For debugging and troubleshooting Secure Boot.
               pkgs.sbctl
             ];
 
-            # Lanzaboote currently replaces the systemd-boot module.
-            # This setting is usually set to true in configuration.nix
-            # generated at installation time. So we force it to false
-            # for now.
             boot.loader.systemd-boot.enable = lib.mkForce false;
 
             boot.lanzaboote = {
@@ -225,7 +204,6 @@
           ./hosts/saturn/configuration.nix
           sops-nix.nixosModules.sops
           disko.nixosModules.disko
-          #nixos-hardware.nixosModules.microsoft-surface-common
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
@@ -235,22 +213,9 @@
             # Optionally, use home-manager.extraSpecialArgs to pass
             # arguments to home.nix
           }
-          #({ config = { nix.registry.nixpkgs.flake = nixpkgs; }; })
-          # ...
-          #home-manager.nixosModules.home-manager
-          gnome
-          impermanence-erase
-          #{
-          #  services.restore-root = {
-          #  enable = true;
-          #  disk = "ssd";
-          #  };
-          #}
-          #declarativeHome
-          #users-ana
-
         ];
       };
+
       pluto = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {inherit inputs outputs;};
@@ -259,6 +224,7 @@
           disko.nixosModules.disko
           #{disko.devices.disk.disk1.device = "/dev/vda";}
           sops-nix.nixosModules.sops
+
           nixos-mailserver.nixosModule
           ({config, ...}: {
             services.dovecot2.sieve.extensions = ["fileinto"];
@@ -266,7 +232,6 @@
               enable = true;
               fqdn = "mail.egor.wtf";
               domains = ["egor.wtf"];
-
               # A list of all login accounts. To create the password hashes, use
               # nix-shell -p mkpasswd --run 'mkpasswd -sm bcrypt'
               loginAccounts = {
@@ -278,9 +243,6 @@
                   hashedPasswordFile = config.sops.secrets."mail/egor.wtf/me".path;
                 };
               };
-
-              # Use Let's Encrypt certificates. Note that this needs to set up a stripped
-              # down nginx and opens port 80.
               certificateScheme = "acme-nginx";
             };
             security.acme.acceptTerms = true;
@@ -364,7 +326,6 @@
     # Standalone home-manager configuration entrypoint
     # Available through 'home-manager --flake .#your-username@your-hostname'
     #    homeConfigurations = {
-    # FIXME replace with your username@hostname
     #      "egor@immortal" = home-manager.lib.homeManagerConfiguration {
     #        pkgs = nixpkgs.x86_64-linux; # Home-manager requires 'pkgs' instance
     #        extraSpecialArgs = {inherit inputs outputs;};

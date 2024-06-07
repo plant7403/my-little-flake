@@ -18,25 +18,29 @@
     #./postgres-migrate.nix
     ./../common/optional/postgresql/default.nix
     ./../common/optional/mysql/default.nix
+    outputs.nixosModules.impermanence
+    outputs.nixosModules.tailscale
+    outputs.nixosModules.system
   ];
-  systemd.services.nix-daemon.environment.TMPDIR = "/tmp";
-  nix = {
-    settings = {
-      # Enable flakes and new 'nix' command
-      experimental-features = "nix-command flakes";
-      # Deduplicate and optimize nix store
-      auto-optimise-store = true;
-      substituters = [
-        "https://nix-community.cachix.org"
-        "https://cache.nixos.org/"
-        "https://nixpkgs-unfree.cachix.org"
-      ];
-      trusted-public-keys = [
-        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-        "nixpkgs-unfree.cachix.org-1:hqvoInulhbV4nJ9yJOEr+4wxhDV4xq2d1DK7S6Nj6rs="
-      ];
-    };
+
+  modules.impermanence = {
+    enable = true;
+    disk = "nvme";
   };
+  modules.tailscale = {
+    enable = true;
+    exit = true;
+    hostname = "immortal";
+    impermanence = true;
+  };
+  modules.system = {
+    hostname = "immortal";
+    ssh = true;
+    printing = false;
+  };
+
+  systemd.services.nix-daemon.environment.TMPDIR = "/tmp";
+
   #boot.runSize =
   #boot.tmp.cleanOnBoot = true;
   #boot.tmp.useTmpfs = true;
@@ -52,7 +56,7 @@
   #boot.loader.grub.devices = ["/dev/vda3"];
   services.logrotate.checkConfig = false;
   #services.postgresql.package = pkgs.postgresql_14;
-  networking.hostName = "immortal"; # Define your hostname.
+
   services.fwupd.enable = true;
 
   # Configure network proxy if necessary
@@ -61,27 +65,6 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
-  # FIXME - SOPS
-  #boot.kernelParams = ["systemd.machine_id=c13317057dead3d74b8938a46544e8f3" "systemd.condition-first-boot=false"];
-  services.localtimed.enable = true;
-
-  # Set your time zone.
-  time.timeZone = "Asia/Ho_Chi_Minh";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
-  };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -95,43 +78,6 @@
   services.logind.suspendKey = "ignore";
   services.logind.hibernateKey = "ignore";
   services.logind.rebootKey = "ignore";
-
-  environment.systemPackages = with pkgs; [
-    wget
-    git
-    nano
-    borgbackup
-    restic
-    tmux
-    mosh
-    deploy-rs
-    #rpi build
-    rsync
-    qemu
-    sops
-  ];
-  boot.binfmt.emulatedSystems = ["aarch64-linux"];
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  #services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  #networking.firewall.allowedTCPPorts = [22];
-  #networking.firewall.allowedUDPPorts = [ 22 ];
-  # Or disable the firewall altogether.
-  networking.firewall.enable = true;
-
-  sops.secrets."system/immortal/id" = {};
 
   system.stateVersion = "23.11"; # Did you read the comment?
 }

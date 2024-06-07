@@ -4,5 +4,11 @@
   # List your module files here
   # my-module = import ./my-module.nix;
   gnome = import ./gnome.nix;
-  impermanence-erase = import ./impermanence-erase.nix;
+  impermanence = import ./impermanence.nix;
+  tailscale = import ./tailscale.nix;
+  steam = import ./steam.nix;
+  mullvad = import ./mullvad.nix;
+  sound = import ./sound.nix;
+  yubikey = import ./yubikey.nix;
+  system = import ./system.nix;
 }

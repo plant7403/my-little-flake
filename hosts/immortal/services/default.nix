@@ -1,22 +1,6 @@
 # TODO - Same with immortal's default
 {
   imports = [
-    #./../../common/optional/dolibarr/default.nix
-    #./../../common/optional/grocy/default.nix
-    #./../../common/optional/minecraft/default.nix
-    #./../../common/optional/wireguard/default.nix
-    #./../../common/optional/wordpress/default.nix
-    #./../common/global/encryption/luks-with-keyfile.nix
-    #./../common/global/networking.nix
-    #./../common/optional/caddy.nix
-    #./../common/optional/containers/collabora/default.nix
-    #./../common/optional/containers/headscale-ui.nix
-    #./../common/optional/containers/wordpress.nix
-    #./../common/optional/i2p.nix
-    #./../common/optional/lemmy/default.nix
-    #./../common/optional/libretranslate/default.nix
-    #./../common/optional/tor.nix
-    #./nix-flatpak.nix
     ./../../common/global/acme/wc-dns-egor.nix
     ./../../common/global/acme/wc-egor.nix
     ./../../common/global/backup/borg.nix
@@ -46,8 +30,8 @@
     ./../../common/optional/transmission/default.nix
     ./../../common/optional/vaultwarden/default.nix
     ./asteriks.nix
-    ./impermanence.nix
+    #./impermanence.nix
     ./syncthing.nix
-    ./tailscale.nix
+    #./tailscale.nix
   ];
 }
