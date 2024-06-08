@@ -55,10 +55,10 @@
                       mountpoint = "/var/log";
                       mountOptions = ["compress=zstd" "noatime"];
                     };
-                    "/@SWAP" = {
-                      mountpoint = "/.swapvol";
-                      swap.swapfile.size = "8G";
-                    };
+                    #"/@SWAP" = {
+                    #  mountpoint = "/.swapvol";
+                    #  swap.swapfile.size = "8G";
+                    #};
                   };
                 };
               };

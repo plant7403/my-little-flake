@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   sops.secrets."services/searx" = {};
   environment.systemPackages = [
     pkgs.searxng

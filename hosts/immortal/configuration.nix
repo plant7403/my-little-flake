@@ -4,6 +4,7 @@
 {
   pkgs,
   lib,
+  outputs,
   ...
 }: {
   imports = [
@@ -57,11 +58,9 @@
   services.logrotate.checkConfig = false;
   #services.postgresql.package = pkgs.postgresql_14;
 
-
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;

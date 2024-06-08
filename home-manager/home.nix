@@ -41,10 +41,8 @@
     fractal
     #gimp-with-plugins
     gnomeExtensions.caffeine
-    gnomeExtensions.gjs-osk
     gnomeExtensions.tailscale-qs
     gnomeExtensions.tailscale-status
-    gnomeExtensions.touch-x
     #gnomeExtensions.syncthing-indicator
     inkscape
     jellyfin-media-player
@@ -164,11 +162,11 @@
   };
   #systemd.user.sessionVariables = config.home-manager.users.egor.home.sessionVariables;
 
-  #qt = {
-  #  enable = true;
-  #  platformTheme.name = "dracula";
-  #  style.name = "dracula";
-  #};
+  qt = {
+    enable = true;
+    platformTheme.name = "Dracula";
+    style.name = "Dracula";
+  };
 
   home.sessionVariables.GTK_THEME = "Dracula";
   # ...
@@ -202,7 +200,7 @@
     };
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
-      enable-hot-corners = false;
+      enable-hot-corners = true;
     };
     "org/gnome/desktop/wm/preferences" = {
       workspace-names = ["Main"];
@@ -221,24 +219,6 @@
     };
   };
 
-  #home.file.".gnupg/gpg-agent.conf" = {
-  #  onChange = true;
-  #  text = ''
-  #    # https://github.com/drduh/config/blob/master/gpg-agent.conf
-  #    # https://www.gnupg.org/documentation/manuals/gnupg/Agent-Options.html
-  #    pinentry-program /usr/bin/pinentry-gnome3
-  #pinentry-program /usr/bin/pinentry-tty
-  #pinentry-program /usr/bin/pinentry-x11
-  #pinentry-program /usr/local/bin/pinentry-curses
-  #pinentry-program /usr/local/bin/pinentry-mac
-  #pinentry-program /opt/homebrew/bin/pinentry-mac
-  #pinentry-program /usr/bin/pinentry-curses
-  #    enable-ssh-support
-  #    ttyname $GPG_TTY
-  #    default-cache-ttl 60
-  #    max-cache-ttl 120
-  #  '';
-  #};
   programs.gpg.scdaemonSettings.disable-ccid = true;
   services.gpg-agent = {
     enable = true;

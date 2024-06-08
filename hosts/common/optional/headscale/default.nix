@@ -33,8 +33,8 @@
       };
       oidc = {
         issuer = "https://auth.egor.wtf";
-        client_secret_path = config.sops.secrets."services/authelia/oidc/headscale/client_secret".path;
-        client_id = "Ef~I143cYnw7VJwAz1~nGp-UaGYBT9bOdRssM-69gwg6uqyjSAVT6xOZIPfad6an47UI9amw";
+        client_secret_path = config.sops.secrets."services/authelia/oidc/headscale/client_secret_headscale".path;
+        client_id = config.sops.secrets."services/authelia/oidc/headscale/client_id_headscale".path;
         #allowed_domains = "egor.wtf";
         #allowed_users = "egor";
         only_start_if_oidc_is_available = true;
@@ -61,20 +61,20 @@
         forceSSL = true;
         useACMEHost = "egor.wtf";
         extraConfig = ''
-          ${builtins.readFile ./nginx/authelia/vh.conf}
+          ${builtins.readFile ../nginx/authelia/vh.conf}
         '';
         locations."/" = {
           proxyPass = "http://127.0.0.1:8089";
           proxyWebsockets = true;
           extraConfig = ''
-            ${builtins.readFile ./nginx/authelia/locations.conf}
+            ${builtins.readFile ../nginx/authelia/locations.conf}
           '';
         };
         locations."/metrics" = {
           proxyPass = "http://127.0.0.1:8095";
           proxyWebsockets = true;
           extraConfig = ''
-            ${builtins.readFile ./nginx/authelia/locations.conf}
+            ${builtins.readFile ../nginx/authelia/locations.conf}
           '';
         };
       };
@@ -100,9 +100,11 @@
 
   sops.secrets."services/authelia/oidc/headscale/client_id" = {
     owner = "headscale";
+    key = "services/authelia/oidc/headscale/client_id_headscale";
   };
   sops.secrets."services/authelia/oidc/headscale/client_secret" = {
     owner = "headscale";
+    key = "services/authelia/oidc/headscale/client_secret_headscale";
   };
   #sops.secrets."services/authelia/oidc/headscale/client_secret_enc" = {
   #  owner = "authelia-prod";

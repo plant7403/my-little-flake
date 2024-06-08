@@ -1,4 +1,4 @@
-{...}: {
+{config, ...}: {
   #config.sops.secrets."postgres/forgejo".path;
   #sops.secrets."postgres/forgejo" = {
   #  sopsFile = ./../../../secrets/example.yaml; # bring your own password file

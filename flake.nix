@@ -68,6 +68,7 @@
       flake = false;
       #ref = "master";
     };
+    musnix  = { url = "github:musnix/musnix"; };
 
     vscode-server.url = "github:nix-community/nixos-vscode-server";
     deploy-rs.url = "github:serokell/deploy-rs";
@@ -84,6 +85,7 @@
     lanzaboote,
     disko,
     nixos-mailserver,
+    musnix,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -212,6 +214,14 @@
             home-manager.extraSpecialArgs = {inherit inputs;};
             # Optionally, use home-manager.extraSpecialArgs to pass
             # arguments to home.nix
+          }
+          inputs.musnix.nixosModules.musnix
+          {
+            musnix.enable = true;
+            musnix.alsaSeq.enable = true;
+            musnix.ffado.enable = true;
+            musnix.rtcqs.enable = true;
+            #musnix.kernel.realtime = true;
           }
         ];
       };

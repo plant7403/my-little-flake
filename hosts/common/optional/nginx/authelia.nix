@@ -186,8 +186,12 @@
     "services/authelia/users.yaml".owner = "authelia-prod";
     "services/authelia/postgres".owner = "authelia-prod";
 
-    #"services/authelia/oidc/nextcloud/private.pem".owner = "authelia-prod";
-    "services/authelia/oidc/nextcloud/client_id".owner = "authelia-prod";
+    "services/authelia/oidc/nextcloud/private.pem".owner = "authelia-prod";
+    "services/authelia/oidc/nextcloud/client_id" = {
+      owner = config.services.authelia.instances.prod.user;
+
+      #owner = "authelia-prod";
+    };
     "services/authelia/oidc/nextcloud/client_secret".owner = "authelia-prod";
     "services/authelia/oidc/nextcloud/client_secret_enc".owner = "authelia-prod";
 
