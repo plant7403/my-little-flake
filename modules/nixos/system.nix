@@ -59,8 +59,8 @@ in {
       ];
       services.fwupd.enable = true;
 
-  # Enable networking
-  networking.networkmanager.enable = true;
+      # Enable networking
+      networking.networkmanager.enable = true;
       networking.firewall.enable = true;
     }
     (mkIf cfg.printing {

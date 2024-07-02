@@ -35,7 +35,8 @@
         users = [
           {
             name = "egor";
-            password = config.sops.secrets."services/adguard-home/admin/password".path; #BCrypt
+            #password = "${toString config.sops.secrets."services/adguard-home/admin/password".path}"; #BCrypt
+            password = "$2b$05$7W7JIo5H5.T9kqf/5ZIkvurtzJd85k0c8wNduJGmHOqxi.ZvHi6KG";
           }
         ];
         tls = {

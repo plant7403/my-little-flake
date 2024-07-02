@@ -7,7 +7,7 @@
   nixpkgs.config.packageOverrides = pkgs: {
     vaapiIntel = pkgs.vaapiIntel.override {enableHybridCodec = true;};
   };
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [
       intel-media-driver
@@ -38,23 +38,22 @@
     recommendedTlsSettings = true;
     virtualHosts = {
       "jelly.egor.wtf" = {
-        #listen = [ { addr = "0.0.0.0"; port = 8080; } ];
-        enableACME = true;
         forceSSL = true;
+        useACMEHost = "egor.wtf";
         extraConfig = ''
-          ${builtins.readFile ./../nginx/authelia/vh.conf}
+          ${builtins.readFile ../nginx/authelia/vh.conf}
         '';
         locations."/" = {
           proxyPass = "http://127.0.0.1:8096";
-          proxyWebsockets = true; # needed if you need to use WebSocket
+          proxyWebsockets = true;
           extraConfig = ''
+            ${builtins.readFile ../nginx/authelia/locations.conf}
             # required when the target is also TLS server with multiple hosts
             proxy_ssl_server_name on;
 
             # required when the server wants to use HTTP Authentication
             proxy_pass_header Authorization;
 
-            ${builtins.readFile ./../nginx/authelia/locations.conf}
           '';
         };
       };

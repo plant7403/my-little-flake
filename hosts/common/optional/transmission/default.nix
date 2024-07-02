@@ -7,7 +7,7 @@
     enable = true;
     user = "transmission";
     group = "media";
-    package = pkgs.transmission;
+    package = pkgs.transmission_4;
     webHome = pkgs.flood-for-transmission;
     #openFirewall = true;
     #openRPCPort = true;

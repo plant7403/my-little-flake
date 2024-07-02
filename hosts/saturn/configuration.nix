@@ -6,6 +6,7 @@
   pkgs,
   lib,
   outputs,
+  inputs,
   ...
 }: {
   imports = [
@@ -13,6 +14,7 @@
     ./services
     ./sops.nix
     ./disk-config.nix
+    ./asteriks.nix
     ./../common/users/egor.nix
     ./../common/users/root.nix
     #./../common/desktop/steam.nix
@@ -52,7 +54,6 @@
     ssh = true;
     printing = true;
   };
-
   modules.yubikey.enable = true;
 
   # Bootloader.
@@ -75,4 +76,109 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.05"; # Did you read the comment?
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+  home-manager.sharedModules = [
+    inputs.sops-nix.homeManagerModules.sops
+  ];
+
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-28.3.3"
+    "electron-27.3.11"
+  ];
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (lib.getName pkg) [
+      "davinci-resolve"
+      "steam"
+      "steam-original"
+      "steam-run"
+      "nvidia-x11"
+      "nvidia-settings"
+      "intel-ocl"
+    ];
+
+  services.gvfs.enable = true;
+  environment.systemPackages = with pkgs; [
+    #mtpfs
+    android-file-transfer
+  ];
+
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+    extraPackages = with pkgs; [
+      intel-compute-runtime
+      intel-media-driver
+      intel-ocl
+      intel-vaapi-driver
+    ];
+  };
+  boot.kernelModules = ["nouveau" "bbswitch"];
+  # Load nvidia driver for Xorg and Wayland
+  services.xserver.videoDrivers = ["modesetting" "nouveau"];
+
+  hardware.bumblebee = {
+    enable = true;
+    group = "video";
+    driver = "nouveau";
+  };
+  hardware.nvidia.package = "nouveau";
+
+  hardware.nvidia.modesetting.enable = true;
+  hardware.nvidia.prime = {
+    sync.enable = true;
+
+    # Bus ID of the NVIDIA GPU. You can find it using lspci, either under 3D or VGA
+    nvidiaBusId = "PCI:1:0:0";
+
+    # Bus ID of the Intel GPU. You can find it using lspci, either under 3D or VGA
+    intelBusId = "PCI:0:2:0";
+  };
+  /*
+     hardware.nvidia.prime = {
+    offload = {
+      enable = true;
+      enableOffloadCmd = true;
+    };
+    # Make sure to use the correct Bus ID values for your system!
+    intelBusId = "PCI:0:2:0";
+    nvidiaBusId = "PCI:14:0:0";
+    # amdgpuBusId = "PCI:54:0:0"; For AMD GPU
+  };
+  */
+  /*
+     hardware.nvidia.prime = {
+    sync.enable = true;
+
+    # Make sure to use the correct Bus ID values for your system!
+    nvidiaBusId = "PCI:14:0:0";
+    intelBusId = "PCI:0:2:0";
+    # amdgpuBusId = "PCI:54:0:0"; For AMD GPU
+  };
+  */
+  specialisation = {
+    on-the-go.configuration = {
+      system.nixos.tags = ["on-the-go"];
+      services.tailscale = {
+        enable = lib.mkForce false;
+      };
+    };
+  };
+
+  /*
+     nixpkgs.overlays = [
+    (self: super: {
+      bumblebee = super.bumblebee.override {
+        nvidia_x11_i686 = null;
+        libglvnd_i686 = null;
+      };
+      primus = super.primus.override {
+        primusLib_i686 = null;
+      };
+    })
+  ];
+  */
+  nixpkgs.config.allowBroken = true;
+  nixpkgs.config.nvidia.acceptLicense = true;
+
+  networking.firewall.allowedTCPPorts = [33847];
 }

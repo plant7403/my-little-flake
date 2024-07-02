@@ -8,9 +8,9 @@
     syncthing = {
       settings = {
         devices = {
-          luna = {id = "VYJTVH2-EB6Y5NH-GOY6ZCK-4W7MCBD-EY5NN2K-BSAYKDF-E6AT4Q3-Q2NAZQI";};
+          luna = {id = "J7XMOAJ-P46MLGT-FIXSDMK-4XRDF6M-VFWRHBN-2TLP23V-I2TKCMB-SUZJ7AN";};
           pixel6 = {id = "6JHCNHN-KJ3AEVM-GH6GYAA-F3M4E4N-2GQL7X5-26L36YQ-6F5D52A-WCL3DA5";};
-          immortal = {id = "HOYMAKE-ZN44TBY-LVD5YVO-ML57TIP-Z2HDDLO-BB5OSBM-XYD43WX-DOPPZAJ";};
+          immortal = {id = "U2FLNWL-RAQPG44-7UQG6OP-XEHFIA5-Q6LPK6M-2HOSDL4-ID4SJIF-5SCCWQD";};
         };
         folders = {
           "/home/egor/Sync" = {

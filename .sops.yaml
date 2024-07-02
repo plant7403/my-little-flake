@@ -6,6 +6,7 @@
 keys:
   - &admin_egorgpg CD427CA6CAD8AF84C6CE716DECCA6AE34DAC8326
   - &admin_egor age16m2p23ma7y2ecpaq04c79kwcc2h9knw6qs9nj0duywsy67ecjf3spvfa4v
+  - &admin_egorhm age1nzj420pdxjre6wyfdce475wmkfdc74kdz9tc3lkdls77272upu6sk30kmm
   #- &admin_egory age1yubikey1q2ajh35q4pmmwrhd3ae0qj2n8zgev2afrf0x4x6edxpj40s09pp079k5y8k
   - &server_immortal age163tnqzxk0e0ut8dh6umz6cgwpwqnfhe3d2r494vue37vdqpwqgystraeyn
   - &server_saturn age1jtfyv4340hzagagzvhll500szev2rkpp5y90snsp76rthdwv0v6qy98gn8
@@ -18,7 +19,6 @@ creation_rules:
         - *admin_egorgpg
       age:
         - *admin_egor
-   #     - *admin_egory
         - *server_immortal
         - *server_saturn
         - *server_luna
@@ -65,7 +65,7 @@ creation_rules:
   - path_regex: home-manager/[^/]+\.(yaml|json|env|ini)$
     key_groups:
     - pgp:
-      #- *admin_egorgpg
+        - *admin_egorgpg
       age:
-        #- *admin_egor
-        - *server_pluto
+        - *admin_egor
+        - *admin_egorhm

@@ -6,13 +6,30 @@
   #imports=[
   #./options.nix
   #];
+  #services.geoipupdate.enable = true;
+  #services.geoipupdate.settings = {
+  #  EditionIDs = [
+  #    "GeoLite2-ASN"
+  #    "GeoLite2-City"
+  #    "GeoLite2-Country"
+  #  ];
+  #  AccountID = 995265;
+  #  LicenseKey = {
+  #    _secret = "/run/secrets/geoip/key";
+  #  };
+  #};
   services.nginx = {
     enable = true;
+    statusPage = true;
     # TODO - Review defaults
-    recommendedGzipSettings = true;
-    recommendedOptimisation = true;
-    recommendedProxySettings = true;
+    recommendedZstdSettings = true;
     recommendedTlsSettings = true;
+    recommendedProxySettings = true;
+    recommendedOptimisation = true;
+    recommendedGzipSettings = true;
+    recommendedBrotliSettings = true;
+
+    #additionalModules = [pkgs.nginxModules.geoip2];
 
     # Only allow PFS-enabled ciphers with AES256
     sslCiphers = "AES256+EECDH:AES256+EDH:!aNULL";
@@ -58,6 +75,7 @@
       #      add_header X-XSS-Protection "1; mode=block";
             # This might create errors
       #      proxy_cookie_path / "/; secure; HttpOnly; SameSite=strict";
+
     '';
     virtualHosts."_".locations."/".return = "404";
   };

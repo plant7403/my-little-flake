@@ -40,6 +40,15 @@
     printing = false;
   };
 
+  services.ollama = {
+    enable = true;
+    host = "0.0.0.0";
+    #acceleration = "cuda";
+  };
+  networking.firewall = {
+    allowedTCPPorts = [11434];
+  };
+
   systemd.services.nix-daemon.environment.TMPDIR = "/tmp";
 
   #boot.runSize =
@@ -76,4 +85,42 @@
   services.logind.rebootKey = "ignore";
 
   system.stateVersion = "23.11"; # Did you read the comment?
+
+  #systemd.services.adguard-home = {
+  #before = "";
+  #};
+  systemd.services.cfdyndns = {
+    after = [
+      "adguard-home.service"
+    ];
+  };
+  systemd.services.headscale = {
+    after = [
+      "cfdyndns.service"
+      "nginx.service"
+      "authelia-prod.service"
+    ];
+  };
+  systemd.services.tailscale = {
+    after = [
+      "headscale.service"
+    ];
+  };
+  systemd.services.nginx = {
+    after = [
+      "adguard-home.service"
+    ];
+  };
+  systemd.services.authelia-prod = {
+    after = [
+      "nginx.service"
+    ];
+  };
 }
+/*
+adguard
+cfdyndns
+headscale
+tailscale
+*/
+

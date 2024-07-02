@@ -98,13 +98,13 @@
     }
   ];
 
-  sops.secrets."services/authelia/oidc/headscale/client_id" = {
+  sops.secrets."services/authelia/oidc/headscale/client_id_headscale" = {
     owner = "headscale";
-    key = "services/authelia/oidc/headscale/client_id_headscale";
+    key = "services/authelia/oidc/headscale/client_id";
   };
-  sops.secrets."services/authelia/oidc/headscale/client_secret" = {
+  sops.secrets."services/authelia/oidc/headscale/client_secret_headscale" = {
     owner = "headscale";
-    key = "services/authelia/oidc/headscale/client_secret_headscale";
+    key = "services/authelia/oidc/headscale/client_secret";
   };
   #sops.secrets."services/authelia/oidc/headscale/client_secret_enc" = {
   #  owner = "authelia-prod";

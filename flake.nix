@@ -12,11 +12,15 @@
     # Home manager
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    stylix.url = "github:danth/stylix";
 
-    conduit = {
-      url = "gitlab:famedly/conduit";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nix-flatpak.url = "github:gmodena/nix-flatpak"; # unstable branch. Use github:gmodena/nix-flatpak/?ref=<tag> to pin releases.
+    #flatpaks.url = "github:GermanBread/declarative-flatpak/stable";
+
+    #conduit = {
+    #  url = "gitlab:famedly/conduit";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    #};
     hardware.url = "github:nixos/nixos-hardware";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     impermanence.url = "github:nix-community/impermanence";
@@ -49,18 +53,18 @@
     };
 
     nixos-mailserver = {
-      #url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
-      url = "gitlab:simple-nixos-mailserver/nixos-mailserver/nixos-23.11";
+      url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
+      #url = "gitlab:simple-nixos-mailserver/nixos-mailserver/nixos-24.04";
       inputs.nixpkgs.follows = "nixpkgs";
       #inputs.nixpkgs-22_11.follows = "nixpkgs";
       #inputs.nixpkgs-23_05.follows = "nixpkgs";
       #inputs.nixpkgs-23_11.follows = "nixpkgs";
     };
 
-    firefox-addons = {
-      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    #firefox-addons = {
+    #  url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    #};
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
 
     wp4nix = {
@@ -68,7 +72,7 @@
       flake = false;
       #ref = "master";
     };
-    musnix  = { url = "github:musnix/musnix"; };
+    musnix = {url = "github:musnix/musnix";};
 
     vscode-server.url = "github:nix-community/nixos-vscode-server";
     deploy-rs.url = "github:serokell/deploy-rs";
@@ -86,6 +90,9 @@
     disko,
     nixos-mailserver,
     musnix,
+    nix-flatpak,
+    stylix,
+    #flatpaks,
     ...
   } @ inputs: let
     inherit (self) outputs;

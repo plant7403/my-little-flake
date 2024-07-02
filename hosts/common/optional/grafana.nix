@@ -22,6 +22,7 @@
         enabledCollectors = ["systemd"];
         enable = true;
       };
+      graphite.enable = true;
     };
 
     # ingest the published nodes
@@ -42,79 +43,71 @@
   # loki: port 3030 (8030)
   #
   services.loki = {
-    enable = false;
+    enable = true;
     configuration = {
-      server.http_listen_port = 3030;
+      # Basic stuff
       auth_enabled = false;
-
-      ingester = {
-        lifecycler = {
-          address = "127.0.0.1";
-          ring = {
-            kvstore = {
-              store = "inmemory";
-            };
-            replication_factor = 1;
-          };
+      server = {
+        http_listen_port = 3100;
+        log_level = "warn";
+      };
+      common = {
+        path_prefix = config.services.loki.dataDir;
+        storage.filesystem = {
+          chunks_directory = "${config.services.loki.dataDir}/chunks";
+          rules_directory = "${config.services.loki.dataDir}/rules";
         };
-        chunk_idle_period = "1h";
-        max_chunk_age = "1h";
-        chunk_target_size = 999999;
-        chunk_retain_period = "30s";
-        max_transfer_retries = 0;
+        replication_factor = 1;
+        ring.kvstore.store = "inmemory";
+        ring.instance_addr = "127.0.0.1";
       };
 
-      schema_config = {
-        configs = [
-          {
-            from = "2024-01-01";
-            store = "boltdb-shipper";
-            object_store = "filesystem";
-            schema = "v11";
-            index = {
-              prefix = "index_";
-              period = "24h";
-            };
-          }
-        ];
-      };
-
-      storage_config = {
-        boltdb_shipper = {
-          active_index_directory = "/var/lib/loki/boltdb-shipper-active";
-          cache_location = "/var/lib/loki/boltdb-shipper-cache";
-          cache_ttl = "24h";
-          shared_store = "filesystem";
-        };
-
-        filesystem = {
-          directory = "/var/lib/loki/chunks";
-        };
-      };
+      ingester.chunk_encoding = "snappy";
 
       limits_config = {
+        retention_period = "120h";
+        ingestion_burst_size_mb = 16;
         reject_old_samples = true;
-        reject_old_samples_max_age = "168h";
-      };
-
-      chunk_store_config = {
-        max_look_back_period = "0s";
+        reject_old_samples_max_age = "12h";
       };
 
       table_manager = {
-        retention_deletes_enabled = false;
-        retention_period = "0s";
+        retention_deletes_enabled = true;
+        retention_period = "120h";
       };
 
       compactor = {
-        working_directory = "/var/lib/loki";
-        shared_store = "filesystem";
-        compactor_ring = {
-          kvstore = {
-            store = "inmemory";
-          };
-        };
+        retention_enabled = true;
+        compaction_interval = "10m";
+        working_directory = "${config.services.loki.dataDir}/compactor";
+        delete_request_cancel_period = "10m"; # don't wait 24h before processing the delete_request
+        retention_delete_delay = "2h";
+        retention_delete_worker_count = 150;
+        delete_request_store = "filesystem";
       };
+
+      schema_config.configs = [
+        {
+          from = "2020-11-08";
+          store = "tsdb";
+          object_store = "filesystem";
+          schema = "v13";
+          index.prefix = "index_";
+          index.period = "24h";
+        }
+      ];
+
+      ruler = {
+        storage = {
+          type = "local";
+          local.directory = "${config.services.loki.dataDir}/ruler";
+        };
+        rule_path = "${config.services.loki.dataDir}/rules";
+        alertmanager_url = "http://alertmanager.r";
+      };
+
+      query_range.cache_results = true;
+      limits_config.split_queries_by_interval = "24h";
     };
   };
 
@@ -160,15 +153,14 @@
   # grafana: port 3010 (8010)
   #
   services.grafana = {
-    port = 3010;
-    # WARNING: this should match nginx setup!
-    # prevents "Request origin is not authorized"
-    rootUrl = "http://192.168.1.100:8010"; # helps with nginx / ws / live
-
-    protocol = "http";
-    addr = "127.0.0.1";
-    analytics.reporting.enable = false;
     enable = true;
+    settings.analytics.reporting_enabled = false;
+    settings.server = {
+      http_port = 3010;
+      root_url = "http://192.168.1.100:8010"; # helps with nginx / ws / live
+      protocol = "http";
+      http_addr = "127.0.0.1";
+    };
 
     provision = {
       enable = true;
@@ -200,7 +192,7 @@
     upstreams = {
       "grafana" = {
         servers = {
-          "127.0.0.1:${toString config.services.grafana.port}" = {};
+          "127.0.0.1:${toString config.services.grafana.settings.server.http_port}" = {};
         };
       };
       "prometheus" = {
@@ -280,4 +272,8 @@
       '';
     };
   };
+  environment.persistence."/persist".directories = [
+    "/var/lib/grafana"
+    "/var/lib/prometheus2"
+  ];
 }

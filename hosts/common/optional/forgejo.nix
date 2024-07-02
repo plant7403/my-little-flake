@@ -1,18 +1,21 @@
 {config, ...}: {
-  services.nginx.virtualHosts."git.egor.wtf" = {
-    enableACME = true;
-    forceSSL = true;
-    #    locations."/" = {
-    #      proxyPass = "http://localhost:3001/";
-    #    };
-    extraConfig = ''
-      ${builtins.readFile ./nginx/authelia/vh.conf}
-    '';
-    locations."/".extraConfig = ''
-        include ${config.services.nginx.package}/conf/fastcgi.conf;
-        fastcgi_pass unix:${config.services.forgejo.settings.server.HTTP_ADDR};
-      ${builtins.readFile ./nginx/authelia/locations.conf}
-    '';
+  services.nginx.virtualHosts = {
+    "git.egor.wtf" = {
+      forceSSL = true;
+      useACMEHost = "egor.wtf";
+      extraConfig = ''
+        ${builtins.readFile ./nginx/authelia/vh.conf}
+      '';
+      locations."/" = {
+        proxyPass = "http://127.0.0.1:5055";
+        proxyWebsockets = true;
+        extraConfig = ''
+          ${builtins.readFile ./nginx/authelia/locations.conf}
+          include ${config.services.nginx.package}/conf/fastcgi.conf;
+          fastcgi_pass unix:${config.services.forgejo.settings.server.HTTP_ADDR};
+        '';
+      };
+    };
   };
 
   services.forgejo = {
@@ -65,18 +68,18 @@
     allowedTCPPorts = [2222];
   };
 
-  services.authelia.instances.prod = {
-    settings = {
-      access_control = {
-        rules = [
-          {
-            domain = ["git.egor.wtf"];
-            policy = "bypass";
-          }
-        ];
-      };
-    };
-  };
+  #services.authelia.instances.prod = {
+  #  settings = {
+  #    access_control = {
+  #      rules = [
+  #        {
+  #          domain = ["git.egor.wtf"];
+  #          policy = "bypass";
+  #        }
+  #      ];
+  #    };
+  #  };
+  #};
   #config.sops.secrets."postgres/forgejo".path;
   sops.secrets."postgres/forgejo" = {
     sopsFile = ./../../../secrets/example.yaml; # bring your own password file

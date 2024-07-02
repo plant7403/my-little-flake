@@ -10,7 +10,6 @@ with lib; let
   # cfg is a typical convention.
   cfg = config.modules.tailscale;
 in {
-
   # Declare what settings a user of this "ts-custom.nix" module CAN SET.
   options.modules.tailscale = {
     enable = mkEnableOption "ts-custom service";
@@ -43,7 +42,8 @@ in {
         extraUpFlags =
           [
             "--login-server https://head.egor.wtf"
-            "--hostname ${cfg.hostname}"
+            "--hostname=${cfg.hostname}"
+            "--operator=egor"
           ]
           ++ mkIf cfg.exit [
             "--advertise-exit-node"

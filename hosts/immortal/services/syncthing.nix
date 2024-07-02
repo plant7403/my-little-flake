@@ -9,7 +9,7 @@
         devices = {
           luna = {id = "J7XMOAJ-P46MLGT-FIXSDMK-4XRDF6M-VFWRHBN-2TLP23V-I2TKCMB-SUZJ7AN";};
           pixel6 = {id = "6JHCNHN-KJ3AEVM-GH6GYAA-F3M4E4N-2GQL7X5-26L36YQ-6F5D52A-WCL3DA5";};
-          #immortal = {id = "HOYMAKE-ZN44TBY-LVD5YVO-ML57TIP-Z2HDDLO-BB5OSBM-XYD43WX-DOPPZAJ";};
+          saturn = {id = "3UZNB6Y-ON3WWR7-RFTDYED-4Q2ZH5H-45Y4FWS-QPEWYUB-HBH3XHT-62STRQ7";};
         };
         folders = {
           "/home/egor/Sync" = {
