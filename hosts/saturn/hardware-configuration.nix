@@ -6,9 +6,7 @@
   lib,
   modulesPath,
   ...
-}:
-# FIXME - Add second drive
-{
+}: {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];

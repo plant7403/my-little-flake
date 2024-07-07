@@ -34,6 +34,16 @@
                 content = {
                   type = "btrfs";
                   extraArgs = ["-f"];
+                  postCreateHook =
+                    /*
+                    sh
+                    */
+                    ''
+                      MNTPOINT=$(mktemp -d)
+                      mount "/dev/mapper/ssd-crypt" "$MNTPOINT" -o subvol=/
+                      trap 'umount $MNTPOINT; rm -rf $MNTPOINT' EXIT
+                      btrfs subvolume snapshot -r $MNTPOINT/@ROOT $MNTPOINT/@ROOT-BLANK
+                    '';
                   subvolumes = {
                     "/@ROOT" = {
                       mountpoint = "/";
@@ -55,10 +65,10 @@
                       mountpoint = "/var/log";
                       mountOptions = ["compress=zstd" "noatime"];
                     };
-                    #"/@SWAP" = {
-                    #  mountpoint = "/.swapvol";
-                    #  swap.swapfile.size = "8G";
-                    #};
+                    "/@SWAP" = {
+                      mountpoint = "/.swapvol";
+                      swap.swapfile.size = "8G";
+                    };
                   };
                 };
               };
