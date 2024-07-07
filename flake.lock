@@ -206,11 +206,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1719733833,
-        "narHash": "sha256-6h2EqZU9bL9rHlXE+2LCBgnDImejzbS+4dYsNDDFlkY=",
+        "lastModified": 1719864345,
+        "narHash": "sha256-e4Pw+30vFAxuvkSTaTypd9zYemB/QlWcH186dsGT+Ms=",
         "owner": "nix-community",
         "repo": "disko",
-        "rev": "d185770ea261fb5cf81aa5ad1791b93a7834d12c",
+        "rev": "544a80a69d6e2da04e4df7ec8210a858de8c7533",
         "type": "github"
       },
       "original": {
@@ -449,11 +449,11 @@
     },
     "hardware": {
       "locked": {
-        "lastModified": 1719681865,
-        "narHash": "sha256-Lp+l1IsREVbz8WM35OJYZz8sAH0XOjrZWUXVB5bJ2qg=",
+        "lastModified": 1719895800,
+        "narHash": "sha256-xNbjISJTFailxass4LmdWeV4jNhAlmJPwj46a/GxE6M=",
         "owner": "nixos",
         "repo": "nixos-hardware",
-        "rev": "a59f00f5ac65b19382617ba00f360f8bc07ed3ac",
+        "rev": "6e253f12b1009053eff5344be5e835f604bb64cd",
         "type": "github"
       },
       "original": {
@@ -604,11 +604,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1719797603,
-        "narHash": "sha256-Bw9K0LgCwuBKg0534d0Ss71prBKzUR/b1SqWyRqOSzg=",
+        "lastModified": 1719883589,
+        "narHash": "sha256-Xiir5+DZfsVLzI/DmVdCL9rt6RbfNPS0uW0pdymm4wM=",
         "owner": "nix-community",
         "repo": "nix-vscode-extensions",
-        "rev": "bec5bcb9503603a84f92d8801e304f7acdd89c86",
+        "rev": "3be7b0b799d739c3e15f3fd0a909d682c173962f",
         "type": "github"
       },
       "original": {
@@ -619,11 +619,11 @@
     },
     "nixos-hardware": {
       "locked": {
-        "lastModified": 1719681865,
-        "narHash": "sha256-Lp+l1IsREVbz8WM35OJYZz8sAH0XOjrZWUXVB5bJ2qg=",
+        "lastModified": 1719895800,
+        "narHash": "sha256-xNbjISJTFailxass4LmdWeV4jNhAlmJPwj46a/GxE6M=",
         "owner": "NixOS",
         "repo": "nixos-hardware",
-        "rev": "a59f00f5ac65b19382617ba00f360f8bc07ed3ac",
+        "rev": "6e253f12b1009053eff5344be5e835f604bb64cd",
         "type": "github"
       },
       "original": {
@@ -905,11 +905,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1719716556,
-        "narHash": "sha256-KA9gy2Wkv76s4A8eLnOcdKVTygewbw3xsB8+awNMyqs=",
+        "lastModified": 1719873517,
+        "narHash": "sha256-D1dxZmXf6M2h5lNE1m6orojuUawVPjogbGRsqSBX+1g=",
         "owner": "mic92",
         "repo": "sops-nix",
-        "rev": "b5974d4331fb6c893e808977a2e1a6d34b3162d6",
+        "rev": "a11224af8d824935f363928074b4717ca2e280db",
         "type": "github"
       },
       "original": {
@@ -1061,11 +1061,11 @@
     "wp4nix": {
       "flake": false,
       "locked": {
-        "lastModified": 1719795754,
-        "narHash": "sha256-Up8suMN5mSSGCbzb0mUXypoGFsrdNHAw0/nAuduuzf0=",
+        "lastModified": 1719882444,
+        "narHash": "sha256-6Fxd8bqNhEiTOE3or8A4vNFVbeNCXl5Xav10bPW0S0M=",
         "ref": "master",
-        "rev": "3f391a0c22db3c8b67bcd46f5ff4abe130dd53da",
-        "revCount": 1488,
+        "rev": "cfc953dd21669d5f1b6a1453881fd3621fe0e861",
+        "revCount": 1489,
         "type": "git",
         "url": "https://git.helsinki.tools/helsinki-systems/wp4nix.git"
       },

@@ -22,6 +22,7 @@
     outputs.nixosModules.impermanence
     outputs.nixosModules.tailscale
     outputs.nixosModules.system
+    outputs.nixosModules.yubikey
   ];
 
   modules.impermanence = {
@@ -39,7 +40,8 @@
     ssh = true;
     printing = false;
   };
-
+  modules.yubikey.enable = true;
+  
   services.ollama = {
     enable = true;
     host = "0.0.0.0";
