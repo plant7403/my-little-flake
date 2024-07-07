@@ -25,8 +25,8 @@ in {
     ./../common/users/egor.nix
     #./ssh.nix
     #./camera.nix
-    inputs.nixos-hardware.nixosModules.microsoft-surface-common
-    inputs.nixos-hardware.nixosModules.microsoft-surface-go
+    inputs.hardware.nixosModules.microsoft-surface-common
+    inputs.hardware.nixosModules.microsoft-surface-go
     outputs.nixosModules.gnome
     outputs.nixosModules.impermanence
     outputs.nixosModules.mullvad
@@ -77,7 +77,7 @@ in {
   #services.udisks2.enable = true;
   #hardware.usbWwan.enable = true;
 
-  microsoft-surface.surface-control.enable = true;
+  #microsoft-surface.surface-control.enable = true;
   microsoft-surface.kernelVersion = "6.6";
   #hardware.microsoft-surface.firmware.surface-go-ath10k.replace = true;
   #hardware.enableRedistributableFirmware = true;
@@ -118,5 +118,6 @@ in {
   ];
   nixpkgs.config.permittedInsecurePackages = [
     "electron-28.3.3"
+    "electron-27.3.11"
   ];
 }

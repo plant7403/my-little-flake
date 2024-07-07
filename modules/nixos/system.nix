@@ -84,6 +84,7 @@ in {
           AllowStreamLocalForwarding yes
           AuthenticationMethods publickey
           X11UseLocalhost no
+	  StreamLocalBindUnlink yes
         '';
       };
     })

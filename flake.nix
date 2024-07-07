@@ -85,7 +85,7 @@
     deploy-rs,
     sops-nix,
     home-manager,
-    nixos-hardware,
+    hardware,
     lanzaboote,
     disko,
     nixos-mailserver,
@@ -178,8 +178,8 @@
         modules = [
           ./hosts/luna/configuration.nix
           sops-nix.nixosModules.sops
-          nixos-hardware.nixosModules.microsoft-surface-go
-          #nixos-hardware.nixosModules.microsoft-surface-common
+          hardware.nixosModules.microsoft-surface-go
+          hardware.nixosModules.microsoft-surface-common
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;

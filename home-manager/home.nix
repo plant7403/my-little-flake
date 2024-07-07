@@ -100,8 +100,8 @@
     freetube
 
     sops
-    davinci-resolve
-    flowblade
+    #davinci-resolve
+    #flowblade
     kdenlive
   ];
 
@@ -236,11 +236,11 @@
 
   stylix.enable = true;
   stylix.polarity = "dark";
-  stylix.image = /run/current-system/sw/share/backgrounds/gnome/vnc-d.png;
-  # stylix.image = pkgs.fetchurl {
-  #   url = "https://www.pixelstalk.net/wp-content/uploads/2016/05/Epic-Anime-Awesome-Wallpapers.jpg";
-  #   sha256 = "enQo3wqhgf0FEPHj2coOCvo7DuZv+x5rL/WIo4qPI50=";
-  # };
+  #stylix.image = /run/current-system/sw/share/backgrounds/gnome/vnc-d.png;
+   stylix.image = pkgs.fetchurl {
+     url = "https://github.com/NixOS/nixos-artwork/blob/master/wallpapers/nix-wallpaper-dracula.png?raw=true";
+     sha256 = "07ly21bhs6cgfl7pv4xlqzdqm44h22frwfhdqyd4gkn2jla1waab";
+   };
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-city-dark.yaml";
   stylix.fonts = {
     serif = {
