@@ -103,6 +103,7 @@
     #davinci-resolve
     #flowblade
     kdenlive
+    deploy-rs
   ];
 
   programs.home-manager.enable = true;

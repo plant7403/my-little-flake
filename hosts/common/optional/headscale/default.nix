@@ -34,7 +34,7 @@
       oidc = {
         issuer = "https://auth.egor.wtf";
         client_secret_path = config.sops.secrets."services/authelia/oidc/headscale/client_secret_headscale".path;
-        client_id = config.sops.secrets."services/authelia/oidc/headscale/client_id_headscale".path;
+        client_id = "headscale";
         #allowed_domains = "egor.wtf";
         #allowed_users = "egor";
         only_start_if_oidc_is_available = true;

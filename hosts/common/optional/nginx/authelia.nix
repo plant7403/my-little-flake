@@ -5,6 +5,8 @@
       jwtSecretFile = config.sops.secrets."services/authelia/jwt".path;
       storageEncryptionKeyFile = config.sops.secrets."services/authelia/storage".path;
       oidcIssuerPrivateKeyFile = config.sops.secrets."services/authelia/oidc/nextcloud/private.pem".path;
+      #oidcHmacSecretFile
+
     };
     settings = {
       default_2fa_method = "";
@@ -109,9 +111,9 @@
       };
       identity_providers.oidc.clients = [
         {
-          id = config.sops.secrets."services/authelia/oidc/nextcloud/client_id".path;
+          id = "nextcloud";
           description = "NextCloud";
-          secret = config.sops.secrets."services/authelia/oidc/nextcloud/client_secret".path;
+          secret = "$pbkdf2-sha512$310000$bhdup1ycaQmWoLLoFpD/5A$VC1VY6OPD.kOY39FkQR.5wKGWGoASxoQIgB.CXa7WNapC/tLTDOu2wQM6h3pNToXz.Nbu7uQxQIKM8Fp6mfYVA";
           public = false;
           authorization_policy = "two_factor";
           #require_pkce = true;
@@ -133,9 +135,9 @@
 
         # Headscale
         {
-          id = config.sops.secrets."services/authelia/oidc/headscale/client_id".path;
+          id = "headscale";
           description = "Headscale";
-          secret = config.sops.secrets."services/authelia/oidc/headscale/client_secret".path;
+          secret = "$pbkdf2-sha512$310000$bhdup1ycaQmWoLLoFpD/5A$VC1VY6OPD.kOY39FkQR.5wKGWGoASxoQIgB.CXa7WNapC/tLTDOu2wQM6h3pNToXz.Nbu7uQxQIKM8Fp6mfYVA";
           public = false;
           authorization_policy = "two_factor";
           redirect_uris = [

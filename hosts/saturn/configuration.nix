@@ -181,4 +181,5 @@
   nixpkgs.config.nvidia.acceptLicense = true;
 
   networking.firewall.allowedTCPPorts = [33847];
+
 }

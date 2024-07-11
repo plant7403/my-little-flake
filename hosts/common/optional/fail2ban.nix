@@ -1,15 +1,15 @@
 {pkgs, ...}: {
   services.fail2ban = {
     enable = true;
-    # Ban IP after 5 failures
-    maxretry = 5;
+    # Ban IP after 3 failures
+    maxretry = 3;
     ignoreIP = [
       # Whitelist some subnets
       "10.0.0.0/8"
       "172.16.0.0/12"
       #"192.168.0.0/16"
       #"8.8.8.8" # whitelist a specific IP
-      "100.64.0.1"
+      "100.64.0.0/10"
       #"egor.wtf" # resolve the IP via DNS
     ];
     bantime = "1h"; # Ban IPs for one day on the first ban
@@ -41,13 +41,13 @@
                            ntfy'';
         backend = "auto"; # Do not forget to specify this if your jail uses a log file
         maxretry = 5;
-        findtime = 6000;
+        findtime = 60000;
       };
 
       sshd.settings = {
-        #filter = "sshd";
+        filter = "sshd";
         #action = ''iptables-multiport[name=SSH, port="${concatMapStringsSep "," (p: toString p) config.services.openssh.ports}", protocol=tcp]'';
-        #maxretry = "5";
+        maxretry = "3";
         #port = "3370";
         mode = "aggressive";
       };
