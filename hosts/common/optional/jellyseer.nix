@@ -99,6 +99,7 @@
       };
     };
   };
+  users.groups.media = {};
 
   environment.persistence."/persist".directories = [
     "/var/lib/jackett"

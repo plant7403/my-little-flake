@@ -27,7 +27,7 @@
     ./../../common/optional/photoprism/default.nix
     ./../../common/optional/searx-ng/default.nix
     ./../../common/optional/tpm.nix
-    ./../../common/optional/transmission/default.nix
+    #./../../common/optional/transmission/default.nix
     ./../../common/optional/vaultwarden/default.nix
     ./asteriks.nix
     #./impermanence.nix
