@@ -104,6 +104,7 @@
     #flowblade
     kdenlive
     deploy-rs
+    gnome-decoder
   ];
 
   programs.home-manager.enable = true;
@@ -238,10 +239,10 @@
   stylix.enable = true;
   stylix.polarity = "dark";
   #stylix.image = /run/current-system/sw/share/backgrounds/gnome/vnc-d.png;
-   stylix.image = pkgs.fetchurl {
-     url = "https://github.com/NixOS/nixos-artwork/blob/master/wallpapers/nix-wallpaper-dracula.png?raw=true";
-     sha256 = "07ly21bhs6cgfl7pv4xlqzdqm44h22frwfhdqyd4gkn2jla1waab";
-   };
+  stylix.image = pkgs.fetchurl {
+    url = "https://github.com/NixOS/nixos-artwork/blob/master/wallpapers/nix-wallpaper-dracula.png?raw=true";
+    sha256 = "07ly21bhs6cgfl7pv4xlqzdqm44h22frwfhdqyd4gkn2jla1waab";
+  };
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-city-dark.yaml";
   stylix.fonts = {
     serif = {
