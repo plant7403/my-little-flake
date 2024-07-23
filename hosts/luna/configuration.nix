@@ -78,7 +78,7 @@ in {
   #hardware.usbWwan.enable = true;
 
   #microsoft-surface.surface-control.enable = true;
-  microsoft-surface.kernelVersion = "6.6";
+  microsoft-surface.kernelVersion = "6.9";
   #hardware.microsoft-surface.firmware.surface-go-ath10k.replace = true;
   #hardware.enableRedistributableFirmware = true;
   #nixpkgs.config.allowUnfree = true;

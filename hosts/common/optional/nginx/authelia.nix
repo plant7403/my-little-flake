@@ -6,12 +6,11 @@
       storageEncryptionKeyFile = config.sops.secrets."services/authelia/storage".path;
       oidcIssuerPrivateKeyFile = config.sops.secrets."services/authelia/oidc/nextcloud/private.pem".path;
       #oidcHmacSecretFile
-
     };
     settings = {
       default_2fa_method = "";
       log.level = "info";
-      server.host = "0.0.0.0";
+      address = "0.0.0.0";
       telemetry.metrics.enabled = false;
       theme = "dark";
       webauthn = {

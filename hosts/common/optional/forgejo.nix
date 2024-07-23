@@ -1,8 +1,14 @@
-{config, ...}: {
+{config, ...}: let
+  prefix = "git";
+  domain = "egor.wtf";
+  onion = "ya2rgzzkijougnm32yfq2q6oa3ft6vpxw4j6asufppy5xmae6rucn2yd.onion";
+in {
+  services.nginx.serverNamesHashBucketSize = 128;
+  #services.nginx.mapHashBucketSize = 64;
   services.nginx.virtualHosts = {
-    "git.egor.wtf" = {
+    "${prefix}.${domain}" = {
       forceSSL = true;
-      useACMEHost = "egor.wtf";
+      useACMEHost = "${domain}";
       extraConfig = ''
         ${builtins.readFile ./nginx/authelia/vh.conf}
       '';
@@ -11,6 +17,21 @@
         proxyWebsockets = true;
         extraConfig = ''
           ${builtins.readFile ./nginx/authelia/locations.conf}
+          include ${config.services.nginx.package}/conf/fastcgi.conf;
+          fastcgi_pass unix:${config.services.forgejo.settings.server.HTTP_ADDR};
+        '';
+      };
+    };
+    "${prefix}.${onion}" = {
+      #forceSSL = true;
+      #useACMEHost = "egor.wtf";
+      #extraConfig = ''
+      #  ${builtins.readFile ./nginx/authelia/vh.conf}
+      #'';
+      locations."/" = {
+        proxyPass = "http://127.0.0.1:5055";
+        proxyWebsockets = true;
+        extraConfig = ''
           include ${config.services.nginx.package}/conf/fastcgi.conf;
           fastcgi_pass unix:${config.services.forgejo.settings.server.HTTP_ADDR};
         '';
