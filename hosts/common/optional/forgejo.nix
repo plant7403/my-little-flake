@@ -1,43 +1,45 @@
-{config, ...}: let
-  prefix = "git";
+{
+  config,
+  outputs,
+  ...
+}: let
+  /*
+     prefix = "git";
   domain = "egor.wtf";
   onion = "ya2rgzzkijougnm32yfq2q6oa3ft6vpxw4j6asufppy5xmae6rucn2yd.onion";
+  */
 in {
-  services.nginx.serverNamesHashBucketSize = 128;
-  #services.nginx.mapHashBucketSize = 64;
-  services.nginx.virtualHosts = {
-    "${prefix}.${domain}" = {
-      forceSSL = true;
-      useACMEHost = "${domain}";
-      extraConfig = ''
-        ${builtins.readFile ./nginx/authelia/vh.conf}
-      '';
-      locations."/" = {
-        proxyPass = "http://127.0.0.1:5055";
-        proxyWebsockets = true;
-        extraConfig = ''
-          ${builtins.readFile ./nginx/authelia/locations.conf}
-          include ${config.services.nginx.package}/conf/fastcgi.conf;
-          fastcgi_pass unix:${config.services.forgejo.settings.server.HTTP_ADDR};
-        '';
-      };
-    };
-    "${prefix}.${onion}" = {
-      #forceSSL = true;
-      #useACMEHost = "egor.wtf";
-      #extraConfig = ''
-      #  ${builtins.readFile ./nginx/authelia/vh.conf}
-      #'';
-      locations."/" = {
-        proxyPass = "http://127.0.0.1:5055";
-        proxyWebsockets = true;
-        extraConfig = ''
-          include ${config.services.nginx.package}/conf/fastcgi.conf;
-          fastcgi_pass unix:${config.services.forgejo.settings.server.HTTP_ADDR};
-        '';
-      };
+  /*
+     imports = [outputs.nixosModules.web];
+  modules.web = {
+    enable = true;
+    prefix = "git";
+    port = "5055";
+    authelia = true;
+    extraConfig = ''
+
+    '';
+    tor = {
+      enable = true;
+      authelia = true;
     };
   };
+  */
+  imports = [outputs.nixosModules.web];
+  modules.web = {
+    accessLog = true;
+  };
+  modules.web.vhosts = [
+    {
+      domain = "egor.wtf";
+      prefix = "git";
+      upstream = "http://127.0.0.1:5055";
+      extraConfig = ''
+        include ${config.services.nginx.package}/conf/fastcgi.conf;
+        fastcgi_pass unix:${config.services.forgejo.settings.server.HTTP_ADDR};
+      '';
+    }
+  ];
 
   services.forgejo = {
     #package = pkgs.forgejo;

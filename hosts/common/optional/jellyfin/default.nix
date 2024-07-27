@@ -1,6 +1,7 @@
 {
   pkgs,
   config,
+  outputs,
   ...
 }: {
   # 1. enable vaapi on OS-level
@@ -31,34 +32,34 @@
       allowedUDPPorts = [1900 7359];
     };
   };
-
-  services.nginx = {
+  /*
+  imports = [outputs.nixosModules.web];
+  modules.web = {
     enable = true;
-    recommendedProxySettings = true;
-    recommendedTlsSettings = true;
-    virtualHosts = {
-      "jelly.egor.wtf" = {
-        forceSSL = true;
-        useACMEHost = "egor.wtf";
-        extraConfig = ''
-          ${builtins.readFile ../nginx/authelia/vh.conf}
-        '';
-        locations."/" = {
-          proxyPass = "http://127.0.0.1:8096";
-          proxyWebsockets = true;
-          extraConfig = ''
-            ${builtins.readFile ../nginx/authelia/locations.conf}
-            # required when the target is also TLS server with multiple hosts
-            proxy_ssl_server_name on;
+    prefix = "jelly";
+    port = "8096";
+    authelia = true;
+    extraConfig = ''
+      # required when the target is also TLS server with multiple hosts
+      proxy_ssl_server_name on;
 
-            # required when the server wants to use HTTP Authentication
-            proxy_pass_header Authorization;
-
-          '';
-        };
-      };
+      # required when the server wants to use HTTP Authentication
+      proxy_pass_header Authorization;
+    '';
+    tor = {
+      enable = true;
+      authelia = true;
     };
   };
+  */
+  modules.web.vhosts = [
+    {
+      domain = "egor.wtf";
+      prefix = "jelly";
+      upstream = "http://127.0.0.1:8096";
+    }
+  ];
+
   environment.systemPackages = with pkgs; [
     ffmpeg-full
   ];

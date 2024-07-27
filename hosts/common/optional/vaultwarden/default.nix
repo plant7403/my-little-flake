@@ -1,4 +1,4 @@
-{...}: {
+{outputs, ...}: {
   services.vaultwarden = {
     enable = true;
     dbBackend = "postgresql";
@@ -19,39 +19,41 @@
     ensureUsers = [
       {
         name = "vaultwarden";
-        #ensurePermissions = {"DATABASE vaultwarden" = "ALL PRIVILEGES";};
         ensureDBOwnership = true;
       }
     ];
   };
-  services.nginx = {
+  /*
+  imports = [outputs.nixosModules.web];
+  modules.web = {
     enable = true;
-
-    # Use recommended settings
-    recommendedGzipSettings = true;
-
-    virtualHosts."password.egor.wtf" = {
-      enableACME = true;
-      forceSSL = true;
-      extraConfig = ''
-        ${builtins.readFile ./../nginx/authelia/vh.conf}
-      '';
-      locations."/" = {
-        proxyPass = "http://127.0.0.1:8000";
-        extraConfig = ''
-          ${builtins.readFile ./../nginx/authelia/locations.conf}
-        '';
-      };
+    prefix = "password";
+    port = "8000";
+    authelia = true;
+    tor = {
+      enable = true;
+      authelia = true;
     };
   };
+  */
+  modules.web.vhosts = [
+    {
+      domain = "egor.wtf";
+      prefix = "password";
+      upstream = "http://127.0.0.1:8000";
+    }
+  ];
+
   services.authelia.instances.prod = {
     settings = {
       access_control = {
         rules = [
-          {
+          /*
+             {
             domain = ["password.egor.wtf"];
             policy = "one_factor";
           }
+          */
           {
             domain = ["password.egor.wtf"];
             policy = "bypass";

@@ -13,7 +13,7 @@
     ./../../common/optional/containers/simplex.nix
     ./../../common/optional/crypto/monero-node.nix
     ./../../common/optional/forgejo.nix
-    #./../../common/optional/fail2ban.nix
+    ./../../common/optional/fail2ban.nix
     ./../../common/optional/grafana.nix
     ./../../common/optional/headscale/default.nix
     ./../../common/optional/jellyfin/default.nix
@@ -28,7 +28,7 @@
     ./../../common/optional/searx-ng/default.nix
     ./../../common/optional/tpm.nix
     ./../../common/optional/tor.nix
-    #./../../common/optional/transmission/default.nix
+    ./../../common/optional/transmission/default.nix
     ./../../common/optional/vaultwarden/default.nix
     ./asteriks.nix
     #./impermanence.nix

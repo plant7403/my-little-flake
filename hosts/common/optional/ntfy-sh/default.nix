@@ -1,4 +1,4 @@
-{...}: {
+{outputs, ...}: {
   # TODO - Make it private
   services.ntfy-sh = {
     enable = true;
@@ -13,24 +13,27 @@
       #attachment-expiry-duratibase-url;
     };
   };
-  services.nginx = {
+
+  /*
+     imports = [outputs.nixosModules.web];
+  modules.web = {
     enable = true;
-    recommendedGzipSettings = true;
-    virtualHosts."push.egor.wtf" = {
-      enableACME = true;
-      forceSSL = true;
-      #extraConfig = ''
-      # ${builtins.readFile ./../nginx/authelia/vh.conf}
-      #'';
-      locations."/" = {
-        proxyPass = "http://127.0.0.1:8085";
-        proxyWebsockets = true;
-        # extraConfig = ''
-        # ${builtins.readFile ./../nginx/authelia/locations.conf}
-        # '';
-      };
+    prefix = "push";
+    port = "8085";
+    authelia = true;
+    tor = {
+      enable = true;
+      authelia = true;
     };
   };
+  */
+  modules.web.vhosts = [
+    {
+      domain = "egor.wtf";
+      prefix = "push";
+      upstream = "http://127.0.0.1:8085";
+    }
+  ];
   environment.persistence."/persist".directories = [
     "/var/lib/private/ntfy-sh"
   ];

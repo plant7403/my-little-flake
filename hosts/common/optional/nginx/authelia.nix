@@ -10,7 +10,7 @@
     settings = {
       default_2fa_method = "";
       log.level = "info";
-      address = "0.0.0.0";
+      server.address = "tcp://:9091/";
       telemetry.metrics.enabled = false;
       theme = "dark";
       webauthn = {

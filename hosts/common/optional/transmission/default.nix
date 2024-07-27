@@ -24,28 +24,13 @@
       #rpc-whitelist = "192.168.1.*";
     };
   };
-  services.nginx = {
-    enable = true;
-    recommendedGzipSettings = true;
-    virtualHosts."torr.egor.wtf" = {
-      basicAuth = {
-        #  #egor = config.sops.secarets."services/transmission".path;
-
-        #egor = config.sops.secrets."services/transmission".path;
-      };
-      enableACME = true;
-      forceSSL = true;
-      extraConfig = ''
-        ${builtins.readFile ./../nginx/authelia/vh.conf}
-      '';
-      locations."/" = {
-        proxyPass = "http://127.0.0.1:9099";
-        extraConfig = ''
-          ${builtins.readFile ./../nginx/authelia/locations.conf}
-        '';
-      };
-    };
-  };
+  modules.web.vhosts = [
+    {
+      domain = "egor.wtf";
+      prefix = "torr";
+      upstream = "http://127.0.0.1:9099";
+    }
+  ];
   users.groups.media = {};
 
   sops.secrets."services/transmission" = {
