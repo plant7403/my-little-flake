@@ -38,6 +38,8 @@ in {
         include ${config.services.nginx.package}/conf/fastcgi.conf;
         fastcgi_pass unix:${config.services.forgejo.settings.server.HTTP_ADDR};
       '';
+      tor.enable = true;
+      tor.authelia = false;
     }
   ];
 

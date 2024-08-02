@@ -69,6 +69,17 @@ in {
         "/var/lib/tailscale"
       ];
     })
+    (mkIf cfg.exit {
+      services.networkd-dispatcher.enable = true;
+      services.networkd-dispatcher.rules = {
+        "tailscale-routing" = {
+          onState = ["routable" "off"];
+          script = ''
+            ${lib.getExe pkgs.ethtool} -K enp0s31f6 rx-udp-gro-forwarding on rx-gro-list off
+          '';
+        };
+      };
+    })
   ];
 }
 /*
