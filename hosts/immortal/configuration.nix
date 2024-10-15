@@ -39,6 +39,13 @@
     hostname = "immortal";
     ssh = true;
     printing = false;
+    autoupdate = true;
+    cleanup = true;
+    hardening = true;
+    usbguard = {
+      enable = true;
+      sops = false;
+    };
   };
   modules.yubikey.enable = true;
 

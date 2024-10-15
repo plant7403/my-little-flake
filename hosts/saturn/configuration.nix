@@ -53,6 +53,13 @@
     hostname = "saturn";
     ssh = true;
     printing = true;
+    autoupdate = true;
+    cleanup = true;
+    hardening = true;
+    usbguard = {
+      enable = false;
+      sops = true;
+    };
   };
   modules.yubikey.enable = true;
 
@@ -95,97 +102,24 @@
       "nvidia-settings"
       "intel-ocl"
     ];
-
-  services.gvfs.enable = true;
-  environment.systemPackages = with pkgs; [
-    #mtpfs
-    android-file-transfer
-  ];
-
-  hardware.graphics = {
+  /*
+  nixpkgs.config.packageOverrides = pkgs: {
+    intel-vaapi-driver = pkgs.intel-vaapi-driver.override {enableHybridCodec = true;};
+  };
+  */
+  hardware.opengl = {
+    # hardware.graphics on unstable
     enable = true;
-    enable32Bit = true;
     extraPackages = with pkgs; [
-      intel-compute-runtime
-      intel-media-driver
-      intel-ocl
-      intel-vaapi-driver
+      intel-media-driver # LIBVA_DRIVER_NAME=iHD
+      intel-vaapi-driver # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+      libvdpau-va-gl
+      # your Open GL, Vulkan and VAAPI drivers
+      vpl-gpu-rt # for newer GPUs on NixOS >24.05 or unstable
+      onevpl-intel-gpu # for newer GPUs on NixOS <= 24.05
+      intel-media-sdk # for older GPUs
     ];
   };
-  boot.kernelModules = ["nouveau" "bbswitch"];
-  # Load nvidia driver for Xorg and Wayland
-  services.xserver.videoDrivers = ["modesetting" "nouveau"];
-
-  hardware.bumblebee = {
-    enable = true;
-    group = "video";
-    driver = "nouveau";
-  };
-  hardware.nvidia.package = "nouveau";
-
-  hardware.nvidia.modesetting.enable = true;
-  hardware.nvidia.prime = {
-    sync.enable = true;
-
-    # Bus ID of the NVIDIA GPU. You can find it using lspci, either under 3D or VGA
-    nvidiaBusId = "PCI:1:0:0";
-
-    # Bus ID of the Intel GPU. You can find it using lspci, either under 3D or VGA
-    intelBusId = "PCI:0:2:0";
-  };
-  /*
-     hardware.nvidia.prime = {
-    offload = {
-      enable = true;
-      enableOffloadCmd = true;
-    };
-    # Make sure to use the correct Bus ID values for your system!
-    intelBusId = "PCI:0:2:0";
-    nvidiaBusId = "PCI:14:0:0";
-    # amdgpuBusId = "PCI:54:0:0"; For AMD GPU
-  };
-  */
-  /*
-     hardware.nvidia.prime = {
-    sync.enable = true;
-
-    # Make sure to use the correct Bus ID values for your system!
-    nvidiaBusId = "PCI:14:0:0";
-    intelBusId = "PCI:0:2:0";
-    # amdgpuBusId = "PCI:54:0:0"; For AMD GPU
-  };
-  */
-  specialisation = {
-    on-the-go.configuration = {
-      system.nixos.tags = ["on-the-go"];
-      services.tailscale = {
-        enable = lib.mkForce false;
-      };
-    };
-  };
-
-  /*
-     nixpkgs.overlays = [
-    (self: super: {
-      bumblebee = super.bumblebee.override {
-        nvidia_x11_i686 = null;
-        libglvnd_i686 = null;
-      };
-      primus = super.primus.override {
-        primusLib_i686 = null;
-      };
-    })
-  ];
-  */
-  nixpkgs.config.allowBroken = true;
-  nixpkgs.config.nvidia.acceptLicense = true;
-
-  networking.firewall.allowedTCPPorts = [33847];
-
-  environment.sessionVariables.GST_PLUGIN_SYSTEM_PATH_1_0 = lib.makeSearchPathOutput "lib" "lib/gstreamer-1.0" (with pkgs.gst_all_1; [
-    gst-plugins-good
-    gst-plugins-bad
-    gst-plugins-ugly
-    gst-libav
-  ]);
+  #environment.sessionVariables = {LIBVA_DRIVER_NAME = "iHD";}; # Force intel-media-driver
+  hardware.graphics.extraPackages32 = with pkgs.pkgsi686Linux; [intel-vaapi-driver];
 }

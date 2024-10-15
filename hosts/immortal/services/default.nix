@@ -5,8 +5,6 @@
     ./../../common/global/acme/wc-egor.nix
     ./../../common/global/backup/borg.nix
     ./../../common/global/backup/restic.nix
-    ./../../common/global/cleanup.nix
-    ./../../common/global/hardening.nix
     ./../../common/optional/adguard/default.nix
     ./../../common/optional/adguard/unbound.nix
     ./../../common/optional/cfdyndns.nix
@@ -28,8 +26,10 @@
     ./../../common/optional/searx-ng/default.nix
     ./../../common/optional/tpm.nix
     ./../../common/optional/tor.nix
+    ./../../common/optional/i2p.nix
     ./../../common/optional/transmission/default.nix
     ./../../common/optional/vaultwarden/default.nix
+    ./../../common/optional/homepage-dashboard.nix
     ./asteriks.nix
     #./impermanence.nix
     ./syncthing.nix

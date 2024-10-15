@@ -4,7 +4,7 @@
   options,
   ...
 }: {
-  config.virtualisation.oci-containers.containers = {
+  virtualisation.oci-containers.containers = {
     simplex-smp-server = {
       image = "simplexchat/smp-server:latest";
       ports = ["5223:5223"];
@@ -39,7 +39,7 @@
       };
     };
   };
-  config.networking.firewall = {
+  networking.firewall = {
     allowedTCPPorts = [
       5223
     ];
@@ -47,13 +47,44 @@
       5223
     ];
   };
-  config.environment.persistence."/persist".directories = [
+  environment.persistence."/persist".directories = [
     "/var/lib/containers/simplex/smp/config"
     "/var/lib/containers/simplex/smp/logs"
     "/var/lib/containers/simplex/xftp/config"
     "/var/lib/containers/simplex/xftp/logs"
     "/var/lib/containers/simplex/xftp/files"
   ];
-
-  config.sops.secrets."services/simplex" = {};
+  modules.web.vhosts = [
+    {
+      domain = "egor.wtf";
+      prefix = "xftp";
+      upstream = "http://127.0.0.1:8937";
+      authelia = false;
+      tor.enable = true;
+      tor.authelia = false;
+    }
+  ];
+  services.tor = {
+    relay = {
+      enable = true;
+      role = "relay"; # Set the relay role (e.g., "relay", "bridge")
+      onionServices = {
+        myOnion = {
+          version = 3;
+          map = [
+            {
+              port = 5223;
+              target = {
+                #addr = "[::1]";
+                addr = "127.0.0.1";
+                #addr = "https://password.egor.wtf";
+                port = 5223;
+              };
+            }
+          ];
+        };
+      };
+    };
+  };
+  sops.secrets."services/simplex" = {};
 }

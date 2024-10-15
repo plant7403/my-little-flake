@@ -1,125 +1,3 @@
-/*
-   {
-  lib,
-  pkgs,
-  config,
-  ...
-}:
-with lib; let
-  cfg = config.modules.web;
-in {
-  options.modules.web = {
-    enable = mkOption {
-      type = types.bool;
-      default = false;
-    };
-    authelia = mkOption {
-      type = types.bool;
-      default = false;
-    };
-
-    prefix = mkOption {
-      type = types.str;
-      #default = "default";
-    };
-    domain = mkOption {
-      type = types.str;
-      default = "egor.wtf";
-    };
-    port = mkOption {
-      type = types.str;
-      #default = "default";
-    };
-
-    extraConfig = mkOption {
-      type = types.lines;
-      #default = "default";
-    };
-
-    # TORIFY
-    tor.enable = mkOption {
-      type = types.bool;
-      default = false;
-    };
-    tor.authelia = mkOption {
-      type = types.bool;
-      default = false;
-    };
-    tor.onion = mkOption {
-      type = types.str;
-      default = "ya2rgzzkijougnm32yfq2q6oa3ft6vpxw4j6asufppy5xmae6rucn2yd.onion";
-    };
-  };
-
-  config = mkIf cfg.enable (mkMerge [
-    {
-      services.nginx.virtualHosts = {
-        "${cfg.prefix}.${cfg.domain}" = {
-          forceSSL = true;
-          useACMEHost = "${cfg.domain}";
-          extraConfig = ''
-          '';
-          locations."/" = {
-            proxyPass = "http://127.0.0.1:${cfg.port}";
-            proxyWebsockets = true;
-            extraConfig = ''
-              ${cfg.extraConfig}
-            '';
-          };
-        };
-      };
-    }
-    (mkIf cfg.authelia {
-      services.nginx.virtualHosts."${cfg.prefix}.${cfg.domain}" = {
-        extraConfig = ''
-          ${builtins.readFile ../../hosts/common/optional/nginx/authelia/vh.conf}
-        '';
-        locations."/".extraConfig = ''
-          ${builtins.readFile ../../hosts/common/optional/nginx/authelia/locations.conf}
-        '';
-      };
-    })
-
-    (mkIf cfg.tor.enable {
-      services.nginx.serverNamesHashBucketSize = 128;
-      services.nginx.virtualHosts."${cfg.prefix}.${cfg.tor.onion}" = {
-        extraConfig = ''
-        '';
-        locations."/" = {
-          proxyPass = "http://127.0.0.1:${cfg.port}";
-          proxyWebsockets = true;
-          extraConfig = ''
-            ${cfg.extraConfig}
-          '';
-        };
-      };
-    })
-    (mkIf cfg.tor.authelia {
-      services.nginx.virtualHosts."${cfg.prefix}.${cfg.tor.onion}" = {
-        extraConfig = ''
-          ${builtins.readFile ../../hosts/common/optional/nginx/authelia/vh.conf}
-        '';
-        locations."/".extraConfig = ''
-          ${builtins.readFile ../../hosts/common/optional/nginx/authelia/locations.conf}
-        '';
-      };
-    })
-  ]);
-}
-*/
-/*
-   { config, ... }:
-{
-  imports = [ ./nginx.nix ];
-  config = {
-    web.vHosts = [
-      {
-        // Give values to options defined above
-      }
-    ];
-  };
-}
-*/
 {
   config,
   lib,
@@ -162,7 +40,7 @@ in {
         type = lib.types.str;
         description = "Onion of the subdomain.";
         example = "*.onion";
-        default = "ya2rgzzkijougnm32yfq2q6oa3ft6vpxw4j6asufppy5xmae6rucn2yd.onion";
+        default = "egorwtfz6xxh2qatvpcjodxdo33nlesc5dp7lhqohbackq5rnpvpsqyd.onion";
       };
       tor.authelia = lib.mkOption {
         type = lib.types.bool;
@@ -273,6 +151,8 @@ in {
                           '}';
 
       access_log /var/log/nginx/access.log json_analytics;
+
+
     ''; #'"geoip_country_code": "$geoip_country_code"'
 
     services.nginx.virtualHosts = let
@@ -389,7 +269,7 @@ in {
                   # Virtual endpoint created by nginx to forward auth requests.
                   location /authelia {
                     internal;
-                    set $upstream_authelia http://127.0.0.1:9091/api/verify;
+                    set $upstream_authelia http://127.0.0.1:9092/api/verify;
                     proxy_pass_request_body off;
                     proxy_pass $upstream_authelia;
                     proxy_set_header Content-Length "";

@@ -25,7 +25,7 @@ in {
       jack.enable = true;
     };
     hardware.pulseaudio.enable = false;
-    services.pipewire.package = pkgs.pipewire.override {libcameraSupport = false;};
+    #services.pipewire.package = pkgs.pipewire.override {libcameraSupport = false;};
     #/*
     services.pipewire.extraConfig.pipewire-pulse."92-low-latency" = {
       context.modules = [

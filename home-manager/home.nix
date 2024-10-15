@@ -105,6 +105,7 @@
     kdenlive
     deploy-rs
     gnome-decoder
+    usbguard-notifier
   ];
 
   programs.home-manager.enable = true;

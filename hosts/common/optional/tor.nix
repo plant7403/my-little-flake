@@ -6,12 +6,12 @@
     enableGeoIP = false;
 
     # Enable Torsocks for transparent proxying of applications through Tor
-    torsocks.enable = true;
+    #torsocks.enable = true;
 
     # Enable the Tor client
-    client = {
-      enable = true;
-    };
+    #client = {
+    #  enable = true;
+    #};
 
     # Enable and configure the Tor relay
     relay = {
@@ -30,6 +30,27 @@
                 port = 80;
               };
             }
+          ];
+          settings = {
+            HiddenServiceSingleHopMode = true;
+            HiddenServiceNonAnonymousMode = true;
+          };
+        };
+        Secret = {
+          version = 3;
+          map = [
+            {
+              port = 80;
+              target = {
+                addr = "[::1]";
+                #addr = "127.0.0.1";
+                #addr = "https://password.egor.wtf";
+                port = 80;
+              };
+            }
+          ];
+          authorizedClients = [
+            "descriptor:x25519:XDMN5AD3SGTQCUWRUOS6CMEGNFQ3BS7DJIULNXBXLU6S2WYK2AZQ"
           ];
         };
       };
@@ -73,4 +94,7 @@
     enable = true;
     capacity = 10;
   };
+  environment.persistence."/persist".directories = [
+    "/var/lib/tor"
+  ];
 }

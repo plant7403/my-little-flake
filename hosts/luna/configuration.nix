@@ -61,6 +61,12 @@ in {
     hostname = "luna";
     ssh = true;
     printing = false;
+    cleanup = true;
+    hardening = true;
+    usbguard = {
+      enable = true;
+      sops = true;
+    };
   };
   modules.yubikey.enable = true;
 

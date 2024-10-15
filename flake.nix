@@ -24,6 +24,7 @@
     hardware.url = "github:nixos/nixos-hardware";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     impermanence.url = "github:nix-community/impermanence";
+    jovian.url = "github:Jovian-Experiments/Jovian-NixOS";
 
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.3.0";
@@ -92,6 +93,7 @@
     musnix,
     nix-flatpak,
     stylix,
+    jovian,
     #flatpaks,
     ...
   } @ inputs: let
@@ -180,6 +182,39 @@
           sops-nix.nixosModules.sops
           hardware.nixosModules.microsoft-surface-go
           hardware.nixosModules.microsoft-surface-common
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.egor = import ./home-manager/home.nix;
+            home-manager.extraSpecialArgs = {inherit inputs;};
+          }
+          lanzaboote.nixosModules.lanzaboote
+          ({
+            pkgs,
+            lib,
+            ...
+          }: {
+            environment.systemPackages = [
+              pkgs.sbctl
+            ];
+
+            boot.loader.systemd-boot.enable = lib.mkForce false;
+
+            boot.lanzaboote = {
+              enable = true;
+              pkiBundle = "/etc/secureboot";
+            };
+          })
+        ];
+      };
+      horizon = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {inherit inputs outputs;};
+        modules = [
+          ./hosts/horizon/configuration.nix
+          sops-nix.nixosModules.sops
+          jovian.nixosModules.jovian
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;

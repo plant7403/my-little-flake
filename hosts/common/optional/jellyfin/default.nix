@@ -22,8 +22,8 @@
   # 2. do not forget to enable jellyfin
   services.jellyfin = {
     enable = true;
-    #    user = "jellyfin";
-    #    group = "media";
+    user = "jellyfin";
+    group = "media";
   };
 
   networking = {
@@ -57,11 +57,15 @@
       domain = "egor.wtf";
       prefix = "jelly";
       upstream = "http://127.0.0.1:8096";
+      tor = {
+        enable = true;
+        authelia = false;
+      };
     }
   ];
 
   environment.systemPackages = with pkgs; [
-    ffmpeg-full
+    jellyfin-ffmpeg
   ];
   environment.persistence."/persist".directories = [
     "/var/lib/jellyfin"

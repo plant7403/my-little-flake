@@ -45,5 +45,11 @@ in {
         "steam-original"
         "steam-run"
       ];
+    /*
+       programs.steam.package = pkgs.steam.override {
+      withPrimus = true;
+      extraPkgs = pkgs: [bumblebee glxinfo];
+    };
+    */
   };
 }

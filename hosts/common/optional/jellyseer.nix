@@ -98,7 +98,7 @@
   users.groups.media = {};
 
   environment.persistence."/persist".directories = [
-    "/var/lib/jackett"
+    "/var/lib/prowlarr"
     "/var/lib/private/jellyseerr"
     "/var/lib/sonarr"
     "/var/lib/radarr"

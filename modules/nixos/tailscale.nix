@@ -70,6 +70,9 @@ in {
       ];
     })
     (mkIf cfg.exit {
+      environment.systemPackages = with pkgs; [
+        wirelesstools
+      ];
       services.networkd-dispatcher.enable = true;
       services.networkd-dispatcher.rules = {
         "tailscale-routing" = {

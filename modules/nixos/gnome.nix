@@ -20,33 +20,31 @@ in {
       services.xserver.enable = true;
       services.xserver.displayManager.gdm.enable = true;
       services.xserver.desktopManager.gnome.enable = true;
-      environment.gnome.excludePackages =
-        (with pkgs; [
-          gnome-photos
-          gnome-tour
-          gedit # text editor
-        ])
-        ++ (with pkgs.gnome; [
-          cheese # webcam tool
-          gnome-music
+      environment.gnome.excludePackages = with pkgs; [
+        gnome-photos
+        gnome-tour
+        gedit # text editor
 
-          epiphany # web browser
-          geary # email reader
-          gnome-characters
-          tali # poker game
-          iagno # go game
-          hitori # sudoku game
-          atomix # puzzle game
-          yelp # Help view
-          gnome-contacts
-          gnome-initial-setup
-        ]);
+        cheese # webcam tool
+        gnome-music
+
+        epiphany # web browser
+        geary # email reader
+        gnome-characters
+        tali # poker game
+        iagno # go game
+        hitori # sudoku game
+        atomix # puzzle game
+        yelp # Help view
+        gnome-contacts
+        gnome-initial-setup
+      ];
       programs.dconf.enable = true;
       environment.systemPackages = with pkgs; [
-        gnome.gnome-tweaks
+        gnome-tweaks
       ];
       services.udev.packages = [
-        pkgs.gnome.gnome-settings-daemon
+        pkgs.gnome-settings-daemon
       ];
       # Configure keymap in X11
       services.xserver = {
