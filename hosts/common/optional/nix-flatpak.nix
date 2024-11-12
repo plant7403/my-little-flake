@@ -12,4 +12,7 @@
       onCalendar = "weekly"; # Default value
     };
   };
+  environment.persistence."/persist".directories = [
+    "/var/lib/flatpak/"
+  ];
 }

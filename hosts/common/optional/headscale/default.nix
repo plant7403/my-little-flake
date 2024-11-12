@@ -4,15 +4,15 @@
     port = 8089;
     address = "0.0.0.0";
     settings = {
-      dns_config = {
+      dns = {
         override_local_dns = true;
         base_domain = "head";
         magic_dns = true;
-        nameservers = [
+        nameservers.global = [
           "100.64.0.1"
         ];
       };
-      server_url = "https://head.egor.wtf";
+      #server_url = "https://head.egor.wtf:443";
       metrics_listen_addr = "0.0.0.0:8095";
       logtail = {
         enabled = false;

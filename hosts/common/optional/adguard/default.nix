@@ -51,9 +51,9 @@
           enabled = false;
         };
         user_rules = [
-          "||egor.wtf^$client=192.168.1.0/24,dnsrewrite=NOERROR;A;192.168.1.100"
-          "||*.egor.wtf^$client=192.168.1.0/24,dnsrewrite=NOERROR;A;192.168.1.100"
-          "||*.*.egor.wtf^$client=192.168.1.0/24,dnsrewrite=NOERROR;A;192.168.1.100"
+          "||egor.wtf^$client=192.168.1.0/24,dnsrewrite=NOERROR;A;192.168.1.157"
+          "||*.egor.wtf^$client=192.168.1.0/24,dnsrewrite=NOERROR;A;192.168.1.157"
+          "||*.*.egor.wtf^$client=192.168.1.0/24,dnsrewrite=NOERROR;A;192.168.1.157"
           #"@@||mail.egor.wtf^$client=192.168.1.0/24"
           "||egor.wtf^$client=127.0.0.1,dnsrewrite=NOERROR;A;127.0.0.1"
           "||*.egor.wtf^$client=127.0.0.1,dnsrewrite=NOERROR;A;127.0.0.1"

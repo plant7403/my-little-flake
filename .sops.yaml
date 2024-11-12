@@ -12,6 +12,7 @@ keys:
   - &server_saturn age1jtfyv4340hzagagzvhll500szev2rkpp5y90snsp76rthdwv0v6qy98gn8
   - &server_luna age1lzx7cm46kxflweytq43ruca5xmxl48qfr34yk3ctcywhp57ueqvsgjelzu
   - &server_pluto age1vwf8e43njvv9kx7m42plc50x8ws0awd07qhk2wrqn2emral9nfsq43hfrs
+  - &server_horizon age1aukgnwfjn34datv0c95ftrndshagnwrv6zsg280k8suzttup8d0qlzvaz8
 creation_rules:
   - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
     key_groups:
@@ -23,6 +24,7 @@ creation_rules:
         - *server_saturn
         - *server_luna
         - *server_pluto
+        - *server_horizon
 
   - path_regex: secrets/immortal/[^/]+\.(yaml|json|env|ini)$
     key_groups:
@@ -62,6 +64,15 @@ creation_rules:
         - *admin_egor
 #        - *admin_egory
         - *server_pluto
+  - path_regex: secrets/pluto/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+    - pgp:
+      - *admin_egorgpg
+      #  - *server_azmidi
+      age:
+        - *admin_egor
+
+        - *server_horizon
   - path_regex: home-manager/[^/]+\.(yaml|json|env|ini)$
     key_groups:
     - pgp:

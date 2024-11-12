@@ -1,6 +1,17 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
+/*
+!! THIS IS HOW TO RUN NIXOS ANYWHERE (almost)
+nix run github:nix-community/nixos-anywhere -- --generate-hardware-config nixos-generate-config ./hosts/horizon/hardware-configuration.nix --build-on-remote --copy-host-keys --extra-files /persist/sops-nix/ --flake flake.nix#horizon root@192.168.1.159
+!! THEN BOOT INTO USB AGAIN
+cryptsetup /dev/nvme0n1 name
+mount name name/
+cd name
+btrfs subvolume snapshot -r @ROOT @ROOT-BLANK
+!! TO ADD SOPS KEYS
+edit .sops.yaml
+*/
 {
   config,
   pkgs,
@@ -23,6 +34,9 @@ in {
     ./sops.nix
     #./clevis.nix
     ./../common/users/egor.nix
+    ./../common/users/root.nix
+
+    ./disk-config.nix
     #./ssh.nix
     #./camera.nix
     outputs.nixosModules.gnome
@@ -35,17 +49,19 @@ in {
     outputs.nixosModules.yubikey
   ];
 
-  modules.gnome = {
-    enable = true;
-    autologin = true;
-  };
+  #modules.gnome = {
+  #  enable = true;
+  /*
+  autologin = true;
+  */
+  #};
   modules.impermanence = {
     enable = true;
     disk = "nvme";
   };
   modules.mullvad = {
     enable = true;
-    impermanence = false;
+    impermanence = true;
   };
   modules.sound.enable = true;
   #modules.steam.enable = true;
@@ -68,14 +84,66 @@ in {
   };
   modules.yubikey.enable = true;
 
-  jovian.steam = {
+  jovian = {
+    steam = {
+      enable = true;
+      autoStart = true;
+      user = "egor";
+      desktopSession = "gnome";
+    };
+    decky-loader = {
+      enable = true;
+      package = pkgs.decky-loader-prerelease;
+    };
+    devices.steamdeck = {
+      enable = true;
+      autoUpdate = true;
+      enableGyroDsuService = true;
+    };
+  };
+  services.xserver.desktopManager.gnome.enable = true;
+  nixpkgs.config.allowUnfree = true;
+  programs = {
+    nix-ld.enable = true;
+  };
+  services.transmission = {
+    package = pkgs.transmission_4;
+    webHome = pkgs.flood-for-transmission;
+    openFirewall = true;
+    openRPCPort = true;
     enable = true;
-    autoStart = true;
     user = "egor";
-    desktopSession = "gnome";
+    group = "users";
+    settings = {
+      #home = "/home/egor/.transmission";
+      #watch-dir = "/DATA/D1/TM/watch";
+      incomplete-dir-enabled = false;
+      download-dir = "/home/egor/Downloads";
+      watch-dir-enabled = false;
+      rpc-bind-address = "0.0.0.0";
+      rpc-port = 9099;
+      rpc-whitelist = "192.168.1.*, 127.0.0.1";
+    };
   };
 
-  programs.nix-ld.enable = true;
+  environment.systemPackages = [
+    pkgs.protonup-qt
+    pkgs.lutris
+    pkgs.steamdeck-firmware
+
+    pkgs.ryujinx
+    pkgs.steam-rom-manager
+
+    pkgs.heroic
+    pkgs.protontricks
+
+    pkgs.jellyfin-media-player
+
+    pkgs.maliit-framework
+    pkgs.maliit-keyboard
+  ];
+
+  powerManagement.cpuFreqGovernor = "schedutil";
 
   programs.nix-ld.libraries = with pkgs; [
     # Add any missing dynamic libraries for unpackaged programs
@@ -104,7 +172,7 @@ in {
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.11"; # Did you read the comment?
+  system.stateVersion = "24.05"; # Did you read the comment?
 
   home-manager.sharedModules = [
     inputs.sops-nix.homeManagerModules.sops

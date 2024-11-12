@@ -215,14 +215,16 @@
           ./hosts/horizon/configuration.nix
           sops-nix.nixosModules.sops
           jovian.nixosModules.jovian
+          disko.nixosModules.disko
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.egor = import ./home-manager/home.nix;
+            home-manager.users.egor = import ./home-manager/saturn.nix;
             home-manager.extraSpecialArgs = {inherit inputs;};
           }
-          lanzaboote.nixosModules.lanzaboote
+          /*
+             lanzaboote.nixosModules.lanzaboote
           ({
             pkgs,
             lib,
@@ -239,6 +241,7 @@
               pkiBundle = "/etc/secureboot";
             };
           })
+          */
         ];
       };
       saturn = nixpkgs.lib.nixosSystem {
@@ -358,6 +361,19 @@
             sshUser = "root";
             path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.pluto;
             user = "root";
+          };
+        };
+      };
+      horizon = {
+        sshOpts = ["-p" "3370"];
+        hostname = "100.64.0.6";
+        fastConnection = true;
+        profiles = {
+          system = {
+            sshUser = "root";
+            path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.horizon;
+            user = "root";
+            remoteBuild = true;
           };
         };
       };

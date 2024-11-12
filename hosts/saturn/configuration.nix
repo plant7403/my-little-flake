@@ -68,6 +68,25 @@
   boot.loader.efi.canTouchEfiVariables = true;
   services.logrotate.checkConfig = false;
 
+  /*
+     services.radicle = {
+    #httpd.enable = true;
+    enable = true;
+    publicKey = "/home/egor/.radicle/keys/radicle.pub";
+    privateKeyFile = "/home/egor/.radicle/keys/radicle";
+    settings = {
+      web.pinned.repositories = [
+        "rad:z3gqcJUoA1n9HaHKufZs5FCSGazv5" # heartwood
+        "rad:z3trNYnLWS11cJWC6BbxDs5niGo82" # rips
+        "rad:z3X6L7xk4KwQZvQng1SvzYZz9JeHn"
+      ];
+    };
+  };
+  */
+  environment.systemPackages = with pkgs; [
+    radicle-node
+    maven
+  ];
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Enable networking
