@@ -1,8 +1,8 @@
 # TODO - Same with immortal's default
 {
   imports = [
-    ./../../common/global/acme/wc-dns-egor.nix
-    ./../../common/global/acme/wc-egor.nix
+    #./../../common/global/acme/wc-dns-egor.nix
+    #./../../common/global/acme/wc-egor.nix
     ./../../common/global/backup/borg.nix
     ./../../common/global/backup/restic.nix
     ./../../common/optional/adguard/default.nix
@@ -16,7 +16,7 @@
     ./../../common/optional/headscale/default.nix
     ./../../common/optional/jellyfin/default.nix
     ./../../common/optional/jellyseer.nix
-    ./../../common/optional/mailserver.nix
+    #./../../common/optional/mailserver.nix
     ./../../common/optional/nextcloud.nix
     ./../../common/optional/nginx/authelia.nix
     ./../../common/optional/nginx/default.nix
