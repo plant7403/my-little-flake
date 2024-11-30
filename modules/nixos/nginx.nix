@@ -8,6 +8,7 @@
 
   fqdn = c: "${c.prefix}.${c.domain}";
   fqdn_tor = c: "${c.prefix}.${c.tor.onion}";
+  dnsName = c: "${c.domain}"; #QICKFIX
 
   vhostConfig = lib.types.submodule {
     options = {
@@ -99,6 +100,7 @@ in {
       default = [];
     };
   };
+
   config = {
     networking.firewall.allowedTCPPorts = [80 443];
 
@@ -106,6 +108,27 @@ in {
     services.nginx.serverNamesHashBucketSize = 128;
     services.nginx.additionalModules = [pkgs.nginxModules.geoip2];
     #services.geoipupdate.enable = true;
+
+    sops.secrets."cloudflare/cf-dns.env" = {};
+
+    # ...
+    security.acme.acceptTerms = true;
+    security.acme.defaults.email = "admin@egor.wtf";
+
+    # 2. Let NixOS generate a Let's Encrypt certificate that we can reuse
+    # above for several virtualhosts above.
+    security.acme.certs."${dnsName}" = {
+      domain = "${dnsName}";
+      extraDomainNames = ["*.${dnsName}"];
+      # The LEGO DNS provider name. Depending on the provider, need different
+      # contents in the credentialsFile below.
+      dnsProvider = "cloudflare";
+      dnsPropagationCheck = true;
+      # agenix will decrypt our secrets file (below) on the server and make it available
+      # under /run/agenix/secrets/hetzner-dns-token (by default):
+      # credentialsFile = "/run/agenix/secrets/hetzner-dns-token";
+      credentialsFile = config.sops.secrets."cloudflare/cf-dns.env".path;
+    };
 
     services.nginx.logError = lib.mkIf cfg.debugLog "stderr warn";
     services.nginx.appendHttpConfig = lib.mkIf cfg.accessLog ''
@@ -160,8 +183,10 @@ in {
         lib.mkMerge [
           (lib.mkIf c.enable {
             ${fqdn c} = {
-              forceSSL = true;
-              useACMEHost = "${c.domain}";
+              #enableACME = true;
+              acmeRoot = null;
+              forceSSL = lib.mkForce true;
+              useACMEHost = lib.mkForce "${c.domain}";
               extraConfig =
                 ''
 
