@@ -49,6 +49,19 @@
   };
   modules.yubikey.enable = true;
 
+  services.yggdrasil = {
+    openMulticastPort = true;
+    enable = true;
+    persistentKeys = true;
+    settings = {
+      Peers = [
+        #"203:71e:e9c9:1803:24c8:a6d3:54ec:eec3"
+        "tcp://sin.yuetau.net:6642"
+        "tls://153.120.42.137:54232"
+      ];
+    };
+  };
+
   /*
      services.ollama = {
     enable = true;
