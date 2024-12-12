@@ -89,11 +89,11 @@
     yubioath-flutter
     yubikey-touch-detector
 
-    gnome.gnome-tweaks
+    gnome-tweaks
     gnomeExtensions.appindicator
     gnupg
 
-    gnome.gnome-boxes
+    gnome-boxes
     #virtualbox
     mullvad-browser
     yubico-pam

@@ -100,16 +100,27 @@ in {
       default = [];
     };
   };
-
+  imports = [../../hosts/common/optional/nginx/authelia.nix];
   config = {
     networking.firewall.allowedTCPPorts = [80 443];
 
-    services.nginx.enable = true;
-    services.nginx.serverNamesHashBucketSize = 128;
-    services.nginx.additionalModules = [pkgs.nginxModules.geoip2];
+    services.nginx = {
+      enable = true;
+      serverNamesHashBucketSize = 128;
+      additionalModules = [pkgs.nginxModules.geoip2];
+      recommendedZstdSettings = true;
+      recommendedTlsSettings = true;
+      recommendedProxySettings = true;
+      recommendedOptimisation = true;
+      recommendedGzipSettings = true;
+      recommendedBrotliSettings = true;
+    };
     #services.geoipupdate.enable = true;
 
     sops.secrets."cloudflare/cf-dns.env" = {};
+    environment.persistence."/persist" = {
+      directories = ["/var/lib/acme"];
+    };
 
     # ...
     security.acme.acceptTerms = true;
@@ -117,13 +128,15 @@ in {
 
     # 2. Let NixOS generate a Let's Encrypt certificate that we can reuse
     # above for several virtualhosts above.
-    security.acme.certs."${dnsName}" = {
-      domain = "${dnsName}";
-      extraDomainNames = ["*.${dnsName}"];
+    security.acme.certs."egor.wtf" = {
+      domain = "egor.wtf";
+      extraDomainNames = ["*.egor.wtf"];
       # The LEGO DNS provider name. Depending on the provider, need different
       # contents in the credentialsFile below.
       dnsProvider = "cloudflare";
       dnsPropagationCheck = true;
+      user = "root";
+      group = "root";
       # agenix will decrypt our secrets file (below) on the server and make it available
       # under /run/agenix/secrets/hetzner-dns-token (by default):
       # credentialsFile = "/run/agenix/secrets/hetzner-dns-token";
@@ -184,7 +197,7 @@ in {
           (lib.mkIf c.enable {
             ${fqdn c} = {
               #enableACME = true;
-              acmeRoot = null;
+              #acmeRoot = null;
               forceSSL = lib.mkForce true;
               useACMEHost = lib.mkForce "${c.domain}";
               extraConfig =

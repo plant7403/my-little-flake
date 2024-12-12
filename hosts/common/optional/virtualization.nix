@@ -6,6 +6,6 @@
   #programs.virt-manager.enable = true;
   users.users.egor.extraGroups = ["libvirtd"];
   environment.systemPackages = with pkgs; [
-    gnome.gnome-boxes
+    gnome-boxes
   ];
 }

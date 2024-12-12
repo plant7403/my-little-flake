@@ -42,7 +42,7 @@
     impermanence = true;
   };
   modules.sound.enable = true;
-  modules.steam.enable = true;
+  #modules.steam.enable = true;
   modules.tailscale = {
     enable = true;
     exit = false;

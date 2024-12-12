@@ -19,7 +19,7 @@
     #./../../common/optional/mailserver.nix
     ./../../common/optional/nextcloud.nix
     ./../../common/optional/nginx/authelia.nix
-    ./../../common/optional/nginx/default.nix
+    #./../../common/optional/nginx/default.nix
     ./../../common/optional/ntfy-sh/default.nix
     ./../../common/optional/paperless/default.nix
     ./../../common/optional/photoprism/default.nix

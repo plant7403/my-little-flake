@@ -173,10 +173,12 @@
   # This is needed for nginx to be able to read other processes
   # directories in `/run`. Else it will fail with (13: Permission denied)
   #systemd.services.nginx.serviceConfig.ProtectHome = false;
-  security.acme = {
+  /*
+     security.acme = {
     acceptTerms = true;
     defaults.email = "ssl@egor.wtf";
   };
+  */
 
   environment.persistence."/persist" = {
     directories = ["/var/lib/acme"];

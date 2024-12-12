@@ -150,6 +150,10 @@ in {
 
     # here, NOT in environment.systemPackages
   ];
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-27.3.11"
+  ];
+
   #services.pppd.enable = true;
   #security.polkit.enable = true;
   #services.accounts-daemon.enable = true;
