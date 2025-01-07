@@ -12,4 +12,5 @@
   yubikey = import ./yubikey.nix;
   system = import ./system.nix;
   web = import ./nginx.nix;
+  transmission = import ./transmission.nix;
 }

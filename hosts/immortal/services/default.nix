@@ -2,7 +2,7 @@
 {
   imports = [
     #./../../common/global/acme/wc-dns-egor.nix
-    #./../../common/global/acme/wc-egor.nix
+    ./../../common/global/acme/wc-egor.nix
     ./../../common/global/backup/borg.nix
     ./../../common/global/backup/restic.nix
     ./../../common/optional/adguard/default.nix
@@ -27,10 +27,10 @@
     ./../../common/optional/tpm.nix
     ./../../common/optional/tor.nix
     ./../../common/optional/i2p.nix
-    ./../../common/optional/transmission/default.nix
+
     ./../../common/optional/vaultwarden/default.nix
     ./../../common/optional/homepage-dashboard.nix
-    ./asteriks.nix
+    #./asteriks.nix
     #./impermanence.nix
     ./syncthing.nix
     #./tailscale.nix

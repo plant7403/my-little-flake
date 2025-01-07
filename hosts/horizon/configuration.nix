@@ -32,6 +32,7 @@ in {
     ./hardware-configuration.nix
     ./services
     ./sops.nix
+    ./clevis.nix
     #./clevis.nix
     ./../common/users/egor.nix
     ./../common/users/root.nix
@@ -47,14 +48,19 @@ in {
     outputs.nixosModules.tailscale
     outputs.nixosModules.system
     outputs.nixosModules.yubikey
+    outputs.nixosModules.transmission
+    outputs.nixosModules.web
   ];
 
-  #modules.gnome = {
-  #  enable = true;
   /*
-  autologin = true;
+     modules.gnome = {
+    enable = true;
+    autologin = false;
+    isSteamDeck = true;
+    remote = true;
+  };
   */
-  #};
+
   modules.impermanence = {
     enable = true;
     disk = "nvme";
@@ -84,12 +90,14 @@ in {
   };
   modules.yubikey.enable = true;
 
+  services.desktopManager.plasma6.enable = true;
+  programs.xwayland.enable = true;
   jovian = {
     steam = {
       enable = true;
       autoStart = true;
       user = "egor";
-      desktopSession = "gnome";
+      desktopSession = "plasma";
     };
     decky-loader = {
       enable = true;
@@ -101,29 +109,16 @@ in {
       enableGyroDsuService = true;
     };
   };
-  services.xserver.desktopManager.gnome.enable = true;
   nixpkgs.config.allowUnfree = true;
   programs = {
     nix-ld.enable = true;
   };
-  services.transmission = {
-    package = pkgs.transmission_4;
-    webHome = pkgs.flood-for-transmission;
-    openFirewall = true;
-    openRPCPort = true;
+  boot.kernelParams = ["clearcpuid=514"];
+
+  modules.transmission = {
     enable = true;
-    user = "egor";
-    group = "users";
-    settings = {
-      #home = "/home/egor/.transmission";
-      #watch-dir = "/DATA/D1/TM/watch";
-      incomplete-dir-enabled = false;
-      download-dir = "/home/egor/Downloads";
-      watch-dir-enabled = false;
-      rpc-bind-address = "0.0.0.0";
-      rpc-port = 9099;
-      rpc-whitelist = "192.168.1.*, 127.0.0.1";
-    };
+    sops = true;
+    persist = true;
   };
 
   environment.systemPackages = [
@@ -134,13 +129,31 @@ in {
     pkgs.ryujinx
     pkgs.steam-rom-manager
 
-    pkgs.heroic
+    #pkgs.heroic
     pkgs.protontricks
 
     pkgs.jellyfin-media-player
 
     pkgs.maliit-framework
     pkgs.maliit-keyboard
+
+    # support both 32- and 64-bit applications
+    pkgs.wineWowPackages.stable
+
+    # support 32-bit only
+    pkgs.wine
+
+    # support 64-bit only
+    (pkgs.wine.override {wineBuild = "wine64";})
+
+    # wine-staging (version with experimental features)
+    pkgs.wineWowPackages.staging
+
+    # winetricks (all versions)
+    pkgs.winetricks
+
+    # native wayland support (unstable)
+    pkgs.wineWowPackages.waylandFull
   ];
 
   powerManagement.cpuFreqGovernor = "schedutil";

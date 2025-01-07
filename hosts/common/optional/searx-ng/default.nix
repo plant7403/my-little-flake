@@ -46,26 +46,15 @@
     #      chmod-socket = "660"; # allow the searx group to read/write to the socket
     #    };
   };
-  services.nginx = {
-    enable = true;
 
-    # Use recommended settings
-    recommendedGzipSettings = true;
-
-    virtualHosts."searx.egor.wtf" = {
-      enableACME = true;
-      forceSSL = true;
-      extraConfig = ''
-        ${builtins.readFile ./../nginx/authelia/vh.conf}
-      '';
-      locations."/" = {
-        proxyPass = "http://127.0.0.1:8086";
-        extraConfig = ''
-          ${builtins.readFile ./../nginx/authelia/locations.conf}
-        '';
-      };
-    };
-  };
-
+  modules.web.vhosts = [
+    {
+      domain = "egor.wtf";
+      prefix = "searx";
+      upstream = "http://127.0.0.1:8086";
+      tor.enable = true;
+      tor.authelia = false;
+    }
+  ];
   sops.secrets."services/searx" = {};
 }

@@ -3,7 +3,7 @@
     ./home.nix
   ];
   home.packages = with pkgs; [
-    ardour
+    #ardour
     guitarix
     godot_4
     flatpak

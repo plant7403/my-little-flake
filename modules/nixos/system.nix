@@ -47,8 +47,17 @@ in {
     {
       nix.settings.experimental-features = ["flakes" "nix-command"];
       nix.settings = {
-        extra-substituters = ["https://cachix.cachix.org"];
-        extra-trusted-public-keys = ["cachix.cachix.org-1:eWNHQldwUO7G2VkjpnjDbWwy4KQ/HNxht7H4SSoMckM="];
+        extra-substituters = [
+          "https://cachix.cachix.org"
+          "https://devenv.cachix.org"
+          "https://cache.nixos.org/"
+          "https://nix-community.cachix.org"
+        ];
+        extra-trusted-public-keys = [
+          "cachix.cachix.org-1:eWNHQldwUO7G2VkjpnjDbWwy4KQ/HNxht7H4SSoMckM="
+          "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
+          "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        ];
       };
 
       networking.hostName = cfg.hostname; # Define your hostname.
@@ -116,12 +125,12 @@ in {
       nix.gc = {
         automatic = true;
         dates = "Monday 01:00 UTC";
-        options = "--delete-older-than 7d";
+        options = "--delete-older-than 2d";
       };
 
       # Run garbage collection whenever there is less than 500MB free space left
       nix.extraOptions = ''
-        min-free = ${toString (500 * 1024 * 1024)}
+        min-free = ${toString (5000 * 1024 * 1024)}
       '';
 
       ## Optional: Clear >1 month-old logs
@@ -151,6 +160,7 @@ in {
         ];
         dates = "09:00";
         randomizedDelaySec = "45min";
+        persistent = true;
       };
     })
     (mkIf cfg.hardening {

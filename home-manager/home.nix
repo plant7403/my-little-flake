@@ -70,7 +70,7 @@
     yubikey-touch-detector
     gnomeExtensions.appindicator
     mullvad-vpn
-    logseq
+    #logseq
     light
 
     gnomeExtensions.user-themes
@@ -136,6 +136,38 @@
 
       #arrterian.nix-env-selector
     ];
+    userSettings = {
+      "editor.inlayHints.enabled" = "off";
+      "editor.guides.indentation" = false;
+      "editor.guides.bracketPairs" = false;
+      "editor.wordWrap" = "off";
+      "diffEditor.wordWrap" = "off";
+      "blockman.n33A01B2FromDepth0ToInwardForAllBackgrounds" = "10,0,0,1; none";
+
+      "workbench.colorCustomizations" = {
+        "editor.lineHighlightBorder" = "#4cd3081a";
+        "editor.lineHighlightBackground" = "#e22d0031";
+      };
+      "blockman.n04Sub02ColorComboPresetForLightTheme" = "none";
+      "blockman.n23AnalyzeSquareBrackets" = true;
+    };
+  };
+
+  home.activation.makeVSCodeConfigWritable = let
+    configDirName =
+      {
+        "vscode" = "Code";
+        "vscode-insiders" = "Code - Insiders";
+        "vscodium" = "VSCodium";
+      }
+      .${config.programs.vscode.package.pname};
+    configPath = "${config.xdg.configHome}/${configDirName}/User/settings.json";
+  in {
+    after = ["writeBoundary"];
+    before = [];
+    data = ''
+      install -m 0640 "$(readlink ${configPath})" ${configPath}
+    '';
   };
 
   #home.sessionVariables = {
@@ -146,7 +178,8 @@
   #  TEST="$(cat ${config.sops.secrets."example".path})"
   #'';
 
-  gtk = {
+  /*
+     gtk = {
     enable = true;
 
     iconTheme = {
@@ -176,6 +209,7 @@
       '';
     };
   };
+  */
   #systemd.user.sessionVariables = config.home-manager.users.egor.home.sessionVariables;
 
   #qt = {
@@ -211,7 +245,7 @@
         "org.gnome.Nautilus.desktop"
         "org.gnome.Fractal.desktop"
         "bitwarden.desktop"
-        "logseq.desktop"
+        #"logseq.desktop"
         "com.github.iwalton3.jellyfin-media-player.desktop"
         "virtualbox.desktop"
       ];

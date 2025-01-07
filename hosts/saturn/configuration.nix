@@ -14,7 +14,7 @@
     ./services
     ./sops.nix
     ./disk-config.nix
-    ./asteriks.nix
+
     ./../common/users/egor.nix
     ./../common/users/root.nix
     #./../common/desktop/steam.nix
@@ -63,35 +63,6 @@
   };
   modules.yubikey.enable = true;
 
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  services.logrotate.checkConfig = false;
-
-  /*
-     services.radicle = {
-    #httpd.enable = true;
-    enable = true;
-    publicKey = "/home/egor/.radicle/keys/radicle.pub";
-    privateKeyFile = "/home/egor/.radicle/keys/radicle";
-    settings = {
-      web.pinned.repositories = [
-        "rad:z3gqcJUoA1n9HaHKufZs5FCSGazv5" # heartwood
-        "rad:z3trNYnLWS11cJWC6BbxDs5niGo82" # rips
-        "rad:z3X6L7xk4KwQZvQng1SvzYZz9JeHn"
-      ];
-    };
-  };
-  */
-  environment.systemPackages = with pkgs; [
-    radicle-node
-    maven
-  ];
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Enable networking
-  networking.networkmanager.enable = true;
-
   programs.direnv.enable = true;
 
   # This value determines the NixOS release from which the default
@@ -101,44 +72,13 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+  # Bootloader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  services.logrotate.checkConfig = false;
 
   home-manager.sharedModules = [
     inputs.sops-nix.homeManagerModules.sops
   ];
-
-  nixpkgs.config.permittedInsecurePackages = [
-    "electron-28.3.3"
-    "electron-27.3.11"
-  ];
-  nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (lib.getName pkg) [
-      "davinci-resolve"
-      "steam"
-      "steam-original"
-      "steam-run"
-      "nvidia-x11"
-      "nvidia-settings"
-      "intel-ocl"
-    ];
-  /*
-  nixpkgs.config.packageOverrides = pkgs: {
-    intel-vaapi-driver = pkgs.intel-vaapi-driver.override {enableHybridCodec = true;};
-  };
-  */
-  hardware.opengl = {
-    # hardware.graphics on unstable
-    enable = true;
-    extraPackages = with pkgs; [
-      intel-media-driver # LIBVA_DRIVER_NAME=iHD
-      intel-vaapi-driver # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
-      libvdpau-va-gl
-      # your Open GL, Vulkan and VAAPI drivers
-      vpl-gpu-rt # for newer GPUs on NixOS >24.05 or unstable
-      onevpl-intel-gpu # for newer GPUs on NixOS <= 24.05
-      intel-media-sdk # for older GPUs
-    ];
-  };
-  #environment.sessionVariables = {LIBVA_DRIVER_NAME = "iHD";}; # Force intel-media-driver
-  hardware.graphics.extraPackages32 = with pkgs.pkgsi686Linux; [intel-vaapi-driver];
 }

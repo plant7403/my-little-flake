@@ -21,7 +21,7 @@ in {
     ./hardware-configuration.nix
     ./services
     ./sops.nix
-    ./clevis.nix
+    #./clevis.nix
     ./../common/users/egor.nix
     #./ssh.nix
     #./camera.nix
@@ -41,10 +41,10 @@ in {
     enable = true;
     autologin = false;
   };
-  #modules.impermanence = {
-  #  enable = true;
-  #  disk = "ssd";
-  #};
+  modules.impermanence = {
+    enable = true;
+    disk = "nvme";
+  };
   modules.mullvad = {
     enable = true;
     impermanence = false;
@@ -84,19 +84,23 @@ in {
   #hardware.usbWwan.enable = true;
 
   #microsoft-surface.surface-control.enable = true;
-  microsoft-surface.kernelVersion = "6.10";
+  microsoft-surface.kernelVersion = "6.12";
   #hardware.microsoft-surface.firmware.surface-go-ath10k.replace = true;
   #hardware.enableRedistributableFirmware = true;
   #nixpkgs.config.allowUnfree = true;
 
-  boot.kernelParams = [
+  /*
+     boot.kernelParams = [
     "mem_sleep_default=deep"
   ];
+  */
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  /*
   services.logrotate.checkConfig = false;
+  */
 
   programs.direnv.enable = true;
   #programs.yubikey-touch-detector.enable = true;
@@ -122,8 +126,10 @@ in {
   home-manager.sharedModules = [
     inputs.sops-nix.homeManagerModules.sops
   ];
-  nixpkgs.config.permittedInsecurePackages = [
+  /*
+     nixpkgs.config.permittedInsecurePackages = [
     "electron-28.3.3"
     "electron-27.3.11"
   ];
+  */
 }

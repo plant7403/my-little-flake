@@ -42,7 +42,7 @@ in {
        ENV{ID_VENDOR}=="Yubico",\
        RUN+="${pkgs.systemd}/bin/loginctl lock-sessions"
     '';
-
+    programs.yubikey-touch-detector.enable = true;
     # security.pam.yubico.control = "required";
   };
 }

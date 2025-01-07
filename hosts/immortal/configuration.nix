@@ -23,6 +23,7 @@
     outputs.nixosModules.tailscale
     outputs.nixosModules.system
     outputs.nixosModules.yubikey
+    outputs.nixosModules.transmission
   ];
 
   modules.impermanence = {
@@ -48,6 +49,16 @@
     };
   };
   modules.yubikey.enable = true;
+
+  modules.transmission = {
+    enable = true;
+    web = true;
+    sops = true;
+    persist = true;
+    user = "transmission";
+    group = "media";
+    download-dir = "/hdd/Media";
+  };
 
   services.yggdrasil = {
     openMulticastPort = true;
@@ -140,6 +151,12 @@
       "nginx.service"
     ];
   };
+  nixpkgs.config.permittedInsecurePackages = [
+    "aspnetcore-runtime-wrapped-6.0.36"
+    "aspnetcore-runtime-6.0.36"
+    "dotnet-sdk-wrapped-6.0.428"
+    "dotnet-sdk-6.0.428"
+  ];
 }
 /*
 adguard

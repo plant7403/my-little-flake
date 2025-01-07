@@ -163,7 +163,7 @@
 
             boot.lanzaboote = {
               enable = true;
-              pkiBundle = "/etc/secureboot";
+              pkiBundle = "/var/lib/sbctl";
             };
           })
 
@@ -188,6 +188,7 @@
             home-manager.useUserPackages = true;
             home-manager.users.egor = import ./home-manager/home.nix;
             home-manager.extraSpecialArgs = {inherit inputs;};
+            home-manager.backupFileExtension = "backup";
           }
           lanzaboote.nixosModules.lanzaboote
           ({
@@ -203,7 +204,7 @@
 
             boot.lanzaboote = {
               enable = true;
-              pkiBundle = "/etc/secureboot";
+              pkiBundle = "/var/lib/sbctl";
             };
           })
         ];
@@ -222,6 +223,7 @@
             home-manager.useUserPackages = true;
             home-manager.users.egor = import ./home-manager/saturn.nix;
             home-manager.extraSpecialArgs = {inherit inputs;};
+            home-manager.backupFileExtension = "backup";
           }
           /*
              lanzaboote.nixosModules.lanzaboote
@@ -257,6 +259,7 @@
             home-manager.useUserPackages = true;
             home-manager.users.egor = import ./home-manager/saturn.nix;
             home-manager.extraSpecialArgs = {inherit inputs;};
+            home-manager.backupFileExtension = "backup";
             # Optionally, use home-manager.extraSpecialArgs to pass
             # arguments to home.nix
           }

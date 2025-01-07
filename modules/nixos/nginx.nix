@@ -103,7 +103,8 @@ in {
   imports = [../../hosts/common/optional/nginx/authelia.nix];
   config = {
     networking.firewall.allowedTCPPorts = [80 443];
-
+    security.acme.acceptTerms = true;
+    security.acme.defaults.email = "admin@egor.wtf";
     services.nginx = {
       enable = true;
       serverNamesHashBucketSize = 128;
@@ -122,7 +123,8 @@ in {
       directories = ["/var/lib/acme"];
     };
 
-    # ...
+    /*
+       # ...
     security.acme.acceptTerms = true;
     security.acme.defaults.email = "admin@egor.wtf";
 
@@ -142,6 +144,7 @@ in {
       # credentialsFile = "/run/agenix/secrets/hetzner-dns-token";
       credentialsFile = config.sops.secrets."cloudflare/cf-dns.env".path;
     };
+    */
 
     services.nginx.logError = lib.mkIf cfg.debugLog "stderr warn";
     services.nginx.appendHttpConfig = lib.mkIf cfg.accessLog ''

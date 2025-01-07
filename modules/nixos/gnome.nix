@@ -13,6 +13,14 @@ in {
       type = types.bool;
       default = false;
     };
+    remote = mkOption {
+      type = types.bool;
+      default = false;
+    };
+    isSteamDeck = mkOption {
+      type = types.bool;
+      default = false;
+    };
   };
 
   config = mkMerge [
@@ -59,6 +67,32 @@ in {
       # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
       systemd.services."getty@tty1".enable = false;
       systemd.services."autovt@tty1".enable = false;
+    })
+    (mkIf cfg.remote {
+      # minimized for clarity.
+      # Some of these might not be needed. After some trial and error
+      # I got this working with these configs.
+      # I do not have the patience to rn an elimination test.
+
+      services.gnome.gnome-remote-desktop.enable = true;
+
+      services.xrdp.enable = true;
+      services.xrdp.defaultWindowManager = "${pkgs.gnome-session}/bin/gnome-session";
+      services.xrdp.openFirewall = true;
+
+      environment.systemPackages = with pkgs; [
+        gnome-session
+      ];
+
+      # Open ports in the firewall.
+      networking.firewall = {
+        enable = true;
+        allowedTCPPorts = [3389];
+        allowedUDPPorts = [3389];
+      };
+    })
+    (mkIf cfg.isSteamDeck {
+      services.xserver.displayManager.gdm.enable = mkForce false;
     })
   ];
 }

@@ -50,26 +50,16 @@
   environment.persistence."/persist".directories = [
     "/var/lib/syncthing"
   ];
-  services.nginx = {
-    enable = true;
-    recommendedGzipSettings = true;
-    virtualHosts = {
-      "syncthing.egor.wtf" = {
-        forceSSL = true;
-        useACMEHost = "egor.wtf";
-        extraConfig = ''
-          ${builtins.readFile ./../../common/optional/nginx/authelia/vh.conf}
-        '';
-        locations."/" = {
-          proxyPass = "http://127.0.0.1:8384";
-          proxyWebsockets = true;
-          extraConfig = ''
-            ${builtins.readFile ./../../common/optional/nginx/authelia/locations.conf}
-          '';
-        };
-      };
-    };
-  };
+
+  modules.web.vhosts = [
+    {
+      domain = "egor.wtf";
+      prefix = "syncthing";
+      upstream = "http://127.0.0.1:8384";
+      tor.enable = true;
+      tor.authelia = false;
+    }
+  ];
   #users.groups.sync = {};
   #users.groups.sync.members = ["egor" "photoprism"];
   #users.groups.photoprism.members = ["photoprism" "egor"];

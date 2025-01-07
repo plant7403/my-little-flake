@@ -51,9 +51,9 @@
           enabled = false;
         };
         user_rules = [
-          "||egor.wtf^$client=192.168.1.0/24,dnsrewrite=NOERROR;A;192.168.1.157"
-          "||*.egor.wtf^$client=192.168.1.0/24,dnsrewrite=NOERROR;A;192.168.1.157"
-          "||*.*.egor.wtf^$client=192.168.1.0/24,dnsrewrite=NOERROR;A;192.168.1.157"
+          "||egor.wtf^$client=192.168.1.0/24,dnsrewrite=NOERROR;A;192.168.1.18"
+          "||*.egor.wtf^$client=192.168.1.0/24,dnsrewrite=NOERROR;A;192.168.1.18"
+          "||*.*.egor.wtf^$client=192.168.1.0/24,dnsrewrite=NOERROR;A;192.168.1.18"
           #"@@||mail.egor.wtf^$client=192.168.1.0/24"
           "||egor.wtf^$client=127.0.0.1,dnsrewrite=NOERROR;A;127.0.0.1"
           "||*.egor.wtf^$client=127.0.0.1,dnsrewrite=NOERROR;A;127.0.0.1"
@@ -71,8 +71,10 @@
     # Use recommended settings
     recommendedGzipSettings = true;
     virtualHosts."dns.egor.wtf" = {
-      enableACME = true;
+      /*
+         enableACME = true;
       forceSSL = true;
+      */
       extraConfig = ''
         ${builtins.readFile ./../nginx/authelia/vh.conf}
       '';
@@ -93,6 +95,7 @@
       };
     };
   };
+
   systemd.services."kresd@1" = {
     enable = false;
   };

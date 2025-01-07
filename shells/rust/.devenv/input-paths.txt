@@ -1,0 +1,2 @@
+/home/egor/my-little-flake/shells/rust/devenv.lock
+/home/egor/my-little-flake/shells/rust/devenv.nix

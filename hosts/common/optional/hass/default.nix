@@ -16,22 +16,17 @@
       default_config = {};
     };
   };
-  services.nginx = {
-    recommendedProxySettings = true;
-    virtualHosts."home.egor.wtf" = {
-      forceSSL = true;
-      enableACME = true;
+
+  modules.web.vhosts = [
+    {
+      domain = "egor.wtf";
+      prefix = "home";
+      upstream = "http://127.0.0.1:8123";
+      tor.enable = false;
+      tor.authelia = true;
       extraConfig = ''
-        ${builtins.readFile ./../nginx/authelia/vh.conf}
         proxy_buffering off;
       '';
-      locations."/" = {
-        proxyPass = "http://[::1]:8123";
-        proxyWebsockets = true;
-        extraConfig = ''
-          ${builtins.readFile ./../nginx/authelia/locations.conf}
-        '';
-      };
-    };
-  };
+    }
+  ];
 }

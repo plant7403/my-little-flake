@@ -5,5 +5,6 @@
     ./../../common/optional/tpm.nix
     ./../../common/optional/virtualization.nix
     ./syncthing.nix
+    ./../../common/optional/nix-flatpak.nix
   ];
 }

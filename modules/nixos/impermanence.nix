@@ -38,6 +38,8 @@ in {
           "/root"
           #"/etc/ssh"
           "/var/lib/nixos"
+          "/etc/NetworkManager"
+          "/var/lib/sbctl"
         ];
         files = [
           "/etc/machine-id"

@@ -2,10 +2,11 @@
   sops.secrets."cloudflare/cfdyndns" = {};
   sops.secrets."cloudflare/cf-dns.env" = {};
 
-  services.cfdyndns = {
+  services.cloudflare-dyndns = {
     enable = true;
-    records = ["egor.wtf"];
-    apiTokenFile = config.sops.secrets."cloudflare/cfdyndns".path;
+    domains = ["infra.egor.wtf"];
+    apiTokenFile = config.sops.secrets."cloudflare/cf-dns.env".path;
+    ipv6 = true;
   };
   # TODO - Check if any other setup is possible
   #services.cloudflare-dyndns = {

@@ -10,7 +10,7 @@
     owner = "nextcloud"; #config.services.nextcloud.user;
   };
 
-  services.logrotate.checkConfig = false;
+  #services.logrotate.checkConfig = false;
   #  services.onlyoffice = {
   #  enable = true;
   #  hostname = "localhost";
@@ -18,12 +18,12 @@
   services.nextcloud = {
     enable = true;
     #    maxUploadSize = "1G";
-    package = pkgs.nextcloud29;
+    package = pkgs.nextcloud30;
     hostName = "cloud.egor.wtf";
     # Instead of using pkgs.nextcloud27Packages.apps,
     # we'll reference the package version specified above
     extraApps = with config.services.nextcloud.package.packages.apps; {
-      inherit contacts calendar cospend previewgenerator user_oidc; # twofactor_webauthn deck
+      inherit calendar cospend previewgenerator user_oidc; # twofactor_webauthn deck
       #oidc_login = pkgs.fetchNextcloudApp {
       #  sha256 = "sha256:00hraam87v4faj6xxy3kzshkj7rmshky6x9aas8z4a71ak75mpkh";
       #  url = "https://github.com/pulsejet/nextcloud-oidc-login/archive/refs/tags/v3.0.2.tar.gz";
@@ -105,6 +105,17 @@
       '';
     };
   };
+  /*
+     modules.web.vhosts = [
+    {
+      domain = "egor.wtf";
+      prefix = "cloud";
+      upstream = "";
+      tor.enable = true;
+      tor.authelia = false;
+    }
+  ];
+  */
 
   systemd.services."nextcloud-setup" = {
     requires = ["postgresql.service"];

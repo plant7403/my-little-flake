@@ -36,32 +36,16 @@
       }
     ];
   };
-  # NGINX
-  services.nginx = {
-    enable = true;
-    clientMaxBodySize = "500m";
-    recommendedTlsSettings = true;
-    recommendedOptimisation = true;
-    recommendedGzipSettings = true;
-    recommendedProxySettings = true;
-    virtualHosts = {
-      "photos.egor.wtf" = {
-        forceSSL = true;
-        enableACME = true;
-        http2 = true;
-        extraConfig = ''
-          ${builtins.readFile ./../nginx/authelia/vh.conf}
-        '';
-        locations."/" = {
-          proxyPass = "http://127.0.0.1:2342";
-          proxyWebsockets = true;
-          extraConfig = ''
-            ${builtins.readFile ./../nginx/authelia/locations.conf}
-          '';
-        };
-      };
-    };
-  };
+
+  modules.web.vhosts = [
+    {
+      domain = "egor.wtf";
+      prefix = "photos";
+      upstream = "http://127.0.0.1:2342";
+      tor.enable = false;
+      tor.authelia = false;
+    }
+  ];
   fileSystems."/var/lib/private/photoprism" = {
     device = "/data/Photos";
     options = ["bind"];
