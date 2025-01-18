@@ -80,6 +80,26 @@
       };
     };
   };
+  services.authelia.instances.prod.settings.identity_providers.oidc.clients = [
+    {
+      id = "headscale";
+      description = "Headscale";
+      secret = "$pbkdf2-sha512$310000$bhdup1ycaQmWoLLoFpD/5A$VC1VY6OPD.kOY39FkQR.5wKGWGoASxoQIgB.CXa7WNapC/tLTDOu2wQM6h3pNToXz.Nbu7uQxQIKM8Fp6mfYVA";
+      public = false;
+      authorization_policy = "two_factor";
+      redirect_uris = [
+        "https://head.egor.wtf/a/oauth_response"
+        "https://head.egor.wtf/oidc/callback"
+        "https://head.egor.wtf/admin/oidc/callback"
+      ];
+      scopes = [
+        "openid"
+        "profile"
+        "email"
+        "groups"
+      ];
+    }
+  ];
 
   networking.firewall.allowedUDPPorts = [3478];
 

@@ -105,6 +105,31 @@
       '';
     };
   };
+
+  services.authelia.instances.prod.settings.identity_providers.oidc.clients = [
+    {
+      id = "nextcloud";
+      description = "NextCloud";
+      secret = "$pbkdf2-sha512$310000$bhdup1ycaQmWoLLoFpD/5A$VC1VY6OPD.kOY39FkQR.5wKGWGoASxoQIgB.CXa7WNapC/tLTDOu2wQM6h3pNToXz.Nbu7uQxQIKM8Fp6mfYVA";
+      public = false;
+      authorization_policy = "two_factor";
+      #require_pkce = true;
+      #pkce_challenge_method = "S256";
+      #issuer_private_key = config.sops.secrets."services/authelia/oidc/nextcloud/private.pem".path;
+      #consent_mode = "implicit";
+      redirect_uris = [
+        "https://cloud.egor.wtf/apps/user_oidc/code"
+      ];
+      scopes = [
+        "openid"
+        "profile"
+        "email"
+        "groups"
+      ];
+      #userinfo_signed_response_alg = "none";
+      #token_endpoint_auth_method = "client_secret_post";
+    }
+  ];
   /*
      modules.web.vhosts = [
     {

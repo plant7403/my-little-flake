@@ -5,9 +5,11 @@
   inputs,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.modules.transmission;
-in {
+in
+{
   options.modules.transmission = {
     enable = mkOption {
       type = types.bool;
@@ -39,6 +41,7 @@ in {
     };
   };
   config = mkMerge [
+
     (mkIf cfg.enable {
       services.transmission = {
         enable = true;
@@ -62,21 +65,19 @@ in {
           rpc-whitelist = "192.168.1.*, 127.0.0.1";
         };
       };
-    })
-    (mkIf cfg.web {
-      modules.web.vhosts = [
+      modules.web.vhosts = mkIf cfg.web [
         {
           domain = "egor.wtf";
           prefix = "torr";
           upstream = "http://127.0.0.1:9099";
         }
       ];
-    })
-    (mkIf cfg.sops {
-      sops.secrets."services/transmission" = {
-        owner = "nginx";
+      sops.secrets."services/transmission" = mkIf cfg.sops {
+        #owner = "nginx";
       };
+
     })
+
     (mkIf cfg.persist {
       environment.persistence."/persist".directories = [
         "/var/lib/transmission"

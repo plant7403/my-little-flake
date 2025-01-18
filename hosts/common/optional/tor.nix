@@ -36,6 +36,24 @@
             HiddenServiceNonAnonymousMode = true;
           };
         };
+        myOnion-ssh = {
+          version = 3;
+          map = [
+            {
+              port = 3370;
+              target = {
+                addr = "[::1]";
+                #addr = "127.0.0.1";
+                #addr = "https://password.egor.wtf";
+                port = 3370;
+              };
+            }
+          ];
+          settings = {
+            HiddenServiceSingleHopMode = true;
+            HiddenServiceNonAnonymousMode = true;
+          };
+        };
         Secret = {
           version = 3;
           map = [

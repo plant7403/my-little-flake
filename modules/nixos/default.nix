@@ -13,4 +13,5 @@
   system = import ./system.nix;
   web = import ./nginx.nix;
   transmission = import ./transmission.nix;
+  authelia = import ./authelia.nix;
 }

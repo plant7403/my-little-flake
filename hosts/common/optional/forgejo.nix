@@ -2,30 +2,32 @@
   config,
   outputs,
   ...
-}: let
-  /*
+}:
+let
+in
+/*
      prefix = "git";
   domain = "egor.wtf";
   onion = "ya2rgzzkijougnm32yfq2q6oa3ft6vpxw4j6asufppy5xmae6rucn2yd.onion";
-  */
-in {
+*/
+{
   /*
-     imports = [outputs.nixosModules.web];
-  modules.web = {
-    enable = true;
-    prefix = "git";
-    port = "5055";
-    authelia = true;
-    extraConfig = ''
-
-    '';
-    tor = {
+       imports = [outputs.nixosModules.web];
+    modules.web = {
       enable = true;
+      prefix = "git";
+      port = "5055";
       authelia = true;
+      extraConfig = ''
+
+      '';
+      tor = {
+        enable = true;
+        authelia = true;
+      };
     };
-  };
   */
-  imports = [outputs.nixosModules.web];
+  imports = [ outputs.nixosModules.web ];
   modules.web = {
     accessLog = true;
   };
@@ -33,7 +35,7 @@ in {
     {
       domain = "egor.wtf";
       prefix = "git";
-      upstream = "http://127.0.0.1:5055";
+      upstream = "http://unix:${config.services.forgejo.settings.server.HTTP_ADDR}";
       extraConfig = ''
         include ${config.services.nginx.package}/conf/fastcgi.conf;
         fastcgi_pass unix:${config.services.forgejo.settings.server.HTTP_ADDR};
@@ -75,7 +77,7 @@ in {
   };
 
   services.postgresql = {
-    ensureDatabases = [config.services.forgejo.user];
+    ensureDatabases = [ config.services.forgejo.user ];
     ensureUsers = [
       {
         name = config.services.forgejo.database.user;
@@ -90,7 +92,7 @@ in {
   #};
 
   networking.firewall = {
-    allowedTCPPorts = [2222];
+    allowedTCPPorts = [ 2222 ];
   };
 
   #services.authelia.instances.prod = {

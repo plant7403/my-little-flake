@@ -6,7 +6,8 @@
   lib,
   outputs,
   ...
-}: {
+}:
+{
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -23,6 +24,7 @@
     outputs.nixosModules.tailscale
     outputs.nixosModules.system
     outputs.nixosModules.yubikey
+    outputs.nixosModules.authelia
     outputs.nixosModules.transmission
   ];
 
@@ -60,6 +62,8 @@
     download-dir = "/hdd/Media";
   };
 
+  modules.authelia.enable = true;
+
   services.yggdrasil = {
     openMulticastPort = true;
     enable = true;
@@ -74,14 +78,14 @@
   };
 
   /*
-     services.ollama = {
-    enable = true;
-    host = "0.0.0.0";
-    #acceleration = "cuda";
-  };
+       services.ollama = {
+      enable = true;
+      host = "0.0.0.0";
+      #acceleration = "cuda";
+    };
   */
   networking.firewall = {
-    allowedTCPPorts = [11434];
+    allowedTCPPorts = [ 11434 ];
   };
 
   systemd.services.nix-daemon.environment.TMPDIR = "/tmp";
@@ -111,7 +115,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.initrd = {
     enable = true;
-    supportedFilesystems = ["btrfs"];
+    supportedFilesystems = [ "btrfs" ];
   };
 
   services.logind.powerKey = "ignore";
@@ -124,6 +128,31 @@
   #systemd.services.adguard-home = {
   #before = "";
   #};
+  networking = {
+    interfaces.ens3 = {
+      ipv6.addresses = [
+        {
+          address = "2405:4802:1d0b:d270:::1";
+          prefixLength = 64;
+        }
+      ];
+      ipv4.addresses = [
+        {
+          address = "192.0.1.100";
+          prefixLength = 24;
+        }
+      ];
+    };
+    defaultGateway = {
+      address = "192.0.1.1";
+      interface = "ens3";
+    };
+    defaultGateway6 = {
+      address = "fe80::1";
+      interface = "ens3";
+    };
+  };
+
   systemd.services.cfdyndns = {
     after = [
       "adguard-home.service"
@@ -159,9 +188,8 @@
   ];
 }
 /*
-adguard
-cfdyndns
-headscale
-tailscale
+  adguard
+  cfdyndns
+  headscale
+  tailscale
 */
-
