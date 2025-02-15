@@ -1,19 +1,19 @@
-{
-  lib,
-  pkgs,
-  config,
-  inputs,
-  options,
-  ...
+{ lib
+, pkgs
+, config
+, inputs
+, options
+, ...
 }:
 with lib; let
   # Shorter name to access final settings a
   # user of restore-root.nix module HAS ACTUALLY SET.
-  # cfg is a typical convention.
+  # cfg is a typical convention. 
   cfg = config.modules.impermanence;
   inherit (lib) filterAttrs mkIf;
   regularSecrets = filterAttrs (n: v: !v.neededForUsers) config.sops.secrets;
-in {
+in
+{
   # Declare what settings a user of this "restore-root.nix" module CAN SET.
   options.modules.impermanence = {
     enable = mkEnableOption "restore-root service";
@@ -51,15 +51,16 @@ in {
       };
       programs.fuse.userAllowOther = true;
 
-      system.activationScripts.persistent-dirs.text = let
-        mkHomePersist = user:
-          lib.optionalString user.createHome ''
-            mkdir -p /persist/${user.home}
-            chown ${user.name}:${user.group} /persist/${user.home}
-            chmod ${user.homeMode} /persist/${user.home}
-          '';
-        users = lib.attrValues config.users.users;
-      in
+      system.activationScripts.persistent-dirs.text =
+        let
+          mkHomePersist = user:
+            lib.optionalString user.createHome ''
+              mkdir -p /persist/${user.home}
+              chown ${user.name}:${user.group} /persist/${user.home}
+              chmod ${user.homeMode} /persist/${user.home}
+            '';
+          users = lib.attrValues config.users.users;
+        in
         lib.concatLines (map mkHomePersist users);
 
       security.sudo.extraConfig = ''
@@ -70,11 +71,11 @@ in {
       boot.initrd = {
         enable = true;
         systemd.enable = true;
-        supportedFilesystems = ["btrfs"];
+        supportedFilesystems = [ "btrfs" ];
 
         systemd.services.restore-root = {
           description = "Rollback btrfs rootfs";
-          wantedBy = ["initrd.target"];
+          wantedBy = [ "initrd.target" ];
           requires = [
             "dev-mapper-${cfg.disk}\\x2dcrypt.device"
           ];
@@ -84,7 +85,7 @@ in {
             #"systemd-cryptsetup@${config.networking.hostName}.service"
             "systemd-cryptsetup@${cfg.disk}\\x2dcrypt.service"
           ];
-          before = ["sysroot.mount"];
+          before = [ "sysroot.mount" ];
           unitConfig.DefaultDependencies = "no";
           serviceConfig.Type = "oneshot";
           script = ''
@@ -128,8 +129,8 @@ in {
         };
       };
     })
-    (mkIf (regularSecrets != {} && config.environment.persistence != {}) {
-      system.activationScripts.setupSecrets.deps = ["persist-files"];
+    (mkIf (regularSecrets != { } && config.environment.persistence != { }) {
+      system.activationScripts.setupSecrets.deps = [ "persist-files" ];
     })
   ];
 }

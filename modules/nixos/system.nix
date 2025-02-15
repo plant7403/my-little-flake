@@ -5,9 +5,11 @@
   inputs,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.modules.system;
-in {
+in
+{
   options.modules.system = {
     printing = mkOption {
       type = types.bool;
@@ -45,7 +47,10 @@ in {
 
   config = mkMerge [
     {
-      nix.settings.experimental-features = ["flakes" "nix-command"];
+      nix.settings.experimental-features = [
+        "flakes"
+        "nix-command"
+      ];
       nix.settings = {
         extra-substituters = [
           "https://cachix.cachix.org"
@@ -59,11 +64,21 @@ in {
           "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         ];
       };
+      nixpkgs.config.allowUnfreePredicate =
+        pkg:
+        builtins.elem (lib.getName pkg) [
+          "vscode-extension-github-copilot"
+          "vscode-extension-github-copilot-chat"
+          "android-studio-stable"
+          "android-studio"
+        ];
+      nixpkgs.config.android_sdk.accept_license = true;
 
       networking.hostName = cfg.hostname; # Define your hostname.
+      boot.plymouth.enable = true;
 
       # Set your time zone.
-      time.timeZone = "Asia/Ho_Chi_Minh";
+      time.timeZone = "Europe/Madrid";
 
       # Select internationalisation properties.
       i18n.defaultLocale = "en_US.UTF-8";
@@ -79,17 +94,24 @@ in {
         LC_TELEPHONE = "en_US.UTF-8";
         LC_TIME = "en_US.UTF-8";
       };
-
       # List packages installed in system profile. To search, run:
       # $ nix search wget
       environment.systemPackages = with pkgs; [
         wget
         git
         nano
+        radicle-node
       ];
       programs.adb.enable = true;
       services.fwupd.enable = true;
 
+      hardware.bluetooth.enable = true; # enables support for Bluetooth
+      hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boots
+      hardware.bluetooth.settings = {
+        General = {
+          Experimental = true;
+        };
+      };
       # Enable networking
       networking.networkmanager.enable = true;
       networking.firewall.enable = true;
@@ -101,7 +123,7 @@ in {
     (mkIf cfg.ssh {
       services.openssh = {
         enable = true;
-        ports = [3370];
+        ports = [ 3370 ];
         openFirewall = true;
         settings = {
           PasswordAuthentication = false;
@@ -143,8 +165,8 @@ in {
           };
         };
         timers.clear-log = {
-          wantedBy = ["timers.target"];
-          partOf = ["clear-log.service"];
+          wantedBy = [ "timers.target" ];
+          partOf = [ "clear-log.service" ];
           timerConfig.OnCalendar = "weekly UTC";
         };
       };
@@ -168,7 +190,7 @@ in {
       #  boot.kernelPackages = pkgs.linuxPackages_hardened;
 
       ## Enable BBR
-      boot.kernelModules = ["tcp_bbr"];
+      boot.kernelModules = [ "tcp_bbr" ];
 
       ## Network hardening and performance
       boot.kernel.sysctl = {
@@ -206,37 +228,34 @@ in {
         "net.core.default_qdisc" = "cake";
       };
     })
-    (
-      mkIf cfg.usbguard.enable
-      (mkMerge [
-        {
-          ## USBGuard
-          # Load "/var/lib/usbguard/rules.conf" by default
-          services.usbguard.enable = true;
-          services.usbguard.dbus.enable = true;
-          #services.usbguard.IPCAllowedGroups = ["wheel"];
-          services.udev.packages = [
-            pkgs.usbguard-notifier
-          ];
-          systemd.user.services.usbguard-notifier.enable = true;
-          systemd.packages = with pkgs; [usbguard-notifier];
-          services.systembus-notify.enable = true;
-          environment.systemPackages = with pkgs; [
-            usbguard-notifier
-          ];
+    (mkIf cfg.usbguard.enable (mkMerge [
+      {
+        ## USBGuard
+        # Load "/var/lib/usbguard/rules.conf" by default
+        services.usbguard.enable = true;
+        services.usbguard.dbus.enable = true;
+        #services.usbguard.IPCAllowedGroups = ["wheel"];
+        services.udev.packages = [
+          pkgs.usbguard-notifier
+        ];
+        systemd.user.services.usbguard-notifier.enable = true;
+        systemd.packages = with pkgs; [ usbguard-notifier ];
+        services.systembus-notify.enable = true;
+        environment.systemPackages = with pkgs; [
+          usbguard-notifier
+        ];
 
-          environment.persistence."/persist".directories = [
-            "/var/lib/usbguard"
-          ];
-        }
-        (mkIf cfg.usbguard.sops {
-          services.usbguard.ruleFile = config.sops.secrets."usbguard".path;
-          sops.secrets."usbguard" = {
-            sopsFile = ../../secrets/${cfg.hostname}/secrets.yaml;
-          };
-        })
-      ])
-    )
+        environment.persistence."/persist".directories = [
+          "/var/lib/usbguard"
+        ];
+      }
+      (mkIf cfg.usbguard.sops {
+        services.usbguard.ruleFile = config.sops.secrets."usbguard".path;
+        sops.secrets."usbguard" = {
+          sopsFile = ../../secrets/${cfg.hostname}/secrets.yaml;
+        };
+      })
+    ]))
   ];
   #path = config.sops.secrets."system/hostkeys/luna/ed25519".path;
   #sops.secrets."system/hostkeys/luna/rsa" = {};

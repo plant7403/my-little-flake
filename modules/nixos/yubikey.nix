@@ -1,12 +1,12 @@
-{
-  lib,
-  pkgs,
-  config,
-  ...
+{ lib
+, pkgs
+, config
+, ...
 }:
 with lib; let
   cfg = config.modules.yubikey;
-in {
+in
+{
   options.modules.yubikey = {
     enable = mkEnableOption "service";
   };
@@ -25,8 +25,17 @@ in {
     security.pam.services = {
       login.u2fAuth = true;
       sudo.u2fAuth = true;
+
+
       #login.yubicoAuth = true;
       #sudo.yubicoAuth = true;
+    };
+    security.pam.u2f = {
+      enable = true;
+      settings = {
+        cue = true;
+
+      };
     };
     #security.pam.yubico = {
     #  enable = true;

@@ -4,9 +4,11 @@
   config,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.modules.gnome;
-in {
+in
+{
   options.modules.gnome = {
     enable = mkEnableOption "service";
     autologin = mkOption {
@@ -29,11 +31,11 @@ in {
       services.xserver.displayManager.gdm.enable = true;
       services.xserver.desktopManager.gnome.enable = true;
       environment.gnome.excludePackages = with pkgs; [
-        gnome-photos
+        #gnome-photos
         gnome-tour
-        gedit # text editor
+        #gedit # text editor
 
-        cheese # webcam tool
+        #cheese # webcam tool
         gnome-music
 
         epiphany # web browser
@@ -88,8 +90,8 @@ in {
       # Open ports in the firewall.
       networking.firewall = {
         enable = true;
-        allowedTCPPorts = [3389];
-        allowedUDPPorts = [3389];
+        allowedTCPPorts = [ 3389 ];
+        allowedUDPPorts = [ 3389 ];
       };
     })
     (mkIf cfg.isSteamDeck {

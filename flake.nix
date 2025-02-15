@@ -14,6 +14,13 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     stylix.url = "github:danth/stylix";
 
+
+    firefox-addons = { url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons"; inputs.nixpkgs.follows = "nixpkgs"; };
+    /* 
+      nur.url = "github:nix-community/NUR/master";
+      nur.inputs.nixpkgs.follows = "nixpkgs";
+     */
+
     nix-flatpak.url = "github:gmodena/nix-flatpak"; # unstable branch. Use github:gmodena/nix-flatpak/?ref=<tag> to pin releases.
     #flatpaks.url = "github:GermanBread/declarative-flatpak/stable";
 
@@ -22,7 +29,8 @@
     #  inputs.nixpkgs.follows = "nixpkgs";
     #};
     hardware.url = "github:nixos/nixos-hardware";
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    /*     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+     */
     impermanence.url = "github:nix-community/impermanence";
     jovian.url = "github:Jovian-Experiments/Jovian-NixOS";
 
@@ -31,15 +39,15 @@
 
       # Optional but recommended to limit the size of your system closure.
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-    openhab.url = "github:nagisa/nixpkg-openhab";
-    openhab.inputs = {
+    }; /*
+        openhab.url = "github:nagisa/nixpkg-openhab";
+        openhab.inputs = {
       # In case you alrady depend on `nixpkgs` in your flake, consider having `openhab`
       # “follow” it:
       nixpkgs.follows = "nixpkgs";
       # Similarly, for flake-utils:
       #flake-utils.follows = "flake-utils";
-    };
+      }; */
 
     # Shameless plug: looking for a way to nixify your themes and make
     # everything match nicely? Try nix-colors!
@@ -52,53 +60,62 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nixpkgs-stable.follows = "nixpkgs";
     };
-
-    nixos-mailserver = {
+    /* 
+        nixos-mailserver = {
       url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
       #url = "gitlab:simple-nixos-mailserver/nixos-mailserver/nixos-24.04";
       inputs.nixpkgs.follows = "nixpkgs";
       #inputs.nixpkgs-22_11.follows = "nixpkgs";
       #inputs.nixpkgs-23_05.follows = "nixpkgs";
       #inputs.nixpkgs-23_11.follows = "nixpkgs";
-    };
-
+        };
+       */
     #firefox-addons = {
     #  url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
     #  inputs.nixpkgs.follows = "nixpkgs";
     #};
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
 
-    wp4nix = {
+    /*     wp4nix = {
       url = "git+https://git.helsinki.tools/helsinki-systems/wp4nix.git?ref=master";
       flake = false;
       #ref = "master";
-    };
+        };
+       */
     musnix = {
       url = "github:musnix/musnix";
     };
-
-    vscode-server.url = "github:nix-community/nixos-vscode-server";
+    /* 
+      vscode-server.url = "github:nix-community/nixos-vscode-server";
+       */
     deploy-rs.url = "github:serokell/deploy-rs";
   };
+  /*     , hardware
+        , lanzaboote
+        , disko
+        , nixos-mailserver
+        , musnix
+        , nix-flatpak
+        , stylix
+        , jovian
+        , firefox-addons
+      , #flatpaks, */
+  /* , vscode-server
+        , deploy-rs
+        , sops-nix
+       */
 
   outputs =
-    {
-      self,
-      nixpkgs,
-      vscode-server,
-      deploy-rs,
-      sops-nix,
-      home-manager,
-      hardware,
-      lanzaboote,
-      disko,
-      nixos-mailserver,
-      musnix,
-      nix-flatpak,
-      stylix,
-      jovian,
-      #flatpaks,
-      ...
+    { self
+    , nixpkgs
+    , home-manager
+    , deploy-rs
+    , sops-nix
+    , disko
+    , lanzaboote
+    , hardware
+    , jovian
+    , ...
     }@inputs:
     let
       inherit (self) outputs;
@@ -134,10 +151,12 @@
       #    packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
       # Formatter for your nix files, available through 'nix fmt'
       # Other options beside 'alejandra' include 'nixpkgs-fmt'
-      formatter = forAllSystems (system: nixpkgs.${system}.alejandra);
+      formatter = forAllSystems (system: nixpkgs.${system}.nixfmt-rfc-style);
 
       # Your custom packages and modifications, exported as overlays
-      overlays = import ./overlays { inherit inputs; };
+      overlays = import ./overlays {
+        inherit inputs;
+      };
       # Reusable nixos modules you might want to export
       # These are usually stuff you would upstream into nixpkgs
       nixosModules = import ./modules/nixos;
@@ -156,10 +175,9 @@
             disko.nixosModules.disko
             lanzaboote.nixosModules.lanzaboote
             (
-              {
-                pkgs,
-                lib,
-                ...
+              { pkgs
+              , lib
+              , ...
               }:
               {
                 environment.systemPackages = [
@@ -200,10 +218,9 @@
             }
             lanzaboote.nixosModules.lanzaboote
             (
-              {
-                pkgs,
-                lib,
-                ...
+              { pkgs
+              , lib
+              , ...
               }:
               {
                 environment.systemPackages = [
@@ -254,7 +271,7 @@
                   pkiBundle = "/etc/secureboot";
                 };
               })
-            */
+              */
           ];
         };
         saturn = nixpkgs.lib.nixosSystem {
@@ -292,12 +309,15 @@
             sops-nix.nixosModules.sops
             disko.nixosModules.disko
             home-manager.nixosModules.home-manager
+
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.egor = import ./home-manager/saturn.nix;
               home-manager.extraSpecialArgs = { inherit inputs; };
               home-manager.backupFileExtension = "backup";
+
+
               # Optionally, use home-manager.extraSpecialArgs to pass
               # arguments to home.nix
             }
@@ -320,29 +340,29 @@
             disko.nixosModules.disko
             #{disko.devices.disk.disk1.device = "/dev/vda";}
             sops-nix.nixosModules.sops
-
-            nixos-mailserver.nixosModule
+            /* 
+              nixos-mailserver.nixosModule */
             (
               { config, ... }:
               {
-                services.dovecot2.sieve.extensions = [ "fileinto" ];
-                mailserver = {
-                  enable = true;
-                  fqdn = "mail.egor.wtf";
-                  domains = [ "egor.wtf" ];
-                  # A list of all login accounts. To create the password hashes, use
-                  # nix-shell -p mkpasswd --run 'mkpasswd -sm bcrypt'
-                  loginAccounts = {
-                    "me@egor.wtf" = {
-                      hashedPasswordFile = config.sops.secrets."mail/egor.wtf/me".path;
-                      aliases = [ "postmaster@egor.wtf" ];
+                /* services.dovecot2.sieve.extensions = [ "fileinto" ];
+                  mailserver = {
+                    enable = true;
+                    fqdn = "mail.egor.wtf";
+                    domains = [ "egor.wtf" ];
+                    # A list of all login accounts. To create the password hashes, use
+                    # nix-shell -p mkpasswd --run 'mkpasswd -sm bcrypt'
+                    loginAccounts = {
+                      "me@egor.wtf" = {
+                        hashedPasswordFile = config.sops.secrets."mail/egor.wtf/me".path;
+                        aliases = [ "postmaster@egor.wtf" ];
+                      };
+                      "hello@egor.wtf" = {
+                        hashedPasswordFile = config.sops.secrets."mail/egor.wtf/me".path;
+                      };
                     };
-                    "hello@egor.wtf" = {
-                      hashedPasswordFile = config.sops.secrets."mail/egor.wtf/me".path;
-                    };
-                  };
-                  certificateScheme = "acme-nginx";
-                };
+                    certificateScheme = "acme-nginx";
+                  }; */
                 security.acme.acceptTerms = true;
                 security.acme.defaults.email = "ssl@egor.wtf";
 
