@@ -265,13 +265,14 @@
               home-manager.extraSpecialArgs = { inherit inputs; };
               home-manager.backupFileExtension = "backup";
             }
-            /*
-                 lanzaboote.nixosModules.lanzaboote
-              ({
+            lanzaboote.nixosModules.lanzaboote
+            (
+              {
                 pkgs,
                 lib,
                 ...
-              }: {
+              }:
+              {
                 environment.systemPackages = [
                   pkgs.sbctl
                 ];
@@ -280,10 +281,11 @@
 
                 boot.lanzaboote = {
                   enable = true;
-                  pkiBundle = "/etc/secureboot";
+                  pkiBundle = "/var/lib/sbctl";
                 };
-              })
-            */
+              }
+            )
+
           ];
         };
         saturn = nixpkgs.lib.nixosSystem {
