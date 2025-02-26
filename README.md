@@ -23,4 +23,16 @@ and
 # Deploy
 
 
+### fast deploy-rs
 `deploy flake.nix#[host] --skip-checks --hostname [123.123.123.123] --magic-rollback false --auto-rollback false`
+
+### big upgrade
+#### git on the main device
+`git add . && git commit && git push rad main`
+also
+`rad node start`
+#### git on the remote device
+`git pull rad main`
+#### upgrade
+enter tmux
+`sudo nixos-rebuild switch --flake .`

@@ -79,7 +79,7 @@ in
 
     #davinci-resolve
     #flowblade
-    kdenlive
+
     deploy-rs
     gnome-decoder
     usbguard-notifier
