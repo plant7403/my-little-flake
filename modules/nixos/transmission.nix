@@ -62,19 +62,23 @@ in
           rpc-port = 9099;
           rpc-host-whitelist = "torr.egor.wtf";
           #rpc-whitelist = "192.168.1.*";
-          rpc-whitelist = "192.168.1.*, 127.0.0.1";
+          rpc-whitelist = "127.0.0.1";
         };
       };
-      modules.web.vhosts = mkIf cfg.web [
-        {
-          domain = "egor.wtf";
-          prefix = "torr";
-          upstream = "http://127.0.0.1:9099";
-        }
-      ];
-      sops.secrets."services/transmission" = mkIf cfg.sops {
-        #owner = "nginx";
-      };
+      /*
+        modules.web.vhosts = mkIf cfg.web [
+             {
+               domain = "egor.wtf.local";
+               prefix = "torr";
+               upstream = "http://127.0.0.1:9099";
+             }
+           ];
+      */
+      /*
+        sops.secrets."services/transmission" = mkIf cfg.sops {
+             #owner = "nginx";
+           };
+      */
 
     })
 

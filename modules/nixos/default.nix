@@ -15,4 +15,5 @@
   transmission = import ./transmission.nix;
   authelia = import ./authelia.nix;
   kde = import ./kde.nix;
+  yggdrasil = import ./yggdrasil.nix;
 }

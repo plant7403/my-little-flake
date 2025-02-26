@@ -53,6 +53,8 @@ in
     outputs.nixosModules.yubikey
     outputs.nixosModules.transmission
     outputs.nixosModules.web
+    outputs.nixosModules.yggdrasil
+
   ];
 
   /*
@@ -72,6 +74,8 @@ in
     enable = true;
     impermanence = true;
   };
+
+  modules.yggdrasil.enable = true;
   modules.sound.enable = true;
   #modules.steam.enable = true;
   modules.tailscale = {

@@ -30,6 +30,8 @@
     outputs.nixosModules.tailscale
     outputs.nixosModules.system
     outputs.nixosModules.yubikey
+    outputs.nixosModules.yggdrasil
+
   ];
 
   modules.gnome = {
@@ -38,6 +40,7 @@
   };
 
   #modules.kde.enable = true;
+  modules.yggdrasil.enable = true;
 
   modules.impermanence = {
     enable = true;

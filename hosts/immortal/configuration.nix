@@ -70,9 +70,9 @@
     persistentKeys = true;
     settings = {
       Peers = [
-        #"203:71e:e9c9:1803:24c8:a6d3:54ec:eec3"
-        "tcp://sin.yuetau.net:6642"
-        "tls://153.120.42.137:54232"
+        "quic://spain.magicum.net:36900"
+        "tls://spain.magicum.net:36901"
+        "tcp://rendezvous.anton.molyboha.me:50421"
       ];
     };
   };
