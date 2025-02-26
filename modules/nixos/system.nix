@@ -43,6 +43,10 @@ in
       type = types.bool;
       default = false;
     };
+    tpm = mkOption {
+      type = types.bool;
+      default = false;
+    };
   };
 
   config = mkMerge [
@@ -174,7 +178,7 @@ in
     (mkIf cfg.autoupdate {
       system.autoUpgrade = {
         enable = true;
-        flake = inputs.self.outPath;
+        #flake = "path:${rootPath}";
         flags = [
           "--update-input"
           "nixpkgs"
@@ -254,6 +258,12 @@ in
         sops.secrets."usbguard" = {
           sopsFile = ../../secrets/${cfg.hostname}/secrets.yaml;
         };
+      })
+      (mkIf cfg.tpm {
+        security.tpm2.enable = true;
+        security.tpm2.pkcs11.enable = true; # expose /run/current-system/sw/lib/libtpm2_pkcs11.so
+        security.tpm2.tctiEnvironment.enable = true; # TPM2TOOLS_TCTI and TPM2_PKCS11_TCTI env variables
+        users.users.egor.extraGroups = [ "tss" ]; # tss group has access to TPM devices
       })
     ]))
   ];

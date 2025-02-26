@@ -1,4 +1,11 @@
+{ pkgs, ... }:
 {
+  home.programs = with pkgs; [
+    thefuck
+    mosh
+    tmux
+
+  ];
   programs.zsh = {
     enable = true;
     autocd = true;
@@ -14,7 +21,10 @@
 
     oh-my-zsh = {
       enable = true;
-      plugins = ["git" "thefuck"];
+      plugins = [
+        "git"
+        "thefuck"
+      ];
       theme = "robbyrussell";
     };
   };

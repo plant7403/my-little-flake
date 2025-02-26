@@ -15,13 +15,14 @@
     ./services
     ./sops.nix
     ./disk-config.nix
+    ./clevis.nix
 
     ./../common/users/egor.nix
     ./../common/users/root.nix
     #./../common/desktop/steam.nix
     ./../common/desktop/virtualbox.nix
     outputs.nixosModules.gnome
-    outputs.nixosModules.kde
+    #outputs.nixosModules.kde
     outputs.nixosModules.impermanence
     outputs.nixosModules.mullvad
     outputs.nixosModules.sound
@@ -31,14 +32,12 @@
     outputs.nixosModules.yubikey
   ];
 
-  /*
-    modules.gnome = {
-      enable = true;
-      autologin = true;
-    };
-  */
+  modules.gnome = {
+    enable = true;
+    autologin = false;
+  };
 
-  modules.kde.enable = true;
+  #modules.kde.enable = true;
 
   modules.impermanence = {
     enable = true;
@@ -69,7 +68,9 @@
       enable = false;
       sops = true;
     };
+    tpm = true;
   };
+
   modules.yubikey.enable = true;
 
   programs.direnv.enable = true;

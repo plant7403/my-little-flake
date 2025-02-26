@@ -26,7 +26,7 @@ in
       # If you want to use JACK applications, uncomment this
       jack.enable = true;
     };
-    hardware.pulseaudio.enable = false;
+    services.pulseaudio.enable = false;
     #services.pipewire.package = pkgs.pipewire.override {libcameraSupport = false;};
     #/*
 
