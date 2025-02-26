@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  home.programs = with pkgs; [
+  home.packages = with pkgs; [
     thefuck
     mosh
     tmux

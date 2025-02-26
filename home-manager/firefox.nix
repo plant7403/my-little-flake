@@ -1,17 +1,21 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   programs.librewolf = {
     enable = true;
     profiles.default = {
-      /*       extentions = with inputs.firefox-addons.packages.${pkgs.system};
+      /*
+        extensions = with inputs.firefox-addons.packages.${pkgs.system};
         [
           privacy-badger
-        ]; */
-      /*       extensions = with pkgs; [
-        # installing bitwarden and ublock-origin through nur
-        nur.repos.rycee.firefox-addons.bitwarden
-        nur.repos.rycee.firefox-addons.ublock-origin
-      ];
-       */
+        ];
+      */
+      /*
+        extensions = with pkgs; [
+          # installing bitwarden and ublock-origin through nur
+          nur.repos.rycee.firefox-addons.bitwarden
+          nur.repos.rycee.firefox-addons.ublock-origin
+        ];
+      */
       search = {
         force = true;
         engines = {
@@ -43,7 +47,10 @@
             }
             {
               name = "wiki";
-              tags = [ "wiki" "nix" ];
+              tags = [
+                "wiki"
+                "nix"
+              ];
               url = "https://wiki.nixos.org/";
             }
           ];

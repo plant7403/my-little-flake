@@ -72,23 +72,16 @@ in
         url = "https://4kwallpapers.com/images/wallpapers/frierens-staff-3840x2160-20067.jpg";
         sha256 = "0kcl0ssqfmd9vpjlhgb3kxxqdy29q5iy9bykz50m7k88749bbkpr";
       };
-      /*
-        stylix.image = pkgs.fetchurl {
-          url = "https://www.pixelstalk.net/wp-content/uploads/2016/05/Epic-Anime-Awesome-Wallpapers.jpg";
-          sha256 = "enQo3wqhgf0FEPHj2coOCvo7DuZv+x5rL/WIo4qPI50=";
-        };
-      */
-
       stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/outrun-dark.yaml";
       stylix.fonts = {
         serif = {
           package = pkgs.dejavu_fonts;
-          name = "DejaVu Serif";
+          name = "Noto Serif";
         };
 
         sansSerif = {
           package = pkgs.dejavu_fonts;
-          name = "Source Code Pro";
+          name = "Noto Sans";
         };
 
         monospace = {
@@ -101,13 +94,31 @@ in
           name = "Noto Color Emoji";
         };
       };
-      stylix.opacity = {
-        terminal = 0.5;
-        applications = 0.75;
-        desktop = 0.75;
-        popups = 0.75;
-      };
+      /*
+        stylix.opacity = {
+             terminal = 0.5;
+             applications = 0.75;
+             desktop = 0.75;
+             popups = 0.75;
+           };
+      */
       stylix.autoEnable = true;
+
+      home-manager.users.egor.programs.gnome-shell = {
+        enable = true;
+        extensions = [ { package = pkgs.gnomeExtensions.gsconnect; } ];
+      };
+
+      networking.firewall = rec {
+        allowedTCPPortRanges = [
+          {
+            from = 1714;
+            to = 1764;
+          }
+        ];
+        allowedUDPPortRanges = allowedTCPPortRanges;
+      };
+      security.pam.services.login.enableGnomeKeyring = true;
     })
     (mkIf cfg.autologin {
       # Enable automatic login for the user.

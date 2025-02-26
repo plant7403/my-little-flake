@@ -34,16 +34,32 @@ in
       konsole
       elisa
     ];
-    qt = {
-      enable = true;
-      platformTheme = "gnome";
-      style = "adwaita-dark";
-    };
 
     services.displayManager.autoLogin.enable = true;
     services.displayManager.autoLogin.user = "egor";
     # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
-    systemd.services."getty@tty1".enable = false;
-    systemd.services."autovt@tty1".enable = false;
+    /*
+      systemd.services."getty@tty1".enable = false;
+       systemd.services."autovt@tty1".enable = false;
+    */
+    # Technically not related to this issue, but still useful
+    xdg.configFile."menus/applications.menu".source =
+      "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
+
+    qt = {
+      enable = true;
+      platformTheme.package = with pkgs.kdePackages; [
+        plasma-integration
+        # I don't remember why I put this is here, maybe it fixes the theme of the system setttings
+        systemsettings
+      ];
+      style = {
+        package = pkgs.kdePackages.breeze;
+        name = "Breeze";
+      };
+    };
+    systemd.egor.sessionVariables = {
+      QT_QPA_PLATFORMTHEME = "kde";
+    };
   };
 }

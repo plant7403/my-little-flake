@@ -36,7 +36,7 @@
     jovian.url = "github:Jovian-Experiments/Jovian-NixOS";
 
     lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.3.0";
+      url = "github:nix-community/lanzaboote/v0.4.2";
 
       # Optional but recommended to limit the size of your system closure.
       inputs.nixpkgs.follows = "nixpkgs";
@@ -44,7 +44,7 @@
     /*
         openhab.url = "github:nagisa/nixpkg-openhab";
         openhab.inputs = {
-      # In case you alrady depend on `nixpkgs` in your flake, consider having `openhab`
+      # In case you already depend on `nixpkgs` in your flake, consider having `openhab`
       # “follow” it:
       nixpkgs.follows = "nixpkgs";
       # Similarly, for flake-utils:
@@ -333,13 +333,33 @@
               # Optionally, use home-manager.extraSpecialArgs to pass
               # arguments to home.nix
             }
+            lanzaboote.nixosModules.lanzaboote
+            (
+              {
+                pkgs,
+                lib,
+                ...
+              }:
+              {
+                environment.systemPackages = [
+                  pkgs.sbctl
+                ];
+
+                boot.loader.systemd-boot.enable = lib.mkForce false;
+
+                boot.lanzaboote = {
+                  enable = true;
+                  pkiBundle = "/var/lib/sbctl";
+                };
+              }
+            )
             inputs.musnix.nixosModules.musnix
             {
               musnix.enable = true;
               musnix.alsaSeq.enable = true;
               musnix.ffado.enable = true;
               musnix.rtcqs.enable = true;
-              #musnix.kernel.realtime = true;
+              musnix.kernel.realtime = true;
             }
           ];
         };

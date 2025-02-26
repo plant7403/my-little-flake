@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  home.programs = with pkgs; [
+  home.packages = with pkgs; [
     yubico-piv-tool
     yubikey-manager
     yubikey-manager-qt

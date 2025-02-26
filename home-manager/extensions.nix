@@ -13,6 +13,8 @@
     gnomeExtensions.caffeine
     gnomeExtensions.tailscale-qs
     gnomeExtensions.tailscale-status
+    gnomeExtensions.gsconnect
+
     #gnomeExtensions.syncthing-indicator
     trayscale
     light
@@ -29,14 +31,17 @@
       # `gnome-extensions list` for a list
       enabled-extensions = [
         "user-theme@gnome-shell-extensions.gcampax.github.com"
-        "trayIconsReloaded@selfmade.pl"
-        "Vitals@CoreCoding.com"
         "caffeine@patapon.info"
-        #"tailscale-status@maxgallup.github.com"
-        "tailscale@joaophi.github.com"
         "drive-menu@gnome-shell-extensions.gcampax.github.com"
         "appindicatorsupport@rgcjonas.gmail.com"
-
+        "blur-my-shell@aunetx"
+        "grand-theft-focus@zalckos.github.com"
+        "screenshot-window-sizer@gnome-shell-extensions.gcampax.github.com"
+        "status-icons@gnome-shell-extensions.gcampax.github.com"
+        "system-monitor@gnome-shell-extensions.gcampax.github.com"
+        "tailscale@joaophi.github.com"
+        "trayIconsReloaded@selfmade.pl"
+        "gsconnect@andyholmes.github.io"
       ];
 
       favorite-apps = [
@@ -48,7 +53,18 @@
         #"logseq.desktop"
         "com.github.iwalton3.jellyfin-media-player.desktop"
         "virtualbox.desktop"
+        "element-desktop.desktop"
       ];
+      "extensions/blur-my-shell/applications/opacity" = 235;
+      # "extensions/blur-my-shell/applications/blur" = true;
+      "extensions/blur-my-shell/applications/sigma" = 30;
+      "extensions/blur-my-shell/applications/enable-all" = true;
+      "extensions/blur-my-shell/applications/dynamic-opacity" = false;
+      "extensions/blur-my-shell/applications/brightness" = 1.0;
+
+      "extensions/blur-my-shell/panel/static-blur" = false;
+      "extensions/blur-my-shell/panel/sigma" = 1;
+      "extensions/blur-my-shell/panel/brightness" = 1.0;
     };
     /*
       "org/gnome/desktop/interface" = {
@@ -60,4 +76,5 @@
        };
     */
   };
+
 }
