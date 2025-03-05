@@ -14,6 +14,8 @@
     gnomeExtensions.tailscale-qs
     gnomeExtensions.tailscale-status
     gnomeExtensions.gsconnect
+    gnomeExtensions.syncthing-indicator
+    gnomeExtensions.syncthing-toggle
 
     #gnomeExtensions.syncthing-indicator
     trayscale

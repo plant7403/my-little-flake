@@ -93,6 +93,8 @@ in
     libresprite
     pixelorama
     vlc
+
+    obsidian
   ];
 
   programs.home-manager.enable = true;

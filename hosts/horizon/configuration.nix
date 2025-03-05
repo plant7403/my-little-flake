@@ -105,6 +105,7 @@ in
       autoStart = true;
       user = "egor";
       desktopSession = "plasma";
+      updater.splash = "jovian";
     };
     decky-loader = {
       enable = true;
@@ -116,6 +117,9 @@ in
       enableGyroDsuService = true;
     };
   };
+  environment.persistence."/persist".directories = [
+    "/var/lib/decky-loader"
+  ];
   nixpkgs.config.allowUnfree = true;
   programs = {
     nix-ld.enable = true;

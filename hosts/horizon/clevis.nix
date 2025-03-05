@@ -1,6 +1,6 @@
 { config, ... }:
 {
-  # sops.secrets."encryption/luna" = {};
+  sops.secrets."encryption/horizon" = { };
   boot.initrd.systemd.enable = true;
 
   boot.initrd.availableKernelModules = [
