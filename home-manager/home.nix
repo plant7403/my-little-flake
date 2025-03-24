@@ -95,6 +95,8 @@ in
     vlc
 
     obsidian
+
+    prismlauncher
   ];
 
   programs.home-manager.enable = true;
