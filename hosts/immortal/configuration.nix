@@ -85,7 +85,10 @@
     };
   */
   networking.firewall = {
-    allowedTCPPorts = [ 11434 ];
+    allowedTCPPorts = [
+      11434
+      1080
+    ];
   };
 
   systemd.services.nix-daemon.environment.TMPDIR = "/tmp";
@@ -186,6 +189,29 @@
     "dotnet-sdk-wrapped-6.0.428"
     "dotnet-sdk-6.0.428"
   ];
+  services._3proxy = {
+    enable = true;
+    services = [
+      {
+        type = "socks";
+        auth = [ "strong" ];
+        acl = [
+          {
+            rule = "allow";
+            users = [ "test1" ];
+          }
+        ];
+      }
+    ];
+    usersFile = "/etc/3proxy.passwd";
+  };
+
+  environment.etc = {
+    "3proxy.passwd".text = ''
+      test1:CL:password1
+      test2:CR:$1$rkpibm5J$Aq1.9VtYAn0JrqZ8M.1ME.
+    '';
+  };
 }
 /*
   adguard
