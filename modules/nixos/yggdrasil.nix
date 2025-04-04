@@ -28,5 +28,16 @@ in
         ];
       };
     };
+    networking.hosts = {
+      "200:d3b0:9e2f:647b:dc20:a133:ef09:a697" = [
+        "egor.wtf"
+        "cloud.egor.wtf"
+        "password.egor.wtf"
+        "jelly.egor.wtf"
+        "photos.egor.wtf"
+        "git.egor.wtf"
+        "auth.egor.wtf"
+      ];
+    };
   };
 }

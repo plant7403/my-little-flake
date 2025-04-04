@@ -97,6 +97,8 @@ in
     obsidian
 
     prismlauncher
+
+    alfis
   ];
 
   programs.home-manager.enable = true;

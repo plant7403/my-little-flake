@@ -202,6 +202,12 @@ in
                 lib.mkMerge [
                   {
                     nginx = {
+                      recommendedZstdSettings = true;
+                      recommendedTlsSettings = true;
+                      recommendedProxySettings = true;
+                      recommendedOptimisation = true;
+                      recommendedGzipSettings = true;
+                      recommendedBrotliSettings = true;
                       virtualHosts.${fqdn c} = {
                         #enableACME = true;
                         #acmeRoot = null;

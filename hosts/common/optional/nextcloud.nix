@@ -2,12 +2,13 @@
   pkgs,
   config,
   ...
-}: {
+}:
+{
   sops.secrets."postgres/nextcloud" = {
     owner = "nextcloud";
   };
   sops.secrets."services/nextcloud/admin/password" = {
-    owner = "nextcloud"; #config.services.nextcloud.user;
+    owner = "nextcloud"; # config.services.nextcloud.user;
   };
 
   #services.logrotate.checkConfig = false;
@@ -23,7 +24,12 @@
     # Instead of using pkgs.nextcloud27Packages.apps,
     # we'll reference the package version specified above
     extraApps = with config.services.nextcloud.package.packages.apps; {
-      inherit calendar cospend previewgenerator user_oidc; # twofactor_webauthn deck
+      inherit
+        calendar
+        cospend
+        previewgenerator
+        user_oidc
+        ; # twofactor_webauthn deck
       #oidc_login = pkgs.fetchNextcloudApp {
       #  sha256 = "sha256:00hraam87v4faj6xxy3kzshkj7rmshky6x9aas8z4a71ak75mpkh";
       #  url = "https://github.com/pulsejet/nextcloud-oidc-login/archive/refs/tags/v3.0.2.tar.gz";
@@ -81,7 +87,7 @@
     enable = true;
 
     # Ensure the database, user, and permissions always exist
-    ensureDatabases = ["nextcloud"];
+    ensureDatabases = [ "nextcloud" ];
     ensureUsers = [
       {
         name = "nextcloud";
@@ -92,9 +98,7 @@
   };
 
   services.nginx.virtualHosts."cloud.egor.wtf" = {
-    #enableACME = true;
-    forceSSL = true;
-    useACMEHost = "egor.wtf";
+
     extraConfig = ''
       ${builtins.readFile ./nginx/authelia/vh.conf}
     '';
@@ -105,6 +109,28 @@
       '';
     };
   };
+  services.nginx.virtualHosts."cloud.egor.wtf".listen = [
+    {
+      addr = "127.0.0.1";
+      port = 8080;
+    }
+  ];
+  imports = [ outputs.nixosModules.web ];
+  modules.web.vhosts = [
+    {
+      domain = "egor.wtf";
+      prefix = "cloud";
+      upstream = "http://127.0.0.1:8080";
+      /*
+        extraConfig = ''
+             include ${config.services.nginx.package}/conf/fastcgi.conf;
+             fastcgi_pass unix:${config.services.forgejo.settings.server.HTTP_ADDR};
+           '';
+      */
+      tor.enable = true;
+      tor.authelia = false;
+    }
+  ];
 
   services.authelia.instances.prod.settings.identity_providers.oidc.clients = [
     {
@@ -131,20 +157,20 @@
     }
   ];
   /*
-     modules.web.vhosts = [
-    {
-      domain = "egor.wtf";
-      prefix = "cloud";
-      upstream = "";
-      tor.enable = true;
-      tor.authelia = false;
-    }
-  ];
+       modules.web.vhosts = [
+      {
+        domain = "egor.wtf";
+        prefix = "cloud";
+        upstream = "";
+        tor.enable = true;
+        tor.authelia = false;
+      }
+    ];
   */
 
   systemd.services."nextcloud-setup" = {
-    requires = ["postgresql.service"];
-    after = ["postgresql.service"];
+    requires = [ "postgresql.service" ];
+    after = [ "postgresql.service" ];
   };
   #services.authelia.instances.prod = {
   #  settings = {
