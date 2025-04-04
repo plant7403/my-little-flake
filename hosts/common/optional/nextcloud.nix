@@ -98,12 +98,14 @@
     ];
   };
 
-  services.nginx.virtualHosts."cloud.egor.wtf".listen = [
-    {
-      addr = "127.0.0.1";
-      port = 8080;
-    }
-  ];
+  /*
+    services.nginx.virtualHosts."cloud.egor.wtf".listen = [
+      {
+        addr = "127.0.0.1";
+        port = 8080;
+      }
+    ];
+  */
   imports = [ outputs.nixosModules.web ];
   modules.web.vhosts = [
     {

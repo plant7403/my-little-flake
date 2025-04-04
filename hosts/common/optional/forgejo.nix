@@ -29,7 +29,6 @@ in
   */
   imports = [ outputs.nixosModules.web ];
   modules.web = {
-    accessLog = true;
     vhosts = [
       {
         domain = "egor.wtf";
