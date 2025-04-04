@@ -89,6 +89,9 @@
       11434
       1080
     ];
+    allowedUDPPorts = [
+      1080
+    ];
   };
   networking.wireless.enable = true;
 
