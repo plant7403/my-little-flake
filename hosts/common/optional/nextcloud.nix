@@ -1,7 +1,6 @@
 {
   pkgs,
   config,
-  outputs,
   ...
 }:
 {
@@ -98,14 +97,14 @@
     ];
   };
 
-  /*
-    services.nginx.virtualHosts."cloud.egor.wtf".listen = [
-      {
-        addr = "127.0.0.1";
-        port = 8080;
-      }
-    ];
-  */
+  services.nginx.virtualHosts."cloud.egor.wtf" = {
+    #enableACME = true;
+    forceSSL = true;
+    useACMEHost = "egor.wtf";
+    locations."/" = {
+      proxyWebsockets = true;
+    };
+  };
 
   services.authelia.instances.prod.settings.identity_providers.oidc.clients = [
     {
