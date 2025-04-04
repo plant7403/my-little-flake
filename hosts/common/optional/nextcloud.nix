@@ -98,18 +98,6 @@
     ];
   };
 
-  services.nginx.virtualHosts."cloud.egor.wtf" = {
-
-    extraConfig = ''
-      ${builtins.readFile ./nginx/authelia/vh.conf}
-    '';
-    locations."/" = {
-      proxyWebsockets = true;
-      extraConfig = ''
-        ${builtins.readFile ./nginx/authelia/locations.conf}
-      '';
-    };
-  };
   services.nginx.virtualHosts."cloud.egor.wtf".listen = [
     {
       addr = "127.0.0.1";
