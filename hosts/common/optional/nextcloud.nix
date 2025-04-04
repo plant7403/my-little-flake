@@ -106,22 +106,6 @@
       }
     ];
   */
-  imports = [ outputs.nixosModules.web ];
-  modules.web.vhosts = [
-    {
-      domain = "egor.wtf";
-      prefix = "cloud";
-      upstream = "http://127.0.0.1:8080";
-      /*
-        extraConfig = ''
-             include ${config.services.nginx.package}/conf/fastcgi.conf;
-             fastcgi_pass unix:${config.services.forgejo.settings.server.HTTP_ADDR};
-           '';
-      */
-      tor.enable = true;
-      tor.authelia = false;
-    }
-  ];
 
   services.authelia.instances.prod.settings.identity_providers.oidc.clients = [
     {
