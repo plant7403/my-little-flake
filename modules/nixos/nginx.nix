@@ -304,7 +304,7 @@ in
                             ${c.extraConfig}
                           '';
                       };
-                      locations."/authelia".extraConfig = lib.mkIf authelia ''
+                      locations."/authelia".extraConfig = lib.mkIf c.authelia ''
                         internal;
                         proxy_pass https://auth.${c.domain}/api/verify;
 
@@ -427,7 +427,7 @@ in
                       ${c.extraConfig}
                     '';
                 };
-                locations."/authelia".extraConfig = lib.mkIf tor.authelia ''
+                locations."/authelia".extraConfig = lib.mkIf c.tor.authelia ''
                   internal;
                   proxy_pass https://auth.${c.tor.onion};
 
