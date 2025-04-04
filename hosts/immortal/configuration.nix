@@ -90,6 +90,7 @@
       1080
     ];
   };
+  networking.wireless.enable = true;
 
   systemd.services.nix-daemon.environment.TMPDIR = "/tmp";
 
