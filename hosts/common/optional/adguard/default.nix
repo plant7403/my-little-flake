@@ -1,15 +1,19 @@
-{config, ...}: {
+{ config, ... }:
+{
   #config.sops.secrets."postgres/forgejo".path;
   #sops.secrets."postgres/forgejo" = {
   #  sopsFile = ./../../../secrets/example.yaml; # bring your own password file
   #  owner = config.services.forgejo.user;
   #};
-  sops.secrets."services/adguard-home/admin/password" = {};
+  sops.secrets."services/adguard-home/admin/password" = { };
 
   networking = {
     firewall = {
-      allowedTCPPorts = [853];
-      allowedUDPPorts = [53 853];
+      allowedTCPPorts = [ 853 ];
+      allowedUDPPorts = [
+        53
+        853
+      ];
     };
   };
 
@@ -66,34 +70,42 @@
       };
     };
   };
-  services.nginx = {
-    enable = true;
-    # Use recommended settings
-    recommendedGzipSettings = true;
-    virtualHosts."dns.egor.wtf" = {
-      /*
-         enableACME = true;
-      forceSSL = true;
-      */
-      extraConfig = ''
-        ${builtins.readFile ./../nginx/authelia/vh.conf}
-      '';
-      locations."/" = {
-        proxyPass = "http://127.0.0.1:3050";
+  /*
+    services.nginx = {
+      enable = true;
+      virtualHosts."dns.egor.wtf" = {
         extraConfig = ''
-          ${builtins.readFile ./../nginx/authelia/locations.conf}
+          ${builtins.readFile ./../nginx/authelia/vh.conf}
         '';
-      };
+        locations."/" = {
+          proxyPass = "http://127.0.0.1:3050";
+          extraConfig = ''
+            ${builtins.readFile ./../nginx/authelia/locations.conf}
+          '';
+        };
 
-      # FIXME - This doesn't make much sense
-      locations."/dns-query" = {
-        extraConfig = ''
-          proxy_set_header Host $host;
-          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-          proxy_bind 127.0.0.1;
-        '';
+        # FIXME - This doesn't make much sense
+        locations."/dns-query" = {
+          extraConfig = ''
+            proxy_set_header Host $host;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_bind 127.0.0.1;
+          '';
+        };
       };
     };
+  */
+  imports = [ outputs.nixosModules.web ];
+  modules.web = {
+    vhosts = [
+      {
+        domain = "egor.wtf";
+        prefix = "dns";
+        upstream = "http://127.0.0.1:3050";
+        tor.enable = true;
+        tor.authelia = false;
+      }
+    ];
   };
 
   systemd.services."kresd@1" = {
@@ -104,7 +116,7 @@
       access_control = {
         rules = [
           {
-            domain = ["dns.egor.wtf"];
+            domain = [ "dns.egor.wtf" ];
             policy = "bypass";
             #resources = ["^/s([/?].*)?$"];
           }
