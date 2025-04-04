@@ -120,6 +120,7 @@ in
         proxy_headers_hash_max_size 1024;
         proxy_headers_hash_bucket_size 256;
       '';
+
     }
     /*
       logError = lib.mkIf cfg.debugLog "stderr warn";
@@ -202,12 +203,6 @@ in
                 lib.mkMerge [
                   {
                     nginx = {
-                      recommendedZstdSettings = true;
-                      recommendedTlsSettings = true;
-                      recommendedProxySettings = true;
-                      recommendedOptimisation = true;
-                      recommendedGzipSettings = true;
-                      recommendedBrotliSettings = true;
                       virtualHosts.${fqdn c} = {
                         #enableACME = true;
                         #acmeRoot = null;
