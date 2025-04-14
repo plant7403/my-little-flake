@@ -2,13 +2,15 @@
   lib,
   config,
   ...
-}: let
+}:
+let
   dnsName = "egor.wtf";
-in {
-  sops.secrets."cloudflare/cf-dns.env" = {};
+in
+{
+  sops.secrets."cloudflare/cf-dns.env" = { };
   # ...
   services.nginx.virtualHosts.${dnsName} = {
-    serverAliases = ["*.${dnsName}"];
+    serverAliases = [ "*.${dnsName}" ];
     enableACME = true;
   };
   services.nginx.virtualHosts."*.${dnsName}" = {
@@ -20,7 +22,7 @@ in {
     dnsProvider = "cloudflare";
     credentialsFile = config.sops.secrets."cloudflare/cf-dns.env".path;
     dnsPropagationCheck = true;
-    extraDomainNames = ["*.egor.wtf"];
+    extraDomainNames = [ "*.egor.wtf" ];
     # Disable webroot auth method
     webroot = lib.mkForce null;
   };

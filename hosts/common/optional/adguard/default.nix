@@ -95,18 +95,16 @@
       };
     };
   */
-  imports = [ outputs.nixosModules.web ];
-  modules.web = {
-    vhosts = [
-      {
-        domain = "egor.wtf";
-        prefix = "dns";
-        upstream = "http://127.0.0.1:3050";
-        tor.enable = true;
-        tor.authelia = false;
-      }
-    ];
-  };
+
+  modules.web.vhosts = [
+    {
+      domain = "egor.wtf";
+      prefix = "dns";
+      upstream = "http://127.0.0.1:3050";
+      tor.enable = true;
+      tor.authelia = false;
+    }
+  ];
 
   systemd.services."kresd@1" = {
     enable = false;

@@ -1,14 +1,16 @@
-{ lib
-, pkgs
-, config
-, inputs
-, options
-, ...
+{
+  lib,
+  pkgs,
+  config,
+  inputs,
+  options,
+  ...
 }:
-with lib; let
+with lib;
+let
   # Shorter name to access final settings a
   # user of restore-root.nix module HAS ACTUALLY SET.
-  # cfg is a typical convention. 
+  # cfg is a typical convention.
   cfg = config.modules.impermanence;
   inherit (lib) filterAttrs mkIf;
   regularSecrets = filterAttrs (n: v: !v.neededForUsers) config.sops.secrets;
@@ -40,6 +42,7 @@ in
           "/var/lib/nixos"
           "/etc/NetworkManager"
           "/var/lib/sbctl"
+          "/var/lib/systemd"
         ];
         files = [
           "/etc/machine-id"
@@ -53,7 +56,8 @@ in
 
       system.activationScripts.persistent-dirs.text =
         let
-          mkHomePersist = user:
+          mkHomePersist =
+            user:
             lib.optionalString user.createHome ''
               mkdir -p /persist/${user.home}
               chown ${user.name}:${user.group} /persist/${user.home}

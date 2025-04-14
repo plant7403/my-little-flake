@@ -26,6 +26,7 @@
     outputs.nixosModules.yubikey
     outputs.nixosModules.authelia
     outputs.nixosModules.transmission
+    outputs.nixosModules.web
   ];
 
   modules.impermanence = {
@@ -44,7 +45,7 @@
     printing = false;
     autoupdate = true;
     cleanup = true;
-    hardening = true;
+    #hardening = true;
     usbguard = {
       enable = true;
       sops = false;
@@ -134,31 +135,32 @@
   #systemd.services.adguard-home = {
   #before = "";
   #};
-  networking = {
-    interfaces.ens3 = {
-      ipv6.addresses = [
-        {
-          address = "2405:4802:1d0b:d270:::1";
-          prefixLength = 64;
-        }
-      ];
-      ipv4.addresses = [
-        {
-          address = "192.0.1.100";
-          prefixLength = 24;
-        }
-      ];
+  /*
+    networking = {
+      interfaces.ens3 = {
+        ipv6.addresses = [
+          {
+            address = "2405:4802:1d0b:d270:::1";
+            prefixLength = 64;
+          }
+        ];
+        ipv4.addresses = [
+          {
+            address = "192.0.1.100";
+            prefixLength = 24;
+          }
+        ];
+      };
+      defaultGateway = {
+        address = "192.0.1.1";
+        interface = "ens3";
+      };
+      defaultGateway6 = {
+        address = "fe80::1";
+        interface = "ens3";
+      };
     };
-    defaultGateway = {
-      address = "192.0.1.1";
-      interface = "ens3";
-    };
-    defaultGateway6 = {
-      address = "fe80::1";
-      interface = "ens3";
-    };
-  };
-
+  */
   systemd.services.cfdyndns = {
     after = [
       "adguard-home.service"

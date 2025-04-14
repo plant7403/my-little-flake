@@ -1,4 +1,5 @@
-{config, ...}: {
+{ config, ... }:
+{
   services.headscale = {
     enable = true;
     port = 8089;
@@ -33,7 +34,8 @@
       };
       oidc = {
         issuer = "https://auth.egor.wtf";
-        client_secret_path = config.sops.secrets."services/authelia/oidc/headscale/client_secret_headscale".path;
+        client_secret_path =
+          config.sops.secrets."services/authelia/oidc/headscale/client_secret_headscale".path;
         client_id = "headscale";
         #allowed_domains = "egor.wtf";
         #allowed_users = "egor";
@@ -41,7 +43,12 @@
         extra_params = {
           domain_hint = "egor.wtf";
         };
-        scope = ["openid" "profile" "email" "groups"];
+        scope = [
+          "openid"
+          "profile"
+          "email"
+          "groups"
+        ];
         strip_email_domain = true;
       };
       #db_user = "headscale";
@@ -54,32 +61,35 @@
     };
   };
 
-  services.nginx = {
-    enable = true;
-    virtualHosts = {
-      "head.egor.wtf" = {
-        forceSSL = true;
-        useACMEHost = "egor.wtf";
-        extraConfig = ''
-          ${builtins.readFile ../nginx/authelia/vh.conf}
-        '';
-        locations."/" = {
-          proxyPass = "http://127.0.0.1:8089";
-          proxyWebsockets = true;
+  /*
+    services.nginx = {
+
+      enable = true;
+      virtualHosts = {
+        "head.egor.wtf" = {
+          forceSSL = true;
+          useACMEHost = "egor.wtf";
           extraConfig = ''
-            ${builtins.readFile ../nginx/authelia/locations.conf}
+            ${builtins.readFile ../nginx/authelia/vh.conf}
           '';
-        };
-        locations."/metrics" = {
-          proxyPass = "http://127.0.0.1:8095";
-          proxyWebsockets = true;
-          extraConfig = ''
-            ${builtins.readFile ../nginx/authelia/locations.conf}
-          '';
+          locations."/" = {
+            proxyPass = "http://127.0.0.1:8089";
+            proxyWebsockets = true;
+            extraConfig = ''
+              ${builtins.readFile ../nginx/authelia/locations.conf}
+            '';
+          };
+          locations."/metrics" = {
+            proxyPass = "http://127.0.0.1:8095";
+            proxyWebsockets = true;
+            extraConfig = ''
+              ${builtins.readFile ../nginx/authelia/locations.conf}
+            '';
+          };
         };
       };
     };
-  };
+  */
   services.authelia.instances.prod.settings.identity_providers.oidc.clients = [
     {
       id = "headscale";
@@ -101,7 +111,7 @@
     }
   ];
 
-  networking.firewall.allowedUDPPorts = [3478];
+  networking.firewall.allowedUDPPorts = [ 3478 ];
 
   environment.systemPackages = [
     config.services.headscale.package
@@ -109,7 +119,7 @@
 
   services.authelia.instances.prod.settings.access_control.rules = [
     {
-      domain = ["head.egor.wtf"];
+      domain = [ "head.egor.wtf" ];
       policy = "bypass";
       resources = [
         "^/ts2021([/?].*)?$"

@@ -27,22 +27,20 @@ in
       };
     };
   */
-  imports = [ outputs.nixosModules.web ];
-  modules.web = {
-    vhosts = [
-      {
-        domain = "egor.wtf";
-        prefix = "git";
-        upstream = "http://unix:${config.services.forgejo.settings.server.HTTP_ADDR}";
-        extraConfig = ''
-          include ${config.services.nginx.package}/conf/fastcgi.conf;
-          fastcgi_pass unix:${config.services.forgejo.settings.server.HTTP_ADDR};
-        '';
-        tor.enable = true;
-        tor.authelia = false;
-      }
-    ];
-  };
+
+  modules.web.vhosts = [
+    {
+      domain = "egor.wtf";
+      prefix = "git";
+      upstream = "http://unix:${config.services.forgejo.settings.server.HTTP_ADDR}";
+      extraConfig = ''
+        include ${config.services.nginx.package}/conf/fastcgi.conf;
+        fastcgi_pass unix:${config.services.forgejo.settings.server.HTTP_ADDR};
+      '';
+      tor.enable = true;
+      tor.authelia = false;
+    }
+  ];
 
   services.forgejo = {
     #package = pkgs.forgejo;

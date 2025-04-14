@@ -120,7 +120,6 @@ in
         proxy_headers_hash_max_size 1024;
         proxy_headers_hash_bucket_size 256;
       '';
-
     }
     /*
       logError = lib.mkIf cfg.debugLog "stderr warn";
@@ -304,26 +303,6 @@ in
                             ${c.extraConfig}
                           '';
                       };
-                      locations."/authelia".extraConfig = lib.mkIf c.authelia ''
-                        internal;
-                        proxy_pass https://auth.${c.domain}/api/verify;
-
-                        proxy_set_header X-Forwarded-Host $host;
-                        proxy_set_header X-Original-URI $request_uri;
-                        proxy_set_header X-Original-URL $scheme://$host$request_uri;
-                        proxy_set_header X-Forwarded-For $remote_addr;
-                        proxy_set_header X-Forwarded-Proto $scheme;
-                        proxy_set_header Content-Length "";
-                        proxy_pass_request_body off;
-                        # TODO: Would be nice to be able to enable this.
-                        # proxy_ssl_verify on;
-                        # proxy_ssl_trusted_certificate "/etc/ssl/certs/DST_Root_CA_X3.pem";
-                        proxy_ssl_protocols TLSv1.2;
-                        proxy_ssl_ciphers 'EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH';
-                        proxy_ssl_verify_depth 2;
-                        proxy_ssl_server_name on;
-                      '';
-
                     };
                   }
 
@@ -427,26 +406,6 @@ in
                       ${c.extraConfig}
                     '';
                 };
-                locations."/authelia".extraConfig = lib.mkIf c.tor.authelia ''
-                  internal;
-                  proxy_pass https://auth.${c.tor.onion};
-
-                  proxy_set_header X-Forwarded-Host $host;
-                  proxy_set_header X-Original-URI $request_uri;
-                  proxy_set_header X-Original-URL $scheme://$host$request_uri;
-                  proxy_set_header X-Forwarded-For $remote_addr;
-                  proxy_set_header X-Forwarded-Proto $scheme;
-                  proxy_set_header Content-Length "";
-                  proxy_pass_request_body off;
-                  # TODO: Would be nice to be able to enable this.
-                  # proxy_ssl_verify on;
-                  # proxy_ssl_trusted_certificate "/etc/ssl/certs/DST_Root_CA_X3.pem";
-                  proxy_ssl_protocols TLSv1.2;
-                  proxy_ssl_ciphers 'EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH';
-                  proxy_ssl_verify_depth 2;
-                  proxy_ssl_server_name on;
-                '';
-
               })
             ];
         in

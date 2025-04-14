@@ -152,5 +152,93 @@ in
       };
     };
 
+    services.nginx.virtualHosts."auth.egor.wtf" = {
+      # Taken from https://github.com/authelia/authelia/issues/178
+      # TODO: merge with config from https://matwick.ca/authelia-nginx-sso/
+      locations."/".extraConfig = ''
+        add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+        add_header X-Content-Type-Options nosniff;
+        add_header X-Frame-Options "SAMEORIGIN";
+        add_header X-XSS-Protection "1; mode=block";
+        add_header X-Robots-Tag "noindex, nofollow, nosnippet, noarchive";
+        add_header X-Download-Options noopen;
+        add_header X-Permitted-Cross-Domain-Policies none;
+
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_cache_bypass $http_upgrade;
+
+        proxy_pass http://127.0.0.1:9091;
+        proxy_intercept_errors on;
+        if ($request_method !~ ^(POST)$){
+            error_page 401 = /error/401;
+            error_page 403 = /error/403;
+            error_page 404 = /error/404;
+        }
+      '';
+
+      locations."/api/verify".extraConfig = ''
+        add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+        add_header X-Content-Type-Options nosniff;
+        add_header X-Frame-Options "SAMEORIGIN";
+        add_header X-XSS-Protection "1; mode=block";
+        add_header X-Robots-Tag "noindex, nofollow, nosnippet, noarchive";
+        add_header X-Download-Options noopen;
+        add_header X-Permitted-Cross-Domain-Policies none;
+
+        proxy_set_header Host $http_x_forwarded_host;
+        proxy_pass http://127.0.0.1:9091;
+      '';
+    };
+    services.nginx.virtualHosts."auth.egorwtfz6xxh2qatvpcjodxdo33nlesc5dp7lhqohbackq5rnpvpsqyd.onion" =
+      {
+        # Taken from https://github.com/authelia/authelia/issues/178
+        # TODO: merge with config from https://matwick.ca/authelia-nginx-sso/
+        locations."/".extraConfig = ''
+          add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+          add_header X-Content-Type-Options nosniff;
+          add_header X-Frame-Options "SAMEORIGIN";
+          add_header X-XSS-Protection "1; mode=block";
+          add_header X-Robots-Tag "noindex, nofollow, nosnippet, noarchive";
+          add_header X-Download-Options noopen;
+          add_header X-Permitted-Cross-Domain-Policies none;
+
+          proxy_set_header Host $host;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-Forwarded-Proto $scheme;
+          proxy_http_version 1.1;
+          proxy_set_header Upgrade $http_upgrade;
+          proxy_set_header Connection "upgrade";
+          proxy_cache_bypass $http_upgrade;
+
+          proxy_pass http://127.0.0.1:9092;
+          proxy_intercept_errors on;
+          if ($request_method !~ ^(POST)$){
+              error_page 401 = /error/401;
+              error_page 403 = /error/403;
+              error_page 404 = /error/404;
+          }
+        '';
+
+        locations."/api/verify".extraConfig = ''
+          add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+          add_header X-Content-Type-Options nosniff;
+          add_header X-Frame-Options "SAMEORIGIN";
+          add_header X-XSS-Protection "1; mode=block";
+          add_header X-Robots-Tag "noindex, nofollow, nosnippet, noarchive";
+          add_header X-Download-Options noopen;
+          add_header X-Permitted-Cross-Domain-Policies none;
+
+          proxy_set_header Host $http_x_forwarded_host;
+          proxy_pass http://127.0.0.1:9092;
+        '';
+      };
+
   };
 }
