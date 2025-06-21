@@ -1,10 +1,8 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   home.packages = with pkgs; [
-    thefuck
+    pay-respects
     mosh
     tmux
-
   ];
   programs.zsh = {
     enable = true;
@@ -23,7 +21,7 @@
       enable = true;
       plugins = [
         "git"
-        "thefuck"
+        "pay-respects"
       ];
       theme = "robbyrussell";
     };
