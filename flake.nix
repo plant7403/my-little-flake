@@ -361,7 +361,7 @@
               musnix.alsaSeq.enable = true;
               musnix.ffado.enable = true;
               musnix.rtcqs.enable = true;
-              musnix.kernel.realtime = true;
+              musnix.kernel.realtime = false;
             }
           ];
         };

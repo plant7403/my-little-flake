@@ -78,6 +78,16 @@
 
   programs.direnv.enable = true;
 
+    networking.firewall = {
+    allowedTCPPorts = [
+      #11434
+      #1080
+      33333 
+    ];
+    #allowedUDPPorts = [
+    #];
+  };
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
@@ -157,4 +167,20 @@
   boot.extraModulePackages = with config.boot.kernelPackages; [
     rtl88xxau-aircrack
   ];
+# Enable common container config files in /etc/containers
+virtualisation.containers.enable = true;
+virtualisation = {
+  podman = {
+    enable = true;
+    # Create a `docker` alias for podman, to use it as a drop-in replacement
+    dockerCompat = true;
+    # Required for containers under podman-compose to be able to talk to each other.
+    defaultNetwork.settings.dns_enabled = true;
+  };
+};
+
+users.users.myuser = {
+  isNormalUser = true;
+  extraGroups = [ "podman" ];
+};
 }

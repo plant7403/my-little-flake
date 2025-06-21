@@ -6,7 +6,7 @@
   home.packages = with pkgs; [
     #ardour
     guitarix
-    godot_4
+    #godot_4
     flatpak
   ];
 }

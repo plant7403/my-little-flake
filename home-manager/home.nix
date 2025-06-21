@@ -61,7 +61,7 @@ in
     nixpkgs-fmt
     rnote
     simplex-chat-desktop
-    sirikali
+    # sirikali
     thunderbird
 
     transmission_4-gtk
@@ -91,14 +91,17 @@ in
     nmap
 
     libresprite
-    pixelorama
+    #pixelorama
     vlc
 
     obsidian
 
     prismlauncher
-
+    jdk23
     alfis
+
+    basicswap
+    nym
   ];
 
   programs.home-manager.enable = true;

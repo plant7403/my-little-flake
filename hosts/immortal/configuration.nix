@@ -89,6 +89,7 @@
     allowedTCPPorts = [
       11434
       1080
+      
     ];
     allowedUDPPorts = [
       1080
