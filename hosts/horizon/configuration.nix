@@ -2,15 +2,15 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 /*
-  !! THIS IS HOW TO RUN NIXOS ANYWHERE (almost)
-  nix run github:nix-community/nixos-anywhere -- --generate-hardware-config nixos-generate-config ./hosts/horizon/hardware-configuration.nix --build-on-remote --copy-host-keys --extra-files /persist/sops-nix/ --flake flake.nix#horizon root@192.168.1.159
-  !! THEN BOOT INTO USB AGAIN
-  cryptsetup /dev/nvme0n1 name
-  mount name name/
-  cd name
-  btrfs subvolume snapshot -r @ROOT @ROOT-BLANK
-  !! TO ADD SOPS KEYS
-  edit .sops.yaml
+!! THIS IS HOW TO RUN NIXOS ANYWHERE (almost)
+nix run github:nix-community/nixos-anywhere -- --generate-hardware-config nixos-generate-config ./hosts/horizon/hardware-configuration.nix --build-on-remote --copy-host-keys --extra-files /persist/sops-nix/ --flake flake.nix#horizon root@192.168.1.159
+!! THEN BOOT INTO USB AGAIN
+cryptsetup /dev/nvme0n1 name
+mount name name/
+cd name
+btrfs subvolume snapshot -r @ROOT @ROOT-BLANK
+!! TO ADD SOPS KEYS
+edit .sops.yaml
 */
 {
   config,
@@ -19,16 +19,14 @@
   inputs,
   outputs,
   ...
-}:
-let
-  my-python-packages =
-    ps: with ps; [
+}: let
+  my-python-packages = ps:
+    with ps; [
       pandas
       requests
       # other python packages
     ];
-in
-{
+in {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -54,16 +52,15 @@ in
     outputs.nixosModules.transmission
     outputs.nixosModules.web
     outputs.nixosModules.yggdrasil
-
   ];
 
   /*
-       modules.gnome = {
-      enable = true;
-      autologin = false;
-      isSteamDeck = true;
-      remote = true;
-    };
+     modules.gnome = {
+    enable = true;
+    autologin = false;
+    isSteamDeck = true;
+    remote = true;
+  };
   */
   modules.kde.enable = true;
   modules.impermanence = {
@@ -94,6 +91,7 @@ in
       enable = false;
       sops = false;
     };
+    tpm = true;
   };
   modules.yubikey.enable = true;
 
@@ -124,7 +122,7 @@ in
   programs = {
     nix-ld.enable = true;
   };
-  boot.kernelParams = [ "clearcpuid=514" ];
+  boot.kernelParams = ["clearcpuid=514"];
 
   modules.transmission = {
     enable = true;
@@ -155,7 +153,7 @@ in
     pkgs.wine
 
     # support 64-bit only
-    (pkgs.wine.override { wineBuild = "wine64"; })
+    (pkgs.wine.override {wineBuild = "wine64";})
 
     # wine-staging (version with experimental features)
     pkgs.wineWowPackages.staging
