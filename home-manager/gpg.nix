@@ -1,10 +1,8 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   home.packages = with pkgs; [
     yubico-piv-tool
     yubikey-manager
     yubikey-personalization
-    yubikey-personalization-gui
     yubioath-flutter
     yubikey-touch-detector
     yubikey-touch-detector
@@ -13,7 +11,6 @@
     libfido2
     libnotify
     age
-
   ];
   programs.gpg = {
     scdaemonSettings.disable-ccid = true;
