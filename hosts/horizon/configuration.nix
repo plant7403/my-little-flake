@@ -163,13 +163,15 @@ in {
 
     # native wayland support (unstable)
     pkgs.wineWowPackages.waylandFull
+
+    pkgs.lz4
   ];
 
   powerManagement.cpuFreqGovernor = "schedutil";
 
   programs.nix-ld.libraries = with pkgs; [
     # Add any missing dynamic libraries for unpackaged programs
-
+    lz4
     # here, NOT in environment.systemPackages
   ];
   nixpkgs.config.permittedInsecurePackages = [
