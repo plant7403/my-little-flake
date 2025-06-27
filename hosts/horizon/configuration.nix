@@ -183,6 +183,7 @@ in {
     lz4
     glib
     nspr
+    atkmm
     # here, NOT in environment.systemPackages
   ];
   nixpkgs.config.permittedInsecurePackages = [
