@@ -182,6 +182,7 @@ in {
     expat
     lz4
     glib
+    nspr
     # here, NOT in environment.systemPackages
   ];
   nixpkgs.config.permittedInsecurePackages = [
