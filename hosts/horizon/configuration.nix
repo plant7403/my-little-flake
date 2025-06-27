@@ -172,6 +172,16 @@ in {
   programs.nix-ld.libraries = with pkgs; [
     # Add any missing dynamic libraries for unpackaged programs
     lz4
+    stdenv.cc.cc
+    zlib
+    fuse3
+    icu
+    nss
+    openssl
+    curl
+    expat
+    lz4
+    glib
     # here, NOT in environment.systemPackages
   ];
   nixpkgs.config.permittedInsecurePackages = [
