@@ -7,10 +7,8 @@
   sops-nix,
   outputs,
   ...
-}:
-let
-in
-{
+}: let
+in {
   # You can import other home-manager modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
@@ -28,13 +26,11 @@ in
     ./gpg.nix
     ./theme.nix
     ./extensions.nix
-
   ]; # ++ (builtins.attrValues outputs.homeManagerModules);
 
   home = {
     username = "egor";
     homeDirectory = "/home/egor";
-
   };
 
   # Add stuff for your user as you see fit:
@@ -57,7 +53,7 @@ in
     krita
     libreoffice
 
-    nextcloud-client
+    #nextcloud-client
     nixpkgs-fmt
     rnote
     simplex-chat-desktop
@@ -66,14 +62,14 @@ in
 
     transmission_4-gtk
 
-    mullvad-vpn
+    #mullvad-vpn
     #logseq
 
     #gnome-terminal
 
     gnome-boxes
     #virtualbox
-    mullvad-browser
+    #mullvad-browser
 
     freetube
 
@@ -110,7 +106,6 @@ in
     enable = true;
     userEmail = "me@egor.wtf";
     userName = "me";
-
   };
   programs.gitui.enable = true;
   #services.syncthing = {
@@ -123,10 +118,10 @@ in
   #};
 
   /*
-      modules.yubikey-unlock = {
-      enable = true;
-      host = "stellar";
-    };
+    modules.yubikey-unlock = {
+    enable = true;
+    host = "stellar";
+  };
   */
   #pam.yubico.authorizedYubiKeys
   #pam.yubico.authorizedYubiKeys.ids = [

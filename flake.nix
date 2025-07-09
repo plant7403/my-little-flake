@@ -131,7 +131,7 @@
     # nixpkgs with deploy-rs overlay but force the nixpkgs package
     systems = [
       "x86_64-linux"
-      #"aarch64-linux"
+      "aarch64-linux"
     ];
     # This is a function that generates an attribute by calling a function you
     # pass to it, with each system as an argument
@@ -397,6 +397,14 @@
               };
             }
           )
+        ];
+      };
+      comet = nixpkgs.lib.nixosSystem {
+        system = "aarch64-linux";
+        specialArgs = {inherit inputs outputs;};
+        modules = [
+          ./hosts/comet/configuration.nix
+          sops-nix.nixosModules.sops
         ];
       };
     };

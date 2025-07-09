@@ -7,7 +7,7 @@
   impermanence = import ./impermanence.nix;
   tailscale = import ./tailscale.nix;
   steam = import ./steam.nix;
-  mullvad = import ./mullvad.nix;
+  #mullvad = import ./mullvad.nix;
   sound = import ./sound.nix;
   yubikey = import ./yubikey.nix;
   system = import ./system.nix;

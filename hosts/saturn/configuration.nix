@@ -37,10 +37,12 @@
     enable = true;
     disk = "ssd";
   };
-  modules.mullvad = {
+  /*
+     modules.mullvad = {
     enable = true;
     impermanence = true;
   };
+  */
   modules.sound.enable = true;
   #modules.steam.enable = true;
   modules.tailscale = {

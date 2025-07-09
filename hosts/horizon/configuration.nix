@@ -43,7 +43,7 @@ in {
     #outputs.nixosModules.gnome
     outputs.nixosModules.kde
     outputs.nixosModules.impermanence
-    outputs.nixosModules.mullvad
+    #outputs.nixosModules.mullvad
     outputs.nixosModules.sound
     #outputs.nixosModules.steam
     outputs.nixosModules.tailscale
@@ -67,20 +67,26 @@ in {
     enable = true;
     disk = "nvme";
   };
-  modules.mullvad = {
+  /*
+     modules.mullvad = {
     enable = true;
     impermanence = true;
   };
-
-  modules.yggdrasil.enable = true;
+  */
+  modules.yggdrasil = {
+    enable = true;
+    persist = true;
+  };
   modules.sound.enable = true;
   #modules.steam.enable = true;
-  modules.tailscale = {
+  /*
+     modules.tailscale = {
     enable = true;
     exit = false;
     hostname = "horizon";
     impermanence = true;
   };
+  */
   modules.system = {
     hostname = "horizon";
     ssh = true;

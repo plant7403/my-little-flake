@@ -29,7 +29,7 @@ in {
     inputs.hardware.nixosModules.microsoft-surface-go
     outputs.nixosModules.gnome
     outputs.nixosModules.impermanence
-    outputs.nixosModules.mullvad
+    #outputs.nixosModules.mullvad
     outputs.nixosModules.sound
     #outputs.nixosModules.steam
     outputs.nixosModules.tailscale
