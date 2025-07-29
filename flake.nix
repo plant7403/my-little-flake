@@ -282,6 +282,11 @@
               home-manager.extraSpecialArgs = { inherit inputs; };
               home-manager.backupFileExtension = "backup";
             }
+            {
+              nixpkgs.overlays = [
+                nix4vscode.overlays.default
+              ];
+            }
             lanzaboote.nixosModules.lanzaboote
             (
               {
