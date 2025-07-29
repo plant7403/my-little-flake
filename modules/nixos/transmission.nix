@@ -59,7 +59,13 @@ in {
           rpc-port = 9099;
           rpc-host-whitelist = "torr.egor.wtf";
           #rpc-whitelist = "192.168.1.*";
-          rpc-whitelist = "192.168.1.163, 192.168.1.186, 200:5ae3:777e:cd37:7d5:b691:4e06:b7b0, 127.0.0.1";
+          rpc-whitelist = "
+          192.168.1.164, 
+          192.168.1.186, 
+          200:a3e8:1542:4113:5b89:b0f2:c57:4e9a, 
+          200:fbba:8d4a:91f0:58b6:ecef:2174:a96e,
+          127.0.0.1
+          ";
         };
       };
       /*

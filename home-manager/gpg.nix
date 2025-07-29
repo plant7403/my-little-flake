@@ -5,7 +5,6 @@
     yubikey-personalization
     yubioath-flutter
     yubikey-touch-detector
-    yubikey-touch-detector
     yubico-pam
     gnupg
     libfido2

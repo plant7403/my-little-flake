@@ -16,4 +16,5 @@
   authelia = import ./authelia.nix;
   kde = import ./kde.nix;
   yggdrasil = import ./yggdrasil.nix;
+  ollama = import ./ollama.nix;
 }

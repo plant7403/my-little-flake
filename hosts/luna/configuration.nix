@@ -8,14 +8,16 @@
   inputs,
   outputs,
   ...
-}: let
-  my-python-packages = ps:
-    with ps; [
+}:
+let
+  my-python-packages =
+    ps: with ps; [
       pandas
       requests
       # other python packages
     ];
-in {
+in
+{
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -90,30 +92,30 @@ in {
   #nixpkgs.config.allowUnfree = true;
 
   /*
-     boot.kernelParams = [
-    "mem_sleep_default=deep"
-  ];
+       boot.kernelParams = [
+      "mem_sleep_default=deep"
+    ];
   */
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  /*
-  services.logrotate.checkConfig = false;
-  */
+  # services.logrotate.checkConfig = false;
 
   programs.direnv.enable = true;
   #programs.yubikey-touch-detector.enable = true;
 
   hardware.opengl.enable = true;
 
-  hardware.bluetooth.enable = true; # enables support for Bluetooth
-  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boots
-  hardware.bluetooth.settings = {
-    General = {
-      Experimental = true;
+  /*
+    hardware.bluetooth.enable = true; # enables support for Bluetooth
+    hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boots
+    hardware.bluetooth.settings = {
+      General = {
+        Experimental = true;
+      };
     };
-  };
+  */
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -127,9 +129,9 @@ in {
     inputs.sops-nix.homeManagerModules.sops
   ];
   /*
-     nixpkgs.config.permittedInsecurePackages = [
-    "electron-28.3.3"
-    "electron-27.3.11"
-  ];
+       nixpkgs.config.permittedInsecurePackages = [
+      "electron-28.3.3"
+      "electron-27.3.11"
+    ];
   */
 }

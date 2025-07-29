@@ -7,8 +7,10 @@
   sops-nix,
   outputs,
   ...
-}: let
-in {
+}:
+let
+in
+{
   # You can import other home-manager modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
@@ -47,7 +49,7 @@ in {
     element-desktop
 
     filezilla
-    gimp-with-plugins
+    #gimp-with-plugins
     inkscape
     jellyfin-media-player
     krita
@@ -98,6 +100,8 @@ in {
 
     basicswap
     nym
+
+    keepassxc
   ];
 
   programs.home-manager.enable = true;
@@ -118,10 +122,10 @@ in {
   #};
 
   /*
-    modules.yubikey-unlock = {
-    enable = true;
-    host = "stellar";
-  };
+      modules.yubikey-unlock = {
+      enable = true;
+      host = "stellar";
+    };
   */
   #pam.yubico.authorizedYubiKeys
   #pam.yubico.authorizedYubiKeys.ids = [

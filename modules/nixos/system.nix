@@ -78,6 +78,7 @@ in
           "android-studio"
           "obsidian"
         ];
+      nix.settings.download-buffer-size = 524288000;
       nixpkgs.config.android_sdk.accept_license = true;
 
       networking.hostName = cfg.hostname; # Define your hostname.
@@ -87,19 +88,25 @@ in
       time.timeZone = "Europe/Madrid";
 
       # Select internationalisation properties.
-      i18n.defaultLocale = "en_US.UTF-8";
-
-      i18n.extraLocaleSettings = {
-        LC_ADDRESS = "en_US.UTF-8";
-        LC_IDENTIFICATION = "en_US.UTF-8";
-        LC_MEASUREMENT = "en_US.UTF-8";
-        LC_MONETARY = "en_US.UTF-8";
-        LC_NAME = "en_US.UTF-8";
-        LC_NUMERIC = "en_US.UTF-8";
-        LC_PAPER = "en_US.UTF-8";
-        LC_TELEPHONE = "en_US.UTF-8";
-        LC_TIME = "en_US.UTF-8";
-      };
+      i18n.defaultLocale = "es_ES.UTF-8";
+      /*
+           i18n.extraLocales = [
+          "en_US.UTF-8"
+        ];
+      */
+      /*
+           i18n.extraLocaleSettings = {
+          LC_ADDRESS = "en_US.UTF-8";
+          LC_IDENTIFICATION = "en_US.UTF-8";
+          LC_MEASUREMENT = "en_US.UTF-8";
+          LC_MONETARY = "en_US.UTF-8";
+          LC_NAME = "en_US.UTF-8";
+          LC_NUMERIC = "en_US.UTF-8";
+          LC_PAPER = "en_US.UTF-8";
+          LC_TELEPHONE = "en_US.UTF-8";
+          LC_TIME = "en_US.UTF-8";
+        };
+      */
       # List packages installed in system profile. To search, run:
       # $ nix search wget
       environment.systemPackages = with pkgs; [

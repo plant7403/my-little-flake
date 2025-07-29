@@ -2,15 +2,15 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 /*
-!! THIS IS HOW TO RUN NIXOS ANYWHERE (almost)
-nix run github:nix-community/nixos-anywhere -- --generate-hardware-config nixos-generate-config ./hosts/horizon/hardware-configuration.nix --build-on-remote --copy-host-keys --extra-files /persist/sops-nix/ --flake flake.nix#horizon root@192.168.1.159
-!! THEN BOOT INTO USB AGAIN
-cryptsetup /dev/nvme0n1 name
-mount name name/
-cd name
-btrfs subvolume snapshot -r @ROOT @ROOT-BLANK
-!! TO ADD SOPS KEYS
-edit .sops.yaml
+  !! THIS IS HOW TO RUN NIXOS ANYWHERE (almost)
+  nix run github:nix-community/nixos-anywhere -- --generate-hardware-config nixos-generate-config ./hosts/horizon/hardware-configuration.nix --build-on-remote --copy-host-keys --extra-files /persist/sops-nix/ --flake flake.nix#horizon root@192.168.1.159
+  !! THEN BOOT INTO USB AGAIN
+  cryptsetup /dev/nvme0n1 name
+  mount name name/
+  cd name
+  btrfs subvolume snapshot -r @ROOT @ROOT-BLANK
+  !! TO ADD SOPS KEYS
+  edit .sops.yaml
 */
 {
   config,
@@ -19,14 +19,16 @@ edit .sops.yaml
   inputs,
   outputs,
   ...
-}: let
-  my-python-packages = ps:
-    with ps; [
+}:
+let
+  my-python-packages =
+    ps: with ps; [
       pandas
       requests
       # other python packages
     ];
-in {
+in
+{
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -40,52 +42,54 @@ in {
     ./disk-config.nix
     #./ssh.nix
     #./camera.nix
-    #outputs.nixosModules.gnome
+    outputs.nixosModules.gnome
     outputs.nixosModules.kde
     outputs.nixosModules.impermanence
     #outputs.nixosModules.mullvad
     outputs.nixosModules.sound
-    #outputs.nixosModules.steam
+    outputs.nixosModules.steam
     outputs.nixosModules.tailscale
     outputs.nixosModules.system
     outputs.nixosModules.yubikey
     outputs.nixosModules.transmission
     outputs.nixosModules.web
     outputs.nixosModules.yggdrasil
+    outputs.nixosModules.ollama
   ];
 
-  /*
-     modules.gnome = {
+  modules.gnome = {
     enable = true;
-    autologin = false;
+    autologin = true;
     isSteamDeck = true;
-    remote = true;
+    #remote = true;
   };
-  */
-  modules.kde.enable = true;
+  modules.ollama = {
+    enable = true;
+  };
+  # modules.kde.enable = true;
   modules.impermanence = {
     enable = true;
     disk = "nvme";
   };
   /*
-     modules.mullvad = {
-    enable = true;
-    impermanence = true;
-  };
+       modules.mullvad = {
+      enable = true;
+      impermanence = true;
+    };
   */
   modules.yggdrasil = {
     enable = true;
     persist = true;
   };
   modules.sound.enable = true;
-  #modules.steam.enable = true;
+  modules.steam.enable = true;
   /*
-     modules.tailscale = {
-    enable = true;
-    exit = false;
-    hostname = "horizon";
-    impermanence = true;
-  };
+       modules.tailscale = {
+      enable = true;
+      exit = false;
+      hostname = "horizon";
+      impermanence = true;
+    };
   */
   modules.system = {
     hostname = "horizon";
@@ -101,14 +105,13 @@ in {
   };
   modules.yubikey.enable = true;
 
-  services.desktopManager.plasma6.enable = true;
   programs.xwayland.enable = true;
   jovian = {
     steam = {
       enable = true;
       autoStart = true;
       user = "egor";
-      desktopSession = "plasma";
+      desktopSession = "gnome";
       updater.splash = "jovian";
     };
     decky-loader = {
@@ -128,7 +131,7 @@ in {
   programs = {
     nix-ld.enable = true;
   };
-  boot.kernelParams = ["clearcpuid=514"];
+  boot.kernelParams = [ "clearcpuid=514" ];
 
   modules.transmission = {
     enable = true;
@@ -159,7 +162,7 @@ in {
     pkgs.wine
 
     # support 64-bit only
-    (pkgs.wine.override {wineBuild = "wine64";})
+    (pkgs.wine.override { wineBuild = "wine64"; })
 
     # wine-staging (version with experimental features)
     pkgs.wineWowPackages.staging

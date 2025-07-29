@@ -6,23 +6,23 @@
     gnomeExtensions.vitals
     gnomeExtensions.grand-theft-focus
     gnomeExtensions.bing-wallpaper-changer
-    gnomeExtensions.tiling-assistant
+    #gnomeExtensions.tiling-assistant
     gnomeExtensions.blur-my-shell
     gnomeExtensions.random-wallpaper
     gnomeExtensions.appindicator
     gnomeExtensions.caffeine
-    gnomeExtensions.tailscale-qs
-    gnomeExtensions.tailscale-status
+    #gnomeExtensions.tailscale-qs
+    #gnomeExtensions.tailscale-status
     gnomeExtensions.gsconnect
     gnomeExtensions.syncthing-indicator
     gnomeExtensions.syncthing-toggle
+    gnomeExtensions.tiling-shell
 
     #gnomeExtensions.syncthing-indicator
     trayscale
     light
     emote
     gnome-tweaks
-
   ];
   ### SHORTCUTS
   dconf.settings = {
@@ -41,9 +41,11 @@
         "screenshot-window-sizer@gnome-shell-extensions.gcampax.github.com"
         "status-icons@gnome-shell-extensions.gcampax.github.com"
         "system-monitor@gnome-shell-extensions.gcampax.github.com"
-        "tailscale@joaophi.github.com"
+        # "tailscale@joaophi.github.com"
         "trayIconsReloaded@selfmade.pl"
         "gsconnect@andyholmes.github.io"
+        "Vitals@CoreCoding.com"
+        #"simple-tiling"
       ];
 
       favorite-apps = [
@@ -67,6 +69,10 @@
       "extensions/blur-my-shell/panel/static-blur" = false;
       "extensions/blur-my-shell/panel/sigma" = 1;
       "extensions/blur-my-shell/panel/brightness" = 1.0;
+      /*
+        "/org/gnome/desktop/input-sources/sources" = [('xkb', 'us'), ('xkb', 'ru'), ('xkb', 'es')];
+        "/org/gnome/desktop/input-sources/xkb-options" = ['terminate:ctrl_alt_bksp', 'lv3:ralt_switch', 'grp:alt_shift_toggle'];
+      */
     };
     /*
       "org/gnome/desktop/interface" = {
@@ -78,5 +84,4 @@
        };
     */
   };
-
 }

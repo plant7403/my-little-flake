@@ -35,7 +35,7 @@ in {
         };
       };
       networking.hosts = {
-        "200:d3b0:9e2f:647b:dc20:a133:ef09:a697" = [
+        "200:a3e8:1542:4113:5b89:b0f2:c57:4e9a" = [
           "egor.wtf"
           "cloud.egor.wtf"
           "password.egor.wtf"
@@ -54,3 +54,9 @@ in {
     })
   ];
 }
+/*
+stellar: 200:a3e8:1542:4113:5b89:b0f2:c57:4e9a
+horizon: 201:4727:fe22:9178:4afa:d6ed:2fcf:7740
+pixel8: 200:fbba:8d4a:91f0:58b6:ecef:2174:a96e
+*/
+

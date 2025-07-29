@@ -1,9 +1,13 @@
-{ pkgs, lib, ... }:
 {
+  pkgs,
+  lib,
+  ...
+}: {
   home.packages = with pkgs; [
     palenight-theme
     dracula-theme
   ];
+
   gtk = {
     enable = true;
 
@@ -13,11 +17,12 @@
     };
 
     /*
-      theme = lib.mkForce {
-         name = "tokyonight";
-         package = pkgs.tokyonight-gtk-theme;
-       };
+       theme = lib.mkForce {
+      name = "tokyonight";
+      package = pkgs.tokyonight-gtk-theme;
+    };
     */
+
     cursorTheme = {
       name = "Numix-Cursor";
       package = pkgs.numix-cursor-theme;
@@ -35,7 +40,7 @@
       '';
     };
   };
-
-  # home.sessionVariables.GTK_THEME = "tokyonight-gtk-theme";
-
+  /*
+  home.sessionVariables.GTK_THEME = "tokyonight-gtk-theme";
+  */
 }

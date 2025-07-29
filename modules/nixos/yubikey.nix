@@ -1,12 +1,12 @@
-{ lib
-, pkgs
-, config
-, ...
+{
+  lib,
+  pkgs,
+  config,
+  ...
 }:
 with lib; let
   cfg = config.modules.yubikey;
-in
-{
+in {
   options.modules.yubikey = {
     enable = mkEnableOption "service";
   };
@@ -26,7 +26,6 @@ in
       login.u2fAuth = true;
       sudo.u2fAuth = true;
 
-
       #login.yubicoAuth = true;
       #sudo.yubicoAuth = true;
     };
@@ -34,7 +33,6 @@ in
       enable = true;
       settings = {
         cue = true;
-
       };
     };
     #security.pam.yubico = {
@@ -43,14 +41,21 @@ in
     #  mode = "challenge-response";
     #  id = ["19271673"];
     #};
+    /*
+       ACTION=="remove",\
+    ENV{ID_BUS}=="usb",\
+    ENV{ID_MODEL_ID}=="0407",\
+    ENV{ID_VENDOR_ID}=="1050",\
+    ENV{ID_VENDOR}=="Yubico",\
+
+    */
     services.udev.extraRules = ''
       ACTION=="remove",\
-       ENV{ID_BUS}=="usb",\
-       ENV{ID_MODEL_ID}=="0407",\
-       ENV{ID_VENDOR_ID}=="1050",\
-       ENV{ID_VENDOR}=="Yubico",\
-       RUN+="${pkgs.systemd}/bin/loginctl lock-sessions"
+      ENV{SUBSYSTEM}=="usb",\
+      ENV{PRODUCT}=="1050/407/543",\
+      RUN+="${pkgs.systemd}/bin/loginctl lock-sessions"
     '';
+
     programs.yubikey-touch-detector.enable = true;
     # security.pam.yubico.control = "required";
   };
