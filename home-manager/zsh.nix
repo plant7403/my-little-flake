@@ -1,15 +1,19 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   home.packages = with pkgs; [
     pay-respects
     mosh
     tmux
   ];
+  home.shell.enableZshIntegration = true;
   programs.zsh = {
     enable = true;
     autocd = true;
     dotDir = ".config/zsh";
     autosuggestion.enable = true;
     enableCompletion = true;
+    #enableVteIntegration = true;
+    #syntaxHighlighting.enable = true;
 
     initExtra = ''
       export GPG_TTY="$(tty)"
@@ -21,7 +25,6 @@
       enable = true;
       plugins = [
         "git"
-        "pay-respects"
       ];
       theme = "robbyrussell";
     };

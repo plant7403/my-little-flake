@@ -1,25 +1,72 @@
+# https://nix-community.github.io/nix4vscode/
 { pkgs, config, ... }:
+let
+  inherit (pkgs.nix4vscode)
+    forVscode
+    forVscodeVersion
+    forVscodePrerelease
+    forVscodeVersionPrerelease
+
+    forOpenVsx
+    forOpenVsxVersion
+    forOpenVsxPrerelease
+    forOpenVsxVersionPrerelease
+
+    forVscodeExt
+    forVscodeExtVersion
+    forVscodeExtPrerelease
+    forVscodeExtVersionPrerelease
+
+    forOpenVsxExt
+    forOpenVsxExtVersion
+    forOpenVsxExtPrerelease
+    forOpenVsxExtVersionPrerelease
+    ;
+
+  myDecorators = {
+    "ms-vscode.cpptools" = {
+      postPatch = ''
+        echo "Custom decorator applied"
+      '';
+    };
+  };
+in
 {
+  /*
+    home.packages = with pkgs; [
+      (vscodium.overrideAttrs (oldAttrs: {
+        postInstall = (oldAttrs.postInstall or "") + ''
+          substituteInPlace $out/lib/vscode/resources/app/product.json \
+            --replace \
+            '    "GitHub.copilot": ["inlineCompletionsAdditions"],' \
+            '    "GitHub.copilot": ["inlineCompletions","inlineCompletionsNew","inlineCompletionsAdditions","textDocumentNotebook","interactive","terminalDataWriteEvent"],'
+        '';
+      }))
+    ];
+  */
+
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium;
     #mutableExtensionsDir = false;
     profiles = {
       default = {
-        extensions = with pkgs.vscode-extensions; [
-          # Themes
+        extensions =
+          forVscode [
+            # Themes
 
-          # Visuals
-          pkief.material-icon-theme
-          # NixOS
-          jnoortheen.nix-ide
+            # Visuals
+            "pkief.material-icon-theme"
+            # NixOS
+            "jnoortheen.nix-ide"
 
-          signageos.signageos-vscode-sops
+            "signageos.signageos-vscode-sops"
+            "jeff-hykin.better-nix-syntax"
+            #pinage404.nix-extension-pack
 
-          #pinage404.nix-extension-pack
-
-          #arrterian.nix-env-selector
-        ];
+            #arrterian.nix-env-selector
+          ]
+          ++ forOpenVsx [ ];
         userSettings = {
           "editor.inlayHints.enabled" = "on";
           "editor.guides.indentation" = true;
@@ -44,24 +91,24 @@
         };
       };
       HTML = {
-
         extensions =
-          pkgs.nix4vscode.forVscode
+          forVscode [
             # with pkgs.nix4vscode.forVscode;
-            [
-              # Themes
 
-              # Visuals
-              "pkief.material-icon-theme"
-              # NixOS
-              "arrterian.nix-env-selector"
-              "mkhl.direnv"
-              # Core
-              "ecmel.vscode-html-css"
-              "hansuxdev.bootstrap5-snippets"
+            # Themes
 
-              "pranaygp.vscode-css-peek"
-            ];
+            # Visuals
+            "pkief.material-icon-theme"
+            # NixOS
+            "arrterian.nix-env-selector"
+            "mkhl.direnv"
+            # Core
+            "ecmel.vscode-html-css"
+            #"hansuxdev.bootstrap5-snippets"
+
+            "pranaygp.vscode-css-peek"
+          ]
+          ++ forOpenVsx [ ];
 
         userSettings = {
           "editor.inlayHints.enabled" = "on";
@@ -87,20 +134,22 @@
         };
       };
       Hugo = {
-        extensions = with pkgs.vscode-extensions; [
-          # Themes
+        extensions =
+          forVscode [
+            # Themes
 
-          # Visuals
-          pkief.material-icon-theme
-          # NixOS
-          jnoortheen.nix-ide
+            # Visuals
+            "pkief.material-icon-theme"
+            # NixOS
+            "jnoortheen.nix-ide"
 
-          signageos.signageos-vscode-sops
+            "signageos.signageos-vscode-sops"
 
-          #pinage404.nix-extension-pack
+            #pinage404.nix-extension-pack
 
-          #arrterian.nix-env-selector
-        ];
+            #arrterian.nix-env-selector
+          ]
+          ++ forOpenVsx [ ];
         userSettings = {
           "editor.inlayHints.enabled" = "on";
           "editor.guides.indentation" = true;
@@ -125,20 +174,29 @@
         };
       };
       Python = {
-        extensions = with pkgs.vscode-extensions; [
-          # Themes
+        extensions =
+          forVscode [
+            # Themes
+            "wesbos.theme-cobalt2"
 
-          # Visuals
-          pkief.material-icon-theme
-          # NixOS
-          jnoortheen.nix-ide
+            # Visuals
+            "pkief.material-icon-theme"
+            "tonybaloney.vscode-pets"
 
-          signageos.signageos-vscode-sops
+            # NixOS
+            "jnoortheen.nix-ide"
+            "signageos.signageos-vscode-sops"
 
-          #pinage404.nix-extension-pack
+            #Stuff
+            "ms-python.python"
+            "github.copilot"
+            "google.geminicodeassist"
 
-          #arrterian.nix-env-selector
-        ];
+            #pinage404.nix-extension-pack
+
+            #arrterian.nix-env-selector
+          ]
+          ++ forOpenVsx [ ];
         userSettings = {
           "editor.inlayHints.enabled" = "on";
           "editor.guides.indentation" = true;
@@ -156,10 +214,31 @@
             "blockman.n04Sub02ColorComboPresetForLightTheme" = "none";
             "blockman.n23AnalyzeSquareBrackets" = true;
           */
+
+          # This is all that matters
+          "workbench.colorTheme" = "Cobalt2";
+          # The Cursive font is operator Mono, it's $200 and you need to buy it to get the cursive. Dank Mono or Victor Mono are good alternatives
+          "editor.fontFamily" = "Operator Mono, Menlo, Monaco, 'Courier New', monospace";
+          "editor.fontSize" = 17;
+          "editor.lineHeight" = 25;
+          "editor.letterSpacing" = 0.5;
+          "files.trimTrailingWhitespace" = true;
+          "editor.fontWeight" = "400";
+          "prettier.eslintIntegration" = true;
+          "editor.cursorStyle" = "line";
+          "editor.cursorWidth" = 5;
+          "editor.cursorBlinking" = "solid";
+          "editor.renderWhitespace" = "all";
           "workbench.iconTheme" = "material-icon-theme";
 
           "editor.formatOnSave" = true;
           "editor.formatOnPaste" = false;
+
+          "vscode-pets.petColor" = "black";
+          "vscode-pets.petSize" = "large";
+          "vscode-pets.position" = "explorer";
+          #"vscode-pets.theme" = "forest";
+          #"vscode-pets.throwBallWithMouse" = false;
         };
       };
     };

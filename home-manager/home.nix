@@ -44,14 +44,14 @@ in
     arduino
     bitwarden
     blender
-    darktable
+    #darktable
     direnv
     element-desktop
 
     filezilla
     #gimp-with-plugins
     inkscape
-    jellyfin-media-player
+    #jellyfin-media-player
     krita
     libreoffice
 
@@ -59,7 +59,7 @@ in
     nixpkgs-fmt
     rnote
     simplex-chat-desktop
-    # sirikali
+    sirikali
     thunderbird
 
     transmission_4-gtk
@@ -96,7 +96,7 @@ in
 
     prismlauncher
     jdk23
-    alfis
+    #alfis
 
     basicswap
     nym

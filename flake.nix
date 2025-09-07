@@ -126,7 +126,7 @@
   */
 
   outputs =
-    inputs@{
+    {
       self,
       nixpkgs,
       home-manager,
@@ -140,13 +140,21 @@
       #nix-vscode-extensions,
       nix4vscode,
       ...
-    }:
+    }@inputs:
     let
       inherit (self) outputs;
       # Supported systems for your flake packages, shell, etc.
       system = builtins.currentSystem;
       # Unmodified nixpkgs
-      pkgs = import nixpkgs { inherit system; };
+      # pkgs = import nixpkgs { inherit system; };
+      pkgs = import <nixpkgs> {
+        # inherit system;
+        config.allowUnfree = true;
+        system = "x86_64-linux"; # One of supported systems
+        overlays = [
+          nix4vscode.overlays.default
+        ];
+      };
       # nixpkgs with deploy-rs overlay but force the nixpkgs package
       systems = [
         "x86_64-linux"
@@ -282,11 +290,13 @@
               home-manager.extraSpecialArgs = { inherit inputs; };
               home-manager.backupFileExtension = "backup";
             }
-            {
-              nixpkgs.overlays = [
-                nix4vscode.overlays.default
-              ];
-            }
+            /*
+              {
+                         nixpkgs.overlays = [
+                           nix4vscode.overlays.default
+                         ];
+                       }
+            */
             lanzaboote.nixosModules.lanzaboote
             (
               {

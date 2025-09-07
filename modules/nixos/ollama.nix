@@ -21,6 +21,7 @@ in
   };
 
   config = mkIf cfg.enable {
+
     services.ollama = {
       enable = true;
       acceleration = "rocm";
@@ -33,19 +34,36 @@ in
       openFirewall = true;
       host = "0.0.0.0";
     };
+
     environment.systemPackages = [
       (pkgs.ollama.override {
-        acceleration = "cuda";
+        acceleration = "rocm";
       })
     ];
+
     services.open-webui = {
       enable = true;
       openFirewall = true;
       host = "0.0.0.0";
     };
+
     environment.persistence."/persist".directories = [
-      "/var/lib/ollama"
-      "/var/lib/open-webui"
+      "/var/lib/private/ollama"
+      "/var/lib/private/open-webui"
     ];
+    system.activationScripts."createPersistentStorageDirs".deps = [
+      "var-lib-private-permissions"
+      "users"
+      "groups"
+    ];
+    system.activationScripts = {
+      "var-lib-private-permissions" = {
+        deps = [ "specialfs" ];
+        text = ''
+          mkdir -p /persist/var/lib/private
+          chmod 0700 /persist/var/lib/private
+        '';
+      };
+    };
   };
 }

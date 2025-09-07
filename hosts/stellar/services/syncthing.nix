@@ -45,7 +45,7 @@
               "horizon"
             ]; # Which devices to share the folder wi
           };
-          "/home/egor/Documents" = {
+          "/home/egor/Documentos" = {
             id = "Documents";
             devices = [
               "immortal"
@@ -81,6 +81,14 @@
           };
           "/home/egor/DCIM" = {
             id = "DCIM";
+            devices = [
+              "immortal"
+              "pixel8"
+              "pixel6"
+            ];
+          };
+          "/home/egor/Musica" = {
+            id = "Music";
             devices = [
               "immortal"
               "pixel8"

@@ -32,6 +32,8 @@
     outputs.nixosModules.yubikey
     outputs.nixosModules.yggdrasil
     outputs.nixosModules.ollama
+
+    #./odoo-test.nix
   ];
 
   modules.gnome = {
@@ -117,6 +119,7 @@
     xf86_input_wacom
     android-studio
     flutter
+    opentabletdriver
   ];
   services.udev.packages = [
     pkgs.android-udev-rules

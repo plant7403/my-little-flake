@@ -54,6 +54,7 @@ in
       programs.dconf.enable = true;
       environment.systemPackages = with pkgs; [
         gnome-tweaks
+        libsecret
       ];
       services.udev.packages = [
         pkgs.gnome-settings-daemon
@@ -118,7 +119,31 @@ in
         ];
         allowedUDPPortRanges = allowedTCPPortRanges;
       };
-      security.pam.services.login.enableGnomeKeyring = true;
+
+      programs.seahorse.enable = true; # enable the graphical frontend
+
+      security = {
+        polkit.enable = true;
+        /*
+          pam.services = {
+
+                 ssdm = {
+                   enableGnomeKeyring = true;
+                 };
+                 hyprland = {
+                   enableGnomeKeyring = true;
+                 };
+               };
+        */
+      };
+      services.dbus.enable = true;
+      services.gnome.gnome-keyring.enable = true;
+      services.accounts-daemon.enable = true;
+
+      services.dbus.packages = [
+        pkgs.gnome-keyring
+        pkgs.gcr
+      ];
     })
     (mkIf cfg.autologin {
       # Enable automatic login for the user.

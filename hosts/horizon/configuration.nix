@@ -140,7 +140,7 @@ in
   };
 
   environment.systemPackages = [
-    pkgs.protonup-qt
+    #pkgs.protonup-qt
     pkgs.lutris
     pkgs.steamdeck-firmware
 
