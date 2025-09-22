@@ -3,9 +3,11 @@
   config,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.modules.yggdrasil;
-in {
+in
+{
   options.modules.yggdrasil = {
     enable = mkEnableOption "service";
     persist = mkOption {
@@ -13,10 +15,10 @@ in {
       default = false;
     };
     /*
-    yggdrasil = mkOption {
-       type = types.str;
-       default = "default";
-     };
+      yggdrasil = mkOption {
+         type = types.str;
+         default = "default";
+       };
     */
   };
 
@@ -55,8 +57,7 @@ in {
   ];
 }
 /*
-stellar: 200:a3e8:1542:4113:5b89:b0f2:c57:4e9a
-horizon: 201:4727:fe22:9178:4afa:d6ed:2fcf:7740
-pixel8: 200:fbba:8d4a:91f0:58b6:ecef:2174:a96e
+  stellar: 200:a3e8:1542:4113:5b89:b0f2:c57:4e9a
+  horizon: 201:4727:fe22:9178:4afa:d6ed:2fcf:7740
+  pixel8: 200:fbba:8d4a:91f0:58b6:ecef:2174:a96e
 */
-

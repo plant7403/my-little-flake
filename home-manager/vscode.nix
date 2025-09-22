@@ -62,6 +62,7 @@ in
 
             "signageos.signageos-vscode-sops"
             "jeff-hykin.better-nix-syntax"
+            "moshfeu.compare-folders"
             #pinage404.nix-extension-pack
 
             #arrterian.nix-env-selector
@@ -104,6 +105,7 @@ in
             "mkhl.direnv"
             # Core
             "ecmel.vscode-html-css"
+            "antfu.browse-lite"
             #"hansuxdev.bootstrap5-snippets"
 
             "pranaygp.vscode-css-peek"
@@ -131,6 +133,8 @@ in
 
           "editor.formatOnSave" = true;
           "editor.formatOnPaste" = false;
+
+          "browse-lite.chromeExecutable" = "chromiun";
         };
       };
       Hugo = {

@@ -2,7 +2,8 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   home.packages = with pkgs; [
     palenight-theme
     dracula-theme
@@ -17,10 +18,10 @@
     };
 
     /*
-       theme = lib.mkForce {
-      name = "tokyonight";
-      package = pkgs.tokyonight-gtk-theme;
-    };
+         theme = lib.mkForce {
+        name = "tokyonight";
+        package = pkgs.tokyonight-gtk-theme;
+      };
     */
 
     cursorTheme = {
@@ -40,7 +41,6 @@
       '';
     };
   };
-  /*
-  home.sessionVariables.GTK_THEME = "tokyonight-gtk-theme";
-  */
+  qt.platformTheme.name = lib.mkForce "adwaita";
+  # home.sessionVariables.GTK_THEME = "tokyonight-gtk-theme";
 }

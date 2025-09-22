@@ -3,7 +3,7 @@
   programs.librewolf = {
     enable = true;
     profiles.default = {
-      extensions =
+      extensions.packages =
         with pkgs;
         with inputs.firefox-addons.packages.${pkgs.system};
         [
@@ -72,17 +72,8 @@
       };
       bookmarks = [
         {
-          name = "wikipedia";
-          tags = [ "wiki" ];
-          keyword = "wiki";
-          url = "https://en.wikipedia.org/wiki/Special:Search?search=%s&go=Go";
-        }
-        {
-          name = "kernel.org";
-          url = "https://www.kernel.org";
-        }
-        {
           name = "Nix sites";
+          #force = true;
           toolbar = true;
           bookmarks = [
             {

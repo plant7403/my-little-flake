@@ -41,7 +41,7 @@ in {
 
         extraUpFlags =
           [
-            "--login-server https://head.egor.wtf"
+            "--login-server https://head.pak.academy"
             "--hostname=${cfg.hostname}"
             "--operator=egor"
           ]
@@ -90,7 +90,7 @@ services.tailscale = {
   enable = true;
   useRoutingFeatures = lib.mkDefault "client";
   extraUpFlags = [
-    "--login-server https://head.egor.wtf"
+    "--login-server https://head.pak.academy"
     "--hostname ${cfg.hostname}"
   ];
 };

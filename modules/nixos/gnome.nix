@@ -29,8 +29,8 @@ in
   config = mkMerge [
     (mkIf cfg.enable {
       services.xserver.enable = true;
-      services.xserver.displayManager.gdm.enable = true;
-      services.xserver.desktopManager.gnome.enable = true;
+      services.displayManager.gdm.enable = true;
+      services.desktopManager.gnome.enable = true;
 
       environment.gnome.excludePackages = with pkgs; [
         #gnome-photos
@@ -104,6 +104,10 @@ in
            };
       */
       stylix.autoEnable = true;
+
+      # !!! stylix.targets.librewolf.profileNames = [ "default" ];
+
+      stylix.targets.qt.platform = lib.mkForce "qtct";
 
       home-manager.users.egor.programs.gnome-shell = {
         enable = true;

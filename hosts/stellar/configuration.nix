@@ -62,14 +62,14 @@
   */
   modules.sound.enable = true;
   #modules.steam.enable = true;
-  /*
-     modules.tailscale = {
+
+  modules.tailscale = {
     enable = true;
     exit = false;
     hostname = "stellar";
     impermanence = true;
-    };
-  */
+  };
+
   modules.system = {
     hostname = "stellar";
     ssh = true;
@@ -113,12 +113,10 @@
 
   home-manager.sharedModules = [
     inputs.sops-nix.homeManagerModules.sops
-    inputs.plasma-manager.homeManagerModules.plasma-manager
+    inputs.plasma-manager.homeModules.plasma-manager
   ];
   environment.systemPackages = with pkgs; [
     xf86_input_wacom
-    android-studio
-    flutter
     opentabletdriver
   ];
   services.udev.packages = [
@@ -174,9 +172,6 @@
       "libfprint-2-tod1-elan"
       "libfprint-2-tod1-vfs0090"
       "libfprint-2-tod1-goodix-550a"
-      "android-studio-stable"
-      "android-sdk-cmdline-tools"
-      "android-sdk-tools"
     ];
   boot.extraModulePackages = with config.boot.kernelPackages; [
     rtl88xxau-aircrack
@@ -193,8 +188,8 @@
     };
   };
   # LAPTOP STUFF - NEW
-  services.logind.lidSwitch = "poweroff";
-  services.logind.lidSwitchExternalPower = "lock";
+  services.logind.settings.Login.HandleLidSwitch = "poweroff";
+  services.logind.settings.Login.HandleLidSwitchExternalPower = "lock";
   #services.logind.lidSwitchDocked = "ignore";
   # one of "ignore", "poweroff", "reboot", "halt", "kexec", "suspend", "hibernate", "hybrid-sleep", "suspend-then-hibernate", "lock"
 

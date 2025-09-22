@@ -61,7 +61,7 @@
     sops-nix = {
       url = "github:mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nixpkgs-stable.follows = "nixpkgs";
+      #inputs.nixpkgs-stable.follows = "nixpkgs";
     };
     /*
         nixos-mailserver = {
@@ -290,13 +290,13 @@
               home-manager.extraSpecialArgs = { inherit inputs; };
               home-manager.backupFileExtension = "backup";
             }
-            /*
-              {
-                         nixpkgs.overlays = [
-                           nix4vscode.overlays.default
-                         ];
-                       }
-            */
+
+            {
+              nixpkgs.overlays = [
+                nix4vscode.overlays.default
+              ];
+            }
+
             lanzaboote.nixosModules.lanzaboote
             (
               {

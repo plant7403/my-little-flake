@@ -132,6 +132,20 @@ in
           '';
         };
       };
+      system.activationScripts."createPersistentStorageDirs".deps = [
+        "var-lib-private-permissions"
+        "users"
+        "groups"
+      ];
+      system.activationScripts = {
+        "var-lib-private-permissions" = {
+          deps = [ "specialfs" ];
+          text = ''
+            mkdir -p /persist/var/lib/private
+            chmod 0700 /persist/var/lib/private
+          '';
+        };
+      };
     })
     (mkIf (regularSecrets != { } && config.environment.persistence != { }) {
       system.activationScripts.setupSecrets.deps = [ "persist-files" ];

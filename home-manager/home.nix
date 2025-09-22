@@ -98,10 +98,13 @@ in
     jdk23
     #alfis
 
-    basicswap
+    #basicswap
     nym
 
     keepassxc
+
+    ungoogled-chromium
+    dbeaver-bin
   ];
 
   programs.home-manager.enable = true;

@@ -61,35 +61,34 @@
     };
   };
 
-  /*
-    services.nginx = {
+  services.nginx = {
 
-      enable = true;
-      virtualHosts = {
-        "head.egor.wtf" = {
-          forceSSL = true;
-          useACMEHost = "egor.wtf";
+    enable = true;
+    virtualHosts = {
+      "head.egor.wtf" = {
+        forceSSL = true;
+        useACMEHost = "egor.wtf";
+        extraConfig = ''
+          ${builtins.readFile ../nginx/authelia/vh.conf}
+        '';
+        locations."/" = {
+          proxyPass = "http://127.0.0.1:8089";
+          proxyWebsockets = true;
           extraConfig = ''
-            ${builtins.readFile ../nginx/authelia/vh.conf}
+            ${builtins.readFile ../nginx/authelia/locations.conf}
           '';
-          locations."/" = {
-            proxyPass = "http://127.0.0.1:8089";
-            proxyWebsockets = true;
-            extraConfig = ''
-              ${builtins.readFile ../nginx/authelia/locations.conf}
-            '';
-          };
-          locations."/metrics" = {
-            proxyPass = "http://127.0.0.1:8095";
-            proxyWebsockets = true;
-            extraConfig = ''
-              ${builtins.readFile ../nginx/authelia/locations.conf}
-            '';
-          };
+        };
+        locations."/metrics" = {
+          proxyPass = "http://127.0.0.1:8095";
+          proxyWebsockets = true;
+          extraConfig = ''
+            ${builtins.readFile ../nginx/authelia/locations.conf}
+          '';
         };
       };
     };
-  */
+  };
+
   services.authelia.instances.prod.settings.identity_providers.oidc.clients = [
     {
       id = "headscale";

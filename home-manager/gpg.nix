@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   home.packages = with pkgs; [
     yubico-piv-tool
     yubikey-manager
@@ -94,6 +95,6 @@
     extraConfig = ''
       ttyname $GPG_TTY
     '';
-    pinentryPackage = pkgs.pinentry-gnome3;
+    pinentry.package = pkgs.pinentry-gnome3;
   };
 }

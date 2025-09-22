@@ -144,17 +144,16 @@ in
     pkgs.lutris
     pkgs.steamdeck-firmware
 
-    pkgs.ryujinx
+    pkgs.ryubing
     pkgs.steam-rom-manager
 
     #pkgs.heroic
     pkgs.protontricks
 
-    pkgs.jellyfin-media-player
-
-    pkgs.maliit-framework
-    pkgs.maliit-keyboard
-
+    /*
+      pkgs.maliit-framework
+       pkgs.maliit-keyboard
+    */
     # support both 32- and 64-bit applications
     pkgs.wineWowPackages.stable
 
@@ -217,9 +216,18 @@ in
     libgbm
     # here, NOT in environment.systemPackages
   ];
-  nixpkgs.config.permittedInsecurePackages = [
-    "electron-27.3.11"
-  ];
+
+  # Enable common container config files in /etc/containers
+  virtualisation.containers.enable = true;
+  virtualisation = {
+    podman = {
+      enable = true;
+      # Create a `docker` alias for podman, to use it as a drop-in replacement
+      dockerCompat = true;
+      # Required for containers under podman-compose to be able to talk to each other.
+      defaultNetwork.settings.dns_enabled = true;
+    };
+  };
 
   #services.pppd.enable = true;
   #security.polkit.enable = true;

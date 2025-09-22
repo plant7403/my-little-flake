@@ -74,12 +74,9 @@ in
         builtins.elem (lib.getName pkg) [
           "vscode-extension-github-copilot"
           "vscode-extension-github-copilot-chat"
-          "android-studio-stable"
-          "android-studio"
           "obsidian"
         ];
       nix.settings.download-buffer-size = 524288000;
-      nixpkgs.config.android_sdk.accept_license = true;
 
       networking.hostName = cfg.hostname; # Define your hostname.
       boot.plymouth.enable = true;
