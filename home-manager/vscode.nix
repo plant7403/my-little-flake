@@ -194,7 +194,6 @@ in
             #Stuff
             "ms-python.python"
             "github.copilot"
-            "google.geminicodeassist"
 
             #pinage404.nix-extension-pack
 
