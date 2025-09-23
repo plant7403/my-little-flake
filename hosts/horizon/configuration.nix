@@ -198,7 +198,7 @@ in
     dbus.lib # libdbus-1.so.3
     libdrm # libdrm.so.2
     gdk-pixbuf # libgdk_pixbuf-2.0.so.0
-    gtk3 # libgtk-3.so.0
+    #gtk3 # libgtk-3.so.0
     pango # libpango-1.0.so.0
     cairo # libcairo.so.2
     xorg.libX11 # libX11.so.6
