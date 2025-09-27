@@ -107,7 +107,10 @@ in
 
       # !!! stylix.targets.librewolf.profileNames = [ "default" ];
 
-      stylix.targets.qt.platform = lib.mkForce "qtct";
+      stylix.targets = {
+        qt.platform = lib.mkForce "qtct";
+        #librewolf.profileNames = ["default"];
+      };
 
       home-manager.users.egor.programs.gnome-shell = {
         enable = true;

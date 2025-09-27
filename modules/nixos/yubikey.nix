@@ -4,9 +4,11 @@
   config,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.modules.yubikey;
-in {
+in
+{
   options.modules.yubikey = {
     enable = mkEnableOption "service";
   };
@@ -22,19 +24,23 @@ in {
       enable = true;
       enableSSHSupport = true;
     };
-    security.pam.services = {
-      login.u2fAuth = true;
-      sudo.u2fAuth = true;
+    /*
+      security.pam.services = {
+        login.u2fAuth = true;
+        sudo.u2fAuth = true;
 
-      #login.yubicoAuth = true;
-      #sudo.yubicoAuth = true;
-    };
-    security.pam.u2f = {
-      enable = true;
-      settings = {
-        cue = true;
+        #login.yubicoAuth = true;
+        #sudo.yubicoAuth = true;
       };
-    };
+    */
+    /*
+      security.pam.u2f = {
+         enable = true;
+         settings = {
+           cue = true;
+         };
+       };
+    */
     #security.pam.yubico = {
     #  enable = true;
     #  debug = true;
@@ -42,19 +48,20 @@ in {
     #  id = ["19271673"];
     #};
     /*
-       ACTION=="remove",\
-    ENV{ID_BUS}=="usb",\
-    ENV{ID_MODEL_ID}=="0407",\
-    ENV{ID_VENDOR_ID}=="1050",\
-    ENV{ID_VENDOR}=="Yubico",\
-
+         ACTION=="remove",\
+      ENV{ID_BUS}=="usb",\
+      ENV{ID_MODEL_ID}=="0407",\
+      ENV{ID_VENDOR_ID}=="1050",\
+      ENV{ID_VENDOR}=="Yubico",\
     */
-    services.udev.extraRules = ''
-      ACTION=="remove",\
-      ENV{SUBSYSTEM}=="usb",\
-      ENV{PRODUCT}=="1050/407/543",\
-      RUN+="${pkgs.systemd}/bin/loginctl lock-sessions"
-    '';
+    /*
+      services.udev.extraRules = ''
+        ACTION=="remove",\
+        ENV{SUBSYSTEM}=="usb",\
+        ENV{PRODUCT}=="1050/407/543",\
+        RUN+="${pkgs.systemd}/bin/loginctl lock-sessions"
+      '';
+    */
 
     programs.yubikey-touch-detector.enable = true;
     # security.pam.yubico.control = "required";

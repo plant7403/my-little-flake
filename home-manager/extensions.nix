@@ -12,7 +12,7 @@
     gnomeExtensions.appindicator
     gnomeExtensions.caffeine
     #gnomeExtensions.tailscale-qs
-    #gnomeExtensions.tailscale-status
+    gnomeExtensions.tailscale-status
     gnomeExtensions.gsconnect
     gnomeExtensions.syncthing-indicator
     gnomeExtensions.syncthing-toggle
@@ -41,7 +41,7 @@
         "screenshot-window-sizer@gnome-shell-extensions.gcampax.github.com"
         "status-icons@gnome-shell-extensions.gcampax.github.com"
         "system-monitor@gnome-shell-extensions.gcampax.github.com"
-        # "tailscale@joaophi.github.com"
+        "tailscale@joaophi.github.com"
         "trayIconsReloaded@selfmade.pl"
         "gsconnect@andyholmes.github.io"
         "Vitals@CoreCoding.com"
@@ -53,10 +53,10 @@
         "librewolf.desktop"
         "codium.desktop"
         "org.gnome.Nautilus.desktop"
-        "bitwarden.desktop"
+        #"bitwarden.desktop"
         #"logseq.desktop"
-        "com.github.iwalton3.jellyfin-media-player.desktop"
-        "virtualbox.desktop"
+        #"com.github.iwalton3.jellyfin-media-player.desktop"
+        #"virtualbox.desktop"
         "element-desktop.desktop"
       ];
       "extensions/blur-my-shell/applications/opacity" = 235;
@@ -83,5 +83,12 @@
          workspace-names = [ "Main" ];
        };
     */
+  };
+  xdg.autostart.entries = [
+    "${pkgs.element-desktop}/share/applications/element-desktop.desktop"
+  ];
+
+  xdg.mimeApps = {
+    enable = true;
   };
 }

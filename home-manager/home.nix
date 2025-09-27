@@ -105,6 +105,7 @@ in
 
     ungoogled-chromium
     dbeaver-bin
+    signal-desktop
   ];
 
   programs.home-manager.enable = true;
@@ -134,7 +135,7 @@ in
   #pam.yubico.authorizedYubiKeys.ids = [
   #  "19271673"
   #];
-
+  
   systemd.user.startServices = "sd-switch";
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "24.05";

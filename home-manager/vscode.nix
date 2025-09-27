@@ -59,6 +59,7 @@ in
             "pkief.material-icon-theme"
             # NixOS
             "jnoortheen.nix-ide"
+            "jeff-hykin.better-nix-syntax"
 
             "signageos.signageos-vscode-sops"
             "jeff-hykin.better-nix-syntax"
@@ -68,6 +69,7 @@ in
             #arrterian.nix-env-selector
           ]
           ++ forOpenVsx [ ];
+
         userSettings = {
           "editor.inlayHints.enabled" = "on";
           "editor.guides.indentation" = true;
@@ -89,6 +91,8 @@ in
 
           "editor.formatOnSave" = true;
           "editor.formatOnPaste" = false;
+          "window.newWindowProfile" = "Default";
+
         };
       };
       HTML = {
@@ -188,13 +192,23 @@ in
             "tonybaloney.vscode-pets"
 
             # NixOS
-            "jnoortheen.nix-ide"
+            #"jnoortheen.nix-ide"
             "signageos.signageos-vscode-sops"
+            "mkhl.direnv"
 
             #Stuff
             "ms-python.python"
+            "ms-python.debugpy"
+            #"redhat.vscode-xml"
+            #"prateekmahendrakar.prettyxml"
+            "dotjoshjohnson.xml"
+            "kevinrose.vsc-python-indent"
+            "ms-python.black-formatter"
+            "charliermarsh.ruff"
+
             "github.copilot"
 
+            #"trinhanhngoc.vscode-odoo"
             #pinage404.nix-extension-pack
 
             #arrterian.nix-env-selector
@@ -212,6 +226,7 @@ in
             "editor.lineHighlightBorder" = "#4cd3081a";
             "editor.lineHighlightBackground" = "#e22d0031";
           };
+          "redhat.telemetry.enabled" = false;
 
           /*
             "blockman.n04Sub02ColorComboPresetForLightTheme" = "none";

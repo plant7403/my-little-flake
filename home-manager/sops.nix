@@ -1,9 +1,11 @@
-{ inputs
-, pkgs
-, sops-nix
-, config
-, ...
-}: {
+{
+  inputs,
+  pkgs,
+  sops-nix,
+  config,
+  ...
+}:
+{
   imports = [
     inputs.sops-nix.homeManagerModules.sops
   ];
@@ -11,7 +13,7 @@
   sops = {
     gnupg = {
       home = "~/.gnupg";
-      sshKeyPaths = [];
+      sshKeyPaths = [ ];
     };
     #defaultSymlinkPath = "/run/user/1000/secrets";
     #defaultSecretsMountPoint = "/run/user/1000/secrets.d";
@@ -27,7 +29,10 @@
     /run/current-system/sw/bin/systemctl start --user sops-nix
   '';
   systemd.user.services.mbsync.Unit.After = [ "sops-nix.service" ];
-  sops.secrets."users/stellar/yubikey" = {
+
+  /*
+    sops.secrets."users/stellar/yubikey" = {
       sopsFile = ./secrets.yaml;
     }; # REMOVE
+  */
 }

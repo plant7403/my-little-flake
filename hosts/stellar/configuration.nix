@@ -46,7 +46,7 @@
   #modules.kde.enable = true;
 
   modules.yggdrasil = {
-    enable = true;
+    enable = false;
     persist = true;
   };
 
