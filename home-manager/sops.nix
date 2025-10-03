@@ -30,9 +30,8 @@
   '';
   systemd.user.services.mbsync.Unit.After = [ "sops-nix.service" ];
 
-  /*
-    sops.secrets."users/stellar/yubikey" = {
-      sopsFile = ./secrets.yaml;
-    }; # REMOVE
-  */
+  sops.secrets."users/stellar/yubikey" = {
+    sopsFile = ./secrets.yaml;
+  }; # REMOVE
+
 }

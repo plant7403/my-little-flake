@@ -30,6 +30,43 @@ let
       '';
     };
   };
+  baseSettings = {
+    "editor.inlayHints.enabled" = "on";
+    "editor.guides.indentation" = true;
+    "editor.guides.bracketPairs" = true;
+    "editor.wordWrap" = "off";
+    "diffEditor.wordWrap" = "off";
+    # "blockman.n33A01B2FromDepth0ToInwardForAllBackgrounds" = "10,0,0,1; none";
+
+    "workbench.colorCustomizations" = {
+      "editor.lineHighlightBorder" = "#4cd3081a";
+      "editor.lineHighlightBackground" = "#e22d0031";
+    };
+    "workbench.iconTheme" = "material-icon-theme";
+
+    "editor.formatOnSave" = true;
+    "editor.formatOnPaste" = false;
+    "window.newWindowProfile" = "Default";
+    #"workbench.editor.limit" = 5;
+    "git.enableSmartCommit" = true;
+    "git.autofetch" = true;
+    "explorer.confirmDelete" = false;
+
+    "vscode-pets.petColor" = "black";
+    "vscode-pets.petSize" = "large";
+    "vscode-pets.position" = "explorer";
+    #"vscode-pets.theme" = "forest";
+    #"vscode-pets.throwBallWithMouse" = false;
+  };
+  baseExtensions = [
+    "pkief.material-icon-theme"
+    "tonybaloney.vscode-pets"
+  ];
+  baseExtensionsVS = [
+    "pkief.material-icon-theme"
+    "tonybaloney.vscode-pets"
+  ];
+
 in
 {
   /*
@@ -52,58 +89,31 @@ in
     profiles = {
       default = {
         extensions =
-          forVscode [
-            # Themes
+          forOpenVsx [
 
-            # Visuals
-            "pkief.material-icon-theme"
             # NixOS
             "jnoortheen.nix-ide"
             "jeff-hykin.better-nix-syntax"
 
             "signageos.signageos-vscode-sops"
             "jeff-hykin.better-nix-syntax"
-            "moshfeu.compare-folders"
+            #"folke.vscode-monorepo-workspace"
+            #"moshfeu.compare-folders"
             #pinage404.nix-extension-pack
 
             #arrterian.nix-env-selector
           ]
-          ++ forOpenVsx [ ];
+          ++ forOpenVsx baseExtensions
+          ++ forVscode [ ]
+          ++ forVscode baseExtensionsVS;
 
         userSettings = {
-          "editor.inlayHints.enabled" = "on";
-          "editor.guides.indentation" = true;
-          "editor.guides.bracketPairs" = true;
-          "editor.wordWrap" = "off";
-          "diffEditor.wordWrap" = "off";
-          # "blockman.n33A01B2FromDepth0ToInwardForAllBackgrounds" = "10,0,0,1; none";
-
-          "workbench.colorCustomizations" = {
-            "editor.lineHighlightBorder" = "#4cd3081a";
-            "editor.lineHighlightBackground" = "#e22d0031";
-          };
-
-          /*
-            "blockman.n04Sub02ColorComboPresetForLightTheme" = "none";
-            "blockman.n23AnalyzeSquareBrackets" = true;
-          */
-          "workbench.iconTheme" = "material-icon-theme";
-
-          "editor.formatOnSave" = true;
-          "editor.formatOnPaste" = false;
-          "window.newWindowProfile" = "Default";
-
+          inherit baseSettings;
         };
       };
       HTML = {
         extensions =
-          forVscode [
-            # with pkgs.nix4vscode.forVscode;
-
-            # Themes
-
-            # Visuals
-            "pkief.material-icon-theme"
+          forOpenVsx [
             # NixOS
             "arrterian.nix-env-selector"
             "mkhl.direnv"
@@ -114,85 +124,36 @@ in
 
             "pranaygp.vscode-css-peek"
           ]
-          ++ forOpenVsx [ ];
+          ++ forOpenVsx baseExtensions
+          ++ forVscode [ ]
+          ++ forVscode baseExtensionsVS;
 
         userSettings = {
-          "editor.inlayHints.enabled" = "on";
-          "editor.guides.indentation" = true;
-          "editor.guides.bracketPairs" = true;
-          "editor.wordWrap" = "off";
-          "diffEditor.wordWrap" = "off";
-          # "blockman.n33A01B2FromDepth0ToInwardForAllBackgrounds" = "10,0,0,1; none";
-
-          "workbench.colorCustomizations" = {
-            "editor.lineHighlightBorder" = "#4cd3081a";
-            "editor.lineHighlightBackground" = "#e22d0031";
-          };
-
-          /*
-            "blockman.n04Sub02ColorComboPresetForLightTheme" = "none";
-            "blockman.n23AnalyzeSquareBrackets" = true;
-          */
-          "workbench.iconTheme" = "material-icon-theme";
-
-          "editor.formatOnSave" = true;
-          "editor.formatOnPaste" = false;
+          inherit baseSettings;
 
           "browse-lite.chromeExecutable" = "chromiun";
         };
       };
       Hugo = {
         extensions =
-          forVscode [
+          forOpenVsx [
             # Themes
-
-            # Visuals
-            "pkief.material-icon-theme"
-            # NixOS
-            "jnoortheen.nix-ide"
-
-            "signageos.signageos-vscode-sops"
 
             #pinage404.nix-extension-pack
 
             #arrterian.nix-env-selector
           ]
-          ++ forOpenVsx [ ];
+          ++ forOpenVsx baseExtensions
+          ++ forVscode [ ]
+          ++ forVscode baseExtensionsVS;
         userSettings = {
-          "editor.inlayHints.enabled" = "on";
-          "editor.guides.indentation" = true;
-          "editor.guides.bracketPairs" = true;
-          "editor.wordWrap" = "off";
-          "diffEditor.wordWrap" = "off";
-          # "blockman.n33A01B2FromDepth0ToInwardForAllBackgrounds" = "10,0,0,1; none";
-
-          "workbench.colorCustomizations" = {
-            "editor.lineHighlightBorder" = "#4cd3081a";
-            "editor.lineHighlightBackground" = "#e22d0031";
-          };
-
-          /*
-            "blockman.n04Sub02ColorComboPresetForLightTheme" = "none";
-            "blockman.n23AnalyzeSquareBrackets" = true;
-          */
-          "workbench.iconTheme" = "material-icon-theme";
-
-          "editor.formatOnSave" = true;
-          "editor.formatOnPaste" = false;
+          inherit baseSettings;
         };
       };
       Python = {
         extensions =
-          forVscode [
-            # Themes
+          forOpenVsx [
             "wesbos.theme-cobalt2"
-
-            # Visuals
-            "pkief.material-icon-theme"
-            "tonybaloney.vscode-pets"
-
-            # NixOS
-            #"jnoortheen.nix-ide"
             "signageos.signageos-vscode-sops"
             "mkhl.direnv"
 
@@ -206,32 +167,20 @@ in
             "ms-python.black-formatter"
             "charliermarsh.ruff"
 
-            "github.copilot"
+            #"github.copilot"
+            #"folke.vscode-monorepo-workspace"
 
             #"trinhanhngoc.vscode-odoo"
-            #pinage404.nix-extension-pack
 
             #arrterian.nix-env-selector
           ]
-          ++ forOpenVsx [ ];
+          ++ forOpenVsx baseExtensions
+          ++ forVscode [ ]
+          ++ forVscode baseExtensionsVS;
         userSettings = {
-          "editor.inlayHints.enabled" = "on";
-          "editor.guides.indentation" = true;
-          "editor.guides.bracketPairs" = true;
-          "editor.wordWrap" = "off";
-          "diffEditor.wordWrap" = "off";
-          # "blockman.n33A01B2FromDepth0ToInwardForAllBackgrounds" = "10,0,0,1; none";
+          inherit baseSettings;
 
-          "workbench.colorCustomizations" = {
-            "editor.lineHighlightBorder" = "#4cd3081a";
-            "editor.lineHighlightBackground" = "#e22d0031";
-          };
-          "redhat.telemetry.enabled" = false;
-
-          /*
-            "blockman.n04Sub02ColorComboPresetForLightTheme" = "none";
-            "blockman.n23AnalyzeSquareBrackets" = true;
-          */
+          #"redhat.telemetry.enabled" = false;
 
           # This is all that matters
           "workbench.colorTheme" = "Cobalt2";
@@ -247,16 +196,7 @@ in
           "editor.cursorWidth" = 5;
           "editor.cursorBlinking" = "solid";
           "editor.renderWhitespace" = "all";
-          "workbench.iconTheme" = "material-icon-theme";
 
-          "editor.formatOnSave" = true;
-          "editor.formatOnPaste" = false;
-
-          "vscode-pets.petColor" = "black";
-          "vscode-pets.petSize" = "large";
-          "vscode-pets.position" = "explorer";
-          #"vscode-pets.theme" = "forest";
-          #"vscode-pets.throwBallWithMouse" = false;
         };
       };
     };

@@ -33,7 +33,7 @@
     outputs.nixosModules.yggdrasil
     outputs.nixosModules.ollama
 
-    #./odoo-test.nix
+    ./odoo-test.nix
   ];
 
   modules.gnome = {

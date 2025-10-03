@@ -50,14 +50,16 @@
 
       favorite-apps = [
         "org.gnome.Console.desktop"
-        "librewolf.desktop"
-        "codium.desktop"
         "org.gnome.Nautilus.desktop"
-        #"bitwarden.desktop"
-        #"logseq.desktop"
-        #"com.github.iwalton3.jellyfin-media-player.desktop"
-        #"virtualbox.desktop"
+        "librewolf.desktop"
+        "chromium-browser.desktop"
+        "codium.desktop"
         "element-desktop.desktop"
+        "signal.desktop"
+        "obsidian.desktop"
+        "com.bitwig.BitwigStudio.desktop"
+        "com.github.flxzt.rnote.desktop"
+        "org.keepassxc.KeePassXC.desktop"
       ];
       "extensions/blur-my-shell/applications/opacity" = 235;
       # "extensions/blur-my-shell/applications/blur" = true;
@@ -90,5 +92,11 @@
 
   xdg.mimeApps = {
     enable = true;
+    /*
+      defaultApplications = [
+        { "application/json" = [ "org.gnome.TextEditor.desktop" ]; }
+        #{ ""}
+      ];
+    */
   };
 }

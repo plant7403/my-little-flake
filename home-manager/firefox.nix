@@ -9,6 +9,13 @@
 
   programs.librewolf = {
     enable = true;
+    settings = {
+      #"browser.tabs.tabMinWidth" = 5;
+    };
+    languagePacks = [
+      "es-ES"
+      "en-US"
+    ];
     profiles.default = {
       extensions = {
         force = true;

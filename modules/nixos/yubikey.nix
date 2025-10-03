@@ -24,23 +24,22 @@ in
       enable = true;
       enableSSHSupport = true;
     };
-    /*
-      security.pam.services = {
-        login.u2fAuth = true;
-        sudo.u2fAuth = true;
 
-        #login.yubicoAuth = true;
-        #sudo.yubicoAuth = true;
+    security.pam.services = {
+      login.u2fAuth = true;
+      sudo.u2fAuth = true;
+
+      #login.yubicoAuth = true;
+      #sudo.yubicoAuth = true;
+    };
+
+    security.pam.u2f = {
+      enable = true;
+      settings = {
+        cue = true;
       };
-    */
-    /*
-      security.pam.u2f = {
-         enable = true;
-         settings = {
-           cue = true;
-         };
-       };
-    */
+    };
+
     #security.pam.yubico = {
     #  enable = true;
     #  debug = true;
@@ -62,6 +61,7 @@ in
         RUN+="${pkgs.systemd}/bin/loginctl lock-sessions"
       '';
     */
+    #THIS !?
 
     programs.yubikey-touch-detector.enable = true;
     # security.pam.yubico.control = "required";
