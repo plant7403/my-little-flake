@@ -111,7 +111,27 @@ in
         git
         nano
         radicle-node
+        man-pages
+        man-pages-posix
+        cheat
+        cht-sh
+        navi
       ];
+
+      documentation.man = {
+        # In order to enable to mandoc man-db has to be disabled.
+        man-db.enable = false;
+        mandoc.enable = true;
+        generateCaches = true;
+      };
+
+      /*
+        environment.persistence."/persist".directories = [
+          "/var/cache/man"
+        ];
+      */
+      # probably not needed, the config has diffferent paths and the dir is empty
+
       programs.adb.enable = true;
       services.fwupd.enable = true;
 
@@ -125,28 +145,30 @@ in
       # Enable networking
       networking.networkmanager.enable = true;
       networking.firewall.enable = true;
+      #9.9.9.11
+      #149.112.112.11
 
       services.stubby = {
         enable = true;
         settings = pkgs.stubby.passthru.settingsExample // {
           upstream_recursive_servers = [
             {
-              address_data = "1.1.1.1";
-              tls_auth_name = "cloudflare-dns.com";
+              address_data = "9.9.9.11";
+              tls_auth_name = "tls://dns11.quad9.net";
               tls_pubkey_pinset = [
                 {
                   digest = "sha256";
-                  value = "SPfg6FluPIlUc6a5h313BDCxQYNGX+THTy7ig5X3+VA=";
+                  value = "i2kObfz0qIKCGNWt7MjBUeSrh0Dyjb0/zWINImZES+I=";
                 }
               ];
             }
             {
-              address_data = "1.0.0.1";
-              tls_auth_name = "cloudflare-dns.com";
+              address_data = "149.112.112.11";
+              tls_auth_name = "tls://dns11.quad9.net";
               tls_pubkey_pinset = [
                 {
                   digest = "sha256";
-                  value = "SPfg6FluPIlUc6a5h313BDCxQYNGX+THTy7ig5X3+VA=";
+                  value = "i2kObfz0qIKCGNWt7MjBUeSrh0Dyjb0/zWINImZES+I=";
                 }
               ];
             }

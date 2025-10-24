@@ -3,6 +3,7 @@
   pkgs,
   sops-nix,
   config,
+  systemConfig,
   ...
 }:
 {
@@ -17,21 +18,25 @@
     };
     #defaultSymlinkPath = "/run/user/1000/secrets";
     #defaultSecretsMountPoint = "/run/user/1000/secrets.d";
-    defaultSopsFile = ./secrets.yaml;
-    defaultSopsFormat = "yaml";
+    defaultSopsFile = ./secrets/stellar/secrets.yaml; # ${config.networking.hostname}
+    #defaultSopsFormat = "yaml";
     #age.keyFile = /home/egor/.config/sops/age/keys.txt;
   };
 
   home.packages = with pkgs; [
     sops
   ];
-  home.activation.setupEtc = config.lib.dag.entryAfter [ "writeBoundary" ] ''
-    /run/current-system/sw/bin/systemctl start --user sops-nix
-  '';
-  systemd.user.services.mbsync.Unit.After = [ "sops-nix.service" ];
 
-  sops.secrets."users/stellar/yubikey" = {
-    sopsFile = ./secrets.yaml;
-  }; # REMOVE
+  /*
+    home.activation.setupEtc = config.lib.dag.entryAfter [ "writeBoundary" ] ''
+      /run/current-system/sw/bin/systemctl start --user sops-nix
+    '';
+  */
+  # systemd.user.services.mbsync.Unit.After = [ "sops-nix.service" ];
+  /*
+    sops.secrets."users/stellar/yubikey" = {
+      sopsFile = ./secrets.yaml;
+    }; # REMOVE
+  */
 
 }

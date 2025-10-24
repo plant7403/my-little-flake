@@ -41,7 +41,7 @@
     autologin = false;
   };
   modules.ollama = {
-    enable = true;
+    enable = false;
   };
   #modules.kde.enable = true;
 
@@ -118,6 +118,8 @@
   environment.systemPackages = with pkgs; [
     xf86_input_wacom
     opentabletdriver
+    pinta
+    #easyeffects
   ];
   services.udev.packages = [
     pkgs.android-udev-rules

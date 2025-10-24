@@ -1,6 +1,10 @@
 { pkgs, inputs, ... }:
 {
-
+  /*
+    !!!
+    https://wiki.nixos.org/wiki/Cheatsheet
+    !!!
+  */
   stylix.targets.librewolf = {
     colorTheme.enable = true;
     firefoxGnomeTheme.enable = true;
@@ -31,7 +35,16 @@
       };
       search = {
         force = true;
+        default = "Startpage";
+        privateDefault = "Startpage";
+        order = [ "Startpage" ];
         engines = {
+          "Startpage" = {
+            urls = [ { template = "https://www.startpage.com/rvd/search?query={searchTerms}&language=auto"; } ];
+            icon = "https://www.startpage.com/sp/cdn/favicons/mobile/android-icon-192x192.png";
+            updateInterval = 24 * 60 * 60 * 1000; # every day
+            definedAliases = [ "@s" ];
+          };
           nix-packages = {
             name = "Nix Packages";
             urls = [
@@ -49,7 +62,6 @@
                 ];
               }
             ];
-
             icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
             definedAliases = [ "@np" ];
           };
@@ -70,21 +82,20 @@
             definedAliases = [ "@hm" ];
           };
 
+          nixpkgs = {
+            name = "nixpkgs";
+            urls = [
+              {
+                template = "https://github.com/NixOS/nixpkgs/issues?q=is%3Aissue%20state%3Aopen%20{searchTerms}";
+              }
+            ];
+            iconMapObj."16" = "https://github.com/favicon.ico";
+            definedAliases = [ "@ni" ];
+          };
+
           bing.metaData.hidden = true;
           google.metaData.alias = "@g";
-          startpage = {
-            name = "StartPage";
-            urls = [
-              { template = "https://www.startpage.com/sp/search?query={searchTerms}&cat=web&pl=opensearch"; }
-            ];
-            iconMapObj."16" = "https://startpage.com/sp/cdn/favicons/favicon-16x16-gradient.png";
-            definedAliases = [ "@sp" ];
-          };
-          # builtin engines only support specifying one additional alias
         };
-        default = "sp";
-        privateDefault = "sp";
-        order = [ "sp" ];
       };
       bookmarks = [
         {
@@ -112,146 +123,160 @@
               ];
               url = "https://search.nixos.org/";
             }
+            {
+              name = "cheatsheet";
+              tags = [
+                "search"
+                "nix"
+              ];
+              url = "https://wiki.nixos.org/wiki/Cheatsheet";
+            }
           ];
         }
       ];
 
     };
-    profiles.TEST = {
-      id = 1;
-      extensions = {
-        force = true;
-        packages =
-          with pkgs;
-          with inputs.firefox-addons.packages.${pkgs.system};
-          [
-            darkreader
-            ublock-origin
-            libredirect
-            keepassxc-browser
-          ];
-        settings = {
-          # Example with uBlock origin's extensionID
-          "uBlock0@raymondhill.net".settings = {
-            selectedFilterLists = [
-              "ublock-filters"
-              "ublock-badware"
-              "ublock-privacy"
-              "ublock-unbreak"
-              "ublock-quick-fixes"
-            ];
-          };
+    /*
+      profiles.TEST = {
+         id = 1;
+         extensions = {
+           force = true;
+           packages =
+             with pkgs;
+             with inputs.firefox-addons.packages.${pkgs.system};
+             [
+               darkreader
+               ublock-origin
+               libredirect
+               keepassxc-browser
+             ];
+           settings = {
+             # Example with uBlock origin's extensionID
+             "uBlock0@raymondhill.net".settings = {
+               selectedFilterLists = [
+                 "ublock-filters"
+                 "ublock-badware"
+                 "ublock-privacy"
+                 "ublock-unbreak"
+                 "ublock-quick-fixes"
+               ];
+             };
 
-          # Example with Stylus' UUID-form extensionID
-          "{7a7a4a92-a2a0-41d1-9fd7-1e92480d612d}".settings = {
-            dbInChromeStorage = true; # required for Stylus
-          };
-        };
+             # Example with Stylus' UUID-form extensionID
+             "{7a7a4a92-a2a0-41d1-9fd7-1e92480d612d}".settings = {
+               dbInChromeStorage = true; # required for Stylus
+             };
+           };
 
-      };
-      search = {
-        force = true;
-        engines = {
-          nix-packages = {
-            name = "Nix Packages";
-            urls = [
-              {
-                template = "https://search.nixos.org/packages";
-                params = [
-                  {
-                    name = "type";
-                    value = "packages";
-                  }
-                  {
-                    name = "query";
-                    value = "{searchTerms}";
-                  }
-                ];
-              }
-            ];
+         };
+         search = {
+           force = true;
+           engines = {
+             search = {
+               force = true;
+               default = "Startpage";
+               engines = {
+                 "Startpage" = {
+                   urls = [ { template = "https://www.startpage.com/rvd/search?query={searchTerms}&language=auto"; } ];
+                   iconUpdateURL = "https://www.startpage.com/sp/cdn/favicons/mobile/android-icon-192x192.png";
+                   updateInterval = 24 * 60 * 60 * 1000; # every day
+                   definedAliases = [ "@s" ];
+                 };
 
-            icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-            definedAliases = [ "@np" ];
-          };
+               };
+               nix-packages = {
+                 name = "Nix Packages";
+                 urls = [
+                   {
+                     template = "https://search.nixos.org/packages";
+                     params = [
+                       {
+                         name = "type";
+                         value = "packages";
+                       }
+                       {
+                         name = "query";
+                         value = "{searchTerms}";
+                       }
+                     ];
+                   }
+                 ];
 
-          nixos-wiki = {
-            name = "NixOS Wiki";
-            urls = [ { template = "https://wiki.nixos.org/w/index.php?search={searchTerms}"; } ];
-            iconMapObj."16" = "https://wiki.nixos.org/favicon.ico";
-            definedAliases = [ "@nw" ];
-          };
+                 icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+                 definedAliases = [ "@np" ];
+               };
 
-          home-manager = {
-            name = "Home-Manager";
-            urls = [
-              { template = "https://home-manager-options.extranix.com/?query={searchTerms}&release=master"; }
-            ];
-            iconMapObj."16" = "https://wiki.nixos.org/favicon.ico";
-            definedAliases = [ "@hm" ];
-          };
+               nixos-wiki = {
+                 name = "NixOS Wiki";
+                 urls = [ { template = "https://wiki.nixos.org/w/index.php?search={searchTerms}"; } ];
+                 iconMapObj."16" = "https://wiki.nixos.org/favicon.ico";
+                 definedAliases = [ "@nw" ];
+               };
 
-          bing.metaData.hidden = true;
-          google.metaData.alias = "@g";
-          startpage = {
-            name = "StartPage";
-            urls = [
-              { template = "https://www.startpage.com/sp/search?query={searchTerms}&cat=web&pl=opensearch"; }
-            ];
-            iconMapObj."16" = "https://startpage.com/sp/cdn/favicons/favicon-16x16-gradient.png";
-            definedAliases = [ "@sp" ];
-          };
-          # builtin engines only support specifying one additional alias
-        };
-        default = "startpage";
-        privateDefault = "startpage";
-        order = [ "startpage" ];
-      };
+               home-manager = {
+                 name = "Home-Manager";
+                 urls = [
+                   { template = "https://home-manager-options.extranix.com/?query={searchTerms}&release=master"; }
+                 ];
+                 iconMapObj."16" = "https://wiki.nixos.org/favicon.ico";
+                 definedAliases = [ "@hm" ];
+               };
+             };
 
-      bookmarks = {
-        force = true;
-        settings = [
-          {
-            name = "Nix sites";
-            #force = true;
-            toolbar = true;
-            bookmarks = [
-              {
-                name = "homepage";
-                url = "https://nixos.org/";
-              }
-              {
-                name = "wiki";
-                tags = [
-                  "wiki"
-                  "nix"
-                ];
-                url = "https://wiki.nixos.org/";
-              }
-              {
-                name = "search";
-                tags = [
-                  "search"
-                  "nix"
-                ];
-                url = "https://search.nixos.org/";
-              }
-            ];
-          }
-        ];
-      };
-      containers = {
-        dangerous = {
-          color = "red";
-          icon = "fruit";
-          id = 2;
-        };
-        shopping = {
-          color = "blue";
-          icon = "cart";
-          id = 1;
-        };
-      };
+             bing.metaData.hidden = true;
+             google.metaData.alias = "@g";
+           };
+           default = "Startpage";
+           privateDefault = "Startpage";
+           order = [ "Startpage" ];
+         };
 
-    };
+         bookmarks = {
+           force = true;
+           settings = [
+             {
+               name = "Nix sites";
+               #force = true;
+               toolbar = true;
+               bookmarks = [
+                 {
+                   name = "homepage";
+                   url = "https://nixos.org/";
+                 }
+                 {
+                   name = "wiki";
+                   tags = [
+                     "wiki"
+                     "nix"
+                   ];
+                   url = "https://wiki.nixos.org/";
+                 }
+                 {
+                   name = "search";
+                   tags = [
+                     "search"
+                     "nix"
+                   ];
+                   url = "https://search.nixos.org/";
+                 }
+               ];
+             }
+           ];
+         };
+         containers = {
+           dangerous = {
+             color = "red";
+             icon = "fruit";
+             id = 2;
+           };
+           shopping = {
+             color = "blue";
+             icon = "cart";
+             id = 1;
+           };
+         };
+
+       };
+    */
   };
 }

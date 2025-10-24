@@ -2,14 +2,12 @@
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 {
   pkgs,
-  config,
-  inputs,
-  sops-nix,
+  #outputs,
+  lib,
   outputs,
   ...
 }:
-let
-in
+
 {
   # You can import other home-manager modules here
   imports = [
@@ -28,7 +26,10 @@ in
     ./gpg.nix
     ./theme.nix
     ./extensions.nix
-  ]; # ++ (builtins.attrValues outputs.homeManagerModules);
+    #../modules/home-manager
+    outputs.homeManagerModules.syncthing
+  ];
+  # ++ (builtins.attrValues outputs.homeManagerModules);
 
   home = {
     username = "egor";
@@ -51,7 +52,7 @@ in
     filezilla
     #gimp-with-plugins
     inkscape
-    #jellyfin-media-player
+    #jellyfin-media-playerI
     krita
     libreoffice
 
@@ -63,6 +64,8 @@ in
     thunderbird
 
     transmission_4-gtk
+
+    easyeffects
 
     #mullvad-vpn
     #logseq
@@ -106,20 +109,51 @@ in
     ungoogled-chromium
     dbeaver-bin
     signal-desktop
+
+    sptlrx # add ff extention
   ];
 
   programs.home-manager.enable = true;
 
   programs.git = {
     enable = true;
-    userEmail = "me@egor.wtf";
+    userEmail = "me@o.o";
     userName = "me";
   };
   programs.gitui.enable = true;
-  #services.syncthing = {
-  #  enable = true;
-  #  tray.enable = true;
-  #};
+
+  programs.ssh.matchBlocks = {
+    "*" = {
+      forwardAgent = false;
+      addKeysToAgent = "no";
+      compression = true;
+      serverAliveInterval = 0;
+      serverAliveCountMax = 3;
+      hashKnownHosts = false;
+      userKnownHostsFile = "~/.ssh/known_hosts";
+      controlMaster = "no";
+      controlPath = "~/.ssh/master-%r@%n:%p";
+      controlPersist = "no";
+    };
+    foo = lib.hm.dag.entryBefore [ "github.com" ] {
+      PreferredAuthentications = "publickey";
+      IdentitiesOnly = "yes";
+      User = "git";
+      IdentityFile = "~/.ssh/git";
+    };
+    bar = lib.hm.dag.entryBefore [ "git.disroot.org" ] {
+      PreferredAuthentications = "publickey";
+      IdentitiesOnly = "yes";
+      User = "git";
+      IdentityFile = "~/.ssh/git-disroot";
+    };
+    /*
+        pizza = lib.hm.dag.entryBefore [ "github.com" ] {
+
+        };
+    */
+
+  };
 
   #home.sessionVariables = {
   #  MOZ_USE_XINPUT2 = "1";
@@ -131,12 +165,13 @@ in
       host = "stellar";
     };
   */
+  modules.syncthing.enable = true;
   #pam.yubico.authorizedYubiKeys
   #pam.yubico.authorizedYubiKeys.ids = [
   #  "19271673"
   #];
-  
-  systemd.user.startServices = "sd-switch";
+
+  #systemd.user.startServices = "sd-switch";
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "24.05";
 }

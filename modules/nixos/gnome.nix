@@ -55,6 +55,7 @@ in
       environment.systemPackages = with pkgs; [
         gnome-tweaks
         libsecret
+        xorg.xprop
       ];
       services.udev.packages = [
         pkgs.gnome-settings-daemon

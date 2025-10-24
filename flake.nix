@@ -12,6 +12,7 @@
     # Home manager
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
     stylix.url = "github:danth/stylix";
 
     firefox-addons = {
@@ -26,6 +27,8 @@
     nix-flatpak.url = "github:gmodena/nix-flatpak"; # unstable branch. Use github:gmodena/nix-flatpak/?ref=<tag> to pin releases.
     #flatpaks.url = "github:GermanBread/declarative-flatpak/stable";
 
+    nixos-facter-modules.url = "github:numtide/nixos-facter-modules";
+
     #conduit = {
     #  url = "gitlab:famedly/conduit";
     #  inputs.nixpkgs.follows = "nixpkgs";
@@ -37,7 +40,6 @@
 
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.2";
-
       # Optional but recommended to limit the size of your system closure.
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -107,24 +109,6 @@
        };
     */
   };
-  /*
-    , hardware
-       , lanzaboote
-       , disko
-       , nixos-mailserver
-       , musnix
-       , nix-flatpak
-       , stylix
-       , jovian
-       , firefox-addons
-     , #flatpaks,
-  */
-  /*
-    , vscode-server
-       , deploy-rs
-       , sops-nix
-  */
-
   outputs =
     {
       self,
@@ -136,26 +120,13 @@
       lanzaboote,
       jovian,
       stylix,
-      # plasma-manager,
-      #nix-vscode-extensions,
       nix4vscode,
       ...
     }@inputs:
     let
       inherit (self) outputs;
+      #inherit (nixpkgs) lib;
       # Supported systems for your flake packages, shell, etc.
-      system = builtins.currentSystem;
-      # Unmodified nixpkgs
-      # pkgs = import nixpkgs { inherit system; };
-      pkgs = import <nixpkgs> {
-        # inherit system;
-        config.allowUnfree = true;
-        system = "x86_64-linux"; # One of supported systems
-        overlays = [
-          nix4vscode.overlays.default
-        ];
-      };
-      # nixpkgs with deploy-rs overlay but force the nixpkgs package
       systems = [
         "x86_64-linux"
         "aarch64-linux"
@@ -163,11 +134,22 @@
       # This is a function that generates an attribute by calling a function you
       # pass to it, with each system as an argument
       forAllSystems = nixpkgs.lib.genAttrs systems;
+      #system = builtins.currentSystem;
+      # Unmodified nixpkgs
+      # pkgs = import nixpkgs { inherit system; };
+      pkgs = import <nixpkgs> {
+        config.allowUnfree = true;
+        system = "x86_64-linux"; # One of supported systems
+        overlays = [
+          nix4vscode.overlays.default
+        ];
+      };
+      # nixpkgs with deploy-rs overlay but force the nixpkgs package
 
       rootPath = ./.;
 
       deployPkgs = import nixpkgs {
-        inherit system;
+        inherit systems;
         overlays = [
           deploy-rs.overlay
           (_self: super: {
@@ -181,14 +163,13 @@
     in
     {
       # Your custom packages
-      # Acessible through 'nix build', 'nix shell', etc
-      #    packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
+      # Accessible through 'nix build', 'nix shell', etc
+      packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
       # Formatter for your nix files, available through 'nix fmt'
       # Other options beside 'alejandra' include 'nixpkgs-fmt'
-      formatter = forAllSystems (system: nixpkgs.${system}.nixfmt-rfc-style);
+      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt);
 
       # Your custom packages and modifications, exported as overlays
-
       overlays = import ./overlays {
         inherit inputs;
       };
@@ -356,6 +337,7 @@
             disko.nixosModules.disko
             stylix.nixosModules.stylix
             home-manager.nixosModules.home-manager
+            outputs.homeManagerModules
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
@@ -450,6 +432,29 @@
             sops-nix.nixosModules.sops
           ];
         };
+        hole = nixpkgs.lib.nixosSystem {
+          system = "aarch64-linux";
+          specialArgs = { inherit inputs outputs; };
+          modules = with self.nixosModules; [
+            ./hosts/hole/configuration.nix
+            #sops-nix.nixosModules.sops
+            nixos-facter-modules.nixosModules.facter
+            { config.facter.reportPath = ./hosts/hole/facter.json; }
+            disko.nixosModules.disko
+            /*
+              home-manager.nixosModules.home-manager
+              {
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+                home-manager.users.egor = import ./home-manager/saturn.nix;
+                home-manager.extraSpecialArgs = { inherit inputs; };
+                home-manager.backupFileExtension = "backup";
+                # Optionally, use home-manager.extraSpecialArgs to pass
+                # arguments to home.nix
+              }
+            */
+          ];
+        };
       };
       deploy.nodes = {
         immortal = {
@@ -539,6 +544,22 @@
             "3370"
           ];
           hostname = "100.64.0.7";
+          fastConnection = true;
+          profiles = {
+            system = {
+              sshUser = "root";
+              path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.stellar;
+              user = "root";
+              remoteBuild = true;
+            };
+          };
+        };
+        hole = {
+          sshOpts = [
+            "-p"
+            "3370"
+          ];
+          hostname = "192.168.0.123";
           fastConnection = true;
           profiles = {
             system = {

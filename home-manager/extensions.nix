@@ -1,25 +1,35 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   home.packages = with pkgs; [
     gnomeExtensions.user-themes
     gnomeExtensions.tray-icons-reloaded
     gnomeExtensions.vitals
     gnomeExtensions.grand-theft-focus
-    gnomeExtensions.bing-wallpaper-changer
-    #gnomeExtensions.tiling-assistant
+
     gnomeExtensions.blur-my-shell
-    gnomeExtensions.random-wallpaper
+
     gnomeExtensions.appindicator
     gnomeExtensions.caffeine
-    #gnomeExtensions.tailscale-qs
-    gnomeExtensions.tailscale-status
+    gnomeExtensions.tailscale-qs
+    #gnomeExtensions.tailscale-status
     gnomeExtensions.gsconnect
-    gnomeExtensions.syncthing-indicator
-    gnomeExtensions.syncthing-toggle
-    gnomeExtensions.tiling-shell
+    #gnomeExtensions.syncthing-indicator
+    #gnomeExtensions.syncthing-toggle
 
     #gnomeExtensions.syncthing-indicator
-    trayscale
+
+    gnomeExtensions.clipqr
+    gnomeExtensions.ddterm
+
+    gnomeExtensions.duckduckbang
+    gnomeExtensions.folder-search-provider
+    gnomeExtensions.todo-list
+
+    gnomeExtensions.paperwm
+    gnomeExtensions.dash-to-dock
+    gnomeExtensions.focus-follows-workspace
+    gnomeExtensions.switcher
+    #trayscale
     light
     emote
     gnome-tweaks
@@ -27,6 +37,9 @@
   ### SHORTCUTS
   dconf.settings = {
     # ...
+    "org/gnome/mutter" = {
+      "edge-tiling" = true;
+    };
     "org/gnome/shell" = {
       disable-user-extensions = false;
 
@@ -40,12 +53,19 @@
         "grand-theft-focus@zalckos.github.com"
         "screenshot-window-sizer@gnome-shell-extensions.gcampax.github.com"
         "status-icons@gnome-shell-extensions.gcampax.github.com"
-        "system-monitor@gnome-shell-extensions.gcampax.github.com"
+        #"system-monitor@gnome-shell-extensions.gcampax.github.com"
         "tailscale@joaophi.github.com"
         "trayIconsReloaded@selfmade.pl"
         "gsconnect@andyholmes.github.io"
         "Vitals@CoreCoding.com"
-        #"simple-tiling"
+
+        "gsconnect@andyholmes.github.io"
+        "clipqr@drien.com"
+        "ddterm@amezin.github.com"
+        "duckduckbang@merijn"
+        "folder-search-provider@sitnik.ru"
+        "todoit@wassimbj.github.io"
+        "paperwm@paperwm.github.com"
       ];
 
       favorite-apps = [
@@ -75,6 +95,10 @@
         "/org/gnome/desktop/input-sources/sources" = [('xkb', 'us'), ('xkb', 'ru'), ('xkb', 'es')];
         "/org/gnome/desktop/input-sources/xkb-options" = ['terminate:ctrl_alt_bksp', 'lv3:ralt_switch', 'grp:alt_shift_toggle'];
       */
+      "extensions/com/github/amezin/ddterm/panel-icon-type" = "none";
+
+      "extensions/duckduckbang/search-engine" = 7;
+
     };
     /*
       "org/gnome/desktop/interface" = {
@@ -86,17 +110,37 @@
        };
     */
   };
-  xdg.autostart.entries = [
-    "${pkgs.element-desktop}/share/applications/element-desktop.desktop"
-  ];
+
+  /*
+    xdg.configFile."gtk-3.0/bookmarks".force = true;
+    xdg.configFile."gtk-3.0/bookmarks".text = ''
+      file:///home/egor/Documentos Documents
+      ...
+    '';
+  */
+  gtk.gtk3 = {
+    bookmarks = [
+      "file://${config.xdg.userDirs.documents}"
+      "file://${config.xdg.userDirs.download}"
+      #"file://${config.services.syncthing.settings.folders."sync".path}"
+      #"file://${self}"
+    ];
+  };
+
+  xdg.autostart = {
+    entries = [
+      "element-desktop.desktop" # ${pkgs.element-desktop}/share/applications/
+    ];
+  };
 
   xdg.mimeApps = {
     enable = true;
-    /*
-      defaultApplications = [
-        { "application/json" = [ "org.gnome.TextEditor.desktop" ]; }
-        #{ ""}
-      ];
-    */
+    defaultApplications = {
+      "text/html" = "librewolf.desktop";
+      "x-scheme-handler/http" = "librewolf.desktop";
+      "x-scheme-handler/https" = "librewolf.desktop";
+      "x-scheme-handler/about" = "librewolf.desktop";
+      "x-scheme-handler/unknown" = "librewolf.desktop";
+    };
   };
 }
