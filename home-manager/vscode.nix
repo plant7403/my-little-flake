@@ -63,6 +63,7 @@ let
     "tonybaloney.vscode-pets"
     "codeandstuff.vscode-navigate-edit-history"
     "pnw-techpros.code-casefile"
+    "paragdiwan.gitpatch"
   ];
   baseExtensionsVS = [
 

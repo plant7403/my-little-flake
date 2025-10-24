@@ -1,7 +1,6 @@
 {
   stdenv,
   lib,
-  fetchzip,
   libfprint-tod,
   pkg-config,
   meson,
@@ -21,6 +20,10 @@
   innoextract,
   wget,
   fetchurl,
+  systemd,
+  libgudev,
+  fprintd-tod,
+  fprintd,
 
 }:
 let
@@ -43,6 +46,11 @@ stdenv.mkDerivation {
     hash = "sha256-CfBurJRksBhsGxyN7Xlppik3Lh14nPxsi9d3xydbaY8=";
   };
 
+  patches = [
+    # TODO remove once https://gitlab.freedesktop.org/3v1n0/libfprint-tod-vfs0090/-/merge_requests/1 is merged
+    ./mypatch.patch
+  ];
+
   nativeBuildInputs = [
     pkg-config
     meson
@@ -53,9 +61,12 @@ stdenv.mkDerivation {
     openssl
   ];
   buildInputs = [
+    #libfprint
+    fprintd
+    fprintd-tod
     libfprint
     libfprint-tod
-    glib
+    glib.dev
     gusb
     udev
     nss
@@ -65,6 +76,9 @@ stdenv.mkDerivation {
     libcap
     libseccomp
     dbus
+
+    systemd
+    libgudev
   ];
   /*
     unpackPhase = ''
@@ -81,8 +95,8 @@ stdenv.mkDerivation {
 
   buildPhase = ''
     cd ./build
-    ninja
-  '';
+    ninja -d explain
+  ''; # gio_dep = dependency('gio-unix-2.0')
 
   installPhase = ''
     mkdir -p "$out/lib/libfprint-2/tod-1/"
