@@ -24,14 +24,18 @@
   libgudev,
   fprintd-tod,
   fprintd,
+  libusb1,
+  gccForLibs,
 
 }:
 let
   pname = "synaTudor";
   rev = "0.1";
+
+  the-file = ./meson.build;
 in
 stdenv.mkDerivation {
-  pname = "libfprint-2-tudor";
+  pname = "synaTudor";
   version = "0.0.9";
 
   src = fetchFromGitHub {
@@ -47,38 +51,26 @@ stdenv.mkDerivation {
   };
 
   patches = [
-    # TODO remove once https://gitlab.freedesktop.org/3v1n0/libfprint-tod-vfs0090/-/merge_requests/1 is merged
     ./mypatch.patch
+    #./add-gio.patch
   ];
 
   nativeBuildInputs = [
     pkg-config
     meson
     ninja
-    cmake
-    wget
     innoextract
-    openssl
   ];
   buildInputs = [
-    #libfprint
-    fprintd
-    fprintd-tod
-    libfprint
-    libfprint-tod
-    glib.dev
-    gusb
-    udev
-    nss
     openssl
-    pixman
-    stdenv
+    libusb1
     libcap
     libseccomp
+    glib
     dbus
-
-    systemd
-    libgudev
+    libfprint-tod
+    gusb
+    gccForLibs.libgcc
   ];
   /*
     unpackPhase = ''
@@ -90,13 +82,14 @@ stdenv.mkDerivation {
   */
 
   configurePhase = ''
+    cp ${the-file} libfprint-tod/
     meson setup build
   '';
 
   buildPhase = ''
     cd ./build
     ninja -d explain
-  ''; # gio_dep = dependency('gio-unix-2.0')
+  '';
 
   installPhase = ''
     mkdir -p "$out/lib/libfprint-2/tod-1/"
@@ -106,7 +99,7 @@ stdenv.mkDerivation {
     cp lib/udev/rules.d/60-libfprint-2-tod1-tudor.rules "$out/lib/udev/rules.d/"
   '';
 
-  passthru.driverPath = "/lib/libfprint-2/tod-1";
+  #passthru.driverPath = "/lib/libfprint-2/tod-1";
 
   meta = with lib; {
     description = "tudor driver module for libfprint-2-tod Touch OEM Driver (from Lenovo)";
