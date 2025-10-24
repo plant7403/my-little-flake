@@ -114,7 +114,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   services.logrotate.checkConfig = false; # TODO check logrotate
-  service.
+  
   home-manager.sharedModules = [
     inputs.sops-nix.homeManagerModules.sops
     inputs.plasma-manager.homeModules.plasma-manager
