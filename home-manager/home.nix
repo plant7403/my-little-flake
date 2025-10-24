@@ -114,9 +114,17 @@
     signal-desktop
 
     sptlrx # add ff extention
+    bustle
+    sushi
   ];
 
   programs.home-manager.enable = true;
+
+  programs.browserpass = {
+    enable = true;
+  };
+
+  services.
 
   programs.git = {
     enable = true;

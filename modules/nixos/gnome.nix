@@ -57,10 +57,15 @@ in
         gnome-tweaks
         libsecret
         xorg.xprop
+        gdm-settings
+        snoop
+
       ];
       services.udev.packages = [
         pkgs.gnome-settings-daemon
       ];
+      services.sysprof.enable = true;
+      hardware.sensor.iio.enable = true;
       # Configure keymap in X11
       services.xserver = {
         xkb.layout = "us";

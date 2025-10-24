@@ -119,12 +119,21 @@ in
 
           "nix.serverSettings" = {
             "nil" = {
-              # "diagnostics" = {
-              #  "ignored" = ["unused_binding", "unused_with"],
-              # },
-              "formatting" = {
-                "command" = [ "nixfmt" ];
+              "diagnostics" = {
+                "ignored" = [
+                  "unused_binding"
+                  "unused_with"
+                ];
               };
+              /*
+                "formatting" = {
+                             "command" = [
+                               "treefmt"
+                               "--stdin"
+                               "{file}"
+                             ];
+                           };
+              */
             };
             # check https://github.com/nix-community/nixd/blob/main/nixd/docs/configuration.md for all nixd config
             /*

@@ -26,13 +26,13 @@
   fprintd,
   libusb1,
   gccForLibs,
+  gccgo15,
 
 }:
 let
   pname = "synaTudor";
   rev = "0.1";
 
-  the-file = ./meson.build;
 in
 stdenv.mkDerivation {
   pname = "synaTudor";
@@ -52,7 +52,7 @@ stdenv.mkDerivation {
 
   patches = [
     ./mypatch.patch
-    #./add-gio.patch
+    ./meson-build.patch
   ];
 
   nativeBuildInputs = [
@@ -60,6 +60,8 @@ stdenv.mkDerivation {
     meson
     ninja
     innoextract
+    #libfprint-tod
+    gccgo15
   ];
   buildInputs = [
     openssl
@@ -71,6 +73,7 @@ stdenv.mkDerivation {
     libfprint-tod
     gusb
     gccForLibs.libgcc
+    gccgo15
   ];
   /*
     unpackPhase = ''
@@ -82,7 +85,6 @@ stdenv.mkDerivation {
   */
 
   configurePhase = ''
-    cp ${the-file} libfprint-tod/
     meson setup build
   '';
 

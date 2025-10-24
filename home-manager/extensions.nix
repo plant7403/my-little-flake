@@ -31,13 +31,19 @@
     gnomeExtensions.todo-list
 
     gnomeExtensions.paperwm
-    gnomeExtensions.dash-to-dock
+    #gnomeExtensions.dash-to-dock
     gnomeExtensions.focus-follows-workspace
     gnomeExtensions.switcher
     #trayscale
     light
     emote
     gnome-tweaks
+    gnomeExtensions.quick-settings-tweaker
+    gnomeExtensions.translate-indicator
+    gnomeExtensions.clipboard-indicator
+    gnomeExtensions.firefox-profiles
+
+    dconf2nix
   ];
   ### SHORTCUTS
   dconf.settings = {
@@ -88,7 +94,7 @@
         "folder-search-provider@sitnik.ru"
         "todoit@wassimbj.github.io"
         "paperwm@paperwm.github.com"
-        "dash-to-dock@micxgx.gmail.com"
+        #"dash-to-dock@micxgx.gmail.com"
       ];
 
       favorite-apps = [
@@ -104,21 +110,25 @@
         "com.github.flxzt.rnote.desktop"
         "org.keepassxc.KeePassXC.desktop"
       ];
-      "extensions/blur-my-shell/applications/opacity" = 235;
+      "extensions/blur-my-shell/applications/opacity" = 180;
       # "extensions/blur-my-shell/applications/blur" = true;
-      "extensions/blur-my-shell/applications/sigma" = 30;
+      "extensions/blur-my-shell/applications/sigma" = 15;
       "extensions/blur-my-shell/applications/enable-all" = true;
-      "extensions/blur-my-shell/applications/dynamic-opacity" = false;
+      "extensions/blur-my-shell/applications/dynamic-opacity" = true;
       "extensions/blur-my-shell/applications/brightness" = 1.0;
-
+      "extensions/blur-my-shell/appfolder/style-dialogs" = 2;
       "extensions/blur-my-shell/panel/static-blur" = false;
       "extensions/blur-my-shell/panel/sigma" = 1;
       "extensions/blur-my-shell/panel/brightness" = 1.0;
-      /*
-        "/org/gnome/desktop/input-sources/sources" = [('xkb', 'us'), ('xkb', 'ru'), ('xkb', 'es')];
-        "/org/gnome/desktop/input-sources/xkb-options" = ['terminate:ctrl_alt_bksp', 'lv3:ralt_switch', 'grp:alt_shift_toggle'];
-      */
-      "extensions/com/github/amezin/ddterm/panel-icon-type" = "none";
+      "extensions/blur-my-shell/overview/style-components" = 3;
+
+      "com/github/amezin/ddterm/panel-icon-type" = "none";
+      "com/github/amezin/ddterm/background-opacity" = 0.5;
+      "com/github/amezin/ddterm/hide-when-focus-lost" = true;
+
+      "com/github/amezin/ddterm/hide-window-on-esc" = true;
+
+      "com/github/amezin/ddterm/tab-label-ellipsize-mode" = "start";
 
       "extensions/duckduckbang/search-engine" = 7;
       "extensions/paperwm/show-workspace-indicator" = false;

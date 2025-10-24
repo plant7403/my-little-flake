@@ -114,7 +114,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   services.logrotate.checkConfig = false; # TODO check logrotate
-
+  service.
   home-manager.sharedModules = [
     inputs.sops-nix.homeManagerModules.sops
     inputs.plasma-manager.homeModules.plasma-manager
@@ -124,13 +124,15 @@
     opentabletdriver
     pinta
     #easyeffects
-    fprintd-tod
-    fprintd
-    open-fprintd
-    libfprint-tod
-    libfprint
-    libfprint-2-tod1-goodix-550a
-    libfprint-2-tod1-goodix
+    /*
+      fprintd-tod
+       fprintd
+       open-fprintd
+       libfprint-tod
+       libfprint
+       libfprint-2-tod1-goodix-550a
+       libfprint-2-tod1-goodix
+    */
 
   ];
   services.udev.packages = [
@@ -142,50 +144,54 @@
     "podman"
   ];
 
-  # Start the driver at boot
-  systemd.services.fprintd = {
-    wantedBy = [ "multi-user.target" ];
-    serviceConfig.Type = "simple";
-  };
+  /*
+    # Start the driver at boot
+    systemd.services.fprintd = {
+      wantedBy = [ "multi-user.target" ];
+      serviceConfig.Type = "simple";
+    };
+  */
 
-  # Install the driver
-  services.fprintd.enable = true;
-  # If simply enabling fprintd is not enough, try enabling fprintd.tod...
-  services.fprintd.tod.enable = true;
-  # ...and use one of the next four drivers
-  services.fprintd.tod.driver = pkgs.libfprint-2-tod1-goodix; # Goodix driver module
-  #services.fprintd.tod.driver = pkgs.libfprint-2-tod1-elan; # Elan(04f3:0c4b) driver
-  #services.fprintd.tod.driver = pkgs.libfprint-2-tod1-vfs0090; # driver for 2016 ThinkPads
-  #services.fprintd.tod.driver = pkgs.libfprint-2-tod1-goodix-550a; # Goodix 550a driver (from Lenovo)
-  security.pam.services.login.fprintAuth = false;
-  security.pam.services.gdm-fingerprint = lib.mkIf (config.services.fprintd.enable) {
-    text = ''
-      auth       required                    pam_shells.so
-      auth       requisite                   pam_nologin.so
-      auth       requisite                   pam_faillock.so      preauth
-      auth       required                    ${pkgs.fprintd}/lib/security/pam_fprintd.so
-      auth       optional                    pam_permit.so
-      auth       required                    pam_env.so
-      auth       [success=ok default=1]      ${pkgs.gdm}/lib/security/pam_gdm.so
-      auth       optional                    ${pkgs.gnome-keyring}/lib/security/pam_gnome_keyring.so
+  /*
+    # Install the driver
+    services.fprintd.enable = true;
+    # If simply enabling fprintd is not enough, try enabling fprintd.tod...
+    services.fprintd.tod.enable = true;
+    # ...and use one of the next four drivers
+    services.fprintd.tod.driver = pkgs.libfprint-2-tod1-goodix; # Goodix driver module
+    #services.fprintd.tod.driver = pkgs.libfprint-2-tod1-elan; # Elan(04f3:0c4b) driver
+    #services.fprintd.tod.driver = pkgs.libfprint-2-tod1-vfs0090; # driver for 2016 ThinkPads
+    #services.fprintd.tod.driver = pkgs.libfprint-2-tod1-goodix-550a; # Goodix 550a driver (from Lenovo)
+    security.pam.services.login.fprintAuth = false;
+    security.pam.services.gdm-fingerprint = lib.mkIf (config.services.fprintd.enable) {
+      text = ''
+        auth       required                    pam_shells.so
+        auth       requisite                   pam_nologin.so
+        auth       requisite                   pam_faillock.so      preauth
+        auth       required                    ${pkgs.fprintd}/lib/security/pam_fprintd.so
+        auth       optional                    pam_permit.so
+        auth       required                    pam_env.so
+        auth       [success=ok default=1]      ${pkgs.gdm}/lib/security/pam_gdm.so
+        auth       optional                    ${pkgs.gnome-keyring}/lib/security/pam_gnome_keyring.so
 
-      account    include                     login
+        account    include                     login
 
-      password   required                    pam_deny.so
+        password   required                    pam_deny.so
 
-      session    include                     login
-      session    optional                    ${pkgs.gnome-keyring}/lib/security/pam_gnome_keyring.so auto_start
-    '';
-  };
+        session    include                     login
+        session    optional                    ${pkgs.gnome-keyring}/lib/security/pam_gnome_keyring.so auto_start
+      '';
+    };
 
-  nixpkgs.config.allowUnfreePredicate =
-    pkg:
-    builtins.elem (lib.getName pkg) [
-      "libfprint-2-tod1-goodix"
-      "libfprint-2-tod1-elan"
-      "libfprint-2-tod1-vfs0090"
-      "libfprint-2-tod1-goodix-550a"
-    ];
+    nixpkgs.config.allowUnfreePredicate =
+      pkg:
+      builtins.elem (lib.getName pkg) [
+        "libfprint-2-tod1-goodix"
+        "libfprint-2-tod1-elan"
+        "libfprint-2-tod1-vfs0090"
+        "libfprint-2-tod1-goodix-550a"
+      ];
+  */
   boot.extraModulePackages = with config.boot.kernelPackages; [
     rtl88xxau-aircrack
   ];

@@ -1,0 +1,30 @@
+diff --git a/libfprint-tod/meson.build b/libfprint-tod/meson.build
+index 2ed0abd..5a916df 100644
+--- a/libfprint-tod/meson.build
++++ b/libfprint-tod/meson.build
+@@ -1,3 +1,4 @@
++
+ tudor_tod_src = [
+     'src/device.c',
+     'src/data.c',
+@@ -9,16 +10,18 @@ tudor_tod_src = [
+     'src/identify.c'
+ ]
+ 
+-libfprint_tod_dep = dependency('libfprint-2-tod-1')
++
++libfprint_tod_dep = dependency('libfprint-2-tod-1')
+ udev_dep = dependency('udev')
+ libusb_dep = dependency('libusb-1.0')
+ gusb_dep = dependency('gusb')
+ json_glib_dep = dependency('json-glib-1.0')
++gio_dep = dependency('gio-unix-2.0')
+ 
+ tudor_tod = shared_module('tudor_tod',
+     sources: tudor_tod_src,
+     c_args: ['-D_GNU_SOURCE', '-Wno-missing-braces'],
+-    dependencies: [libfprint_tod_dep, libusb_dep, gusb_dep, json_glib_dep],
++    dependencies: [libfprint_tod_dep, libusb_dep, gusb_dep, json_glib_dep, gio_dep],
+     include_directories: [libtudor_inc, tudor_host_inc, tudor_host_launcher_inc],
+     install: true,
+     install_dir: libfprint_tod_dep.get_variable(pkgconfig: 'tod_driversdir')

@@ -121,15 +121,27 @@ in
         cht-sh
         navi
         openssl
+        nixd
+
       ];
+      programs.command-not-found.enable = false;
+      # for home-manager, use programs.bash.initExtra instead
+      programs.zsh.interactiveShellInit = ''
+        source ${pkgs.nix-index}/etc/profile.d/command-not-found.sh
+      '';
+      documentation = {
+        nixos.enable = true;
+        man = {
+          # In order to enable to mandoc man-db has to be disabled.
+          enable = true;
+          man-db.enable = false;
+          mandoc.enable = true;
+          generateCaches = true;
 
-      documentation.man = {
-        # In order to enable to mandoc man-db has to be disabled.
-        man-db.enable = false;
-        mandoc.enable = true;
-        generateCaches = true;
+        };
       };
-
+      users.defaultUserShell = pkgs.zsh;
+      environment.shells = with pkgs; [ zsh ];
       /*
         environment.persistence."/persist".directories = [
           "/var/cache/man"
@@ -202,7 +214,7 @@ in
 
       ];
 
-      systemd.enableEmergencyMode = true;
+      systemd.enableEmergencyMode = true; # !!! TODO !!! TO REMOVE !!!
     }
     (mkIf cfg.printing {
       # Enable CUPS to print documents.

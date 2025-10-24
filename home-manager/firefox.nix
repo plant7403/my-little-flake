@@ -1,4 +1,9 @@
-{ pkgs, inputs, ... }:
+{
+  pkgs,
+  inputs,
+  lib,
+  ...
+}:
 {
   /*
     !!!
@@ -23,7 +28,7 @@
       "es-ES"
       "en-US"
     ];
-    profiles.default = {
+    profiles.default = lib.mkForce {
       containersForce = true;
       extensions = {
         force = true;
