@@ -1,0 +1,33 @@
+https://gist.github.com/sergeyklay/f401dbc8286f732783e05072f03ecb61
+
+
+
+
+
+  programs.fuse.userAllowOther = true;
+
+  system.activationScripts.persistent-dirs.text =
+    let
+      mkHomePersist = user: lib.optionalString user.createHome ''
+        mkdir -p /persist/${user.home}
+        chown ${user.name}:${user.group} /persist/${user.home}
+        chmod ${user.homeMode} /persist/${user.home}
+      '';
+      users = lib.attrValues config.users.users;
+    in
+    lib.concatLines (map mkHomePersist users);
+
+
+
+https://saylesss88.github.io/installation/enc/encrypted_impermanence.html
+
+
+https://git.ophanim.de/derped/nixos
+
+
+https://gitlab.com/maximilian_dietrich/nixos/-/tree/restructure-add-workstation/modules/graphical/apps/browser
+
+
+https://github.com/Popax21/synaTudor
+
+https://github.com/zsh-users/zsh-history-substring-search

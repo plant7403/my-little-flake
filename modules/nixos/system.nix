@@ -47,6 +47,10 @@ in
       type = types.bool;
       default = false;
     };
+    btrfs = mkOption {
+      type = types.bool;
+      default = false;
+    };
   };
 
   config = mkMerge [
@@ -116,6 +120,7 @@ in
         cheat
         cht-sh
         navi
+        openssl
       ];
 
       documentation.man = {
@@ -175,6 +180,29 @@ in
           ];
         };
       };
+      # services.fstrim.interval
+      services.fstrim.enable = true;
+
+      users.users.nixosvmtest.isSystemUser = true;
+      users.users.nixosvmtest.initialPassword = "test";
+
+      users.groups.nixosvmtest = { };
+      users.users.nixosvmtest.group = "nixosvmtest";
+
+      virtualisation.vmVariant = {
+        # the following configuration is added only when building VM with `build-vm`
+        virtualisation = {
+          memorySize = 2048; # use 2048MiB memory
+          cores = 3; # use 3 cpu cores
+        };
+      };
+      boot.initrd.systemd.emergencyAccess = "$y$j9T$LSLJIAlFbp6k3cetejjE60$vcn.wkp7k/hmYG525hhkID5qCM8DXBQWsoqky.2kQ.4";
+
+      boot.initrd.systemd.initrdBin = [
+
+      ];
+
+      systemd.enableEmergencyMode = true;
     }
     (mkIf cfg.printing {
       # Enable CUPS to print documents.
@@ -322,6 +350,56 @@ in
         users.users.egor.extraGroups = [ "tss" ]; # tss group has access to TPM devices
       })
     ]))
+    (mkIf cfg.btrfs {
+      services.btrfs.autoScrub = {
+        enable = true;
+        interval = "weekly";
+        fileSystems = [ "/" ];
+      };
+      services.beesd.filesystems = {
+        root = {
+          spec = "/";
+          hashTableSizeMB = 2048;
+          verbosity = "info"; # crit
+          extraOptions = [
+            "--loadavg-target"
+            "5.0"
+          ];
+        };
+        /*
+          home = {
+            spec = "LABEL=@HOME";
+            hashTableSizeMB = 2048;
+            verbosity = "crit";
+            extraOptions = [
+              "--loadavg-target"
+              "5.0"
+            ];
+          };
+        */
+      };
+      services.btrbk = {
+        instances."home" = {
+          onCalendar = "hourly";
+          settings = {
+            stream_compress = "lz4";
+            snapshot_preserve_min = "1w";
+            snapshot_preserve = "2w";
+            volume = {
+              "/" = {
+                snapshot_dir = "/.snapshots";
+                subvolume = "home";
+              };
+            };
+          };
+        };
+      };
+      # Btrbk does not create snapshot directories automatically, so create one here.
+      systemd.tmpfiles.rules = [
+        "d /snapshots 0755 root root"
+      ];
+    })
+
   ];
   #path = config.sops.secrets."system/hostkeys/luna/ed25519".path;
   #sops.secrets."system/hostkeys/luna/rsa" = {};

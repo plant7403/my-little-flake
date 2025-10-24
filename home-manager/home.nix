@@ -5,6 +5,8 @@
   #outputs,
   lib,
   outputs,
+  inputs,
+  config,
   ...
 }:
 
@@ -27,9 +29,10 @@
     ./theme.nix
     ./extensions.nix
     #../modules/home-manager
-    outputs.homeManagerModules.syncthing
-  ];
-  # ++ (builtins.attrValues outputs.homeManagerModules);
+    #outputs.homeManagerModules.syncthing
+    inputs.impermanence.homeManagerModules.impermanence
+  ]
+  ++ (builtins.attrValues outputs.homeManagerModules);
 
   home = {
     username = "egor";
@@ -160,16 +163,70 @@
   #};
 
   /*
-      modules.yubikey-unlock = {
+    modules.yubikey-unlock = {
       enable = true;
-      host = "stellar";
+      #host = "stellar";
     };
   */
-  modules.syncthing.enable = true;
+  # modules.syncthing.enable = true;
   #pam.yubico.authorizedYubiKeys
   #pam.yubico.authorizedYubiKeys.ids = [
   #  "19271673"
   #];
+
+  # pam.yubico.authorizedYubiKeys.ids = [ "19271673" ];
+  /*
+    pam.yubico.authorizedYubiKeys.path
+    services.yubikey-agent.enable
+    services.yubikey-agent.package
+  */
+
+  home.persistence."/persist/home/egor" = {
+
+    directories = [
+      /*
+        "${config.xdg.userDirs.download}"
+        "${config.xdg.userDirs.music}"
+        "${config.xdg.userDirs.pictures}"
+        "${config.xdg.userDirs.documents}"
+      */
+      "Sync"
+      ".Secret"
+      ".DecSync"
+      "DCIM"
+
+      ".gnupg"
+      ".ssh"
+      ".local/share/keyrings"
+      ".local/share/direnv"
+      ".config/Element"
+      ".config/.mozilla/thunderbird"
+
+      "my-little-flake"
+      "Pak-Unity"
+      "Projects"
+
+      "VirtualBox VMs"
+      /*
+        {
+          directory = ".local/share/Steam";
+          method = "symlink";
+        }
+      */
+    ];
+    /*
+      files = [
+        ".screenrc"
+      ];
+    */
+    allowOther = true;
+  };
+
+  xdg.userDirs.createDirectories = true;
+  xdg.userDirs.enable = true;
+  xdg.userDirs.extraConfig = {
+    LC_ALL = "es_ES.UTF-8";
+  };
 
   #systemd.user.startServices = "sd-switch";
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion

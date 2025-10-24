@@ -459,6 +459,26 @@
         "type": "github"
       }
     },
+    "nix-ld": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1760948931,
+        "narHash": "sha256-guAocn26kDPdkl6tPXJt5pPaIIsrGI4taw+1U3+FM7E=",
+        "owner": "Mic92",
+        "repo": "nix-ld",
+        "rev": "a48b2dc9a256bcef9182f0f92c481de975302b1e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Mic92",
+        "repo": "nix-ld",
+        "type": "github"
+      }
+    },
     "nix4vscode": {
       "inputs": {
         "nixpkgs": [
@@ -693,6 +713,7 @@
         "musnix": "musnix",
         "nix-colors": "nix-colors",
         "nix-flatpak": "nix-flatpak",
+        "nix-ld": "nix-ld",
         "nix4vscode": "nix4vscode",
         "nixos-facter-modules": "nixos-facter-modules",
         "nixpkgs": "nixpkgs_4",

@@ -13,6 +13,10 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    nix-ld.url = "github:Mic92/nix-ld";
+    # this line assume that you also have nixpkgs as an input
+    nix-ld.inputs.nixpkgs.follows = "nixpkgs";
+
     stylix.url = "github:danth/stylix";
 
     firefox-addons = {
@@ -121,6 +125,7 @@
       jovian,
       stylix,
       nix4vscode,
+      nix-ld,
       ...
     }@inputs:
     let
@@ -167,7 +172,7 @@
       packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
       # Formatter for your nix files, available through 'nix fmt'
       # Other options beside 'alejandra' include 'nixpkgs-fmt'
-      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt);
+      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-rfc-style);
 
       # Your custom packages and modifications, exported as overlays
       overlays = import ./overlays {
@@ -333,16 +338,21 @@
           specialArgs = { inherit inputs outputs; };
           modules = [
             ./hosts/stellar/configuration.nix
+            # ... add this line to the rest of your configuration modules
+            nix-ld.nixosModules.nix-ld
+
+            # The module in this repository defines a new module under (programs.nix-ld.dev) instead of (programs.nix-ld)
+            # to not collide with the nixpkgs version.
+            { programs.nix-ld.dev.enable = true; }
             sops-nix.nixosModules.sops
             disko.nixosModules.disko
             stylix.nixosModules.stylix
             home-manager.nixosModules.home-manager
-            outputs.homeManagerModules
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.egor = import ./home-manager/saturn.nix;
-              home-manager.extraSpecialArgs = { inherit inputs; };
+              home-manager.extraSpecialArgs = { inherit inputs outputs; };
               home-manager.backupFileExtension = "backup";
 
               # Optionally, use home-manager.extraSpecialArgs to pass

@@ -40,12 +40,15 @@ in
       };
     };
 
-    #security.pam.yubico = {
-    #  enable = true;
-    #  debug = true;
-    #  mode = "challenge-response";
-    #  id = ["19271673"];
-    #};
+    /*
+      security.pam.yubico = {
+         enable = true;
+         debug = true;
+         mode = "challenge-response";
+         # id = [ "19271673" ];
+         # control = "";
+       };
+    */
     /*
          ACTION=="remove",\
       ENV{ID_BUS}=="usb",\

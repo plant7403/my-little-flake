@@ -4,6 +4,7 @@
   sops-nix,
   config,
   systemConfig,
+  osConfig,
   ...
 }:
 {
@@ -18,7 +19,7 @@
     };
     #defaultSymlinkPath = "/run/user/1000/secrets";
     #defaultSecretsMountPoint = "/run/user/1000/secrets.d";
-    defaultSopsFile = ./secrets/stellar/secrets.yaml; # ${config.networking.hostname}
+    defaultSopsFile = ./secrets/${osConfig.networking.hostName}/secrets.yaml; # ${config.networking.hostname}
     #defaultSopsFormat = "yaml";
     #age.keyFile = /home/egor/.config/sops/age/keys.txt;
   };

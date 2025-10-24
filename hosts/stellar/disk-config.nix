@@ -33,11 +33,9 @@
                 #additionalKeyFiles = ["/tmp/additionalSecret.key"];
                 content = {
                   type = "btrfs";
-                  extraArgs = ["-f"];
+                  extraArgs = [ "-f" ];
                   postCreateHook =
-                    /*
-                    sh
-                    */
+                    # sh
                     ''
                       MNTPOINT=$(mktemp -d)
                       mount "/dev/mapper/nvme-crypt" "$MNTPOINT" -o subvol=/
@@ -47,23 +45,45 @@
                   subvolumes = {
                     "/@ROOT" = {
                       mountpoint = "/";
-                      mountOptions = ["compress=zstd" "noatime"];
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
                     };
                     "/@HOME" = {
                       mountpoint = "/home";
-                      mountOptions = ["compress=zstd" "noatime"];
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
                     };
                     "/@NIX" = {
                       mountpoint = "/nix";
-                      mountOptions = ["compress=zstd" "noatime"];
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
                     };
                     "/@PERSIST" = {
                       mountpoint = "/persist";
-                      mountOptions = ["compress=zstd" "noatime"];
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
                     };
                     "/@LOG" = {
                       mountpoint = "/var/log";
-                      mountOptions = ["compress=zstd" "noatime"];
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
+                    };
+                    "/@SNAPSHOTS" = {
+                      mountpoint = "/.snapshots";
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
                     };
                     "/@SWAP" = {
                       mountpoint = "/.swapvol";
@@ -80,4 +100,5 @@
   };
   fileSystems."/persist".neededForBoot = true;
   fileSystems."/var/log".neededForBoot = true;
+  fileSystems."/home".neededForBoot = true;
 }

@@ -1,5 +1,5 @@
 {
-  inputs,
+  #inputs,
   lib,
   config,
   ...
@@ -12,20 +12,16 @@ in
   options = {
     modules.yubikey-unlock = {
       enable = mkEnableOption "service";
-      host = mkOption {
-        type = types.str;
-        default = "default";
-      };
     };
   };
 
-  config = {
+  config = mkIf cfg.enable {
     home.file.".config/Yubico/u2f_keys".source =
       config.lib.file.mkOutOfStoreSymlink
-        config.sops.secrets."users.${config.networking.hostname}.yubikey".path;
+        config.sops.secrets."yubikey".path;
 
-    sops.secrets."users/${config.networking.hostname}/yubikey" = {
-      sopsFile = ./secrets.yaml;
+    sops.secrets."yubikey" = {
+      # sopsFile = ./secrets.yaml;
     };
     /*
         nix-shell - p pam_u2f

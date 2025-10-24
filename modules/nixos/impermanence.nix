@@ -34,39 +34,42 @@ in
   ];
   config = mkMerge [
     (mkIf cfg.enable {
-      environment.persistence."/persist" = {
-        hideMounts = true;
-        directories = [
-          "/root"
-          #"/etc/ssh"
-          "/var/lib/nixos"
-          "/etc/NetworkManager"
-          "/var/lib/sbctl"
-          "/var/lib/systemd"
-        ];
-        files = [
-          "/etc/machine-id"
-          "/etc/ssh/ssh_host_ed25519_key"
-          "/etc/ssh/ssh_host_ed25519_key.pub"
-          "/etc/ssh/ssh_host_rsa_key"
-          "/etc/ssh/ssh_host_rsa_key.pub"
-        ];
+      environment.persistence = {
+        "/persist" = {
+          hideMounts = true;
+          directories = [
+            "/root"
+            #"/etc/ssh"
+            "/var/lib/nixos"
+            "/etc/NetworkManager"
+            "/var/lib/sbctl"
+            "/var/lib/systemd"
+          ];
+          files = [
+            "/etc/machine-id"
+            "/etc/ssh/ssh_host_ed25519_key"
+            "/etc/ssh/ssh_host_ed25519_key.pub"
+            "/etc/ssh/ssh_host_rsa_key"
+            "/etc/ssh/ssh_host_rsa_key.pub"
+          ];
+        };
       };
       programs.fuse.userAllowOther = true;
 
-      system.activationScripts.persistent-dirs.text =
-        let
-          mkHomePersist =
-            user:
-            lib.optionalString user.createHome ''
-              mkdir -p /persist/${user.home}
-              chown ${user.name}:${user.group} /persist/${user.home}
-              chmod ${user.homeMode} /persist/${user.home}
-            '';
-          users = lib.attrValues config.users.users;
-        in
-        lib.concatLines (map mkHomePersist users);
-
+      /*
+        system.activationScripts.persistent-dirs.text =
+             let
+               mkHomePersist =
+                 user:
+                 lib.optionalString user.createHome ''
+                   mkdir -p /persist/${user.home}
+                   chown ${user.name}:${user.group} /persist/${user.home}
+                   chmod ${user.homeMode} /persist/${user.home}
+                 '';
+               users = lib.attrValues config.users.users;
+             in
+             lib.concatLines (map mkHomePersist users);
+      */
       security.sudo.extraConfig = ''
         # rollback results in sudo lectures after each reboot
         Defaults lecture = never
@@ -126,6 +129,12 @@ in
             echo "restoring blank /@ROOT subvolume..."
             btrfs subvolume snapshot /mnt/@ROOT-BLANK /mnt/@ROOT
 
+            echo "deleting /@HOME subvolume..." &&
+            btrfs subvolume delete /mnt/@HOME
+
+            echo "restoring blank /@HOME subvolume..."
+            btrfs subvolume snapshot /mnt/@HOME-BLANK /mnt/@HOME # !!! HUUUUGE UGLY SOLUTION, THE SNAPSHOT IS NOT EMTY, IT HAS USER FOLDERS.. !!!
+
             # Once we're done rolling back to a blank snapshot,
             # we can unmount /mnt and continue on the boot process.
             umount /mnt
@@ -145,7 +154,26 @@ in
             chmod 0700 /persist/var/lib/private
           '';
         };
-      };
+      }; # hm-activate-egor
+      /*
+        systemd.services.foo = {
+             enable = true;
+             #wantedBy = [ "multi-user.target" ];
+             # ...
+             #preStart = "${pkgs.host}/bin/host firecat53.net"; # Check network connectivity
+             #serviceConfig = {
+             #  Restart = "on-failure";
+             #  RestartSec = "120";
+             #};
+             unitConfig = {
+               StartLimitIntervalSec = 600;
+               StartLimitBurst = 2;
+             };
+             #after = [ "flake-update.service" ];
+             #wants = [ "flake-update.service" ];
+             #path = [ pkgs.host ];
+           };
+      */
     })
     (mkIf (regularSecrets != { } && config.environment.persistence != { }) {
       system.activationScripts.setupSecrets.deps = [ "persist-files" ];

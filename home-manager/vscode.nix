@@ -61,6 +61,8 @@ let
   baseExtensions = [
     "pkief.material-icon-theme"
     "tonybaloney.vscode-pets"
+    "codeandstuff.vscode-navigate-edit-history"
+    "pnw-techpros.code-casefile"
   ];
   baseExtensionsVS = [
 

@@ -21,20 +21,23 @@
     ./../common/users/root.nix
     #./../common/desktop/steam.nix
     ./../common/desktop/virtualbox.nix
-    outputs.nixosModules.gnome
-    #outputs.nixosModules.kde
-    outputs.nixosModules.impermanence
-    #outputs.nixosModules.mullvad
-    outputs.nixosModules.sound
-    outputs.nixosModules.steam
-    outputs.nixosModules.tailscale
-    outputs.nixosModules.system
-    outputs.nixosModules.yubikey
-    outputs.nixosModules.yggdrasil
-    outputs.nixosModules.ollama
+    /*
+      outputs.nixosModules.gnome
+       #outputs.nixosModules.kde
+       outputs.nixosModules.impermanence
+       #outputs.nixosModules.mullvad
+       outputs.nixosModules.sound
+       outputs.nixosModules.steam
+       outputs.nixosModules.tailscale
+       outputs.nixosModules.system
+       outputs.nixosModules.yubikey
+       outputs.nixosModules.yggdrasil
+       outputs.nixosModules.ollama
+    */
 
-    ./odoo-test.nix
-  ];
+    #./odoo-test.nix # add to specializations or flake/shell
+  ]
+  ++ (builtins.attrValues outputs.nixosModules);
 
   modules.gnome = {
     enable = true;
@@ -82,6 +85,7 @@
       sops = true;
     };
     tpm = true;
+    btrfs = true; # !!! can be  actually done with config.filesystems... like if btrfs is true then this
   };
 
   modules.yubikey.enable = true;
@@ -109,7 +113,7 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  services.logrotate.checkConfig = false;
+  services.logrotate.checkConfig = false; # TODO check logrotate
 
   home-manager.sharedModules = [
     inputs.sops-nix.homeManagerModules.sops
@@ -120,6 +124,14 @@
     opentabletdriver
     pinta
     #easyeffects
+    fprintd-tod
+    fprintd
+    open-fprintd
+    libfprint-tod
+    libfprint
+    libfprint-2-tod1-goodix-550a
+    libfprint-2-tod1-goodix
+
   ];
   services.udev.packages = [
     pkgs.android-udev-rules
@@ -136,37 +148,36 @@
     serviceConfig.Type = "simple";
   };
 
-  /*
-    # Install the driver
-    services.fprintd.enable = true;
-    # If simply enabling fprintd is not enough, try enabling fprintd.tod...
-    services.fprintd.tod.enable = true;
-    # ...and use one of the next four drivers
-    services.fprintd.tod.driver = pkgs.libfprint-2-tod1-goodix; # Goodix driver module
-    #services.fprintd.tod.driver = pkgs.libfprint-2-tod1-elan; # Elan(04f3:0c4b) driver
-    #services.fprintd.tod.driver = pkgs.libfprint-2-tod1-vfs0090; # driver for 2016 ThinkPads
-    #services.fprintd.tod.driver = pkgs.libfprint-2-tod1-goodix-550a; # Goodix 550a driver (from Lenovo)
-    security.pam.services.login.fprintAuth = false;
-    security.pam.services.gdm-fingerprint = lib.mkIf (config.services.fprintd.enable) {
-      text = ''
-        auth       required                    pam_shells.so
-        auth       requisite                   pam_nologin.so
-        auth       requisite                   pam_faillock.so      preauth
-        auth       required                    ${pkgs.fprintd}/lib/security/pam_fprintd.so
-        auth       optional                    pam_permit.so
-        auth       required                    pam_env.so
-        auth       [success=ok default=1]      ${pkgs.gdm}/lib/security/pam_gdm.so
-        auth       optional                    ${pkgs.gnome-keyring}/lib/security/pam_gnome_keyring.so
+  # Install the driver
+  services.fprintd.enable = true;
+  # If simply enabling fprintd is not enough, try enabling fprintd.tod...
+  services.fprintd.tod.enable = true;
+  # ...and use one of the next four drivers
+  services.fprintd.tod.driver = pkgs.libfprint-2-tod1-goodix; # Goodix driver module
+  #services.fprintd.tod.driver = pkgs.libfprint-2-tod1-elan; # Elan(04f3:0c4b) driver
+  #services.fprintd.tod.driver = pkgs.libfprint-2-tod1-vfs0090; # driver for 2016 ThinkPads
+  #services.fprintd.tod.driver = pkgs.libfprint-2-tod1-goodix-550a; # Goodix 550a driver (from Lenovo)
+  security.pam.services.login.fprintAuth = false;
+  security.pam.services.gdm-fingerprint = lib.mkIf (config.services.fprintd.enable) {
+    text = ''
+      auth       required                    pam_shells.so
+      auth       requisite                   pam_nologin.so
+      auth       requisite                   pam_faillock.so      preauth
+      auth       required                    ${pkgs.fprintd}/lib/security/pam_fprintd.so
+      auth       optional                    pam_permit.so
+      auth       required                    pam_env.so
+      auth       [success=ok default=1]      ${pkgs.gdm}/lib/security/pam_gdm.so
+      auth       optional                    ${pkgs.gnome-keyring}/lib/security/pam_gnome_keyring.so
 
-        account    include                     login
+      account    include                     login
 
-        password   required                    pam_deny.so
+      password   required                    pam_deny.so
 
-        session    include                     login
-        session    optional                    ${pkgs.gnome-keyring}/lib/security/pam_gnome_keyring.so auto_start
-      '';
-    };
-  */
+      session    include                     login
+      session    optional                    ${pkgs.gnome-keyring}/lib/security/pam_gnome_keyring.so auto_start
+    '';
+  };
+
   nixpkgs.config.allowUnfreePredicate =
     pkg:
     builtins.elem (lib.getName pkg) [
@@ -199,6 +210,16 @@
   powerManagement.powertop.enable = true;
 
   services.thermald.enable = true;
+
+  /*
+    system.userActivationScripts = {
+      removeConflictingFiles = {
+        text = ''
+          rm -f /home/egor/.config/mimeapps.list.backup
+        '';
+      };
+    };
+  */
 
   /*
     programs.auto-cpufreq.enable = true;

@@ -1,4 +1,9 @@
-{ pkgs, config, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 {
   home.packages = with pkgs; [
     gnomeExtensions.user-themes
@@ -37,6 +42,23 @@
   ### SHORTCUTS
   dconf.settings = {
     # ...
+    "org/gnome/desktop/input-sources" = {
+      sources = [
+        (lib.hm.gvariant.mkTuple [
+          "xkb"
+          "us"
+        ])
+        (lib.hm.gvariant.mkTuple [
+          "xkb"
+          "ru"
+        ])
+        (lib.hm.gvariant.mkTuple [
+          "xkb"
+          "es"
+        ])
+      ];
+    };
+
     "org/gnome/mutter" = {
       "edge-tiling" = true;
     };
@@ -66,6 +88,7 @@
         "folder-search-provider@sitnik.ru"
         "todoit@wassimbj.github.io"
         "paperwm@paperwm.github.com"
+        "dash-to-dock@micxgx.gmail.com"
       ];
 
       favorite-apps = [
@@ -98,6 +121,26 @@
       "extensions/com/github/amezin/ddterm/panel-icon-type" = "none";
 
       "extensions/duckduckbang/search-engine" = 7;
+      "extensions/paperwm/show-workspace-indicator" = false;
+      "extensions/paperwm/selection-border-size" = 5;
+      "extensions/paperwm/selection-border-radius-top" = 10;
+      "extensions/paperwm/selection-border-radius-bottom" = 10;
+      "extensions/paperwm/window-gap" = 10;
+      "extensions/paperwm/vertical-margin" = 10;
+      "extensions/paperwm/horizontal-margin" = 5;
+
+      "extensions/appindicator/tray-pos" = "center";
+
+      "extensions/dash-to-dock/show-trash" = false;
+      "extensions/dash-to-dock/dash-max-icon-size" = 64;
+
+      "extensions/blur-my-shell/applications/blur" = true;
+      "extensions/blur-my-shell/applications/blacklist" = [
+        "Plank"
+        "com.desktop.ding"
+        "Conky"
+        "com.github.amezin.ddterm"
+      ];
 
     };
     /*
@@ -120,11 +163,18 @@
   */
   gtk.gtk3 = {
     bookmarks = [
-      "file://${config.xdg.userDirs.documents}"
       "file://${config.xdg.userDirs.download}"
+      "file://${config.xdg.userDirs.documents}"
+      "file://${config.home.homeDirectory}/.Secret"
+      "file://${config.xdg.userDirs.music}"
+      "file://${config.xdg.userDirs.pictures}"
+      "file://${config.home.homeDirectory}/Sync"
+      "file://${config.home.homeDirectory}/DCIM"
+      "file://${config.home.homeDirectory}/Projects"
+      "file://${config.home.homeDirectory}/Pak-Unity"
       #"file://${config.services.syncthing.settings.folders."sync".path}"
       #"file://${self}"
-    ];
+    ]; # TODO: NEED FIX; everything in english !!!
   };
 
   xdg.autostart = {
@@ -134,7 +184,7 @@
   };
 
   xdg.mimeApps = {
-    enable = true;
+    enable = false;
     defaultApplications = {
       "text/html" = "librewolf.desktop";
       "x-scheme-handler/http" = "librewolf.desktop";
