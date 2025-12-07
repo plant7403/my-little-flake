@@ -1,0 +1,334 @@
+# Gnome Shell Extension - Hanabi
+# Copyright (C) 2023 Jeff Shee (jeffshee8969@gmail.com)
+# This file is distributed under the same license as the gnome-ext-hanabi package.
+# vyPal <kubik.palacky@gmail.com>, 2023.
+# David Čudek <dajosek2seznam.cz@gmail.com>, 2024, 2025.
+msgid ""
+msgstr ""
+"Project-Id-Version: 1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-05-25 18:29+0900\n"
+"PO-Revision-Date: 2025-04-06 08:05+0000\n"
+"Last-Translator: David Čudek <dajosek2seznam.cz@gmail.com>\n"
+"Language-Team: Czech <https://hosted.weblate.org/projects/gnome-ext-hanabi/"
+"gnome-ext-hanabi/cs/>\n"
+"Language: cs\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=((n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2);\n"
+"X-Generator: Weblate 5.11-dev\n"
+
+#: src/panelMenu.js:70 src/panelMenu.js:85
+msgid "Pause"
+msgstr "Pozastavit"
+
+#: src/panelMenu.js:70 src/panelMenu.js:85
+msgid "Play"
+msgstr "Přehrát"
+
+#: src/panelMenu.js:94 src/panelMenu.js:103
+msgid "Unmute Audio"
+msgstr "Zapnout zvuk"
+
+#: src/panelMenu.js:94 src/panelMenu.js:103 src/prefs.js:43
+msgid "Mute Audio"
+msgstr "Vypnout zvuk"
+
+#: src/panelMenu.js:110
+msgid "Next Wallpaper"
+msgstr "Další tapeta"
+
+#: src/panelMenu.js:125
+msgid "Preferences"
+msgstr "Nastavení"
+
+#: src/prefs.js:38
+msgid "General"
+msgstr "Obecné"
+
+#: src/prefs.js:44
+msgid "Volume Level"
+msgstr "Hlasitost"
+
+#: src/prefs.js:45
+msgid "Show Panel Menu"
+msgstr "Zobrazit menu na panelu"
+
+#: src/prefs.js:51
+msgid "Auto Pause"
+msgstr "Automaticky pozastavit"
+
+#: src/prefs.js:56
+msgid "Low Battery Threshold"
+msgstr "Hranice nízké baterie"
+
+#: src/prefs.js:56
+msgid "Set the threshold percentage for low battery level"
+msgstr "Nastavit procentuální hranici pro nízkou baterii"
+
+#: src/prefs.js:60
+msgid "Pause on Media Player Playing"
+msgstr "Zastavit při přehrávání medií."
+
+#: src/prefs.js:62
+msgid "Pause playback when an MPRIS media player is playing media"
+msgstr "Zastavit přehrávání jestli jakýkoliv přehrávač MPRIS přehrává média."
+
+#: src/prefs.js:69
+msgid "Wallpaper Changer"
+msgstr "Měnič tapety"
+
+#: src/prefs.js:72
+msgid "Change Wallpaper Automatically"
+msgstr "Změnit Tapetu Automaticky"
+
+#: src/prefs.js:75
+msgid "Change Wallpaper Interval (minutes)"
+msgstr "Interval změny tapety (minuty)"
+
+#: src/prefs.js:81
+msgid "Experimental"
+msgstr "Experimentální"
+
+#: src/prefs.js:87
+msgid "Experimental VA Plugin"
+msgstr "Experimentální VA Plugin"
+
+#: src/prefs.js:89
+msgid ""
+"Enable VA decoders which improve performance for Intel/AMD Wayland users"
+msgstr "Povolit VA dekodéry které zlepší výkon pro Intel/AMD Wayland uživatele"
+
+#: src/prefs.js:94
+msgid "NVIDIA Stateless Decoders"
+msgstr "NVIDIA Stateless Dekodéry"
+
+#: src/prefs.js:96
+msgid "Use new stateless NVIDIA decoders"
+msgstr "Použít nové stateless NVIDIA dekodéry"
+
+#: src/prefs.js:103
+msgid "Developer"
+msgstr "Pro vývojáře"
+
+#: src/prefs.js:109
+msgid "Debug Mode"
+msgstr "Debug mód"
+
+#: src/prefs.js:111
+msgid "Print debug messages to log"
+msgstr "Vypisovat ladící zprávy do protokolu"
+
+#: src/prefs.js:116
+msgid "Force gtk4paintablesink"
+msgstr "Vynutit gtk4paintablesink"
+
+#: src/prefs.js:118
+msgid "Force use of gtk4paintablesink for video playback"
+msgstr "Vynutí použití gtk4paintablesink pro přehrávání videa"
+
+#: src/prefs.js:123
+msgid "Force GtkMediaFile"
+msgstr "Vynutit GtkMediaFile"
+
+#: src/prefs.js:125
+msgid "Force use of GtkMediaFile for video playback"
+msgstr "Vynutí použití GtkMediaFile pro přehrávání videa"
+
+#: src/prefs.js:127
+msgid "Startup Delay"
+msgstr "Prodleva při startu"
+
+#: src/prefs.js:127
+msgid ""
+"Add a startup delay (in milliseconds) to mitigate compatibility issues with "
+"other extensions"
+msgstr ""
+"Přidá časovou prodlevu (v milisekundách) před startem, aby se vyhnulo "
+"potížím s kompatibilitou s ostatními rozšířeními"
+
+#: src/prefs.js:214
+msgid "Video Path"
+msgstr "Cesta k videu"
+
+#: src/prefs.js:220 src/prefs.js:245 src/prefs.js:279 src/prefs.js:300
+msgid "None"
+msgstr "Žádné video"
+
+#: src/prefs.js:232
+msgid "Open File"
+msgstr "Otevřít soubor"
+
+#: src/prefs.js:237 src/prefs.js:293
+msgid "Cancel"
+msgstr "Zrušit"
+
+#: src/prefs.js:238 src/prefs.js:254 src/prefs.js:294 src/prefs.js:309
+msgid "Open"
+msgstr "Otevřít"
+
+#: src/prefs.js:273
+msgid "Change Wallpaper Directory Path"
+msgstr "Změnit cestu složky tapet"
+
+#: src/prefs.js:288
+msgid "Select Directory"
+msgstr "Vybrat složku"
+
+#: src/prefs.js:328
+msgid "Fit Mode"
+msgstr "Mód vyplnění"
+
+#: src/prefs.js:329
+msgid "Control how wallpaper fits within the monitor"
+msgstr "Nastavit jak se pozadí vejde do obrazovky"
+
+#: src/prefs.js:330
+msgid ""
+"\n"
+"    <b>Fill</b>: Stretch the wallpaper to fill the monitor.\n"
+"    <b>Contain</b>: Scale the wallpaper to fit the monitor (keep aspect "
+"ratio).\n"
+"    <b>Cover</b>: Scale the wallpaper to cover the monitor (keep aspect "
+"ratio).\n"
+"    <b>Scale-down</b>: Scale down the wallpaper to fit the monitor if "
+"needed, otherwise keep its original size.\n"
+"    "
+msgstr ""
+"\n"
+"    <b>Roztáhnout</b>: Roztáhne tapetu aby vyplnila celou obrazovku.\n"
+"    <b>Obsáhnout</b>: Škáluje tapetu aby se vešla na obrazovku (zachová "
+"poměr stran).\n"
+"    <b>Vyplnit</b>: Škáluje tapetu aby vyplnila obrazovku (zachová poměr "
+"stran).\n"
+"    <b>Škálovat dolů</b>: Zmenšit tapetu aby se vešla na obrazovku pokud je "
+"třeba, jinak ponechat v původní velikosti\n"
+"    "
+
+#: src/prefs.js:338
+msgid "Fill"
+msgstr "Roztáhnout"
+
+#: src/prefs.js:339
+msgid "Contain"
+msgstr "Obsáhnout"
+
+#: src/prefs.js:340
+msgid "Cover"
+msgstr "Vyplnit"
+
+#: src/prefs.js:341
+msgid "Scale-down"
+msgstr "Škálovat dolů"
+
+#: src/prefs.js:354
+msgid "This feature requires Gtk 4.8 or above"
+msgstr "Tato funkce požaduje Gtk 4.8 nebo novější"
+
+#: src/prefs.js:371
+msgid "Pause on Maximize or Fullscreen"
+msgstr "Zastavit při maximalizovaném/fullscreen okně."
+
+#: src/prefs.js:372
+msgid "Pause playback when there is maximized or fullscreen window"
+msgstr ""
+"Zastavit přehrávání jestli je okno maximalizováno nebo na plnou obrazovku."
+
+#: src/prefs.js:373
+msgid ""
+"\n"
+"    <b>Never</b>: Disable this feature.\n"
+"    <b>Any Monitor</b>: Pause playback when there is maximized or fullscreen "
+"window on any monitor.\n"
+"    <b>All Monitors</b>: Pause playback when there are maximized or "
+"fullscreen windows on all monitors.\n"
+"    "
+msgstr ""
+"\n"
+"    <b>Nikdy</b>: Nevypínejte tuto funkci.\n"
+"    <b>Jakákoliv obrazovka</b>: Zastavit přehrávání pokud na jakékoliv "
+"obrazovce je maximizované/fullscreen okno.\n"
+"    <b>Všechny obrazovky</b>: Zastavit přehrávání pokud na všech obrazovkách "
+"jsou maximalizované/fullscreen okna.\n"
+"    "
+
+#: src/prefs.js:380 src/prefs.js:416
+msgid "Never"
+msgstr "Nikdy"
+
+#: src/prefs.js:381
+msgid "Any Monitor"
+msgstr "Jakákoliv obrazovka"
+
+#: src/prefs.js:382
+msgid "All Monitors"
+msgstr "Všechny obrazovky."
+
+#: src/prefs.js:407
+msgid "Pause on Battery"
+msgstr "Zastavit na baterii"
+
+#: src/prefs.js:408
+msgid "Pause playback when the device is on battery or the battery is low"
+msgstr "Zastavit přehrávání jestli je zařízení na baterii nebo je baterie nízká"
+
+#: src/prefs.js:409
+msgid ""
+"\n"
+"    <b>Never</b>: Disable this feature.\n"
+"    <b>Low Battery</b>: Pause playback when the device is on low battery "
+"(below the threshold).\n"
+"    <b>Always</b>: Pause playback when the device is on battery.\n"
+"    "
+msgstr ""
+"\n"
+"    <b>Nikdy</b>: Nezakazujte tuto funkci\n"
+"    <b>Nízká baterie</b>: Zastavit přehrávání pokud má zařízení nízko "
+"nabitou baterii (Pod hranicí).\n"
+"    <b>Vždy</b>: Zastavit přehrávání jestli je zařízení napájeno z baterie.\n"
+"    "
+
+#: src/prefs.js:417
+msgid "Low Battery"
+msgstr "Nízká baterie"
+
+#: src/prefs.js:418
+msgid "Always"
+msgstr "Vždy"
+
+#: src/prefs.js:443
+msgid "Change Wallpaper Mode"
+msgstr "Změnit mód tapety."
+
+#: src/prefs.js:444
+msgid "Control how to change wallpapers automatically"
+msgstr "Ovládat jak se tapety mění automaticky"
+
+#: src/prefs.js:445
+msgid ""
+"\n"
+"    <b>Sequential:</b> Preserve the directory sequence (descending order).\n"
+"    <b>Inverse Sequential:</b> Retrieve wallpapers in the opposite sequence "
+"(ascending order).\n"
+"    <b>Random:</b> Randomly select wallpapers from the directory.\n"
+"    "
+msgstr ""
+"\n"
+"    <b>Sekvenční:</b> Zanechat sekvenci složek (padající seřazení)\n"
+"    <b>Opačně sekvenční:</b> Vybírat tapety v opačné sekvenci (stoupající "
+"seřazení)\n"
+"    <b>Náhodně:</b> Náhodně vybrat tapety ze složky\n"
+"    "
+
+#: src/prefs.js:452
+msgid "Sequential"
+msgstr "Sekvenční"
+
+#: src/prefs.js:453
+msgid "Inverse Sequential"
+msgstr "Obráceně sekvenční"
+
+#: src/prefs.js:454
+msgid "Random"
+msgstr "Random"

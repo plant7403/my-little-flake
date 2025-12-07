@@ -31,7 +31,7 @@
     gnomeExtensions.todo-list
 
     gnomeExtensions.paperwm
-    #gnomeExtensions.dash-to-dock
+    gnomeExtensions.dash-to-dock
     gnomeExtensions.focus-follows-workspace
     gnomeExtensions.switcher
     #trayscale
@@ -87,14 +87,13 @@
         "gsconnect@andyholmes.github.io"
         "Vitals@CoreCoding.com"
 
-        "gsconnect@andyholmes.github.io"
         "clipqr@drien.com"
         "ddterm@amezin.github.com"
         "duckduckbang@merijn"
         "folder-search-provider@sitnik.ru"
         "todoit@wassimbj.github.io"
         "paperwm@paperwm.github.com"
-        #"dash-to-dock@micxgx.gmail.com"
+        "dash-to-dock@micxgx.gmail.com"
       ];
 
       favorite-apps = [
@@ -189,7 +188,7 @@
 
   xdg.autostart = {
     entries = [
-      "element-desktop.desktop" # ${pkgs.element-desktop}/share/applications/
+      "${pkgs.element-desktop}/share/applications/element-desktop.desktop"
     ];
   };
 
