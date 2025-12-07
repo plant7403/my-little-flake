@@ -51,6 +51,8 @@ in
         yelp # Help view
         gnome-contacts
         gnome-initial-setup
+        gnome-terminal
+        #gnome-console
       ];
       programs.dconf.enable = true;
       environment.systemPackages = with pkgs; [
@@ -59,7 +61,10 @@ in
         xorg.xprop
         gdm-settings
         snoop
+        #ghostty
 
+        gtk4-layer-shell
+        gtk-layer-shell
       ];
       services.udev.packages = [
         pkgs.gnome-settings-daemon
@@ -74,13 +79,23 @@ in
       ### STYLIX
 
       stylix.enable = true;
+      stylix.autoEnable = true;
+
       stylix.polarity = "dark";
+      stylix.targets = {
+        gnome.enable = true;
+        gtk.enable = true;
+        qt = {
+          enable = true;
+          platform = lib.mkForce "qtct";
+        };
+      };
       #stylix.image = /run/current-system/sw/share/backgrounds/gnome/vnc-d.png;
       stylix.image = pkgs.fetchurl {
-        url = "https://4kwallpapers.com/images/wallpapers/frierens-staff-3840x2160-20067.jpg";
+        url = "https://images.alphacoders.com/131/thumb-1920-1311951.jpg";
         sha256 = "0kcl0ssqfmd9vpjlhgb3kxxqdy29q5iy9bykz50m7k88749bbkpr";
       };
-      stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/outrun-dark.yaml";
+      stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-macchiato.yaml";
       stylix.fonts = {
         serif = {
           package = pkgs.dejavu_fonts;
@@ -98,31 +113,17 @@ in
         };
 
         emoji = {
-          package = pkgs.noto-fonts-emoji;
+          package = pkgs.noto-fonts-color-emoji;
           name = "Noto Color Emoji";
         };
       };
+
       /*
-        stylix.opacity = {
-             terminal = 0.5;
-             applications = 0.75;
-             desktop = 0.75;
-             popups = 0.75;
-           };
+        home-manager.users.egor.programs.gnome-shell = {
+          enable = true;
+          extensions = [ { package = pkgs.gnomeExtensions.gsconnect; } ];
+        };
       */
-      stylix.autoEnable = true;
-
-      # !!! stylix.targets.librewolf.profileNames = [ "default" ];
-
-      stylix.targets = {
-        qt.platform = lib.mkForce "qtct";
-        #librewolf.profileNames = ["default"];
-      };
-
-      home-manager.users.egor.programs.gnome-shell = {
-        enable = true;
-        extensions = [ { package = pkgs.gnomeExtensions.gsconnect; } ];
-      };
 
       networking.firewall = rec {
         allowedTCPPortRanges = [

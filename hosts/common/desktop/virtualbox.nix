@@ -3,7 +3,7 @@
   users.extraGroups.vboxusers.members = ["egor"];
   virtualisation.libvirtd = {
     enable = true;
-    qemu = {
+    /* qemu = {
       package = pkgs.qemu_kvm;
       runAsRoot = true;
       swtpm.enable = true;
@@ -16,6 +16,6 @@
           })
         ];
       };
-    };
+    }; */
   };
 }

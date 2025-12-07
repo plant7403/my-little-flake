@@ -4,16 +4,18 @@
   pkgs,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.modules.kde;
-in {
+in
+{
   options.modules.kde = {
     enable = mkEnableOption "service";
     /*
-    kde = mkOption {
-      type = types.str;
-      default = "default";
-    };
+      kde = mkOption {
+        type = types.str;
+        default = "default";
+      };
     */
   };
 
@@ -26,11 +28,11 @@ in {
     # Using Wayland (preferred)
     services.displayManager.sddm.settings.General.DisplayServer = "wayland";
     /*
-       qt = {
-      enable = true;
-      platformTheme = "kde6";
-      style = "adwaita-dark";
-    };
+         qt = {
+        enable = true;
+        platformTheme = "kde6";
+        style = "adwaita-dark";
+      };
     */
     environment.plasma6.excludePackages = with pkgs.kdePackages; [
       plasma-browser-integration
@@ -40,32 +42,32 @@ in {
     services.displayManager.autoLogin.user = "egor";
     # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
     /*
-    systemd.services."getty@tty1".enable = false;
-     systemd.services."autovt@tty1".enable = false;
+      systemd.services."getty@tty1".enable = false;
+       systemd.services."autovt@tty1".enable = false;
     */
     # Technically not related to this issue, but still useful
     /*
-    xdg.configFile."menus/applications.menu".source =
-       "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
+      xdg.configFile."menus/applications.menu".source =
+         "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
     */
     /*
-    qt = {
-       enable = true;
-       platformTheme.package = with pkgs.kdePackages; [
-         plasma-integration
-         # I don't remember why I put this is here, maybe it fixes the theme of the system setttings
-         systemsettings
-       ];
-       style = {
-         package = pkgs.kdePackages.breeze;
-         name = "Breeze";
+      qt = {
+         enable = true;
+         platformTheme.package = with pkgs.kdePackages; [
+           plasma-integration
+           # I don't remember why I put this is here, maybe it fixes the theme of the system setttings
+           systemsettings
+         ];
+         style = {
+           package = pkgs.kdePackages.breeze;
+           name = "Breeze";
+         };
        };
-     };
     */
     /*
-    systemd.user.sessionVariables = {
-      QT_QPA_PLATFORMTHEME = "kde";
-    };
+      systemd.user.sessionVariables = {
+        QT_QPA_PLATFORMTHEME = "kde";
+      };
     */
     ### STYLIX
 
@@ -94,7 +96,7 @@ in {
       };
 
       emoji = {
-        package = pkgs.noto-fonts-emoji;
+        package = pkgs.noto-fonts-color-emoji;
         name = "Noto Color Emoji";
       };
     };
@@ -117,16 +119,16 @@ in {
         #
 
         /*
-        workspace = {
-          clickItemTo = "open"; # If you liked the click-to-open default from plasma 5
-          lookAndFeel = "org.kde.breezedark.desktop";
-          cursor = {
-            theme = "Bibata-Modern-Ice";
-            size = 32;
+          workspace = {
+            clickItemTo = "open"; # If you liked the click-to-open default from plasma 5
+            lookAndFeel = "org.kde.breezedark.desktop";
+            cursor = {
+              theme = "Bibata-Modern-Ice";
+              size = 32;
+            };
+            iconTheme = "Papirus-Dark";
+            wallpaper = "${pkgs.kdePackages.plasma-workspace-wallpapers}/share/wallpapers/Patak/contents/images/1080x1920.png";
           };
-          iconTheme = "Papirus-Dark";
-          wallpaper = "${pkgs.kdePackages.plasma-workspace-wallpapers}/share/wallpapers/Patak/contents/images/1080x1920.png";
-        };
         */
 
         hotkeys.commands."launch-konsole" = {
@@ -136,12 +138,12 @@ in {
         };
 
         /*
-           fonts = {
-          general = {
-            family = "JetBrains Mono";
-            pointSize = 12;
+             fonts = {
+            general = {
+              family = "JetBrains Mono";
+              pointSize = 12;
+            };
           };
-        };
         */
 
         desktop.widgets = [
@@ -255,7 +257,7 @@ in {
                     activeTaskSource = "activeTask";
                   };
                   layout = {
-                    elements = ["windowTitle"];
+                    elements = [ "windowTitle" ];
                     horizontalAlignment = "left";
                     showDisabledElements = "deactivated";
                     verticalAlignment = "center";
@@ -325,7 +327,7 @@ in {
                 value = "dolphin";
                 type = "substring";
               };
-              window-types = ["normal"];
+              window-types = [ "normal" ];
             };
             apply = {
               noborder = {

@@ -28,11 +28,20 @@
       nur.inputs.nixpkgs.follows = "nixpkgs";
     */
 
+    #nixpkgs.follows = "nixvim/nixpkgs";
+    nixvim.url = "github:nix-community/nixvim";
+    kickstart-nixvim.url = "github:JMartJonesy/kickstart.nixvim";
+    /*
+      kickstart-nixvim = {
+         url = "github:JMartJonesy/kickstart.nixvim";
+       };
+    */
     nix-flatpak.url = "github:gmodena/nix-flatpak"; # unstable branch. Use github:gmodena/nix-flatpak/?ref=<tag> to pin releases.
     #flatpaks.url = "github:GermanBread/declarative-flatpak/stable";
 
     nixos-facter-modules.url = "github:numtide/nixos-facter-modules";
 
+    #Neve.url = "github:redyf/Neve";
     #conduit = {
     #  url = "gitlab:famedly/conduit";
     #  inputs.nixpkgs.follows = "nixpkgs";
@@ -45,7 +54,7 @@
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.2";
       # Optional but recommended to limit the size of your system closure.
-      inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
     /*
         openhab.url = "github:nagisa/nixpkg-openhab";
@@ -170,6 +179,21 @@
       # Your custom packages
       # Accessible through 'nix build', 'nix shell', etc
       packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
+
+      /*
+        packages = forAllSystems (
+            system:
+            let
+              nixvim' = nixvim.legacyPackages.${system};
+              nvim = nixvim'.makeNixvim.config;
+            in
+            {
+              inherit nvim;
+              default = nvim;
+            }
+          );
+      */
+
       # Formatter for your nix files, available through 'nix fmt'
       # Other options beside 'alejandra' include 'nixpkgs-fmt'
       formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-rfc-style);
@@ -230,13 +254,17 @@
             ./hosts/luna/configuration.nix
             sops-nix.nixosModules.sops
             home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.egor = import ./home-manager/home.nix;
-              home-manager.extraSpecialArgs = { inherit inputs; };
-              home-manager.backupFileExtension = "backup";
-            }
+            (
+              { lib, ... }:
+              {
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+                home-manager.users.egor = import ./home-manager/home.nix;
+                home-manager.extraSpecialArgs = { inherit inputs; };
+                home-manager.backupFileExtension = "backup";
+                #home-manager.backupCommand = lib.literalExpression "''${pkgs.trash-cli}/bin/trash";
+              }
+            )
             lanzaboote.nixosModules.lanzaboote
             (
               {
@@ -269,13 +297,17 @@
             disko.nixosModules.disko
             stylix.nixosModules.stylix
             home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.egor = import ./home-manager/saturn.nix;
-              home-manager.extraSpecialArgs = { inherit inputs; };
-              home-manager.backupFileExtension = "backup";
-            }
+            (
+              { lib, ... }:
+              {
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+                home-manager.users.egor = import ./home-manager/saturn.nix;
+                home-manager.extraSpecialArgs = { inherit inputs; };
+                home-manager.backupFileExtension = "backup";
+                #home-manager.backupCommand = lib.literalExpression "''${pkgs.trash-cli}/bin/trash";
+              }
+            )
 
             {
               nixpkgs.overlays = [
@@ -314,15 +346,19 @@
             disko.nixosModules.disko
             stylix.nixosModules.stylix
             home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.egor = import ./home-manager/saturn.nix;
-              home-manager.extraSpecialArgs = { inherit inputs; };
-              home-manager.backupFileExtension = "backup";
-              # Optionally, use home-manager.extraSpecialArgs to pass
-              # arguments to home.nix
-            }
+            (
+              { lib, ... }:
+              {
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+                home-manager.users.egor = import ./home-manager/saturn.nix;
+                home-manager.extraSpecialArgs = { inherit inputs; };
+                home-manager.backupFileExtension = "backup";
+                #home-manager.backupCommand = lib.literalExpression "''${pkgs.trash-cli}/bin/trash";
+                # Optionally, use home-manager.extraSpecialArgs to pass
+                # arguments to home.nix
+              }
+            )
             inputs.musnix.nixosModules.musnix
             {
               musnix.enable = true;
@@ -348,19 +384,23 @@
             disko.nixosModules.disko
             stylix.nixosModules.stylix
             home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.egor = import ./home-manager/saturn.nix;
-              home-manager.extraSpecialArgs = { inherit inputs outputs; };
-              home-manager.backupFileExtension = "backup";
+            (
+              { lib, ... }:
+              {
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+                home-manager.users.egor = import ./home-manager/saturn.nix;
+                home-manager.extraSpecialArgs = { inherit inputs outputs; };
+                home-manager.backupFileExtension = "backup";
+                #home-manager.backupCommand = lib.literalExpression "''${pkgs.trash-cli}/bin/trash";
 
-              # Optionally, use home-manager.extraSpecialArgs to pass
-              # arguments to home.nix
-              nixpkgs.overlays = [
-                nix4vscode.overlays.default
-              ];
-            }
+                # Optionally, use home-manager.extraSpecialArgs to pass
+                # arguments to home.nix
+                nixpkgs.overlays = [
+                  nix4vscode.overlays.default
+                ];
+              }
+            )
 
             lanzaboote.nixosModules.lanzaboote
             (
@@ -459,6 +499,7 @@
                 home-manager.users.egor = import ./home-manager/saturn.nix;
                 home-manager.extraSpecialArgs = { inherit inputs; };
                 home-manager.backupFileExtension = "backup";
+                #home-manager.backupCommand = lib.literalExpression "''${pkgs.trash-cli}/bin/trash";
                 # Optionally, use home-manager.extraSpecialArgs to pass
                 # arguments to home.nix
               }

@@ -216,6 +216,16 @@ in
     libgbm
     # here, NOT in environment.systemPackages
   ];
+  services.ollama = {
+    acceleration = "rocm";
+    /*
+      environmentVariables = {
+           HCC_AMDGPU_TARGET = "gfx1033"; # used to be necessary, but doesn't seem to anymore
+         };
+    */
+    # results in environment variable "HSA_OVERRIDE_GFX_VERSION=10.3.0"
+    rocmOverrideGfx = "10.3.0";
+  };
 
   # Enable common container config files in /etc/containers
   virtualisation.containers.enable = true;

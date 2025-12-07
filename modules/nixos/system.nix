@@ -129,6 +129,8 @@ in
       programs.zsh.interactiveShellInit = ''
         source ${pkgs.nix-index}/etc/profile.d/command-not-found.sh
       '';
+      programs.zsh.ohMyZsh.enable = true;
+      environment.pathsToLink = [ "/share/zsh" ]; # ???
       documentation = {
         nixos.enable = true;
         man = {

@@ -232,6 +232,7 @@ in
             "unifiedjs.vscode-mdx"
             "astro-build.astro-vscode"
             "phoenisx.cssvar"
+            "arrterian.nix-env-selector"
 
             #arrterian.nix-env-selector
           ]
@@ -285,6 +286,8 @@ in
           "importCost.largePackageColor" = "#EC3A37F5";
           "importCost.mediumPackageColor" = "#B362FF";
           "importCost.smallPackageColor" = "#B362FF";
+          "nixEnvSelector.useFlakes" = true;
+
         }
         // baseSettings;
       };
@@ -311,6 +314,40 @@ in
             #"trinhanhngoc.vscode-odoo"
 
             #arrterian.nix-env-selector
+          ]
+          ++ forOpenVsx baseExtensions
+          ++ forVscode [ ]
+          ++ forVscode baseExtensionsVS;
+        userSettings = {
+
+          #"redhat.telemetry.enabled" = false;
+
+          # This is all that matters
+          "workbench.colorTheme" = "Cobalt2";
+          # The Cursive font is operator Mono, it's $200 and you need to buy it to get the cursive. Dank Mono or Victor Mono are good alternatives
+          "editor.fontFamily" = "Operator Mono, Menlo, Monaco, 'Courier New', monospace";
+          "editor.fontSize" = 17;
+          "editor.lineHeight" = 25;
+          "editor.letterSpacing" = 0.5;
+          "files.trimTrailingWhitespace" = true;
+          "editor.fontWeight" = "400";
+          "prettier.eslintIntegration" = true;
+          "editor.cursorStyle" = "line";
+          "editor.cursorWidth" = 5;
+          "editor.cursorBlinking" = "solid";
+          "editor.renderWhitespace" = "all";
+        }
+        // baseSettings;
+      };
+      C = {
+        extensions =
+          forOpenVsx [
+            "wesbos.theme-cobalt2"
+            "signageos.signageos-vscode-sops"
+            "mkhl.direnv"
+
+            "llvm-vs-code-extensions.vscode-clangd"
+            "kylinideteam.cppdebug"
           ]
           ++ forOpenVsx baseExtensions
           ++ forVscode [ ]

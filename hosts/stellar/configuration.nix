@@ -4,7 +4,6 @@
 {
   config,
   pkgs,
-  lib,
   outputs,
   inputs,
   ...
@@ -44,7 +43,7 @@
     autologin = false;
   };
   modules.ollama = {
-    enable = false;
+    enable = true;
   };
   #modules.kde.enable = true;
 
@@ -114,7 +113,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   services.logrotate.checkConfig = false; # TODO check logrotate
-  
+
   home-manager.sharedModules = [
     inputs.sops-nix.homeManagerModules.sops
     inputs.plasma-manager.homeModules.plasma-manager
@@ -123,6 +122,7 @@
     xf86_input_wacom
     opentabletdriver
     pinta
+
     #easyeffects
     /*
       fprintd-tod
@@ -135,14 +135,18 @@
     */
 
   ];
-  services.udev.packages = [
-    pkgs.android-udev-rules
-  ];
+  /*
+    services.udev.packages = [
+      pkgs.android-udev-rules
+    ];
+  */
   programs.adb.enable = true;
   users.users.egor.extraGroups = [
     "adbusers"
     "podman"
   ];
+
+  #systemd.services.nix-daemon.serviceConfig.EnvironmentFile = "/etc/nixos/nix-daemon-environment";
 
   /*
     # Start the driver at boot

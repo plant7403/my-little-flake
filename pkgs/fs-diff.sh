@@ -4,22 +4,29 @@
 # sudo mkdir $(mktemp)=tempdir ; sudo mount -o subvol=/@HOME /dev/mapper/nvme-crypt ${tempdir} ; ./fs-diff.sh
 set -euo pipefail
 
-if [ --root ] || [ -r ]; then
+TARGET="0"
+
+if [ $1 = -r ]; then
   TARGET="@ROOT"
-elif [ --home ] || [ -h ]; then
+  echo $TARGET
+elif  [ $1 = -h ]; then
   TARGET="@HOME"
-else:
+  echo $TARGET
+else
   echo "goodbye.."
+  exit 1
 fi
 
 # === 1 ===
 TEMPDIR=`mktemp -d`
+echo "tempdir set..."
+
 #mktemp -d > $TEMPDIR
 #sudo mkdir $tempdir
 
 # === 2 ===
 sudo mount -o subvol=/ /dev/mapper/nvme-crypt $TEMPDIR
-
+echo "mount the whole disk..."
 # === 3 ===
 OLD_TRANSID=$(sudo btrfs subvolume find-new /${TEMPDIR}/${TARGET}-BLANK 9999999)
 OLD_TRANSID=${OLD_TRANSID#transid marker was }

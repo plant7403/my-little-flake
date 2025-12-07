@@ -6,7 +6,6 @@
   lib,
   outputs,
   inputs,
-  config,
   ...
 }:
 
@@ -28,9 +27,12 @@
     ./gpg.nix
     ./theme.nix
     ./extensions.nix
+    ./nvim.nix
+    #./vim.nix
     #../modules/home-manager
     #outputs.homeManagerModules.syncthing
     inputs.impermanence.homeManagerModules.impermanence
+
   ]
   ++ (builtins.attrValues outputs.homeManagerModules);
 
@@ -46,7 +48,7 @@
     #librewolf
     alejandra
     arduino
-    bitwarden
+    bitwarden-desktop
     blender
     #darktable
     direnv
@@ -55,7 +57,7 @@
     filezilla
     #gimp-with-plugins
     inkscape
-    #jellyfin-media-playerI
+    #jellyfin-media-player
     krita
     libreoffice
 
@@ -69,6 +71,8 @@
     transmission_4-gtk
 
     easyeffects
+
+    ghostty
 
     #mullvad-vpn
     #logseq
@@ -101,13 +105,11 @@
     obsidian
 
     prismlauncher
-    jdk23
+    jdk25_headless
     #alfis
 
     #basicswap
     nym
-
-    keepassxc
 
     ungoogled-chromium
     dbeaver-bin
@@ -116,22 +118,57 @@
     sptlrx # add ff extention
     bustle
     sushi
+
   ];
 
   programs.home-manager.enable = true;
 
-  programs.browserpass = {
-    enable = true;
-  };
-
-  services.
-
   programs.git = {
     enable = true;
-    userEmail = "me@o.o";
-    userName = "me";
+    settings = {
+      user.email = "me@o.o";
+      user.name = "me";
+    };
   };
   programs.gitui.enable = true;
+
+  programs.bemenu = {
+    enable = true;
+    settings = {
+      line-height = 28;
+      prompt = "open";
+      ignorecase = true;
+      /*
+        fb = "#1e1e2e";
+           ff = "#cdd6f4";
+           nb = "#1e1e2e";
+           nf = "#cdd6f4";
+           tb = "#1e1e2e";
+           hb = "#1e1e2e";
+           tf = "#f38ba8";
+           hf = "#f9e2af";
+           af = "#cdd6f4";
+           ab = "#1e1e2e";
+      */
+      width-factor = 0.3;
+    };
+  };
+  programs.keepassxc = {
+    enable = true;
+    autostart = true;
+    settings = {
+      Browser.Enabled = true;
+
+      GUI = {
+        AdvancedSettings = true;
+        ApplicationTheme = "dark";
+        CompactMode = true;
+        HidePasswords = true;
+      };
+
+      SSHAgent.Enabled = true;
+    };
+  };
 
   programs.ssh.matchBlocks = {
     "*" = {
@@ -176,7 +213,7 @@
       #host = "stellar";
     };
   */
-  # modules.syncthing.enable = true;
+  modules.syncthing.enable = true;
   #pam.yubico.authorizedYubiKeys
   #pam.yubico.authorizedYubiKeys.ids = [
   #  "19271673"
@@ -192,12 +229,12 @@
   home.persistence."/persist/home/egor" = {
 
     directories = [
-      /*
-        "${config.xdg.userDirs.download}"
-        "${config.xdg.userDirs.music}"
-        "${config.xdg.userDirs.pictures}"
-        "${config.xdg.userDirs.documents}"
-      */
+
+      "Downloads"
+      "Music"
+      "Pictures"
+      "Documents"
+
       "Sync"
       ".Secret"
       ".DecSync"
@@ -209,12 +246,25 @@
       ".local/share/direnv"
       ".config/Element"
       ".config/.mozilla/thunderbird"
+      ".thunderbird"
+      ".librewolf/default"
 
       "my-little-flake"
       "Pak-Unity"
       "Projects"
 
       "VirtualBox VMs"
+
+      ".config/VSCodium/User"
+      ".config/obsidian"
+      ".config/keepassxc"
+      ".config/zsh"
+      ".config/gsconnect"
+      ".cache/nix-index"
+      ".cache/thumbnails"
+
+      ".local/state"
+
       /*
         {
           directory = ".local/share/Steam";
@@ -222,19 +272,34 @@
         }
       */
     ];
-    /*
-      files = [
-        ".screenrc"
-      ];
-    */
+
+    files = [
+      ".config/gsconnect/certificate.pem"
+      ".config/gsconnect/private.pem"
+      ".config/syncthingtray.ini"
+      ".cache/keepassxc/keepassxc.ini"
+      ".mozilla/native-messaging-hosts/org.keepassxc.keepassxc_browser.json"
+      ".nix-defexpr/channels"
+      ".nix-defexpr/channels_root"
+      #".nix-profile"
+    ];
+
     allowOther = true;
   };
 
   xdg.userDirs.createDirectories = true;
   xdg.userDirs.enable = true;
-  xdg.userDirs.extraConfig = {
-    LC_ALL = "es_ES.UTF-8";
+
+  nix.gc = {
+    automatic = true;
+    dates = "16:20";
+    persistent = true;
   };
+  /*
+    xdg.userDirs.extraConfig = {
+      LC_ALL = "es_ES.UTF-8";
+    };
+  */
 
   #systemd.user.startServices = "sd-switch";
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion

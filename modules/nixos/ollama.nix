@@ -24,22 +24,17 @@ in
 
     services.ollama = {
       enable = true;
+      package = pkgs.ollama;
+      port = 11434;
       # Optional: preload models, see https://ollama.com/library
       loadModels = [
-        "codellama:13b"
-        "codegemma:7b"
-        "gpt-oss:20b"
+        #"codellama:13b"
+        #"codegemma:7b"
+        #"gpt-oss:20b"
       ];
       openFirewall = true;
       host = "0.0.0.0";
-      acceleration = "rocm";
-      /*
-        environmentVariables = {
-             HCC_AMDGPU_TARGET = "gfx1033"; # used to be necessary, but doesn't seem to anymore
-           };
-      */
-      # results in environment variable "HSA_OVERRIDE_GFX_VERSION=10.3.0"
-      rocmOverrideGfx = "10.3.0";
+
     };
 
     /*
@@ -61,6 +56,21 @@ in
       "/var/lib/private/ollama"
       "/var/lib/private/open-webui"
     ];
+
+    system.activationScripts."createPersistentStorageDirs".deps = [
+      "var-lib-private-permissions"
+      "users"
+      "groups"
+    ];
+    system.activationScripts = {
+      "var-lib-private-permissions" = {
+        deps = [ "specialfs" ];
+        text = ''
+          mkdir -p /persist/var/lib/private
+          chmod 0700 /persist/var/lib/private
+        '';
+      };
+    };
 
   };
 }

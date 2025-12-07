@@ -39,15 +39,15 @@
     emote
     gnome-tweaks
     gnomeExtensions.quick-settings-tweaker
-    gnomeExtensions.translate-indicator
+    # gnomeExtensions.translate-indicator
     gnomeExtensions.clipboard-indicator
     gnomeExtensions.firefox-profiles
+    #gnomeExtensions.gestureImprovements
 
     dconf2nix
   ];
   ### SHORTCUTS
   dconf.settings = {
-    # ...
     "org/gnome/desktop/input-sources" = {
       sources = [
         (lib.hm.gvariant.mkTuple [
@@ -93,7 +93,7 @@
         "folder-search-provider@sitnik.ru"
         "todoit@wassimbj.github.io"
         "paperwm@paperwm.github.com"
-        "dash-to-dock@micxgx.gmail.com"
+        #"dash-to-dock@micxgx.gmail.com"
       ];
 
       favorite-apps = [
@@ -187,13 +187,14 @@
   };
 
   xdg.autostart = {
+    enable = true;
     entries = [
-      "${pkgs.element-desktop}/share/applications/element-desktop.desktop"
+      "element-desktop.desktop" # ${pkgs.element-desktop}/share/applications/
     ];
   };
 
   xdg.mimeApps = {
-    enable = false;
+    enable = true;
     defaultApplications = {
       "text/html" = "librewolf.desktop";
       "x-scheme-handler/http" = "librewolf.desktop";
@@ -202,4 +203,5 @@
       "x-scheme-handler/unknown" = "librewolf.desktop";
     };
   };
+  xdg.configFile."mimeapps.list".force = true;
 }

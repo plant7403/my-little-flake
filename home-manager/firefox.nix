@@ -11,24 +11,24 @@
     !!!
   */
   stylix.targets.librewolf = {
+    enable = true;
     colorTheme.enable = true;
-    firefoxGnomeTheme.enable = true;
+    #firefoxGnomeTheme.enable = true;
     profileNames = [ "default" ];
   }; # !!! remove it from here !!!
 
   programs.librewolf = {
     enable = true;
-    settings = {
-      #"browser.tabs.tabMinWidth" = 5;
-      "extensions.enabledScopes" = 3;
-      "extensions.update.autoUpdateDefault" = false;
-      "extensions.update.enabled" = false;
-    };
     languagePacks = [
       "es-ES"
       "en-US"
     ];
     profiles.default = lib.mkForce {
+      settings = {
+        "extensions.autoDisableScopes" = 0;
+        "extensions.update.autoUpdateDefault" = false;
+        "extensions.update.enabled" = false;
+      };
       containersForce = true;
       extensions = {
         force = true;
@@ -41,49 +41,51 @@
             libredirect
             keepassxc-browser
           ];
-        settings."uBlock0@raymondhill.net".settings = {
-          force = true;
-          privateAllowed = true;
-          settings = {
-            selectedFilterLists = [
-              "user-filters"
-              "ublock-filters"
-              "ublock-badware"
-              "ublock-privacy"
-              "ublock-unbreak"
-              "ublock-quick-fixes"
-              "easylist"
-              "easyprivacy"
-              "urlhaus-1"
-              "plowe-0"
+        settings = {
+          "uBlock0@raymondhill.net".settings = {
+            force = true;
+            privateAllowed = true;
+            settings = {
+              selectedFilterLists = [
+                "user-filters"
+                "ublock-filters"
+                "ublock-badware"
+                "ublock-privacy"
+                "ublock-unbreak"
+                "ublock-quick-fixes"
+                "easylist"
+                "easyprivacy"
+                "urlhaus-1"
+                "plowe-0"
+              ];
+            };
+            permissions = [
+              "alarms"
+              "dns"
+              "menus"
+              "privacy"
+              "storage"
+              "tabs"
+              "unlimitedStorage"
+              "webNavigation"
+              "webRequest"
+              "webRequestBlocking"
+              "<all_urls>"
+              "http://*/*"
+              "https://*/*"
+              "file://*/*"
+              "https://easylist.to/*"
+              "https://*.fanboy.co.nz/*"
+              "https://filterlists.com/*"
+              "https://forums.lanik.us/*"
+              "https://github.com/*"
+              "https://*.github.io/*"
+              "https://github.com/uBlockOrigin/*"
+              "https://ublockorigin.github.io/*"
+              "https://*.reddit.com/r/uBlockOrigin/*"
             ];
-          };
-          permissions = [
-            "alarms"
-            "dns"
-            "menus"
-            "privacy"
-            "storage"
-            "tabs"
-            "unlimitedStorage"
-            "webNavigation"
-            "webRequest"
-            "webRequestBlocking"
-            "<all_urls>"
-            "http://*/*"
-            "https://*/*"
-            "file://*/*"
-            "https://easylist.to/*"
-            "https://*.fanboy.co.nz/*"
-            "https://filterlists.com/*"
-            "https://forums.lanik.us/*"
-            "https://github.com/*"
-            "https://*.github.io/*"
-            "https://github.com/uBlockOrigin/*"
-            "https://ublockorigin.github.io/*"
-            "https://*.reddit.com/r/uBlockOrigin/*"
-          ];
 
+          };
         };
       };
       search = {
