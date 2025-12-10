@@ -8,17 +8,58 @@
     enable = true;
     icons = {
       enable = true;
-      dark = "dracula-icon-theme";
+      dark = "Dracula";
       package = pkgs.dracula-icon-theme;
     };
     cursor = {
-      name = "Posy_Cursors";
+      name = "Posy_Cursor";
       package = pkgs.posy-cursors;
       size = 1;
     };
+
     targets = {
       gtk = {
         enable = true;
+        flatpakSupport.enable = true;
+        extraCss = ''
+          /*********************
+          * Window Decorations *
+          *********************/
+          window {
+            --wm-border-width: 3px;
+            --wm-border-color: #6272a4;
+            --wm-border-radius: 12px;
+          }
+          window.maximized {
+            border: var(--wm-border-width) solid var(--wm-border-color);
+            border-radius: var(--wm-border-radius);
+          }
+          window:not(.maximized) {
+            border: none;
+          }
+          window.csd {
+            margin: 0px;
+            border-radius: var(--wm-border-radius);
+            border: var(--wm-border-width) solid var(--wm-border-color);
+          }
+          window.csd.popup,
+          window.csd.dialog.message {
+            border-radius: 12px;
+            border: 4px solid var(--wm-border-color);
+          }
+          window.solid-csd {
+            margin: 0;
+            padding: 4px;
+            border-radius: var(--wm-border-radius);
+            border: 4px solid var(--wm-border-color);
+          }
+          window.popup,
+          window.ssd {
+            border-radius: 12px;
+            border: 4px solid var(--wm-border-color);
+          }
+
+        '';
         /*
           theme = lib.mkForce {
             name = "catppuchin";

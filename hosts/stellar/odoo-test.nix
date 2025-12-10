@@ -47,5 +47,4 @@
   users.users.odoo = {
     extraGroups = [ "users" ];
   };
-
 }

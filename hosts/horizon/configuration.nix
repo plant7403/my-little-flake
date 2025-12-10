@@ -177,55 +177,59 @@ in
 
   powerManagement.cpuFreqGovernor = "schedutil";
 
-  programs.nix-ld.libraries = with pkgs; [
-    # Add any missing dynamic libraries for unpackaged programs
-    lz4
-    stdenv.cc.cc
-    zlib
-    fuse3
-    icu
-    nss
-    openssl
-    curl
-    expat
-    lz4
+  /*
+    programs.nix-ld.libraries = with pkgs; [
+      # Add any missing dynamic libraries for unpackaged programs
+      lz4
+      stdenv.cc.cc
+      zlib
+      fuse3
+      icu
+      nss
+      openssl
+      curl
+      expat
+      lz4
 
-    glib # libgobject-2.0.so.0, libglib-2.0.so.0, libgio-2.0.so.0
-    nss # libnss3.so, libnssutil3.so, libsmime3.so
-    nspr # libnspr4.so
-    at-spi2-atk # libatk-1.0.so.0, libatk-bridge-2.0.so.0
-    cups.lib # libcups.so.2
-    dbus.lib # libdbus-1.so.3
-    libdrm # libdrm.so.2
-    gdk-pixbuf # libgdk_pixbuf-2.0.so.0
-    #gtk3 # libgtk-3.so.0
-    pango # libpango-1.0.so.0
-    cairo # libcairo.so.2
-    xorg.libX11 # libX11.so.6
-    xorg.libXcomposite # libXcomposite.so.1
-    xorg.libXdamage # libXdamage.so.1
-    xorg.libXext # libXext.so.6
-    xorg.libXfixes # libXfixes.so.3
-    xorg.libXrandr # libXrandr.so.2
-    mesa # libgbm.so.1
-    expat # libexpat.so.1
-    xorg.libxcb # libxcb.so.1
-    libxkbcommon # libxkbcommon.so.0
-    alsa-lib # libasound.so.2
-    at-spi2-atk # libatspi.so.0
-    libgbm
-    # here, NOT in environment.systemPackages
-  ];
-  services.ollama = {
-    acceleration = "rocm";
-    /*
+      glib # libgobject-2.0.so.0, libglib-2.0.so.0, libgio-2.0.so.0
+      nss # libnss3.so, libnssutil3.so, libsmime3.so
+      nspr # libnspr4.so
+      at-spi2-atk # libatk-1.0.so.0, libatk-bridge-2.0.so.0
+      cups.lib # libcups.so.2
+      dbus.lib # libdbus-1.so.3
+      libdrm # libdrm.so.2
+      gdk-pixbuf # libgdk_pixbuf-2.0.so.0
+      #gtk3 # libgtk-3.so.0
+      pango # libpango-1.0.so.0
+      cairo # libcairo.so.2
+      xorg.libX11 # libX11.so.6
+      xorg.libXcomposite # libXcomposite.so.1
+      xorg.libXdamage # libXdamage.so.1
+      xorg.libXext # libXext.so.6
+      xorg.libXfixes # libXfixes.so.3
+      xorg.libXrandr # libXrandr.so.2
+      mesa # libgbm.so.1
+      expat # libexpat.so.1
+      xorg.libxcb # libxcb.so.1
+      libxkbcommon # libxkbcommon.so.0
+      alsa-lib # libasound.so.2
+      at-spi2-atk # libatspi.so.0
+      libgbm
+      # here, NOT in environment.systemPackages
+    ];
+  */
+  /*
+    services.ollama = {
+      acceleration = "rocm";
+
       environmentVariables = {
-           HCC_AMDGPU_TARGET = "gfx1033"; # used to be necessary, but doesn't seem to anymore
-         };
-    */
-    # results in environment variable "HSA_OVERRIDE_GFX_VERSION=10.3.0"
-    rocmOverrideGfx = "10.3.0";
-  };
+        HCC_AMDGPU_TARGET = "gfx1033"; # used to be necessary, but doesn't seem to anymore
+      };
+
+      # results in environment variable "HSA_OVERRIDE_GFX_VERSION=10.3.0"
+      rocmOverrideGfx = "10.3.0";
+    };
+  */
 
   # Enable common container config files in /etc/containers
   virtualisation.containers.enable = true;

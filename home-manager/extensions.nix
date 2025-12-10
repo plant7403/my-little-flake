@@ -93,7 +93,10 @@
         "folder-search-provider@sitnik.ru"
         "todoit@wassimbj.github.io"
         "paperwm@paperwm.github.com"
-        #"dash-to-dock@micxgx.gmail.com"
+        "dash-to-dock@micxgx.gmail.com"
+        "clipboard-indicator@tudmotu.com"
+        "focus-follows-workspace@christopher.luebbemeier.gmail.com"
+        "switcher@landau.fi"
       ];
 
       favorite-apps = [
@@ -105,8 +108,6 @@
         "element-desktop.desktop"
         "signal.desktop"
         "obsidian.desktop"
-        "com.bitwig.BitwigStudio.desktop"
-        "com.github.flxzt.rnote.desktop"
         "org.keepassxc.KeePassXC.desktop"
       ];
       "extensions/blur-my-shell/applications/opacity" = 180;
@@ -117,7 +118,7 @@
       "extensions/blur-my-shell/applications/brightness" = 1.0;
       "extensions/blur-my-shell/appfolder/style-dialogs" = 2;
       "extensions/blur-my-shell/panel/static-blur" = false;
-      "extensions/blur-my-shell/panel/sigma" = 1;
+      "extensions/blur-my-shell/panel/sigma" = 100;
       "extensions/blur-my-shell/panel/brightness" = 1.0;
       "extensions/blur-my-shell/overview/style-components" = 3;
 
@@ -189,7 +190,7 @@
   xdg.autostart = {
     enable = true;
     entries = [
-      "element-desktop.desktop" # ${pkgs.element-desktop}/share/applications/
+      "${pkgs.element-desktop}/share/applications/element-desktop.desktop" # ${pkgs.element-desktop}/share/applications/
     ];
   };
 

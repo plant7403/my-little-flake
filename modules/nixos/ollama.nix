@@ -24,7 +24,7 @@ in
 
     services.ollama = {
       enable = true;
-      package = pkgs.ollama;
+      package = pkgs.ollama-rocm;
       port = 11434;
       # Optional: preload models, see https://ollama.com/library
       loadModels = [

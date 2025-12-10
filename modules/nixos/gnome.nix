@@ -8,6 +8,14 @@
 with lib;
 let
   cfg = config.modules.gnome;
+
+  inputImage = pkgs.fetchurl {
+    url = "https://images.alphacoders.com/131/thumb-1920-1311951.jpg";
+    sha256 = "sha256-Rb2zcFSO0Gk+TBEjD1X619+RxDCBalPhURYlVTHDf1s=";
+  };
+  brightness = "-30";
+  contrast = "0";
+  fillColor = "black";
 in
 {
   options.modules.gnome = {
@@ -62,9 +70,6 @@ in
         gdm-settings
         snoop
         #ghostty
-
-        gtk4-layer-shell
-        gtk-layer-shell
       ];
       services.udev.packages = [
         pkgs.gnome-settings-daemon
@@ -82,6 +87,7 @@ in
       stylix.autoEnable = true;
 
       stylix.polarity = "dark";
+      #stylix.accentColor = "purple";
       stylix.targets = {
         gnome.enable = true;
         gtk.enable = true;
@@ -91,25 +97,25 @@ in
         };
       };
       #stylix.image = /run/current-system/sw/share/backgrounds/gnome/vnc-d.png;
-      stylix.image = pkgs.fetchurl {
-        url = "https://images.alphacoders.com/131/thumb-1920-1311951.jpg";
-        sha256 = "0kcl0ssqfmd9vpjlhgb3kxxqdy29q5iy9bykz50m7k88749bbkpr";
-      };
-      stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-macchiato.yaml";
+      stylix.image = pkgs.runCommand "dimmed-background.png" { } ''
+        ${lib.getExe' pkgs.imagemagick "convert"} "${inputImage}" -brightness-contrast ${brightness},${contrast} -fill ${fillColor} $out
+      '';
+      stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/darkviolet.yaml";
       stylix.fonts = {
         serif = {
-          package = pkgs.dejavu_fonts;
-          name = "Noto Serif";
+          package = pkgs.liberation_ttf;
+          name = "Liberation Sans";
         };
-
-        sansSerif = {
-          package = pkgs.dejavu_fonts;
-          name = "Noto Sans";
-        };
+        /*
+                sansSerif = {
+                  package = pkgs.liberation_ttf;
+                  name = "Agave";
+                };
+        */
 
         monospace = {
-          package = pkgs.dejavu_fonts;
-          name = "DejaVu Sans Mono";
+          package = pkgs.nerd-fonts.liberation;
+          name = "Liberation Mono";
         };
 
         emoji = {

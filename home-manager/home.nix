@@ -27,7 +27,7 @@
     ./gpg.nix
     ./theme.nix
     ./extensions.nix
-    ./nvim.nix
+    #./nvim.nix
     #./vim.nix
     #../modules/home-manager
     #outputs.homeManagerModules.syncthing
@@ -264,6 +264,7 @@
       ".cache/thumbnails"
 
       ".local/state"
+      ".steam"
 
       /*
         {

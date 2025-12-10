@@ -303,7 +303,7 @@
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
                 home-manager.users.egor = import ./home-manager/saturn.nix;
-                home-manager.extraSpecialArgs = { inherit inputs; };
+                home-manager.extraSpecialArgs = { inherit inputs outputs; };
                 home-manager.backupFileExtension = "backup";
                 #home-manager.backupCommand = lib.literalExpression "''${pkgs.trash-cli}/bin/trash";
               }

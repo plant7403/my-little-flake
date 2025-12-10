@@ -5,9 +5,11 @@
   inputs,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.modules.transmission;
-in {
+in
+{
   options.modules.transmission = {
     enable = mkOption {
       type = types.bool;
@@ -26,11 +28,11 @@ in {
       default = false;
     };
     user = mkOption {
-      type = types.string;
+      type = types.str;
       default = "egor";
     };
     group = mkOption {
-      type = types.string;
+      type = types.str;
       default = "users";
     };
     download-dir = mkOption {
@@ -69,24 +71,24 @@ in {
         };
       };
       /*
-      networking.firewall.interfaces."tun0".allowedTCPPorts = [
-           9099
-         ];
+        networking.firewall.interfaces."tun0".allowedTCPPorts = [
+             9099
+           ];
       */
 
       /*
-      modules.web.vhosts = mkIf cfg.web [
-           {
-             domain = "egor.wtf.local";
-             prefix = "torr";
-             upstream = "http://127.0.0.1:9099";
-           }
-         ];
+        modules.web.vhosts = mkIf cfg.web [
+             {
+               domain = "egor.wtf.local";
+               prefix = "torr";
+               upstream = "http://127.0.0.1:9099";
+             }
+           ];
       */
       /*
-      sops.secrets."services/transmission" = mkIf cfg.sops {
-           #owner = "nginx";
-         };
+        sops.secrets."services/transmission" = mkIf cfg.sops {
+             #owner = "nginx";
+           };
       */
     })
 
