@@ -12,7 +12,7 @@
     # ...
     # });
     #wp4nix = import ./wp4nix.nix;
-    no-dochecks = import ./no-dochecks.nix;
+    #no-dochecks = import ./no-dochecks.nix;
 
   };
 
@@ -24,5 +24,5 @@
   #      config.allowUnfree = true;
   #    };
   #  };
-
+  no-dochecks = import ./no-dochecks.nix;
 }

@@ -221,6 +221,7 @@
 
   services.thermald.enable = true;
 
+  programs.niri.enable = true;
   /*
     system.userActivationScripts = {
       removeConflictingFiles = {

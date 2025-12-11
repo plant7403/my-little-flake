@@ -28,7 +28,8 @@
     ./theme.nix
     ./extensions.nix
     ./radicle.nix
-    #./nvim.nix
+    ./nvim.nix
+    ./niri.nix
     #./vim.nix
     #../modules/home-manager
     #outputs.homeManagerModules.syncthing
