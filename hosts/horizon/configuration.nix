@@ -173,6 +173,9 @@ in
     pkgs.wineWowPackages.waylandFull
 
     pkgs.lz4
+
+    pkgs.gtksourceview
+    pkgs.fontconfig
   ];
 
   powerManagement.cpuFreqGovernor = "schedutil";

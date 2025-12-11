@@ -27,6 +27,7 @@
     ./gpg.nix
     ./theme.nix
     ./extensions.nix
+    ./radicle.nix
     #./nvim.nix
     #./vim.nix
     #../modules/home-manager
@@ -265,7 +266,7 @@
 
       ".local/state"
       ".steam"
-
+      ".radicle"
       /*
         {
           directory = ".local/share/Steam";

@@ -156,6 +156,7 @@
         system = "x86_64-linux"; # One of supported systems
         overlays = [
           nix4vscode.overlays.default
+          #self.overlays.no-dochecks
         ];
       };
       # nixpkgs with deploy-rs overlay but force the nixpkgs package
@@ -312,6 +313,7 @@
             {
               nixpkgs.overlays = [
                 nix4vscode.overlays.default
+                self.overlays.modifications
               ];
             }
 

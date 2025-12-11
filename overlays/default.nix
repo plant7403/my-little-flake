@@ -12,6 +12,7 @@
     # ...
     # });
     #wp4nix = import ./wp4nix.nix;
+    no-dochecks = import ./no-dochecks.nix;
 
   };
 
