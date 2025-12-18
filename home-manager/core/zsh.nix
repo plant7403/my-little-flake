@@ -60,48 +60,48 @@ in
       */
       initContent = lib.mkMerge [
         (lib.mkBefore ''
-                    #POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
-                    #source ~/.p10k.zsh
+          #POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
+          #source ~/.p10k.zsh
 
 
 
-                    # Powerlevel10k Zsh theme  
-          /*           source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme  
-                    test -f ~/.config/zsh/.p10k.zsh && source ~/.config/zsh/.p10k.zsh 
-           */
+          # Powerlevel10k Zsh theme  
+          #source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme  
+          #test -f ~/.config/zsh/.p10k.zsh && source ~/.config/zsh/.p10k.zsh 
 
-                    HISTDB_FILE=''${XDG_DATA_HOME-$HOME/.local/share}/zsh/history.db
 
-                    # Do this early so fast-syntax-highlighting can wrap and override this
-                    if autoload history-search-end; then
-                      zle -N history-beginning-search-backward-end history-search-end
-                      zle -N history-beginning-search-forward-end  history-search-end
-                    fi
-                    autoload -Uz compinit && compinit
-                    autoload -U colors && colors
-                    alias ls='ls -G'
+          HISTDB_FILE=''${XDG_DATA_HOME-$HOME/.local/share}/zsh/history.db
 
-                    # history
-                    setopt share_history
-                    bindkey '^[[A' history-beginning-search-backward
-                    bindkey '^[[B' history-beginning-search-forward
+          # Do this early so fast-syntax-highlighting can wrap and override this
+          if autoload history-search-end; then
+            zle -N history-beginning-search-backward-end history-search-end
+            zle -N history-beginning-search-forward-end  history-search-end
+          fi
+          autoload -Uz compinit && compinit
+          autoload -U colors && colors
+          alias ls='ls -G'
 
-                    # globbing
-                    setopt extended_glob
+          # history
+          setopt share_history
+          bindkey '^[[A' history-beginning-search-backward
+          bindkey '^[[B' history-beginning-search-forward
 
-                    # zmv
-                    autoload -Uz zmv
-                    alias zcp='zmv -C'
-                    alias zln='zmv -L'
+          # globbing
+          setopt extended_glob
 
-                    # fewer keystrokes
-                    setopt auto_cd auto_pushd
-                    setopt menu_complete
+          # zmv
+          autoload -Uz zmv
+          alias zcp='zmv -C'
+          alias zln='zmv -L'
 
-                    # fewer distractions
-                    unsetopt beep nomatch notify
+          # fewer keystrokes
+          setopt auto_cd auto_pushd
+          setopt menu_complete
 
-                    eval "$(starship init zsh)"
+          # fewer distractions
+          unsetopt beep nomatch notify
+
+          eval "$(starship init zsh)"
         '')
       ];
 
