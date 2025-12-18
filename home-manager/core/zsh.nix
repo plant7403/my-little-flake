@@ -312,11 +312,11 @@ symbol = " "
 style = "bg:#86BBD8"
 format = '[ $symbol ($version) ]($style)'
 };
-java]
+java = {
 symbol = " "
 style = "bg:#86BBD8"
 format = '[ $symbol ($version) ]($style)'
-
+};
 [julia]
 symbol = " "
 style = "bg:#86BBD8"
