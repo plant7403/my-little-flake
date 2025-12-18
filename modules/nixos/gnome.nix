@@ -158,7 +158,7 @@ in
           serif = config.stylix.fonts.monospace;
           sansSerif = config.stylix.fonts.monospace;
           monospace = {
-            package = nerd-fonts.intone-mono;
+            package = pkgs.nerd-fonts.intone-mono;
             name = "Liberation Mono";
           };
           emoji = {

@@ -44,7 +44,7 @@
       historySubstringSearch.enable = true;
       autocd = true;
 
-      /*
+      
         initContent = lib.mkMerge [
           (lib.mkBefore ''
             HISTDB_FILE=''${XDG_DATA_HOME-$HOME/.local/share}/zsh/history.db
