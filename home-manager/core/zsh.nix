@@ -131,7 +131,19 @@ in
         }
         {
           name = pkgs.zsh-history-substring-search.pname;
-          src = pkgs.zsh-autosuggestions.src;
+          src = pkgs.zsh-history-substring-search.src;
+        }
+        {
+          name = pkgs.zsh-history-substring-search.pname;
+          src = pkgs.zsh-history-substring-search.src;
+        }
+        {
+          name = pkgs.zsh-history-substring-search.pname;
+          src = pkgs.zsh-history-substring-search.src;
+        }
+        {
+          name = pkgs.zsh-history-substring-search.pname;
+          src = pkgs.zsh-history-substring-search.src;
         }
       ];
       zplug = {
