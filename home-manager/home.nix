@@ -123,7 +123,10 @@
     autostart = true;
     settings = {
       General.ConfigVersion = 2;
-      Browser = Enabled = true;
+      Browser = {
+        Enabled = true;
+        CustomProxyLocation=
+      };
       Security.QuickUnlock = true;
 
       GUI = {
