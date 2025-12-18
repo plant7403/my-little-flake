@@ -334,7 +334,7 @@ in
       C = {
         extensions =
           forOpenVsx [
-            "wesbos.theme-cobalt2"
+
             "signageos.signageos-vscode-sops"
             "mkhl.direnv"
 
