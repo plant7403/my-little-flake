@@ -266,8 +266,8 @@ directory.substitutions = {
 # "Important 󰈙 " = " 󰈙 "
 
 c = {
-symbol = " "
-style = "bg:#86BBD8"
+symbol = " ";
+style = "bg:#86BBD8";
 format = '[ $symbol ($version) ]($style)'
 };
 cpp = {
