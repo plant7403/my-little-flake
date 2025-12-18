@@ -126,11 +126,11 @@
               "depth:1"
             ];
           } # Installations with additional options. For the list of options, please refer to Zplug README.
-                "autojump"
-                "git"
-                "colored-man-pages"
-                "history"
-                "history-substring-search"
+                {}"autojump"
+                {}"git"
+                {}"colored-man-pages"
+                {}"history"
+                {}"history-substring-search"
         ];
       };
 
