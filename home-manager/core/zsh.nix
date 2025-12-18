@@ -151,7 +151,10 @@ in
           { name = "zsh-users/history"; }
           {
             name = " zsh-users/zsh-syntax-highlighting ";
-            tags = [ "defer:2" tags = [ "depth:1" ];];
+            tags = [
+              "defer:2"
+              "depth:1"
+            ];
           }
           {
             name = "zsh-users/zsh-history-substring-search";
