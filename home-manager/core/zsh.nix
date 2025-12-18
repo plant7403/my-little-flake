@@ -131,7 +131,10 @@
           { name = "colored-man-pages"; }
           {name = }
           {name = }
-          {name = "sharkdp/fd" tags = []}
+          {name = "sharkdp/fd" tags = [
+            from:gh-r, as:command, rename-to:fd, use:"*x86_64-unknown-linux-gnu.tar.gz"
+zplug "zsh-users/zsh-completions"
+          ];}
           { name = "zsh-users/zsh-completions"; }
           { name = "zsh-users/zsh-autosuggestions"; }
           { name = "zsh-users/history"; }
