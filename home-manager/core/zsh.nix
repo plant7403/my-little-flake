@@ -147,7 +147,7 @@
         }
         {
           name = "ansimotd";
-          file 
+          file = "zsh-ansimotd.plugin.zsh"
         }
       ];
     };
