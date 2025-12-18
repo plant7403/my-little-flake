@@ -126,15 +126,14 @@
           } # Installations with additional options. For the list of options, please refer to Zplug README.
         ];
       };
-      
-        completionInit = ''
 
-        '';
+      completionInit = ''
 
-        initContent = ''
-          POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
-        '';
-      */
+      '';
+
+      initContent = ''
+        
+      '';
 
     };
   };
