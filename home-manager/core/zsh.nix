@@ -6,7 +6,7 @@
 }:
 
   let
-    imports = [ (builtins.fromTOML (builtins.readFile ./some-configuration.toml)) ];
+    imports = [ (builtins.fromTOML (builtins.readFile ./pastel.toml)) ];
   in
 
 {
