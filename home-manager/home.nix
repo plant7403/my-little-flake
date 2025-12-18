@@ -218,12 +218,11 @@
   #  MOZ_USE_XINPUT2 = "1";
   #};
 
-  /*
-    modules.yubikey-unlock = {
-      enable = true;
-      #host = "stellar";
-    };
-  */
+  modules.yubikey-unlock = {
+    enable = true;
+    #host = "stellar";
+  };
+
   modules.syncthing.enable = true;
   #pam.yubico.authorizedYubiKeys
   #pam.yubico.authorizedYubiKeys.ids = [

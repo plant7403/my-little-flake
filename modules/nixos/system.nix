@@ -79,6 +79,19 @@ in
         "egor"
         "inti"
       ];
+
+      nixpkgs.overlays = [
+        (final: prev: {
+          inherit (prev.lixPackageSets.stable)
+            nixpkgs-review
+            nix-eval-jobs
+            nix-fast-build
+            colmena
+            ;
+        })
+      ];
+      nix.package = pkgs.lixPackageSets.stable.lix;
+
       nixpkgs.config.allowUnfree = true;
       nixpkgs.config.allowUnfreePredicate =
         pkg:
@@ -87,7 +100,7 @@ in
           "vscode-extension-github-copilot-chat"
           "obsidian"
         ];
-      nix.settings.download-buffer-size = 524288000;
+      #nix.settings.download-buffer-size = 524288000;
 
       networking.hostName = cfg.hostname; # Define your hostname.
       boot.plymouth.enable = true;
@@ -140,8 +153,8 @@ in
              source ${pkgs.nix-index}/etc/profile.d/command-not-found.sh
            '';
       */
-      programs.zsh.ohMyZsh.enable = true;
-      environment.pathsToLink = [ "/share/zsh" ]; # ???
+      #programs.zsh.ohMyZsh.enable = true;
+      #environment.pathsToLink = [ "/share/zsh" ]; # ???
       documentation = {
         nixos.enable = true;
         man = {

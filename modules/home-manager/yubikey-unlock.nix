@@ -26,7 +26,7 @@ in
     /*
         nix-shell - p pam_u2f
         pamu2fcfg
-        sops home-manager/secrets.yml
+        sops edit home-manager/secrets.yml
         add the secret
     */
   };

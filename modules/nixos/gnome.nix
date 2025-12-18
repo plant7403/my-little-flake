@@ -170,7 +170,8 @@ in
 
         icons = {
           enable = true;
-          dark = "Rose-pine-dawn";
+          dark = "rose-pine-dawn";
+          light = "rose-pine-moon";
           package = pkgs.rose-pine-icon-theme;
         };
         cursor = {

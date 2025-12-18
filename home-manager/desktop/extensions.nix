@@ -108,7 +108,12 @@
         "clipboard-indicator@tudmotu.com"
         "focus-follows-workspace@christopher.luebbemeier.gmail.com"
         "switcher@landau.fi"
-        "just-perfection"
+
+        "window-commander@gnikolaos.gr"
+        "tweaks-system-menu@extensions.gnome-shell.fifi.org"
+        "systemd-manager@hardpixel.eu"
+        "save-my-windows@lukastymo.com"
+        "just-perfection-desktop@just-perfection"
       ];
 
       favorite-apps = [
