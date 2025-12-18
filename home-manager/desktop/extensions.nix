@@ -151,12 +151,6 @@
       "extensions/blur-my-shell/panel/brightness" = 1.0;
       "extensions/blur-my-shell/overview/style-components" = 3;
 
-      "com/github/amezin/ddterm/panel-icon-type" = "none";
-      "com/github/amezin/ddterm/background-opacity" = 0.5;
-      "com/github/amezin/ddterm/hide-when-focus-lost" = true;
-      "com/github/amezin/ddterm/hide-window-on-esc" = true;
-      "com/github/amezin/ddterm/tab-label-ellipsize-mode" = "start";
-
       "extensions/duckduckbang/search-engine" = 7;
       "extensions/paperwm/show-workspace-indicator" = false;
       "extensions/paperwm/selection-border-size" = 5;
