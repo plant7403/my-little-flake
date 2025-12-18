@@ -136,8 +136,18 @@
   };
 
   programs.distrobox = {
-containers = {}
-enableSystemdUnit
+containers = {
+    common-debian = {
+    additional_packages = "git";
+    entry = true;
+    image = "debian:13";
+    init_hooks = [
+      "ln -sf /usr/bin/distrobox-host-exec /usr/local/bin/docker"
+      "ln -sf /usr/bin/distrobox-host-exec /usr/local/bin/docker-compose"
+    ];
+  };
+};
+enableSystemdUnit = true;
 enable
 package
 settings
