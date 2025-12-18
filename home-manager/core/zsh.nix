@@ -31,7 +31,6 @@
     enableZshIntegration = true;
   };
   programs = {
-
     zsh = {
       enable = true;
       envExtra = ''
@@ -45,7 +44,7 @@
       historySubstringSearch.enable = true;
       autocd = true;
 
-      initContent = lib.mkMerge [
+      /* initContent = lib.mkMerge [
         (lib.mkBefore ''
           HISTDB_FILE=''${XDG_DATA_HOME-$HOME/.local/share}/zsh/history.db
 
@@ -80,7 +79,7 @@
 
           eval "$(starship init zsh)"
         '')
-      ];
+      ]; */
 
       history = {
         path = "\${XDG_DATA_HOME-$HOME/.local/share}/zsh/history";
