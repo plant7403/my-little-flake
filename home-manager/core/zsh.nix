@@ -145,7 +145,9 @@
             sha256 = "3hhZXL8/Ml7UlkkHBPpS5NfUGB5BqgO95UvtpptXf8E=";
           };
         }
-        {}
+        {
+          name = 
+        }
       ];
     };
   };
