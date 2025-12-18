@@ -232,9 +232,9 @@ $time\
 # and use the os module below
 username ={
 show_always = true;
-style_user = "bg:#9A348E"
-style_root = "bg:#9A348E"
-format = '[$user ]($style)'
+style_user = "bg:#9A348E";
+style_root = "bg:#9A348E";
+format = '[$user ]($style)';
 disabled = false};
 
 # An alternative to the username module which displays a symbol that
