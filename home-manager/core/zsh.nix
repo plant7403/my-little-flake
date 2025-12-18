@@ -180,6 +180,7 @@ in
   programs.starship.enable = true;
   programs.starship.enableZshIntegration = true;
   programs.starship.settings = {
+    inherit theme;
     /*
       add_newline = false;
       format = lib.concatStrings [
