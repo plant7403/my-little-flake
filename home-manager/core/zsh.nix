@@ -126,6 +126,16 @@
             sha256 = "0yhwn6av4q6hz9s34h4m3vdk64ly6s28xfd8ijgdbzic8qawj5p1";
           };
         }
+        {
+          name = "async";
+          file = "async.zsh";
+          src = pkgs.fetchFromGitHub {
+            owner = "mafredri";
+            repo = "zsh-async";
+            rev = "3ba6e2d1ea874bfb6badb8522ab86c1ae272923d";
+            sha256 = "3hhZXL8/Ml7UlkkHBPpS5NfUGB5BqgO95UvtpptXf8E=";
+          };
+        }
       ];
     };
   };
