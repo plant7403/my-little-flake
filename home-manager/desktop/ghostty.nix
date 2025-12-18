@@ -12,7 +12,7 @@
         "ctrl+l=goto_split:right"
       ];
       quit-after-last-window-closed = true;
-      quit-after-last-window-closed-delay = 5 m;
+      quit-after-last-window-closed-delay = "5m";
     };
     systemd.enable = true;
   };
