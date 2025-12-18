@@ -10,7 +10,7 @@
 
     ];
   in
-*/
+
 {
   home.file."${config.xdg.cacheHome}/oh-my-zsh/.keep".text = "";
 
