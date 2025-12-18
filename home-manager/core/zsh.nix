@@ -123,7 +123,7 @@ in
         }
         {
           name = pkgs.fzf-zsh.pname;
-          src = pkgs.zsh-autosuggestions.src;
+          src = pkgs.fzf-zsh.src;
         }
         {
           name = pkgs.zsh-autosuggestions.pname;
@@ -140,8 +140,7 @@ in
           # { name = "zsh-users/git"; }
           #{ name = "ael-code/zsh-colored-man-pages"; }
           #{ name = "woefe/wbase.zsh"; }
-          { name = "junegunn/fzf"; }
-          { name = "junegunn/fzf-bin"; }
+          
           {
             name = "sharkdp/fd";
             tags = [
