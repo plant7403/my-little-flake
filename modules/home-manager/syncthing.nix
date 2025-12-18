@@ -129,7 +129,6 @@ in
     };
   };
   systemd.user.services.syncthing-init = {
-
     Install = {
       WantedBy = [ "default.target" ];
     };
