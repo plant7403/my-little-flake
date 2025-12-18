@@ -218,8 +218,8 @@ in
       "$nim"
       "$rust"
       "$scala"
-      [](fg:#86BBD8 bg:#06969A)\
-      $docker_context\
+      [](fg:#86BBD8 bg:#06969A)
+      $docker_context
       [](fg:#06969A bg:#33658A)\
       $time\
       [ ](fg:#33658A)\
