@@ -62,7 +62,7 @@ in
         gnome-contacts
         gnome-initial-setup
         gnome-terminal
-        #gnome-console
+        gnome-console
       ];
 
       programs.dconf.enable = true;
