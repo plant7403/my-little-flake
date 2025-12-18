@@ -138,7 +138,7 @@ in
           };
           serif = {
             package = pkgs.liberation_ttf;
-            name = "DepartureMono Nerd Font Mono 12";
+            name = "DepartureMono Nerd Font Propo Bold Italic 12";
           };
           monospace = {
             package = pkgs.nerd-fonts.departure-mono;
