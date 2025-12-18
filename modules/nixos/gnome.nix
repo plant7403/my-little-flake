@@ -133,7 +133,7 @@ in
         };
         fonts = {
           sansSerif = {
-            package = nerd-fonts.adwaita-mono;
+            package = pkgs.nerd-fonts.adwaita-mono;
             name = "DepartureMono Nerd Font";
           };
           serif = {
