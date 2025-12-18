@@ -144,7 +144,7 @@ in
           sansSerif = config.stylix.fonts.monospace;
           monospace = {
             package = pkgs.nerd-fonts.departure-mono;
-            name = "Liberation Sans";
+            name = "DepartureMono Nerd Font Mono 12";
           };
           emoji = {
             package = pkgs.noto-fonts-color-emoji;
