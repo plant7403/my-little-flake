@@ -191,10 +191,7 @@ in
       };
 
       programs.seahorse.enable = true; # enable the graphical frontend
-      environment.systemPackages = with pkgs; [
-        # fix pcscd
 
-      ];
       security = {
         rtkit.enable = true;
         polkit = {
