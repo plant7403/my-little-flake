@@ -247,6 +247,9 @@ in
         pkgs.gnome-keyring
         pkgs.gcr
       ];
+      # new
+      services.sysprof.enable = true;
+      hardware.sensor.iio.enable = true;
     })
     (mkIf cfg.autologin {
       # Enable automatic login for the user.
@@ -279,7 +282,6 @@ in
         allowedTCPPorts = [ 3389 ];
         allowedUDPPorts = [ 3389 ];
       };
-
     })
 
     (mkIf cfg.isSteamDeck {
