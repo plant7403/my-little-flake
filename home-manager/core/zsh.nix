@@ -253,10 +253,10 @@ truncation_symbol = "…/"};
 # Here is how you can shorten some long paths by text replacement
 # similar to mapped_locations in Oh My Posh:
 directory.substitutions = {
-"Documents" = "󰈙 "
-"Downloads" = " "
-"Music" = " "
-"Pictures" = " "}
+"Documents" = "󰈙 ";
+"Downloads" = " ";
+"Music" = " ";
+"Pictures" = " "};
 # Keep in mind that the order matters. For example:
 # "Important Documents" = " 󰈙 "
 # will not be replaced, because "Documents" was already substituted before.
