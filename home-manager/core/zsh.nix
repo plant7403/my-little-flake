@@ -100,7 +100,7 @@
           "git" # also requires `programs.git.enable = true;`
           "thefuck" # also requires `programs.thefuck.enable = true;`
         ];
-        theme = "robbyrussell";
+        #theme = "robbyrussell";
       };
       plugins = [
         {
