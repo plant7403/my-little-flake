@@ -63,7 +63,7 @@
           setopt share_history
 
 
-          export ANSI_MOTD_ART_DIR=/home/egor.
+          export ANSI_MOTD_ART_DIR=/home/egor/Downlo
           # globbing
           setopt extended_glob
 
