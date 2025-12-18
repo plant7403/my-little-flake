@@ -351,15 +351,15 @@ in
 
           # This is all that matters
           "workbench.colorTheme" = "Halcyon";
-          # The Cursive font is operator Mono, it's $200 and you need to buy it to get the cursive. Dank Mono or Victor Mono are good alternatives
+
           /*
             "[c]" = {
                      "editor.defaultFormatter" = "keyhr.42-c-format";
                    };
           */
-            "material-icon-theme.folders.color": "#8695b7";
-  "material-icon-theme.folders.theme"= "specific";
-  "material-icon-theme.hidesExplorerArrows" =  true;
+          "material-icon-theme.folders.color" = "#8695b7";
+          "material-icon-theme.folders.theme" = "specific";
+          "material-icon-theme.hidesExplorerArrows" = true;
         }
         // baseSettings;
       };
