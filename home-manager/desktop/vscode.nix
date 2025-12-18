@@ -355,8 +355,7 @@ in
           #"redhat.telemetry.enabled" = false;
 
           # This is all that matters
-          "workbench.colorTheme" = "
-brittanychiang.halcyon";
+          "workbench.colorTheme" = "Halcyon";
           # The Cursive font is operator Mono, it's $200 and you need to buy it to get the cursive. Dank Mono or Victor Mono are good alternatives
           /*
             "[c]" = {
