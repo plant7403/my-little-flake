@@ -129,7 +129,10 @@
           { name = "autojump"; }
           { name = "git"; }
           { name = "colored-man-pages"; }
-          { name = ""zsh-users/zsh-syntax-highlighting""; }
+          {
+            name = "" zsh-users/zsh-syntax-highlighting "";
+            tags = [ "defer:3" ];
+          }
           { name = "zsh-users/history"; }
           {
             name = "zsh-users/zsh-history-substring-search";
