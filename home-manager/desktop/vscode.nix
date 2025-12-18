@@ -347,7 +347,7 @@ in
           ]
           ++ forOpenVsx baseExtensions
           ++ forVscode [
-            "keyhr.42-c-format"
+            #"keyhr.42-c-format"
           ]
           ++ forVscode baseExtensionsVS;
         userSettings = {
