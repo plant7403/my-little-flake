@@ -155,6 +155,8 @@ in
           #  package = pkgs.liberation_ttf;
           #  name = "Liberation Serif";
           #};
+          serif = config.stylix.fonts.monospace;
+          sansSerif = config.stylix.fonts.monospace;
           monospace = {
             package = pkgs.nerd-fonts.liberation;
             name = "Liberation Mono";
