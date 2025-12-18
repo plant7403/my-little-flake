@@ -247,9 +247,10 @@ disabled = true; # Disabled by default
 
 directory = {
 style = "bg:#DA627D";
-format = "[ $path ]($style)"
-truncation_length = 3
-truncation_symbol = "…/"};
+format = "[ $path ]($style)";
+truncation_length = 3;
+truncation_symbol = "…/";
+};
 
 # Here is how you can shorten some long paths by text replacement
 # similar to mapped_locations in Oh My Posh:
