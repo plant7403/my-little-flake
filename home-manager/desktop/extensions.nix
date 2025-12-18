@@ -185,7 +185,7 @@
     */
     "com/github/amezin/ddterm" = {
     panel-icon-type = "none";
-    background-opacity" = "0.5";
+    background-opacity = "0.5";
     hide-when-focus-lost" = true;
     hide-window-on-esc" = true;
     tab-label-ellipsize-mode" = "start";};
