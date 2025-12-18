@@ -128,7 +128,7 @@ in
       sopsFile = ./../../home-manager/secrets/common.yaml;
     };
   };
-  systemd.user.services.attic-watch-store = {
+  systemd.user.services.syncthing-init = {
     Unit = {
       Description = "Push nix store changes to attic binary cache.";
     };
