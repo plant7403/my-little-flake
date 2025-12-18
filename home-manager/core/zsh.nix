@@ -94,7 +94,7 @@
         "pkill *"
         "cp *"
       ];
-      ANSI_MOTD_ART_DIR
+      #ANSI_MOTD_ART_DIR
       # With Oh-My-Zsh:
       oh-my-zsh = {
         enable = true;
