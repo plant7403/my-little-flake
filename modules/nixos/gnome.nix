@@ -151,7 +151,6 @@ in
             package = pkgs.liberation_ttf;
             name = "Liberation Sans";
           };
-
           serif = {
             package = pkgs.liberation_ttf;
             name = "Liberation Serif";
