@@ -133,7 +133,7 @@ in
         };
         fonts = {
           sansSerif = {
-            package = pkgs.liberation_ttf;
+            package = pkgs.nerd-fonts.departure-mono;
             name = "DepartureMono Nerd Font 11";
           };
           serif = {
