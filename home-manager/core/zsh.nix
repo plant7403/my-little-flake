@@ -178,6 +178,5 @@ programs.starship.enableNushellIntegration
 programs.starship.enableTransience
 programs.starship.enable
 programs.starship.enableZshIntegration
-programs.starship.package
 programs.starship.settings
 }
