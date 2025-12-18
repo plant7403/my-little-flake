@@ -128,7 +128,7 @@ in
       sopsFile = ./../../home-manager/secrets/common.yaml;
     };
     systemd.user.services. = {
-      after = [ "syncthing.service" ];
+      after = [ "syncthing.servicesops-nix" ];
     };
 
     /*
