@@ -7,7 +7,7 @@
     settings = {
       #theme = "catppuccin-mocha";
       font-size = 12;
-      background = 282c34";
+      background = "#282c34";
       foreground = "#000000ff";
       keybind = [
         "ctrl+h=goto_split:left"
