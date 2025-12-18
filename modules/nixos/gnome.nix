@@ -132,14 +132,14 @@ in
           base0F = "9e5769";
         };
         fonts = {
-          #sansSerif = {
-          #  package = pkgs.liberation_ttf;
-          #  name = "Liberation Sans";
-          #};
-          #serif = {
-          #  package = pkgs.liberation_ttf;
-          #  name = "Liberation Serif";
-          #};
+          sansSerif = {
+            package = pkgs.liberation_ttf;
+            name = "Liberation Sans";
+          };
+          serif = {
+            package = pkgs.liberation_ttf;
+            name = "Liberation Serif";
+          };
 
           monospace = {
             package = pkgs.nerd-fonts.departure-mono;
