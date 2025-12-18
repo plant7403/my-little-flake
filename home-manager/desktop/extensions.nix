@@ -74,10 +74,8 @@
       ];
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings" "custom0"
-    binding
-  '<Shift><Control>w'
-command
-  'ulauncher'
+    binding '<Shift><Control>w'
+command 'ulauncher'
 name
   'ulauncher'
 
