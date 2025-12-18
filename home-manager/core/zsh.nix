@@ -140,15 +140,8 @@ in
           # { name = "zsh-users/git"; }
           #{ name = "ael-code/zsh-colored-man-pages"; }
           #{ name = "woefe/wbase.zsh"; }
-          
-          {
-            name = "sharkdp/fd";
-            tags = [
-              "from:gh-r"
-              "as:command"
-              "rename-to:fd" # "use"="*x86_64-unknown-linux-gnu.tar.gz"
-            ];
-          }
+
+       
           { name = "zsh-users/zsh-completions"; }
           {
             name = "zsh-users/zsh-autosuggestions";
