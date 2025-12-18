@@ -135,7 +135,7 @@
         CompactMode = false;
         HidePasswords = true;
       };
-      
+      Kee
 
       SSHAgent.Enabled = true;
     };
