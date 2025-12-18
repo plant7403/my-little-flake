@@ -42,8 +42,8 @@ let
     #"editor.fontSize" = 17;
     "editor.lineHeight" = 24.65;
     "editor.letterSpacing" = 0.5;
-    #"editor.fontWeight" = "400";
-    #"editor.fontLigatures" = true;
+    "editor.fontWeight" = "400";
+    "editor.fontLigatures" = true;
     #"editor.cursorStyle" = "line";
     #"editor.cursorWidth" = 5;
     #"editor.cursorBlinking" = "solid";
