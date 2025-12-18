@@ -154,14 +154,15 @@ in
             name = "zsh-users/zsh-history-substring-search";
             tags = [ "defer:3" ];
           }
-        
-        {
+
+          {
             name = "axieax/zsh-starship";
             tags = [
               "as:theme"
               "depth:1"
             ];
           }
+        ];
       };
 
       /*
