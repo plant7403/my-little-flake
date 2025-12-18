@@ -268,7 +268,7 @@ directory.substitutions = {
 c = {
 symbol = " ";
 style = "bg:#86BBD8";
-format = '[ $symbol ($version) ]($style)'
+format = "[ $symbol ($version) ]($style)"'
 };
 cpp = {
 symbol = " "
