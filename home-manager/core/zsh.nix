@@ -120,7 +120,8 @@ in
         {
           name = "zsh-autosuggestions";
           src = pkgs.zsh-autosuggestions;
-          file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+          file = "share/zsh-autosuggestions
+/powerlevel10k.zsh-theme";
         }
       ];
       zplug = {
