@@ -155,6 +155,13 @@ in
             tags = [ "defer:3" ];
           }
         ];
+        {
+            name = "romkatv/powerlevel10k";
+            tags = [
+              "as:theme"
+              "depth:1"
+            ];
+          }
       };
 
       /*
