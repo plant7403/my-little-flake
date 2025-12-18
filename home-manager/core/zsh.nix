@@ -127,13 +127,11 @@
         ];
       };
 
-      completionInit = ''
+      /*
+        completionInit = ''
 
-      '';
-
-      initContent = ''
-        
-      '';
+           '';
+      */
 
     };
   };
