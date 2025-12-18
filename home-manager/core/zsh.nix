@@ -109,7 +109,7 @@
         "cp *"
       ];
       /*
-        "autojump"
+                "autojump"
                "git"
                "colored-man-pages"
                "history"
