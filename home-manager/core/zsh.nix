@@ -235,12 +235,13 @@ show_always = true;
 style_user = "bg:#9A348E";
 style_root = "bg:#9A348E";
 format = "[$user ]($style)";
-disabled = false;};
+disabled = false;
+};
 
 # An alternative to the username module which displays a symbol that
 # represents the current operating system
 os = {
-style = "bg:#9A348E"
+style = "bg:#9A348E";
 disabled = true # Disabled by default
 };
 
