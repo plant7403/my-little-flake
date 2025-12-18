@@ -102,6 +102,8 @@
 
           # fewer distractions
           unsetopt beep nomatch notify
+
+          eval "$(starship init zsh)"
         '')
       ];
 
