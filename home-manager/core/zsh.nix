@@ -131,7 +131,7 @@ in
         plugins = [
           # { name = "zsh-users/git"; }
           #{ name = "ael-code/zsh-colored-man-pages"; }
-          { name = "woefe/wbase.zsh"; }
+          #{ name = "woefe/wbase.zsh"; }
           { name = "junegunn/fzf"; }
           { name = "junegunn/fzf-bin"; }
           {
