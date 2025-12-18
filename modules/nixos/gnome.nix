@@ -133,11 +133,11 @@ in
         };
         fonts = {
           sansSerif = {
-            package = pkgs.nerd-fonts.departure-mono;
+            package = nerd-fonts.adwaita-mono;
             name = "DepartureMono Nerd Font";
           };
           serif = {
-            package = pkgs.nerd-fonts.departure-mono;
+            package = pkgs.nerd-fonts.adwaita-mono;
             name = "Adwaita Mono";
           };
           monospace = {
