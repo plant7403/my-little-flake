@@ -144,7 +144,7 @@ in
             ];
           }
           { name = "zsh-users/zsh-completions"; }
-          { name = "zsh-users/zsh-autosuggestions"; }
+          { name = "zsh-users/zsh-autosuggestions"; tags =  }
           { name = "zsh-users/history"; }
           {
             name = " zsh-users/zsh-syntax-highlighting ";
