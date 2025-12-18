@@ -194,7 +194,7 @@ in
   programs.starship.enable = true;
   programs.starship.enableZshIntegration = true;
   programs.starship.settings = {
-    "$schema" = 'https://starship.rs/config-schema.json'
+    "$schema" = 'https://starship.rs/config-schema.json';
 
 format = """
 [](#9A348E)\
