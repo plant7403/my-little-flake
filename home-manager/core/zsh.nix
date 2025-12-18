@@ -239,10 +239,10 @@ disabled = false};
 
 # An alternative to the username module which displays a symbol that
 # represents the current operating system
-os]
+os = {
 style = "bg:#9A348E"
 disabled = true # Disabled by default
-
+}
 [directory]
 style = "bg:#DA627D"
 format = "[ $path ]($style)"
