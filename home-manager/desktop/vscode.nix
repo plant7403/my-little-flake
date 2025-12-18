@@ -358,8 +358,8 @@ in
                    };
           */
             "material-icon-theme.folders.color": "#8695b7";
-  "material-icon-theme.folders.theme": "specific"
-  "material-icon-theme.hidesExplorerArrows": true,
+  "material-icon-theme.folders.theme": "specific";
+  "material-icon-theme.hidesExplorerArrows" =  true;
         }
         // baseSettings;
       };
