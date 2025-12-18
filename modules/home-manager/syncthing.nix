@@ -127,7 +127,7 @@ in
     sops.secrets."syncthing/password" = {
       sopsFile = ./../../home-manager/secrets/common.yaml;
     };
-    systemd.user.services.sops-nix = {
+    systemd.user.services. = {
       after = [ "syncthing.service" ];
     };
 
