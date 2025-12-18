@@ -151,7 +151,7 @@
         image = "debian:13";
         init_hooks = [
           "ln -sf /usr/bin/distrobox-host-exec /usr/local/bin/podman"
-          "ln -sf /usr/bin/distrobox-host-exec /usr/local/bin/docker-compose"
+          "ln -sf /usr/bin/distrobox-host-exec /usr/local/bin/pdoman-compose"
         ];
       };
     };

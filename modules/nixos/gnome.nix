@@ -213,7 +213,7 @@ in
       security.pam.services.login.enableGnomeKeyring = true;
       services.dbus.enable = true;
       services.gnome.gnome-keyring.enable = true;
-      services.polkit-gnome.enable = true;
+
       services.accounts-daemon.enable = true;
       services.dbus.packages = [
         pkgs.gnome-keyring
