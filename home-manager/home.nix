@@ -135,7 +135,9 @@
     };
   };
 
-  programs.distrobox.
+  programs.distrobox = {
+    
+  };
 
   programs.freetube.enable = true;
   programs.freetube.settings = {
