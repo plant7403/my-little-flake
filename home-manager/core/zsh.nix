@@ -129,7 +129,7 @@ in
           #  ];
           #} # Installations with additional options. For the list of options, please refer to Zplug README.
           #{ name = "powerlevel10k-config"; }
-          { name = "autojump"; }
+          { name = "wting/autojump"; }
           { name = "git"; }
           { name = "colored-man-pages"; }
           { name = "woefe/wbase.zsh"; }
