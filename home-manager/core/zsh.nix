@@ -129,7 +129,7 @@
           { name = "autojump"; }
           { name = "git"; }
           { name = "colored-man-pages"; }
-          
+          {name = }
           { name = "zsh-users/zsh-completions"; }
           { name = "zsh-users/zsh-autosuggestions"; }
           { name = "zsh-users/history"; }
