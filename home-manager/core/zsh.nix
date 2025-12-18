@@ -5,10 +5,6 @@
   ...
 }:
 
-let
-  theme = builtins.fromTOML (builtins.readFile ./pastel.toml);
-in
-
 {
   #home.file."${config.xdg.cacheHome}/oh-my-zsh/.keep".text = "";
 
