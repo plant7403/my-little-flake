@@ -141,8 +141,6 @@ in
           #{ name = "ael-code/zsh-colored-man-pages"; }
           #{ name = "woefe/wbase.zsh"; }
 
-       
-          { name = "zsh-users/zsh-completions"; }
           {
             name = "zsh-users/zsh-autosuggestions";
             tags = [ "depth:1" ];
