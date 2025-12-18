@@ -118,7 +118,8 @@ in
       ];
       plugins = [
         {
-          name = "powerlevel10k";
+          name = "zsh-autosuggestions
+";
           src = pkgs.zsh-powerlevel10k;
           file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
         }
