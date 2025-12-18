@@ -137,23 +137,8 @@ in
           name = pkgs.zsh-syntax-highlighting.pname;
           src = pkgs.zsh-syntax-highlighting.src;
         }
-        {
-          name = pkgs.zsh-history-substring-search.pname;
-          src = pkgs.zsh-history-substring-search.src;
-        }
 
       ];
-      zplug = {
-        enable = true;
-        plugins = [
-          # { name = "zsh-users/git"; }
-          #{ name = "ael-code/zsh-colored-man-pages"; }
-          #{ name = "woefe/wbase.zsh"; }
-
-          { name = "zsh-users/history"; }
-
-        ];
-      };
 
       /*
         completionInit = ''
