@@ -10,7 +10,7 @@ let
 in
 
 {
-  home.file."${config.xdg.cacheHome}/oh-my-zsh/.keep".text = "";
+  #home.file."${config.xdg.cacheHome}/oh-my-zsh/.keep".text = "";
 
   home.persistence."/persist/home/egor" = {
     directories = [
