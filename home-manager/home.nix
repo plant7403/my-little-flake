@@ -135,6 +135,8 @@
     };
   };
 
+  programs.distrobox.
+
   programs.freetube.enable = true;
   programs.freetube.settings = {
     allowDashAv1Formats = true;
