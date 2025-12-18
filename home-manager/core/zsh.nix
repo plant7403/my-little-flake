@@ -63,6 +63,7 @@
           setopt share_history
 
 
+
           # globbing
           setopt extended_glob
 
@@ -93,7 +94,7 @@
         "pkill *"
         "cp *"
       ];
-      
+      ANSI_MOTD_ART_DIR
       # With Oh-My-Zsh:
       oh-my-zsh = {
         enable = true;
