@@ -252,7 +252,7 @@ truncation_symbol = "…/"};
 
 # Here is how you can shorten some long paths by text replacement
 # similar to mapped_locations in Oh My Posh:
-directory.substitutions]
+directory.substitutions = 
 "Documents" = "󰈙 "
 "Downloads" = " "
 "Music" = " "
