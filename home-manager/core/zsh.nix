@@ -139,9 +139,8 @@ in
         }
         {
           name = pkgs.zsh-histdb.pname;
-          src = pkgs.zsh-syntax-highlighting.src;
+          src = pkgs.zsh-histdb.src;
         }
-
       ];
     };
   };
