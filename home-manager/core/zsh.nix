@@ -129,12 +129,17 @@
           { name = "autojump"; }
           { name = "git"; }
           { name = "colored-man-pages"; }
-          {name = "woefe/wbase.zsh";}
-          {name = "junegunn/fzf";}
-          {name = "junegunn/fzf-bin";}
-          {name = "sharkdp/fd"l tags = [
-            "from:gh-r" "as:command" "rename-to:fd" /* "use"="*x86_64-unknown-linux-gnu.tar.gz" */
-          ];}
+          { name = "woefe/wbase.zsh"; }
+          { name = "junegunn/fzf"; }
+          { name = "junegunn/fzf-bin"; }
+          {
+            name = "sharkdp/fd";
+            tags = [
+              "from:gh-r"
+              "as:command"
+              "rename-to:fd" # "use"="*x86_64-unknown-linux-gnu.tar.gz"
+            ];
+          }
           { name = "zsh-users/zsh-completions"; }
           { name = "zsh-users/zsh-autosuggestions"; }
           { name = "zsh-users/history"; }
@@ -164,4 +169,15 @@
       enableZshIntegration = true;
     };
   */
+  programs.starship.configPath
+programs.starship.enableBashIntegration
+programs.starship.enableFishIntegration
+programs.starship.enableInteractive
+programs.starship.enableIonIntegration
+programs.starship.enableNushellIntegration
+programs.starship.enableTransience
+programs.starship.enable
+programs.starship.enableZshIntegration
+programs.starship.package
+programs.starship.settings
 }
