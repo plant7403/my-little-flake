@@ -123,7 +123,7 @@
     autostart = true;
     settings = {
       Browser.Enabled = true;
-      security
+      Security.QuickUnlock = true;
 
       GUI = {
         AdvancedSettings = true;
