@@ -148,7 +148,7 @@ containers = {
   };
 };
 enableSystemdUnit = true;
-enable
+enable = true;
 package
 settings
   };
