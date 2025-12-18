@@ -37,8 +37,8 @@ let
     "editor.wordWrap" = "off";
     "diffEditor.wordWrap" = "off";
     # "blockman.n33A01B2FromDepth0ToInwardForAllBackgrounds" = "10,0,0,1; none";
-    "editor.fontFamily" = "Operator Mono, Menlo, Monaco, 'Courier New', monospace";
-    "terminal.integrated.fontFamily" = "'Operator Mono', 'Inconsolata for Powerline', monospace";
+    #"editor.fontFamily" = "Operator Mono, Menlo, Monaco, 'Courier New', monospace";
+    #"terminal.integrated.fontFamily" = "'Operator Mono', 'Inconsolata for Powerline', monospace";
     "editor.fontSize" = 17;
     "editor.lineHeight" = 24.65;
     "editor.letterSpacing" = 0.5;
