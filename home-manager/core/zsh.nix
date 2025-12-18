@@ -31,7 +31,7 @@
   home.shell = {
     enableZshIntegration = true;
   };
-  programs.thefuck.enable = true;
+  #programs.thefuck.enable = true;
   programs = {
     zsh = {
       enable = true;
