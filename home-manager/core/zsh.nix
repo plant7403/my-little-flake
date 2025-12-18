@@ -321,13 +321,13 @@ style = "bg:#86BBD8";
 format = "[ $symbol ($version) ]($style)";
 };
 julia = {
-symbol = " "
-style = "bg:#86BBD8"
-format = "[ $symbol ($version) ]($style)"
+symbol = " ";
+style = "bg:#86BBD8";
+format = "[ $symbol ($version) ]($style)";
 };
 nodejs = {
-symbol = ""
-style = "bg:#86BBD8"
+symbol = "";
+style = "bg:#86BBD8";
 format = "[ $symbol ($version) ]($style)"
 };
 nim = {
