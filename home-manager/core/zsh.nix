@@ -256,14 +256,14 @@ directory.substitutions = {
 "Documents" = "󰈙 ";
 "Downloads" = " ";
 "Music" = " ";
-"Pictures" = " "};
+"Pictures" = " ";};
 # Keep in mind that the order matters. For example:
 # "Important Documents" = " 󰈙 "
 # will not be replaced, because "Documents" was already substituted before.
 # So either put "Important Documents" before "Documents" or use the substituted version:
 # "Important 󰈙 " = " 󰈙 "
 
-[c]
+c]
 symbol = " "
 style = "bg:#86BBD8"
 format = '[ $symbol ($version) ]($style)'
