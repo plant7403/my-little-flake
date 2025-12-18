@@ -279,12 +279,12 @@ symbol = " "
 style = "bg:#06969A"
 format = '[ $symbol $context ]($style)'
 };
-elixir = 
+elixir = {
 symbol = " "
 style = "bg:#86BBD8"
 format = '[ $symbol ($version) ]($style)'
-
-[elm]
+};
+elm]
 symbol = " "
 style = "bg:#86BBD8"
 format = '[ $symbol ($version) ]($style)'
