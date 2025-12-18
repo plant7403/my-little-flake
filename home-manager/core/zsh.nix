@@ -197,9 +197,9 @@ in
     "$schema" = "https://starship.rs/config-schema.json";
 
     format = lib.concatStrings [
-      "[](#9A348E)\"
-      "$os\"
-      "$username\"
+      "[](#9A348E)"
+      "$os"
+      "$username"
       "[](bg:#DA627D fg:#9A348E)"
       "$directory"
       "[](fg:#DA627D bg:#FCA17D)"
