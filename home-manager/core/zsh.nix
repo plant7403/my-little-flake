@@ -147,6 +147,7 @@
         }
         {
           name = "ansimotd";
+          file 
         }
       ];
     };
