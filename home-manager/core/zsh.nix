@@ -130,7 +130,10 @@
           { name = "git"; }
           { name = "colored-man-pages"; }
           { name = "zsh-users/history"; }
-          { name = "zsh-users/zsh-history-substring-search"; tags = [] }
+          {
+            name = "zsh-users/zsh-history-substring-search";
+            tags = [ "defer:3" ];
+          }
         ];
       };
 
