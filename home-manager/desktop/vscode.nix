@@ -352,6 +352,8 @@ in
           # This is all that matters
           "workbench.colorTheme" = "Halcyon";
 
+          "editor.renderWhitespace" = "all";
+
           /*
             "[c]" = {
                      "editor.defaultFormatter" = "keyhr.42-c-format";
