@@ -47,7 +47,7 @@ in
       envExtra = ''
         umask 077
       '';
-      dotDir = "${config.xdg.configHome}/zsh";
+      #dotDir = "${config.xdg.configHome}/zsh";
       autosuggestion.enable = true;
       enableCompletion = true;
       enableVteIntegration = true;
