@@ -57,6 +57,7 @@ let
     "vscode-pets.position" = "explorer";
     #"vscode-pets.theme" = "forest";
     #"vscode-pets.throwBallWithMouse" = false;
+    "git.confirmSync": false
   };
   baseExtensions = [
     "pkief.material-icon-theme"
