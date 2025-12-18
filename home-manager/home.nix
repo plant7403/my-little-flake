@@ -136,7 +136,7 @@
   };
 
   programs.distrobox = {
-containers = 
+containers = {}
 enableSystemdUnit
 enable
 package
