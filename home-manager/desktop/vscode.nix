@@ -47,7 +47,8 @@ let
     "editor.cursorStyle" = "line";
     "editor.cursorWidth" = 5;
     "editor.cursorBlinking" = "solid";
-    "editor.renderWhitespace" = "all";
+    "editor.renderWhitespace" = ''
+      all'';
 
     "editor.snippetSuggestions" = "top";
     "workbench.startupEditor" = "newUntitledFile";
