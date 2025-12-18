@@ -117,12 +117,10 @@ in
         "cp *"
       ];
       plugins = [
-        {
-          name = "zsh-autosuggestions";
-          src = pkgs.zsh-autosuggestions;
-          file = "share/zsh-autosuggestions
-/powerlevel10k.zsh-theme";
-        }
+            {
+        name = pkgs.zsh-autopair.pname;
+        src = pkgs.zsh-autopair.src;
+    }
       ];
       zplug = {
         enable = true;
