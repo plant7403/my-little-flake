@@ -268,11 +268,11 @@ symbol = " "
 style = "bg:#86BBD8"
 format = '[ $symbol ($version) ]($style)'
 };
-cpp = 
+cpp = {
 symbol = " "
 style = "bg:#86BBD8"
 format = '[ $symbol ($version) ]($style)'
-
+};
 [docker_context]
 symbol = " "
 style = "bg:#06969A"
