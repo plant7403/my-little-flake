@@ -59,8 +59,7 @@
 
           # history
           setopt share_history
-          bindkey '^[[A' history-beginning-search-backward
-          bindkey '^[[B' history-beginning-search-forward
+
 
           # globbing
           setopt extended_glob
