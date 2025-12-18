@@ -136,7 +136,11 @@
   };
 
   programs.distrobox = {
-    
+    programs.distrobox.containers
+programs.distrobox.enableSystemdUnit
+programs.distrobox.enable
+programs.distrobox.package
+programs.distrobox.settings
   };
 
   programs.freetube.enable = true;
