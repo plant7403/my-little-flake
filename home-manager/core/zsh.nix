@@ -62,6 +62,8 @@
       */
       initContent = lib.mkMerge [
         (lib.mkBefore ''
+          POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
+
           HISTDB_FILE=''${XDG_DATA_HOME-$HOME/.local/share}/zsh/history.db
 
           # Do this early so fast-syntax-highlighting can wrap and override this
