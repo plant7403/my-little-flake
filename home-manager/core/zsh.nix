@@ -205,8 +205,8 @@ in
       "[](fg:#DA627D bg:#FCA17D)\"
       "$git_branch\"
       "$git_status\"
-      [](fg:#FCA17D bg:#86BBD8)\
-      $c\
+      "[](fg:#FCA17D bg:#86BBD8)\"
+      "$c\"
       $elixir\
       $elm\
       $golang\
