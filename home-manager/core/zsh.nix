@@ -273,12 +273,12 @@ format = "[ $symbol ($version) ]($style)";
 cpp = {
 symbol = " ";
 style = "bg:#86BBD8";
-format = "[ $symbol ($version) ]($style)"'
+format = "[ $symbol ($version) ]($style)";
 };
 
 docker_context = {
-symbol = " "
-style = "bg:#06969A"
+symbol = " ";
+style = "bg:#06969A";
 format = '[ $symbol $context ]($style)'
 };
 elixir = {
