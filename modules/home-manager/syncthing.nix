@@ -127,11 +127,12 @@ in
     sops.secrets."syncthing/password" = {
       sopsFile = ./../../home-manager/secrets/common.yaml;
     };
-  };
-  systemd.user.services.syncthing-init = {
-    Install = {
-      WantedBy = [ "default.target" ];
+    systemd.user.services.syncthing-init = {
+      Install = {
+        WantedBy = [ "default.target" ];
+      };
     };
+
     /*
       Service = {
         ExecStart = "${pkgs.writeShellScript "watch-store" ''
