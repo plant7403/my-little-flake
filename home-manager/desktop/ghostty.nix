@@ -7,11 +7,12 @@
     settings = {
       #theme = "catppuccin-mocha";
       font-size = 12;
-      background = 282c34;
+      background = "282c34";
       foreground = "ffffff";
       keybind = [
         "ctrl+h=goto_split:left"
         "ctrl+l=goto_split:right"
+        "ctrl+z=close_surface"
       ];
       quit-after-last-window-closed = true;
       quit-after-last-window-closed-delay = "15m";
