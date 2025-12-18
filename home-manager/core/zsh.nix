@@ -196,7 +196,7 @@ in
   programs.starship.settings = {
     "$schema" = "https://starship.rs/config-schema.json";
 
-    format = "" "
+    format = ""
         [](#9A348E)\
         $os\
         $username\
