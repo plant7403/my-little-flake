@@ -147,8 +147,8 @@
         }
         {
           name = "ansimotd";
-          file = "zsh-ansimotd.plugin.zsh"
-                    src = pkgs.fetchFromGitHub {
+          file = "zsh-ansimotd.plugin.zsh";
+          src = pkgs.fetchFromGitHub {
             owner = "mafredri";
             repo = "zsh-async";
             rev = "3ba6e2d1ea874bfb6badb8522ab86c1ae272923d";
