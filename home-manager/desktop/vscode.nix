@@ -357,9 +357,11 @@ in
           # This is all that matters
           "workbench.colorTheme" = "Cobalt2";
           # The Cursive font is operator Mono, it's $200 and you need to buy it to get the cursive. Dank Mono or Victor Mono are good alternatives
-          "[c]" = {
-            "editor.defaultFormatter" = "keyhr.42-c-format";
-          };
+          /*
+            "[c]" = {
+                     "editor.defaultFormatter" = "keyhr.42-c-format";
+                   };
+          */
         }
         // baseSettings;
       };
