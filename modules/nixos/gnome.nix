@@ -247,9 +247,7 @@ in
         pkgs.gnome-keyring
         pkgs.gcr
       ];
-      # new
-      services.sysprof.enable = true;
-      hardware.sensor.iio.enable = true;
+
     })
     (mkIf cfg.autologin {
       # Enable automatic login for the user.
