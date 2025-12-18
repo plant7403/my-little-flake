@@ -19,8 +19,8 @@
       quit-after-last-window-closed-delay = "15m";
 
       alpha-blending = "linear";
-      mouse-shift-capture = ""
-
+      mouse-shift-capture = "true";
+      
     };
     systemd.enable = true;
   };
