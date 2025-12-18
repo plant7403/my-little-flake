@@ -242,11 +242,11 @@ disabled = false;
 # represents the current operating system
 os = {
 style = "bg:#9A348E";
-disabled = true # Disabled by default
+disabled = true; # Disabled by default
 };
 
 directory = {
-style = "bg:#DA627D"
+style = "bg:#DA627D";
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"};
