@@ -170,8 +170,7 @@
     };
   */
   programs.starship.configPath
-programs.starship.enableBashIntegration
-programs.starship.enableFishIntegration
+
 programs.starship.enableInteractive = true;
 
 programs.starship.enableTransience = true;
