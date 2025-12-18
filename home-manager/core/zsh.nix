@@ -129,7 +129,7 @@
           { name = "autojump"; }
           { name = "git"; }
           { name = "colored-man-pages"; }
-          {name = }
+          {name = "woefe/wbase.zsh"}
           {name = "junegunn/fzf";}
           {name = "junegunn/fzf-bin";}
           {name = "sharkdp/fd" tags = [
