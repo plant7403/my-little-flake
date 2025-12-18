@@ -134,7 +134,7 @@ in
         fonts = {
           sansSerif = {
             package = pkgs.liberation_ttf;
-            name = "Liberation Sans";
+            name = "DepartureMono Nerd Font 11";
           };
           serif = {
             package = pkgs.liberation_ttf;
