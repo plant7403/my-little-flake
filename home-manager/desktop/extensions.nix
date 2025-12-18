@@ -74,15 +74,14 @@
       ];
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
-        "binding" = [ "<Shift><Control>w" ];
-        "command" = "ulauncher";
-        "name" = "ulauncher";
+      "binding" = [ "<Shift><Control>w" ];
+      "command" = "ulauncher";
+      "name" = "ulauncher";
     };
     "org/gnome/settings-daemon/plugins/media-keys" = {
-       www = [ "<Shift><Control>s" ];
-      };
-
+      www = [ "<Shift><Control>s" ];
     };
+
     "org/gnome/mutter" = {
       "edge-tiling" = true;
       experimental-features = [
