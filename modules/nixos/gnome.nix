@@ -74,6 +74,7 @@ in
         snoop
         #ghostty
         refine
+        pcscliteWithPolkit.out
       ];
       services.udev.packages = [
         pkgs.gnome-settings-daemon
