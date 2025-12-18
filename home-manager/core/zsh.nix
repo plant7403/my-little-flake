@@ -337,12 +337,12 @@ symbol = ""
 style = "bg:#86BBD8"
 format = '[ $symbol ($version) ]($style)'
 };
-scala = 
+scala = {
 symbol = " "
 style = "bg:#86BBD8"
 format = '[ $symbol ($version) ]($style)'
-
-[time]
+};
+time]
 disabled = false
 time_format = "%R" # Hour:Minute Format
 style = "bg:#33658A"
