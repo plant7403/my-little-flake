@@ -44,7 +44,6 @@ in
     */
     zsh = {
       enable = true;
-      #autocd = true;
       envExtra = ''
         umask 077
       '';
