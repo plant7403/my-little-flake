@@ -122,8 +122,8 @@
     enable = true;
     autostart = true;
     settings = {
-      General.ConfigVersion=2
-      Browser.Enabled = true;
+      General.ConfigVersion = 2;
+      Browser = Enabled = true;
       Security.QuickUnlock = true;
 
       GUI = {
