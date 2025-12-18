@@ -139,16 +139,9 @@ in
         }
 
       ];
-
     };
   };
 
-  /*
-    programs.zoxide = {
-      enable = true;
-      enableZshIntegration = true;
-    };
-  */
   #programs.starship.configPath
 
   programs.starship.enableInteractive = true;
