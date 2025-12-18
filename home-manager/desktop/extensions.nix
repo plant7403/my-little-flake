@@ -117,7 +117,7 @@
       ];
 
       favorite-apps = [
-        "org.gnome.Console.desktop"
+        #"org.gnome.Console.desktop"
         "com.mitchellh.ghostty.desktop"
         "org.gnome.Nautilus.desktop"
         "librewolf.desktop"
