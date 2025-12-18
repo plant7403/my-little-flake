@@ -220,9 +220,9 @@ in
       "$scala"
       [](fg:#86BBD8 bg:#06969A)
       $docker_context
-      [](fg:#06969A bg:#33658A)\
-      $time\
-      [ ](fg:#33658A)\
+      [](fg:#06969A bg:#33658A)
+      $time
+      [ ](fg:#33658A)
     ];
 
     # Disable the blank line at the start of the prompt
