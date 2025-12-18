@@ -125,7 +125,7 @@
       GUI = {
         AdvancedSettings = true;
         ApplicationTheme = "classic";
-        CompactMode = true;
+        CompactMode = false;
         HidePasswords = true;
       };
 
