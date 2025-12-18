@@ -110,12 +110,7 @@ in
           gnome.enable = true;
           gtk = {
             enable = true;
-            /*
-              theme = lib.mkForce {
-                name = "catppuchin";
-                package = pkgs.catppuccin-gtk;
-              };
-            */
+
           };
           qt = {
             enable = true;
