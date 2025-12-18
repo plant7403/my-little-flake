@@ -138,7 +138,7 @@ in
           };
           serif = {
             package = pkgs.nerd-fonts.departure-mono;
-            name = "DepartureMono Nerd Font Propo Bold Italic";
+            name = "Adwaita Mono";
           };
           monospace = {
             package = pkgs.nerd-fonts.departure-mono;
