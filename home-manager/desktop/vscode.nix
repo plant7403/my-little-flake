@@ -343,7 +343,7 @@ in
 
             "babyfox1306.pdf-forge"
             "kube.42header"
-            "mariusvanwijk-joppekoers.codam-norminette-3"
+            #"mariusvanwijk-joppekoers.codam-norminette-3"
           ]
           ++ forOpenVsx baseExtensions
           ++ forVscode [
