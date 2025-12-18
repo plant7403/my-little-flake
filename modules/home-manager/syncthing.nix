@@ -129,7 +129,7 @@ in
     };
     systemd.user.services.syncthing-init = {
       Install = {
-        WantedBy = [ "sops.nix.target" ];
+        WantedBy = [ "sops.nix.service" ];
       };
     };
 
