@@ -298,11 +298,11 @@ style = "bg:#FCA17D";
 format = "[ $symbol $branch ]($style)";
 };
 git_status = {
-style = "bg:#FCA17D"
-format = "[$all_status$ahead_behind ]($style)"
+style = "bg:#FCA17D";
+format = "[$all_status$ahead_behind ]($style)";
 };
 golang = {
-symbol = " "
+symbol = " ";
 style = "bg:#86BBD8"
 format = "[ $symbol ($version) ]($style)"
 };
