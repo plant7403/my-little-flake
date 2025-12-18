@@ -336,8 +336,8 @@ rust = {
 symbol = ""
 style = "bg:#86BBD8"
 format = '[ $symbol ($version) ]($style)'
-}
-[scala]
+};
+scala = 
 symbol = " "
 style = "bg:#86BBD8"
 format = '[ $symbol ($version) ]($style)'
