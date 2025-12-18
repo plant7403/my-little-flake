@@ -48,7 +48,7 @@
 
       initContent = lib.mkMerge [
         (lib.mkBefore ''
-          #HISTDB_FILE=''${XDG_DATA_HOME-$HOME/.local/share}/zsh/history.db
+          HISTDB_FILE=''${XDG_DATA_HOME-$HOME/.local/share}/zsh/history.db
 
           # Do this early so fast-syntax-highlighting can wrap and override this
           #if autoload history-search-end; then
