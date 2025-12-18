@@ -52,6 +52,8 @@
 
     dconf2nix
   ];
+
+  services.polkit-gnome.enable = true;
   ### SHORTCUTS
   dconf.settings = {
     "org/gnome/desktop/input-sources" = {
