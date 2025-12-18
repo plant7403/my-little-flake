@@ -137,6 +137,10 @@ in
           name = pkgs.zsh-syntax-highlighting.pname;
           src = pkgs.zsh-syntax-highlighting.src;
         }
+        {
+          name = pkgs.zsh-syntax-highlighting.pname;
+          src = pkgs.zsh-syntax-highlighting.src;
+        }
 
       ];
     };
