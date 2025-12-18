@@ -291,7 +291,7 @@ elm = {
 symbol = " ";
 style = "bg:#86BBD8";
 format = "[ $symbol ($version) ]($style)";
-}
+};
 git_branch = {
 symbol = "";
 style = "bg:#FCA17D";
@@ -348,8 +348,8 @@ format = "[ $symbol ($version) ]($style)";
 time = {
 disabled = false;
 time_format = "%R"; # Hour:Minute Format
-style = "bg:#33658A"
-format = "[ ♥ $time ]($style)"
+style = "bg:#33658A";
+format = "[ ♥ $time ]($style)";
 }
   };
 }
