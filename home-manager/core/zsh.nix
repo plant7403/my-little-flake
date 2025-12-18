@@ -134,7 +134,7 @@ in
           src = pkgs.zsh-history-substring-search.src;
         }
         {
-          name = pkgs.zsh-history-substring-search.pname;
+          name = pkgs.zsh-syntax-highlighting.pname;
           src = pkgs.zsh-history-substring-search.src;
         }
         {
@@ -154,13 +154,6 @@ in
           #{ name = "woefe/wbase.zsh"; }
 
           { name = "zsh-users/history"; }
-          {
-            name = "zsh-users/";
-            tags = [
-              "defer:2"
-              "depth:1"
-            ];
-          }
 
         ];
       };
