@@ -79,7 +79,7 @@
         "command" = "ulauncher";
         "name" = "ulauncher";
       };
-
+"org/gnome/settings-daemon/plugins/media-keys/"
       "www" = [ "<Shift><Control>s" ];
 
     };
