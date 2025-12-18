@@ -155,7 +155,7 @@ in
 
           { name = "zsh-users/history"; }
           {
-            name = "zsh-users/zsh-syntax-highlighting";
+            name = "zsh-users/";
             tags = [
               "defer:2"
               "depth:1"
