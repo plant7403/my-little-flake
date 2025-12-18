@@ -336,13 +336,13 @@ style = "bg:#86BBD8";
 format = "[ $symbol ($version) ]($style)";
 };
 rust = {
-symbol = ""
-style = "bg:#86BBD8"
-format = "[ $symbol ($version) ]($style)"
+symbol = "";
+style = "bg:#86BBD8";
+format = "[ $symbol ($version) ]($style)";
 };
 scala = {
-symbol = " "
-style = "bg:#86BBD8"
+symbol = " ";
+style = "bg:#86BBD8";
 format = "[ $symbol ($version) ]($style)"
 };
 time = {
