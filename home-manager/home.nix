@@ -84,7 +84,7 @@
     sushi
 
     grayjay
-    
+
     boxbuddy
     crun
     distroshelf
@@ -136,21 +136,33 @@
   };
 
   programs.distrobox = {
-containers = {
-    common-debian = {
-    additional_packages = "git";
-    entry = true;
-    image = "debian:13";
-    init_hooks = [
-      "ln -sf /usr/bin/distrobox-host-exec /usr/local/bin/docker"
-      "ln -sf /usr/bin/distrobox-host-exec /usr/local/bin/docker-compose"
-    ];
-  };
-};
-enableSystemdUnit = true;
-enable = true;
-package
-settings
+    containers = {
+      common-debian = {
+        additional_packages = "git";
+        entry = true;
+        image = "debian:13";
+        init_hooks = [
+          "ln -sf /usr/bin/distrobox-host-exec /usr/local/bin/docker"
+          "ln -sf /usr/bin/distrobox-host-exec /usr/local/bin/docker-compose"
+        ];
+      };
+    };
+    enableSystemdUnit = true;
+    enable = true;
+    settings = {
+      container_additional_volumes = "/example:/example1 /example2:/example3:ro";
+      container_always_pull = "1";
+      container_generate_entry = 0;
+      container_image_default = "registry.opensuse.org/opensuse/toolbox:latest";
+      container_init_hook = "~/.local/distrobox/a_custom_default_init_hook.sh";
+      container_manager = "docker";
+      container_manager_additional_flags = "--env-file /path/to/file --custom-flag";
+      container_name_default = "test-name-1";
+      container_pre_init_hook = "~/a_custom_default_pre_init_hook.sh";
+      container_user_custom_home = "$HOME/.local/share/container-home-test";
+      non_interactive = "1";
+      skip_workdir = "0";
+    };
   };
 
   programs.freetube.enable = true;
