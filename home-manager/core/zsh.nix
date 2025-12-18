@@ -177,6 +177,6 @@ programs.starship.enableIonIntegration
 programs.starship.enableNushellIntegration
 programs.starship.enableTransience
 programs.starship.enable
-programs.starship.enableZshIntegration
+programs.starship.enableZshIntegration = truel
 programs.starship.settings
 }
