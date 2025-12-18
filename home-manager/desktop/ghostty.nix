@@ -13,6 +13,7 @@
         "ctrl+h=goto_split:left"
         "ctrl+l=goto_split:right"
         "ctrl+z=close_surface"
+        "ctrl+d=new_split:right"
       ];
       quit-after-last-window-closed = true;
       quit-after-last-window-closed-delay = "15m";
