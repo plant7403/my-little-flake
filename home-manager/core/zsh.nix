@@ -132,7 +132,7 @@
           {name = }
           {name = }
           {name = "sharkdp/fd" tags = [
-            "from:gh-r" "as:command" "rename-to:fd", use:"*x86_64-unknown-linux-gnu.tar.gz"
+            "from:gh-r" "as:command" "rename-to:fd" use="*x86_64-unknown-linux-gnu.tar.gz"
           ];}
           { name = "zsh-users/zsh-completions"; }
           { name = "zsh-users/zsh-autosuggestions"; }
