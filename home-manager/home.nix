@@ -135,7 +135,9 @@
         CompactMode = false;
         HidePasswords = true;
       };
-      KeeShare = {}
+      KeeShare = {
+
+      };
 
       SSHAgent.Enabled = true;
     };
