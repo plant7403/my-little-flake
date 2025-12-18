@@ -4,7 +4,6 @@
   lib,
   ...
 }:
-
 {
   #home.file."${config.xdg.cacheHome}/oh-my-zsh/.keep".text = "";
 
@@ -32,12 +31,7 @@
     enableZshIntegration = true;
   };
   programs = {
-    /*
-      nix-index = {
-         enable = true;
-         enableZshIntegration = true;
-       };
-    */
+
     zsh = {
       enable = true;
       envExtra = ''
