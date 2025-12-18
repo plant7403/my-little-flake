@@ -63,7 +63,7 @@
           setopt share_history
 
 
-          export ANSI_MOTD_ART_DIR=
+          export ANSI_MOTD_ART_DIR=/home
           # globbing
           setopt extended_glob
 
