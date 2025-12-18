@@ -74,10 +74,9 @@
       ];
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings" "custom0"
-    binding '<Shift><Control>w'
+    binding <Shift><Control>w'
 command 'ulauncher'
-name
-  'ulauncher'
+name 'ulauncher'
 
     "org/gnome/mutter" = {
       "edge-tiling" = true;
