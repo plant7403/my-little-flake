@@ -175,8 +175,8 @@ programs.starship.enableFishIntegration
 programs.starship.enableInteractive
 programs.starship.enableIonIntegration
 programs.starship.enableNushellIntegration
-programs.starship.enableTransience
-programs.starship.enable 
+programs.starship.enableTransience = true;
+programs.starship.enable = true;
 programs.starship.enableZshIntegration = true;
 programs.starship.settings
 }
