@@ -173,8 +173,7 @@
 programs.starship.enableBashIntegration
 programs.starship.enableFishIntegration
 programs.starship.enableInteractive
-programs.starship.enableIonIntegration
-programs.starship.enableNushellIntegration
+
 programs.starship.enableTransience = true;
 programs.starship.enable = true;
 programs.starship.enableZshIntegration = true;
