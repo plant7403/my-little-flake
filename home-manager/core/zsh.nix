@@ -151,7 +151,7 @@
           src = pkgs.fetchFromGitHub {
             owner = "yuhonas";
             repo = "zsh-ansimotd";
-            rev = "3ba6e2d1ea874bfb6badb8522ab86c1ae272923d";
+            rev = "2d1e85c75c8042182fe751f105a181043c4e9929";
             sha256 = "3hhZXL8/Ml7UlkkHBPpS5NfUGB5BqgO95UvtpptXf8E=";
           };
         }
