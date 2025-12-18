@@ -302,8 +302,8 @@ golang = {
 symbol = " "
 style = "bg:#86BBD8"
 format = '[ $symbol ($version) ]($style)'
-}
-[gradle]
+};
+gradle = 
 style = "bg:#86BBD8"
 format = '[ $symbol ($version) ]($style)'
 
