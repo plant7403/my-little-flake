@@ -75,9 +75,9 @@
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings" custom0/binding
   '<Shift><Control>w'
-custom0/command
+command
   'ulauncher'
-custom0/name
+name
   'ulauncher'
 
     "org/gnome/mutter" = {
