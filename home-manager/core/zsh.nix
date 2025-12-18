@@ -295,7 +295,7 @@ format = "[ $symbol ($version) ]($style)";
 git_branch = {
 symbol = "";
 style = "bg:#FCA17D";
-format = "[ $symbol $branch ]($style)'
+format = "[ $symbol $branch ]($style)"
 };
 git_status = {
 style = "bg:#FCA17D"
@@ -304,52 +304,52 @@ format = "[$all_status$ahead_behind ]($style)"
 golang = {
 symbol = " "
 style = "bg:#86BBD8"
-format = "[ $symbol ($version) ]($style)'
+format = "[ $symbol ($version) ]($style)"
 };
 gradle = {
 style = "bg:#86BBD8"
-format = "[ $symbol ($version) ]($style)'
+format = "[ $symbol ($version) ]($style)"
 };
 haskell = {
 symbol = " "
 style = "bg:#86BBD8"
-format = "[ $symbol ($version) ]($style)'
+format = "[ $symbol ($version) ]($style)"
 };
 java = {
 symbol = " "
 style = "bg:#86BBD8"
-format = "[ $symbol ($version) ]($style)'
+format = "[ $symbol ($version) ]($style)"
 };
 julia = {
 symbol = " "
 style = "bg:#86BBD8"
-format = "[ $symbol ($version) ]($style)'
+format = "[ $symbol ($version) ]($style)"
 };
 nodejs = {
 symbol = ""
 style = "bg:#86BBD8"
-format = "[ $symbol ($version) ]($style)'
+format = "[ $symbol ($version) ]($style)"
 };
 nim = {
 symbol = "󰆥 "
 style = "bg:#86BBD8"
-format = "[ $symbol ($version) ]($style)'
+format = "[ $symbol ($version) ]($style)"
 };
 rust = {
 symbol = ""
 style = "bg:#86BBD8"
-format = "[ $symbol ($version) ]($style)'
+format = "[ $symbol ($version) ]($style)"
 };
 scala = {
 symbol = " "
 style = "bg:#86BBD8"
-format = "[ $symbol ($version) ]($style)'
+format = "[ $symbol ($version) ]($style)"
 };
 time = {
 disabled = false
 time_format = "%R" # Hour:Minute Format
 style = "bg:#33658A"
-format = "[ ♥ $time ]($style)'
+format = "[ ♥ $time ]($style)"
 }
   };
 }
