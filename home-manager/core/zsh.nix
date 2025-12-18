@@ -110,7 +110,7 @@
       ];
       /*
                 "autojump"
-               "git"
+                "git"
                "colored-man-pages"
                "history"
                "history-substring-search"
