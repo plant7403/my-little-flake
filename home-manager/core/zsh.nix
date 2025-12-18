@@ -63,7 +63,7 @@
       initContent = lib.mkMerge [
         (lib.mkBefore ''
           POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
-          "source ~/.p10k.zsh";
+          source ~/.p10k.zsh"
 
           HISTDB_FILE=''${XDG_DATA_HOME-$HOME/.local/share}/zsh/history.db
 
