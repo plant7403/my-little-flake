@@ -44,10 +44,10 @@ let
     #"editor.letterSpacing" = 0.5;
     #"editor.fontWeight" = "400";
     #"editor.fontLigatures" = true;
-    "editor.cursorStyle" = "line";
-    "editor.cursorWidth" = 5;
-    "editor.cursorBlinking" = "solid";
-    "editor.renderWhitespace" = "all";
+    #"editor.cursorStyle" = "line";
+    #"editor.cursorWidth" = 5;
+    #"editor.cursorBlinking" = "solid";
+    #"editor.renderWhitespace" = "all";
     "editor.snippetSuggestions" = "top";
     "workbench.startupEditor" = "newUntitledFile";
     "editor.glyphMargin" = true;
