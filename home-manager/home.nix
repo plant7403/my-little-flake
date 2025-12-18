@@ -155,7 +155,7 @@
       container_generate_entry = 0;
       container_image_default = "registry.opensuse.org/opensuse/toolbox:latest";
       container_init_hook = "~/.local/distrobox/a_custom_default_init_hook.sh";
-      container_manager = "docker";
+      container_manager = "podman";
       container_manager_additional_flags = "--env-file /path/to/file --custom-flag";
       container_name_default = "test-name-1";
       container_pre_init_hook = "~/a_custom_default_pre_init_hook.sh";
