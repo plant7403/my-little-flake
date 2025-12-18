@@ -6,7 +6,7 @@
 }:
 
   let
-    theme = (builtins.fromTOML (builtins.readFile ./pastel.toml)) ];
+    theme = (builtins.fromTOML (builtins.readFile ./pastel.toml);
   in
 
 {
