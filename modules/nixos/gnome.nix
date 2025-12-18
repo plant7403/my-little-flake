@@ -110,7 +110,6 @@ in
           gnome.enable = true;
           gtk = {
             enable = true;
-
           };
           qt = {
             enable = true;
@@ -152,7 +151,7 @@ in
           serif = config.stylix.fonts.monospace;
           sansSerif = config.stylix.fonts.monospace;
           monospace = {
-            package = pkgs.nerd-fonts.intone-mono;
+            package = pkgs.nerd-fonts.departure-mono;
             name = "Liberation Mono";
           };
           emoji = {
