@@ -141,7 +141,7 @@ in
             name = "Adwaita Mono";
           };
           monospace = {
-            package = pkgs.nerd-fonts.departure-mono;
+            package = pkgs.nerd-fonts.adwaita-mono;
             name = "Adwaita Mono";
           };
           emoji = {
