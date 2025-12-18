@@ -323,7 +323,6 @@ in
           ++ forVscode baseExtensionsVS;
         userSettings = {
 
-          #"redhat.telemetry.enabled" = false;
 
           # This is all that matters
           "workbench.colorTheme" = "Cobalt2";
@@ -334,7 +333,6 @@ in
       C = {
         extensions =
           forOpenVsx [
-
             "signageos.signageos-vscode-sops"
             "mkhl.direnv"
 
