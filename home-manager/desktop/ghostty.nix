@@ -6,7 +6,7 @@
     #installVimSyntax = true;
     settings = {
       #theme = "catppuccin-mocha";
-      font-size = 10;
+      font-size = 12;
       keybind = [
         "ctrl+h=goto_split:left"
         "ctrl+l=goto_split:right"
