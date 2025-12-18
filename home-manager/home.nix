@@ -84,7 +84,7 @@
     sushi
 
     grayjay
-    distrobox
+    
     boxbuddy
     crun
     distroshelf
