@@ -150,7 +150,7 @@
     enableSystemdUnit = true;
     enable = true;
     settings = {
-      container_additional_volumes = "/example:/example1 /example2:/example3:ro";
+      #container_additional_volumes = "/example:/example1 /example2:/example3:ro";
       container_always_pull = "1";
       container_generate_entry = 0;
       container_image_default = "registry.opensuse.org/opensuse/toolbox:latest";
