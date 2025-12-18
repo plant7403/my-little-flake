@@ -37,7 +37,25 @@ let
     "editor.wordWrap" = "off";
     "diffEditor.wordWrap" = "off";
     # "blockman.n33A01B2FromDepth0ToInwardForAllBackgrounds" = "10,0,0,1; none";
-
+"workbench.iconTheme" = "vscode-icons";
+          "editor.fontFamily" = "Operator Mono, Menlo, Monaco, 'Courier New', monospace";
+          "terminal.integrated.fontFamily" = "'Operator Mono', 'Inconsolata for Powerline', monospace";
+          "editor.fontSize" = 17;
+          "editor.lineHeight" = 24.65;
+          "editor.letterSpacing" = 0.5;
+          "editor.fontWeight" = "400";
+          "editor.fontLigatures" = true;
+          "editor.cursorStyle" = "line";
+          "editor.cursorWidth" = 5;
+          "editor.cursorBlinking" = "solid";
+          "editor.renderWhitespace" = "all";
+          "editor.snippetSuggestions" = "top";
+          "workbench.startupEditor" = "newUntitledFile";
+          "editor.glyphMargin" = true;
+          "workbench.editor.enablePreview" = false;
+          "explorer.confirmDragAndDrop" = false;
+          "files.trimTrailingWhitespace" = true;
+          "files.trimFinalNewlines" = true;
     "workbench.colorCustomizations" = {
       "editor.lineHighlightBorder" = "#4cd3081a";
       "editor.lineHighlightBackground" = "#e22d0031";
@@ -243,7 +261,7 @@ in
         userSettings = {
           # Theme Setup.
           "workbench.colorTheme" = "Shades of Purple";
-          
+
           # Formatting Optional.
           "editor.formatOnSave" = true;
           "prettier.eslintIntegration" = true;
