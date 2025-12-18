@@ -130,7 +130,7 @@ in
           src = pkgs.zsh-completions.src;
         }
         {
-          name = pkgs.zsh-autosuggestions.pname;
+          name = pkgs.zsh-history-substring-search.pname;
           src = pkgs.zsh-autosuggestions.src;
         }
       ];
