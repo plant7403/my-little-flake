@@ -108,13 +108,7 @@
         "pkill *"
         "cp *"
       ];
-      /*
-                "autojump"
-                "git"
-                "colored-man-pages"
-                "history"
-                "history-substring-search"
-      */
+
       zplug = {
         enable = true;
         plugins = [
