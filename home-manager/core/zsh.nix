@@ -62,43 +62,42 @@
       */
       initContent = lib.mkMerge [
         (lib.mkBefore ''
-                  #POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
-                  #source ~/.p10k.zsh
-                    # Powerlevel10k Zsh theme  
-                    
-          source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme  
-          test -f ~/.config/zsh/.p10k.zsh && source ~/.config/zsh/.p10k.zsh 
+          #POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
+          #source ~/.p10k.zsh
+            # Powerlevel10k Zsh theme  
+  source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme  
+  test -f ~/.config/zsh/.p10k.zsh && source ~/.config/zsh/.p10k.zsh 
 
-                  HISTDB_FILE=''${XDG_DATA_HOME-$HOME/.local/share}/zsh/history.db
+          HISTDB_FILE=''${XDG_DATA_HOME-$HOME/.local/share}/zsh/history.db
 
-                  # Do this early so fast-syntax-highlighting can wrap and override this
-                  if autoload history-search-end; then
-                    zle -N history-beginning-search-backward-end history-search-end
-                    zle -N history-beginning-search-forward-end  history-search-end
-                  fi
-                  autoload -Uz compinit && compinit
-                  autoload -U colors && colors
-                  alias ls='ls -G'
+          # Do this early so fast-syntax-highlighting can wrap and override this
+          if autoload history-search-end; then
+            zle -N history-beginning-search-backward-end history-search-end
+            zle -N history-beginning-search-forward-end  history-search-end
+          fi
+          autoload -Uz compinit && compinit
+          autoload -U colors && colors
+          alias ls='ls -G'
 
-                  # history
-                  setopt share_history
-                  bindkey '^[[A' history-beginning-search-backward
-                  bindkey '^[[B' history-beginning-search-forward
+          # history
+          setopt share_history
+          bindkey '^[[A' history-beginning-search-backward
+          bindkey '^[[B' history-beginning-search-forward
 
-                  # globbing
-                  setopt extended_glob
+          # globbing
+          setopt extended_glob
 
-                  # zmv
-                  autoload -Uz zmv
-                  alias zcp='zmv -C'
-                  alias zln='zmv -L'
+          # zmv
+          autoload -Uz zmv
+          alias zcp='zmv -C'
+          alias zln='zmv -L'
 
-                  # fewer keystrokes
-                  setopt auto_cd auto_pushd
-                  setopt menu_complete
+          # fewer keystrokes
+          setopt auto_cd auto_pushd
+          setopt menu_complete
 
-                  # fewer distractions
-                  unsetopt beep nomatch notify
+          # fewer distractions
+          unsetopt beep nomatch notify
         '')
       ];
 
