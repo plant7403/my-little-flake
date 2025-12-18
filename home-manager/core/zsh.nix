@@ -93,6 +93,7 @@
         "pkill *"
         "cp *"
       ];
+      
       # With Oh-My-Zsh:
       oh-my-zsh = {
         enable = true;
