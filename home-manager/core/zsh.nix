@@ -161,16 +161,7 @@ in
               "depth:1"
             ];
           }
-          
-          {
-            name = "axieax/zsh-starship";
-            /*
-              tags = [
-                "as:theme"
-                "depth:1"
-              ];
-            */
-          }
+
         ];
       };
 
