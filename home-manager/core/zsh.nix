@@ -93,8 +93,9 @@
       ];
       plugins = [
         {
-          name = pkgs.zsh-autosuggestions.pname;
-          src = pkgs.zsh-autosuggestions.src;
+          name = "zsh-autosuggestions";
+          file = "./share/zsh-autosuggestions/zsh-autosuggestions.zsh";
+          src = pkgs.zsh-autosuggestions;
         }
         {
           name = pkgs.fzf-zsh.pname;
