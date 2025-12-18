@@ -123,6 +123,7 @@
     autostart = true;
     settings = {
       Browser.Enabled = true;
+      security
 
       GUI = {
         AdvancedSettings = true;
