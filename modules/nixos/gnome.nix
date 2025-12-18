@@ -86,14 +86,6 @@ in
         xkb.variant = "";
       };
 
-      /*
-        home-manager.sharedModules = [
-          {
-            stylix.targets.xyz.enable = false;
-          }
-        ];
-      */
-
       stylix = {
         ### STYLIX
 
