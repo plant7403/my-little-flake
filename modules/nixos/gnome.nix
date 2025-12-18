@@ -152,7 +152,7 @@ in
             name = "Liberation Sans";
           };
 
-          sansSerif = {
+          serif = {
             package = pkgs.liberation_ttf;
             name = "Liberation Serif";
           };
