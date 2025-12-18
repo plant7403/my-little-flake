@@ -343,11 +343,11 @@ format = "[ $symbol ($version) ]($style)";
 scala = {
 symbol = " ";
 style = "bg:#86BBD8";
-format = "[ $symbol ($version) ]($style)"
+format = "[ $symbol ($version) ]($style)";
 };
 time = {
-disabled = false
-time_format = "%R" # Hour:Minute Format
+disabled = false;
+time_format = "%R"; # Hour:Minute Format
 style = "bg:#33658A"
 format = "[ ♥ $time ]($style)"
 }
