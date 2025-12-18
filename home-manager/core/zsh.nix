@@ -129,7 +129,7 @@
           { name = "autojump"; }
           { name = "git"; }
           { name = "colored-man-pages"; }
-          {name = }
+          {name = "junegunn/fzf";}
           {name = "junegunn/fzf-bin";}
           {name = "sharkdp/fd" tags = [
             "from:gh-r" "as:command" "rename-to:fd" /* "use"="*x86_64-unknown-linux-gnu.tar.gz" */
