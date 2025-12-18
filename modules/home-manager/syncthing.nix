@@ -135,7 +135,7 @@ in
     Install = {
       WantedBy = [ "default.target" ];
     };
-    Service = {
+    /* Service = {
       ExecStart = "${pkgs.writeShellScript "watch-store" ''
         #!/run/current-system/sw/bin/bash
         ATTIC_TOKEN=$(cat ${config.sops.secrets.attic_auth_token.path})
@@ -143,7 +143,7 @@ in
         ${pkgs.attic}/bin/attic use prod
         ${pkgs.attic}/bin/attic watch-store prod:prod
       ''}";
-    };
+    }; */
   };
 
 }
