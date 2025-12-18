@@ -244,7 +244,7 @@ style = "bg:#9A348E"
 disabled = true # Disabled by default
 };
 
-directory
+directory = 
 style = "bg:#DA627D"
 format = "[ $path ]($style)"
 truncation_length = 3
