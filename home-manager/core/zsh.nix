@@ -194,7 +194,7 @@ in
   programs.starship.enable = true;
   programs.starship.enableZshIntegration = true;
   programs.starship.settings = {
-    "$schema" = 'https://starship.rs/config-schema.json';
+    "$schema" = 'https://starship.rs/config-schema.json;
 
 format = """
 [](#9A348E)\
@@ -342,11 +342,11 @@ symbol = " "
 style = "bg:#86BBD8"
 format = '[ $symbol ($version) ]($style)'
 };
-time]
+time = {
 disabled = false
 time_format = "%R" # Hour:Minute Format
 style = "bg:#33658A"
 format = '[ ♥ $time ]($style)'
-
+}
   };
 }
