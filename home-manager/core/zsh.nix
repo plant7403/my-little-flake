@@ -284,11 +284,11 @@ symbol = " "
 style = "bg:#86BBD8"
 format = '[ $symbol ($version) ]($style)'
 };
-elm]
+elm = {
 symbol = " "
 style = "bg:#86BBD8"
 format = '[ $symbol ($version) ]($style)'
-
+}
 [git_branch]
 symbol = ""
 style = "bg:#FCA17D"
