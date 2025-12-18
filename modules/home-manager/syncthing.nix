@@ -129,9 +129,7 @@ in
     };
   };
   systemd.user.services.syncthing-init = {
-    Unit = {
-      Description = "Push nix store changes to attic binary cache.";
-    };
+
     Install = {
       WantedBy = [ "default.target" ];
     };
