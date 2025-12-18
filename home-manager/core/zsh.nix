@@ -118,8 +118,8 @@ in
       ];
       plugins = [
             {
-        name = pkgs.zsh-autopair.pname;
-        src = pkgs.zsh-autopair.src;
+        name = pkgs.zsh-autosuggestions.pname;
+        src = pkgs.zsh-autosuggestions.src;
     }
       ];
       zplug = {
