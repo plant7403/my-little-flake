@@ -54,6 +54,7 @@
   ];
 
   services.polkit-gnome.enable = true;
+
   ### SHORTCUTS
   dconf.settings = {
     "org/gnome/desktop/input-sources" = {
@@ -72,6 +73,12 @@
         ])
       ];
     };
+    /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding
+  '<Shift><Control>w'
+/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command
+  'ulauncher'
+/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/name
+  'ulauncher'
 
     "org/gnome/mutter" = {
       "edge-tiling" = true;
