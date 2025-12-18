@@ -79,8 +79,7 @@
         "command" = "ulauncher";
         "name" = "ulauncher";
       };
-      www
-  ['<Shift><Control>s']
+      "www" = ['<Shift><Control>s']
 
     };
     "org/gnome/mutter" = {
