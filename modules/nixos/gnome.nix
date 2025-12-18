@@ -106,7 +106,6 @@ in
         };
 
         polarity = "dark";
-        #stylix.accentColor = "purple";
         targets = {
           gnome.enable = true;
           gtk = {
