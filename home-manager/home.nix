@@ -88,6 +88,8 @@
     boxbuddy
     crun
     distroshelf
+
+    toml2nix
   ];
 
   programs.home-manager.enable = true;
