@@ -14,7 +14,7 @@ in
 
   home.persistence."/persist/home/egor" = {
     directories = [
-      ".cache/oh-my-zsh"
+      #".cache/oh-my-zsh"
       # ".cache/nix-index"
     ];
     files = [
