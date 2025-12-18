@@ -60,6 +60,7 @@ in
         "nix-command"
       ];
       nix.settings = {
+        
         substituters = [
           "https://cachix.cachix.org"
           "https://devenv.cachix.org"
