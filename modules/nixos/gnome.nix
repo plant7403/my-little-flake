@@ -147,19 +147,18 @@ in
           base0F = "9e5769";
         };
         fonts = {
-          sansSerif = {
-            package = pkgs.liberation_ttf;
-            name = "Liberation Sans";
-          };
-          serif = {
-            package = pkgs.liberation_ttf;
-            name = "Liberation Serif";
-          };
+          #sansSerif = {
+          #  package = pkgs.liberation_ttf;
+          #  name = "Liberation Sans";
+          #};
+          #serif = {
+          #  package = pkgs.liberation_ttf;
+          #  name = "Liberation Serif";
+          #};
           monospace = {
             package = pkgs.nerd-fonts.liberation;
             name = "Liberation Mono";
           };
-
           emoji = {
             package = pkgs.noto-fonts-color-emoji;
             name = "Noto Color Emoji";
