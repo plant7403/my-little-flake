@@ -63,7 +63,7 @@
           setopt share_history
 
 
-
+          export 
           # globbing
           setopt extended_glob
 
