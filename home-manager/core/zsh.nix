@@ -169,7 +169,7 @@
       enableZshIntegration = true;
     };
   */
-  programs.starship.configPath
+  #programs.starship.configPath
 
 programs.starship.enableInteractive = true;
 
