@@ -53,11 +53,7 @@ in
       enableVteIntegration = true;
       syntaxHighlighting.enable = true;
       autocd = true;
-      /*
-        extraConfig = ''
-             $env.config.hooks.command_not_found = source ${pkgs.nix-index}/etc/profile.d/command-not-found.zsh
-           '';
-      */
+
       initContent = lib.mkMerge [
         (lib.mkBefore ''
           #POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
