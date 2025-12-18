@@ -207,17 +207,17 @@ in
       "$git_status\"
       "[](fg:#FCA17D bg:#86BBD8)\"
       "$c\"
-      $elixir\
-      $elm\
-      $golang\
-      $gradle\
-      $haskell\
-      $java\
-      $julia\
-      $nodejs\
-      $nim\
-      $rust\
-      $scala\
+      "$elixir\"
+      "$elm\"
+      "$golang\"
+      "$gradle\"
+      "$haskell\"
+      "$java\"
+      "$julia\"
+      "$nodejs\"
+      "$nim\"
+      "$rust\"
+      "$scala\"
       [](fg:#86BBD8 bg:#06969A)\
       $docker_context\
       [](fg:#06969A bg:#33658A)\
