@@ -25,6 +25,7 @@
     fzf
     autojump
     sqlite-interactive
+    fuck
   ];
 
   home.shell = {
