@@ -311,8 +311,8 @@ style = "bg:#86BBD8"
 format = "[ $symbol ($version) ]($style)";
 };
 haskell = {
-symbol = " "
-style = "bg:#86BBD8"
+symbol = " ";
+style = "bg:#86BBD8";
 format = "[ $symbol ($version) ]($style)"
 };
 java = {
