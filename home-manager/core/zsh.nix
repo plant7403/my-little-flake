@@ -303,12 +303,12 @@ format = "[$all_status$ahead_behind ]($style)";
 };
 golang = {
 symbol = " ";
-style = "bg:#86BBD8"
-format = "[ $symbol ($version) ]($style)"
+style = "bg:#86BBD8";
+format = "[ $symbol ($version) ]($style)";
 };
 gradle = {
 style = "bg:#86BBD8"
-format = "[ $symbol ($version) ]($style)"
+format = "[ $symbol ($version) ]($style)";
 };
 haskell = {
 symbol = " "
