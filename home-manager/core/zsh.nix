@@ -135,16 +135,13 @@ in
         }
         {
           name = pkgs.zsh-syntax-highlighting.pname;
-          src = pkgs.zsh-history-substring-search.src;
+          src = pkgs.zsh-syntax-highlighting.src;
         }
         {
           name = pkgs.zsh-history-substring-search.pname;
           src = pkgs.zsh-history-substring-search.src;
         }
-        {
-          name = pkgs.zsh-history-substring-search.pname;
-          src = pkgs.zsh-history-substring-search.src;
-        }
+
       ];
       zplug = {
         enable = true;
