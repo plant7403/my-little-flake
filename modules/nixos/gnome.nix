@@ -172,12 +172,6 @@ in
         };
 
       };
-      /*
-        home-manager.users.egor.programs.gnome-shell = {
-          enable = true;
-          extensions = [ { package = pkgs.gnomeExtensions.gsconnect; } ];
-        };
-      */
 
       programs.kdeconnect = {
         enable = true;
