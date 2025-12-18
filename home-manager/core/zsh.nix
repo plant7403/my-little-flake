@@ -150,7 +150,7 @@
           file = "zsh-ansimotd.plugin.zsh";
           src = pkgs.fetchFromGitHub {
             owner = "yuhonas";
-            repo = "zsh-async";
+            repo = "zsh-ansimotd";
             rev = "3ba6e2d1ea874bfb6badb8522ab86c1ae272923d";
             sha256 = "3hhZXL8/Ml7UlkkHBPpS5NfUGB5BqgO95UvtpptXf8E=";
           };
