@@ -67,6 +67,8 @@ let
     #"workbench.editor.limit" = 5;
     "git.enableSmartCommit" = true;
     "git.autofetch" = true;
+    "git.confirmSync" = false;
+
     "explorer.confirmDelete" = false;
 
     "vscode-pets.petColor" = "black";
@@ -74,7 +76,7 @@ let
     "vscode-pets.position" = "explorer";
     #"vscode-pets.theme" = "forest";
     #"vscode-pets.throwBallWithMouse" = false;
-    
+
   };
   baseExtensions = [
     "pkief.material-icon-theme"

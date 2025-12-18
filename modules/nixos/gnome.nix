@@ -147,7 +147,7 @@ in
           base0F = "9e5769";
         };
         fonts = {
-          serif = {
+          sans = {
             package = pkgs.liberation_ttf;
             name = "Liberation Sans";
           };
