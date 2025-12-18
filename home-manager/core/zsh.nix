@@ -230,12 +230,12 @@ $time\
 
 # You can also replace your username with a neat symbol like   or disable this
 # and use the os module below
-username =
+username ={
 show_always = true
 style_user = "bg:#9A348E"
 style_root = "bg:#9A348E"
 format = '[$user ]($style)'
-disabled = false
+disabled = false}
 
 # An alternative to the username module which displays a symbol that
 # represents the current operating system
