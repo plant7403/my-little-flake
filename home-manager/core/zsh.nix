@@ -117,6 +117,15 @@
           name = pkgs.zsh-histdb.pname;
           src = pkgs.zsh-histdb.src;
         }
+        {
+          name = "you-should-use";
+          src = pkgs.fetchFromGitHub {
+            owner = "MichaelAquilina";
+            repo = "zsh-you-should-use";
+            rev = "2be37f376c13187c445ae9534550a8a5810d4361";
+            sha256 = "0yhwn6av4q6hz9s34h4m3vdk64ly6s28xfd8ijgdbzic8qawj5p1";
+          };
+        }
       ];
     };
   };
