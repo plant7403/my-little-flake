@@ -52,7 +52,7 @@ in
       enableCompletion = true;
       enableVteIntegration = true;
       syntaxHighlighting.enable = true;
-      historySubstringSearch.enable
+      historySubstringSearch.enable = true;
       autocd = true;
 
       initContent = lib.mkMerge [
@@ -187,7 +187,7 @@ in
     # represents the current operating system
     os = {
       style = "bg:#9A348E";
-      disabled = true; # Disabled by default
+      disabled = false; # Disabled by default
     };
 
     directory = {
