@@ -156,7 +156,7 @@ in
           }
         ];
         {
-            name = "romkatv/powerlevel10k";
+            name = "axieax/zsh-starship";
             tags = [
               "as:theme"
               "depth:1"
