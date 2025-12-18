@@ -21,7 +21,7 @@
     #defaultSecretsMountPoint = "/run/user/1000/secrets.d";
     defaultSopsFile = ./secrets/${osConfig.networking.hostName}/secrets.yaml; # ${config.networking.hostname}
     #defaultSopsFormat = "yaml";
-    #age.keyFile = /home/egor/.config/sops/age/keys.txt;
+    #age.keyFile = ~/.config/sops/age/keys.txt;
   };
 
   home.packages = with pkgs; [

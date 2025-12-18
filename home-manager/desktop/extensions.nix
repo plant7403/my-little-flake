@@ -43,6 +43,12 @@
     gnomeExtensions.clipboard-indicator
     gnomeExtensions.firefox-profiles
     #gnomeExtensions.gestureImprovements
+    gnomeExtensions.just-perfection
+    gnomeExtensions.save-my-windows
+    gnomeExtensions.window-commander
+    ulauncher
+    gnomeExtensions.tweaks-in-system-menu
+    gnomeExtensions.systemd-manager
 
     dconf2nix
   ];
@@ -67,6 +73,11 @@
 
     "org/gnome/mutter" = {
       "edge-tiling" = true;
+      experimental-features = [
+        "scale-monitor-framebuffer" # Enables fractional scaling (125% 150% 175%)
+        "variable-refresh-rate" # Enables Variable Refresh Rate (VRR) on compatible displays
+        "xwayland-native-scaling" # Scales Xwayland applications to look crisp on HiDPI screens
+      ];
     };
     "org/gnome/shell" = {
       disable-user-extensions = false;
@@ -97,10 +108,12 @@
         "clipboard-indicator@tudmotu.com"
         "focus-follows-workspace@christopher.luebbemeier.gmail.com"
         "switcher@landau.fi"
+        "just-perfection"
       ];
 
       favorite-apps = [
         "org.gnome.Console.desktop"
+        "com.mitchellh.ghostty.desktop"
         "org.gnome.Nautilus.desktop"
         "librewolf.desktop"
         "chromium-browser.desktop"
@@ -110,15 +123,15 @@
         "obsidian.desktop"
         "org.keepassxc.KeePassXC.desktop"
       ];
-      "extensions/blur-my-shell/applications/opacity" = 180;
-      # "extensions/blur-my-shell/applications/blur" = true;
-      "extensions/blur-my-shell/applications/sigma" = 15;
+      "extensions/blur-my-shell/applications/opacity" = 240;
+      #"extensions/blur-my-shell/applications/blur" = true;
+      "extensions/blur-my-shell/applications/sigma" = 0;
       "extensions/blur-my-shell/applications/enable-all" = true;
       "extensions/blur-my-shell/applications/dynamic-opacity" = true;
       "extensions/blur-my-shell/applications/brightness" = 1.0;
       "extensions/blur-my-shell/appfolder/style-dialogs" = 2;
       "extensions/blur-my-shell/panel/static-blur" = false;
-      "extensions/blur-my-shell/panel/sigma" = 100;
+      "extensions/blur-my-shell/panel/sigma" = 5;
       "extensions/blur-my-shell/panel/brightness" = 1.0;
       "extensions/blur-my-shell/overview/style-components" = 3;
 
@@ -151,7 +164,7 @@
         "Conky"
         "com.github.amezin.ddterm"
       ];
-
+      "extensions/dash-to-dock/intellihide-mode" = "ALL_WINDOWS";
     };
     /*
       "org/gnome/desktop/interface" = {

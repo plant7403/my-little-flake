@@ -1,6 +1,6 @@
 final: prev: {
   gtksourceview = prev.gtksourceview.overrideAttrs (oldAttrs: {
-    doChecks = false;
+    doCheck = false;
   });
 }
 

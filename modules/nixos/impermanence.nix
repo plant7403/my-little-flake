@@ -44,6 +44,7 @@ in
             "/etc/NetworkManager"
             "/var/lib/sbctl"
             "/var/lib/systemd"
+            "/var/lib/bluetooth"
           ];
           files = [
             "/etc/machine-id"
@@ -55,6 +56,8 @@ in
         };
       };
       programs.fuse.userAllowOther = true;
+
+      #services.userborn.enable = true;
 
       /*
         system.activationScripts.persistent-dirs.text =

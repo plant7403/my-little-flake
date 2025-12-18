@@ -77,6 +77,7 @@ in
       nix.settings.trusted-users = [
         "root"
         "egor"
+        "inti"
       ];
       nixpkgs.config.allowUnfree = true;
       nixpkgs.config.allowUnfreePredicate =
@@ -129,12 +130,16 @@ in
         openssl
         nixd
 
+        nixos-rebuild-ng
+
       ];
-      programs.command-not-found.enable = false;
+      # programs.command-not-found.enable = false;
       # for home-manager, use programs.bash.initExtra instead
-      programs.zsh.interactiveShellInit = ''
-        source ${pkgs.nix-index}/etc/profile.d/command-not-found.sh
-      '';
+      /*
+        programs.zsh.interactiveShellInit = ''
+             source ${pkgs.nix-index}/etc/profile.d/command-not-found.sh
+           '';
+      */
       programs.zsh.ohMyZsh.enable = true;
       environment.pathsToLink = [ "/share/zsh" ]; # ???
       documentation = {
@@ -224,6 +229,33 @@ in
 
       systemd.enableEmergencyMode = true; # !!! TODO !!! TO REMOVE !!!
 
+      specialisation = {
+        nogui.configuration = {
+          services.xserver.desktopManager.gnome.enable = lib.mkForce false;
+        };
+        gui = {
+          #inheritParentConfig = false;
+          configuration = {
+            system.nixos.tags = [ "ooo" ];
+            #services.xserver.desktopManager.gnome.enable = true;
+            users.users.ooo = {
+              isNormalUser = true;
+              uid = 1002;
+              extraGroups = [
+                "networkmanager"
+                "video"
+              ];
+            };
+            services.xserver.displayManager.autoLogin = {
+              enable = true;
+              user = "ooo";
+            };
+            environment.systemPackages = with pkgs; [
+              dune-release
+            ];
+          };
+        };
+      };
     }
     (mkIf cfg.printing {
       # Enable CUPS to print documents.
@@ -369,6 +401,7 @@ in
         security.tpm2.pkcs11.enable = true; # expose /run/current-system/sw/lib/libtpm2_pkcs11.so
         security.tpm2.tctiEnvironment.enable = true; # TPM2TOOLS_TCTI and TPM2_PKCS11_TCTI env variables
         users.users.egor.extraGroups = [ "tss" ]; # tss group has access to TPM devices
+        users.users.inti.extraGroups = [ "tss" ];
       })
     ]))
     (mkIf cfg.btrfs {

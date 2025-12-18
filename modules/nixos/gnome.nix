@@ -9,13 +9,6 @@ with lib;
 let
   cfg = config.modules.gnome;
 
-  inputImage = pkgs.fetchurl {
-    url = "https://images.alphacoders.com/131/thumb-1920-1311951.jpg";
-    sha256 = "sha256-Rb2zcFSO0Gk+TBEjD1X619+RxDCBalPhURYlVTHDf1s=";
-  };
-  brightness = "-30";
-  contrast = "0";
-  fillColor = "black";
 in
 {
   options.modules.gnome = {
@@ -36,10 +29,23 @@ in
   };
   config = mkMerge [
     (mkIf cfg.enable {
+
+      nix.daemonCPUSchedPolicy = "idle";
+      nix.daemonIOSchedClass = "idle";
+      systemd.services.nix-daemon.serviceConfig = {
+        Nice = lib.mkForce 15;
+        IOSchedulingClass = lib.mkForce "idle";
+        IOSchedulingPriority = lib.mkForce 7;
+      };
+
       services.xserver.enable = true;
       services.displayManager.gdm.enable = true;
       services.desktopManager.gnome.enable = true;
       services.gnome.sushi.enable = true;
+
+      services.gnome.core-apps.enable = true;
+      services.gnome.core-developer-tools.enable = true;
+      services.gnome.games.enable = false;
 
       environment.gnome.excludePackages = with pkgs; [
         #gnome-photos
@@ -52,16 +58,13 @@ in
         epiphany # web browser
         geary # email reader
         gnome-characters
-        tali # poker game
-        iagno # go game
-        hitori # sudoku game
-        atomix # puzzle game
         yelp # Help view
         gnome-contacts
         gnome-initial-setup
         gnome-terminal
         #gnome-console
       ];
+
       programs.dconf.enable = true;
       environment.systemPackages = with pkgs; [
         gnome-tweaks
@@ -70,6 +73,7 @@ in
         gdm-settings
         snoop
         #ghostty
+        refine
       ];
       services.udev.packages = [
         pkgs.gnome-settings-daemon
@@ -81,55 +85,123 @@ in
         xkb.layout = "us";
         xkb.variant = "";
       };
-      ### STYLIX
 
-      stylix.enable = true;
-      stylix.autoEnable = true;
+      /*
+        home-manager.sharedModules = [
+          {
+            stylix.targets.xyz.enable = false;
+          }
+        ];
+      */
 
-      stylix.polarity = "dark";
-      #stylix.accentColor = "purple";
-      stylix.targets = {
-        gnome.enable = true;
-        gtk.enable = true;
-        qt = {
+      stylix = {
+        ### STYLIX
+
+        enable = true;
+        autoEnable = true;
+
+        homeManagerIntegration = {
+          followSystem = true;
+          autoImport = true;
+        };
+
+        polarity = "dark";
+        #stylix.accentColor = "purple";
+        targets = {
+          gnome.enable = true;
+          gtk = {
+            enable = true;
+            /*
+              theme = lib.mkForce {
+                name = "catppuchin";
+                package = pkgs.catppuccin-gtk;
+              };
+            */
+          };
+          qt = {
+            enable = true;
+            platform = lib.mkForce "qtct";
+          };
+        };
+
+        #stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/darkviolet.yaml";
+        base16Scheme = {
+          slug = "metheme";
+          scheme = "Theme by me";
+          author = "me";
+          base00 = "241b26";
+          base01 = "2f2a3f";
+          base02 = "46354a";
+          base03 = "89787f";
+          base04 = "100712";
+          base05 = "eed5d9";
+          base06 = "d9c2c6";
+          base07 = "e4ccd0";
+          base08 = "877bb6";
+          base09 = "de5b44";
+          base0A = "a84a73";
+          base0B = "c965bf";
+          base0C = "9c5fce";
+          base0D = "6a9eb5";
+          base0E = "78a38f";
+          base0F = "9e5769";
+        };
+        fonts = {
+          serif = {
+            package = pkgs.liberation_ttf;
+            name = "Liberation Sans";
+          };
+
+          sansSerif = {
+            package = pkgs.liberation_ttf;
+            name = "Liberation Serif";
+          };
+
+          monospace = {
+            package = pkgs.nerd-fonts.liberation;
+            name = "Liberation Mono";
+          };
+
+          emoji = {
+            package = pkgs.noto-fonts-color-emoji;
+            name = "Noto Color Emoji";
+          };
+        };
+
+        icons = {
           enable = true;
-          platform = lib.mkForce "qtct";
+          dark = "Rose-pine-dawn";
+          package = pkgs.rose-pine-icon-theme;
         };
+        cursor = {
+          name = "Posy_Cursor";
+          package = pkgs.posy-cursors;
+          size = 24;
+        };
+
+        opacity = {
+          terminal = 0.5;
+          applications = 0.75;
+          desktop = 0.75;
+          popups = 0.75;
+        };
+
       };
-      #stylix.image = /run/current-system/sw/share/backgrounds/gnome/vnc-d.png;
-      stylix.image = pkgs.runCommand "dimmed-background.png" { } ''
-        ${lib.getExe' pkgs.imagemagick "convert"} "${inputImage}" -brightness-contrast ${brightness},${contrast} -fill ${fillColor} $out
-      '';
-      stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/darkviolet.yaml";
-      stylix.fonts = {
-        serif = {
-          package = pkgs.liberation_ttf;
-          name = "Liberation Sans";
-        };
-        /*
-                sansSerif = {
-                  package = pkgs.liberation_ttf;
-                  name = "Agave";
-                };
-        */
-
-        monospace = {
-          package = pkgs.nerd-fonts.liberation;
-          name = "Liberation Mono";
-        };
-
-        emoji = {
-          package = pkgs.noto-fonts-color-emoji;
-          name = "Noto Color Emoji";
-        };
-      };
-
       /*
         home-manager.users.egor.programs.gnome-shell = {
           enable = true;
           extensions = [ { package = pkgs.gnomeExtensions.gsconnect; } ];
         };
       */
+
+      programs.kdeconnect = {
+        enable = true;
+        package = pkgs.gnomeExtensions.gsconnect;
+      };
+      home-manager.users.egor.programs.gnome-shell = {
+        enable = true;
+        extensions = [ { package = pkgs.gnomeExtensions.gsconnect; } ];
+      };
 
       networking.firewall = rec {
         allowedTCPPortRanges = [
@@ -144,19 +216,27 @@ in
       programs.seahorse.enable = true; # enable the graphical frontend
 
       security = {
-        polkit.enable = true;
-        /*
-          pam.services = {
-
-                 ssdm = {
-                   enableGnomeKeyring = true;
-                 };
-                 hyprland = {
-                   enableGnomeKeyring = true;
-                 };
-               };
-        */
+        rtkit.enable = true;
+        polkit = {
+          enable = true;
+          extraConfig = ''
+            polkit.addRule(function(action, subject) {
+              if ( subject.isInGroup("users") && (
+               action.id == "org.freedesktop.login1.reboot" ||
+               action.id == "org.freedesktop.login1.reboot-multiple-sessions" ||
+               action.id == "org.freedesktop.login1.power-off" ||
+               action.id == "org.freedesktop.login1.power-off-multiple-sessions"
+              ))
+              { return polkit.Result.YES; }
+            })
+          '';
+        };
+        pam.services.swaylock = {
+          text = ''auth include login '';
+        };
       };
+      security.pam.services.login.enableGnomeKeyring = true;
+
       services.dbus.enable = true;
       services.gnome.gnome-keyring.enable = true;
       services.accounts-daemon.enable = true;

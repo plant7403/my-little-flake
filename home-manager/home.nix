@@ -2,7 +2,6 @@
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 {
   pkgs,
-  #outputs,
   lib,
   outputs,
   inputs,
@@ -12,27 +11,23 @@
 {
   # You can import other home-manager modules here
   imports = [
-    # If you want to use modules your own flake exports (from modules/home-manager):
-    # outputs.homeManagerModules.example
 
-    # Or modules exported from other flakes (such as nix-colors):
-    # inputs.nix-colors.homeManagerModules.default
+    # ./desktop/vscode.nix
+    # ./desktop/firefox.nix
+    # ./desktop/extensions.nix
+    #./desktop/niri.nix
+    ./desktop
 
-    # You can also split up your configuration and import pieces of it here:
-    # ./nvim.nix
-    ./zsh.nix
+    # ./core/zsh.nix
+    # ./core/gpg.nix
+    # ./core/theme.nix
+    # ./core/radicle.nix
+    ./core
+
+    ./nvim/nvim.nix
+
     ./sops.nix
-    ./vscode.nix
-    ./firefox.nix
-    ./gpg.nix
-    ./theme.nix
-    ./extensions.nix
-    ./radicle.nix
-    ./nvim.nix
-    ./niri.nix
-    #./vim.nix
-    #../modules/home-manager
-    #outputs.homeManagerModules.syncthing
+
     inputs.impermanence.homeManagerModules.impermanence
 
   ]
@@ -43,60 +38,31 @@
     homeDirectory = "/home/egor";
   };
 
-  # Add stuff for your user as you see fit:
-  # programs.neovim.enable = true;
   home.packages = with pkgs; [
-    #  thunderbird
-    #librewolf
-    alejandra
-    arduino
     bitwarden-desktop
     blender
-    #darktable
-    direnv
-    element-desktop
 
-    filezilla
-    #gimp-with-plugins
     inkscape
-    #jellyfin-media-player
     krita
     libreoffice
-
-    #nextcloud-client
-    nixpkgs-fmt
     rnote
+
+    nixpkgs-fmt
+    nixfmt-rfc-style
+    nil
+    nixd
+
     simplex-chat-desktop
     sirikali
-    thunderbird
 
     transmission_4-gtk
 
-    easyeffects
-
-    ghostty
-
-    #mullvad-vpn
-    #logseq
-
-    #gnome-terminal
-
     gnome-boxes
-    #virtualbox
-    #mullvad-browser
-
-    freetube
-
-    #davinci-resolve
-    #flowblade
 
     deploy-rs
     gnome-decoder
     usbguard-notifier
-
-    nixfmt-rfc-style
-    nil
-    nixd
+    thunderbird
 
     nmap
 
@@ -104,16 +70,12 @@
     #pixelorama
     vlc
 
-    obsidian
-
     prismlauncher
     jdk25_headless
     #alfis
 
-    #basicswap
     nym
 
-    ungoogled-chromium
     dbeaver-bin
     signal-desktop
 
@@ -121,6 +83,11 @@
     bustle
     sushi
 
+    grayjay
+    distrobox
+    boxbuddy
+    crun
+    distroshelf
   ];
 
   programs.home-manager.enable = true;
@@ -134,27 +101,21 @@
   };
   programs.gitui.enable = true;
 
-  programs.bemenu = {
+  programs.direnv = {
+    #config = "true";
     enable = true;
-    settings = {
-      line-height = 28;
-      prompt = "open";
-      ignorecase = true;
-      /*
-        fb = "#1e1e2e";
-           ff = "#cdd6f4";
-           nb = "#1e1e2e";
-           nf = "#cdd6f4";
-           tb = "#1e1e2e";
-           hb = "#1e1e2e";
-           tf = "#f38ba8";
-           hf = "#f9e2af";
-           af = "#cdd6f4";
-           ab = "#1e1e2e";
-      */
-      width-factor = 0.3;
-    };
+    enableZshIntegration = true;
+    mise.enable = true;
+    nix-direnv.enable = true;
+    silent = true;
+    #stdlib = "true";
   };
+
+  programs.thunderbird = {
+    enable = true;
+    profiles.default.isDefault = true;
+  };
+
   programs.keepassxc = {
     enable = true;
     autostart = true;
@@ -163,13 +124,21 @@
 
       GUI = {
         AdvancedSettings = true;
-        ApplicationTheme = "dark";
+        ApplicationTheme = "classic";
         CompactMode = true;
         HidePasswords = true;
       };
 
       SSHAgent.Enabled = true;
     };
+  };
+
+  programs.freetube.enable = true;
+  programs.freetube.settings = {
+    allowDashAv1Formats = true;
+    checkForUpdates = false;
+    defaultQuality = "1080";
+    #baseTheme           = "catppuccinMocha";
   };
 
   programs.ssh.matchBlocks = {
@@ -203,6 +172,46 @@
         };
     */
 
+  };
+
+  /*
+    programs.rbw.settings.email = "test@disroot.org";
+    programs.rbw.settings.identity_url = "";
+    programs.rbw.settings.base_url = "";
+  */
+  programs.rbw.enable = true;
+
+  programs.element-desktop = {
+    enable = true;
+    profiles = {
+      home = {
+        disable_custom_urls = false;
+        disable_guests = false;
+        disable_login_language_selector = false;
+        disable_3pid_login = false;
+      };
+    };
+    settings = ''
+      {
+        default_server_config = {
+          "m.homeserver" = {
+              base_url = "https://matrix-client.matrix.org";
+              server_name = "matrix.org";
+          };
+          "m.identity_server" = {
+              base_url = "https://vector.im";
+          };
+        };
+        disable_custom_urls = false;
+        disable_guests = false;
+        disable_login_language_selector = false;
+        disable_3pid_login = false;
+        force_verification = false;
+        brand = "Element";
+        integrations_ui_url = "https://scalar.vector.im/";
+        integrations_rest_url = "https://scalar.vector.im/api";
+      }
+    '';
   };
 
   #home.sessionVariables = {
@@ -250,6 +259,7 @@
       ".config/.mozilla/thunderbird"
       ".thunderbird"
       ".librewolf/default"
+      ".config/Signal"
 
       "my-little-flake"
       "Pak-Unity"
@@ -260,20 +270,24 @@
       ".config/VSCodium/User"
       ".config/obsidian"
       ".config/keepassxc"
-      ".config/zsh"
-      ".config/gsconnect"
-      ".cache/nix-index"
+      #".config/zsh"
+      #".config/gsconnect"
+      # ".cache/nix-index"
       ".cache/thumbnails"
 
-      ".local/state"
-      ".steam"
+      #".local/state"
+      #".steam"
       ".radicle"
-      /*
-        {
-          directory = ".local/share/Steam";
-          method = "symlink";
-        }
-      */
+      #".local/share/Steam"
+
+      {
+        directory = ".local/share/Steam/userdata";
+        method = "symlink";
+      }
+      ".steam"
+
+      ".config/paperwm"
+      ".local/share/zsh"
     ];
 
     files = [
@@ -282,9 +296,10 @@
       ".config/syncthingtray.ini"
       ".cache/keepassxc/keepassxc.ini"
       ".mozilla/native-messaging-hosts/org.keepassxc.keepassxc_browser.json"
-      ".nix-defexpr/channels"
-      ".nix-defexpr/channels_root"
-      #".nix-profile"
+      #".nix-defexpr/channels"
+      #".nix-defexpr/channels_root"
+      ".config/sops/age/keys.txt"
+      ".screenrc"
     ];
 
     allowOther = true;

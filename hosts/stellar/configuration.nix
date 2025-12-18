@@ -17,22 +17,10 @@
     ./clevis.nix
 
     ./../common/users/egor.nix
+    ./../common/users/inti.nix
     ./../common/users/root.nix
     #./../common/desktop/steam.nix
     ./../common/desktop/virtualbox.nix
-    /*
-      outputs.nixosModules.gnome
-       #outputs.nixosModules.kde
-       outputs.nixosModules.impermanence
-       #outputs.nixosModules.mullvad
-       outputs.nixosModules.sound
-       outputs.nixosModules.steam
-       outputs.nixosModules.tailscale
-       outputs.nixosModules.system
-       outputs.nixosModules.yubikey
-       outputs.nixosModules.yggdrasil
-       outputs.nixosModules.ollama
-    */
 
     #./odoo-test.nix # add to specializations or flake/shell
   ]
@@ -45,7 +33,6 @@
   modules.ollama = {
     enable = true;
   };
-  #modules.kde.enable = true;
 
   modules.yggdrasil = {
     enable = false;
@@ -56,6 +43,8 @@
     enable = true;
     disk = "nvme";
   };
+
+  modules.steam.enable = true;
   /*
        modules.mullvad = {
       enable = true;
@@ -112,11 +101,11 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  services.logrotate.checkConfig = false; # TODO check logrotate
+  #services.logrotate.checkConfig = false; # TODO check logrotate
 
   home-manager.sharedModules = [
     inputs.sops-nix.homeManagerModules.sops
-    inputs.plasma-manager.homeModules.plasma-manager
+    # inputs.plasma-manager.homeModules.plasma-manager
   ];
   environment.systemPackages = with pkgs; [
     xf86_input_wacom
@@ -142,6 +131,10 @@
   */
   programs.adb.enable = true;
   users.users.egor.extraGroups = [
+    "adbusers"
+    "podman"
+  ];
+  users.users.inti.extraGroups = [
     "adbusers"
     "podman"
   ];
@@ -222,28 +215,6 @@
   services.thermald.enable = true;
 
   programs.niri.enable = true;
-  /*
-    system.userActivationScripts = {
-      removeConflictingFiles = {
-        text = ''
-          rm -f /home/egor/.config/mimeapps.list.backup
-        '';
-      };
-    };
-  */
 
-  /*
-    programs.auto-cpufreq.enable = true;
-    # optionally, you can configure your auto-cpufreq settings, if you have any
-    programs.auto-cpufreq.settings = {
-      charger = {
-        governor = "performance";
-        turbo = "auto";
-      };
-      battery = {
-        governor = "powersave";
-        turbo = "auto";
-      };
-    };
-  */
+  hardware.graphics.enable = true;
 }

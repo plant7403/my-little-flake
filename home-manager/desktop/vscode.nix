@@ -348,9 +348,15 @@ in
 
             "llvm-vs-code-extensions.vscode-clangd"
             "kylinideteam.cppdebug"
+
+            "babyfox1306.pdf-forge"
+            "kube.42header"
+            "mariusvanwijk-joppekoers.codam-norminette-3"
           ]
           ++ forOpenVsx baseExtensions
-          ++ forVscode [ ]
+          ++ forVscode [
+            "keyhr.42-c-format"
+          ]
           ++ forVscode baseExtensionsVS;
         userSettings = {
 
@@ -370,6 +376,9 @@ in
           "editor.cursorWidth" = 5;
           "editor.cursorBlinking" = "solid";
           "editor.renderWhitespace" = "all";
+          "[c]" = {
+            "editor.defaultFormatter" = "keyhr.42-c-format";
+          };
         }
         // baseSettings;
       };

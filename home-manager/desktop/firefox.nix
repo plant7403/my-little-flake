@@ -13,7 +13,7 @@
   stylix.targets.librewolf = {
     enable = true;
     colorTheme.enable = true;
-    #firefoxGnomeTheme.enable = true;
+    firefoxGnomeTheme.enable = true;
     profileNames = [ "default" ];
   }; # !!! remove it from here !!!
 

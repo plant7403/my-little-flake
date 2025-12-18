@@ -3,23 +3,26 @@
   lib,
   ...
 }:
+let
+
+  inputImage = pkgs.fetchurl {
+    url = "https://4kwallpapers.com/images/wallpapers/chainsaw-man-the-3840x2160-22996.jpg";
+    sha256 = "sha256-AbHCVUrbtK+jhVonRscYBU5x1+FDHLp3/ffY87ZD4ck=";
+  };
+  brightness = "0";
+  contrast = "0";
+  fillColor = "black";
+in
 {
   stylix = {
-    enable = true;
-    icons = {
-      enable = true;
-      dark = "Dracula";
-      package = pkgs.dracula-icon-theme;
-    };
-    cursor = {
-      name = "Posy_Cursor";
-      package = pkgs.posy-cursors;
-      size = 1;
-    };
-
+    #enable = true;
+    enableReleaseChecks = true;
+    #stylix.image = /run/current-system/sw/share/backgrounds/gnome/vnc-d.png;
+    image = pkgs.runCommand "dimmed-background.png" { } ''
+      ${lib.getExe' pkgs.imagemagick "convert"} "${inputImage}" -brightness-contrast ${brightness},${contrast} -fill ${fillColor} $out
+    '';
     targets = {
       gtk = {
-        enable = true;
         flatpakSupport.enable = true;
         extraCss = ''
           /*********************
@@ -60,23 +63,17 @@
           }
 
         '';
-        /*
-          theme = lib.mkForce {
-            name = "catppuchin";
-            package = pkgs.catppuccin-gtk;
-          };
-        */
-      };
-      qt = {
-        enable = true;
-        platform = "qtct";
       };
     };
-    opacity = {
-      terminal = 0.5;
-      applications = 0.75;
-      desktop = 0.75;
-      popups = 0.75;
+  };
+
+  dconf.enable = true;
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      accent-color = "teal";
+    };
+    "org/gnome/desktop/input-sources" = {
+      xkb-options = [ "ctrl:nocaps" ];
     };
   };
 
