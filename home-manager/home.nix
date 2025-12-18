@@ -125,7 +125,7 @@
       General.ConfigVersion = 2;
       Browser = {
         Enabled = true;
-        CustomProxyLocation=;
+        CustomProxyLocation = null;
       };
       Security.QuickUnlock = true;
 
