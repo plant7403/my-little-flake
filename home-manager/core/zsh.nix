@@ -288,9 +288,9 @@ style = "bg:#86BBD8";
 format = "[ $symbol ($version) ]($style)";
 };
 elm = {
-symbol = " "
-style = "bg:#86BBD8"
-format = '[ $symbol ($version) ]($style)'
+symbol = " ";
+style = "bg:#86BBD8";
+format = [ $symbol ($version) ]($style)'
 }
 git_branch = {
 symbol = ""
