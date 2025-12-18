@@ -129,6 +129,7 @@
           { name = "autojump"; }
           { name = "git"; }
           { name = "colored-man-pages"; }
+          {name = }
           {name = "junegunn/fzf";}
           {name = "junegunn/fzf-bin";}
           {name = "sharkdp/fd" tags = [
