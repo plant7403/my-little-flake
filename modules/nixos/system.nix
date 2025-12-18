@@ -63,7 +63,7 @@ in
         always-allow-substitutes = true;
         substituters = [
           #"https://cachix.cachix.org"
-          "https://devenv.cachix.org"
+          #"https://devenv.cachix.org"
           "https://cache.nixos.org/"
           "https://nix-community.cachix.org"
         ];
