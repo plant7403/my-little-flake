@@ -127,7 +127,7 @@ in
         }
         {
           name = pkgs.zsh-completions.pname;
-          src = pkgs.zsh-autosuggestions.src;
+          src = pkgs.zsh-completions.src;
         }
         {
           name = pkgs.zsh-autosuggestions.pname;
@@ -141,10 +141,6 @@ in
           #{ name = "ael-code/zsh-colored-man-pages"; }
           #{ name = "woefe/wbase.zsh"; }
 
-          {
-            name = "zsh-users/zsh-autosuggestions";
-            tags = [ "depth:1" ];
-          }
           { name = "zsh-users/history"; }
           {
             name = "zsh-users/zsh-syntax-highlighting";
