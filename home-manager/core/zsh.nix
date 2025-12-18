@@ -172,7 +172,7 @@
   programs.starship.configPath
 programs.starship.enableBashIntegration
 programs.starship.enableFishIntegration
-programs.starship.enableInteractive
+programs.starship.enableInteractive = 
 
 programs.starship.enableTransience = true;
 programs.starship.enable = true;
