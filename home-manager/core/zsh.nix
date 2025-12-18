@@ -326,8 +326,8 @@ nodejs = {
 symbol = ""
 style = "bg:#86BBD8"
 format = '[ $symbol ($version) ]($style)'
-}
-[nim]
+};
+nim = 
 symbol = "󰆥 "
 style = "bg:#86BBD8"
 format = '[ $symbol ($version) ]($style)'
