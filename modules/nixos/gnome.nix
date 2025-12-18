@@ -142,7 +142,7 @@ in
           };
           monospace = {
             package = pkgs.nerd-fonts.departure-mono;
-            name = "DepartureMono Nerd Font Mono 12";
+            name = "DepartureMono Nerd Font Mono";
           };
           emoji = {
             package = pkgs.noto-fonts-color-emoji;
