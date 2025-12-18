@@ -4,11 +4,9 @@
   lib,
   ...
 }:
-/*
-  let
-    plugins = [
 
-    ];
+  let
+    imports = [ (builtins.fromTOML (builtins.readFile ./some-configuration.toml)) ];
   in
 
 {
