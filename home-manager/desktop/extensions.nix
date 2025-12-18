@@ -184,11 +184,11 @@
        };
     */
     "com/github/amezin/ddterm" = {
-    panel-icon-type" = "none";
+    panel-icon-type = "none";
     background-opacity" = "0.5";
     hide-when-focus-lost" = true;
     hide-window-on-esc" = true;
-    tab-label-ellipsize-mode" = "start";}l
+    tab-label-ellipsize-mode" = "start";};
   };
 
   /*
