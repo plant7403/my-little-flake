@@ -120,6 +120,7 @@
               "depth:1"
             ];
           } # Installations with additional options. For the list of options, please refer to Zplug README.
+          
           { name = "autojump"; }
           { name = "git"; }
           { name = "colored-man-pages"; }
