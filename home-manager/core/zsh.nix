@@ -307,13 +307,13 @@ style = "bg:#86BBD8";
 format = "[ $symbol ($version) ]($style)";
 };
 gradle = {
-style = "bg:#86BBD8"
+style = "bg:#86BBD8";
 format = "[ $symbol ($version) ]($style)";
 };
 haskell = {
 symbol = " ";
 style = "bg:#86BBD8";
-format = "[ $symbol ($version) ]($style)"
+format = "[ $symbol ($version) ]($style)";
 };
 java = {
 symbol = " "
