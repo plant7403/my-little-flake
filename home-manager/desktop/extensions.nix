@@ -154,9 +154,7 @@
       "com/github/amezin/ddterm/panel-icon-type" = "none";
       "com/github/amezin/ddterm/background-opacity" = 0.5;
       "com/github/amezin/ddterm/hide-when-focus-lost" = true;
-
       "com/github/amezin/ddterm/hide-window-on-esc" = true;
-
       "com/github/amezin/ddterm/tab-label-ellipsize-mode" = "start";
 
       "extensions/duckduckbang/search-engine" = 7;
