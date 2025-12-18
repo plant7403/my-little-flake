@@ -190,7 +190,6 @@ in
   #programs.starship.configPath
 
   programs.starship.enableInteractive = true;
-
   programs.starship.enableTransience = true;
   programs.starship.enable = true;
   programs.starship.enableZshIntegration = true;
