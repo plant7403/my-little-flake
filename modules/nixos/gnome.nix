@@ -247,7 +247,6 @@ in
         pkgs.gnome-keyring
         pkgs.gcr
       ];
-
     })
     (mkIf cfg.autologin {
       # Enable automatic login for the user.
