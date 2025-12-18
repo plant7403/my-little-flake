@@ -129,10 +129,10 @@
           { name = "autojump"; }
           { name = "git"; }
           { name = "colored-man-pages"; }
-          {name = "woefe/wbase.zsh"}
+          {name = "woefe/wbase.zsh";}
           {name = "junegunn/fzf";}
           {name = "junegunn/fzf-bin";}
-          {name = "sharkdp/fd" tags = [
+          {name = "sharkdp/fd"l tags = [
             "from:gh-r" "as:command" "rename-to:fd" /* "use"="*x86_64-unknown-linux-gnu.tar.gz" */
           ];}
           { name = "zsh-users/zsh-completions"; }
