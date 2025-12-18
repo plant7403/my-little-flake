@@ -155,7 +155,6 @@ in
             package = pkgs.liberation_ttf;
             name = "Liberation Serif";
           };
-
           monospace = {
             package = pkgs.nerd-fonts.liberation;
             name = "Liberation Mono";
