@@ -53,8 +53,8 @@
             zle -N history-beginning-search-backward-end history-search-end
             zle -N history-beginning-search-forward-end  history-search-end
           fi
-          autoload -Uz compinit && compinit
-          autoload -U colors && colors
+          #autoload -Uz compinit && compinit
+          #autoload -U colors && colors
           alias ls='ls -G'
 
           # history
