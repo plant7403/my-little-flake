@@ -134,11 +134,11 @@ in
         fonts = {
           sansSerif = {
             package = pkgs.nerd-fonts.departure-mono;
-            name = "DepartureMono Nerd Font 11";
+            name = "DepartureMono Nerd Font";
           };
           serif = {
             package = pkgs.nerd-fonts.departure-mono;
-            name = "DepartureMono Nerd Font Propo Bold Italic 12";
+            name = "DepartureMono Nerd Font Propo Bold Italic";
           };
           monospace = {
             package = pkgs.nerd-fonts.departure-mono;
