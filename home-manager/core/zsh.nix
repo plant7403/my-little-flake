@@ -125,6 +125,14 @@ in
           name = pkgs.zsh-autosuggestions.pname;
           src = pkgs.zsh-autosuggestions.src;
         }
+        {
+          name = pkgs.zsh-autosuggestions.pname;
+          src = pkgs.zsh-autosuggestions.src;
+        }
+        {
+          name = pkgs.zsh-autosuggestions.pname;
+          src = pkgs.zsh-autosuggestions.src;
+        }
       ];
       zplug = {
         enable = true;
