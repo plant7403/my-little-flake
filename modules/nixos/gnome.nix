@@ -279,9 +279,7 @@ in
         allowedTCPPorts = [ 3389 ];
         allowedUDPPorts = [ 3389 ];
       };
-      # new
-      services.sysprof.enable = true;
-      hardware.sensor.iio.enable = true;
+
     })
 
     (mkIf cfg.isSteamDeck {
