@@ -293,8 +293,8 @@ style = "bg:#86BBD8";
 format = "[ $symbol ($version) ]($style)";
 }
 git_branch = {
-symbol = ""
-style = "bg:#FCA17D"
+symbol = "";
+style = "bg:#FCA17D";
 format = '[ $symbol $branch ]($style)'
 };
 git_status = {
