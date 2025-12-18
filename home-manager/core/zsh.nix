@@ -122,7 +122,7 @@ in
           src = pkgs.zsh-autosuggestions.src;
         }
         {
-          name = pkgs.zsh-autosuggestions.pname;
+          name = pkgs.fzf-zsh.pname;
           src = pkgs.zsh-autosuggestions.src;
         }
         {
