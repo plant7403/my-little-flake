@@ -168,11 +168,11 @@ in
         };
       };
         programs.xonsh.config
-        programs.xonsh.enable
-        programs.xonsh.bashCompletion.enable
-        programs.xonsh.extraPackages
-        programs.xonsh.package
-        programs.xonsh.bashCompletion.package
+        enable
+        bashCompletion.enable
+        extraPackages
+        package
+        bashCompletion.package
         programs.zoxide.enableXonshIntegration
         programs.direnv.enableXonshIntegration
       users.defaultUserShell = pkgs.zsh;
