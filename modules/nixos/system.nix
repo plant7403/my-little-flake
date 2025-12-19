@@ -173,9 +173,9 @@ in
         bashCompletion.enable
         extraPackages
         package
-        bashCompletion.package}
+        bashCompletion.package};
         programs.zoxide.enableXonshIntegration
-        programs.direnv.enableXonshIntegration
+        programs.direnv.enableXonshIntegration = true;
       users.defaultUserShell = pkgs.zsh;
       environment.shells = with pkgs; [ zsh ];
       /*
