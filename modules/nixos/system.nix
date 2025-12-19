@@ -167,7 +167,8 @@ in
 
         };
       };
-        programs.xonsh.config
+        programs.xonsh = 
+        config
         enable
         bashCompletion.enable
         extraPackages
