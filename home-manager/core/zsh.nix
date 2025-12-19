@@ -30,7 +30,7 @@
 
   home.shell = {
     enableZshIntegration = true;
-    enable
+    enableXonshIntegration = true;
   };
   #programs.thefuck.enable = true;
   programs = {
