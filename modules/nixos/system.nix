@@ -178,8 +178,8 @@ in
       };
       programs.zoxide.enableXonshIntegration = true;
       programs.direnv.enableXonshIntegration = true;
-      users.defaultUserShell = pkgs.xon;
-      environment.shells = with pkgs; [ zsh ];
+      users.defaultUserShell = pkgs.xonsh;
+      environment.shells = with pkgs; [ xonsh ];
       /*
         environment.persistence."/persist".directories = [
           "/var/cache/man"
