@@ -167,6 +167,14 @@ in
 
         };
       };
+              programs.xonsh.config
+        programs.zoxide.enableXonshIntegration
+        programs.direnv.enableXonshIntegration
+        programs.xonsh.enable
+        programs.xonsh.bashCompletion.enable
+        programs.xonsh.extraPackages
+        programs.xonsh.package
+        programs.xonsh.bashCompletion.package
       users.defaultUserShell = pkgs.zsh;
       environment.shells = with pkgs; [ zsh ];
       /*
