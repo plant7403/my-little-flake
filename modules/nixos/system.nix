@@ -167,7 +167,7 @@ in
 
         };
       };
-              programs.xonsh.config
+        programs.xonsh.config
         programs.zoxide.enableXonshIntegration
         programs.direnv.enableXonshIntegration
         programs.xonsh.enable
