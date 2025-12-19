@@ -171,8 +171,10 @@ in
         config = '''';
         enable = true;
         bashCompletion.enable = true;
-        extraPackages = [ ];
-
+        extraPackages = [
+          numpy
+          xonsh.xontribs.xontrib-vox
+        ];
       };
       programs.zoxide.enableXonshIntegration = true;
       programs.direnv.enableXonshIntegration = true;
