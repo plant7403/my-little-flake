@@ -171,7 +171,7 @@ in
         config = '' '';
         enable = true;
         bashCompletion.enable = true;
-        extraPackages = 
+        extraPackages = [];
         package
         bashCompletion.package};
         programs.zoxide.enableXonshIntegration = true;
