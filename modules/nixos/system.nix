@@ -168,8 +168,8 @@ in
         };
       };
         programs.xonsh = {
-        config = 
-        enable
+        config = '' '';
+        enable = true;
         bashCompletion.enable
         extraPackages
         package
