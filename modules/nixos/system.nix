@@ -171,10 +171,11 @@ in
         config = '''';
         enable = true;
         bashCompletion.enable = true;
-        extraPackages = [
-          numpy
-          xonsh.xontribs.xontrib-vox
-        ];
+        extraPackages =
+          ps: with ps; [
+            numpy
+            xonsh.xontribs.xontrib-vox
+          ];
       };
       programs.zoxide.enableXonshIntegration = true;
       programs.direnv.enableXonshIntegration = true;
