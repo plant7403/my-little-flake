@@ -167,14 +167,15 @@ in
 
         };
       };
-        programs.xonsh = {
-        config = '' '';
+      programs.xonsh = {
+        config = '''';
         enable = true;
         bashCompletion.enable = true;
-        extraPackages = [];
-        bashCompletion.package};
-        programs.zoxide.enableXonshIntegration = true;
-        programs.direnv.enableXonshIntegration = true;
+        extraPackages = [ ];
+
+      };
+      programs.zoxide.enableXonshIntegration = true;
+      programs.direnv.enableXonshIntegration = true;
       users.defaultUserShell = pkgs.zsh;
       environment.shells = with pkgs; [ zsh ];
       /*
