@@ -122,10 +122,12 @@
           name = pkgs.zsh-history-substring-search.pname;
           src = pkgs.zsh-history-substring-search.src;
         }
-        {
-          name = pkgs.zsh-syntax-highlighting.pname;
-          src = pkgs.zsh-syntax-highlighting.src;
-        }
+        /*
+          {
+            name = pkgs.zsh-syntax-highlighting.pname;
+            src = pkgs.zsh-syntax-highlighting.src;
+          }
+        */
         {
           name = pkgs.zsh-histdb.pname;
           src = pkgs.zsh-histdb.src;
