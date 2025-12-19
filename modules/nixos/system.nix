@@ -168,13 +168,13 @@ in
         };
       };
         programs.xonsh = {
-        config
+        config = 
         enable
         bashCompletion.enable
         extraPackages
         package
         bashCompletion.package};
-        programs.zoxide.enableXonshIntegration
+        programs.zoxide.enableXonshIntegration = true;
         programs.direnv.enableXonshIntegration = true;
       users.defaultUserShell = pkgs.zsh;
       environment.shells = with pkgs; [ zsh ];
