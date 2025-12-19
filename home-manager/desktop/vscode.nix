@@ -341,6 +341,7 @@ in
             "kube.42header"
             #"mariusvanwijk-joppekoers.codam-norminette-3"
             "brittanychiang.halcyon-vscode"
+            "farrese.midas"
           ]
           ++ forOpenVsx baseExtensions
           ++ forVscode [
