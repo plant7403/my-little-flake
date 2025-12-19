@@ -170,8 +170,8 @@ in
         programs.xonsh = {
         config = '' '';
         enable = true;
-        bashCompletion.enable
-        extraPackages
+        bashCompletion.enable = true;
+        extraPackages = 
         package
         bashCompletion.package};
         programs.zoxide.enableXonshIntegration = true;
