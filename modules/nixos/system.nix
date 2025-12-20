@@ -176,6 +176,10 @@ in
             numpy
             xonsh.xontribs.xontrib-vox
             xonsh.xontribs.xontrib-gitinfo
+            xonsh.xontribs.xontrib-
+            xonsh.xontribs.xontrib-
+            xonsh.xontribs.xontrib-
+            xonsh.xontribs.xontrib-
           ];
       };
       programs.zoxide.enableXonshIntegration = true;
