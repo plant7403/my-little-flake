@@ -191,7 +191,7 @@ in
               xonsh.xontribs.xontrib-direnv
             */
           ];
-          package = pkgs.xonsh.over
+          package = pkgs.xonsh.override
       };
       programs.zoxide.enableXonshIntegration = true;
       programs.direnv.enableXonshIntegration = true;
