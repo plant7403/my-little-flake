@@ -254,7 +254,7 @@ in
                 pkgs.python3Packages.poetry-core
               ];
               meta = {
-                homepage = "https://github.com/dyuri/xontrib-zoxide";
+                homepage = "https://github.com/anki-code/xontrib-prompt-starship";
                 description = "Zoxide support for xonsh";
                 license = pkgs.lib.licenses.mit;
                 maintainers = [ ];
