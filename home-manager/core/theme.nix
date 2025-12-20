@@ -70,7 +70,7 @@ in
       scheme = "Theme by me";
       author = "me";
       base00 = "171c28";
-      base01 = "2f2a3f";
+      base01 = "1d2433";
       base02 = "46354a";
       base03 = "89787f";
       base04 = "100712";
