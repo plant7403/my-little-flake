@@ -175,6 +175,7 @@ in
           ps: with ps; [
             numpy
             xonsh.xontribs.xontrib-vox
+            gitinfo 
           ];
       };
       programs.zoxide.enableXonshIntegration = true;
