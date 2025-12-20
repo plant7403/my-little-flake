@@ -180,6 +180,11 @@ in
             xonsh.xontribs.xontrib-zoxide
             xonsh.xontribs.xontrib-z
             xonsh.xontribs.xontrib-hist_navigator
+            xonsh.xontribs.xontrib-
+            xonsh.xontribs.xontrib-
+            xonsh.xontribs.xontrib-
+            xonsh.xontribs.xontrib-
+            
           ];
       };
       programs.zoxide.enableXonshIntegration = true;
