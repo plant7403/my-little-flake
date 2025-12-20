@@ -185,7 +185,7 @@ in
             xonsh.xontribs.xontrib-coreutils
             xonsh.xontribs.xontrib-carapace-bin
             xonsh.xontribs.xontrib-xontrib-jedi
-            xonsh.xontribs.xontrib-
+            xonsh.xontribs.xontrib-xontrib-argcomplete
             xonsh.xontribs.xontrib-
             xonsh.xontribs.xontrib-
 
