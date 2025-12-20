@@ -191,57 +191,56 @@ in
               xonsh.xontribs.xontrib-direnv
             */
           ];
-        package = pkgs.xonsh.override {
-          extraPackages = ps: [
-            (ps.buildPythonPackage rec {
-              name = "xontrib-vox";
-              version = "0.0.1";
+        package = pkgs.xonsh.override { extraPackages = ps: [
+  (ps.buildPythonPackage rec {
+    name = "xontrib-vox";
+    version = "0.0.1";
 
-              src = pkgs.fetchFromGitHub {
-                owner = "xonsh";
-                repo = "${name}";
-                rev = "${version}";
-                sha256 = "06csyhq0h63vq4w17q032dg1cx3j4xrr76maf7a0x4jqcvj4w79q";
-              };
+    src = pkgs.fetchFromGitHub {
+    owner = "xonsh";
+      repo = "${name}";
+      rev = "${version}";
+      sha256 = "06csyhq0h63vq4w17q032dg1cx3j4xrr76maf7a0x4jqcvj4w79q";
+    };
 
-              meta = {
-                homepage = "https://github.com/xonsh/xontrib-vox";
-                description = "Python virtual environment manager for xonsh.";
-                license = pkgs.lib.licenses.mit;
-                maintainers = [ ];
-              };
+    meta = {
+      homepage = "https://github.com/xonsh/xontrib-vox";
+      description = "Python virtual environment manager for xonsh.";
+      license = pkgs.lib.licenses.mit;
+      maintainers = [ ];
+    };
 
-              prePatch = ''
-                pkgs.lib.substituteInPlace pyproject.toml --replace '"xonsh>=0.12.5"' ""
-              '';
-              patchPhase = "sed -i -e 's/^dependencies.*$/dependencies = []/' pyproject.toml";
-              doCheck = false;
-            })
-            (ps.buildPythonPackage rec {
-              name = "xontrib-fish-completer";
-              version = "0.0.1";
+    prePatch = ''
+      pkgs.lib.substituteInPlace pyproject.toml --replace '"xonsh>=0.12.5"' ""
+    '';
+    patchPhase = "sed -i -e 's/^dependencies.*$/dependencies = []/' pyproject.toml";
+    doCheck = false;
+  })
+  (ps.buildPythonPackage rec {
+    name = "xontrib-fish-completer";
+    version = "0.0.1";
 
-              src = pkgs.fetchFromGitHub {
-                owner = "xonsh";
-                repo = "${name}";
-                rev = "${version}";
-                sha256 = "sha256-PhhdZ3iLPDEIG9uDeR5ctJ9zz2+YORHBhbsiLrJckyA=";
-              };
+    src = pkgs.fetchFromGitHub {
+    owner = "xonsh";
+      repo = "${name}";
+      rev = "${version}";
+      sha256 = "sha256-PhhdZ3iLPDEIG9uDeR5ctJ9zz2+YORHBhbsiLrJckyA=";
+    };
 
-              meta = {
-                homepage = "https://github.com/xonsh/xontrib-fish-completer";
-                description = "Populate rich completions using fish and remove the default bash based completer";
-                license = pkgs.lib.licenses.mit;
-                maintainers = [ ];
-              };
+    meta = {
+      homepage = "https://github.com/xonsh/xontrib-fish-completer";
+      description = "Populate rich completions using fish and remove the default bash based completer";
+      license = pkgs.lib.licenses.mit;
+      maintainers = [ ];
+    };
 
-              prePatch = ''
-                pkgs.lib.substituteInPlace pyproject.toml --replace '"xonsh>=0.12.5"' ""
-              '';
-              patchPhase = "sed -i -e 's/^dependencies.*$/dependencies = []/' pyproject.toml";
-              doCheck = false;
-            })
-          ];
+    prePatch = ''
+      pkgs.lib.substituteInPlace pyproject.toml --replace '"xonsh>=0.12.5"' ""
+    '';
+    patchPhase = "sed -i -e 's/^dependencies.*$/dependencies = []/' pyproject.toml";
+    doCheck = false;
+  })
+];
         };
       };
       programs.zoxide.enableXonshIntegration = true;
