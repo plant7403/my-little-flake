@@ -191,7 +191,9 @@ in
               xonsh.xontribs.xontrib-direnv
             */
           ];
-          package = pkgs.xonsh.override {extraPackages = ps: [(buildPythonPackage {
+        package = pkgs.xonsh.override {
+          extraPackages = ps: [
+            (buildPythonPackage {
               name = "xontrib-gitinfo";
               pyproject = true;
               build-system = [
@@ -211,8 +213,8 @@ in
                 maintainers = [ ];
               };
             })
-            ];
-            }
+          ];
+        };
       };
       programs.zoxide.enableXonshIntegration = true;
       programs.direnv.enableXonshIntegration = true;
