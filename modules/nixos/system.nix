@@ -189,7 +189,7 @@ in
               xonsh.xontribs.xontrib-whole-word-jumping
               xonsh.xontribs.xontrib-direnv
             */
-            (ps.buildPythonPackage {
+            (ps.buildPythonPackage rec {
               name = "xontrib-gitinfo";
 
               src = pkgs.fetchFromGitHub {
