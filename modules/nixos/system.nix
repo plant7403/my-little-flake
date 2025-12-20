@@ -189,9 +189,9 @@ in
               xonsh.xontribs.xontrib-jedi
               xonsh.xontribs.xontrib-argcomplete
               xonsh.xontribs.xontrib-whole-word-jumping
-              xonsh.xontribs.xontrib-prompt-starship
+              xonsh.xontribs.xontrib-direnv
             */
-            xonsh.xontribs.
+            xonsh.xontribs.xontrib-prompt-starship
           ];
         package = pkgs.xonsh.override {
           extraPackages = ps: [
