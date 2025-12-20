@@ -192,7 +192,8 @@ in
             */
             (buildPythonPackage {
               name = "xontrib-gitinfo";
-pyproject = true
+              pyproject = true;
+              build-system = [ setuptools ];
               src = pkgs.fetchFromGitHub {
                 owner = "dyuri";
                 repo = "xontrib-gitinfo";
