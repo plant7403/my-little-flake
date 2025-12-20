@@ -173,7 +173,7 @@ in
         bashCompletion.enable = true;
         extraPackages =
           ps: with ps; [
-            setup
+            setuptools
             numpy
             xonsh.xontribs.xontrib-vox
             #xonsh.xontribs.gitinfo
@@ -192,7 +192,7 @@ in
             */
             (buildPythonPackage {
               name = "xontrib-gitinfo";
-
+pyproject = true
               src = pkgs.fetchFromGitHub {
                 owner = "dyuri";
                 repo = "xontrib-gitinfo";
