@@ -193,7 +193,7 @@ in
           ];
         package = pkgs.xonsh.override {
           extraPackages = ps: [
-            (buildPythonPackage {
+            (ps.buildPythonPackage {
               name = "xontrib-gitinfo";
               pyproject = true;
               build-system = [
