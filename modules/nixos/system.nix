@@ -168,7 +168,13 @@ in
         };
       };
       programs.xonsh = {
-        config = '''';
+        config = ''
+                    $PYTHONPATH = "$USER/.local/lib/python3.7/site-packages"
+
+          python -m ensurepip --user
+          xonsh
+          python -m pip install --user -U pip xontrib-z xonsh-direnv
+        '';
         enable = true;
         bashCompletion.enable = true;
         extraPackages =
