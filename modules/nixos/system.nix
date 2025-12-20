@@ -200,7 +200,7 @@ in
               };
 
               meta = {
-                homepage = "https://github.com/xonsh/xontrib-vox";
+                homepage = "https://github.com/dyuri/xontrib-gitinfo";
                 description = "Python virtual environment manager for xonsh.";
                 license = pkgs.lib.licenses.mit;
                 maintainers = [ ];
