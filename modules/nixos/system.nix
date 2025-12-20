@@ -193,7 +193,10 @@ in
             (buildPythonPackage {
               name = "xontrib-gitinfo";
               pyproject = true;
-              build-system = [ setuptools ];
+              build-system = [
+                setuptools
+                poetry
+              ];
               src = pkgs.fetchFromGitHub {
                 owner = "dyuri";
                 repo = "xontrib-gitinfo";
