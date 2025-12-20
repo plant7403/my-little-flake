@@ -187,7 +187,24 @@ in
             xonsh.xontribs.xontrib-argcomplete
             xonsh.xontribs.xontrib-whole-word-jumping
             xonsh.xontribs.xontrib-direnv
+            (ps.buildPythonPackage rec {
+              name = "xontrib-vox";
+              version = "0.0.1";
 
+              src = pkgs.fetchFromGitHub {
+                owner = "xonsh";
+                repo = "${name}";
+                rev = "${version}";
+                sha256 = "06csyhq0h63vq4w17q032dg1cx3j4xrr76maf7a0x4jqcvj4w79q";
+              };
+
+              meta = {
+                homepage = "https://github.com/xonsh/xontrib-vox";
+                description = "Python virtual environment manager for xonsh.";
+                license = pkgs.lib.licenses.mit;
+                maintainers = [ ];
+              };
+            })
           ];
       };
       programs.zoxide.enableXonshIntegration = true;
