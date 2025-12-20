@@ -188,7 +188,7 @@ in
             xonsh.xontribs.xontrib-whole-word-jumping
             xonsh.xontribs.xontrib-direnv
             (ps.buildPythonPackage rec {
-              name = "xontrib-vox";
+              name = "dyuri/xontrib-gitinfo";
               version = "0.0.1";
 
               src = pkgs.fetchFromGitHub {
