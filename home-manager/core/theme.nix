@@ -71,7 +71,7 @@ in
       author = "me";
       base00 = "171c28";
       base01 = "1d2433";
-      base02 = "46354a";
+      base02 = "2f3b54";
       base03 = "89787f";
       base04 = "100712";
       base05 = "eed5d9";
