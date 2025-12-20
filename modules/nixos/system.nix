@@ -176,7 +176,7 @@ in
             numpy
             xonsh.xontribs.xontrib-vox
             #xonsh.xontribs.gitinfo
-            xonsh.xontribs.xontrib-prompt-starship
+            xonsh.xontribs.xontrib-prompt_starship
             xonsh.xontribs.xontrib-zoxide
             xonsh.xontribs.xontrib-z
             xonsh.xontribs.xontrib-hist_navigator
