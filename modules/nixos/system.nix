@@ -185,7 +185,7 @@ in
             xonsh.xontribs.xontrib-carapace-bin
             xonsh.xontribs.xontrib-jedi
             xonsh.xontribs.xontrib-argcomplete
-            xonsh.xontribs.xontrib-
+            xonsh.xontribs.xontrib-whole-word-jumping
             xonsh.xontribs.xontrib-
 
           ];
