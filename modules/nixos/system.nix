@@ -175,7 +175,7 @@ in
           ps: with ps; [
             numpy
             xonsh.xontribs.xontrib-vox
-            xonsh.xontribs.gitinfo
+            #xonsh.xontribs.gitinfo
             xonsh.xontribs.xontrib-prompt_starship
             xonsh.xontribs.xontrib-zoxide
             xonsh.xontribs.xontrib-z
