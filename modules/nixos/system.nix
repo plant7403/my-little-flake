@@ -169,7 +169,7 @@ in
       };
       programs.xonsh = {
         config = ''
-                    $PYTHONPATH = "$USER/.local/lib/python3.7/site-packages"
+          $PYTHONPATH = "$USER/.local/lib/python3.13/site-packages"
 
           python -m ensurepip --user
           xonsh
