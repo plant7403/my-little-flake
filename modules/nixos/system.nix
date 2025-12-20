@@ -194,7 +194,7 @@ in
               src = pkgs.fetchFromGitHub {
                 owner = "dyuri";
                 repo = "xontrib-gitinfo";
-                rev = "${version}";
+                rev = "";
                 sha256 = "06csyhq0h63vq4w17q032dg1cx3j4xrr76maf7a0x4jqcvj4w79q";
               };
 
