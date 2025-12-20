@@ -178,8 +178,7 @@ in
             xonsh.xontribs.xontrib-gitinfo
             xonsh.xontribs.xontrib-prompt_starship
             xonsh.xontribs.xontrib-zoxide
-
-            xonsh.xontribs.xontrib-
+            xonsh.xontribs.xontrib-z
             xonsh.xontribs.xontrib-
           ];
       };
