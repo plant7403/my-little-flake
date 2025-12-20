@@ -179,6 +179,7 @@ in
             #xonsh.xontribs.gitinfo
             #xonsh.xontribs.prompt_starship
             #xonsh.xontribs.zoxide
+            xonsh.xontribs.zoxide
             /*
               xonsh.xontribs.xontrib-z
               xonsh.xontribs.xontrib-hist_navigator
@@ -193,7 +194,6 @@ in
           ];
         package = pkgs.xonsh.override {
           extraPackages = ps: [
-
             (ps.buildPythonPackage rec {
               name = "xontrib-fish-completer";
               version = "0.0.1";
