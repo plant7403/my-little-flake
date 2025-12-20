@@ -191,7 +191,7 @@ in
               xonsh.xontribs.xontrib-whole-word-jumping
               xonsh.xontribs.xontrib-direnv
             */
-            xonsh.xontribs.xontrib-prompt-starship
+            #xonsh.xontribs.xontrib-prompt-starship
           ];
         package = pkgs.xonsh.override {
           extraPackages = ps: [
