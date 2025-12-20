@@ -184,8 +184,8 @@ in
             xonsh.xontribs.xontrib-apt_tabcomplete
             xonsh.xontribs.xontrib-coreutils
             xonsh.xontribs.xontrib-carapace-bin
-            xonsh.xontribs.xontrib-xontrib-jedi
-            xonsh.xontribs.xontrib-xontrib-argcomplete
+            xonsh.xontribs.xontrib-jedi
+            xonsh.xontribs.xontrib-argcomplete
             xonsh.xontribs.xontrib-
             xonsh.xontribs.xontrib-
 
