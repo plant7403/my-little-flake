@@ -171,47 +171,45 @@ in
         config = '''';
         enable = true;
         bashCompletion.enable = true;
-        extraPackages =
-          ps: with ps; [
-            #setuptools
-            numpy
-            xonsh.xontribs.xontrib-vox
-            #xonsh.xontribs.gitinfo
-            #xonsh.xontribs.prompt_starship
-            #xonsh.xontribs.zoxide
-            /*
-              xonsh.xontribs.xontrib-z
-              xonsh.xontribs.xontrib-hist_navigator
-              xonsh.xontribs.xontrib-dir-picker
-              xonsh.xontribs.xontrib-coreutils
-              xonsh.xontribs.xontrib-carapace-bin
-              xonsh.xontribs.xontrib-jedi
-              xonsh.xontribs.xontrib-argcomplete
-              xonsh.xontribs.xontrib-whole-word-jumping
-              xonsh.xontribs.xontrib-direnv
-            */
-            (buildPythonPackage {
-              name = "xontrib-gitinfo";
-              pyproject = true;
-              build-system = [
-                setuptools
+        extraPackages = ps: [
+          #setuptools
+          numpy
+          xonsh.xontribs.xontrib-vox
+          #xonsh.xontribs.gitinfo
+          #xonsh.xontribs.prompt_starship
+          #xonsh.xontribs.zoxide
+          /*
+            xonsh.xontribs.xontrib-z
+            xonsh.xontribs.xontrib-hist_navigator
+            xonsh.xontribs.xontrib-dir-picker
+            xonsh.xontribs.xontrib-coreutils
+            xonsh.xontribs.xontrib-carapace-bin
+            xonsh.xontribs.xontrib-jedi
+            xonsh.xontribs.xontrib-argcomplete
+            xonsh.xontribs.xontrib-whole-word-jumping
+            xonsh.xontribs.xontrib-direnv
+          */
+          (buildPythonPackage {
+            name = "xontrib-gitinfo";
+            pyproject = true;
+            build-system = [
+              setuptools
+            ];
+            src = pkgs.fetchFromGitHub {
+              owner = "dyuri";
+              repo = "xontrib-gitinfo";
+              rev = "b1ba458d85a6684088807d962b39980144685630";
+              sha256 = "sha256-e5lgfcrG8p/3YgYNlnkfZIYj3VEjuNTRoseAl+Uyfd8=";
+            };
 
-              ];
-              src = pkgs.fetchFromGitHub {
-                owner = "dyuri";
-                repo = "xontrib-gitinfo";
-                rev = "b1ba458d85a6684088807d962b39980144685630";
-                sha256 = "sha256-e5lgfcrG8p/3YgYNlnkfZIYj3VEjuNTRoseAl+Uyfd8=";
-              };
-
-              meta = {
-                homepage = "https://github.com/dyuri/xontrib-gitinfo";
-                description = "Plugin";
-                license = pkgs.lib.licenses.mit;
-                maintainers = [ ];
-              };
-            })
-          ];
+            meta = {
+              homepage = "https://github.com/dyuri/xontrib-gitinfo";
+              description = "Plugin";
+              license = pkgs.lib.licenses.mit;
+              maintainers = [ ];
+            };
+          })
+        ];
       };
       programs.zoxide.enableXonshIntegration = true;
       programs.direnv.enableXonshIntegration = true;
