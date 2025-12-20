@@ -179,7 +179,7 @@ in
             #xonsh.xontribs.gitinfo
             #xonsh.xontribs.prompt_starship
             #xonsh.xontribs.zoxide
-            xonsh.xontribs.fish-completer
+            xonsh.xontribs.xontrib-fish-completer
             /*
               xonsh.xontribs.xontrib-z
               xonsh.xontribs.xontrib-hist_navigator
