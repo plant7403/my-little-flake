@@ -173,6 +173,7 @@ in
         bashCompletion.enable = true;
         extraPackages =
           ps: with ps; [
+            setup
             numpy
             xonsh.xontribs.xontrib-vox
             #xonsh.xontribs.gitinfo
