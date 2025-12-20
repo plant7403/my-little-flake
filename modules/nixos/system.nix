@@ -174,7 +174,7 @@ in
         extraPackages = ps: [
           #setuptools
           ps.numpy
-          xonsh.xontribs.xontrib-vox
+          ps.xonsh.xontribs.xontrib-vox
           #xonsh.xontribs.gitinfo
           #xonsh.xontribs.prompt_starship
           #xonsh.xontribs.zoxide
@@ -189,7 +189,7 @@ in
             xonsh.xontribs.xontrib-whole-word-jumping
             xonsh.xontribs.xontrib-direnv
           */
-          (buildPythonPackage {
+          (ps.buildPythonPackage {
             name = "xontrib-gitinfo";
             pyproject = true;
             build-system = [
