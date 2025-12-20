@@ -191,6 +191,7 @@ in
               xonsh.xontribs.xontrib-direnv
             */
           ];
+          package = 
       };
       programs.zoxide.enableXonshIntegration = true;
       programs.direnv.enableXonshIntegration = true;
