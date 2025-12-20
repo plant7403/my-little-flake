@@ -201,7 +201,7 @@ in
 
               meta = {
                 homepage = "https://github.com/dyuri/xontrib-gitinfo";
-                description = "Python virtual environment manager for xonsh.";
+                description = "Plugoin";
                 license = pkgs.lib.licenses.mit;
                 maintainers = [ ];
               };
