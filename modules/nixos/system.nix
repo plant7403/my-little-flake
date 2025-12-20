@@ -247,7 +247,7 @@ in
                 owner = "anki-code";
                 repo = "${name}";
                 rev = "${version}";
-                sha256 = "9xAR2R7IwGttv84qVb+8TkW6OAK6OGLW3o/tDQnUwII=";
+                sha256 = "sha256-LIqwlbn3XsbdJ1wT7Q+9Ex2heIq6EIDPCWUNLVn3N5k=";
               };
               nativeBuildInputs = [
                 pkgs.python3Packages.pip
