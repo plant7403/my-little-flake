@@ -184,6 +184,10 @@ in
             xonsh.xontribs.xontrib-apt_tabcomplete
             xonsh.xontribs.xontrib-coreutils
             xonsh.xontribs.xontrib-carapace-bin
+            xonsh.xontribs.xontrib-
+            xonsh.xontribs.xontrib-
+            xonsh.xontribs.xontrib-
+            xonsh.xontribs.xontrib-
 
           ];
       };
