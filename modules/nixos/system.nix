@@ -201,7 +201,7 @@ in
 
               meta = {
                 homepage = "https://github.com/dyuri/xontrib-gitinfo";
-                description = "Plugoin";
+                description = "Plugin";
                 license = pkgs.lib.licenses.mit;
                 maintainers = [ ];
               };
