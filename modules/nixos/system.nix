@@ -179,7 +179,7 @@ in
             xonsh.xontribs.xontrib-prompt_starship
             xonsh.xontribs.xontrib-zoxide
             xonsh.xontribs.xontrib-z
-            xonsh.xontribs.xontrib-
+            xonsh.xontribs.xontrib-hist_navigator
           ];
       };
       programs.zoxide.enableXonshIntegration = true;
