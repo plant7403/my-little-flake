@@ -177,7 +177,7 @@ in
             xonsh.xontribs.xontrib-vox
             #xonsh.xontribs.gitinfo
             #xonsh.xontribs.prompt_starship
-            xonsh.xontribs.zoxide
+            #xonsh.xontribs.zoxide
             xonsh.xontribs.xontrib-z
             xonsh.xontribs.xontrib-hist_navigator
             xonsh.xontribs.xontrib-dir-picker
