@@ -191,7 +191,26 @@ in
               xonsh.xontribs.xontrib-direnv
             */
           ];
-          package = pkgs.xonsh.override {extraPackages = ps:}
+          package = pkgs.xonsh.override {extraPackages = ps: [(buildPythonPackage {
+              name = "xontrib-gitinfo";
+              pyproject = true;
+              build-system = [
+                setuptools
+              ];
+              src = pkgs.fetchFromGitHub {
+                owner = "dyuri";
+                repo = "xontrib-gitinfo";
+                rev = "b1ba458d85a6684088807d962b39980144685630";
+                sha256 = "sha256-e5lgfcrG8p/3YgYNlnkfZIYj3VEjuNTRoseAl+Uyfd8=";
+              };
+
+              meta = {
+                homepage = "https://github.com/dyuri/xontrib-gitinfo";
+                description = "Plugin";
+                license = pkgs.lib.licenses.mit;
+                maintainers = [ ];
+              };
+            })]}
       };
       programs.zoxide.enableXonshIntegration = true;
       programs.direnv.enableXonshIntegration = true;
