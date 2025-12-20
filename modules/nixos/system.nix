@@ -244,7 +244,7 @@ in
               version = "v1.0.0";
               format = "pyproject";
               src = pkgs.fetchFromGitHub {
-                owner = "dyuri";
+                owner = "anki-code/xontrib-prompt-starship";
                 repo = "${name}";
                 rev = "${version}";
                 sha256 = "9xAR2R7IwGttv84qVb+8TkW6OAK6OGLW3o/tDQnUwII=";
