@@ -3,7 +3,7 @@
     clearDefaultKeybinds = false;
     enable = true;
     enableZshIntegration = true;
-    #installVimSyntax = true;
+    installVimSyntax = true;
     settings = {
       #theme = "catppuccin-mocha";
       font-size = 12;
@@ -20,7 +20,7 @@
 
       alpha-blending = "linear";
       mouse-shift-capture = "true";
-      
+
     };
     systemd.enable = true;
   };
