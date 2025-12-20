@@ -195,7 +195,7 @@ in
               pyproject = true;
               build-system = [
                 setuptools
-                poetry
+
               ];
               src = pkgs.fetchFromGitHub {
                 owner = "dyuri";
