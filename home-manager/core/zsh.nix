@@ -28,136 +28,137 @@
 
   ];
 
-  home.shell = {
-    enableZshIntegration = true;
-  };
-  programs = {
-    zsh = {
-      enable = true;
-      envExtra = ''
-        umask 077
-      '';
-      #dotDir = "${config.xdg.configHome}/zsh";
-      autosuggestion.enable = true;
-      enableCompletion = true;
-      enableVteIntegration = true;
-      #syntaxHighlighting.enable = true;
-      historySubstringSearch.enable = true;
-      autocd = true;
-
-      initContent = lib.mkMerge [
-        (lib.mkBefore ''
-          HISTDB_FILE=''${XDG_DATA_HOME-$HOME/.local/share}/zsh/history.db
-
-          # Do this early so fast-syntax-highlighting can wrap and override this
-          #if autoload history-search-end; then
-          #  zle -N history-beginning-search-backward-end history-search-end
-          #  zle -N history-beginning-search-forward-end  history-search-end
-          #fi
-          #autoload -Uz compinit && compinit
-          #autoload -U colors && colors
-          alias ls='ls -G'
-
-          # history
-          setopt share_history
-
-
-          export ANSI_MOTD_ART_DIR=/home/egor/Downloads
-          # globbing
-          setopt extended_glob
-
-          # zmv
-          autoload -Uz zmv
-          alias zcp='zmv -C'
-          alias zln='zmv -L'
-
-          # fewer keystrokes
-          setopt auto_cd auto_pushd
-          setopt menu_complete
-
-          # fewer distractions
-          unsetopt beep nomatch notify
-
-          eval "$(starship init zsh)"
-        '')
-      ];
-
-      history = {
-        path = "\${XDG_DATA_HOME-$HOME/.local/share}/zsh/history";
-        save = 1000500;
-        size = 1000000;
-        ignoreAllDups = true;
-      };
-      history.ignorePatterns = [
-        "rm *"
-        "pkill *"
-        "cp *"
-      ];
-      #ANSI_MOTD_ART_DIR
-      # With Oh-My-Zsh:
-      oh-my-zsh = {
-        enable = true;
-        plugins = [
-          "git" # also requires `programs.git.enable = true;`
-          #"thefuck" # also requires `programs.thefuck.enable = true;`
-        ];
-        #theme = "robbyrussell";
-      };
-      plugins = [
-        {
-          name = "zsh-autosuggestions";
-          file = "./share/zsh-autosuggestions/zsh-autosuggestions.zsh";
-          src = pkgs.zsh-autosuggestions;
-        }
-        {
-          name = pkgs.fzf-zsh.pname;
-          src = pkgs.fzf-zsh.src;
-        }
-        {
-          name = pkgs.zsh-completions.pname;
-          src = pkgs.zsh-completions.src;
-        }
-        {
-          name = pkgs.zsh-history-substring-search.pname;
-          src = pkgs.zsh-history-substring-search.src;
-        }
-        
-        {
-          name = pkgs.zsh-histdb.pname;
-          src = pkgs.zsh-histdb.src;
-        }
-        {
-          name = "you-should-use";
-          src = pkgs.fetchFromGitHub {
-            owner = "MichaelAquilina";
-            repo = "zsh-you-should-use";
-            rev = "2be37f376c13187c445ae9534550a8a5810d4361";
-            sha256 = "0yhwn6av4q6hz9s34h4m3vdk64ly6s28xfd8ijgdbzic8qawj5p1";
-          };
-        }
-        {
-          name = "async";
-          file = "async.zsh";
-          src = pkgs.fetchFromGitHub {
-            owner = "mafredri";
-            repo = "zsh-async";
-            rev = "3ba6e2d1ea874bfb6badb8522ab86c1ae272923d";
-            sha256 = "3hhZXL8/Ml7UlkkHBPpS5NfUGB5BqgO95UvtpptXf8E=";
-          };
-        }
-        {
-          name = "ansimotd";
-          file = "zsh-ansimotd.plugin.zsh";
-          src = pkgs.fetchFromGitHub {
-            owner = "yuhonas";
-            repo = "zsh-ansimotd";
-            rev = "2d1e85c75c8042182fe751f105a181043c4e9929";
-            hash = "sha256-VXB0JojkY9vl3iDTtjuHzDJkckK9yYf89I72La8L8v0=";
-          };
-        }
-      ];
+  /*
+    home.shell = {
+      enableZshIntegration = true;
     };
-  };
+    programs = {
+      zsh = {
+        enable = true;
+        envExtra = ''
+          umask 077
+        '';
+        #dotDir = "${config.xdg.configHome}/zsh";
+        autosuggestion.enable = true;
+        enableCompletion = true;
+        enableVteIntegration = true;
+        #syntaxHighlighting.enable = true;
+        historySubstringSearch.enable = true;
+        autocd = true;
+
+        initContent = lib.mkMerge [
+          (lib.mkBefore ''
+            HISTDB_FILE=''${XDG_DATA_HOME-$HOME/.local/share}/zsh/history.db
+
+            # Do this early so fast-syntax-highlighting can wrap and override this
+            #if autoload history-search-end; then
+            #  zle -N history-beginning-search-backward-end history-search-end
+            #  zle -N history-beginning-search-forward-end  history-search-end
+            #fi
+            #autoload -Uz compinit && compinit
+            #autoload -U colors && colors
+            alias ls='ls -G'
+
+            # history
+            setopt share_history
+
+            export ANSI_MOTD_ART_DIR=/home/egor/Downloads
+            # globbing
+            setopt extended_glob
+
+            # zmv
+            autoload -Uz zmv
+            alias zcp='zmv -C'
+            alias zln='zmv -L'
+
+            # fewer keystrokes
+            setopt auto_cd auto_pushd
+            setopt menu_complete
+
+            # fewer distractions
+            unsetopt beep nomatch notify
+
+            eval "$(starship init zsh)"
+          '')
+        ];
+
+        history = {
+          path = "\${XDG_DATA_HOME-$HOME/.local/share}/zsh/history";
+          save = 1000500;
+          size = 1000000;
+          ignoreAllDups = true;
+        };
+        history.ignorePatterns = [
+          "rm *"
+          "pkill *"
+          "cp *"
+        ];
+        #ANSI_MOTD_ART_DIR
+        # With Oh-My-Zsh:
+        oh-my-zsh = {
+          enable = true;
+          plugins = [
+            "git" # also requires `programs.git.enable = true;`
+            #"thefuck" # also requires `programs.thefuck.enable = true;`
+          ];
+          #theme = "robbyrussell";
+        };
+        plugins = [
+          {
+            name = "zsh-autosuggestions";
+            file = "./share/zsh-autosuggestions/zsh-autosuggestions.zsh";
+            src = pkgs.zsh-autosuggestions;
+          }
+          {
+            name = pkgs.fzf-zsh.pname;
+            src = pkgs.fzf-zsh.src;
+          }
+          {
+            name = pkgs.zsh-completions.pname;
+            src = pkgs.zsh-completions.src;
+          }
+          {
+            name = pkgs.zsh-history-substring-search.pname;
+            src = pkgs.zsh-history-substring-search.src;
+          }
+
+          {
+            name = pkgs.zsh-histdb.pname;
+            src = pkgs.zsh-histdb.src;
+          }
+          {
+            name = "you-should-use";
+            src = pkgs.fetchFromGitHub {
+              owner = "MichaelAquilina";
+              repo = "zsh-you-should-use";
+              rev = "2be37f376c13187c445ae9534550a8a5810d4361";
+              sha256 = "0yhwn6av4q6hz9s34h4m3vdk64ly6s28xfd8ijgdbzic8qawj5p1";
+            };
+          }
+          {
+            name = "async";
+            file = "async.zsh";
+            src = pkgs.fetchFromGitHub {
+              owner = "mafredri";
+              repo = "zsh-async";
+              rev = "3ba6e2d1ea874bfb6badb8522ab86c1ae272923d";
+              sha256 = "3hhZXL8/Ml7UlkkHBPpS5NfUGB5BqgO95UvtpptXf8E=";
+            };
+          }
+          {
+            name = "ansimotd";
+            file = "zsh-ansimotd.plugin.zsh";
+            src = pkgs.fetchFromGitHub {
+              owner = "yuhonas";
+              repo = "zsh-ansimotd";
+              rev = "2d1e85c75c8042182fe751f105a181043c4e9929";
+              hash = "sha256-VXB0JojkY9vl3iDTtjuHzDJkckK9yYf89I72La8L8v0=";
+            };
+          }
+        ];
+      };
+    };
+  */
 
   #programs.starship.configPath
 
