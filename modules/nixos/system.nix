@@ -202,7 +202,7 @@ in
                 owner = "xonsh";
                 repo = "${name}";
                 rev = "${version}";
-                sha256 = "sha256-PhhdZ3iLPDEIG9uDeR5ctJ9zz2+YORHBhbsiLrJckyA=";
+                sha256 = "PhhdZ3iLPDEIG9uDeR5ctJ9zz2+YORHBhbsiLrJckyA=";
               };
 
               meta = {
