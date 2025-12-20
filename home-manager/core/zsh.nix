@@ -28,7 +28,7 @@
 
   ];
 
- /*  home.shell = {
+  home.shell = {
     enableZshIntegration = true;
   };
   programs = {
@@ -162,7 +162,7 @@
         }
       ];
     };
-  }; */
+  };
 
   #programs.starship.configPath
 
