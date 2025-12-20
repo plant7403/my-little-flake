@@ -189,7 +189,7 @@ in
               xonsh.xontribs.xontrib-jedi
               xonsh.xontribs.xontrib-argcomplete
               xonsh.xontribs.xontrib-whole-word-jumping
-              xonsh.xontribs.xontrib-direnv
+              xonsh.xontribs.xontrib-prompt-starship
             */
             xonsh.xontribs.
           ];
