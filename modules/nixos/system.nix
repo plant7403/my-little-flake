@@ -190,7 +190,6 @@ in
               xonsh.xontribs.xontrib-whole-word-jumping
               xonsh.xontribs.xontrib-direnv
             */
-
           ];
       };
       programs.zoxide.enableXonshIntegration = true;
