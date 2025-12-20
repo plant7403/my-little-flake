@@ -196,7 +196,7 @@ in
                 owner = "dyuri";
                 repo = "xontrib-gitinfo";
                 rev = "b1ba458d85a6684088807d962b39980144685630";
-                sha256 = "06csyhq0h63vq4w17q032dg1cx3j4xrr76maf7a0x4jqcvj4w79q";
+                sha256 = "sha256-e5lgfcrG8p/3YgYNlnkfZIYj3VEjuNTRoseAl+Uyfd8=";
               };
 
               meta = {
