@@ -75,7 +75,7 @@ in
       base03 = "6679a4";
       base04 = "8695b7";
       base05 = "a2aabc";
-      base06 = "d9c2c6";
+      base06 = "d7dce2";
       base07 = "e4ccd0";
       base08 = "877bb6";
       base09 = "de5b44";
