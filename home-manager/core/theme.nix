@@ -69,7 +69,7 @@ in
       slug = "metheme";
       scheme = "Theme by me";
       author = "me";
-      base00 = "241b26";
+      base00 = "171c28";
       base01 = "2f2a3f";
       base02 = "46354a";
       base03 = "89787f";
