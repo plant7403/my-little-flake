@@ -191,6 +191,7 @@ in
               xonsh.xontribs.xontrib-whole-word-jumping
               xonsh.xontribs.xontrib-direnv
             */
+            xonsh.xontribs.
           ];
         package = pkgs.xonsh.override {
           extraPackages = ps: [
