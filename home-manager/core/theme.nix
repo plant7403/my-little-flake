@@ -72,7 +72,7 @@ in
       base00 = "171c28";
       base01 = "1d2433";
       base02 = "2f3b54";
-      base03 = "89787f";
+      base03 = "6679a4";
       base04 = "100712";
       base05 = "eed5d9";
       base06 = "d9c2c6";
