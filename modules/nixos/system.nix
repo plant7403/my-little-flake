@@ -240,11 +240,11 @@ in
               };
             })
             (ps.buildPythonPackage rec {
-              name = "anki-code/xontrib-prompt-starship";
+              name = "xontrib-prompt-starship";
               version = "v1.0.0";
               format = "pyproject";
               src = pkgs.fetchFromGitHub {
-                owner = "anki-code/xontrib-prompt-starship";
+                owner = "anki-code";
                 repo = "${name}";
                 rev = "${version}";
                 sha256 = "9xAR2R7IwGttv84qVb+8TkW6OAK6OGLW3o/tDQnUwII=";
