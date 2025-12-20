@@ -239,6 +239,27 @@ in
                 maintainers = [ ];
               };
             })
+            (ps.buildPythonPackage rec {
+              name = "xontrib-zoxide";
+              version = "v1.0.0";
+              format = "pyproject";
+              src = pkgs.fetchFromGitHub {
+                owner = "dyuri";
+                repo = "${name}";
+                rev = "${version}";
+                sha256 = "9xAR2R7IwGttv84qVb+8TkW6OAK6OGLW3o/tDQnUwII=";
+              };
+              nativeBuildInputs = [
+                pkgs.python3Packages.pip
+                pkgs.python3Packages.poetry-core
+              ];
+              meta = {
+                homepage = "https://github.com/dyuri/xontrib-zoxide";
+                description = "Zoxide support for xonsh";
+                license = pkgs.lib.licenses.mit;
+                maintainers = [ ];
+              };
+            })
           ];
         };
       };
