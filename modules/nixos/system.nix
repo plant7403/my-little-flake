@@ -240,7 +240,7 @@ in
               };
             })
             (ps.buildPythonPackage rec {
-              name = "xontrib-zoxide";
+              name = "anki-code/xontrib-prompt-starship";
               version = "v1.0.0";
               format = "pyproject";
               src = pkgs.fetchFromGitHub {
