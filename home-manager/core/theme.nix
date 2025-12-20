@@ -22,7 +22,7 @@ in
       ${lib.getExe' pkgs.imagemagick "convert"} "${inputImage}" -brightness-contrast ${brightness},${contrast} -fill ${fillColor} $out
     '';
     targets = {
-      gtk = {z
+      gtk = {
         flatpakSupport.enable = true;
         extraCss = ''
           /*********************
