@@ -192,7 +192,7 @@ in
             */
           ];
         package = pkgs.xonsh.override {
-          extraPackages = ps: [
+          extraPackages = ps: rec [
             (buildPythonPackage {
               name = "xontrib-gitinfo";
               pyproject = true;
