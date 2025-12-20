@@ -210,7 +210,9 @@ in
                 license = pkgs.lib.licenses.mit;
                 maintainers = [ ];
               };
-            })]}
+            })
+            ];
+            }
       };
       programs.zoxide.enableXonshIntegration = true;
       programs.direnv.enableXonshIntegration = true;
