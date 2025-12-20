@@ -182,7 +182,7 @@ in
             xonsh.xontribs.xontrib-hist_navigator
             xonsh.xontribs.xontrib-dir-picker
             xonsh.xontribs.xontrib-apt_tabcomplete
-            xonsh.xontribs.xontrib-
+            xonsh.xontribs.xontrib-coreutils
             xonsh.xontribs.xontrib-
 
           ];
