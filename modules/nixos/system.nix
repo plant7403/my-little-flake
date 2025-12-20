@@ -178,15 +178,17 @@ in
             #xonsh.xontribs.gitinfo
             #xonsh.xontribs.prompt_starship
             #xonsh.xontribs.zoxide
-            xonsh.xontribs.xontrib-z
-            xonsh.xontribs.xontrib-hist_navigator
-            xonsh.xontribs.xontrib-dir-picker
-            xonsh.xontribs.xontrib-coreutils
-            xonsh.xontribs.xontrib-carapace-bin
-            xonsh.xontribs.xontrib-jedi
-            xonsh.xontribs.xontrib-argcomplete
-            xonsh.xontribs.xontrib-whole-word-jumping
-            xonsh.xontribs.xontrib-direnv
+            /*
+              xonsh.xontribs.xontrib-z
+              xonsh.xontribs.xontrib-hist_navigator
+              xonsh.xontribs.xontrib-dir-picker
+              xonsh.xontribs.xontrib-coreutils
+              xonsh.xontribs.xontrib-carapace-bin
+              xonsh.xontribs.xontrib-jedi
+              xonsh.xontribs.xontrib-argcomplete
+              xonsh.xontribs.xontrib-whole-word-jumping
+              xonsh.xontribs.xontrib-direnv
+            */
             (ps.buildPythonPackage rec {
               name = "xontrib-gitinfo";
               version = "0.0.1";
