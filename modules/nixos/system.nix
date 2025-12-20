@@ -191,7 +191,6 @@ in
             */
             (ps.buildPythonPackage {
               name = "xontrib-gitinfo";
-              version = "0.0.1";
 
               src = pkgs.fetchFromGitHub {
                 owner = "dyuri";
