@@ -294,6 +294,7 @@
       ".ssh"
       ".local/share/keyrings"
       ".local/share/direnv"
+      ".local/state/syncthing"
       ".config/Element"
       ".config/.mozilla/thunderbird"
       ".thunderbird"
