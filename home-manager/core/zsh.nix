@@ -214,7 +214,7 @@
   programs.starship.settings = {
     "$schema" = "https://starship.rs/config-schema.json";
     add_newline = true;
-    scan_timeout = 5;
+    #scan_timeout = 5;
 
     line_break.disabled = false;
 
