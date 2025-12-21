@@ -17,5 +17,5 @@
   kde = import ./kde.nix;
   yggdrasil = import ./yggdrasil.nix;
   ollama = import ./ollama.nix;
-  ollama = import ./ollama.nix;
+  xonsh = import ./xonsh.nix;
 }
