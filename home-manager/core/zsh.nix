@@ -119,7 +119,7 @@
           "helm"
           "z"
           "history"
-          
+          "systemd"
         ];
       };
       plugins = [
