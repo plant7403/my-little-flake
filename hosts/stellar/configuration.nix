@@ -49,7 +49,6 @@
   modules.xonsh.enable = true;
 
   modules.sound.enable = true;
-  #modules.steam.enable = true;
 
   modules.tailscale = {
     enable = true;
