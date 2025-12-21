@@ -38,7 +38,7 @@ in
           xonsh.xontribs.xontrib-whole-word-jumping
           xonsh.xontribs.xontrib-direnv
         */
-        ps.xonsh.xontribs.xontrib-prompt-starship
+        #ps.xonsh.xontribs.xontrib-prompt-starship
       ];
       package = pkgs.xonsh.override {
         extraPackages = ps: [

@@ -120,6 +120,7 @@
           "z"
           "history"
           "systemd"
+          "fzf"
         ];
       };
       plugins = [
