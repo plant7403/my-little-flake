@@ -210,7 +210,7 @@
           };
         }
         {
-          name = "zoxide";
+          name = "zoxide"; # probably already
           file = "zoxide.plugin.zsh";
           src = pkgs.fetchFromGitHub {
             owner = "ajeetdsouza";
