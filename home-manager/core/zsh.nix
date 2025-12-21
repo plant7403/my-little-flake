@@ -51,6 +51,7 @@
   };
   programs.zoxide = {
     enableZshIntegration = true;
+    
   };
   home.shell = {
     enableZshIntegration = true;
