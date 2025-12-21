@@ -31,6 +31,7 @@
     enable = true;
     generateCaches = true; # will take little time
   };
+  programs.fzf.enabl
   home.shell = {
     enableZshIntegration = true;
   };
