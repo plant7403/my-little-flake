@@ -1,5 +1,28 @@
-{ pkgs, ... }:
 {
+  lib,
+  config,
+  ...
+}:
+with lib;
+let
+  cfg = config.modules.yggdrasil;
+in
+{
+  options.modules.yggdrasil = {
+    enable = mkEnableOption "service";
+    persist = mkOption {
+      type = types.bool;
+      default = false;
+    };
+    /*
+      yggdrasil = mkOption {
+         type = types.str;
+         default = "default";
+       };
+    */
+  };
+
+  config =
   programs.xonsh = {
     config = ''
 
