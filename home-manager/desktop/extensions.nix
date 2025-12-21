@@ -105,7 +105,7 @@
         "drive-menu@gnome-shell-extensions.gcampax.github.com"
         "appindicatorsupport@rgcjonas.gmail.com"
         "blur-my-shell@aunetx"
-        "grand-theft-focus@zalckos.github.com"
+        #"grand-theft-focus@zalckos.github.com"
         "screenshot-window-sizer@gnome-shell-extensions.gcampax.github.com"
         "status-icons@gnome-shell-extensions.gcampax.github.com"
         #"system-monitor@gnome-shell-extensions.gcampax.github.com"
@@ -116,7 +116,7 @@
 
         "clipqr@drien.com"
         "ddterm@amezin.github.com"
-        "duckduckbang@merijn"
+        #"duckduckbang@merijn"
         #"folder-search-provider@sitnik.ru"
         "todoit@wassimbj.github.io"
         "paperwm@paperwm.github.com"
