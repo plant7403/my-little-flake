@@ -26,7 +26,7 @@
       alpha-blending = "native";
       window-colorspace = "display-p3";
       window-padding-x = 6;
-      window-padding-y = "12,6";
+      window-padding-y = 6;
       window-padding-balance = true;
 
     };
