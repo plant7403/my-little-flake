@@ -97,10 +97,17 @@
       oh-my-zsh = {
         enable = true;
         plugins = [
-          "git" # also requires `programs.git.enable = true;`
-          #"thefuck" # also requires `programs.thefuck.enable = true;`
+          "git"
+          "sudo"
+          "docker"
+          "golang"
+          "kubectl"
+          "kubectx"
+          "rust"
+          "command-not-found"
+          "pass"
+          "helm"
         ];
-        #theme = "robbyrussell";
       };
       plugins = [
         {
