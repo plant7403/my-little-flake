@@ -41,10 +41,10 @@
       autosuggestion.enable = true;
       enableCompletion = true;
       enableVteIntegration = true;
-      #syntaxHighlighting.enable = true;
+      syntaxHighlighting.enable = true;
       historySubstringSearch.enable = true;
       autocd = true;
-      
+
       shellAliases = {
         vim = "nvim";
         ls = "ls --color";
