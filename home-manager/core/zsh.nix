@@ -27,7 +27,10 @@
     sqlite-interactive
 
   ];
-
+  programs.man = {
+    enable = true;
+    generateCaches = true; # will take little time
+  };
   home.shell = {
     enableZshIntegration = true;
   };
