@@ -209,6 +209,16 @@
             hash = "sha256-VXB0JojkY9vl3iDTtjuHzDJkckK9yYf89I72La8L8v0=";
           };
         }
+         {
+          name = "ansimotd";
+          file = "zsh-ansimotd.plugin.zsh";
+          src = pkgs.fetchFromGitHub {
+            owner = "yuhonas";
+            repo = "zsh-ansimotd";
+            rev = "2d1e85c75c8042182fe751f105a181043c4e9929";
+            hash = "sha256-VXB0JojkY9vl3iDTtjuHzDJkckK9yYf89I72La8L8v0=";
+          };
+        }
         {
           name = "fzf-tab";
           src = pkgs.zsh-fzf-tab;
