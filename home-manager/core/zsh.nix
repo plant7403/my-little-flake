@@ -44,6 +44,7 @@
       #syntaxHighlighting.enable = true;
       historySubstringSearch.enable = true;
       autocd = true;
+      
       shellAliases = {
         vim = "nvim";
         ls = "ls --color";
