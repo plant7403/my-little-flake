@@ -78,8 +78,8 @@
       "command" = "ulauncher";
       "name" = "ulauncher";
     };
-    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
-      "binding" = [ "<Shift><Control>u" ];
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
+      "binding" = [ "<Shift><Control>t" ];
       "command" = "ghostty";
       "name" = "ghostty";
     };
