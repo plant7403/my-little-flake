@@ -25,7 +25,6 @@
     fzf
     autojump
     sqlite-interactive
-
   ];
   programs.man = {
     enable = true;
