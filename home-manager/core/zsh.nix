@@ -117,6 +117,8 @@
           "command-not-found"
           "pass"
           "helm"
+          "z"
+          
         ];
       };
       plugins = [
