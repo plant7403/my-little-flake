@@ -10,16 +10,7 @@ in
 {
   options.modules.xonsh = {
     enable = mkEnableOption "service";
-    persist = mkOption {
-      type = types.bool;
-      default = false;
-    };
-    /*
-      xonsh = mkOption {
-         type = types.str;
-         default = "default";
-       };
-    */
+
   };
 
   config = {
