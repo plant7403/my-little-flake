@@ -210,7 +210,7 @@
           };
         }
          {
-          name = "ansimotd";
+          name = "https://github.com/ajeetdsouza/zoxide";
           file = "zsh-ansimotd.plugin.zsh";
           src = pkgs.fetchFromGitHub {
             owner = "yuhonas";
