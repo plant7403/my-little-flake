@@ -5,17 +5,17 @@
 }:
 with lib;
 let
-  cfg = config.modules.yggdrasil;
+  cfg = config.modules.xonsh;
 in
 {
-  options.modules.yggdrasil = {
+  options.modules.xonsh = {
     enable = mkEnableOption "service";
     persist = mkOption {
       type = types.bool;
       default = false;
     };
     /*
-      yggdrasil = mkOption {
+      xonsh = mkOption {
          type = types.str;
          default = "default";
        };
