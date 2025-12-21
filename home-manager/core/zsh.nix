@@ -213,7 +213,10 @@
   programs.starship.enableZshIntegration = true;
   programs.starship.settings = {
     "$schema" = "https://starship.rs/config-schema.json";
+    add_newline = true;
+    scan_timeout = 5;
 
+    line_break.disabled = false;
     format = lib.concatStrings [
       "[](#9A348E)"
       "$os"
