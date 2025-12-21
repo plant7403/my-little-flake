@@ -170,8 +170,8 @@ in
 
       users.defaultUserShell = pkgs.zsh;
       environment.shells = with pkgs; [ zsh ];
-      programs.zoxide.enableXonshIntegration = true;
-      programs.direnv.enableXonshIntegration = true;
+      programs.zoxide.enableZshIntegration = true;
+      programs.direnv.enableZshIntegration = true;
       /*
         environment.persistence."/persist".directories = [
           "/var/cache/man"
