@@ -102,7 +102,7 @@
         ];
         #theme = "robbyrussell";
       };
-      plugins = [
+      plugins  = [
         {
           name = "zsh-autosuggestions";
           file = "./share/zsh-autosuggestions/zsh-autosuggestions.zsh";
@@ -160,7 +160,7 @@
 
   #programs.starship.configPath
 
-  #programs.starship.enableInteractive = true;
+  programs.starship.enableInteractive = true;
   programs.starship.enableTransience = true;
   programs.starship.enable = true;
   programs.starship.enableZshIntegration = true;
