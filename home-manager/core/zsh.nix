@@ -89,7 +89,7 @@
           #  zle -N history-beginning-search-forward-end  history-search-end
           #fi
           #autoload -Uz compinit && compinit
-          #autoload -U colors && colors
+          autoload -U colors && colors
           #alias ls='ls -G'
 
           # history
