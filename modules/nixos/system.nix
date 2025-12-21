@@ -267,7 +267,7 @@ in
       };
       programs.zoxide.enableXonshIntegration = true;
       programs.direnv.enableXonshIntegration = true;
-      users.defaultUserShell = pkgs.xonsh;
+      users.defaultUserShell = pkgs.zsh;
       environment.shells = with pkgs; [ xonsh ];
       /*
         environment.persistence."/persist".directories = [
