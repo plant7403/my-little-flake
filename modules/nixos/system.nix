@@ -193,7 +193,7 @@ in
             xonsh.xontribs.xontrib-direnv
           */
           xonsh.xontribs.xontrib-prompt-starship
-          ps.xonsh.github.com/xonsh/xontrib-fish-completer
+
         ];
         package = pkgs.xonsh.override {
           extraPackages = ps: [
