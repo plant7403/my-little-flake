@@ -25,7 +25,7 @@
         };
       };
 
-      "output" = {
+      "output = {
         "autogain" = {
           "target" = -12.0;
         };
