@@ -214,10 +214,7 @@
           src = pkgs.zsh-fzf-tab;
           file = "share/fzf-tab/fzf-tab.plugin.zsh";
         }
-        {
-          name = pkgs.zsh-histdb.pname;
-          src = pkgs.zsh-histdb.src;
-        }
+
       ];
     };
   };
