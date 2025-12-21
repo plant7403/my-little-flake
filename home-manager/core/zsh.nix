@@ -118,6 +118,7 @@
           "pass"
           "helm"
           "z"
+          "history"
           
         ];
       };
