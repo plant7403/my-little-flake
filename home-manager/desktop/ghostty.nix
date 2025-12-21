@@ -18,11 +18,10 @@
       quit-after-last-window-closed = true;
       quit-after-last-window-closed-delay = "15m";
 
-      alpha-blending = "linear";
       mouse-shift-capture = "true";
 
       # Transparency
-      background-opacity = 0.95;
+      background-opacity = 0.75;
       background-blur-radius = 94;
       alpha-blending = "native";
       window-colorspace = "display-p3";
