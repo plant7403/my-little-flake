@@ -25,7 +25,7 @@
       background-blur-radius = 0;
       alpha-blending = "native";
       window-colorspace = "display-p3";
-      window-padding-x = 12;
+      window-padding-x = 6;
       window-padding-y = "12,6";
       window-padding-balance = true;
 
