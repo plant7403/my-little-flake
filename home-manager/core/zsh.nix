@@ -28,7 +28,7 @@
 
   ];
 
-  /*
+  
     home.shell = {
       enableZshIntegration = true;
     };
