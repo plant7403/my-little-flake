@@ -194,7 +194,7 @@ in
               xonsh.xontribs.xontrib-direnv
             */
             #xonsh.xontribs.xontrib-prompt-starship
-          ];
+          ] with ps; [ ];
         package = pkgs.xonsh.override {
           extraPackages = ps: [
             (ps.buildPythonPackage rec {
