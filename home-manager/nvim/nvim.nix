@@ -188,7 +188,7 @@
     autoEnable = true;
     targets = {
       #nvim.enable = true;
-      nixvim.enable = true;
+      nixvim.enable = false;
     };
   };
 }
