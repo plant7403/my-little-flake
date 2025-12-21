@@ -85,6 +85,7 @@ let
     "codeandstuff.vscode-navigate-edit-history"
     "pnw-techpros.code-casefile"
     "paragdiwan.gitpatch"
+    visbydev.folder-path-color
 
   ];
   baseExtensionsVS = [
