@@ -22,7 +22,7 @@
 
       # Transparency
       background-opacity = 0.75;
-      background-blur-radius = 94;
+      background-blur-radius = 0;
       alpha-blending = "native";
       window-colorspace = "display-p3";
       window-padding-x = 12;
