@@ -45,6 +45,7 @@
   };
 
   modules.steam.enable = true;
+  modules.steam.enable = true;
   /*
        modules.mullvad = {
       enable = true;
