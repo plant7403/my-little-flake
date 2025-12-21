@@ -51,7 +51,10 @@
   };
   programs.zoxide = {
     enableZshIntegration = true;
-    
+    flags = [
+      "--no-cmd"
+      "--cmd j"
+    ];
   };
   home.shell = {
     enableZshIntegration = true;
