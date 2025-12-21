@@ -156,11 +156,11 @@
         }
 
 {
-          name = pkgs.zsh-fast-syntax-highlighting.pname;
+          name = pkgs.zsh-syntax-highlighting.pname;
           src = pkgs.fzf-zsh.src;
         }
         {
-          name = pkgs.fzf-zsh.pname;
+          name = pkgs.zsh-fast-syntax-highlighting.pname;
           src = pkgs.fzf-zsh.src;
         }
 
