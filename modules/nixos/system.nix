@@ -176,11 +176,11 @@ in
         extraPackages = ps: [
           #setuptools
           ps.numpy
-          ps.numpyxonsh.xontribs.xontrib-vox
+          ps.xonsh.xontribs.xontrib-vox
           #xonsh.xontribs.gitinfo
           #xonsh.xontribs.prompt_starship
           #xonsh.xontribs.zoxide
-          xonsh.xontribs.xontrib-fish-completer
+          ps.xonsh.xontribs.xontrib-fish-completer
           /*
             xonsh.xontribs.xontrib-z
             xonsh.xontribs.xontrib-hist_navigator
@@ -193,6 +193,7 @@ in
             xonsh.xontribs.xontrib-direnv
           */
           xonsh.xontribs.xontrib-prompt-starship
+          ps
         ];
         package = pkgs.xonsh.override {
           extraPackages = ps: [
