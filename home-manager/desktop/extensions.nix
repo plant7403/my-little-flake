@@ -74,7 +74,7 @@
       ];
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
-      "binding" = [ "<Shift><Control>d" ];
+      "binding" = [ "<Shift><Control>u" ];
       "command" = "ulauncher";
       "name" = "ulauncher";
     };
