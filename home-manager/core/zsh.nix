@@ -213,7 +213,7 @@
           name = "https://github.com/ajeetdsouza/zoxide";
           file = "zsh-ansimotd.plugin.zsh";
           src = pkgs.fetchFromGitHub {
-            owner = "https://github.com/ajeetdsouza/zoxide";
+            owner = "ajeetdsouza";
             repo = "zoxide";
             rev = "2d1e85c75c8042182fe751f105a181043c4e9929";
             hash = "sha256-VXB0JojkY9vl3iDTtjuHzDJkckK9yYf89I72La8L8v0=";
