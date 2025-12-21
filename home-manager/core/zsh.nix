@@ -211,7 +211,7 @@
         }
          {
           name = "https://github.com/ajeetdsouza/zoxide";
-          file = "zsh-ansimotd.plugin.zsh";
+          file = "zoxide.plugin.zsh";
           src = pkgs.fetchFromGitHub {
             owner = "ajeetdsouza";
             repo = "zoxide";
