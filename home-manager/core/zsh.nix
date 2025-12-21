@@ -210,7 +210,7 @@
           };
         }
         {
-          name = "zoxide"; # probably already
+          name = "zoxide"; # probably is already nixpkgs
           file = "zoxide.plugin.zsh";
           src = pkgs.fetchFromGitHub {
             owner = "ajeetdsouza";
