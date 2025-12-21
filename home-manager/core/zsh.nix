@@ -217,6 +217,13 @@
     scan_timeout = 5;
 
     line_break.disabled = false;
+
+    hostname = {
+      ssh_only = true;
+      format = "[$hostname](bold blue) ";
+      disabled = false;
+    };
+
     format = lib.concatStrings [
       "[](#9A348E)"
       "$os"
