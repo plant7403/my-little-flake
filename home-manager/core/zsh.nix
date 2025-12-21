@@ -51,7 +51,6 @@
   };
   programs.zoxide = {
     enableZshIntegration = true;
-
   };
   home.shell = {
     enableZshIntegration = true;
@@ -215,6 +214,7 @@
           src = pkgs.zsh-fzf-tab;
           file = "share/fzf-tab/fzf-tab.plugin.zsh";
         }
+        
       ];
     };
   };
