@@ -161,6 +161,11 @@
             hash = "sha256-VXB0JojkY9vl3iDTtjuHzDJkckK9yYf89I72La8L8v0=";
           };
         }
+        {
+          name = "fzf-tab";
+          src = pkgs.zsh-fzf-tab;
+          file = "share/fzf-tab/fzf-tab.plugin.zsh";
+        }
       ];
     };
   };
