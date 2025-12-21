@@ -133,10 +133,8 @@
         plugins = [
           "git"
           "sudo"
-
           "command-not-found"
-          "pass"
-          "helm"
+
           "z"
           "history"
           "systemd"
