@@ -31,7 +31,20 @@
     enable = true;
     generateCaches = true; # will take little time
   };
-  programs.fzf.enabl
+  btop = {
+    enable = true;
+    settings = {
+      # color_theme = "default";
+      theme_background = false;
+      vim_keys = true;
+      shown_boxes = "proc cpu";
+      rounded_corners = true;
+      graph_symbol = "block";
+      proc_sorting = "memory";
+      proc_reversed = false;
+      proc_gradient = true;
+    };
+  };
   home.shell = {
     enableZshIntegration = true;
   };
