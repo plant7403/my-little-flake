@@ -226,8 +226,8 @@
         }
         {
           name = "zoxide";
-          src = pkgs.zsh-fzf-tab;
-          file = "share/fzf-tab/fzf-tab.plugin.zsh";
+          src = pkgs.zoxide;
+          file = "share/zoxide/fzf-tab.plugin.zsh";
         }
 
       ];
