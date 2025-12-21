@@ -49,6 +49,7 @@
     enable = true;
     defaultCommand = "fd --type f";
   };
+  programs.zoxide
   home.shell = {
     enableZshIntegration = true;
   };
