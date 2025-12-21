@@ -102,7 +102,7 @@
         ];
         #theme = "robbyrussell";
       };
-      plugins  = [
+      plugins = [
         {
           name = "zsh-autosuggestions";
           file = "./share/zsh-autosuggestions/zsh-autosuggestions.zsh";
