@@ -21,6 +21,15 @@
       alpha-blending = "linear";
       mouse-shift-capture = "true";
 
+      # Transparency
+      background-opacity = 0.95;
+      background-blur-radius = 94;
+      alpha-blending = "native";
+      window-colorspace = "display-p3";
+      window-padding-x = 12;
+      window-padding-y = "12,6";
+      window-padding-balance = true;
+
     };
     systemd.enable = true;
   };
