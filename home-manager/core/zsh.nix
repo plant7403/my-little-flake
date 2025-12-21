@@ -225,7 +225,7 @@
           file = "share/fzf-tab/fzf-tab.plugin.zsh";
         }
         {
-          name = "fzf-tab";
+          name = "zoxide";
           src = pkgs.zsh-fzf-tab;
           file = "share/fzf-tab/fzf-tab.plugin.zsh";
         }
