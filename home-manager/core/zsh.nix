@@ -45,6 +45,10 @@
       proc_gradient = true;
     };
   };
+  programs.fzf = {
+    enable = true;
+    defaultCommand = "fd --type f";
+  };
   home.shell = {
     enableZshIntegration = true;
   };
