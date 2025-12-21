@@ -176,7 +176,7 @@ in
         extraPackages = ps: [
           #setuptools
           ps.numpy
-          xonsh.xontribs.xontrib-vox
+          ps.numpyxonsh.xontribs.xontrib-vox
           #xonsh.xontribs.gitinfo
           #xonsh.xontribs.prompt_starship
           #xonsh.xontribs.zoxide
