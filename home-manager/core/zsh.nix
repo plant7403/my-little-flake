@@ -216,7 +216,7 @@
             owner = "ajeetdsouza";
             repo = "zoxide";
             rev = "f00fe0f0aeaeaf8fda48ca467c706a5174830b77";
-            hash = "sha256-VXB0JojkY9vl3iDTtjuHzDJkckK9yYf89I72La8L8v0=";
+            hash = "sha256-7WkVyUHKpeBS1OvDL4jCwNTNl0TTNznWvtrIzACnBt8=";
           };
         }
         {
