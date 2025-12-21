@@ -88,14 +88,14 @@
           #  zle -N history-beginning-search-backward-end history-search-end
           #  zle -N history-beginning-search-forward-end  history-search-end
           #fi
-          #autoload -Uz compinit && compinit
+          autoload -Uz compinit && compinit
           autoload -U colors && colors
           #alias ls='ls -G'
 
           # history
           setopt share_history
 
-          export ANSI_MOTD_ART_DIR=/home/egor/Downloads
+          export $ANSI_MOTD_ART_DIR=/home/egor/Downloads
           # globbing
           setopt extended_glob
 
