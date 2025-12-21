@@ -10,7 +10,6 @@ in
 {
   options.modules.xonsh = {
     enable = mkEnableOption "service";
-
   };
 
   config = {
