@@ -12,7 +12,7 @@ in
   users.mutableUsers = false;
   users.users.egor = {
     isNormalUser = true;
-    shell = pkgs.xonsh;
+    shell = pkgs.zsh;
     extraGroups = [
       "audio"
       "networkmanager"
