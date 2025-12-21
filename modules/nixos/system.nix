@@ -173,28 +173,27 @@ in
         '';
         enable = true;
         bashCompletion.enable = true;
-        extraPackages =
-          ps:  [
-            #setuptools
-            numpy
-            xonsh.xontribs.xontrib-vox
-            #xonsh.xontribs.gitinfo
-            #xonsh.xontribs.prompt_starship
-            #xonsh.xontribs.zoxide
-            xonsh.xontribs.xontrib-fish-completer
-            /*
-              xonsh.xontribs.xontrib-z
-              xonsh.xontribs.xontrib-hist_navigator
-              xonsh.xontribs.xontrib-dir-picker
-              xonsh.xontribs.xontrib-coreutils
-              xonsh.xontribs.xontrib-carapace-bin
-              xonsh.xontribs.xontrib-jedi
-              xonsh.xontribs.xontrib-argcomplete
-              xonsh.xontribs.xontrib-whole-word-jumping
-              xonsh.xontribs.xontrib-direnv
-            */
-            #xonsh.xontribs.xontrib-prompt-starship
-          ] with ps [ ];
+        extraPackages = ps: [
+          #setuptools
+          numpy
+          xonsh.xontribs.xontrib-vox
+          #xonsh.xontribs.gitinfo
+          #xonsh.xontribs.prompt_starship
+          #xonsh.xontribs.zoxide
+          xonsh.xontribs.xontrib-fish-completer
+          /*
+            xonsh.xontribs.xontrib-z
+            xonsh.xontribs.xontrib-hist_navigator
+            xonsh.xontribs.xontrib-dir-picker
+            xonsh.xontribs.xontrib-coreutils
+            xonsh.xontribs.xontrib-carapace-bin
+            xonsh.xontribs.xontrib-jedi
+            xonsh.xontribs.xontrib-argcomplete
+            xonsh.xontribs.xontrib-whole-word-jumping
+            xonsh.xontribs.xontrib-direnv
+          */
+          #xonsh.xontribs.xontrib-prompt-starship
+        ];
         package = pkgs.xonsh.override {
           extraPackages = ps: [
             (ps.buildPythonPackage rec {
