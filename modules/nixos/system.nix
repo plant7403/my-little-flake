@@ -174,7 +174,7 @@ in
         enable = true;
         bashCompletion.enable = true;
         extraPackages =
-          ps: with ps; [
+          ps:  [
             #setuptools
             numpy
             xonsh.xontribs.xontrib-vox
@@ -195,7 +195,6 @@ in
             */
             #xonsh.xontribs.xontrib-prompt-starship
           ];
-
         package = pkgs.xonsh.override {
           extraPackages = ps: [
             (ps.buildPythonPackage rec {
