@@ -133,11 +133,7 @@
         plugins = [
           "git"
           "sudo"
-          "docker"
-          "golang"
-          "kubectl"
-          "kubectx"
-          "rust"
+
           "command-not-found"
           "pass"
           "helm"
