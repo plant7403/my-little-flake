@@ -60,7 +60,7 @@ let
       "editor.lineHighlightBorder" = "#4cd3081a";
       "editor.lineHighlightBackground" = "#e22d0031";
     };
-    "workbench.iconTheme" = "midasum.diagonal-architecture";
+    "workbench.iconTheme" = "material-icon-theme";
 
     "editor.formatOnSave" = true;
     "editor.formatOnPaste" = false;
@@ -85,7 +85,7 @@ let
     "codeandstuff.vscode-navigate-edit-history"
     "pnw-techpros.code-casefile"
     "paragdiwan.gitpatch"
-    "midasum.diagonal-architecture"
+
   ];
   baseExtensionsVS = [
 
