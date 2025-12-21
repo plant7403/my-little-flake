@@ -195,8 +195,7 @@ in
             */
             #xonsh.xontribs.xontrib-prompt-starship
           ];
-          extraPackages =
-          ps: with ps; [
+
         package = pkgs.xonsh.override {
           extraPackages = ps: [
             (ps.buildPythonPackage rec {
