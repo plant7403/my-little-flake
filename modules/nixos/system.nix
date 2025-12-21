@@ -175,7 +175,7 @@ in
         bashCompletion.enable = true;
         extraPackages = ps: [
           #setuptools
-          numpy
+          ps.numpy
           xonsh.xontribs.xontrib-vox
           #xonsh.xontribs.gitinfo
           #xonsh.xontribs.prompt_starship
