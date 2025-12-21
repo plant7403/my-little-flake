@@ -31,7 +31,7 @@
     enable = true;
     generateCaches = true; # will take little time
   };
-  btop = {
+  programs.btop = {
     enable = true;
     settings = {
       # color_theme = "default";
