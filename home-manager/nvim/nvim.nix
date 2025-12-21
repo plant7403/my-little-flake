@@ -34,7 +34,7 @@
 
   programs.nixvim = {
     imports = [
-      ./keymaps
+      #./keymaps
       #./plugins
     ];
     enable = true;
@@ -121,7 +121,7 @@
     plugins.blink-cmp.enable = true;
     plugins.nvim-treesitter.enable = true;
     plugins.oil.enable = true;
-    
+
     plugins.cmp = {
       enable = true;
       autoEnableSources = true;
