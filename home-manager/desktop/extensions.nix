@@ -117,7 +117,7 @@
         "clipqr@drien.com"
         "ddterm@amezin.github.com"
         "duckduckbang@merijn"
-        "folder-search-provider@sitnik.ru"
+        #"folder-search-provider@sitnik.ru"
         "todoit@wassimbj.github.io"
         "paperwm@paperwm.github.com"
         "dash-to-dock@micxgx.gmail.com"
