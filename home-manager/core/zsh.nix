@@ -67,7 +67,7 @@
       autocd = true;
 
       shellAliases = {
-        #vim = "nvim";
+        vim = "nvim";
         ls = "ls --color";
         ctrl-l = "clear";
         C-l = "ctrl-l";
