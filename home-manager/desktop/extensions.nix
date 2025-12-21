@@ -129,7 +129,7 @@
         "tweaks-system-menu@extensions.gnome-shell.fifi.org"
         "systemd-manager@hardpixel.eu"
         "save-my-windows@lukastymo.com"
-        "just-perfection-desktop@just-perfection"
+        #"just-perfection-desktop@just-perfection"
       ];
 
       favorite-apps = [
