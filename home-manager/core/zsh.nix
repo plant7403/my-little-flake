@@ -209,13 +209,13 @@
             hash = "sha256-VXB0JojkY9vl3iDTtjuHzDJkckK9yYf89I72La8L8v0=";
           };
         }
-         {
-          name = "https://github.com/ajeetdsouza/zoxide";
+        {
+          name = "zoxide";
           file = "zoxide.plugin.zsh";
           src = pkgs.fetchFromGitHub {
             owner = "ajeetdsouza";
             repo = "zoxide";
-            rev = "2d1e85c75c8042182fe751f105a181043c4e9929";
+            rev = "f00fe0f0aeaeaf8fda48ca467c706a5174830b77";
             hash = "sha256-VXB0JojkY9vl3iDTtjuHzDJkckK9yYf89I72La8L8v0=";
           };
         }
