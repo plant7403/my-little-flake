@@ -155,7 +155,14 @@
           src = pkgs.fzf-zsh.src;
         }
 
-
+{
+          name = pkgs.zsh-fast-syntax-highlighting.pname;
+          src = pkgs.fzf-zsh.src;
+        }
+        {
+          name = pkgs.fzf-zsh.pname;
+          src = pkgs.fzf-zsh.src;
+        }
 
 
         {
