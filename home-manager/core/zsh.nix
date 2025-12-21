@@ -90,7 +90,7 @@
           #fi
           #autoload -Uz compinit && compinit
           #autoload -U colors && colors
-          alias ls='ls -G'
+          #alias ls='ls -G'
 
           # history
           setopt share_history
@@ -227,7 +227,7 @@
         {
           name = "zoxide";
           src = pkgs.zoxide;
-          file = "share/zoxide/fzf-tab.plugin.zsh";
+          file = "share/zoxide/zoxide.plugin.zsh";
         }
 
       ];
