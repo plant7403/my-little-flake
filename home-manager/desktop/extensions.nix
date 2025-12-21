@@ -122,13 +122,13 @@
         "paperwm@paperwm.github.com"
         "dash-to-dock@micxgx.gmail.com"
         "clipboard-indicator@tudmotu.com"
-        "focus-follows-workspace@christopher.luebbemeier.gmail.com"
+        #"focus-follows-workspace@christopher.luebbemeier.gmail.com"
         "switcher@landau.fi"
 
         "window-commander@gnikolaos.gr"
         "tweaks-system-menu@extensions.gnome-shell.fifi.org"
         "systemd-manager@hardpixel.eu"
-        "save-my-windows@lukastymo.com"
+        #"save-my-windows@lukastymo.com"
         #"just-perfection-desktop@just-perfection"
       ];
 
