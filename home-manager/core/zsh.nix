@@ -134,7 +134,6 @@
           "git"
           "sudo"
           "command-not-found"
-
           "z"
           "history"
           "systemd"
