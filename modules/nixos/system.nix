@@ -268,7 +268,7 @@ in
       programs.zoxide.enableXonshIntegration = true;
       programs.direnv.enableXonshIntegration = true;
       users.defaultUserShell = pkgs.zsh;
-      environment.shells = with pkgs; [ xonsh ];
+      environment.shells = with pkgs; [ zsh ];
       /*
         environment.persistence."/persist".directories = [
           "/var/cache/man"
