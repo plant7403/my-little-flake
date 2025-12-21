@@ -261,7 +261,7 @@
     # You can also replace your username with a neat symbol like   or disable this
     # and use the os module below
     username = {
-      show_always = true;
+      show_always = false;
       style_user = "bg:#9A348E";
       style_root = "bg:#9A348E";
       format = "[$user ]($style)";
