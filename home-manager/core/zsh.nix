@@ -376,11 +376,13 @@
       style = "bg:#86BBD8";
       format = "[ $symbol ($version) ]($style)";
     };
-    time = {
-      disabled = false;
-      time_format = "%R"; # Hour:Minute Format
-      style = "bg:#33658A";
-      format = "[ ♥ $time ]($style)";
-    };
+    /*
+      time = {
+         disabled = false;
+         time_format = "%R"; # Hour:Minute Format
+         style = "bg:#33658A";
+         format = "[ ♥ $time ]($style)";
+       };
+    */
   };
 }
