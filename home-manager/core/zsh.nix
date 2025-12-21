@@ -154,6 +154,10 @@
           name = pkgs.fzf-zsh.pname;
           src = pkgs.fzf-zsh.src;
         }
+
+
+
+
         {
           name = pkgs.zsh-completions.pname;
           src = pkgs.zsh-completions.src;
