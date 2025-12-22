@@ -332,7 +332,7 @@ in
       C = {
         extensions =
           forOpenVsx [
-            "signageos.signageos-vscode-sops"
+            #"signageos.signageos-vscode-sops"
             "mkhl.direnv"
 
             "llvm-vs-code-extensions.vscode-clangd"
