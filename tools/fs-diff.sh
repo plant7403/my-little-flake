@@ -6,10 +6,10 @@ set -euo pipefail
 
 TARGET="0"
 
-if [ $1 = -r ]; then
+if [ "$1" = -r ]; then
   TARGET="@ROOT"
   echo $TARGET
-elif  [ $1 = -h ]; then
+elif  [ "$1" = -h ]; then
   TARGET="@HOME"
   echo $TARGET
 else
