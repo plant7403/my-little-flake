@@ -127,6 +127,7 @@ in
           !include ${config.sops.secrets.nixAccessTokens.path}
         '';
       };
+      # NIX_CONFIG="extra-access-tokens = github.com=github_pat_XYZ" nix ...
       sops.secrets."system/nix-token" = {
         mode = "0440";
         group = config.users.groups.keys.name;
