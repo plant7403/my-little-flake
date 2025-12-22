@@ -29,6 +29,7 @@
     ./sops.nix
 
     inputs.impermanence.homeManagerModules.impermanence
+    inputs.direnv-instant.homeModules.direnv-instant
 
   ]
   ++ (builtins.attrValues outputs.homeManagerModules);

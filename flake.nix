@@ -13,7 +13,7 @@
     nix-ld.url = "github:Mic92/nix-ld";
     nix-ld.inputs.nixpkgs.follows = "nixpkgs";
 
-    inputs.direnv-instant.url = "github:Mic92/direnv-instant";
+    direnv-instant.url = "github:Mic92/direnv-instant";
 
     stylix.url = "github:danth/stylix";
 
