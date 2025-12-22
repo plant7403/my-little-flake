@@ -125,7 +125,7 @@ in
 
           experimental-features = nix-command flakes
           !include ${config.sops.secrets.nixAccessTokens.path}
-        '';;
+        '';
 
       };
 
