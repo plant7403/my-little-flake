@@ -343,6 +343,7 @@ in
             #"mariusvanwijk-joppekoers.codam-norminette-3"
             "brittanychiang.halcyon-vscode"
             "farrese.midas"
+            "ms-vscode.cmake-tools"
           ]
           ++ forOpenVsx baseExtensions
           ++ forVscode [
