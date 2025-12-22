@@ -209,7 +209,7 @@
             }
             {
               name = "expat food";
-              url = "https://pak.academy/";
+              url = "https://expat.food/";
             }
           ];
         }
