@@ -37,10 +37,10 @@ cut -f2- -d'/' |
 sort |
 uniq |
 while read path; do
-  if [ $1 = -r ]; then
-    path="/$path"
-  elif [ $1 = -h ]
-    path="$path"
+  #if [ $1 = -r ]; then
+  #  path="/$path"
+  #elif [ $1 = -h ]
+  #  path="$path"
 
   if [ -L "$path" ]; then
     : # The path is a symbolic link, so is probably handled by NixOS already
