@@ -137,7 +137,7 @@
             definedAliases = [ "@hm" ];
           };
 
-          nixpkgs = {
+          nixpkgs-issues = {
             name = "nixpkgs";
             urls = [
               {
