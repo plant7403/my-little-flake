@@ -65,11 +65,11 @@ in
           ];
 
           always-allow-substitutes = true;
+          # Use the binary cache aggressively
           substituters = [
-            #"https://cachix.cachix.org"
-            #"https://devenv.cachix.org"
-            "https://cache.nixos.org/"
-            "https://nix-community.cachix.org"
+            "<https://cache.nixos.org>"
+            "<https://nix-community.cachix.org>"
+            "<https://nixpkgs-wayland.cachix.org>"
           ];
           trusted-public-keys = [
             #"cachix.cachix.org-1:eWNHQldwUO7G2VkjpnjDbWwy4KQ/HNxht7H4SSoMckM="
@@ -94,8 +94,6 @@ in
 
           # Number of parallel build tasks per job
           cores = 0; # 0 means use all available cores
-
-         
 
           # Optimize fetching from GitHub
           connect-timeout = 5;
