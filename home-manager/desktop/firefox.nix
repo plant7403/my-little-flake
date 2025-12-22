@@ -205,7 +205,7 @@
           bookmarks = [
             {
               name = "pak academy";
-              url = "https://nixos.org/";
+              url = "https://pak.academy/";
             }
           ];
         }
