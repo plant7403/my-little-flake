@@ -336,7 +336,7 @@ in
             "mkhl.direnv"
 
             "llvm-vs-code-extensions.vscode-clangd"
-            "kylinideteam.cppdebug"
+            #"kylinideteam.cppdebug"
 
             "babyfox1306.pdf-forge"
             "kube.42header"
@@ -346,8 +346,7 @@ in
             "ms-vscode.cmake-tools"
 
             "danielpinto8zz6.c-cpp-project-generator"
-            "franneck94.vscode-c-cpp-config
-"
+            "franneck94.vscode-c-cpp-config"
           ]
           ++ forOpenVsx baseExtensions
           ++ forVscode [
