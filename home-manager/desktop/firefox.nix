@@ -112,7 +112,7 @@
                   }
                   {
                     name = "channel";
-                    value = "unstable"
+                    value = "unstable";
                   }
                   {
                     name = "query";
