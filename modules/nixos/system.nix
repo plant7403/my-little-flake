@@ -55,13 +55,15 @@ in
 
   config = mkMerge [
     {
-nix = {
+      nix = {
+        package = pkgs.lixPackageSets.stable.lix;
+settings = {
 
-        settings.experimental-features = [
+        experimental-features = [
           "flakes"
           "nix-command"
         ];
-        settings = {
+
           always-allow-substitutes = true;
           substituters = [
             #"https://cachix.cachix.org"
@@ -75,19 +77,17 @@ nix = {
             "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
             "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
           ];
-        };
 
-        settings.trusted-users = [
+
+        trusted-users = [
           "root"
           "egor"
           "inti"
         ];
-        package = pkgs.lixPackageSets.stable.lix;
+
+        # Nix package manager optimizations
 
 
-      # Nix package manager optimizations
-
-        settings = {
           # Optimize store to remove duplicate files
           auto-optimise-store = true;
 
@@ -109,7 +109,8 @@ nix = {
 
           # Prevent unneeded rebuilds
           commit-lockfile-summary = "Update flake.lock";
-        };
+
+};
 
         # Garbage collection settings
         gc = {
@@ -129,7 +130,7 @@ nix = {
           log-lines = 20
         '';
 
-};
+      };
 
       nixpkgs.overlays = [
         (final: prev: {
