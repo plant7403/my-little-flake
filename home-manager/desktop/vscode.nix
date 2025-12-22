@@ -93,7 +93,7 @@ let
     "visbydev.folder-path-color"
 
     "mkhl.direnv"
-    "arrterian.nix-env-selector"
+    #"arrterian.nix-env-selector"
 
     "jnoortheen.nix-ide"
   ];
