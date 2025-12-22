@@ -207,7 +207,7 @@
                           {
               name = "homepage";
               url = "https://nixos.org/";
-            }
+          
             }
           ];
         }
