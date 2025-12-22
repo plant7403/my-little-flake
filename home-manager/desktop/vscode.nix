@@ -78,6 +78,11 @@ let
     #"vscode-pets.theme" = "forest";
     #"vscode-pets.throwBallWithMouse" = false;
 
+nixEnvSelector.nixFile	null	Path to the Nix config file
+nixEnvSelector.packages	[]	List packages using as -p nix-shell args
+nixEnvSelector.args	null	Custom args string for nix-shell. EX: -A <something> --pure
+nixEnvSelector.nixShellPath	null	Custom path for nix-shell executable
+nixEnvSelector.useFlakes	false
   };
   baseExtensions = [
     "pkief.material-icon-theme"
@@ -86,6 +91,7 @@ let
     "pnw-techpros.code-casefile"
     "paragdiwan.gitpatch"
     "visbydev.folder-path-color"
+
     "mkhl.direnv"
     "arrterian.nix-env-selector"
   ];
