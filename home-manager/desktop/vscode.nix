@@ -79,9 +79,9 @@ let
     #"vscode-pets.throwBallWithMouse" = false;
 
     "nixEnvSelector.nixFile" = null; # Path to the Nix config file
-    "nixEnvSelector.packages" = [ ]; # List packages using as -p nix-shell args
+    #"nixEnvSelector.packages" = [ ]; # List packages using as -p nix-shell args
     "nixEnvSelector.args" = null; # Custom args string for nix-shell. EX: -A <something> --pure
-    "nixEnvSelector.nixShellPath" = null; # Custom path for nix-shell executable
+    #"nixEnvSelector.nixShellPath" = null; # Custom path for nix-shell executable
     "nixEnvSelector.useFlakes" = true;
   };
   baseExtensions = [
