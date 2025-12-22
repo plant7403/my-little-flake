@@ -82,7 +82,7 @@ let
     "nixEnvSelector.packages" = [ ]; # List packages using as -p nix-shell args
     "nixEnvSelector.args" = null; # Custom args string for nix-shell. EX: -A <something> --pure
     "nixEnvSelector.nixShellPath" = null; # Custom path for nix-shell executable
-    "nixEnvSelector.useFlakes" = false;
+    "nixEnvSelector.useFlakes" = true;
   };
   baseExtensions = [
     "pkief.material-icon-theme"
