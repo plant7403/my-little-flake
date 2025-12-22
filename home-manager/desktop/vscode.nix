@@ -354,6 +354,7 @@ in
             "danielpinto8zz6.c-cpp-project-generator"
             "franneck94.vscode-c-cpp-config"
             "harry-ross-software.c-snippets"
+            "vadimcn.vscode-lldb"
           ]
           ++ forOpenVsx baseExtensions
           ++ forVscode [
