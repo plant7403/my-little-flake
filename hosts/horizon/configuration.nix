@@ -247,7 +247,6 @@ in
   boot.loader.efi.canTouchEfiVariables = true;
   #services.logrotate.checkConfig = false;
 
-  programs.direnv.enable = true;
   #programs.yubikey-touch-detector.enable = true;
 
   # This value determines the NixOS release from which the default
