@@ -28,7 +28,7 @@ echo "tempdir set..."
 sudo mount -o subvol=/ /dev/mapper/nvme-crypt $TEMPDIR
 echo "mount the whole disk..."
 # === 3 ===
-OLD_TRANSID=$(sudo btrfs subvolume find-new /${TEMPDIR}/${TARGET}-BLANK 9999999)
+OLD_TRANSID=$(sudo btrfs subvolume find-new /"${TEMPDIR}"/${TARGET}-BLANK 9999999)
 OLD_TRANSID=${OLD_TRANSID#transid marker was }
 sudo btrfs subvolume find-new "/${TEMPDIR}/${TARGET}" "$OLD_TRANSID" |
 sed '$d' |
