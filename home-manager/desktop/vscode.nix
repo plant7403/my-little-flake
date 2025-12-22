@@ -372,6 +372,49 @@ in
         }
         // baseSettings;
       };
+      C = {
+        extensions =
+          forOpenVsx [
+            #"signageos.signageos-vscode-sops"
+            "mkhl.direnv"
+
+            "llvm-vs-code-extensions.vscode-clangd"
+            #"kylinideteam.cppdebug"
+
+            "babyfox1306.pdf-forge"
+            "kube.42header"
+            #"mariusvanwijk-joppekoers.codam-norminette-3"
+            "brittanychiang.halcyon-vscode"
+            "farrese.midas"
+            "ms-vscode.cmake-tools"
+
+            "danielpinto8zz6.c-cpp-project-generator"
+            "franneck94.vscode-c-cpp-config"
+            "harry-ross-software.c-snippets"
+          ]
+          ++ forOpenVsx baseExtensions
+          ++ forVscode [
+            #"keyhr.42-c-format"
+          ]
+          ++ forVscode baseExtensionsVS;
+        userSettings = {
+
+          # This is all that matters
+          "workbench.colorTheme" = "Halcyon";
+
+          "editor.renderWhitespace" = "all";
+
+          /*
+            "[c]" = {
+                     "editor.defaultFormatter" = "keyhr.42-c-format";
+                   };
+          */
+          "material-icon-theme.folders.color" = "#8695b7";
+          "material-icon-theme.folders.theme" = "specific";
+          "material-icon-theme.hidesExplorerArrows" = true;
+        }
+        // baseSettings;
+      };
     };
   };
 
