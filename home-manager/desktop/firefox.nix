@@ -201,10 +201,14 @@
         }
         {
           name = "Pak Unity";
-          #force = true;
           toolbar = true;
           bookmarks = [
-            { }
+            {
+                          {
+              name = "homepage";
+              url = "https://nixos.org/";
+            }
+            }
           ];
         }
       ];
