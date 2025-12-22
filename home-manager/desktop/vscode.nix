@@ -376,6 +376,11 @@ in
           "material-icon-theme.folders.color" = "#8695b7";
           "material-icon-theme.folders.theme" = "specific";
           "material-icon-theme.hidesExplorerArrows" = true;
+
+          "nixEnvSelector.nixFile" = null; # Path to the Nix config file
+          #"nixEnvSelector.packages" = [ ]; # List packages using as -p nix-shell args
+          "nixEnvSelector.args" = null; # Custom args string for nix-shell. EX: -A <something> --pure
+          #"nixEnvSelector.nixShellPath" = null; # Custom path for nix-shell executable
         }
         // baseSettings;
       };
