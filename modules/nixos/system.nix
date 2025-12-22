@@ -127,7 +127,7 @@ in
           !include ${config.sops.secrets.nixAccessTokens.path}
         '';
       };
-      sops.secrets."system.nix-token" = {
+      sops.secrets."system/nix-token" = {
         mode = "0440";
         group = config.users.groups.keys.name;
         sopsFile = ../../secrets/common.yaml;
