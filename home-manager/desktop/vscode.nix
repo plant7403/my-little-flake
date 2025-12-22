@@ -383,6 +383,7 @@ foxundermoon.shell-format
 jeff-hykin.better-shellscript-syntax
 mads-hartmann.bash-ide-vscode
 rogalmic.bash-debug
+rpinski.shebang-snippets
           ]
           ++ forOpenVsx baseExtensions
           ++ forVscode [
