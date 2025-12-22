@@ -55,11 +55,12 @@ in
 
   config = mkMerge [
     {
-      nix.settings.experimental-features = [
+nix = {
+      settings.experimental-features = [
         "flakes"
         "nix-command"
       ];
-      nix.settings = {
+      settings = {
         always-allow-substitutes = true;
         substituters = [
           #"https://cachix.cachix.org"
@@ -75,11 +76,13 @@ in
         ];
       };
 
-      nix.settings.trusted-users = [
+      settings.trusted-users = [
         "root"
         "egor"
         "inti"
       ];
+      package = pkgs.lixPackageSets.stable.lix;
+};
 
       nixpkgs.overlays = [
         (final: prev: {
@@ -91,7 +94,6 @@ in
             ;
         })
       ];
-      nix.package = pkgs.lixPackageSets.stable.lix;
 
       nixpkgs.config.allowUnfree = true;
       nixpkgs.config.allowUnfreePredicate =
