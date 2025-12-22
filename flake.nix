@@ -429,6 +429,20 @@
             */
           ];
         };
+        devShells.default = pkgs.mkShell {
+
+          packages = with pkgs; [
+            node2nix
+            nodejs
+            pnpm
+            yarn
+          ];
+          shellHook = ''
+
+            echo "node `${pkgs.nodejs}/bin/node --version`"
+
+          '';
+        };
       };
       deploy.nodes = {
         immortal = {
@@ -550,19 +564,4 @@
       checks = builtins.mapAttrs (_system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
 
     };
-  devShells.default = pkgs.mkShell {
-
-    packages = with pkgs; [
-      node2nix
-      nodejs
-      pnpm
-      yarn
-    ];
-
-    shellHook = ''
-
-      echo "node `${pkgs.nodejs}/bin/node --version`"
-
-    '';
-  };
 }
