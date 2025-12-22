@@ -325,7 +325,7 @@ in
         userSettings = {
           # This is all that matters
           "workbench.colorTheme" = "Cobalt2";
-          "telemetry.enableTelemetry" = false;
+          #"telemetry.enableTelemetry" = false;
         }
         // baseSettings;
       };
