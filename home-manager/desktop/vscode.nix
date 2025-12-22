@@ -86,6 +86,7 @@ let
     "pnw-techpros.code-casefile"
     "paragdiwan.gitpatch"
     "visbydev.folder-path-color"
+    
   ];
   baseExtensionsVS = [
 
@@ -121,8 +122,6 @@ in
 
             "signageos.signageos-vscode-sops"
             "jeff-hykin.better-nix-syntax"
-            "meronz.manpages"
-            "s-nlf-fh.glassit"
 
             #"folke.vscode-monorepo-workspace"
             #"moshfeu.compare-folders"
