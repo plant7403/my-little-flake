@@ -55,7 +55,8 @@ in
 
   config = mkMerge [
     {
-      nix = {
+nix = {
+
         settings.experimental-features = [
           "flakes"
           "nix-command"
@@ -82,10 +83,10 @@ in
           "inti"
         ];
         package = pkgs.lixPackageSets.stable.lix;
-      };
+
 
       # Nix package manager optimizations
-      nix = {
+
         settings = {
           # Optimize store to remove duplicate files
           auto-optimise-store = true;
@@ -127,7 +128,8 @@ in
           keep-going = true
           log-lines = 20
         '';
-      };
+
+};
 
       nixpkgs.overlays = [
         (final: prev: {
