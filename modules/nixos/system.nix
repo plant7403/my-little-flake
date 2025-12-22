@@ -122,11 +122,24 @@ in
           warn-dirty = false
           keep-going = true
           log-lines = 20
-        '';
+        '' ++ ''
+          experimental-features = nix-command flakes
+          !include ${config.sops.secrets.nixAccessTokens.path}
+        '';;
 
       };
 
+      nix = {
+        extraOptions = ''
+          experimental-features = nix-command flakes
+          !include ${config.sops.secrets.nixAccessTokens.path}
+        '';
+      };
 
+      sops.secrets.nixAccessTokens = {
+        mode = "0440";
+        group = config.users.groups.keys.name;
+      };
 
       nixpkgs.overlays = [
         (final: prev: {
