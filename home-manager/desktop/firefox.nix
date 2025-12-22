@@ -155,7 +155,7 @@
                 template = "https://sourcegraph.com/search?q=context:global+file:%5C.nix+{searchTerms}&patternType=keyword&sm=0";
               }
             ];
-            iconMapObj."16" = "https://sourcegraph.com//favicon.ico";
+            iconMapObj."16" = "https://sourcegraph.com/favicon.ico";
             definedAliases = [ "@sg" ];
           };
 
