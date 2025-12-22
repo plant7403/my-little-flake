@@ -106,12 +106,13 @@ in
         };
 
         # Garbage collection settings
-        gc = {
-          automatic = true;
-          dates = "weekly";
-          options = "--delete-older-than 30d";
-        };
-
+        /*
+          gc = {
+                 automatic = true;
+                 dates = "weekly";
+                 options = "--delete-older-than 30d";
+               };
+        */
         # Optimize builds using different build cores
         buildCores = 0; # 0 means use all available cores
 
