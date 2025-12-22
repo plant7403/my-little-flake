@@ -18,7 +18,7 @@ else
 fi
 
 # === 1 ===
-TEMPDIR=`mktemp -d`
+TEMPDIR=$(mktemp -d)
 echo "tempdir set..."
 
 #mktemp -d > $TEMPDIR
