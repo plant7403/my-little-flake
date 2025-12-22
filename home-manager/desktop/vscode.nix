@@ -345,7 +345,9 @@ in
             "farrese.midas"
             "ms-vscode.cmake-tools"
 
-            danielpinto8zz6.c-cpp-project-generator
+            "danielpinto8zz6.c-cpp-project-generator"
+            "franneck94.vscode-c-cpp-config
+"
           ]
           ++ forOpenVsx baseExtensions
           ++ forVscode [
