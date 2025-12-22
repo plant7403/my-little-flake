@@ -152,7 +152,7 @@
             name = "sourcegraph";
             urls = [
               {
-                template = "https://sourcegraph.com/search?q=context:global+file:%5C.nix+/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings&patternType=keyword&sm=0{searchTerms}";
+                template = "https://sourcegraph.com/search?q=context:global+file:%5C.nix+/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings&patternType=keyword&sm=0";
               }
             ];
             iconMapObj."16" = "https://github.com/favicon.ico";
