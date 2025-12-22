@@ -2,7 +2,7 @@
 {
   #config.sops.secrets."postgres/forgejo".path;
   #sops.secrets."postgres/forgejo" = {
-  #  sopsFile = ./../../../secrets/example.yaml; # bring your own password file
+  #  sopsFile = ./../../../secrets/common.yaml; # bring your own password file
   #  owner = config.services.forgejo.user;
   #};
   sops.secrets."services/adguard-home/admin/password" = { };

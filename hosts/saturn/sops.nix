@@ -1,9 +1,10 @@
-{...}: {
+{ ... }:
+{
   #  imports = [inputs.sops-nix.nixosModules.sops];
   # This will add secrets.yml to the nix store
   # You can avoid this by adding a string to the full path instead, i.e.
-  # sops.defaultSopsFile = "/root/.sops/secrets/example.yaml";
-  sops.defaultSopsFile = ./../../secrets/example.yaml;
+  # sops.defaultSopsFile = "/root/.sops/secrets/common.yaml";
+  sops.defaultSopsFile = ./../../secrets/common.yaml;
   # This will automatically import SSH keys as age keys
   #sops.age.sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
   # This is using an age key that is expected to already be in the filesystem
@@ -14,7 +15,7 @@
   sops.age.keyFile = "/persist/sops-nix/key.txt";
 
   systemd.services.sops-hack = {
-    wantedBy = ["multi-user.target"];
+    wantedBy = [ "multi-user.target" ];
     serviceConfig = {
       ExecStart = ''
         /run/current-system/activate
