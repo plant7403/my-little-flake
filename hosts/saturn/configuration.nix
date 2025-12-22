@@ -8,7 +8,8 @@
   outputs,
   inputs,
   ...
-}: {
+}:
+{
   imports = [
     ./hardware-configuration.nix
     ./services
@@ -38,10 +39,10 @@
     disk = "ssd";
   };
   /*
-     modules.mullvad = {
-    enable = true;
-    impermanence = true;
-  };
+       modules.mullvad = {
+      enable = true;
+      impermanence = true;
+    };
   */
   modules.sound.enable = true;
   #modules.steam.enable = true;
@@ -64,8 +65,6 @@
     };
   };
   modules.yubikey.enable = true;
-
-  programs.direnv.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

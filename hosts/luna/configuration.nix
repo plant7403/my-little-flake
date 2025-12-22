@@ -102,7 +102,6 @@ in
   boot.loader.efi.canTouchEfiVariables = true;
   # services.logrotate.checkConfig = false;
 
-  programs.direnv.enable = true;
   #programs.yubikey-touch-detector.enable = true;
 
   hardware.opengl.enable = true;
