@@ -380,6 +380,7 @@ in
             "formulahendry.code-runner"
 
 foxundermoon.shell-format
+jeff-hykin.better-shellscript-syntax
           ]
           ++ forOpenVsx baseExtensions
           ++ forVscode [
