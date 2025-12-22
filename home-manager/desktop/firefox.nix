@@ -148,6 +148,17 @@
             definedAliases = [ "@ni" ];
           };
 
+          nixpkgs = {
+            name = "nixpkgs";
+            urls = [
+              {
+                template = "https://github.com/NixOS/nixpkgs/issues?q=is%3Aissue%20state%3Aopen%20{searchTerms}";
+              }
+            ];
+            iconMapObj."16" = "https://github.com/favicon.ico";
+            definedAliases = [ "@ni" ];
+          };
+
           bing.metaData.hidden = true;
           google.metaData.alias = "@g";
         };
