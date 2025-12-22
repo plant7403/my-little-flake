@@ -123,7 +123,6 @@ in
           keep-going = true
           log-lines = 20
 
-          
           experimental-features = nix-command flakes
           !include ${config.sops.secrets.nixAccessTokens.path}
         '';
