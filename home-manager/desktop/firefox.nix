@@ -110,7 +110,9 @@
                     name = "type";
                     value = "packages";
                   }
-                  {}
+                  {
+                    channel unstable
+                  }
                   {
                     name = "query";
                     value = "{searchTerms}";
