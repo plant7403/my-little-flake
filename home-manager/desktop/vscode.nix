@@ -381,6 +381,7 @@ in
 
 foxundermoon.shell-format
 jeff-hykin.better-shellscript-syntax
+mads-hartmann.bash-ide-vscode
           ]
           ++ forOpenVsx baseExtensions
           ++ forVscode [
