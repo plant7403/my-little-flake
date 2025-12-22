@@ -344,6 +344,8 @@ in
             "brittanychiang.halcyon-vscode"
             "farrese.midas"
             "ms-vscode.cmake-tools"
+
+            danielpinto8zz6.c-cpp-project-generator
           ]
           ++ forOpenVsx baseExtensions
           ++ forVscode [
