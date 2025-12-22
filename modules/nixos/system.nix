@@ -130,7 +130,7 @@ in
       sops.secrets.nixAccessTokens = {
         mode = "0440";
         group = config.users.groups.keys.name;
-        sopsFile = ../secrets/common.yaml;
+        sopsFile = ..../secrets/common.yaml;
       };
 
       nixpkgs.overlays = [
