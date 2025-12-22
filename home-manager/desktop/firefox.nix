@@ -204,7 +204,7 @@
           #force = true;
           toolbar = true;
           bookmarks = [
-            {
+            {} ]
       ];
 
     };
