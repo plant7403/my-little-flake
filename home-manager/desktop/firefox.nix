@@ -204,10 +204,8 @@
           toolbar = true;
           bookmarks = [
             {
-                          {
               name = "homepage";
               url = "https://nixos.org/";
-          
             }
           ];
         }
