@@ -138,7 +138,7 @@
           };
 
           nixpkgs-issues = {
-            name = "nixpkgs";
+            name = "nixpkgs-issues";
             urls = [
               {
                 template = "https://github.com/NixOS/nixpkgs/issues?q=is%3Aissue%20state%3Aopen%20{searchTerms}";
