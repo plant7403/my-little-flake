@@ -208,7 +208,7 @@
               url = "https://pak.academy/";
             }
             {
-              name = "pak academy";
+              name = "expat food";
               url = "https://pak.academy/";
             }
           ];
