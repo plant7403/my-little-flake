@@ -375,7 +375,6 @@ in
       Bash = {
         extensions =
           forOpenVsx [
-            #"signageos.signageos-vscode-sops"
             "mkhl.direnv"
             "formulahendry.code-runner"
 
