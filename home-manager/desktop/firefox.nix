@@ -104,7 +104,7 @@
             name = "Nix Packages";
             urls = [
               {
-                template = "https://search.nixos.org/packages";
+                template = "https://search.nixos.org/packages?channel=unstable&query=authelia";
                 params = [
                   {
                     name = "type";
