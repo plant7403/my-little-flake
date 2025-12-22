@@ -57,12 +57,12 @@ in
     {
       nix = {
         package = pkgs.lixPackageSets.stable.lix;
-settings = {
+        settings = {
 
-        experimental-features = [
-          "flakes"
-          "nix-command"
-        ];
+          experimental-features = [
+            "flakes"
+            "nix-command"
+          ];
 
           always-allow-substitutes = true;
           substituters = [
@@ -78,15 +78,13 @@ settings = {
             "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
           ];
 
+          trusted-users = [
+            "root"
+            "egor"
+            "inti"
+          ];
 
-        trusted-users = [
-          "root"
-          "egor"
-          "inti"
-        ];
-
-        # Nix package manager optimizations
-
+          # Nix package manager optimizations
 
           # Optimize store to remove duplicate files
           auto-optimise-store = true;
@@ -97,12 +95,7 @@ settings = {
           # Number of parallel build tasks per job
           cores = 0; # 0 means use all available cores
 
-          # Use the binary cache aggressively
-          substituters = [
-            "<https://cache.nixos.org>"
-            "<https://nix-community.cachix.org>"
-            "<https://nixpkgs-wayland.cachix.org>"
-          ];
+         
 
           # Optimize fetching from GitHub
           connect-timeout = 5;
@@ -110,7 +103,7 @@ settings = {
           # Prevent unneeded rebuilds
           commit-lockfile-summary = "Update flake.lock";
 
-};
+        };
 
         # Garbage collection settings
         gc = {
