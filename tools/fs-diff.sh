@@ -35,14 +35,14 @@ sed '$d' |
 cut -f17- -d' ' |
 cut -f2- -d'/' |
 sort |
-uniq 
-#while read path; do
-#  path="/$path"
-#  if [ -L "$path" ]; then
-#    : # The path is a symbolic link, so is probably handled by NixOS already
-#  elif [ -d "$path" ]; then
-#    : # The path is a directory, ignore
-#  else
-#    echo "$path"
-#  fi
-#done
+uniq |
+while read path; do
+  path="/$path"
+  if [ -L "$path" ]; then
+    : # The path is a symbolic link, so is probably handled by NixOS already
+  elif [ -d "$path" ]; then
+    : # The path is a directory, ignore
+  else
+    echo "$path"
+  fi
+done
