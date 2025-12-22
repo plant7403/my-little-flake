@@ -85,9 +85,9 @@
 
           # Do this early so fast-syntax-highlighting can wrap and override this
           if autoload history-search-end; then
-          #  zle -N history-beginning-search-backward-end history-search-end
-          #  zle -N history-beginning-search-forward-end  history-search-end
-          #fi
+            zle -N history-beginning-search-backward-end history-search-end
+            zle -N history-beginning-search-forward-end  history-search-end
+          fi
           autoload -Uz compinit && compinit
           autoload -U colors && colors
           #alias ls='ls -G'
