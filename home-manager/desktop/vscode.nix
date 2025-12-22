@@ -377,6 +377,7 @@ in
           forOpenVsx [
             #"signageos.signageos-vscode-sops"
             "mkhl.direnv"
+            formulahendry.code-runner
 
           ]
           ++ forOpenVsx baseExtensions
