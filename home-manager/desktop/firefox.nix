@@ -200,7 +200,7 @@
           ];
         }
         {
-          name = "Nix sites";
+          name = "Pak Unity";
           #force = true;
           toolbar = true;
           bookmarks = [
