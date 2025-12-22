@@ -152,7 +152,7 @@
             name = "sourcegraph";
             urls = [
               {
-                template = "https://github.com/NixOS/nixpkgs/issues?q=is%3Aissue%20state%3Aopen%20{searchTerms}";
+                template = "https://sourcegraph.com/search?q=context:global+file:%5C.nix+/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings&patternType=keyword&sm=0{searchTerms}";
               }
             ];
             iconMapObj."16" = "https://github.com/favicon.ico";
