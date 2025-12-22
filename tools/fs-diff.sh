@@ -41,7 +41,6 @@ while read path; do
     path="/$path"
   elif [ $1 = -h ]
     path="$path"
-  fi
 
   if [ -L "$path" ]; then
     : # The path is a symbolic link, so is probably handled by NixOS already
