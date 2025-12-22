@@ -385,6 +385,8 @@ mads-hartmann.bash-ide-vscode
 rogalmic.bash-debug
 rpinski.shebang-snippets
 jeff-hykin.better-shellscript-syntax
+timonwong.shellcheck
+
           ]
           ++ forOpenVsx baseExtensions
           ++ forVscode [
