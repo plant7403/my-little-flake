@@ -67,7 +67,7 @@ in
           always-allow-substitutes = true;
           # Use the binary cache aggressively
           substituters = [
-            "<https://cache.nixos.org>"
+            "<https://cache.nixos.org"
             "<https://nix-community.cachix.org>"
             "<https://nixpkgs-wayland.cachix.org>"
           ];
