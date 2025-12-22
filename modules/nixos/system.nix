@@ -75,7 +75,7 @@ in
             "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
           ];
         };
-        
+
 
         settings.trusted-users = [
           "root"
@@ -84,6 +84,51 @@ in
         ];
         package = pkgs.lixPackageSets.stable.lix;
       };
+
+       # Nix package manager optimizations
+  nix = {
+    settings = {
+      # Optimize store to remove duplicate files
+      auto-optimise-store = true;
+
+      # Allow building multiple derivations in parallel
+      max-jobs = "auto";
+
+      # Number of parallel build tasks per job
+      cores = 0; # 0 means use all available cores
+
+      # Use the binary cache aggressively
+      substituters = [
+        "<https://cache.nixos.org>"
+        "<https://nix-community.cachix.org>"
+        "<https://nixpkgs-wayland.cachix.org>"
+      ];
+
+      # Optimize fetching from GitHub
+      connect-timeout = 5;
+
+      # Prevent unneeded rebuilds
+      commit-lockfile-summary = "Update flake.lock";
+    };
+
+    # Garbage collection settings
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 30d";
+    };
+
+    # Optimize builds using different build cores
+    buildCores = 0; # 0 means use all available cores
+
+    # Enable flakes and modern Nix command features
+    extraOptions = ''
+      experimental-features = nix-command flakes
+      warn-dirty = false
+      keep-going = true
+      log-lines = 20
+    '';
+  };
 
       nixpkgs.overlays = [
         (final: prev: {
