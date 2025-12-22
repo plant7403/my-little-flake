@@ -125,7 +125,6 @@ in
 
             # NixOS
             "jnoortheen.nix-ide"
-            "jeff-hykin.better-nix-syntax"
 
             "signageos.signageos-vscode-sops"
             "jeff-hykin.better-nix-syntax"
