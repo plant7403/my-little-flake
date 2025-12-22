@@ -379,13 +379,13 @@ in
             "mkhl.direnv"
             "formulahendry.code-runner"
 
-foxundermoon.shell-format
-jeff-hykin.better-shellscript-syntax
-mads-hartmann.bash-ide-vscode
-rogalmic.bash-debug
-rpinski.shebang-snippets
-jeff-hykin.better-shellscript-syntax
-timonwong.shellcheck
+            "foxundermoon.shell-format"
+            "jeff-hykin.better-shellscript-syntax"
+            "mads-hartmann.bash-ide-vscode"
+            "rogalmic.bash-debug"
+            "rpinski.shebang-snippets"
+            "jeff-hykin.better-shellscript-syntax"
+            "timonwong.shellcheck"
 
           ]
           ++ forOpenVsx baseExtensions
@@ -408,6 +408,19 @@ timonwong.shellcheck
           "material-icon-theme.folders.color" = "#8695b7";
           "material-icon-theme.folders.theme" = "specific";
           "material-icon-theme.hidesExplorerArrows" = true;
+
+
+              "code-runner.executorMap": {
+        "javascript": "node",
+        "php": "C:\\php\\php.exe",
+        "python": "python",
+        "perl": "perl",
+        "ruby": "C:\\Ruby23-x64\\bin\\ruby.exe",
+        "go": "go run",
+        "html": "\"C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe\"",
+        "java": "cd $dir && javac $fileName && java $fileNameWithoutExt",
+        "c": "cd $dir && gcc $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt"
+    }
         }
         // baseSettings;
       };
