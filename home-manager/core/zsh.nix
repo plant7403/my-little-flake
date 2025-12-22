@@ -95,7 +95,7 @@
           # history
           setopt share_history
 
-          export $ANSI_MOTD_ART_DIR=/home/egor/Downloads
+          export ANSI_MOTD_ART_DIR=/home/egor/Downloads
           # globbing
           setopt extended_glob
 
