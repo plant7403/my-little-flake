@@ -55,34 +55,77 @@ in
 
   config = mkMerge [
     {
-nix = {
-      settings.experimental-features = [
-        "flakes"
-        "nix-command"
-      ];
-      settings = {
-        always-allow-substitutes = true;
-        substituters = [
-          #"https://cachix.cachix.org"
-          #"https://devenv.cachix.org"
-          "https://cache.nixos.org/"
-          "https://nix-community.cachix.org"
+      nix = {
+        settings.experimental-features = [
+          "flakes"
+          "nix-command"
         ];
-        trusted-public-keys = [
-          #"cachix.cachix.org-1:eWNHQldwUO7G2VkjpnjDbWwy4KQ/HNxht7H4SSoMckM="
-          #"devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
-          "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-          "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-        ];
-      };
+        settings = {
+          always-allow-substitutes = true;
+          substituters = [
+            #"https://cachix.cachix.org"
+            #"https://devenv.cachix.org"
+            "https://cache.nixos.org/"
+            "https://nix-community.cachix.org"
+          ];
+          trusted-public-keys = [
+            #"cachix.cachix.org-1:eWNHQldwUO7G2VkjpnjDbWwy4KQ/HNxht7H4SSoMckM="
+            #"devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
+            "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+            "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+          ];
+        };
+        nix = {
+          settings = {
+            # Optimize store to remove duplicate files
+            auto-optimise-store = true;
 
-      settings.trusted-users = [
-        "root"
-        "egor"
-        "inti"
-      ];
-      package = pkgs.lixPackageSets.stable.lix;
-};
+            # Allow building multiple derivations in parallel
+            max-jobs = "auto";
+
+            # Number of parallel build tasks per job
+            cores = 0; # 0 means use all available cores
+
+            # Use the binary cache aggressively
+            substituters = [
+              "<https://cache.nixos.org>"
+              "<https://nix-community.cachix.org>"
+              "<https://nixpkgs-wayland.cachix.org>"
+            ];
+
+            # Optimize fetching from GitHub
+            connect-timeout = 5;
+
+            # Prevent unneeded rebuilds
+            commit-lockfile-summary = "Update flake.lock";
+          };
+
+          # Garbage collection settings
+          gc = {
+            automatic = true;
+            dates = "weekly";
+            options = "--delete-older-than 30d";
+          };
+
+          # Optimize builds using different build cores
+          buildCores = 0; # 0 means use all available cores
+
+          # Enable flakes and modern Nix command features
+          extraOptions = ''
+            experimental-features = nix-command flakes
+            warn-dirty = false
+            keep-going = true
+            log-lines = 20
+          '';
+        };
+
+        settings.trusted-users = [
+          "root"
+          "egor"
+          "inti"
+        ];
+        package = pkgs.lixPackageSets.stable.lix;
+      };
 
       nixpkgs.overlays = [
         (final: prev: {
