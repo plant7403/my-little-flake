@@ -41,6 +41,9 @@ while read path; do
   #  path="/$path"
   #elif [ $1 = -h ]
   #  path="$path"
+  if [$1 = -r]; then
+    command ...
+  fi
   path="/$path"
 
   if [ -L "$path" ]; then
