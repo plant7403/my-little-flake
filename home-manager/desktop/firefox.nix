@@ -204,7 +204,7 @@
           toolbar = true;
           bookmarks = [
             {
-              name = "homepage";
+              name = "pak academy";
               url = "https://nixos.org/";
             }
           ];
