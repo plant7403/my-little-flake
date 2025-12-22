@@ -420,6 +420,45 @@ in
             java = "cd $dir && javac $fileName && java $fileNameWithoutExt";
             c = "cd $dir && gcc $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt";
           };
+
+          "shellcheck.enable" = true;
+          "shellcheck.enableQuickFix" = true;
+          "shellcheck.run" = "onType";
+          "shellcheck.executablePath" = "";
+          "shellcheck.exclude" = [
+
+          ];
+          "shellcheck.customArgs" = [
+
+          ];
+          "shellcheck.ignorePatterns" = {
+            "**/*.csh" = true;
+            "**/*.cshrc" = true;
+            "**/*.fish" = true;
+            "**/*.login" = true;
+            "**/*.logout" = true;
+            "**/*.tcsh" = true;
+            "**/*.tcshrc" = true;
+            "**/*.xonshrc" = true;
+            "**/*.xsh" = true;
+            "**/*.zsh" = true;
+            "**/*.zshrc" = true;
+            "**/zshrc" = true;
+            "**/*.zprofile" = true;
+            "**/zprofile" = true;
+            "**/*.zlogin" = true;
+            "**/zlogin" = true;
+            "**/*.zlogout" = true;
+            "**/zlogout" = true;
+            "**/*.zshenv" = true;
+            "**/zshenv" = true;
+            "**/*.zsh-theme" = true;
+          };
+          "shellcheck.ignoreFileSchemes" = [
+            "git"
+            "gitfs"
+            "output"
+          ];
         }
         // baseSettings;
       };
