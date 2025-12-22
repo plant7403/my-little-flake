@@ -432,68 +432,76 @@
 
       };
       deploy.nodes = {
-        immortal = {
-          sshOpts = [
-            "-p"
-            "3370"
-          ];
-          hostname = "100.64.0.1";
-          fastConnection = true;
-          profiles = {
-            system = {
-              sshUser = "root";
-              path = deployPkgs.deploy-rs.lib.activate.nixos self.nixosConfigurations.immortal;
-              user = "root";
-              remoteBuild = true;
+        /*
+          immortal = {
+            sshOpts = [
+              "-p"
+              "3370"
+            ];
+            hostname = "100.64.0.1";
+            fastConnection = true;
+            profiles = {
+              system = {
+                sshUser = "root";
+                path = deployPkgs.deploy-rs.lib.activate.nixos self.nixosConfigurations.immortal;
+                user = "root";
+                remoteBuild = true;
+              };
             };
           };
-        };
-        saturn = {
-          sshOpts = [
-            "-p"
-            "3370"
-          ];
-          hostname = "100.64.0.4";
-          fastConnection = true;
-          profiles = {
-            system = {
-              sshUser = "root";
-              path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.saturn;
-              user = "root";
-              remoteBuild = true;
+        */
+        /*
+          saturn = {
+            sshOpts = [
+              "-p"
+              "3370"
+            ];
+            hostname = "100.64.0.4";
+            fastConnection = true;
+            profiles = {
+              system = {
+                sshUser = "root";
+                path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.saturn;
+                user = "root";
+                remoteBuild = true;
+              };
             };
           };
-        };
-        luna = {
-          sshOpts = [
-            "-p"
-            "3370"
-          ];
-          hostname = "100.64.0.2";
-          fastConnection = true;
-          profiles = {
-            system = {
-              sshUser = "root";
-              path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.luna;
-              user = "root";
+        */
+        /*
+          luna = {
+            sshOpts = [
+              "-p"
+              "3370"
+            ];
+            hostname = "100.64.0.2";
+            fastConnection = true;
+            profiles = {
+              system = {
+                sshUser = "root";
+                path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.luna;
+                user = "root";
+              };
             };
           };
-        };
-/*         pluto = {
-          sshOpts = [
-            "-p"
-            "3370"
-          ];
-          hostname = "100.64.0.5";
-          fastConnection = true;
-          profiles = {
-            system = {
-              sshUser = "root";
-              path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.pluto;
-              user = "root";
+        */
+        /*
+          pluto = {
+            sshOpts = [
+              "-p"
+              "3370"
+            ];
+            hostname = "100.64.0.5";
+            fastConnection = true;
+            profiles = {
+              system = {
+                sshUser = "root";
+                path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.pluto;
+                user = "root";
+              };
             };
           };
-        }; */
+        */
         horizon = {
           sshOpts = [
             "-p"
