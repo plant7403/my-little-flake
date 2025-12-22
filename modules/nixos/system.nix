@@ -126,7 +126,6 @@ in
           experimental-features = nix-command flakes
           !include ${config.sops.secrets.nixAccessTokens.path}
         '';
-
       };
       sops.secrets.nixAccessTokens = {
         mode = "0440";
