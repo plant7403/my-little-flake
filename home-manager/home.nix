@@ -118,7 +118,7 @@
     enable = true;
     profiles.default.isDefault = true;
   };
-
+  programs.direnv-instant.enable = true;
   programs.keepassxc = {
     enable = true;
     autostart = true;
