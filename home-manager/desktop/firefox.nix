@@ -111,8 +111,8 @@
                     value = "packages";
                   }
                   {
-                    name = "channel"
-                    unstable
+                    name = "channel";
+                    value = "unstable"
                   }
                   {
                     name = "query";
