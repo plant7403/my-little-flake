@@ -74,8 +74,6 @@
 
   modules.yubikey.enable = true;
 
-  programs.direnv.enable = true;
-
   networking.firewall = {
     allowedTCPPorts = [
       #11434
