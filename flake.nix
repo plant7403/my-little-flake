@@ -448,7 +448,6 @@
             };
           };
         };
-
         saturn = {
           sshOpts = [
             "-p"
@@ -465,7 +464,6 @@
             };
           };
         };
-
         luna = {
           sshOpts = [
             "-p"
@@ -481,7 +479,7 @@
             };
           };
         };
-        pluto = {
+/*         pluto = {
           sshOpts = [
             "-p"
             "3370"
@@ -495,7 +493,7 @@
               user = "root";
             };
           };
-        };
+        }; */
         horizon = {
           sshOpts = [
             "-p"
