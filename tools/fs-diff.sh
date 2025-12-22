@@ -31,8 +31,8 @@ echo "mount the whole disk..."
 OLD_TRANSID=$(sudo btrfs subvolume find-new /${TEMPDIR}/${TARGET}-BLANK 9999999)
 OLD_TRANSID=${OLD_TRANSID#transid marker was }
 sudo btrfs subvolume find-new "/${TEMPDIR}/${TARGET}" "$OLD_TRANSID" |
-sed '$d' 
-#cut -f17- -d' ' |
+sed '$d' |
+cut -f17- -d' ' |
 #sort |
 #uniq |
 #while read path; do
