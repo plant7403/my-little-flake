@@ -156,7 +156,7 @@
               }
             ];
             iconMapObj."16" = "https://github.com/favicon.ico";
-            definedAliases = [ "@ni" ];
+            definedAliases = [ "@sg" ];
           };
 
           bing.metaData.hidden = true;
