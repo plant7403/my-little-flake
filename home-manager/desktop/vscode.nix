@@ -381,7 +381,7 @@ in
 
             "foxundermoon.shell-format"
             "jeff-hykin.better-shellscript-syntax"
-            "mads-hartmann.bash-ide-vscode"
+            "mads-hartmann.bash-ide-vscode" # bash-language-server
             "rogalmic.bash-debug"
             "rpinski.shebang-snippets"
             "jeff-hykin.better-shellscript-syntax"
