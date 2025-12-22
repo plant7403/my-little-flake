@@ -86,6 +86,8 @@ let
     "pnw-techpros.code-casefile"
     "paragdiwan.gitpatch"
     "visbydev.folder-path-color"
+    "mkhl.direnv"
+    "arrterian.nix-env-selector"
   ];
   baseExtensionsVS = [
 
@@ -373,8 +375,6 @@ in
       Bash = {
         extensions =
           forOpenVsx [
-            "mkhl.direnv"
-            arrterian.nix-env-selector
 
             "formulahendry.code-runner"
 
