@@ -148,8 +148,8 @@
             definedAliases = [ "@ni" ];
           };
 
-          nixpkgs = {
-            name = "nixpkgs";
+          sourcegraph = {
+            name = "sourcegraph";
             urls = [
               {
                 template = "https://github.com/NixOS/nixpkgs/issues?q=is%3Aissue%20state%3Aopen%20{searchTerms}";
