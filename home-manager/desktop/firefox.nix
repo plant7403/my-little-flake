@@ -199,7 +199,12 @@
             }
           ];
         }
-        
+        {
+          name = "Nix sites";
+          #force = true;
+          toolbar = true;
+          bookmarks = [
+            {
       ];
 
     };
