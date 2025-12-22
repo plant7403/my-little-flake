@@ -78,7 +78,7 @@
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
       ];
-      №search = [ "<Control><super>space" ];
+      #search = [ "<Control><super>space" ];
     };
 
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
@@ -87,7 +87,7 @@
       "name" = "ulauncher";
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
-      "binding" = [ "<Shift><Control>t" ];
+      "binding" = [ "<Shift><super>t" ];
       "command" = "ghostty";
       "name" = "ghostty";
     };
