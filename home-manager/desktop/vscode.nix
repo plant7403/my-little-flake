@@ -372,25 +372,12 @@ in
         }
         // baseSettings;
       };
-      C = {
+      Bash = {
         extensions =
           forOpenVsx [
             #"signageos.signageos-vscode-sops"
             "mkhl.direnv"
 
-            "llvm-vs-code-extensions.vscode-clangd"
-            #"kylinideteam.cppdebug"
-
-            "babyfox1306.pdf-forge"
-            "kube.42header"
-            #"mariusvanwijk-joppekoers.codam-norminette-3"
-            "brittanychiang.halcyon-vscode"
-            "farrese.midas"
-            "ms-vscode.cmake-tools"
-
-            "danielpinto8zz6.c-cpp-project-generator"
-            "franneck94.vscode-c-cpp-config"
-            "harry-ross-software.c-snippets"
           ]
           ++ forOpenVsx baseExtensions
           ++ forVscode [
