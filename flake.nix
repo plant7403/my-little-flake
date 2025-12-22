@@ -564,6 +564,5 @@
       echo "node `${pkgs.nodejs}/bin/node --version`"
 
     '';
-
   };
 }
