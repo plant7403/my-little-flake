@@ -217,7 +217,7 @@
 
         services.dashy.virtualHost.enableNginx = true;
         services.dashy.enable = true;
-        services.dashy.settings
-        services.dashy.virtualHost.domain
+        services.dashy.settings = {};
+        #services.dashy.virtualHost.domain
         services.dashy.finalDrv
 }
