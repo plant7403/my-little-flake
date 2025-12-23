@@ -202,7 +202,7 @@
       identity_url = "https://passwords.pak.academy/identity";
       base_url = "https://passwords.pak.academy/";
       ui_url = "https://passwords.pak.academy/";
-      notifications_url = 
+      notifications_url = "https://passwords.pak.academy/"
       pinentry = pkgs.pinentry-curses;
     };
   };
