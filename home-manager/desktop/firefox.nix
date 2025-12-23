@@ -27,9 +27,7 @@
       with pkgs;
       with inputs.firefox-addons.packages.${pkgs.system};
       [
-        darkreader
-        ublock-origin
-        libredirect
+
         keepassxc-browser
       ];
     profiles.default = lib.mkForce {
