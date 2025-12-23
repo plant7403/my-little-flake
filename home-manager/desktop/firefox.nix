@@ -452,6 +452,7 @@
                 adguard-other-annoyances
                 adguard-popup-overlays
                 adguard-widgets
+                ublock-annoyances
               ];
             };
             permissions = [
