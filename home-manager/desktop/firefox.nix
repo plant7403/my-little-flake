@@ -448,6 +448,7 @@
                 easylist-chat
                 easylist-newsletters
                 easylist-notifications
+                easylist-annoyances
               ];
             };
             permissions = [
