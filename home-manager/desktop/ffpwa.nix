@@ -1,4 +1,4 @@
-{}{
+{pkgs, ...}:{
 
   programs.firefoxpwa.enable = "true";
   #programs.firefoxpwa.settings = "";
