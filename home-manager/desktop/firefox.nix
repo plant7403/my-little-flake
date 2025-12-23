@@ -23,6 +23,7 @@
       "es-ES"
       "en-US"
     ];
+    nativeMessagingHosts = 
     profiles.default = lib.mkForce {
       settings = {
         "extensions.autoDisableScopes" = 0;
