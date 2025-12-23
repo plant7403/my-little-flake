@@ -117,7 +117,7 @@
             ];
           };
         };
-                # Default to dark theme in DevTools panel
+        # Default to dark theme in DevTools panel
         "devtools.theme" = "dark";
         # Set browser to dark theme
         "extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
@@ -201,7 +201,8 @@
         # https://github.com/tlswg/tls13-spec/issues/1001
         "security.tls.enable_0rtt_data" = false;
         # Use Mozilla geolocation service instead of Google if given permission
-        "geo.provider.network.url" = "https://location.services.mozilla.com/v1/geolocate?key=%MOZILLA_API_KEY%";
+        "geo.provider.network.url" =
+          "https://location.services.mozilla.com/v1/geolocate?key=%MOZILLA_API_KEY%";
         "geo.provider.use_gpsd" = false;
         # https://support.mozilla.org/en-US/kb/extension-recommendations
         "browser.newtabpage.activity-stream.asrouter.userprefs.cfr" = false;
@@ -346,7 +347,7 @@
         "browser.safebrowsing.malware.enabled" = false;
         "network.http.sendRefererHeader" = 0; # Might break some sites such as WordPress
         "security.pki.crlite_mode" = 2; # advance ssl certificate check
-        "network.http.referer.XOriginPolicy" = 2; # send hostnames when there is a full match
+        #"network.http.referer.XOriginPolicy" = 2; # send hostnames when there is a full match
         "privacy.clearOnShutdown.cache" = true; # clear cache on shutdown
         "privacy.clearOnShutdown.history" = true;
         "privacy.clearOnShutdown.downloads" = true;
@@ -378,7 +379,8 @@
         "gfx.webrender.all and svg.context-properties.content.enabled" = true;
 
         # Extensions
-        "browser.policies.runOncePerModification.extensionsInstall" = "[\"https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi\", \"https://addons.mozilla.org/firefox/downloads/latest/cookie-autodelete/latest.xpi\", \"https://addons.mozilla.org/firefox/downloads/latest/decentraleyes/latest.xpi\", \"https://addons.mozilla.org/firefox/downloads/latest/privacy-badger17/latest.xpi\", \"https://addons.mozilla.org/firefox/downloads/latest/uaswitcher/latest.xpi\"]"
+        "browser.policies.runOncePerModification.extensionsInstall" =
+          "[\"https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi\", \"https://addons.mozilla.org/firefox/downloads/latest/cookie-autodelete/latest.xpi\", \"https://addons.mozilla.org/firefox/downloads/latest/decentraleyes/latest.xpi\", \"https://addons.mozilla.org/firefox/downloads/latest/privacy-badger17/latest.xpi\", \"https://addons.mozilla.org/firefox/downloads/latest/uaswitcher/latest.xpi\"]";
       };
       userChrome = ''
         /* Hide tab bar in FF Quantum */
