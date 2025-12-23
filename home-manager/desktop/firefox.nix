@@ -438,6 +438,8 @@
                 "adguard-cookies"
                 "ublock-cookies-adguard"
                 "fanboy-cookiemonster"
+
+                # 
               ];
             };
             permissions = [
