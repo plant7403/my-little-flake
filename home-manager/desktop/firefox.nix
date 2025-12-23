@@ -404,7 +404,7 @@
         /* Hide scrollbar in FF Quantum */
         *{scrollbar-width:none !important}
       '';
-      containersForce = true;
+      #containersForce = true;
       extensions = {
         force = true;
         packages =
