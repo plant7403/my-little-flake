@@ -44,7 +44,6 @@
         "extensions.update.autoUpdateDefault" = false;
         "extensions.update.enabled" = false;
 
-        "extensions.autoDisableScopes" = 0;
         "privacy.clearOnShutdown_v2.cache" = 0;
         "privacy.clearOnShutdown_v2.cookiesAndStorage" = 0;
         "extensions.activeThemeID" = "coffee_theme_firefox";
