@@ -164,11 +164,11 @@
         Enabled = true;
         CustomProxyLocation = null;
 
-        ShowNotification = truel
+        ShowNotification = true;
         UnlockDatabase = true;
         UpdateBinaryPath = true;
         UseCustomBrowser = true;
-        CustomBrowserType = 'firefox'
+        CustomBrowserType = '"firefox"
         CustomBrowserLocation
         AllowLocalhostWithPasskeys
 
