@@ -491,7 +491,7 @@
               "afterFillSortingTotp" = "sortByRelevantEntry";
               "autoCompleteUsernames" = true;
               "autoFillAndSend" = true;
-              "autoFillSingleEntry" = false;
+              "autoFillSingleEntry" = true;
               "autoFillRelevantCredential" = false;
               "autoFillSingleTotp" = false;
               "autoRetrieveCredentials" = true;
