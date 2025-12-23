@@ -164,7 +164,7 @@
         Enabled = true;
         CustomProxyLocation = null;
 
-        ShowNotification
+        ShowNotification = truel
         UnlockDatabase = true;
         UpdateBinaryPath = true;
         UseCustomBrowser = true;
