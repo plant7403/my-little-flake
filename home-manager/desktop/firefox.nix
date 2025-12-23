@@ -311,15 +311,15 @@
 
 
 
-      defaultPref("font.size.variable.x-western",20);
-      defaultPref("browser.toolbars.bookmarks.visibility","always");
-      defaultPref("privacy.resisttFingerprinting.letterboxing", true);
-      defaultPref("network.http.referer.XOriginPolicy",2);
-      defaultPref("privacy.clearOnShutdown.history",true);
-      defaultPref("privacy.clearOnShutdown.downloads",true);
-      defaultPref("privacy.clearOnShutdown.cookies",true);
-      defaultPref("gfx.webrender.software.opengl",false);
-      defaultPref("webgl.disabled",true);
+      font.size.variable.x-western",20);
+      browser.toolbars.bookmarks.visibility","always");
+      privacy.resisttFingerprinting.letterboxing", true);
+      network.http.referer.XOriginPolicy",2);
+      privacy.clearOnShutdown.history",true);
+      privacy.clearOnShutdown.downloads",true);
+      privacy.clearOnShutdown.cookies",true);
+      gfx.webrender.software.opengl",false);
+      webgl.disabled",true);
 
       pref("font.size.variable.x-western",20);
       pref("browser.toolbars.bookmarks.visibility","always");
