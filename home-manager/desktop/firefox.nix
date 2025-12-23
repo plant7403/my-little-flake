@@ -435,6 +435,7 @@
                 "ublock-cookies-easylist"
                 "adguard-cookies"
                 "ublock-cookies-adguard"
+                "fanboy-cookiemonster"
               ];
             };
             permissions = [
