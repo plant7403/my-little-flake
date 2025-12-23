@@ -12,7 +12,7 @@
     !!!
   */
 
-  imports = [ff];
+  imports = [ ./ffpwa.nix ];
   stylix.targets.librewolf = {
     enable = true;
     colorTheme.enable = true;
