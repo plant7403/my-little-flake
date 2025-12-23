@@ -166,8 +166,8 @@
         ShowNotification
         UnlockDatabase = true;
         UpdateBinaryPath = true;
-        UseCustomBrowser
-        CustomBrowserType
+        UseCustomBrowser = true;
+        CustomBrowserType = ''''
         CustomBrowserLocation
         AllowLocalhostWithPasskeys
 
