@@ -504,7 +504,7 @@
               "debugLogging" = false;
               "defaultGroup" = "";
               "defaultPasskeyGroup" = "";
-              "defaultPasswordManager" = false;
+              "defaultPasswordManager" = true;
               "defaultGroupAlwaysAsk" = false;
               "downloadFaviconAfterSave" = false;
               "passkeys" = true;
