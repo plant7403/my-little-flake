@@ -442,7 +442,9 @@
                 # Social
                 "fanboy-social"
                 "adguard-social"
-                fanboy-thirdparty_social
+                "fanboy-thirdparty_social"
+
+                # Ann
               ];
             };
             permissions = [
