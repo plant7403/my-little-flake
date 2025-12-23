@@ -447,6 +447,7 @@
                 # Don't like it
                 easylist-chat
                 easylist-newsletters
+                easylist-notifications
               ];
             };
             permissions = [
