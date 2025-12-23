@@ -482,7 +482,9 @@
               "https://*.reddit.com/r/uBlockOrigin/*"
             ];
           };
-          "keepassxc-browser@keepassxc.org".settings = { };
+          "keepassxc-browser@keepassxc.org".settings = {
+            
+          };
         };
       };
       search = {
@@ -620,8 +622,7 @@
   };
 }
 
-
-{
+  {
     "autoReconnect" = false;
     "afterFillSorting" = "sortByMatchingCredentials";
     "afterFillSortingTotp" = "sortByRelevantEntry";
@@ -659,5 +660,5 @@
     "useObserver" = true;
     "usePredefinedSites" = true;
     "usePasswordGeneratorIcons" = false;
-    "sitePreferences" = [];
-}
+    "sitePreferences" = [ ];
+  }
