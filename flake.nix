@@ -239,6 +239,10 @@
               {
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
+                environment.pathsToLink = [
+                  "/share/applications"
+                  "/share/xdg-desktop-portal"
+                ];
                 home-manager.users.egor = import ./home-manager/saturn.nix;
                 home-manager.extraSpecialArgs = { inherit inputs outputs; };
                 home-manager.backupFileExtension = "backup";
