@@ -318,8 +318,8 @@ network.http.referer.XOriginPolicy" = 2;
 privacy.clearOnShutdown.history" = true;
 privacy.clearOnShutdown.downloads"= true;
 privacy.clearOnShutdown.cookies" =true;
-gfx.webrender.software.opengl",false;
-webgl.disabled",true);
+gfx.webrender.software.opengl" =false;
+webgl.disabled",true;
 
       pref("font.size.variable.x-western",20);
       pref("browser.toolbars.bookmarks.visibility","always");
