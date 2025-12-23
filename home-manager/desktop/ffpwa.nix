@@ -1,21 +1,23 @@
 {
 
-  programs.firefoxpwa.enable = "";
+  programs.firefoxpwa.enable = "true";
   programs.firefoxpwa.package = "";
   programs.firefoxpwa.settings = "";
   programs.firefoxpwa.profiles = {
     "Default" = {
       name = "";
       settings = "";
-sites = {
-      "Cloudflare".desktopEntry.categories = "";
-      "Cloudflare".desktopEntry.enable = "";
-      "Cloudflare".desktopEntry.icon = "";
-      "Cloudflare".manifestUrl = "";
-      "Cloudflare".name = "";
-      "Cloudflare".settings = "";
-      "Cloudflare".url = "";
-};
+      sites = {
+        "Cloudflare" = {
+          desktopEntry.categories = "";
+          desktopEntry.enable = "";
+          desktopEntry.icon = "";
+          manifestUrl = "";
+          name = "";
+          settings = "";
+          url = "";
+        };
+      };
     };
   };
 }
