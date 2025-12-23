@@ -12,7 +12,7 @@ programs.firefoxpwa.profiles = { <name>.name
 <name>.sites.<name>.name
 <name>.sites.<name>.settings
 <name>.sites.<name>.url
-<name>.sites
+<name>.sites 
 
 
 }
