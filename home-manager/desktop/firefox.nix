@@ -490,7 +490,7 @@
               "afterFillSorting" = "sortByMatchingCredentials";
               "afterFillSortingTotp" = "sortByRelevantEntry";
               "autoCompleteUsernames" = true;
-              "autoFillAndSend" = false;
+              "autoFillAndSend" = true;
               "autoFillSingleEntry" = false;
               "autoFillRelevantCredential" = false;
               "autoFillSingleTotp" = false;
