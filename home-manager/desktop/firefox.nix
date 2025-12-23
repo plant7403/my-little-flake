@@ -387,7 +387,6 @@
           "[\"https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi\", \"https://addons.mozilla.org/firefox/downloads/latest/cookie-autodelete/latest.xpi\", \"https://addons.mozilla.org/firefox/downloads/latest/decentraleyes/latest.xpi\", \"https://addons.mozilla.org/firefox/downloads/latest/privacy-badger17/latest.xpi\", \"https://addons.mozilla.org/firefox/downloads/latest/uaswitcher/latest.xpi\"]";
       };
       userChrome = ''
-        Hide tab bar in FF Quantum
         @-moz-document url(chrome://browser/content/browser.xul), url(chrome://browser/content/browser.xhtml) {
           #TabsToolbar {
             visibility: collapse !important;
