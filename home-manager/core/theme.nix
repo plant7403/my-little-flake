@@ -31,7 +31,7 @@ in
             --wm-border-radius: 12px;
           }
           window.maximized {
-            border: var(--wm-border-width) solid var(--wm-border-color);
+            border: var(--wm-border-width) solid #6272a4;
             border-radius: var(--wm-border-radius);
           }
           window:not(.maximized) {
