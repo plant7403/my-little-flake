@@ -370,6 +370,7 @@
       ".config/rbw"
       ".local/share/rbw"
 
+      ""
     ];
 
     files = [
