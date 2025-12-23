@@ -13,4 +13,4 @@ programs.firefoxpwa.profiles = {
 "Default".sites."Cloudflare".name= "";
 "Default".sites."Cloudflare".settings= "";
 "Default".sites."Cloudflare".url= "";
-}
+};
