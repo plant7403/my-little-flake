@@ -386,18 +386,20 @@
         "browser.policies.runOncePerModification.extensionsInstall" =
           "[\"https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi\", \"https://addons.mozilla.org/firefox/downloads/latest/cookie-autodelete/latest.xpi\", \"https://addons.mozilla.org/firefox/downloads/latest/decentraleyes/latest.xpi\", \"https://addons.mozilla.org/firefox/downloads/latest/privacy-badger17/latest.xpi\", \"https://addons.mozilla.org/firefox/downloads/latest/uaswitcher/latest.xpi\"]";
       };
-      userChrome = ''
-        @-moz-document url(chrome://browser/content/browser.xul), url(chrome://browser/content/browser.xhtml) {
-          #TabsToolbar {
-            visibility: collapse !important;
-            margin-bottom: 21px !important;
-          }
+      /*
+        userChrome = ''
+          @-moz-document url(chrome://browser/content/browser.xul), url(chrome://browser/content/browser.xhtml) {
+            #TabsToolbar {
+              visibility: collapse !important;
+              margin-bottom: 21px !important;
+            }
 
-          #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] #sidebar-header {
-            visibility: collapse !important;
+            #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] #sidebar-header {
+              visibility: collapse !important;
+            }
           }
-        }
-      '';
+        '';
+      */
       userContent = ''
         /* Hide scrollbar in FF Quantum */
         *{scrollbar-width:none !important}
@@ -430,6 +432,7 @@
                 "easyprivacy"
                 "urlhaus-1"
                 "plowe-0"
+                "ublock-cookies-easylist"
               ];
             };
             permissions = [
