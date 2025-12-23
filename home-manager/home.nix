@@ -181,8 +181,8 @@
 
   programs.rbw.settings.email = "@getgoogleoff.me";
   programs.rbw.settings.identity_url =
-  programs.rbw.settings.base_url
-  programs.rbw.enable
+  programs.rbw.settings.base_url =
+  programs.rbw.enable = turel
 
   programs.distrobox = {
     containers = {
