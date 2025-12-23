@@ -378,7 +378,7 @@
       ".config/gsconnect/private.pem"
       ".config/syncthingtray.ini"
       ".cache/keepassxc/keepassxc.ini"
-      /* ".mozilla/native-messaging-hosts/org.keepassxc.keepassxc_browser.json" */
+      # ".mozilla/native-messaging-hosts/org.keepassxc.keepassxc_browser.json"
       #".nix-defexpr/channels"
       #".nix-defexpr/channels_root"
       ".config/sops/age/keys.txt"
@@ -390,9 +390,6 @@
       */
 
       ".config/easyeffects/db/easyeffectsrc"
-
-      ".config/gsconnect/certificate.pem"
-      ".config/gsconnect/private.pem"
 
       ".config/sops/age/keys.txt"
       # ".config/chromium/NativeMessagingHosts"
