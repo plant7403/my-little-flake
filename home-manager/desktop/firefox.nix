@@ -318,7 +318,7 @@
         "permissions.default.xr" = 2;
 
         # Disable middle click paste, just don't like the option
-        "middlemouse.paste" = false;
+        #"middlemouse.paste" = false;
 
         # Enable ipv6
         "network.dns.disableIPv6" = false;
@@ -350,10 +350,10 @@
         #"network.http.referer.XOriginPolicy" = 2; # send hostnames when there is a full match
         "privacy.clearOnShutdown.cache" = true; # clear cache on shutdown
         #"privacy.clearOnShutdown.history" = true;
-        "privacy.clearOnShutdown.downloads" = true;
+        #"privacy.clearOnShutdown.downloads" = true;
         "privacy.clearOnShutdown.formdata" = true;
         "privacy.clearOnShutdown.sessions" = true;
-        "privacy.clearOnShutdown.cookies" = false; # don't clear so we stay logged in
+        #"privacy.clearOnShutdown.cookies" = false; # don't clear so we stay logged in
         "privacy.clearOnShutdown.offlineApps" = false; # don't clear so we stay logged in
         "dom.push.enabled" = false; # I don't even know why you would want this.
 
