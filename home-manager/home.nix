@@ -164,6 +164,7 @@
         CustomProxyLocation = null;
 
         ShowNotification
+        UnlockDatabase
       };
       Security.QuickUnlock = true;
 
