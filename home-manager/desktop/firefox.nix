@@ -529,7 +529,7 @@
           "7esoorv3@alefvanoon.anonaddy.me".settings = {
 
             youtube = {
-              enabled = false;
+              enabled = true;
               redirectType = "main_frame";
               frontend = "invidious";
               embedFrontend = "invidious";
