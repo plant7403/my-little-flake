@@ -67,6 +67,7 @@ creation_rules:
       - *admin_egorgpg
       #  - *server_azmidi
       age:
+        - *admin_egorhm
         - *admin_egor
 #        - *admin_egory
         - *server_pluto
@@ -76,6 +77,7 @@ creation_rules:
       - *admin_egorgpg
       #  - *server_azmidi
       age:
+        - *admin_egorhm
         - *admin_egor
 
         - *server_horizon
