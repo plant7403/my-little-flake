@@ -25,7 +25,7 @@ in
       gtk = {
         flatpakSupport.enable = true;
         extraCss = ''
-                  window {
+          window {
             --wm-border-width: 3px;
             --wm-border-color: #6272a4;
             --wm-border-radius: 12px;
