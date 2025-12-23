@@ -527,7 +527,7 @@
             };
           };
           "7esoorv3@alefvanoon.anonaddy.me".settings = {
-            {
+
   youtube = {
     enabled = false;
     redirectType = "main_frame";
@@ -1152,7 +1152,7 @@
     "https://ultimate-tab.com"
   ];
   version = "3.2.0";
-}
+};
           };
         };
       };
