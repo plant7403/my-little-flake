@@ -32,7 +32,7 @@ in
           }
           window.maximized {
             border: 3px solid #6272a4;
-            border-radius: var(--wm-border-radius);
+            border-radius: 12px;
           }
           window:not(.maximized) {
             border: none;
