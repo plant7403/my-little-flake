@@ -4,15 +4,15 @@ programs.firefoxpwa.enable
 programs.firefoxpwa.package
 programs.firefoxpwa.settings
 programs.firefoxpwa.profiles = { <name>.name
-programs.firefoxpwa.profiles.<name>.settings
-programs.firefoxpwa.profiles.<name>.sites.<name>.desktopEntry.categories
-programs.firefoxpwa.profiles.<name>.sites.<name>.desktopEntry.enable
-programs.firefoxpwa.profiles.<name>.sites.<name>.desktopEntry.icon
-programs.firefoxpwa.profiles.<name>.sites.<name>.manifestUrl
-programs.firefoxpwa.profiles.<name>.sites.<name>.name
-programs.firefoxpwa.profiles.<name>.sites.<name>.settings
-programs.firefoxpwa.profiles.<name>.sites.<name>.url
-programs.firefoxpwa.profiles.<name>.sites
+<name>.settings
+<name>.sites.<name>.desktopEntry.categories
+<name>.sites.<name>.desktopEntry.enable
+<name>.sites.<name>.desktopEntry.icon
+<name>.sites.<name>.manifestUrl
+<name>.sites.<name>.name
+<name>.sites.<name>.settings
+<name>.sites.<name>.url
+<name>.sites
 
 
 }
