@@ -12,7 +12,7 @@
     !!!
   */
 
-  i
+  imports 
   stylix.targets.librewolf = {
     enable = true;
     colorTheme.enable = true;
