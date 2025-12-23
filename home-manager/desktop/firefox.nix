@@ -892,7 +892,7 @@
               "https://mm.vern.cc"
             ];
             urbanDictionary = {
-              enabled = false;
+              enabled = true;
               unsupportedUrls = "bypass";
               frontend = "ruralDictionary";
               redirectOnlyInIncognito = false;
