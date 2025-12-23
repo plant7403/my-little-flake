@@ -388,8 +388,10 @@
 
       ".config/easyeffects/db/easyeffectsrc"
 
-      .config/gsconnect/certificate.pem
+      ".config/gsconnect/certificate.pem"
       ".config/gsconnect/private.pem"
+
+      .config/sops/age/keys.txt
     ];
 
     allowOther = true;
