@@ -331,4 +331,4 @@
 "privacy.clearOnShutdown.downloads" = true;
 "privacy.clearOnShutdown.cookies" = true;
 "gfx.webrender.software.opengl" = false;
-"webgl.disabled" = strue;
+"webgl.disabled",true;
