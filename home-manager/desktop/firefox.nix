@@ -522,7 +522,7 @@
               "useMonochromeToolbarIcon" = false;
               "useObserver" = true;
               "usePredefinedSites" = true;
-              "usePasswordGeneratorIcons" = false;
+              "usePasswordGeneratorIcons" = true;
               "sitePreferences" = [ ];
             };
           };
