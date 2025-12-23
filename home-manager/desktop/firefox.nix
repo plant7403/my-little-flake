@@ -1,7 +1,8 @@
 {
   pkgs,
   inputs,
-  lib, config,
+  lib,
+  config,
   ...
 }:
 {
@@ -302,7 +303,7 @@
         "widget.dmabuf.force-enabled" = true;
 
         # Set homepage to selfhosted Bento and new tab to homepage
-        "browser.startup.homepage" = "https://start.server.com/";
+        #"browser.startup.homepage" = "https://start.server.com/";
 
         # Disable search suggestions
         "browser.urlbar.suggest.history" = false;
