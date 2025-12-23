@@ -445,14 +445,14 @@
                 "fanboy-thirdparty_social"
 
                 # Don't like it
-                :easylist-chat"
-                :easylist-newsletters"
-                :easylist-notifications"
-                :easylist-annoyances"
-                :adguard-other-annoyances"
-                :adguard-popup-overlays"
-                :adguard-widgets"
-                :ublock-annoyances"
+                "easylist-chat"
+                "easylist-newsletters"
+                "easylist-notifications"
+                "easylist-annoyances"
+                "adguard-other-annoyances"
+                "adguard-popup-overlays"
+                "adguard-widgets"
+                "ublock-annoyances"
               ];
             };
             permissions = [
