@@ -482,6 +482,7 @@
               "https://*.reddit.com/r/uBlockOrigin/*"
             ];
           };
+          "uBlock0@raymondhill.net".settings = {
         };
       };
       search = {
