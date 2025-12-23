@@ -579,7 +579,7 @@
 
             ];
             twitter = {
-              enabled = false;
+              enabled = true;
               redirectType = "main_frame";
               unsupportedUrls = "bypass";
               frontend = "nitter";
