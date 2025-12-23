@@ -40,7 +40,7 @@ in
           window.csd {
             margin: 0px;
             border-radius: var(--wm-border-radius);
-            border: var(--wm-border-width) solid var(--wm-border-color);
+            border: var(--wm-border-width) solid #6272a4;
           }
           window.csd.popup,
           window.csd.dialog.message {
