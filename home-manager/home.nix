@@ -165,7 +165,7 @@
 
         ShowNotification
         UnlockDatabase = true;
-        UpdateBinaryPath
+        UpdateBinaryPath = true;
         UseCustomBrowser
         CustomBrowserType
         CustomBrowserLocation
