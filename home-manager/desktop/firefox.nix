@@ -23,9 +23,15 @@
       "es-ES"
       "en-US"
     ];
-    nativeMessagingHosts = [
-keepassxc-browser@keepassxc.org
-    ];
+    nativeMessagingHosts =
+      with pkgs;
+      with inputs.firefox-addons.packages.${pkgs.system};
+      [
+        darkreader
+        ublock-origin
+        libredirect
+        keepassxc-browser
+      ];
     profiles.default = lib.mkForce {
       settings = {
         "extensions.autoDisableScopes" = 0;
