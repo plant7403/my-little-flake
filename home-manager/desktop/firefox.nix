@@ -349,7 +349,7 @@
         "security.pki.crlite_mode" = 2; # advance ssl certificate check
         #"network.http.referer.XOriginPolicy" = 2; # send hostnames when there is a full match
         "privacy.clearOnShutdown.cache" = true; # clear cache on shutdown
-        "privacy.clearOnShutdown.history" = true;
+        #"privacy.clearOnShutdown.history" = true;
         "privacy.clearOnShutdown.downloads" = true;
         "privacy.clearOnShutdown.formdata" = true;
         "privacy.clearOnShutdown.sessions" = true;
