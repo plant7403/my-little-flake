@@ -163,7 +163,7 @@
         Enabled = true;
         CustomProxyLocation = null;
 
-        
+        ShowNotification
       };
       Security.QuickUnlock = true;
 
