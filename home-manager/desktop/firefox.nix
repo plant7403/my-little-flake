@@ -30,15 +30,17 @@
     profileNames = [ "default" ];
   };
 
-  xdg.portal = {
-    enable = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-gtk
-    ];
-    config.common = {
-      "org.freedesktop.impl.portal.FileChooser" = "gtk";
+  /*
+    xdg.portal = {
+      enable = true;
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-gtk
+      ];
+      config.common = {
+        "org.freedesktop.impl.portal.FileChooser" = "gtk";
+      };
     };
-  };
+  */
   programs.librewolf = {
     enable = true;
     languagePacks = [
