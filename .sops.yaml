@@ -85,11 +85,11 @@ creation_rules:
         - *server_stellar
   - path_regex: home-manager/secrets/[^/]+\.(yaml|json|env|ini)$
     key_groups:
+
     - age:
        - *admin_egor
        - *admin_egorhm
-       pgp:
-       - *admin_egorgpg
+
 
   - path_regex: home-manager/secrets/(.*?)/[^/]+\.(yaml|json|env|ini)$
     key_groups:
