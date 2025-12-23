@@ -1096,7 +1096,7 @@
               "https://skunky.bloat.cat"
             ];
             geeksForGeeks = {
-              enabled = false;
+              enabled = true;
               unsupportedUrls = "bypass";
               frontend = "nerdsForNerds";
               redirectOnlyInIncognito = false;
