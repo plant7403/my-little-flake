@@ -370,7 +370,6 @@
       ".config/rbw"
       ".local/share/rbw"
 
-      ".z"
     ];
 
     files = [
@@ -393,6 +392,8 @@
 
       ".config/sops/age/keys.txt"
       # ".config/chromium/NativeMessagingHosts"
+
+      ".z"
     ];
 
     allowOther = true;
