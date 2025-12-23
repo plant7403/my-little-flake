@@ -492,8 +492,8 @@
               "autoCompleteUsernames" = true;
               "autoFillAndSend" = true;
               "autoFillSingleEntry" = true;
-              "autoFillRelevantCredential" = false;
-              "autoFillSingleTotp" = false;
+              "autoFillRelevantCredential" = true;
+              "autoFillSingleTotp" = true;
               "autoRetrieveCredentials" = true;
               "autoSubmit" = false;
               "bannerPosition" = 1;
