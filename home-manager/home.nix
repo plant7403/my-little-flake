@@ -168,6 +168,7 @@
         UpdateBinaryPath
         UseCustomBrowser
         CustomBrowserType
+        CustomBrowserLocation
       };
       Security.QuickUnlock = true;
 
