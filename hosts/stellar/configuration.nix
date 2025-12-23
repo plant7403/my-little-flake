@@ -208,8 +208,6 @@
 
   services.thermald.enable = true;
 
-  programs.niri.enable = true;
-
   hardware.graphics.enable = true;
 
   services.dashy.virtualHost.enableNginx = true;
