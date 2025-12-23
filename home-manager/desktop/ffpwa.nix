@@ -14,8 +14,7 @@
     desktopEntry.icon = pkgs.fetchurl {
       url = "https://developer.mozilla.org/favicon-192x192.png";
       sha256 = "0p8zgf2ba48l2pq1gjcffwzmd9kfmj9qc0v7zpwf2qd54fndifxr";
-
-
+    };
       };
     };
   };
