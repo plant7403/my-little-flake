@@ -130,8 +130,8 @@
         { name = "path"; }
         { name = "buffer"; }
       ];
-    };web-devicons
-    plugins.fzf-lua.enable = true;
+    };plugins.web-devicons
+    plugins.fzf-lua.
     plugins.direnv.enable = true;
     plugins.dap.enable = true;
     #plugins.dap-ui.enable = true;
