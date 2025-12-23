@@ -434,6 +434,7 @@
                 "plowe-0"
                 "ublock-cookies-easylist"
                 "adguard-cookies"
+                "ublock-cookies-adguard"
               ];
             };
             permissions = [
