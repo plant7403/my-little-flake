@@ -181,7 +181,7 @@
   programs.rbw = {
     enable = true;
     settings = {
-      email = "";
+      email = "sensitive_ranging@getgoogleoff.me";
       identity_url = "https://passwords.pak.academy/";
       base_url = "https://passwords.pak.academy/";
     };
