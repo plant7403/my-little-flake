@@ -172,6 +172,7 @@
         HidePasswords = true;
 
         MinimizeToTray
+        MinimizeOnStartup
       };
       KeeShare = {
 
