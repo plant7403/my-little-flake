@@ -386,7 +386,10 @@
       ".config/distrobox/containers.ini"
       ".config/distrobox/distrobox.conf"
 
-      
+      ".config/easyeffects/db/easyeffectsrc"
+
+      .config/gsconnect/certificate.pem
+.config/gsconnect/private.pem
     ];
 
     allowOther = true;
