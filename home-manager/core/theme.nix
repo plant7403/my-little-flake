@@ -31,7 +31,7 @@ in
             --wm-border-radius: 12px;
           }
           window.maximized {
-            border: var(--wm-border-width) solid #6272a4;
+            border: 3px solid #6272a4;
             border-radius: var(--wm-border-radius);
           }
           window:not(.maximized) {
@@ -56,7 +56,7 @@ in
           window.popup,
           window.ssd {
             border-radius: 12px;
-            border: 4px solid var(--wm-border-color);
+            border: 4px solid #6272a4;
           }
         '';
       };
