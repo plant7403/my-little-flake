@@ -23,10 +23,13 @@
 
   stylix.targets.firefox = {
     enable = true;
-    colorTheme.enable = true;
-    firefoxGnomeTheme.enable = true;
+    /*
+      colorTheme.enable = true;
+      firefoxGnomeTheme.enable = true;
+    */
     profileNames = [ "default" ];
   };
+
   xdg.portal = {
     enable = true;
     extraPortals = with pkgs; [
