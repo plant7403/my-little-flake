@@ -169,8 +169,11 @@
         UseCustomBrowser
         CustomBrowserType
         CustomBrowserLocation
+        AllowLocalhostWithPasskeys
+
+        CustomExtensionId
       };
-      
+
       Security.QuickUnlock = true;
 
       GUI = {
