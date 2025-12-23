@@ -168,8 +168,8 @@
         UnlockDatabase = true;
         UpdateBinaryPath = true;
         UseCustomBrowser = true;
-        CustomBrowserType = '"firefox"
-        CustomBrowserLocation
+        CustomBrowserType = "firefox"
+        CustomBrowserLocation = "";
         AllowLocalhostWithPasskeys
 
         CustomExtensionId
