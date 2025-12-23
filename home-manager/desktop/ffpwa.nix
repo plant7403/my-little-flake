@@ -4,9 +4,9 @@ programs.firefoxpwa.enable
 programs.firefoxpwa.package
 programs.firefoxpwa.settings
 programs.firefoxpwa.profiles = {
-Cloudflare.name = "";
-Cloudflare.settings= "";
-Cloudflare.sites.Cloudflare.desktopEntry.categories= "";
+<name>.name = "";
+<name>.settings= "";
+<name>.sites.<name>.desktopEntry.categories= "";
 <name>.sites.<name>.desktopEntry.enable= "";
 <name>.sites.<name>.desktopEntry.icon= "";
 <name>.sites.<name>.manifestUrl= "";
