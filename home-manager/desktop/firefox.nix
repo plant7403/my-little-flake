@@ -1155,7 +1155,7 @@
           };
         };
       };
-    };
+    
     search = {
       force = true;
       default = "Startpage";
