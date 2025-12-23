@@ -445,7 +445,8 @@
                 "fanboy-thirdparty_social"
 
                 # Don't like it
-                
+                easylist-chat
+                easylist-newsletters
               ];
             };
             permissions = [
