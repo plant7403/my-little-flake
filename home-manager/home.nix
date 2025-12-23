@@ -370,7 +370,6 @@
       ".config/rbw"
       ".local/share/rbw"
 
-      
     ];
 
     files = [
@@ -383,6 +382,11 @@
       #".nix-defexpr/channels_root"
       ".config/sops/age/keys.txt"
       ".screenrc"
+
+      ".config/distrobox/containers.ini"
+      ".config/distrobox/distrobox.conf"
+
+      
     ];
 
     allowOther = true;
