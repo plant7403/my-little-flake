@@ -170,6 +170,7 @@
         CustomBrowserType
         CustomBrowserLocation
       };
+      
       Security.QuickUnlock = true;
 
       GUI = {
