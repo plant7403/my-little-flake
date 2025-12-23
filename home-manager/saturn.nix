@@ -7,6 +7,6 @@
     #ardour
     guitarix
     #godot_4
-    flatpak
+    #flatpak
   ];
 }
