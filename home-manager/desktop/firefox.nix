@@ -120,7 +120,7 @@
         # Default to dark theme in DevTools panel
         "devtools.theme" = "dark";
         # Set browser to dark theme
-        "extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
+        #"extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
         # set default perefered color scheme to dark
         "layout.css.prefers-color-scheme.content-override" = 0;
         # Set browser font to Roboto
