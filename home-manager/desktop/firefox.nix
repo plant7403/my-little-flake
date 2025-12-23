@@ -483,7 +483,10 @@
             ];
           };
           "keepassxc-browser@keepassxc.org".settings = {
-            
+            force = true;
+            settings = {
+              force = true;
+            };
           };
         };
       };
