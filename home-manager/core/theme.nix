@@ -25,34 +25,40 @@ in
       gtk = {
         flatpakSupport.enable = true;
         extraCss = ''
-          window {
+                  window {
             --wm-border-width: 3px;
             --wm-border-color: #6272a4;
             --wm-border-radius: 12px;
           }
+
           window.maximized {
             border: 3px solid #6272a4;
             border-radius: 12px;
           }
+
           window:not(.maximized) {
             border: none;
           }
+
           window.csd {
             margin: 0px;
             border-radius: 12px;
-            border: var(--wm-border-width) solid #6272a4;
+            border: 3px solid #6272a4;
           }
+
           window.csd.popup,
           window.csd.dialog.message {
             border-radius: 12px;
             border: 4px solid #6272a4;
           }
+
           window.solid-csd {
             margin: 0;
             padding: 4px;
             border-radius: 12px;
             border: 4px solid #6272a4;
           }
+
           window.popup,
           window.ssd {
             border-radius: 12px;
