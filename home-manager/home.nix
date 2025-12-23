@@ -159,7 +159,7 @@
     autostart = true;
     settings = {
       General.ConfigVersion = 2;
-      FdoSecrets.Enabled = true;
+      #FdoSecrets.Enabled = true;
       Browser = {
         Enabled = true;
         CustomProxyLocation = null;
