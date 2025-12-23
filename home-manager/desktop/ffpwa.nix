@@ -1,8 +1,8 @@
 {
 
-programs.firefoxpwa.enable
-programs.firefoxpwa.package
-programs.firefoxpwa.settings "";
+programs.firefoxpwa.enable"";
+programs.firefoxpwa.package"";
+programs.firefoxpwa.settings= "";
 programs.firefoxpwa.profiles = {
 "Default".name = "";
 "Default".settings= "";
