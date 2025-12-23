@@ -483,7 +483,7 @@
             ];
           };
           "keepassxc-browser@keepassxc.org".settings = {
-            force = true;
+            force = false;
             settings = {
               force = true;
               "autoReconnect" = true;
