@@ -448,7 +448,7 @@
                 easylist-chat
                 easylist-newsletters
                 easylist-notifications
-                easylist-annoyances
+                easylist-annoyances"
                 adguard-other-annoyances
                 adguard-popup-overlays
                 adguard-widgets
