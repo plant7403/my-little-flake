@@ -79,7 +79,6 @@ creation_rules:
       age:
         - *admin_egorhm
         - *admin_egor
-
         - *server_horizon
   - path_regex: ^secrets/pluto/[^/]+\.(yaml|json|env|ini)$
     key_groups:
@@ -87,6 +86,7 @@ creation_rules:
       - *admin_egorgpg
       #  - *server_azmidi
       age:
+        - *admin_egorhm
         - *admin_egor
         - *server_stellar
   - path_regex: home-manager/secrets/[^/]+\.(yaml|json|env|ini)$
