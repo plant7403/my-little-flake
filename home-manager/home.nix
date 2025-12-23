@@ -166,7 +166,7 @@
 
         ShowNotification = true;
         UnlockDatabase = true;
-        UpdateBinaryPath = false;
+        #UpdateBinaryPath = false;
         UseCustomBrowser = true;
         CustomBrowserType = "firefox";
         CustomBrowserLocation = "librewolf";
