@@ -16,7 +16,15 @@
     firefoxGnomeTheme.enable = true;
     profileNames = [ "default" ];
   }; # !!! remove it from here !!!
-
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+    ];
+    config.common = {
+      "org.freedesktop.impl.portal.FileChooser" = "gtk";
+    };
+  };
   programs.librewolf = {
     enable = true;
     languagePacks = [
@@ -27,7 +35,6 @@
       with pkgs;
       with inputs.firefox-addons.packages.${pkgs.system};
       [
-
         keepassxc-browser
       ];
     profiles.default = lib.mkForce {
