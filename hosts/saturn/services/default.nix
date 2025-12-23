@@ -6,6 +6,6 @@
     ./syncthing.nix
     #./impermanence.nix
     #./../../common/optional/flatpaks.nix
-    ./../../common/optional/nix-flatpak.nix
+    #./../../common/optional/nix-flatpak.nix
   ];
 }
