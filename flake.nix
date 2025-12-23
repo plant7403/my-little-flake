@@ -194,7 +194,7 @@
                 { lib, ... }:
                 {
                   home-manager.useGlobalPkgs = true;
-                  home-manager.useUserPackages = true;
+                  #home-manager.useUserPackages = true;
                   home-manager.users.egor = import ./home-manager/home.nix;
                   home-manager.extraSpecialArgs = { inherit inputs; };
                   home-manager.backupFileExtension = "backup";
