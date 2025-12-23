@@ -211,4 +211,13 @@
   programs.niri.enable = true;
 
   hardware.graphics.enable = true;
+
+
+
+          services.dashy.package
+        services.dashy.virtualHost.enableNginx
+        services.dashy.enable
+        services.dashy.settings
+        services.dashy.virtualHost.domain
+        services.dashy.finalDrv
 }
