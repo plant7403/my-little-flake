@@ -368,6 +368,7 @@
       ".local/share/zsh"
 
       .config/rbw
+      .local/share/rbw/
     ];
 
     files = [
