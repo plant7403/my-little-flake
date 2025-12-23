@@ -58,7 +58,6 @@ in
             border-radius: 12px;
             border: 4px solid var(--wm-border-color);
           }
-
         '';
       };
     };
