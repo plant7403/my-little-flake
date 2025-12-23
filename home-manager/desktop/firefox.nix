@@ -421,6 +421,7 @@
             force = true;
             privateAllowed = true;
             settings = {
+              force = true;
               selectedFilterLists = [
                 "user-filters"
                 "ublock-filters"
