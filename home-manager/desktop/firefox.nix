@@ -449,6 +449,7 @@
                 easylist-newsletters
                 easylist-notifications
                 easylist-annoyances
+                adguard-other-annoyances
               ];
             };
             permissions = [
