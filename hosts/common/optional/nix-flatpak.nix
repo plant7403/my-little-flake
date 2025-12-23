@@ -18,4 +18,5 @@
   environment.persistence."/persist".directories = [
     "/var/lib/flatpak/"
   ];
+  xdg.portal.enable
 }
