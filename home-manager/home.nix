@@ -165,6 +165,7 @@
 
         ShowNotification
         UnlockDatabase
+        UpdateBinaryPath
       };
       Security.QuickUnlock = true;
 
