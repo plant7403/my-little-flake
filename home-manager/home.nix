@@ -170,6 +170,7 @@
         ApplicationTheme = "classic";
         CompactMode = false;
         HidePasswords = true;
+        ColorPasswords
 
         MinimizeToTray
         MinimizeOnStartup
