@@ -432,6 +432,8 @@
                 "easyprivacy"
                 "urlhaus-1"
                 "plowe-0"
+
+                # Cookies
                 "ublock-cookies-easylist"
                 "adguard-cookies"
                 "ublock-cookies-adguard"
