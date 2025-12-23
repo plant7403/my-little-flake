@@ -168,9 +168,9 @@
         UnlockDatabase = true;
         UpdateBinaryPath = true;
         UseCustomBrowser = true;
-        CustomBrowserType = "firefox"
+        CustomBrowserType = "firefox";
         CustomBrowserLocation = "librewolf";
-        AllowLocalhostWithPasskeys = 
+        AllowLocalhostWithPasskeys = true;
 
         CustomExtensionId
       };
