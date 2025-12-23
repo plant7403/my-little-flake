@@ -183,7 +183,7 @@
         CompactMode = false;
         HidePasswords = true;
         ColorPasswords = true;
-        ShowTrayIcon = tt
+        ShowTrayIcon = true;
         MinimizeToTray = true;
         MinimizeOnStartup = true;
         MinimizeOnClose
