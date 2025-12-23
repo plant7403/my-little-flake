@@ -442,6 +442,7 @@
                 # Social
                 "fanboy-social"
                 "adguard-social"
+                fanboy-thirdparty_social
               ];
             };
             permissions = [
