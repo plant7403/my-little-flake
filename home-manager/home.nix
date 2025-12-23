@@ -186,6 +186,7 @@
 
         MinimizeToTray = true;
         MinimizeOnStartup = true;
+        MinimizeOnClose
       };
       KeeShare = {
 
