@@ -421,10 +421,7 @@
 
   xdg.userDirs.createDirectories = true;
   xdg.userDirs.enable = true;
-  environment.pathsToLink = [
-    "/share/applications"
-    "/share/xdg-desktop-portal"
-  ];
+
   nix.gc = {
     automatic = true;
     dates = "16:20";
