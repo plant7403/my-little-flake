@@ -238,7 +238,7 @@
               { lib, ... }:
               {
                 home-manager.useGlobalPkgs = true;
-                home-manager.useUserPackages = true;
+                #home-manager.useUserPackages = true;
                 home-manager.users.egor = import ./home-manager/saturn.nix;
                 home-manager.extraSpecialArgs = { inherit inputs outputs; };
                 home-manager.backupFileExtension = "backup";
