@@ -837,7 +837,7 @@
               "https://lab.vern.cc"
             ];
             stackOverflow = {
-              enabled = false;
+              enabled = true;
               unsupportedUrls = "bypass";
               frontend = "anonymousOverflow";
               instance = "public";
