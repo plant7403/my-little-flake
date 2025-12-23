@@ -214,7 +214,7 @@
 
 
 
-          services.dashy.package
+
         services.dashy.virtualHost.enableNginx
         services.dashy.enable
         services.dashy.settings
