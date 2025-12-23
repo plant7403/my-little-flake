@@ -378,7 +378,7 @@
       ".config/gsconnect/private.pem"
       ".config/syncthingtray.ini"
       ".cache/keepassxc/keepassxc.ini"
-      ".mozilla/native-messaging-hosts/org.keepassxc.keepassxc_browser.json"
+      /* ".mozilla/native-messaging-hosts/org.keepassxc.keepassxc_browser.json" */
       #".nix-defexpr/channels"
       #".nix-defexpr/channels_root"
       ".config/sops/age/keys.txt"
