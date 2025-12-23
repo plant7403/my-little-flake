@@ -391,7 +391,8 @@
       ".config/gsconnect/certificate.pem"
       ".config/gsconnect/private.pem"
 
-      .config/sops/age/keys.txt
+      ".config/sops/age/keys.txt"
+      .config/chromium/NativeMessagingHosts
     ];
 
     allowOther = true;
