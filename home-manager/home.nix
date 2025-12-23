@@ -255,8 +255,7 @@
       controlMaster = "no";
       controlPath = "~/.ssh/master-%r@%n:%p";
       controlPersist = "no";
-
-      TERM = "xterm-256color";
+      setEnv.TERM = "xterm-256color";
     };
     foo = lib.hm.dag.entryBefore [ "github.com" ] {
       PreferredAuthentications = "publickey";
