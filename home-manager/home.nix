@@ -181,7 +181,7 @@
 
   programs.rbw.settings.email = "@getgoogleoff.me";
   programs.rbw.settings.identity_url =
-  programs.rbw.settings.base_url = 
+  programs.rbw.settings.base_url = https://passwords.pak.academy/;
   programs.rbw.enable = true;
 
   programs.distrobox = {
