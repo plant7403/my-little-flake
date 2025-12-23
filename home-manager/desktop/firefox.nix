@@ -947,7 +947,7 @@
               "https://wikimore.private.coffee"
             ];
             waybackMachine = {
-              enabled = false;
+              enabled = true;
               unsupportedUrls = "bypass";
               frontend = "waybackClassic";
               redirectOnlyInIncognito = false;
