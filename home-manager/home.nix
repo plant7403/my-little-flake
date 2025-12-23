@@ -164,7 +164,7 @@
         CustomProxyLocation = null;
 
         ShowNotification
-        UnlockDatabase
+        UnlockDatabase = true;
         UpdateBinaryPath
         UseCustomBrowser
         CustomBrowserType
