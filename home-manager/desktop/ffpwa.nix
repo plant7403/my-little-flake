@@ -7,13 +7,15 @@
     "Default" = {
       name = "";
       settings = "";
-      sites."Cloudflare".desktopEntry.categories = "";
-      sites."Cloudflare".desktopEntry.enable = "";
-      sites."Cloudflare".desktopEntry.icon = "";
-      sites."Cloudflare".manifestUrl = "";
-      sites."Cloudflare".name = "";
-      sites."Cloudflare".settings = "";
-      sites."Cloudflare".url = "";
+sites = {
+      "Cloudflare".desktopEntry.categories = "";
+      "Cloudflare".desktopEntry.enable = "";
+      "Cloudflare".desktopEntry.icon = "";
+      "Cloudflare".manifestUrl = "";
+      "Cloudflare".name = "";
+      "Cloudflare".settings = "";
+      "Cloudflare".url = "";
+};
     };
   };
 }
