@@ -486,6 +486,44 @@
             force = true;
             settings = {
               force = true;
+              "autoReconnect" = false;
+              "afterFillSorting" = "sortByMatchingCredentials";
+              "afterFillSortingTotp" = "sortByRelevantEntry";
+              "autoCompleteUsernames" = true;
+              "autoFillAndSend" = false;
+              "autoFillSingleEntry" = false;
+              "autoFillRelevantCredential" = false;
+              "autoFillSingleTotp" = false;
+              "autoRetrieveCredentials" = true;
+              "autoSubmit" = false;
+              "bannerPosition" = 1;
+              "checkUpdateKeePassXC" = 0;
+              "clearCredentialsTimeout" = 10;
+              "colorTheme" = "system";
+              "credentialSorting" = "sortByGroupAndTitle";
+              "debugLogging" = false;
+              "defaultGroup" = "";
+              "defaultPasskeyGroup" = "";
+              "defaultPasswordManager" = false;
+              "defaultGroupAlwaysAsk" = false;
+              "downloadFaviconAfterSave" = false;
+              "passkeys" = true;
+              "passkeysFallback" = true;
+              "redirectAllowance" = 1;
+              "saveDomainOnly" = true;
+              "showGettingStartedGuideAlert" = true;
+              "showGroupNameInAutocomplete" = true;
+              "showLoginFormIcon" = true;
+              "showLoginNotifications" = true;
+              "showNotifications" = true;
+              "showOTPIcon" = true;
+              "showTroubleshootingGuideAlert" = true;
+              "useCompactMode" = false;
+              "useMonochromeToolbarIcon" = false;
+              "useObserver" = true;
+              "usePredefinedSites" = true;
+              "usePasswordGeneratorIcons" = false;
+              "sitePreferences" = [ ];
 
             };
           };
@@ -625,7 +663,3 @@
     };
   };
 }
-
-  {
- 
-  }
