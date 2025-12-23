@@ -23,13 +23,11 @@
     };
 
     nixvim.url = "github:nix-community/nixvim";
-
-    kickstart-nixvim.url = "github:JMartJonesy/kickstart.nixvim"; # !! IM NOT USING IT
-
-    nix-flatpak.url = "github:gmodena/nix-flatpak"; # unstable branch. Use github:gmodena/nix-flatpak/?ref=<tag> to pin releases.
+    # kickstart-nixvim.url = "github:JMartJonesy/kickstart.nixvim"; # !! IM NOT USING IT
+    #nix-flatpak.url = "github:gmodena/nix-flatpak"; # unstable branch. Use github:gmodena/nix-flatpak/?ref=<tag> to pin releases.
     #flatpaks.url = "github:GermanBread/declarative-flatpak/stable";
 
-    nixos-facter-modules.url = "github:numtide/nixos-facter-modules"; # !! RPI WEIRD FLAKE
+    #nixos-facter-modules.url = "github:numtide/nixos-facter-modules"; # !! RPI WEIRD FLAKE
 
     impermanence.url = "github:nix-community/impermanence";
     jovian.url = "github:Jovian-Experiments/Jovian-NixOS";
@@ -72,7 +70,7 @@
       stylix,
       nix4vscode,
       nix-ld,
-      nix-index-database,
+
       ...
     }@inputs:
     let
