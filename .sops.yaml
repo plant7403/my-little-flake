@@ -94,6 +94,7 @@ creation_rules:
     - pgp:
        - *admin_egorgpg
       age:
+        - *admin_egorhm
        - *admin_egor
        - *admin_egorhm
 
