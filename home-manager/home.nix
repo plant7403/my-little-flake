@@ -167,6 +167,7 @@
         UnlockDatabase
         UpdateBinaryPath
         UseCustomBrowser
+        CustomBrowserType
       };
       Security.QuickUnlock = true;
 
