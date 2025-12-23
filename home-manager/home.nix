@@ -169,8 +169,8 @@
         UpdateBinaryPath = true;
         UseCustomBrowser = true;
         CustomBrowserType = "firefox"
-        CustomBrowserLocation = "";
-        AllowLocalhostWithPasskeys
+        CustomBrowserLocation = "librewolf";
+        AllowLocalhostWithPasskeys = 
 
         CustomExtensionId
       };
