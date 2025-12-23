@@ -159,6 +159,7 @@
     autostart = true;
     settings = {
       General.ConfigVersion = 2;
+      FdoSecrets.Enabled = true;
       Browser = {
         Enabled = true;
         CustomProxyLocation = null;
@@ -167,7 +168,7 @@
         UnlockDatabase = true;
         UpdateBinaryPath = true;
         UseCustomBrowser = true;
-        CustomBrowserType = 'firefox
+        CustomBrowserType = 'firefox'
         CustomBrowserLocation
         AllowLocalhostWithPasskeys
 
