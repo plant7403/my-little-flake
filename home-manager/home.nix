@@ -184,7 +184,7 @@
       identity_url = "https://passwords.pak.academy/";
       base_url = "https://passwords.pak.academy/";
     };
-    enable = true;
+    
   };
 
   programs.distrobox = {
