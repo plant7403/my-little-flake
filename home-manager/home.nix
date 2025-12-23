@@ -179,12 +179,12 @@
     };
   };
   programs.rbw = {
+    enable = true;
     settings = {
-      email = "@getgoogleoff.me";
+      email = "";
       identity_url = "https://passwords.pak.academy/";
       base_url = "https://passwords.pak.academy/";
     };
-    
   };
 
   programs.distrobox = {
