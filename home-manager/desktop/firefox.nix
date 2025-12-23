@@ -23,7 +23,9 @@
       "es-ES"
       "en-US"
     ];
-    nativeMessagingHosts = 
+    nativeMessagingHosts = [
+keepassxc-browser@keepassxc.org
+    ];
     profiles.default = lib.mkForce {
       settings = {
         "extensions.autoDisableScopes" = 0;
