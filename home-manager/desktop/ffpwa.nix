@@ -4,7 +4,7 @@ programs.firefoxpwa.enable
 programs.firefoxpwa.package
 programs.firefoxpwa.settings
 programs.firefoxpwa.profiles = {
-  <name>.name
+<name>.name = ""
 <name>.settings
 <name>.sites.<name>.desktopEntry.categories
 <name>.sites.<name>.desktopEntry.enable
