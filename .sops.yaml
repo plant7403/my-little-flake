@@ -20,7 +20,7 @@ creation_rules:
     - pgp:
         - *admin_egorgpg
       age:
-      admin_egorhm
+      - *admin_egorhm
         - *admin_egor
         - *server_immortal
         - *server_saturn
