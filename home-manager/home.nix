@@ -367,8 +367,8 @@
       ".config/paperwm"
       ".local/share/zsh"
 
-      .config/rbw
-      .local/share/rbw/
+      ".config/rbw"
+      ".local/share/rbw"
     ];
 
     files = [
