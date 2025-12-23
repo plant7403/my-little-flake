@@ -1060,7 +1060,7 @@
               "https://cryptpad.org"
             ];
             ultimateGuitar = {
-              enabled = false;
+              enabled = true;
               unsupportedUrls = "bypass";
               frontend = "freetar";
               redirectOnlyInIncognito = false;
