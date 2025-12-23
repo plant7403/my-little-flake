@@ -985,7 +985,7 @@
               librey = [
 
               ];
-              4get = [
+              "4get" = [
                 "https://4get.ca"
               ];
               websurfx = [
