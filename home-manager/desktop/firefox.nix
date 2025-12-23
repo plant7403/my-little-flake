@@ -451,6 +451,7 @@
                 easylist-annoyances
                 adguard-other-annoyances
                 adguard-popup-overlays
+                adguard-widgets
               ];
             };
             permissions = [
