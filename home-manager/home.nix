@@ -199,7 +199,7 @@
     enable = true;
     settings = {
       email = "sensitive_ranging@getgoogleoff.me";
-      identity_url = "https://passwords.pak.academy/";
+      identity_url = "https://passwords.pak.academy/identity";
       base_url = "https://passwords.pak.academy/";
       pinentry = pkgs.pinentry-curses;
     };
