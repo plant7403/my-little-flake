@@ -506,7 +506,7 @@
               "defaultPasskeyGroup" = "";
               "defaultPasswordManager" = true;
               "defaultGroupAlwaysAsk" = false;
-              "downloadFaviconAfterSave" = false;
+              "downloadFaviconAfterSave" = true;
               "passkeys" = true;
               "passkeysFallback" = true;
               "redirectAllowance" = 1;
