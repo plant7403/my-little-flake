@@ -433,6 +433,7 @@
                 "urlhaus-1"
                 "plowe-0"
                 "ublock-cookies-easylist"
+                "adguard-cookies"
               ];
             };
             permissions = [
