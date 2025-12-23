@@ -182,10 +182,10 @@
         ApplicationTheme = "classic";
         CompactMode = false;
         HidePasswords = true;
-        ColorPasswords
+        ColorPasswords = true;
 
         MinimizeToTray = true;
-        MinimizeOnStartup
+        MinimizeOnStartup = true;
       };
       KeeShare = {
 
