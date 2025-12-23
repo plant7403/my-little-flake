@@ -73,7 +73,7 @@
         "privacy.clearOnShutdown_v2.cache" = 0;
         "privacy.clearOnShutdown_v2.cookiesAndStorage" = 0;
         #"extensions.activeThemeID" = "coffee_theme_firefox";
-        #"browser.theme.toolbar-theme" = 0;
+        #!"browser.theme.toolbar-theme" = 0;
         "privacy.resistFingerprinting.letterboxing" = false;
         "middlemouse.paste" = false;
         "browser.uiCustomization.state" = builtins.toJSON {
