@@ -57,6 +57,7 @@ creation_rules:
       - *admin_egorgpg
       #  - *server_azmidi
       age:
+      
         - *admin_egor
 #        - *admin_egory
         - *server_luna
