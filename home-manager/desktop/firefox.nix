@@ -16,6 +16,7 @@
     firefoxGnomeTheme.enable = true;
     profileNames = [ "default" ];
   }; # !!! remove it from here !!!
+
   xdg.portal = {
     enable = true;
     extraPortals = with pkgs; [
