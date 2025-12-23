@@ -162,6 +162,8 @@
       Browser = {
         Enabled = true;
         CustomProxyLocation = null;
+
+        
       };
       Security.QuickUnlock = true;
 
