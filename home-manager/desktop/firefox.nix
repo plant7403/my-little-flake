@@ -439,7 +439,7 @@
                 "ublock-cookies-adguard"
                 "fanboy-cookiemonster"
 
-                #
+                # Social
                 "fanboy-social"
               ];
             };
