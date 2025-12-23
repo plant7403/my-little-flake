@@ -39,7 +39,7 @@ in
           }
           window.csd {
             margin: 0px;
-            border-radius: var(--wm-border-radius);
+            border-radius: 12px;
             border: var(--wm-border-width) solid #6272a4;
           }
           window.csd.popup,
@@ -50,7 +50,7 @@ in
           window.solid-csd {
             margin: 0;
             padding: 4px;
-            border-radius: var(--wm-border-radius);
+            border-radius: 12px;
             border: 4px solid #6272a4;
           }
           window.popup,
