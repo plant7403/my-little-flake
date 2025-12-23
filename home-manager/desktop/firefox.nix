@@ -482,7 +482,7 @@
               "https://*.reddit.com/r/uBlockOrigin/*"
             ];
           };
-          "keepassxc-browser@keepassxc.org".settings = {
+          "keepassxc-browser@keepassxc.org".settings = { };
         };
       };
       search = {
