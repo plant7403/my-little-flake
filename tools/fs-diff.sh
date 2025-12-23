@@ -33,7 +33,6 @@ OLD_TRANSID=${OLD_TRANSID#transid marker was }
 sudo btrfs subvolume find-new "/${TEMPDIR}/${TARGET}" "$OLD_TRANSID" |
 sed '$d' |
 cut -f17- -d' ' |
-cut -f2- -d'/' |
 sort |
 uniq |
 while read path; do
