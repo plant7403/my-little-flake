@@ -210,7 +210,7 @@
 
   hardware.graphics.enable = true;
 
-  services.dashy.virtualHost.enableNginx = true;
+  #services.dashy.virtualHost.enableNginx = true;
   services.dashy.enable = true;
   services.dashy.settings = ''
     {
