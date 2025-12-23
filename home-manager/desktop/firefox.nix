@@ -480,7 +480,6 @@
               "https://ublockorigin.github.io/*"
               "https://*.reddit.com/r/uBlockOrigin/*"
             ];
-
           };
         };
       };
