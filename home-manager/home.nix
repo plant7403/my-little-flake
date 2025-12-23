@@ -172,7 +172,7 @@
         CustomBrowserLocation = "librewolf";
         AllowLocalhostWithPasskeys = true;
 
-        CustomExtensionId
+        CustomExtensionId = "f/OfvBodn3b+cOjS57gLkpXsqG1Ne0G2E4JSHZQCEXA="
       };
 
       Security.QuickUnlock = true;
