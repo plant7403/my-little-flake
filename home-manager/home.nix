@@ -167,7 +167,7 @@
         UnlockDatabase = true;
         UpdateBinaryPath = true;
         UseCustomBrowser = true;
-        CustomBrowserType = ''''
+        CustomBrowserType = 'firefox
         CustomBrowserLocation
         AllowLocalhostWithPasskeys
 
