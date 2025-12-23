@@ -54,15 +54,17 @@
         "gfx.webrender.software.opengl" = false;
         "webgl.disabled" = true;
 
-        "font.size.variable.x-western" = 20;
-        "browser.toolbars.bookmarks.visibility" = "always";
-        "privacy.resisttFingerprinting.letterboxing" = true;
-        "network.http.referer.XOriginPolicy" = 2;
-        "privacy.clearOnShutdown.history" = true;
-        "privacy.clearOnShutdown.downloads" = true;
-        "privacy.clearOnShutdown.cookies" = true;
-        "gfx.webrender.software.opengl" = false;
-        "webgl.disabled" = true;
+        /*
+          "font.size.variable.x-western" = 20;
+          "browser.toolbars.bookmarks.visibility" = "always";
+          "privacy.resisttFingerprinting.letterboxing" = true;
+          "network.http.referer.XOriginPolicy" = 2;
+          "privacy.clearOnShutdown.history" = true;
+          "privacy.clearOnShutdown.downloads" = true;
+          "privacy.clearOnShutdown.cookies" = true;
+          "gfx.webrender.software.opengl" = false;
+          "webgl.disabled" = true;
+        */
 
         "privacy.clearOnShutdown_v2.cache" = 0;
         "privacy.clearOnShutdown_v2.cookiesAndStorage" = 0;
