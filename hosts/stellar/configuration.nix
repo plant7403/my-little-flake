@@ -212,12 +212,9 @@
 
   hardware.graphics.enable = true;
 
-
-
-
-        services.dashy.virtualHost.enableNginx = true;
-        services.dashy.enable = true;
-        services.dashy.settings = {};
-        #services.dashy.virtualHost.domain
-        services.dashy.finalDrv
+  services.dashy.virtualHost.enableNginx = true;
+  services.dashy.enable = true;
+  services.dashy.settings = { };
+  #services.dashy.virtualHost.domain
+  #services.dashy.finalDrv
 }
