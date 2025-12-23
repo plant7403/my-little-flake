@@ -444,7 +444,8 @@
                 "adguard-social"
                 "fanboy-thirdparty_social"
 
-                # Ann
+                # Don't like it
+                
               ];
             };
             permissions = [
