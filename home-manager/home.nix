@@ -186,7 +186,7 @@
         ShowTrayIcon = true;
         MinimizeToTray = true;
         MinimizeOnStartup = true;
-        MinimizeOnClose
+        MinimizeOnClose = true;
       };
       KeeShare = {
 
