@@ -45,6 +45,7 @@ in
             "/var/lib/sbctl"
             "/var/lib/systemd"
             "/var/lib/bluetooth"
+            "/var/lib/upower"
           ];
           files = [
             "/etc/machine-id"
