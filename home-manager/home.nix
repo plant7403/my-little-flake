@@ -370,7 +370,7 @@
       ".config/rbw"
       ".local/share/rbw"
 
-      ""
+      ".z"
     ];
 
     files = [
@@ -384,8 +384,10 @@
       ".config/sops/age/keys.txt"
       ".screenrc"
 
-      ".config/distrobox/containers.ini"
-      ".config/distrobox/distrobox.conf"
+      /*
+        ".config/distrobox/containers.ini"
+        ".config/distrobox/distrobox.conf"
+      */
 
       ".config/easyeffects/db/easyeffectsrc"
 
