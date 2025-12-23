@@ -1,7 +1,7 @@
 {
 
   programs.firefoxpwa.enable = "true";
-  programs.firefoxpwa.package = "";
+
   programs.firefoxpwa.settings = "";
   programs.firefoxpwa.profiles = {
     "Default" = {
