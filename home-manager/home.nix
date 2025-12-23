@@ -179,10 +179,10 @@
     };
   };
 
-  programs.rbw.settings.email
-programs.rbw.settings.identity_url
-programs.rbw.settings.base_url
-programs.rbw.enable
+  programs.rbw.settings.email = 
+  programs.rbw.settings.identity_url
+  programs.rbw.settings.base_url
+  programs.rbw.enable
 
   programs.distrobox = {
     containers = {
