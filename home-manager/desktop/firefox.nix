@@ -935,7 +935,7 @@
               "https://indestructables.private.coffee"
             ];
             wikipedia = {
-              enabled = false;
+              enabled = true;
               unsupportedUrls = "bypass";
               frontend = "wikiless";
               redirectOnlyInIncognito = false;
