@@ -179,7 +179,7 @@
     };
   };
 
-  programs.rbw.settings.email = 
+  programs.rbw.settings.email = "getgoogle"
   programs.rbw.settings.identity_url
   programs.rbw.settings.base_url
   programs.rbw.enable
