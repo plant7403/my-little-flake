@@ -259,12 +259,6 @@
 
   };
 
-  /*
-    programs.rbw.settings.email = "test@disroot.org";
-    programs.rbw.settings.identity_url = "";
-    programs.rbw.settings.base_url = "";
-  */
-
   programs.element-desktop = {
     enable = true;
     profiles = {
