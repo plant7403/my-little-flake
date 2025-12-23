@@ -486,7 +486,7 @@
             force = true;
             settings = {
               force = true;
-              "autoReconnect" = false;
+              "autoReconnect" = true;
               "afterFillSorting" = "sortByMatchingCredentials";
               "afterFillSortingTotp" = "sortByRelevantEntry";
               "autoCompleteUsernames" = true;
@@ -524,7 +524,6 @@
               "usePredefinedSites" = true;
               "usePasswordGeneratorIcons" = false;
               "sitePreferences" = [ ];
-
             };
           };
         };
