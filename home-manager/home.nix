@@ -178,11 +178,13 @@
       SSHAgent.Enabled = true;
     };
   };
+programs.rbw = {
 
-  programs.rbw.settings.email = "@getgoogleoff.me";
-  programs.rbw.settings.identity_url = "https://passwords.pak.academy/";
-  programs.rbw.settings.base_url = "https://passwords.pak.academy/";
-  programs.rbw.enable = true;
+  settings.email = "@getgoogleoff.me";
+  settings.identity_url = "https://passwords.pak.academy/";
+  settings.base_url = "https://passwords.pak.academy/";
+  enable = true;
+};
 
   programs.distrobox = {
     containers = {
