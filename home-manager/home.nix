@@ -184,6 +184,7 @@
       email = "sensitive_ranging@getgoogleoff.me";
       identity_url = "https://passwords.pak.academy/";
       base_url = "https://passwords.pak.academy/";
+      programs.rbw.settings.pinentry = pkgs.pinentry-selected-linux;
     };
   };
 
