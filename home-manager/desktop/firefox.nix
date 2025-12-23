@@ -1155,138 +1155,138 @@
           };
         };
       };
-    
-    search = {
-      force = true;
-      default = "Startpage";
-      privateDefault = "Startpage";
-      order = [ "Startpage" ];
-      engines = {
-        "Startpage" = {
-          urls = [ { template = "https://www.startpage.com/rvd/search?query={searchTerms}&language=auto"; } ];
-          icon = "https://www.startpage.com/sp/cdn/favicons/mobile/android-icon-192x192.png";
-          updateInterval = 24 * 60 * 60 * 1000; # every day
-          definedAliases = [ "@s" ];
-        };
-        nix-packages = {
-          name = "Nix Packages";
-          urls = [
-            {
-              template = "https://search.nixos.org/packages";
-              params = [
-                {
-                  name = "type";
-                  value = "packages";
-                }
-                {
-                  name = "channel";
-                  value = "unstable";
-                }
-                {
-                  name = "query";
-                  value = "{searchTerms}";
-                }
-              ];
-            }
-          ];
-          icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-          definedAliases = [ "@np" ];
-        };
 
-        nixos-wiki = {
-          name = "NixOS Wiki";
-          urls = [ { template = "https://wiki.nixos.org/w/index.php?search={searchTerms}"; } ];
-          iconMapObj."16" = "https://wiki.nixos.org/favicon.ico";
-          definedAliases = [ "@nw" ];
-        };
+      search = {
+        force = true;
+        default = "Startpage";
+        privateDefault = "Startpage";
+        order = [ "Startpage" ];
+        engines = {
+          "Startpage" = {
+            urls = [ { template = "https://www.startpage.com/rvd/search?query={searchTerms}&language=auto"; } ];
+            icon = "https://www.startpage.com/sp/cdn/favicons/mobile/android-icon-192x192.png";
+            updateInterval = 24 * 60 * 60 * 1000; # every day
+            definedAliases = [ "@s" ];
+          };
+          nix-packages = {
+            name = "Nix Packages";
+            urls = [
+              {
+                template = "https://search.nixos.org/packages";
+                params = [
+                  {
+                    name = "type";
+                    value = "packages";
+                  }
+                  {
+                    name = "channel";
+                    value = "unstable";
+                  }
+                  {
+                    name = "query";
+                    value = "{searchTerms}";
+                  }
+                ];
+              }
+            ];
+            icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+            definedAliases = [ "@np" ];
+          };
 
-        home-manager = {
-          name = "Home-Manager";
-          urls = [
-            { template = "https://home-manager-options.extranix.com/?query={searchTerms}&release=master"; }
-          ];
-          iconMapObj."16" = "https://wiki.nixos.org/favicon.ico";
-          definedAliases = [ "@hm" ];
-        };
+          nixos-wiki = {
+            name = "NixOS Wiki";
+            urls = [ { template = "https://wiki.nixos.org/w/index.php?search={searchTerms}"; } ];
+            iconMapObj."16" = "https://wiki.nixos.org/favicon.ico";
+            definedAliases = [ "@nw" ];
+          };
 
-        nixpkgs-issues = {
-          name = "nixpkgs-issues";
-          urls = [
-            {
-              template = "https://github.com/NixOS/nixpkgs/issues?q=is%3Aissue%20state%3Aopen%20{searchTerms}";
-            }
-          ];
-          iconMapObj."16" = "https://github.com/favicon.ico";
-          definedAliases = [ "@ni" ];
-        };
+          home-manager = {
+            name = "Home-Manager";
+            urls = [
+              { template = "https://home-manager-options.extranix.com/?query={searchTerms}&release=master"; }
+            ];
+            iconMapObj."16" = "https://wiki.nixos.org/favicon.ico";
+            definedAliases = [ "@hm" ];
+          };
 
-        sourcegraph = {
-          name = "sourcegraph";
-          urls = [
-            {
-              template = "https://sourcegraph.com/search?q=context:global+file:%5C.nix+{searchTerms}&patternType=keyword&sm=0";
-            }
-          ];
-          iconMapObj."16" = "https://sourcegraph.com/favicon.ico";
-          definedAliases = [ "@sg" ];
-        };
+          nixpkgs-issues = {
+            name = "nixpkgs-issues";
+            urls = [
+              {
+                template = "https://github.com/NixOS/nixpkgs/issues?q=is%3Aissue%20state%3Aopen%20{searchTerms}";
+              }
+            ];
+            iconMapObj."16" = "https://github.com/favicon.ico";
+            definedAliases = [ "@ni" ];
+          };
 
-        bing.metaData.hidden = true;
-        google.metaData.alias = "@g";
+          sourcegraph = {
+            name = "sourcegraph";
+            urls = [
+              {
+                template = "https://sourcegraph.com/search?q=context:global+file:%5C.nix+{searchTerms}&patternType=keyword&sm=0";
+              }
+            ];
+            iconMapObj."16" = "https://sourcegraph.com/favicon.ico";
+            definedAliases = [ "@sg" ];
+          };
+
+          bing.metaData.hidden = true;
+          google.metaData.alias = "@g";
+        };
       };
+      bookmarks = [
+        {
+          name = "Nix sites";
+          #force = true;
+          toolbar = true;
+          bookmarks = [
+            {
+              name = "homepage";
+              url = "https://nixos.org/";
+            }
+            {
+              name = "wiki";
+              tags = [
+                "wiki"
+                "nix"
+              ];
+              url = "https://wiki.nixos.org/";
+            }
+            {
+              name = "search";
+              tags = [
+                "search"
+                "nix"
+              ];
+              url = "https://search.nixos.org/";
+            }
+            {
+              name = "cheatsheet";
+              tags = [
+                "search"
+                "nix"
+              ];
+              url = "https://wiki.nixos.org/wiki/Cheatsheet";
+            }
+          ];
+        }
+        {
+          name = "Pak Unity";
+          toolbar = true;
+          bookmarks = [
+            {
+              name = "pak academy";
+              url = "https://pak.academy/";
+            }
+            {
+              name = "expat food";
+              url = "https://expat.food/";
+            }
+          ];
+        }
+      ];
     };
-    bookmarks = [
-      {
-        name = "Nix sites";
-        #force = true;
-        toolbar = true;
-        bookmarks = [
-          {
-            name = "homepage";
-            url = "https://nixos.org/";
-          }
-          {
-            name = "wiki";
-            tags = [
-              "wiki"
-              "nix"
-            ];
-            url = "https://wiki.nixos.org/";
-          }
-          {
-            name = "search";
-            tags = [
-              "search"
-              "nix"
-            ];
-            url = "https://search.nixos.org/";
-          }
-          {
-            name = "cheatsheet";
-            tags = [
-              "search"
-              "nix"
-            ];
-            url = "https://wiki.nixos.org/wiki/Cheatsheet";
-          }
-        ];
-      }
-      {
-        name = "Pak Unity";
-        toolbar = true;
-        bookmarks = [
-          {
-            name = "pak academy";
-            url = "https://pak.academy/";
-          }
-          {
-            name = "expat food";
-            url = "https://expat.food/";
-          }
-        ];
-      }
-    ];
-
   };
 
 }

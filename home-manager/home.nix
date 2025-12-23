@@ -170,6 +170,8 @@
         ApplicationTheme = "classic";
         CompactMode = false;
         HidePasswords = true;
+
+        MinimizeToTray
       };
       KeeShare = {
 
