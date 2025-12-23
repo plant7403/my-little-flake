@@ -11,6 +11,8 @@
     https://wiki.nixos.org/wiki/Cheatsheet
     !!!
   */
+
+  i
   stylix.targets.librewolf = {
     enable = true;
     colorTheme.enable = true;
