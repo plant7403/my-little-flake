@@ -29,7 +29,7 @@
         "extensions.update.autoUpdateDefault" = false;
         "extensions.update.enabled" = false;
       };
-      ''
+      userChrome = ''
   /* Hide tab bar in FF Quantum */
   @-moz-document url(chrome://browser/content/browser.xul), url(chrome://browser/content/browser.xhtml) {
     #TabsToolbar {
