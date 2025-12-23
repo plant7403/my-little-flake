@@ -526,7 +526,7 @@
               "sitePreferences" = [ ];
             };
           };
-          "7esoorv3@alefvanoon.anonaddy.me".settings 
+          "7esoorv3@alefvanoon.anonaddy.me".settings = {};
         };
       };
       search = {
