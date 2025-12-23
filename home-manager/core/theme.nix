@@ -45,13 +45,13 @@ in
           window.csd.popup,
           window.csd.dialog.message {
             border-radius: 12px;
-            border: 4px solid var(--wm-border-color);
+            border: 4px solid #6272a4;
           }
           window.solid-csd {
             margin: 0;
             padding: 4px;
             border-radius: var(--wm-border-radius);
-            border: 4px solid var(--wm-border-color);
+            border: 4px solid #6272a4;
           }
           window.popup,
           window.ssd {
