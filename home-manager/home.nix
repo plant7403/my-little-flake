@@ -370,8 +370,8 @@
       ".config/rbw"
       ".local/share/rbw"
 
-      ".config/distrobox/containers.ini
-.config/distrobox/distrobox.conf"
+      ".config/distrobox/containers.ini"
+".config/distrobox/distrobox.conf"
     ];
 
     files = [
