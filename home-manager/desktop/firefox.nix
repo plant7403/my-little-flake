@@ -20,7 +20,12 @@
     firefoxGnomeTheme.enable = true;
     profileNames = [ "default" ];
   }; # !!! remove it from here !!!
-
+  stylix.targets.librewolf = {
+    enable = true;
+    colorTheme.enable = true;
+    firefoxGnomeTheme.enable = true;
+    profileNames = [ "default" ];
+  };
   xdg.portal = {
     enable = true;
     extraPortals = with pkgs; [
