@@ -106,4 +106,3 @@ creation_rules:
       age:
         - *admin_egorhm
         - *admin_egor
-        - *admin_egorhm
