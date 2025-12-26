@@ -96,6 +96,9 @@ let
     #"arrterian.nix-env-selector"
 
     "jnoortheen.nix-ide"
+
+    1nvitr0.blocksort
+
   ];
   baseExtensionsVS = [
 
