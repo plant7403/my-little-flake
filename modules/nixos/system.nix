@@ -121,7 +121,6 @@ in
           keep-going = true
           log-lines = 20
 
-
           #!include ${config.sops.secrets."system/nix-token".path}
         '';
       };
