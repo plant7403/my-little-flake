@@ -122,7 +122,7 @@ in
           log-lines = 20
 
           experimental-features = nix-command flakes
-          !include ${config.sops.secrets."system/nix-token".path}
+          #!include ${config.sops.secrets."system/nix-token".path}
         '';
       };
       # NIX_CONFIG="extra-access-tokens = github.com=github_pat_XYZ" nix ...
