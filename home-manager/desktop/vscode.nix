@@ -97,7 +97,7 @@ let
 
     "jnoortheen.nix-ide"
 
-    1nvitr0.blocksort
+    "1nvitr0.blocksort"
 
   ];
   baseExtensionsVS = [
