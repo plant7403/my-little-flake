@@ -59,7 +59,7 @@
         "extensions.update.autoUpdateDefault" = false;
         "extensions.update.enabled" = false;
 
-        "font.size.variable.x-western" = 20;
+        #"font.size.variable.x-western" = 20;
         "browser.toolbars.bookmarks.visibility" = "always";
         "privacy.resisttFingerprinting.letterboxing" = true;
         "network.http.referer.XOriginPolicy" = 2;
