@@ -109,7 +109,7 @@
         "browser.urlbar.suggest.quicksuggest.sponsored" = false;
         #"browser.urlbar.suggest.searches" = false;
         "browser.urlbar.suggest.topsites" = false;
-        "browser.urlbar.trimURLs" = false;
+        #"browser.urlbar.trimURLs" = false;
         "datareporting.healthreport.service.enabled" = false;
         "datareporting.healthreport.uploadEnabled" = false;
         "datareporting.policy.dataSubmissionEnabled" = false;
