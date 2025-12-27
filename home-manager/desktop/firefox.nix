@@ -95,7 +95,7 @@
         "browser.shell.checkDefaultBrowser" = false;
         "browser.tabs.crashReporting.sendReport" = false;
         #"browser.theme.toolbar-theme" = 0;
-        "browser.toolbars.bookmarks.visibility" = "always";
+        #"browser.toolbars.bookmarks.visibility" = "always";
         "browser.urlbar.dnsResolveSingleWordsAfterSearch" = 0;
         "browser.urlbar.shortcuts.bookmarks" = false;
         "browser.urlbar.shortcuts.history" = false;
