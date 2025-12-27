@@ -216,7 +216,7 @@
         # Extensions
         "browser.policies.runOncePerModification.extensionsInstall" =
           "[\"https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi\", \"https://addons.mozilla.org/firefox/downloads/latest/cookie-autodelete/latest.xpi\", \"https://addons.mozilla.org/firefox/downloads/latest/decentraleyes/latest.xpi\", \"https://addons.mozilla.org/firefox/downloads/latest/privacy-badger17/latest.xpi\", \"https://addons.mozilla.org/firefox/downloads/latest/uaswitcher/latest.xpi\"]";
-        /*
+        
           "browser.uiCustomization.state" = builtins.toJSON {
             currentVersion = 20;
             newElementCount = 23;
