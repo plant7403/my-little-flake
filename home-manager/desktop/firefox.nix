@@ -80,8 +80,8 @@
         "browser.newtabpage.activity-stream.telemetry" = false;
         "browser.newtabpage.directory.ping" = "";
         "browser.newtabpage.directory.source" = "data:text/plain,{}";
-        "browser.newtabpage.enabled" = false;
-        "browser.newtabpage.enhanced" = false;
+        #"browser.newtabpage.enabled" = false;
+        #"browser.newtabpage.enhanced" = false;
         "browser.newtabpage.introShown" = true;
         "browser.onboarding.enabled" = false; # "New to Librewolf? Let's get started!" tour
         "browser.ping-centre.telemetry" = false;
