@@ -55,29 +55,6 @@
       ];
     profiles.default = lib.mkForce {
       settings = {
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         "accessibility.force_disabled" = 1;
         "accessibility.typeaheadfind.flashBar" = 0;
         "app.normandy.api_url" = "";
