@@ -88,7 +88,7 @@
         "browser.preferences.defaultPerformanceSettings.enabled" = false;
         "browser.safebrowsing.malware.enabled" = false;
         "browser.safebrowsing.phishing.enabled" = false;
-        "browser.search.suggest.enabled" = false;
+        #"browser.search.suggest.enabled" = false;
         "browser.search.update" = false;
         "browser.send_pings" = false;
         "browser.sessionstore.interval" = "1800000";
