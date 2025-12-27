@@ -139,9 +139,9 @@
         "extensions.update.autoUpdateDefault" = false;
         "extensions.update.enabled" = false;
        # "font.name.monospace.x-western" = "FiraCode Nerd Font Mono";
-        "font.name.sans-serif.x-western" = "Noto Sans";
-        "font.name.serif.x-western" = "Roboto";
-        "general.smoothScroll" = false;
+       # "font.name.sans-serif.x-western" = "Noto Sans";
+       # "font.name.serif.x-western" = "Roboto";
+       # "general.smoothScroll" = false;
         "geo.enabled" = false;
         "geo.provider.use_gpsd" = false;
         "gfx.webrender.all and svg.context-properties.content.enabled" = true;
