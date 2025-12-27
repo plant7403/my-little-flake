@@ -158,7 +158,7 @@
         "media.ffvpx.enabled" = false;
         # !!! "media.navigator.enabled" = false; # this block websites from getting your camera and mic status
         "media.navigator.mediadatadecoder_vpx_enabled" = true;
-        "media.peerconnection.enabled " = false;
+        # "media.peerconnection.enabled " = false;
         "media.rdd-ffmpeg.enabled" = true;
         "media.rdd-vpx.enabled" = false;
         "middlemouse.paste" = false;
