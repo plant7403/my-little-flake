@@ -176,7 +176,7 @@
         "permissions.default.microphone" = 2;
         "permissions.default.xr" = 2;
         "places.history.enabled" = false;
-        "privacy.clearOnShutdown_v2.cache" = 0;
+        "privacy.clearOnShutdown_v2.cache" = 1;
         "privacy.clearOnShutdown_v2.cookiesAndStorage" = 0;
         "privacy.clearOnShutdown.cache" = true; # clear cache on shutdown
         "privacy.clearOnShutdown.cookies" = true;
