@@ -55,89 +55,89 @@
       ];
     profiles.default = lib.mkForce {
       settings = {
+
+
+              "_0050e3fa-15cc-4fb6-9c73-7354489a810b_-browser-action"
+              "_a138007c-5ff6-4d10-83d9-0afaf0efbe5e_-browser-action"
+              "alltabs-button"
+              "back-button"
+              "characterencoding-button"
+              "developer-button"
+              "downloads-button"
+              "firefox-view-button"
+              "forward-button"
+              "fxa-toolbar-menu-button"
+              "stop-reload-button"
+              "tabbrowser-tabs"
+              "ublock0_raymondhill_net-browser-action"
+              "unified-extensions-button"
+              "urlbar-container"
+            "_0050e3fa-15cc-4fb6-9c73-7354489a810b_-browser-action"
+            "_a138007c-5ff6-4d10-83d9-0afaf0efbe5e_-browser-action"
+            "developer-button"
+            "nav-bar"
+            "PersonalToolbar"
+            "TabsToolbar"
+            "toolbar-menubar"
+            "ublock0_raymondhill_net-browser-action"
+            "unified-extensions-area"
+            "widget-overflow-fixed-list"
+            ];
+            ];
+            ];
+            ];
+            nav-bar = [
+            PersonalToolbar = [ "personal-bookmarks" ];
+            TabsToolbar = [
+            toolbar-menubar = [ "menubar-items" ];
+            unified-extensions-area = [
+            widget-overflow-fixed-list = [
+          ];
+          ];
+          };
+          currentVersion = 20;
+          dirtyAreaCache = [
+          newElementCount = 23;
+          placements = {
+          seen = [
+        "browser.contentblocking.category" = "strict";
+        "browser.theme.toolbar-theme" = 0;
+        "browser.toolbars.bookmarks.visibility" = "always";
+        "browser.uiCustomization.state" = builtins.toJSON {
+        "devtools.theme" = "dark";
         "extensions.autoDisableScopes" = 0;
         "extensions.update.autoUpdateDefault" = false;
         "extensions.update.enabled" = false;
-
-        #"font.size.variable.x-western" = 20;
-        "browser.toolbars.bookmarks.visibility" = "always";
-        "privacy.resisttFingerprinting.letterboxing" = true;
-        "network.http.referer.XOriginPolicy" = 2;
-        "privacy.clearOnShutdown.history" = true;
-        "privacy.clearOnShutdown.downloads" = true;
-        "privacy.clearOnShutdown.cookies" = true;
-        "gfx.webrender.software.opengl" = false;
-        "webgl.disabled" = true;
-
-        "privacy.clearOnShutdown_v2.cache" = 0;
-        "privacy.clearOnShutdown_v2.cookiesAndStorage" = 0;
-        #"extensions.activeThemeID" = "coffee_theme_firefox";
-        "browser.theme.toolbar-theme" = 0;
-        #"privacy.resistFingerprinting.letterboxing" = false;
-        "middlemouse.paste" = false;
-        "browser.uiCustomization.state" = builtins.toJSON {
-          currentVersion = 20;
-          newElementCount = 23;
-          dirtyAreaCache = [
-            "nav-bar"
-            "unified-extensions-area"
-            "PersonalToolbar"
-            "TabsToolbar"
-            "widget-overflow-fixed-list"
-            "toolbar-menubar"
-          ];
-          seen = [
-            "developer-button"
-            "_0050e3fa-15cc-4fb6-9c73-7354489a810b_-browser-action"
-            "ublock0_raymondhill_net-browser-action"
-            "_a138007c-5ff6-4d10-83d9-0afaf0efbe5e_-browser-action"
-          ];
-          placements = {
-            nav-bar = [
-              "back-button"
-              "forward-button"
-              "stop-reload-button"
-              "urlbar-container"
-              "unified-extensions-button"
-              "fxa-toolbar-menu-button"
-            ];
-            PersonalToolbar = [ "personal-bookmarks" ];
-            TabsToolbar = [
-              "tabbrowser-tabs"
-              "alltabs-button"
-            ];
-            toolbar-menubar = [ "menubar-items" ];
-            unified-extensions-area = [
-              "ublock0_raymondhill_net-browser-action"
-              "_0050e3fa-15cc-4fb6-9c73-7354489a810b_-browser-action"
-              "_a138007c-5ff6-4d10-83d9-0afaf0efbe5e_-browser-action"
-            ];
-            widget-overflow-fixed-list = [
-              "downloads-button"
-              "developer-button"
-              "firefox-view-button"
-              "characterencoding-button"
-            ];
-          };
-        };
-        # Default to dark theme in DevTools panel
-        "devtools.theme" = "dark";
-        # Set browser to dark theme
-        #"extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
-        # set default perefered color scheme to dark
-        "layout.css.prefers-color-scheme.content-override" = 0;
-        # Set browser font to Roboto
-        "font.name.serif.x-western" = "Roboto";
         "font.name.monospace.x-western" = "FiraCode Nerd Font Mono";
         "font.name.sans-serif.x-western" = "Noto Sans";
-        # Fix dpi (I have a high res dispaly 1440p)
+        "font.name.serif.x-western" = "Roboto";
+        "gfx.webrender.software.opengl" = false;
         "layout.css.devPixelsPerPx" = "1.2";
-        # Enable ETP for decent security (makes librewolf containers and many
-        # common security/privacy add-ons redundant).
-        "browser.contentblocking.category" = "strict";
+        "layout.css.prefers-color-scheme.content-override" = 0;
+        "middlemouse.paste" = false;
+        "network.http.referer.XOriginPolicy" = 2;
+        "privacy.clearOnShutdown_v2.cache" = 0;
+        "privacy.clearOnShutdown_v2.cookiesAndStorage" = 0;
+        "privacy.clearOnShutdown.cookies" = true;
+        "privacy.clearOnShutdown.downloads" = true;
+        "privacy.clearOnShutdown.history" = true;
         "privacy.donottrackheader.enabled" = true;
         "privacy.donottrackheader.value" = 1;
         "privacy.purge_trackers.enabled" = true;
+        "privacy.resisttFingerprinting.letterboxing" = true;
+        "webgl.disabled" = true;
+        };
+        # common security/privacy add-ons redundant).
+        # Default to dark theme in DevTools panel
+        # Enable ETP for decent security (makes librewolf containers and many
+        # Fix dpi (I have a high res dispaly 1440p)
+        # Set browser font to Roboto
+        # Set browser to dark theme
+        # set default perefered color scheme to dark
+        #"extensions.activeThemeID" = "coffee_theme_firefox";
+        #"extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
+        #"font.size.variable.x-western" = 20;
+        #"privacy.resistFingerprinting.letterboxing" = false;
         # Your customized toolbar settings are stored in
         # 'browser.uiCustomization.state'. This tells librewolf to sync it between
         # machines. WARNING: This may not work across OSes. Since I use NixOS on
