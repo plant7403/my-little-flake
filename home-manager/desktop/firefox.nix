@@ -55,26 +55,26 @@
       ];
     profiles.default = lib.mkForce {
       settings = {
-
-
-        "browser.theme.toolbar-theme" = 0;
-        "browser.toolbars.bookmarks.visibility" = "always";
         "extensions.autoDisableScopes" = 0;
         "extensions.update.autoUpdateDefault" = false;
         "extensions.update.enabled" = false;
-        "gfx.webrender.software.opengl" = false;
-        "middlemouse.paste" = false;
+
+        #"font.size.variable.x-western" = 20;
+        "browser.toolbars.bookmarks.visibility" = "always";
+        "privacy.resisttFingerprinting.letterboxing" = true;
         "network.http.referer.XOriginPolicy" = 2;
+        "privacy.clearOnShutdown.history" = true;
+        "privacy.clearOnShutdown.downloads" = true;
+        "privacy.clearOnShutdown.cookies" = true;
+        "gfx.webrender.software.opengl" = false;
+        "webgl.disabled" = true;
+
         "privacy.clearOnShutdown_v2.cache" = 0;
         "privacy.clearOnShutdown_v2.cookiesAndStorage" = 0;
-        "privacy.clearOnShutdown.cookies" = true;
-        "privacy.clearOnShutdown.downloads" = true;
-        "privacy.clearOnShutdown.history" = true;
-        "privacy.resisttFingerprinting.letterboxing" = true;
-        "webgl.disabled" = true;
         #"extensions.activeThemeID" = "coffee_theme_firefox";
-        #"font.size.variable.x-western" = 20;
+        "browser.theme.toolbar-theme" = 0;
         #"privacy.resistFingerprinting.letterboxing" = false;
+        "middlemouse.paste" = false;
         "browser.uiCustomization.state" = builtins.toJSON {
           currentVersion = 20;
           newElementCount = 23;
@@ -118,7 +118,8 @@
               "firefox-view-button"
               "characterencoding-button"
             ];
-          }};
+          };
+        };
         # Default to dark theme in DevTools panel
         "devtools.theme" = "dark";
         # Set browser to dark theme
