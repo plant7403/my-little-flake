@@ -113,7 +113,7 @@
         "datareporting.healthreport.service.enabled" = false;
         "datareporting.healthreport.uploadEnabled" = false;
         "datareporting.policy.dataSubmissionEnabled" = false;
-        "devtools.theme" = "dark";
+        #"devtools.theme" = "dark";
         "dom.battery.enabled" = false;
         "dom.event.clipboardevents.enabled" = true; # without it copy and pasting in apps like Trilium doesn't work
         "dom.event.contextmenu.enabled" = false; # don't allow websites to mess with context menu
