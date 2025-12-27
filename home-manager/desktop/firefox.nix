@@ -160,7 +160,7 @@
         # https://github.com/tlswg/tls13-spec/issues/1001
         "security.tls.enable_0rtt_data" = false;
         # Use Mozilla geolocation service instead of Google if given permission
-       
+
         "geo.provider.use_gpsd" = false;
         # https://support.mozilla.org/en-US/kb/extension-recommendations
         "browser.newtabpage.activity-stream.asrouter.userprefs.cfr" = false;
@@ -336,6 +336,8 @@
         # For theme
         "gfx.webrender.all and svg.context-properties.content.enabled" = true;
 
+        "geo.provider.network.url" =
+          "https://location.services.mozilla.com/v1/geolocate?key=%MOZILLA_API_KEY%";
         # Extensions
         "browser.policies.runOncePerModification.extensionsInstall" =
           "[\"https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi\", \"https://addons.mozilla.org/firefox/downloads/latest/cookie-autodelete/latest.xpi\", \"https://addons.mozilla.org/firefox/downloads/latest/decentraleyes/latest.xpi\", \"https://addons.mozilla.org/firefox/downloads/latest/privacy-badger17/latest.xpi\", \"https://addons.mozilla.org/firefox/downloads/latest/uaswitcher/latest.xpi\"]";
