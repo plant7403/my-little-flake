@@ -125,7 +125,7 @@ in
         '';
       };
       # NIX_CONFIG="extra-access-tokens = github.com=github_pat_XYZ" nix ...
-      !include ${config.sops.secrets."system/nix-token".path}
+      
       # https://github.com/NixOS/nix/issues/6536
       sops.secrets."system/nix-token" = {
         mode = "0440";
