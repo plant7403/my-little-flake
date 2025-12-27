@@ -138,10 +138,10 @@
         "extensions.shield-recipe-client.enabled" = false;
         "extensions.update.autoUpdateDefault" = false;
         "extensions.update.enabled" = false;
-       # "font.name.monospace.x-western" = "FiraCode Nerd Font Mono";
-       # "font.name.sans-serif.x-western" = "Noto Sans";
-       # "font.name.serif.x-western" = "Roboto";
-       # "general.smoothScroll" = false;
+        # "font.name.monospace.x-western" = "FiraCode Nerd Font Mono";
+        # "font.name.sans-serif.x-western" = "Noto Sans";
+        # "font.name.serif.x-western" = "Roboto";
+        # "general.smoothScroll" = false;
         "geo.enabled" = false;
         "geo.provider.use_gpsd" = false;
         "gfx.webrender.all and svg.context-properties.content.enabled" = true;
@@ -149,7 +149,7 @@
         "gfx.x11-egl.force-enabled" = true;
         "layers.acceleration.disabled" = false;
         "layers.acceleration.force-enabled" = true;
-        "layout.css.devPixelsPerPx" = "1.2";
+        #"layout.css.devPixelsPerPx" = "1.2";
         "layout.css.prefers-color-scheme.content-override" = 0;
         "layout.spellcheckDefault" = 0;
         "media.eme.enabled" = false;
