@@ -103,11 +103,11 @@
         "browser.urlbar.showSearchSuggestionsFirst" = false;
         "browser.urlbar.speculativeConnect.enabled" = false;
         #"browser.urlbar.suggest.bookmark" = false;
-        "browser.urlbar.suggest.history" = false;
-        "browser.urlbar.suggest.openpage" = false;
+        #"browser.urlbar.suggest.history" = false;
+        #"browser.urlbar.suggest.openpage" = false;
         "browser.urlbar.suggest.quicksuggest.nonsponsored" = false;
         "browser.urlbar.suggest.quicksuggest.sponsored" = false;
-        "browser.urlbar.suggest.searches" = false;
+        #"browser.urlbar.suggest.searches" = false;
         "browser.urlbar.suggest.topsites" = false;
         "browser.urlbar.trimURLs" = false;
         "datareporting.healthreport.service.enabled" = false;
