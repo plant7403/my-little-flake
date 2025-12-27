@@ -138,7 +138,7 @@
         "extensions.shield-recipe-client.enabled" = false;
         "extensions.update.autoUpdateDefault" = false;
         "extensions.update.enabled" = false;
-        "font.name.monospace.x-western" = "FiraCode Nerd Font Mono";
+       # "font.name.monospace.x-western" = "FiraCode Nerd Font Mono";
         "font.name.sans-serif.x-western" = "Noto Sans";
         "font.name.serif.x-western" = "Roboto";
         "general.smoothScroll" = false;
