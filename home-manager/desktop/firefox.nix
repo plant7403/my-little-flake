@@ -94,7 +94,7 @@
         "browser.sessionstore.interval" = "1800000";
         "browser.shell.checkDefaultBrowser" = false;
         "browser.tabs.crashReporting.sendReport" = false;
-        "browser.theme.toolbar-theme" = 0;
+        #"browser.theme.toolbar-theme" = 0;
         "browser.toolbars.bookmarks.visibility" = "always";
         "browser.urlbar.dnsResolveSingleWordsAfterSearch" = 0;
         "browser.urlbar.shortcuts.bookmarks" = false;
