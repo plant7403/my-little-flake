@@ -190,7 +190,6 @@
     "extensions/vitals/hot-sensors" = [
       "_memory_usage_"
       "_processor_usage_"
-      "__network-rx_max__"
       "_network_public_ip_"
       "__network-tx_max__"
       "_storage_free_"
