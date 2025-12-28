@@ -285,6 +285,6 @@
       ];
     }
   '';
-  #services.dashy.virtualHost.domain
+  services.dashy.virtualHost.domain
   #services.dashy.finalDrv
 }
