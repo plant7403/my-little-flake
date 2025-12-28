@@ -195,7 +195,7 @@
       "__network-tx_max__"
       "_storage_free_"
     ];
-    extensions/vitals/position-in-panel
+    "extensions/vitals/position-in-panel" = 0;
     /*
       "org/gnome/desktop/interface" = {
          color-scheme = "prefer-dark";
