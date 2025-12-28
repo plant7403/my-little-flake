@@ -3,7 +3,7 @@
 
 with lib.hm.gvariant;
 
-{
+{ # dconf dump / | dconf2nix > dconf.nix
   dconf.settings = {
     "com/github/amezin/ddterm" = {
       background-opacity = 0.5;
