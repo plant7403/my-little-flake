@@ -678,9 +678,9 @@
           "limiter"
         ];
       };
-
     };
   };
 
   services.easyeffects.preset = "my-preset";
+  programs.dconf.enable = true;
 }
