@@ -14,7 +14,7 @@ with lib.hm.gvariant;
       panel-icon-type = "none";
       pointer-autohide = false;
       scrollback-lines = 100000;
-      show-animation-duration = 1.0e-3;
+      show-animation-duration = 0.25;
       tab-label-ellipsize-mode = "start";
       tab-label-width = 7.0e-2;
       window-maximize = false;
