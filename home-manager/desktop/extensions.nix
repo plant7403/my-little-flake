@@ -5,6 +5,8 @@
   ...
 }:
 {
+
+  imports = []
   home.packages = with pkgs; [
     gnomeExtensions.user-themes
     gnomeExtensions.tray-icons-reloaded
@@ -55,7 +57,7 @@
 
   services.polkit-gnome.enable = true;
 
- 
+
 
   /*
     xdg.configFile."gtk-3.0/bookmarks".force = true;
