@@ -484,7 +484,7 @@
         "_network_public_ip_"
         "__network-tx_max__"
         "_storage_free_"
-        "_processor_usage_"
+        
       ];
       icon-style = 1;
       include-static-info = false;
