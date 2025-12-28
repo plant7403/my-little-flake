@@ -8,7 +8,7 @@ with lib.hm.gvariant;
     "com/github/amezin/ddterm" = {
       background-opacity = 0.5;
       bold-is-bright = true;
-      hide-animation-duration = 1.0e-3;
+      hide-animation-duration = ;
       hide-when-focus-lost = true;
       hide-window-on-esc = true;
       panel-icon-type = "none";
