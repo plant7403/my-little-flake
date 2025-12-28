@@ -5,7 +5,7 @@
   ];
   services.easyeffects.enable = true;
   services.easyeffects.extraPresets = {
-    my-preset = builtins.{
+    my-preset = {
       input = {
         blocklist = [
 
