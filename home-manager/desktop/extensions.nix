@@ -480,11 +480,13 @@
       hide-zeros = false;
       hot-sensors = [
         "_memory_usage_"
-        "__network-rx_max__"
+        "_processor_usage_"
+
         "_network_public_ip_"
+        "__network-rx_max__"
         "__network-tx_max__"
         "_storage_free_"
-        
+
       ];
       icon-style = 1;
       include-static-info = false;
