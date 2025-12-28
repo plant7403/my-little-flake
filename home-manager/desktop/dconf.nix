@@ -1,60 +1,9 @@
+# Generated via dconf2nix: https://github.com/gvolpe/dconf2nix
+{ lib, ... }:
+
+with lib.hm.gvariant;
+
 {
-  pkgs,
-  config,
-  lib,
-  ...
-}:
-{
-  home.packages = with pkgs; [
-    gnomeExtensions.user-themes
-    gnomeExtensions.tray-icons-reloaded
-    gnomeExtensions.vitals
-    gnomeExtensions.grand-theft-focus
-
-    gnomeExtensions.blur-my-shell
-
-    gnomeExtensions.appindicator
-    gnomeExtensions.caffeine
-    gnomeExtensions.tailscale-qs
-    #gnomeExtensions.tailscale-status
-    gnomeExtensions.gsconnect
-    #gnomeExtensions.syncthing-indicator
-    #gnomeExtensions.syncthing-toggle
-
-    #gnomeExtensions.syncthing-indicator
-
-    gnomeExtensions.clipqr
-    gnomeExtensions.ddterm
-
-    gnomeExtensions.duckduckbang
-    gnomeExtensions.folder-search-provider
-    gnomeExtensions.todo-list
-
-    gnomeExtensions.paperwm
-    gnomeExtensions.dash-to-dock
-    gnomeExtensions.focus-follows-workspace
-    gnomeExtensions.switcher
-    #trayscale
-    light
-    emote
-    gnome-tweaks
-    gnomeExtensions.quick-settings-tweaker
-    # gnomeExtensions.translate-indicator
-    gnomeExtensions.clipboard-indicator
-    gnomeExtensions.firefox-profiles
-    #gnomeExtensions.gestureImprovements
-    gnomeExtensions.just-perfection
-    gnomeExtensions.save-my-windows
-    gnomeExtensions.window-commander
-    ulauncher
-    gnomeExtensions.tweaks-in-system-menu
-    gnomeExtensions.systemd-manager
-
-    dconf2nix
-  ];
-
-  services.polkit-gnome.enable = true;
-
   dconf.settings = {
     "com/github/amezin/ddterm" = {
       background-opacity = 0.5;
@@ -80,12 +29,7 @@
     };
 
     "org/gnome/desktop/app-folders" = {
-      folder-children = [
-        "System"
-        "Utilities"
-        "YaST"
-        "Pardus"
-      ];
+      folder-children = [ "System" "Utilities" "YaST" "Pardus" ];
     };
 
     "org/gnome/desktop/app-folders/folders/Pardus" = {
@@ -95,26 +39,13 @@
     };
 
     "org/gnome/desktop/app-folders/folders/System" = {
-      apps = [
-        "org.gnome.baobab.desktop"
-        "org.gnome.DiskUtility.desktop"
-        "org.gnome.Logs.desktop"
-        "org.gnome.Sysprof.desktop"
-        "org.gnome.SystemMonitor.desktop"
-        "org.gnome.tweaks.desktop"
-      ];
+      apps = [ "org.gnome.baobab.desktop" "org.gnome.DiskUtility.desktop" "org.gnome.Logs.desktop" "org.gnome.Sysprof.desktop" "org.gnome.SystemMonitor.desktop" "org.gnome.tweaks.desktop" ];
       name = "X-GNOME-Shell-System.directory";
       translate = true;
     };
 
     "org/gnome/desktop/app-folders/folders/Utilities" = {
-      apps = [
-        "org.gnome.Decibels.desktop"
-        "org.gnome.Connections.desktop"
-        "org.gnome.Papers.desktop"
-        "org.gnome.font-viewer.desktop"
-        "org.gnome.Loupe.desktop"
-      ];
+      apps = [ "org.gnome.Decibels.desktop" "org.gnome.Connections.desktop" "org.gnome.Papers.desktop" "org.gnome.font-viewer.desktop" "org.gnome.Loupe.desktop" ];
       name = "X-GNOME-Shell-Utilities.directory";
       translate = true;
     };
@@ -133,34 +64,8 @@
     };
 
     "org/gnome/desktop/input-sources" = {
-      mru-sources = [
-        (mkTuple [
-          "xkb"
-          "us"
-        ])
-        (mkTuple [
-          "xkb"
-          "ru"
-        ])
-        (mkTuple [
-          "xkb"
-          "es"
-        ])
-      ];
-      sources = [
-        (mkTuple [
-          "xkb"
-          "us"
-        ])
-        (mkTuple [
-          "xkb"
-          "ru"
-        ])
-        (mkTuple [
-          "xkb"
-          "es"
-        ])
-      ];
+      mru-sources = [ (mkTuple [ "xkb" "us" ]) (mkTuple [ "xkb" "ru" ]) (mkTuple [ "xkb" "es" ]) ];
+      sources = [ (mkTuple [ "xkb" "us" ]) (mkTuple [ "xkb" "ru" ]) (mkTuple [ "xkb" "es" ]) ];
       xkb-options = [ "ctrl:nocaps" ];
     };
 
@@ -178,12 +83,7 @@
     };
 
     "org/gnome/desktop/notifications" = {
-      application-children = [
-        "librewolf"
-        "gnome-about-panel"
-        "element-desktop"
-        "org-keepassxc-keepassxc"
-      ];
+      application-children = [ "librewolf" "gnome-about-panel" "element-desktop" "org-keepassxc-keepassxc" ];
     };
 
     "org/gnome/desktop/notifications/application/element-desktop" = {
@@ -203,35 +103,30 @@
     };
 
     "org/gnome/desktop/wm/keybindings" = {
-      maximize = [ ];
-      move-to-monitor-down = [ ];
-      move-to-monitor-left = [ ];
-      move-to-monitor-right = [ ];
-      move-to-monitor-up = [ ];
-      move-to-workspace-down = [ ];
-      move-to-workspace-left = [ ];
-      move-to-workspace-right = [ ];
-      move-to-workspace-up = [ ];
-      switch-applications = [ ];
-      switch-applications-backward = [ ];
-      switch-group = [ ];
-      switch-group-backward = [ ];
-      switch-panels = [ ];
-      switch-panels-backward = [ ];
-      switch-to-workspace-1 = [ ];
-      switch-to-workspace-last = [ ];
-      switch-to-workspace-left = [ ];
-      switch-to-workspace-right = [ ];
-      unmaximize = [ ];
+      maximize = [];
+      move-to-monitor-down = [];
+      move-to-monitor-left = [];
+      move-to-monitor-right = [];
+      move-to-monitor-up = [];
+      move-to-workspace-down = [];
+      move-to-workspace-left = [];
+      move-to-workspace-right = [];
+      move-to-workspace-up = [];
+      switch-applications = [];
+      switch-applications-backward = [];
+      switch-group = [];
+      switch-group-backward = [];
+      switch-panels = [];
+      switch-panels-backward = [];
+      switch-to-workspace-1 = [];
+      switch-to-workspace-last = [];
+      switch-to-workspace-left = [];
+      switch-to-workspace-right = [];
+      unmaximize = [];
     };
 
     "org/gnome/desktop/wm/preferences" = {
-      workspace-names = [
-        "Workspace 1"
-        "Workspace 2"
-        "Workspace 3"
-        "Workspace 4"
-      ];
+      workspace-names = [ "Workspace 1" "Workspace 2" "Workspace 3" "Workspace 4" ];
     };
 
     "org/gnome/eog/view" = {
@@ -264,13 +159,13 @@
     };
 
     "org/gnome/mutter/keybindings" = {
-      cancel-input-capture = [ ];
-      toggle-tiled-left = [ ];
-      toggle-tiled-right = [ ];
+      cancel-input-capture = [];
+      toggle-tiled-left = [];
+      toggle-tiled-right = [];
     };
 
     "org/gnome/mutter/wayland/keybindings" = {
-      restore-shortcuts = [ ];
+      restore-shortcuts = [];
     };
 
     "org/gnome/nautilus/preferences" = {
@@ -282,11 +177,8 @@
     };
 
     "org/gnome/settings-daemon/plugins/media-keys" = {
-      custom-keybindings = [
-        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
-        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
-      ];
-      rotate-video-lock-static = [ ];
+      custom-keybindings = [ "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/" ];
+      rotate-video-lock-static = [];
       www = [ "<Shift><Control>s" ];
     };
 
@@ -304,44 +196,9 @@
 
     "org/gnome/shell" = {
       disable-user-extensions = false;
-      disabled-extensions = [
-        "tweaks-system-menu@extensions.gnome-shell.fifi.org"
-        "systemd-manager@hardpixel.eu"
-        "just-perfection-desktop@just-perfection"
-      ];
-      enabled-extensions = [
-        "user-theme@gnome-shell-extensions.gcampax.github.com"
-        "caffeine@patapon.info"
-        "drive-menu@gnome-shell-extensions.gcampax.github.com"
-        "appindicatorsupport@rgcjonas.gmail.com"
-        "blur-my-shell@aunetx"
-        "screenshot-window-sizer@gnome-shell-extensions.gcampax.github.com"
-        "status-icons@gnome-shell-extensions.gcampax.github.com"
-        "tailscale@joaophi.github.com"
-        "trayIconsReloaded@selfmade.pl"
-        "gsconnect@andyholmes.github.io"
-        "Vitals@CoreCoding.com"
-        "clipqr@drien.com"
-        "ddterm@amezin.github.com"
-        "todoit@wassimbj.github.io"
-        "paperwm@paperwm.github.com"
-        "dash-to-dock@micxgx.gmail.com"
-        "clipboard-indicator@tudmotu.com"
-        "switcher@landau.fi"
-        "window-commander@gnikolaos.gr"
-        "gsconnect@andyholmes.github.io"
-      ];
-      favorite-apps = [
-        "com.mitchellh.ghostty.desktop"
-        "org.gnome.Nautilus.desktop"
-        "librewolf.desktop"
-        "chromium-browser.desktop"
-        "codium.desktop"
-        "element-desktop.desktop"
-        "signal.desktop"
-        "obsidian.desktop"
-        "org.keepassxc.KeePassXC.desktop"
-      ];
+      disabled-extensions = [ "tweaks-system-menu@extensions.gnome-shell.fifi.org" "systemd-manager@hardpixel.eu" "just-perfection-desktop@just-perfection" ];
+      enabled-extensions = [ "user-theme@gnome-shell-extensions.gcampax.github.com" "caffeine@patapon.info" "drive-menu@gnome-shell-extensions.gcampax.github.com" "appindicatorsupport@rgcjonas.gmail.com" "blur-my-shell@aunetx" "screenshot-window-sizer@gnome-shell-extensions.gcampax.github.com" "status-icons@gnome-shell-extensions.gcampax.github.com" "tailscale@joaophi.github.com" "trayIconsReloaded@selfmade.pl" "gsconnect@andyholmes.github.io" "Vitals@CoreCoding.com" "clipqr@drien.com" "ddterm@amezin.github.com" "todoit@wassimbj.github.io" "paperwm@paperwm.github.com" "dash-to-dock@micxgx.gmail.com" "clipboard-indicator@tudmotu.com" "switcher@landau.fi" "window-commander@gnikolaos.gr" "gsconnect@andyholmes.github.io" ];
+      favorite-apps = [ "com.mitchellh.ghostty.desktop" "org.gnome.Nautilus.desktop" "librewolf.desktop" "chromium-browser.desktop" "codium.desktop" "element-desktop.desktop" "signal.desktop" "obsidian.desktop" "org.keepassxc.KeePassXC.desktop" ];
       welcome-dialog-last-shown-version = "49.2";
     };
 
@@ -366,12 +223,7 @@
     };
 
     "org/gnome/shell/extensions/blur-my-shell/applications" = {
-      blacklist = [
-        "Plank"
-        "com.desktop.ding"
-        "Conky"
-        "com.github.amezin.ddterm"
-      ];
+      blacklist = [ "Plank" "com.desktop.ding" "Conky" "com.github.amezin.ddterm" ];
       blur = true;
       brightness = 1.0;
       dynamic-opacity = true;
@@ -440,12 +292,7 @@
     };
 
     "org/gnome/shell/extensions/paperwm/workspaces" = {
-      list = [
-        "8ee7a3f5-9c8f-41c6-9fbb-9460e90b3d5e"
-        "fb33d93a-7612-4232-a046-746b35b41117"
-        "2d7ba989-0bd9-4803-8622-443bed51ef7d"
-        "789674cc-6a27-4fad-9e11-db39432da315"
-      ];
+      list = [ "8ee7a3f5-9c8f-41c6-9fbb-9460e90b3d5e" "fb33d93a-7612-4232-a046-746b35b41117" "2d7ba989-0bd9-4803-8622-443bed51ef7d" "789674cc-6a27-4fad-9e11-db39432da315" ];
     };
 
     "org/gnome/shell/extensions/paperwm/workspaces/2d7ba989-0bd9-4803-8622-443bed51ef7d" = {
@@ -478,14 +325,7 @@
     "org/gnome/shell/extensions/vitals" = {
       fixed-widths = true;
       hide-zeros = false;
-      hot-sensors = [
-        "_memory_usage_"
-        "_processor_usage_"
-        "__network-rx_max__"
-        "__network-tx_max__"
-        "_network_public_ip_"
-        "_storage_free_"
-      ];
+      hot-sensors = [ "_memory_usage_" "__network-rx_max__" "_network_public_ip_" "__network-tx_max__" "_storage_free_" "_processor_usage_" ];
       icon-style = 1;
       include-static-info = false;
       menu-centered = false;
@@ -494,57 +334,15 @@
     };
 
     "org/gnome/shell/keybindings" = {
-      focus-active-notification = [ ];
-      shift-overview-down = [ ];
-      shift-overview-up = [ ];
-      toggle-message-tray = [ ];
+      focus-active-notification = [];
+      shift-overview-down = [];
+      shift-overview-up = [];
+      toggle-message-tray = [];
     };
 
     "org/gnome/shell/world-clocks" = {
-      locations = [ ];
+      locations = [];
     };
 
   };
-
-  /*
-    xdg.configFile."gtk-3.0/bookmarks".force = true;
-    xdg.configFile."gtk-3.0/bookmarks".text = ''
-      file:///home/egor/Documentos Documents
-      ...
-    '';
-  */
-  gtk.gtk3 = {
-    bookmarks = [
-      "file://${config.xdg.userDirs.download}"
-      "file://${config.xdg.userDirs.documents}"
-      "file://${config.home.homeDirectory}/.Secret"
-      "file://${config.xdg.userDirs.music}"
-      "file://${config.xdg.userDirs.pictures}"
-      "file://${config.home.homeDirectory}/Sync"
-      "file://${config.home.homeDirectory}/DCIM"
-      "file://${config.home.homeDirectory}/Projects"
-      "file://${config.home.homeDirectory}/Pak-Unity"
-      #"file://${config.services.syncthing.settings.folders."sync".path}"
-      #"file://${self}"
-    ]; # TODO: NEED FIX; everything in english !!!
-  };
-
-  xdg.autostart = {
-    enable = true;
-    entries = [
-      "${pkgs.element-desktop}/share/applications/element-desktop.desktop" # ${pkgs.element-desktop}/share/applications/
-    ];
-  };
-
-  xdg.mimeApps = {
-    enable = true;
-    defaultApplications = {
-      "text/html" = "librewolf.desktop";
-      "x-scheme-handler/http" = "librewolf.desktop";
-      "x-scheme-handler/https" = "librewolf.desktop";
-      "x-scheme-handler/about" = "librewolf.desktop";
-      "x-scheme-handler/unknown" = "librewolf.desktop";
-    };
-  };
-  xdg.configFile."mimeapps.list".force = true;
 }
