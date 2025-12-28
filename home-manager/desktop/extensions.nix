@@ -196,6 +196,7 @@
       "_storage_free_"
     ];
     "extensions/vitals/position-in-panel" = 0;
+    extensions/vitals/fixed-widths
     /*
       "org/gnome/desktop/interface" = {
          color-scheme = "prefer-dark";
