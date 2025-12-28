@@ -121,11 +121,11 @@ in
           keep-going = true
           log-lines = 20
 
-          !include ${config.sops.secrets."system/nix-token".path}
+          #!include ${config.sops.secrets."system/nix-token".path}
         '';
       };
       # NIX_CONFIG="extra-access-tokens = github.com=github_pat_XYZ" nix ...
-      
+
       # https://github.com/NixOS/nix/issues/6536
       sops.secrets."system/nix-token" = {
         mode = "0440";
