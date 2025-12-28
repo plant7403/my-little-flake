@@ -482,7 +482,7 @@
         "_memory_usage_"
         "_processor_usage_"
 
-        "_network_public_ip_"
+
         "__network-rx_max__"
         "__network-tx_max__"
         "_storage_free_"
