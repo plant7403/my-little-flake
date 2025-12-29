@@ -53,6 +53,8 @@
     gnomeExtensions.tweaks-in-system-menu
     gnomeExtensions.systemd-manager
 
+    
+
     dconf2nix
   ];
 
