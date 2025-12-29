@@ -94,7 +94,7 @@
     textsnatcher
     normcap
 
-    
+    doclt
 
     aircrack-ng # wifi tool
     arping # arp tool
