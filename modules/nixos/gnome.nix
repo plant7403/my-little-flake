@@ -135,7 +135,7 @@ in
         fonts = {
           sansSerif = {
             package = pkgs.nerd-fonts.adwaita-mono;
-            name = "Adwaita Mono";
+            name = "Adwaita Mono 11";
           };
           serif = {
             package = pkgs.nerd-fonts.adwaita-mono;
