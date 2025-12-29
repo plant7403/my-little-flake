@@ -126,7 +126,6 @@
     wifite2 # wifi network auditor
     wireshark # network traffic analyzer
     zap # web app penetration testing
-
   ];
 
   programs.home-manager.enable = true;

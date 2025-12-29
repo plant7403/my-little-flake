@@ -66,6 +66,8 @@ in
       ];
 
       programs.dconf.enable = true;
+
+      xdg.mime.enable
       environment.systemPackages = with pkgs; [
         gnome-tweaks
         libsecret
