@@ -441,7 +441,7 @@ in
         "net.core.default_qdisc" = "cake";
       };
     })
-    (mkif cfg.av {
+    (mkIf cfg.av {
       environment.systemPackages = [
         pkgs.clamav
       ];
