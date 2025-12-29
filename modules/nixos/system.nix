@@ -437,6 +437,7 @@ in
         "net.core.default_qdisc" = "cake";
       };
     })
+    
     (mkIf cfg.usbguard.enable (mkMerge [
       {
         ## USBGuard
