@@ -79,6 +79,9 @@
       #11434
       #1080
       33333
+
+      80
+      443
     ];
     #allowedUDPPorts = [
     #];
@@ -298,7 +301,7 @@
   };
 
   networking.firewall.allowedTCPPorts = [
-    
+
   ];
 
   security.acme = {
