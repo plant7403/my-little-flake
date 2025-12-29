@@ -305,12 +305,10 @@ with lib.hm.gvariant;
         "dash-to-dock@micxgx.gmail.com"
         "clipboard-indicator@tudmotu.com"
         "switcher@landau.fi"
-        "gsconnect@andyholmes.github.io"
-        "gsconnect@andyholmes.github.io"
+
         "focus-follows-workspace@christopher.luebbemeier.gmail.com"
         "grand-theft-focus@zalckos.github.com"
         "window-commander@gnikolaos.gr"
-
 
         "textgrabber@pierrethibault.dev"
       ];
