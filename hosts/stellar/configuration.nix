@@ -293,7 +293,7 @@
 
   services.nginx = {
     enable = true;
-    virtualHosts."test.stellar.net.pak" = {
+    virtualHosts."test.stellar.net.pak.academy" = {
       enableACME = true;
       forceSSL = true;
       root = "/var/www/blog";
