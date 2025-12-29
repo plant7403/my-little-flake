@@ -201,7 +201,7 @@ with lib.hm.gvariant;
       binding = [ "<Shift><super>t" ];
       command = "ghostty";
       name = "ghostty";
-    };
+    };U
 
     "org/gnome/shell" = {
       disable-user-extensions = false;
