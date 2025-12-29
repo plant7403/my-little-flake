@@ -310,8 +310,8 @@ with lib.hm.gvariant;
         "focus-follows-workspace@christopher.luebbemeier.gmail.com"
         "grand-theft-focus@zalckos.github.com"
         "window-commander@gnikolaos.gr"
-        "gsconnect@andyholmes.github.io"
-        
+
+
         "textgrabber@pierrethibault.dev"
       ];
       favorite-apps = [
