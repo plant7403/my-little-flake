@@ -92,6 +92,7 @@
 
     toml2nix
     textsnatcher
+    normcap
 
     aircrack-ng # wifi tool
     arping # arp tool
