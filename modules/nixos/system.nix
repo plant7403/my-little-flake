@@ -35,7 +35,7 @@ in
       type = types.bool;
       default = false;
     };
-    hardening = mkOption {
+    av = mkOption {
       type = types.bool;
       default = false;
     };
