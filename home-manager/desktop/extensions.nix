@@ -53,7 +53,7 @@
     gnomeExtensions.tweaks-in-system-menu
     gnomeExtensions.systemd-manager
 
-    gnomeExtensions.textgrabber
+    gnomeExtensions.text-grabber
 
     dconf2nix
   ];
