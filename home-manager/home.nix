@@ -91,6 +91,7 @@
     distroshelf
 
     toml2nix
+    TextSnatcher
 
     aircrack-ng # wifi tool
     arping # arp tool
