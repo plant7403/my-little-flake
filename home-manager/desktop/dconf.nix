@@ -312,6 +312,7 @@ with lib.hm.gvariant;
         "window-commander@gnikolaos.gr"
         "gsconnect@andyholmes.github.io"
         "gsconnect@andyholmes.github.io"
+        textgrabber@pierrethibault.dev
       ];
       favorite-apps = [
         "com.mitchellh.ghostty.desktop"
