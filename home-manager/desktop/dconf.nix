@@ -129,7 +129,7 @@ with lib.hm.gvariant;
       cursor-theme = "Posy_Cursor";
       document-font-name = "Adwaita Mono  11";
       enable-animations = true;
-      font-name = "Adwaita Mono 11";
+      font-name = "Adwaita Mono 12";
       gtk-theme = "adw-gtk3";
       icon-theme = "rose-pine-dawn";
       monospace-font-name = "Adwaita Mono 11";
