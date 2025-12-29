@@ -69,6 +69,8 @@ in
 
       xdg.mime.enable = true;
 
+      xdg.portal.enable = true;
+
       environment.systemPackages = with pkgs; [
         gnome-tweaks
         libsecret
