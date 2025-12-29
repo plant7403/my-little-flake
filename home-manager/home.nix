@@ -94,6 +94,8 @@
     textsnatcher
     normcap
 
+    
+
     aircrack-ng # wifi tool
     arping # arp tool
     bettercap # mitm tool
