@@ -36,6 +36,7 @@ let
     "editor.guides.bracketPairs" = true;
     "editor.wordWrap" = "off";
     "diffEditor.wordWrap" = "off";
+
     "explorer.compactFolders" = true;
     "explorer.decorations.badges" = true;
     "explorer.fileNesting.enabled" = false;
