@@ -286,5 +286,7 @@
     }
   '';
   services.dashy.virtualHost.domain = "localhost";
+
+  
   #services.dashy.finalDrv
 }
