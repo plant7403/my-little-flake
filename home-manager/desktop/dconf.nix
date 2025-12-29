@@ -124,7 +124,7 @@ with lib.hm.gvariant;
       document-font-name = lib.mkForce "Adwaita Mono  11";
       enable-animations = true;
       font-name = lib.mkForce "Adwaita Mono 11";
-      gtk-theme = "Stylix";
+      #gtk-theme = "Stylix";
       icon-theme = "rose-pine-dawn";
       monospace-font-name = lib.mkForce "Adwaita Mono 11";
     };
