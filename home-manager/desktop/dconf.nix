@@ -311,8 +311,8 @@ with lib.hm.gvariant;
         "grand-theft-focus@zalckos.github.com"
         "window-commander@gnikolaos.gr"
         "gsconnect@andyholmes.github.io"
-        "gsconnect@andyholmes.github.io"
-        textgrabber@pierrethibault.dev
+        
+        "textgrabber@pierrethibault.dev"
       ];
       favorite-apps = [
         "com.mitchellh.ghostty.desktop"
