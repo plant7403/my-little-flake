@@ -36,6 +36,7 @@ let
     "editor.guides.bracketPairs" = true;
     "editor.wordWrap" = "off";
     "diffEditor.wordWrap" = "off";
+    "explorer.sortOrder": "type"
     # "blockman.n33A01B2FromDepth0ToInwardForAllBackgrounds" = "10,0,0,1; none";
     #"editor.fontFamily" = "Operator Mono, Menlo, Monaco, 'Courier New', monospace";
     #"terminal.integrated.fontFamily" = "'Operator Mono', 'Inconsolata for Powerline', monospace";
