@@ -139,7 +139,7 @@ in
           };
           serif = {
             package = pkgs.nerd-fonts.adwaita-mono;
-            name = "Adwaita Mono";
+            name = lib.mkDefault "Adwaita Mono";
           };
           monospace = {
             package = pkgs.nerd-fonts.adwaita-mono;
