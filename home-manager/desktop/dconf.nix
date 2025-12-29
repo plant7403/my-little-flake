@@ -305,11 +305,9 @@ with lib.hm.gvariant;
         "dash-to-dock@micxgx.gmail.com"
         "clipboard-indicator@tudmotu.com"
         "switcher@landau.fi"
-
         "focus-follows-workspace@christopher.luebbemeier.gmail.com"
         "grand-theft-focus@zalckos.github.com"
         "window-commander@gnikolaos.gr"
-
         "textgrabber@pierrethibault.dev"
       ];
       favorite-apps = [
