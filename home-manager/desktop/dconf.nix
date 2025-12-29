@@ -218,7 +218,7 @@ with lib.hm.gvariant;
       edge-tiling = false;
       experimental-features = [
         "variable-refresh-rate"
-        "scale-monitor-framebuffer"
+        #"scale-monitor-framebuffer"
       ];
       workspaces-only-on-primary = false;
     };
