@@ -295,7 +295,8 @@
     enable = true;
     virtualHosts."test.stellar.net.pak.academy" = {
       enableACME = true;
-      forceSSL = true;
+      forceSSL = true;    enableACME = true;
+    forceSSL = true;
       root = "/var/www/blog";
     };
   };
