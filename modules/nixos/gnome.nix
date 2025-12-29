@@ -70,6 +70,7 @@ in
       xdg.mime.enable = true;
 
       xdg.portal.enable = true;
+      gvfs
 
       environment.systemPackages = with pkgs; [
         gnome-tweaks
