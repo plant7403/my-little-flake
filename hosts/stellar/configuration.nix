@@ -293,17 +293,19 @@
 
   services.nginx = {
     enable = true;
-    virtualHosts."test.example.com" = {
+    virtualHosts."test.stellar.head" = {
       enableACME = true;
       forceSSL = true;
       root = "/var/www/blog";
     };
   };
 
- /*  networking.firewall.allowedTCPPorts = [
-    80
-    443
-  ]; */
+  /*
+    networking.firewall.allowedTCPPorts = [
+      80
+      443
+    ];
+  */
 
   security.acme = {
     # Accept the CA’s terms of service. The default provider is Let’s Encrypt, you can find their ToS at https://letsencrypt.org/repository/.
