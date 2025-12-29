@@ -126,7 +126,7 @@ with lib.hm.gvariant;
       font-name = lib.mkForce "Adwaita Mono 11";
       gtk-theme = "Stylix";
       icon-theme = "rose-pine-dawn";
-      monospace-font-name = "Adwaita Mono 11";
+      monospace-font-name = lib.mkForce "Adwaita Mono 11";
     };
 
     "org/gnome/desktop/notifications" = {
