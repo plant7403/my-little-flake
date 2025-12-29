@@ -437,7 +437,14 @@ in
         "net.core.default_qdisc" = "cake";
       };
     })
-    
+    (mkif cfg.av {
+      environment.systemPackages = [
+        pkgs.clamav
+      ];
+      services.clamav.daemon.enable = true;
+
+      services.clamav.updater.enable = true;
+    })
     (mkIf cfg.usbguard.enable (mkMerge [
       {
         ## USBGuard
