@@ -312,6 +312,6 @@
     acceptTerms = true;
     # Optional: You can configure the email address used with Let's Encrypt.
     # This way you get renewal reminders (automated by NixOS) as well as expiration emails.
-    defaults.email = "ssl@";
+    defaults.email = "ssl@uwuu.space";
   };
 }
