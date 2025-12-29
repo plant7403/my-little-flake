@@ -121,7 +121,7 @@ with lib.hm.gvariant;
       accent-color = "teal";
       cursor-size = 24;
       cursor-theme = "Posy_Cursor";
-      document-font-name = "Adwaita Mono  11";
+      document-font-name = lib.mk"Adwaita Mono  11";
       enable-animations = true;
       font-name = "Adwaita Mono 11";
       gtk-theme = "Stylix";
