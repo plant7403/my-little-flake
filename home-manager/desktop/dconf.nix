@@ -61,8 +61,8 @@ with lib.hm.gvariant;
       translate = true;
     };
 
-    "org/gnome/desktop/app-folders/folders/556ad1f7-2bab-4919-aa2f-54a82c359f17"]
-apps=['startcenter.desktop', 'base.desktop', 'calc.desktop', 'draw.desktop', 'impress.desktop', 'math.desktop', 'writer.desktop']
+    "org/gnome/desktop/app-folders/folders/556ad1f7-2bab-4919-aa2f-54a82c359f17"
+apps=["startcenter.desktop", "base.desktop", "calc.desktop", "draw.desktop", "impress.desktop', 'math.desktop', 'writer.desktop']
 name='Oficina'
 
     "org/gnome/desktop/background" = {
