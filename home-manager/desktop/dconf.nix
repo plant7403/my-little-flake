@@ -34,12 +34,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/desktop/app-folders" = {
-      folder-children = [
-        "System"
-        "Utilities"
-        "YaST"
-        "Pardus"
-      ];
+      folder-children = [ "System" "Utilities" "YaST" "Pardus" ];
     };
 
     "org/gnome/desktop/app-folders/folders/Pardus" = {
@@ -49,26 +44,13 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/desktop/app-folders/folders/System" = {
-      apps = [
-        "org.gnome.baobab.desktop"
-        "org.gnome.DiskUtility.desktop"
-        "org.gnome.Logs.desktop"
-        "org.gnome.Sysprof.desktop"
-        "org.gnome.SystemMonitor.desktop"
-        "org.gnome.tweaks.desktop"
-      ];
+      apps = [ "org.gnome.baobab.desktop" "org.gnome.DiskUtility.desktop" "org.gnome.Logs.desktop" "org.gnome.Sysprof.desktop" "org.gnome.SystemMonitor.desktop" "org.gnome.tweaks.desktop" ];
       name = "X-GNOME-Shell-System.directory";
       translate = true;
     };
 
     "org/gnome/desktop/app-folders/folders/Utilities" = {
-      apps = [
-        "org.gnome.Decibels.desktop"
-        "org.gnome.Connections.desktop"
-        "org.gnome.Papers.desktop"
-        "org.gnome.font-viewer.desktop"
-        "org.gnome.Loupe.desktop"
-      ];
+      apps = [ "org.gnome.Decibels.desktop" "org.gnome.Connections.desktop" "org.gnome.Papers.desktop" "org.gnome.font-viewer.desktop" "org.gnome.Loupe.desktop" ];
       name = "X-GNOME-Shell-Utilities.directory";
       translate = true;
     };
@@ -87,39 +69,9 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/desktop/input-sources" = {
-      mru-sources = [
-        (mkTuple [
-          "xkb"
-          "us"
-        ])
-        (mkTuple [
-          "xkb"
-          "ru"
-        ])
-        (mkTuple [
-          "xkb"
-          "es"
-        ])
-      ];
-      sources = [
-        (mkTuple [
-          "xkb"
-          "us"
-        ])
-        (mkTuple [
-          "xkb"
-          "ru"
-        ])
-        (mkTuple [
-          "xkb"
-          "es"
-        ])
-      ];
-      xkb-options = [
-        "ctrl:nocaps"
-        "ctrl:nocaps"
-        "ctrl:nocaps"
-      ];
+      mru-sources = [ (mkTuple [ "xkb" "us" ]) (mkTuple [ "xkb" "ru" ]) (mkTuple [ "xkb" "es" ]) ];
+      sources = [ (mkTuple [ "xkb" "us" ]) (mkTuple [ "xkb" "ru" ]) (mkTuple [ "xkb" "es" ]) ];
+      xkb-options = [ "ctrl:nocaps" "ctrl:nocaps" "ctrl:nocaps" "ctrl:nocaps" ];
     };
 
     "org/gnome/desktop/interface" = {
@@ -136,13 +88,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/desktop/notifications" = {
-      application-children = [
-        "librewolf"
-        "gnome-about-panel"
-        "element-desktop"
-        "org-keepassxc-keepassxc"
-        "org-gnome-extensions"
-      ];
+      application-children = [ "librewolf" "gnome-about-panel" "element-desktop" "org-keepassxc-keepassxc" "org-gnome-extensions" ];
     };
 
     "org/gnome/desktop/notifications/application/element-desktop" = {
@@ -166,35 +112,30 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/desktop/wm/keybindings" = {
-      maximize = [ ];
-      move-to-monitor-down = [ ];
-      move-to-monitor-left = [ ];
-      move-to-monitor-right = [ ];
-      move-to-monitor-up = [ ];
-      move-to-workspace-down = [ ];
-      move-to-workspace-left = [ ];
-      move-to-workspace-right = [ ];
-      move-to-workspace-up = [ ];
-      switch-applications = [ ];
-      switch-applications-backward = [ ];
-      switch-group = [ ];
-      switch-group-backward = [ ];
-      switch-panels = [ ];
-      switch-panels-backward = [ ];
-      switch-to-workspace-1 = [ ];
-      switch-to-workspace-last = [ ];
-      switch-to-workspace-left = [ ];
-      switch-to-workspace-right = [ ];
-      unmaximize = [ ];
+      maximize = [];
+      move-to-monitor-down = [];
+      move-to-monitor-left = [];
+      move-to-monitor-right = [];
+      move-to-monitor-up = [];
+      move-to-workspace-down = [];
+      move-to-workspace-left = [];
+      move-to-workspace-right = [];
+      move-to-workspace-up = [];
+      switch-applications = [];
+      switch-applications-backward = [];
+      switch-group = [];
+      switch-group-backward = [];
+      switch-panels = [];
+      switch-panels-backward = [];
+      switch-to-workspace-1 = [];
+      switch-to-workspace-last = [];
+      switch-to-workspace-left = [];
+      switch-to-workspace-right = [];
+      unmaximize = [];
     };
 
     "org/gnome/desktop/wm/preferences" = {
-      workspace-names = [
-        "Workspace 1"
-        "Workspace 2"
-        "Workspace 3"
-        "Workspace 4"
-      ];
+      workspace-names = [ "Workspace 1" "Workspace 2" "Workspace 3" "Workspace 4" ];
     };
 
     "org/gnome/eog/view" = {
@@ -227,13 +168,13 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/mutter/keybindings" = {
-      cancel-input-capture = [ ];
-      toggle-tiled-left = [ ];
-      toggle-tiled-right = [ ];
+      cancel-input-capture = [];
+      toggle-tiled-left = [];
+      toggle-tiled-right = [];
     };
 
     "org/gnome/mutter/wayland/keybindings" = {
-      restore-shortcuts = [ ];
+      restore-shortcuts = [];
     };
 
     "org/gnome/nautilus/preferences" = {
@@ -245,11 +186,8 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/settings-daemon/plugins/media-keys" = {
-      custom-keybindings = [
-        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
-        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
-      ];
-      rotate-video-lock-static = [ ];
+      custom-keybindings = [ "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/" ];
+      rotate-video-lock-static = [];
       www = [ "<Shift><Control>s" ];
     };
 
@@ -267,49 +205,9 @@ with lib.hm.gvariant;
 
     "org/gnome/shell" = {
       disable-user-extensions = false;
-      disabled-extensions = [
-        "tweaks-system-menu@extensions.gnome-shell.fifi.org"
-        "systemd-manager@hardpixel.eu"
-        "just-perfection-desktop@just-perfection"
-        "firefox-profiles@arnaud.work"
-      ];
-      enabled-extensions = [
-        "user-theme@gnome-shell-extensions.gcampax.github.com"
-        "caffeine@patapon.info"
-        "drive-menu@gnome-shell-extensions.gcampax.github.com"
-        "appindicatorsupport@rgcjonas.gmail.com"
-        "blur-my-shell@aunetx"
-        "screenshot-window-sizer@gnome-shell-extensions.gcampax.github.com"
-        "status-icons@gnome-shell-extensions.gcampax.github.com"
-        "tailscale@joaophi.github.com"
-        "trayIconsReloaded@selfmade.pl"
-        "gsconnect@andyholmes.github.io"
-        "Vitals@CoreCoding.com"
-        "clipqr@drien.com"
-        "ddterm@amezin.github.com"
-        "todoit@wassimbj.github.io"
-        "paperwm@paperwm.github.com"
-        "dash-to-dock@micxgx.gmail.com"
-        "clipboard-indicator@tudmotu.com"
-        "switcher@landau.fi"
-        "gsconnect@andyholmes.github.io"
-        "gsconnect@andyholmes.github.io"
-        "focus-follows-workspace@christopher.luebbemeier.gmail.com"
-        "grand-theft-focus@zalckos.github.com"
-        "window-commander@gnikolaos.gr"
-        "gsconnect@andyholmes.github.io"
-      ];
-      favorite-apps = [
-        "com.mitchellh.ghostty.desktop"
-        "org.gnome.Nautilus.desktop"
-        "librewolf.desktop"
-        "chromium-browser.desktop"
-        "codium.desktop"
-        "element-desktop.desktop"
-        "signal.desktop"
-        "obsidian.desktop"
-        "org.keepassxc.KeePassXC.desktop"
-      ];
+      disabled-extensions = [ "tweaks-system-menu@extensions.gnome-shell.fifi.org" "systemd-manager@hardpixel.eu" "just-perfection-desktop@just-perfection" "firefox-profiles@arnaud.work" ];
+      enabled-extensions = [ "user-theme@gnome-shell-extensions.gcampax.github.com" "caffeine@patapon.info" "drive-menu@gnome-shell-extensions.gcampax.github.com" "appindicatorsupport@rgcjonas.gmail.com" "blur-my-shell@aunetx" "screenshot-window-sizer@gnome-shell-extensions.gcampax.github.com" "status-icons@gnome-shell-extensions.gcampax.github.com" "tailscale@joaophi.github.com" "trayIconsReloaded@selfmade.pl" "gsconnect@andyholmes.github.io" "Vitals@CoreCoding.com" "clipqr@drien.com" "ddterm@amezin.github.com" "todoit@wassimbj.github.io" "paperwm@paperwm.github.com" "dash-to-dock@micxgx.gmail.com" "clipboard-indicator@tudmotu.com" "switcher@landau.fi" "gsconnect@andyholmes.github.io" "gsconnect@andyholmes.github.io" "focus-follows-workspace@christopher.luebbemeier.gmail.com" "grand-theft-focus@zalckos.github.com" "window-commander@gnikolaos.gr" "gsconnect@andyholmes.github.io" "gsconnect@andyholmes.github.io" ];
+      favorite-apps = [ "com.mitchellh.ghostty.desktop" "org.gnome.Nautilus.desktop" "librewolf.desktop" "chromium-browser.desktop" "codium.desktop" "element-desktop.desktop" "signal.desktop" "obsidian.desktop" "org.keepassxc.KeePassXC.desktop" ];
       welcome-dialog-last-shown-version = "49.2";
     };
 
@@ -334,12 +232,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/shell/extensions/blur-my-shell/applications" = {
-      blacklist = [
-        "Plank"
-        "com.desktop.ding"
-        "Conky"
-        "com.github.amezin.ddterm"
-      ];
+      blacklist = [ "Plank" "com.desktop.ding" "Conky" "com.github.amezin.ddterm" ];
       blur = true;
       brightness = 1.0;
       dynamic-opacity = true;
@@ -372,7 +265,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/shell/extensions/caffeine" = {
-      indicator-position-max = 2;
+      indicator-position-max = 3;
       user-enabled = true;
     };
 
@@ -396,7 +289,7 @@ with lib.hm.gvariant;
       restore-attach-modal-dialogs = "true";
       restore-edge-tiling = "true";
       restore-keybinds = ''
-        {}\n
+        {}
       '';
       restore-workspaces-only-on-primary = "true";
       selection-border-radius-bottom = 10;
@@ -408,12 +301,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/shell/extensions/paperwm/workspaces" = {
-      list = [
-        "8ee7a3f5-9c8f-41c6-9fbb-9460e90b3d5e"
-        "fb33d93a-7612-4232-a046-746b35b41117"
-        "2d7ba989-0bd9-4803-8622-443bed51ef7d"
-        "789674cc-6a27-4fad-9e11-db39432da315"
-      ];
+      list = [ "8ee7a3f5-9c8f-41c6-9fbb-9460e90b3d5e" "fb33d93a-7612-4232-a046-746b35b41117" "2d7ba989-0bd9-4803-8622-443bed51ef7d" "789674cc-6a27-4fad-9e11-db39432da315" ];
     };
 
     "org/gnome/shell/extensions/paperwm/workspaces/2d7ba989-0bd9-4803-8622-443bed51ef7d" = {
@@ -447,14 +335,7 @@ with lib.hm.gvariant;
       fixed-widths = true;
       hide-icons = false;
       hide-zeros = false;
-      hot-sensors = [
-        "_memory_usage_"
-        "_processor_usage_"
-        "__network-rx_max__"
-        "__network-tx_max__"
-        "_network_public_ip_"
-        "_storage_free_"
-      ];
+      hot-sensors = [ "_memory_usage_" "_processor_usage_" "__network-rx_max__" "__network-tx_max__" "_network_public_ip_" "_storage_free_" ];
       icon-style = 1;
       include-static-info = false;
       menu-centered = false;
@@ -463,14 +344,14 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/shell/keybindings" = {
-      focus-active-notification = [ ];
-      shift-overview-down = [ ];
-      shift-overview-up = [ ];
-      toggle-message-tray = [ ];
+      focus-active-notification = [];
+      shift-overview-down = [];
+      shift-overview-up = [];
+      toggle-message-tray = [];
     };
 
     "org/gnome/shell/world-clocks" = {
-      locations = [ ];
+      locations = [];
     };
 
     "org/gnome/tweaks" = {
