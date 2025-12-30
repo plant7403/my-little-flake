@@ -298,6 +298,11 @@
       #forceSSL = true;
       root = "/var/www/blog";
     };
+    virtualHosts."test.stellar.internal" = {
+      #enableACME = true;
+      #forceSSL = true;
+      root = "/var/www/blog";
+    };
   };
 
   /*
