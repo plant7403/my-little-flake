@@ -69,8 +69,17 @@ in
 
       xdg.mime.enable = true;
 
-      xdg.portal.enable = true;
-      xdg.portal.configPackages
+      services.dbus.enable = true;
+      xdg.portal = {
+        enable = true;
+        extraPortals = with pkgs; [
+          xdg-desktop-portal
+          xdg-desktop-portal-gtk
+        ];
+        config = {
+          common.default = "*";
+        };
+      };
       services.gvfs.enable = true;
 
       nixpkgs.overlays = [
