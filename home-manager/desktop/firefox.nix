@@ -1165,6 +1165,10 @@
             }
             {
               name = "dash.pak.academy";
+              url = "https://dash.pak.academy/";
+            }
+                        {
+              name = "git.pak.academy";
               url = "https://git.pak.academy/";
             }
             {
