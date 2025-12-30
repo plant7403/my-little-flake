@@ -1169,7 +1169,7 @@
             }
                         {
               name = "passwords.pak.academy";
-              url = "https://git.pak.academy/";
+              url = "https://passwords.pak.academy/";
             }
             {
               name = "expat food";
