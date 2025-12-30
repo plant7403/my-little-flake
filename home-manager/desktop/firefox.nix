@@ -1168,7 +1168,7 @@
               url = "https://dash.pak.academy/";
             }
                         {
-              name = "git.pak.academy";
+              name = "passwords.pak.academy";
               url = "https://git.pak.academy/";
             }
             {
