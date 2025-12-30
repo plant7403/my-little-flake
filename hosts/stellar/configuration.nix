@@ -70,6 +70,9 @@
     };
     tpm = true;
     btrfs = true; # !!! can be  actually done with config.filesystems... like if btrfs is true then this
+    av = true;
+    distributed
+
   };
 
   modules.yubikey.enable = true;
