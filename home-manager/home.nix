@@ -184,7 +184,7 @@
       GUI = {
         AdvancedSettings = true;
         ApplicationTheme = "classic";
-        CompactMode = false;-
+        CompactMode = false;
         HidePasswords = true;
         ColorPasswords = true;
         ShowTrayIcon = true;
