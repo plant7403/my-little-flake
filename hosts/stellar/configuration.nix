@@ -302,9 +302,9 @@
       #enableACME = true;
       #forceSSL = true;
       #root = "/var/www/blog";
-locations."/"
+locations."/" ={
       proxyPass = "http://127.0.0.1:9001";
-    };
+    };}
   };
 
   /*
