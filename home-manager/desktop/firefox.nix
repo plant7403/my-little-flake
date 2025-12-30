@@ -1167,13 +1167,13 @@
               name = "dash.pak.academy";
               url = "https://dash.pak.academy/";
             }
-                        {
+            {
               name = "passwords.pak.academy";
               url = "https://passwords.pak.academy/";
             }
-                        {
+            {
               name = "tasks.pak.academy";
-              url = "https://git.pak.academy/";
+              url = "https://tasks.pak.academy/";
             }
             {
               name = "expat food";
