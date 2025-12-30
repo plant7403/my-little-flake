@@ -39,6 +39,10 @@ in
       type = types.bool;
       default = false;
     };
+    av = mkOption {
+      type = types.bool;
+      default = false;
+    };
     usbguard.enable = mkOption {
       type = types.bool;
       default = false;
