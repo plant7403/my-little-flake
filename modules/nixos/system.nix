@@ -39,7 +39,7 @@ in
       type = types.bool;
       default = false;
     };
-    av = mkOption {
+    distributed = mkOption {
       type = types.bool;
       default = false;
     };
