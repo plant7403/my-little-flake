@@ -1160,8 +1160,8 @@
               url = "https://pak.academy/";
             }
             {
-              name = "git.pak academy";
-              url = "https://pak.academy/";
+              name = "git.pak.academy";
+              url = "https://git.pak.academy/";
             }
             {
               name = "expat food";
