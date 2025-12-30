@@ -476,7 +476,7 @@ in
           # default is 1 but may keep the builder idle in between builds
           maxJobs = 0;
           # how fast is the builder compared to your local machine
-          speedFactor = 2;
+          speedFactor = 0;
           supportedFeatures = [
             "nixos-test"
             "benchmark"
