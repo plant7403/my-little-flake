@@ -301,7 +301,7 @@
     virtualHosts."test.stellar.internal" = {
       #enableACME = true;
       #forceSSL = true;
-      root = "/var/www/blog";
+      #root = "/var/www/blog";
     };
   };
 
