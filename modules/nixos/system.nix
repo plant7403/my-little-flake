@@ -458,7 +458,7 @@ in
           # Will be used to call "ssh builder" to connect to the builder machine.
           # The details of the connection (user, port, url etc.)
           # are taken from your "~/.ssh/config" file.
-          hostName = "builder";
+          hostName = "horizon";
           # CPU architecture of the builder, and the operating system it runs.
           # Replace the line by the architecture of your builder, e.g.
           # - Normal Intel/AMD CPUs use "x86_64-linux"
