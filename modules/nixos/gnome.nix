@@ -70,6 +70,7 @@ in
       xdg.mime.enable = true;
 
       xdg.portal.enable = true;
+      xdg.portal.configPackages
       services.gvfs.enable = true;
 
       nixpkgs.overlays = [
