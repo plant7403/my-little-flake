@@ -50,10 +50,6 @@
 
   modules.sound.enable = true;
 
-  modules.av.enable = true;
-
-  modules.distributed.enable = true;
-
   modules.tailscale = {
     enable = true;
     exit = false;
