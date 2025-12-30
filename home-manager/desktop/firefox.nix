@@ -1171,6 +1171,10 @@
               name = "passwords.pak.academy";
               url = "https://passwords.pak.academy/";
             }
+                        {
+              name = "tasks.pak.academy";
+              url = "https://git.pak.academy/";
+            }
             {
               name = "expat food";
               url = "https://expat.food/";
