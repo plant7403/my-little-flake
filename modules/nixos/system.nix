@@ -449,7 +449,7 @@ in
 
       services.clamav.updater.enable = true;
     })
-    ({})
+    ( mkIf cfg.{})
     (mkIf cfg.usbguard.enable (mkMerge [
       {
         ## USBGuard
