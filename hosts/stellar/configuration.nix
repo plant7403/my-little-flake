@@ -291,7 +291,7 @@
     }
   '';
   services.dashy.virtualHost.domain = "localhost";
-  services.dashy.finalDrv
+  services.dashy.finalDrv = "/var/lib/dashy";
 
   services.nginx = {
     enable = true;
