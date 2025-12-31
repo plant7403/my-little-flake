@@ -128,12 +128,14 @@ in
 
         # Enable flakes and modern Nix command features
         extraOptions = ''
-          experimental-features = nix-command flakes
-          warn-dirty = false
-          keep-going = true
-          log-lines = 20
+              experimental-features = nix-command flakes
+              warn-dirty = false
+              keep-going = true
+              log-lines = 20
+               #NIX_SHOW_STATS=1
+          #NIX_COUNT_CALLS=1
 
-          #!include ${config.sops.secrets."system/nix-token".path}
+              #!include ${config.sops.secrets."system/nix-token".path}
         '';
       };
       # NIX_CONFIG="extra-access-tokens = github.com=github_pat_XYZ" nix ...
@@ -503,7 +505,7 @@ in
       nix.settings = {
         builders-use-substitutes = true;
       };
-     
+
     })
     (mkIf cfg.earlyoom {
       services.earlyoom = {
