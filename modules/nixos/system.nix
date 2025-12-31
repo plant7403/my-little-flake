@@ -556,7 +556,7 @@ in
             ")$'" # things we want to not kill
             newAvoid # things we want to kill as soon as possible
             "--prefer"
-            "${appsToPrefer}"
+            "'^(${appsToPrefer}"
             ")$'"
           ];
 
