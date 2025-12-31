@@ -132,8 +132,7 @@ in
           warn-dirty = false
           keep-going = true
           log-lines = 20
-          #NIX_SHOW_STATS=1
-          #NIX_COUNT_CALLS=1
+
 
           #!include ${config.sops.secrets."system/nix-token".path}
         '';
