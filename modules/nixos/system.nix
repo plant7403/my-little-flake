@@ -531,6 +531,7 @@ in
               "Xwayland" # avoid killing the X11 server
               "gpg-agent" # avoid killing the gpg agent
             ];
+            appsToAvoid = 
 
             # apps that we would like killed first
             # those are likely the ones draining most memory
