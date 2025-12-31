@@ -119,7 +119,6 @@
           })
         ];
       };
-
     in
     {
 
@@ -128,7 +127,9 @@
       overlays = import ./overlays { inherit inputs; };
       nixosModules = import ./modules/nixos;
       homeManagerModules = import ./modules/home-manager;
-
+      checks = eachSystem (pkgs: {
+        formatting = treefmtEval.${pkgs.system}.config.build.check self;
+      });
       nixosConfigurations = {
         immortal = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
