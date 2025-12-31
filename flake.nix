@@ -127,7 +127,7 @@ pkgs = import nixpkgs { inherit system; };
       {
         imports = [
           # Optional: use external flake logic, e.g.
-          inputs.foo.flakeModules.default
+          #inputs.foo.flakeModules.default
         ];
         flake = {
           # Put your original flake attributes here.
