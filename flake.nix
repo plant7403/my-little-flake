@@ -142,16 +142,15 @@
         #packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
         formatter = eachSystem (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
 
-        checks = eachSystem (pkgs: {
-          formatting = treefmtEval.${pkgs.system}.config.build.check self;
-        }) (builtins.mapAttrs (_system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib);
-
         overlays = import ./overlays {
           inherit inputs;
         };
         nixosModules = import ./modules/nixos;
         homeManagerModules = import ./modules/home-manager;
 
+checks = eachSystem (pkgs: {
+          formatting = treefmtEval.${pkgs.system}.config.build.check self;
+        }) (builtins.mapAttrs (_system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib);
         nixosConfigurations = {
           immortal = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
