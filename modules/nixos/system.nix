@@ -547,7 +547,7 @@ in
           [
             "-g" # kill all processes within a process group
             "--avoid '^(${appsToAvoid})$'"'' # things we want to not kill
-            "--prefer '^(${appsToPrefer})$'"'' # things we want to kill as soon as possible
+            "--prefer '^(${appsToPrefer})$'" # things we want to kill as soon as possible
           ];
 
         # we should ideally write the logs into a designated log file; or even better, to the journal
