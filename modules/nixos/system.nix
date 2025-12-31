@@ -534,10 +534,6 @@ in
               "gpg-agent" # avoid killing the gpg agent
             ];
 
-            newAvoid = concatStrings [
-
-            ];
-
             # apps that we would like killed first
             # those are likely the ones draining most memory
             appsToPrefer = concatStringsSep "|" [
@@ -560,7 +556,9 @@ in
           in
           [
             "-g" # kill all processes within a process group
-            newPrefer # things we want to not kill
+            "--avoid '^("
+            "${appsToAvoid}"
+            ")$'" # things we want to not kill
             newAvoid # things we want to kill as soon as possible
           ];
 
