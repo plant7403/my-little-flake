@@ -98,9 +98,7 @@
 >>>>>>> c645b353 (changes from stellar on mié 31 dic 2025 10:59:45 CET)
 
 
-    in
-
-    flake-parts.lib.mkFlake { inherit inputs; } (
+    in  flake-parts.lib.mkFlake { inherit inputs; } (
       top@{
         config,
         withSystem,
