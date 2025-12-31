@@ -498,7 +498,6 @@ in
       };
     })
     (mkIf cfg.earlyoom {
-      # @blocksort asc
       services.earlyoom = {
         killHook = '''';
         extraArgs = [ ];
