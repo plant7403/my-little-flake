@@ -505,9 +505,9 @@ in
 
         #freeMemKillThreshold = "";
         freeMemThreshold = "4";
-        freeSwapKillThreshold = "";
+        #freeSwapKillThreshold = "";
         freeSwapThreshold = "2";
-        reportInterval = "";
+        #reportInterval = "";
         extraArgs =
           let
             # applications that we would like to avoid killing
