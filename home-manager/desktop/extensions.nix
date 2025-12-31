@@ -61,7 +61,7 @@
   services.polkit-gnome.enable = true;
 
   services.tailscale-systray.enable
-  services.tailscale-systray.package
+  
   services.trayscale.enable
 
   /*
