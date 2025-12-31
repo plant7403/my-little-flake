@@ -131,21 +131,10 @@
 
         #packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
         formatter = eachSystem (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
-        deployPkgs = import nixpkgs {
-        inherit system;
-        overlays = [
-          deploy-rs.overlay
-          (_self: super: {
-            deploy-rs = {
-              inherit (pkgs) deploy-rs;
-              lib = super.deploy-rs.lib;
-            };
-          })
-        ];
-      };
-      checks = eachSystem (pkgs: {
-        formatting = treefmtEval.${pkgs.system}.config.build.check self;
-      })      (builtins.mapAttrs (_system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib);
+
+        checks = eachSystem (pkgs: {
+          formatting = treefmtEval.${pkgs.system}.config.build.check self;
+        }) (builtins.mapAttrs (_system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib);
 
         overlays = import ./overlays {
           inherit inputs;
