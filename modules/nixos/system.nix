@@ -498,7 +498,7 @@ in
       };
     })
     (mkIf cfg.earlyoom {
-      services.earlyoom = {
+      services.earlyoom = {@blocksort
         killHook = '''';
         extraArgs = [ ];
         freeMemThreshold = "";
