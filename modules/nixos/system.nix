@@ -548,16 +548,14 @@ in
               # added 2024-05-12: PipeWire locked down my system as it failed to acquire RT privileges
               "pipewire(.*)" # catch pipewire and pipewire-pulse
             ];
-            newPrefer = concatStrings [
-
-            ];
           in
           [
             "-g" # kill all processes within a process group
             "--avoid '^("
             "${appsToAvoid}"
-            ")$'"  # things we want to not kill
+            ")$'" # things we want to not kill
             newAvoid # things we want to kill as soon as possible
+            
           ];
 
         # we should ideally write the logs into a designated log file; or even better, to the journal
