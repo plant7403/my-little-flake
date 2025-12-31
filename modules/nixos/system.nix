@@ -508,10 +508,9 @@ in
       services.earlyoom.freeMemKillThreshold = "";
       services.earlyoom.enableDebugInfo = true;
       services.earlyoom.enable = true;
-services.smartd = {
+      services.smartd = {
+        notifications.systembus-notify.enable = true;
 
-      notifications.systembus-notify.enable = true;
-      
         enable = true;
         devices = [
           {
@@ -519,7 +518,7 @@ services.smartd = {
           }
         ];
 
-};
+      };
 
     })
     (mkIf cfg.usbguard.enable (mkMerge [
