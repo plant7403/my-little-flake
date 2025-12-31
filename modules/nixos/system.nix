@@ -506,7 +506,7 @@ in
         freeMemKillThreshold = "";
         freeMemThreshold = "";
         freeSwapKillThreshold = "";
-        freeSwapThreshold = "";
+        freeSwapThreshold = "4";
         killHook = '''';
         reportInterval = "";
       };
