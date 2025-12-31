@@ -548,7 +548,7 @@ in
     '';
   };
 
-      ''}
+      '';};
 
       services.systembus-notify.enable = true;
 
