@@ -510,7 +510,6 @@ in
       services.earlyoom.enable = true;
 
       services.smartd.notifications.systembus-notify.enable = true;
-
       services.smartd = {
         enable = true;
         devices = [
