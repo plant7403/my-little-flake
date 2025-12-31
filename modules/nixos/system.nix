@@ -508,9 +508,11 @@ in
       services.earlyoom.freeMemKillThreshold = "";
       services.earlyoom.enableDebugInfo = true;
       services.earlyoom.enable = true;
+
+services.systembus-notify.enable
+
       services.smartd = {
         notifications.systembus-notify.enable = true;
-
         enable = true;
         devices = [
           {
