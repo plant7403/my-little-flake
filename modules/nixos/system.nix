@@ -552,8 +552,7 @@ in
           [
             "-g" # kill all processes within a process group
             "--avoid '^("
-            "${appsToAvoid}"
-            "" # things we want to not kill
+            "${appsToAvoid})$'" # things we want to not kill
             newAvoid # things we want to kill as soon as possible
             "--prefer"
             "'^(${appsToPrefer})$'"
