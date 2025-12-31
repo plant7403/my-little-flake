@@ -503,8 +503,7 @@ in
       nix.settings = {
         builders-use-substitutes = true;
       };
-      #NIX_SHOW_STATS=1
-      #NIX_COUNT_CALLS=1
+     
     })
     (mkIf cfg.earlyoom {
       services.earlyoom = {
