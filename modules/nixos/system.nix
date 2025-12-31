@@ -173,7 +173,7 @@ in
           clean.extraArgs = "--keep-since 4d --keep 3";
           flake = "/home/user/my-nixos-config"; # sets NH_OS_FLAKE variable for you
         };
-      */
+
       #nix.settings.download-buffer-size = 524288000;
 
       networking.hostName = cfg.hostname; # Define your hostname.
