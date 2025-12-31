@@ -304,10 +304,10 @@
                 boot.lanzaboote = {
                   enable = true;
                   pkiBundle = "/var/lib/sbctl";
-
                   autoGenerateKeys.enable = true;
                   autoEnrollKeys = {
                     enable = true;
+                    includeChecksumsFromTPM = true;
                     autoReboot = false;
                   };
                 };
