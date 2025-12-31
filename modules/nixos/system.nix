@@ -513,7 +513,7 @@ in
             # applications that we would like to avoid killing
             # when system is under high memory pressure
             appsToAvoid = concatStringsSep "|" [
-              "Hyprland" # avoid killing the graphical session
+              "Gnome" # avoid killing the graphical session
               "foot" # terminal, might have unsaved files
               "cryptsetup" # avoid killing the disk encryption manager
               "dbus-daemon" # avoid killing the dbus daemon
