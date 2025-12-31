@@ -546,7 +546,7 @@ in
       echo "Process $EARLYOOM_NAME ($EARLYOOM_PID) was killed"
     '';
   };
-        reportInterval = "";
+        
       };
 
       services.systembus-notify.enable = true;
