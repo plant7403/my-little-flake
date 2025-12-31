@@ -533,7 +533,7 @@ in
             ];
 
             newList = concatStrings [
-              "--avoid '^(
+              "--avoid '^("
               ${appsToAvoid}
               ")$'"
             ];
