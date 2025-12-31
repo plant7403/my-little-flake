@@ -522,7 +522,7 @@ in
           let
             # applications that we would like to avoid killing
             # when system is under high memory pressure
-            appsToAvoid = mkstring concatStringsSep "|" [
+            appsToAvoid = builtings.mkString concatStringsSep "|" [
               "Gnome" # avoid killing the graphical session
               "ghostty" # terminal, might have unsaved files
               "cryptsetup" # avoid killing the disk encryption manager
