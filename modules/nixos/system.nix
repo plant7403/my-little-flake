@@ -689,6 +689,8 @@ in
       systemd.tmpfiles.rules = [
         "d /snapshots 0755 root root"
       ];
+      zramSwap.enable = true;
+      zramSwap.memoryPercent = 30;
     })
 
   ];
