@@ -694,7 +694,7 @@ in
       zramSwap.algoritm = "zstd";
 
 
-      boot.tmp.useZram = true;
+      #boot.tmp.useZram = true;
     })
 
   ];
