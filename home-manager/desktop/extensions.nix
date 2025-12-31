@@ -60,9 +60,8 @@
 
   services.polkit-gnome.enable = true;
 
-  services.tailscale-systray.enable= true;
-
-  services.trayscale.enable
+  services.tailscale-systray.enable = true;
+  services.trayscale.enable = true;
 
   /*
     xdg.configFile."gtk-3.0/bookmarks".force = true;
