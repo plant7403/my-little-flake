@@ -592,7 +592,7 @@ in
         enable = true;
         devices = [
           {
-            device = "/dev/nvme0n1p2"; # FIXME: Change this to your actual disk
+            device = "/dev/nvme0"; # FIXME: Change this to your actual disk
           }
         ];
 
