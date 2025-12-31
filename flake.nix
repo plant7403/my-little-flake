@@ -119,115 +119,18 @@
           })
         ];
       };
-      checks = eachSystem (pkgs: {
-        formatting = treefmtEval.${pkgs.system}.config.build.check self;
-      });
+
     in
     {
 
       #packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
       formatter = eachSystem (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
-      overlays = import ./overlays {
-        inherit inputs;
-      };
+      overlays = import ./overlays { inherit inputs; };
       nixosModules = import ./modules/nixos;
       homeManagerModules = import ./modules/home-manager;
-
-<<<<<<< HEAD
-        overlays = import ./overlays {
-          inherit inputs;
-        };
-        nixosModules = import ./modules/nixos;
-        homeManagerModules = import ./modules/home-manager;
-
-        checks = eachSystem (pkgs: {
-          formatting = treefmtEval.${pkgs.system}.config.build.check self;
-        });
-        nixosConfigurations = {
-          immortal = nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-            specialArgs = { inherit inputs outputs; };
-            modules = [
-              ./hosts/immortal/configuration.nix
-              sops-nix.nixosModules.sops
-              disko.nixosModules.disko
-              lanzaboote.nixosModules.lanzaboote
-              (
-                {
-                  pkgs,
-                  lib,
-                  ...
-                }:
-                {
-                  environment.systemPackages = [
-                    pkgs.sbctl
-                  ];
-
-                  boot.loader.systemd-boot.enable = lib.mkForce false;
-                  boot.loader.systemd-boot.enable = lib.mkForce false;
-
-                  boot.lanzaboote = {
-                    enable = true;
-                    pkiBundle = "/var/lib/sbctl";
-                  };
-                }
-              )
-
-              #vscode-server.nixosModules.default
-              #({...}: {
-              #  services.vscode-server.enable = true;
-              #  services.vscode-server.installPath = "~/.vscodium-server";
-              #})
-            ];
-          };
-          luna = nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-            specialArgs = { inherit inputs outputs; };
-            modules = [
-              ./hosts/luna/configuration.nix
-              sops-nix.nixosModules.sops
-              home-manager.nixosModules.home-manager
-              {
-                home-manager.useGlobalPkgs = true;
-                home-manager.useUserPackages = true;
-                home-manager.users.egor = import ./home-manager/home.nix;
-                home-manager.extraSpecialArgs = { inherit inputs; };
-                home-manager.backupFileExtension = "backup";
-              }
-              lanzaboote.nixosModules.lanzaboote
-              (
-                {
-                  pkgs,
-                  lib,
-                  ...
-                }:
-                {
-                  environment.systemPackages = [
-                    pkgs.sbctl
-                  ];
-
-                  boot.loader.systemd-boot.enable = lib.mkForce false;
-                  boot.loader.systemd-boot.enable = lib.mkForce false;
-
-                  boot.lanzaboote = {
-                    enable = true;
-                    pkiBundle = "/var/lib/sbctl";
-                  };
-                }
-              )
-            ];
-          };
-          horizon = nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-            specialArgs = { inherit inputs outputs; };
-            modules = [
-              ./hosts/horizon/configuration.nix
-              sops-nix.nixosModules.sops
-              jovian.nixosModules.jovian
-              disko.nixosModules.disko
-              stylix.nixosModules.stylix
-              home-manager.nixosModules.home-manager
-=======
+checks = eachSystem (pkgs: {
+        formatting = treefmtEval.${pkgs.system}.config.build.check self;
+      });
       nixosConfigurations = {
         immortal = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
@@ -243,7 +146,6 @@
                 lib,
                 ...
               }:
->>>>>>> b42080ac (changes from stellar on mié 31 dic 2025 11:26:57 CET)
               {
                 environment.systemPackages = [
                   pkgs.sbctl
@@ -257,8 +159,6 @@
                 };
               }
             )
-
-
           ];
         };
         luna = nixpkgs.lib.nixosSystem {
