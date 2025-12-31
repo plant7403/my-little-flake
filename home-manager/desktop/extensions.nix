@@ -60,8 +60,8 @@
 
   services.polkit-gnome.enable = true;
 
-  services.tailscale-systray.enable
-  
+  services.tailscale-systray.enable= true;
+
   services.trayscale.enable
 
   /*
