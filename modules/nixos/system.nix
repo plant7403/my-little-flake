@@ -557,7 +557,7 @@ in
             newAvoid # things we want to kill as soon as possible
             "--prefer"
             "'^(${appsToPrefer}"
-            ")$'"
+            ""
           ];
 
         # we should ideally write the logs into a designated log file; or even better, to the journal
