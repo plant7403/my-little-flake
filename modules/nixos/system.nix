@@ -507,6 +507,7 @@ in
         freeMemThreshold = "4";
         freeSwapKillThreshold = "";
         freeSwapThreshold = "2";
+        reportInterval = "";
          extraArgs = let
       # applications that we would like to avoid killing
       # when system is under high memory pressure
@@ -546,7 +547,7 @@ in
       echo "Process $EARLYOOM_NAME ($EARLYOOM_PID) was killed"
     '';
   };
-        
+
       };
 
       services.systembus-notify.enable = true;
