@@ -128,9 +128,7 @@
       overlays = import ./overlays { inherit inputs; };
       nixosModules = import ./modules/nixos;
       homeManagerModules = import ./modules/home-manager;
-checks = eachSystem (pkgs: {
-        formatting = treefmtEval.${pkgs.system}.config.build.check self;
-      });
+
       nixosConfigurations = {
         immortal = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
@@ -477,5 +475,8 @@ checks = eachSystem (pkgs: {
 
       # This is highly advised, and will prevent many possible mistakes
       checks = builtins.mapAttrs (_system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
+      checks = eachSystem (pkgs: {
+        formatting = treefmtEval.${pkgs.system}.config.build.check self;
+      });
     };
 }
