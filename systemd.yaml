@@ -1,0 +1,51 @@
+name: systemd
+description: My Application Log Format
+type: 'json'
+pattern:
+  # Main pattern using regex with named capture groups
+  # Each group captures a specific field from the log line
+  #use_regex: true
+  #main: '^(?P<client_ip>[\d\.]+)\s+(?P<remote_user>\S+)\s+(?P<auth_user>\S+)\s+\[(?P<timestamp>[^\]]+)\]\s+"(?P<method>\w+)\s+(?P<path>[^\s]+)\s+(?P<protocol>[^"]+)"\s+(?P<status>\d+)\s+(?P<bytes>\d+)\s+"(?P<referrer>[^"]*)"\s+"(?P<user_agent>[^"]*)"'
+
+# Field Mapping
+mapping:
+  timestamp:                # Timestamp extraction
+    field: timetime
+    time_format: '2025-12-30T19:32:57.633+01:00'
+    #time_format: unix
+    default: "tea time"
+    #template: "{{.timestamp}}"
+  host:
+    #field: "me"
+    default: "myhost"
+  service:
+    field: _SYSTEMD_UNIT
+    template:  "{{.value}}"
+    default: none
+
+  severity:                 # Log level/severity
+    field: "truelevel"    # First try detected_level
+    transform: uppercase            # Normalize to uppercase
+    default: INFO                   # Default to INFO if not present
+
+  body:                     # Main log message
+    field: "truemsg"
+    template: "{{.message}}"
+
+  attributes:               # Additional attributes
+    timetime:
+      field: MESSAGE
+      pattern: time=(?P<timetime>([\S]+))
+      transform: operation
+      default: "qwert"
+    #service:
+    #  field: "_SYSTEMD_UNIT"
+    truelevel:
+      field: MESSAGE
+      pattern: level=(?P<truelevel>\w+)
+      default: "idkidkidk"
+    truemsg:
+      field: MESSAGE
+      pattern: (?P<truemsg>msg=.*)$
+   # Auto-map all unmapped fields as attributes (including all labels)
+  auto_map_remaining: true
