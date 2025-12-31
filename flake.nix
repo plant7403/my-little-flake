@@ -71,10 +71,19 @@
       inherit (self) outputs;
       #inherit (nixpkgs) lib;
       # Supported systems for your flake packages, shell, etc.
+      #system = builtins.currentSystem;
+      # Unmodified nixpkgs
+
       systems = [
         "x86_64-linux"
         "aarch64-linux"
       ];
+      # Small tool to iterate over each systems
+      eachSystem = f: nixpkgs.lib.genAttrs (import systems) (system: f nixpkgs.legacyPackages.${system});
+pkgs = import nixpkgs { inherit system; };
+      # Eval the treefmt modules from ./treefmt.nix
+      treefmtEval = eachSystem (pkgs: treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
+
       # This is a function that generates an attribute by calling a function you
       # pass to it, with each system as an argument
 <<<<<<< HEAD
@@ -503,7 +512,7 @@
           };
         };
       }
-              checks = builtins.mapAttrs (_system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
+    checks = builtins.mapAttrs (_system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
 
     );
 }
