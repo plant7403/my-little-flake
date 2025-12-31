@@ -509,7 +509,6 @@ in
         services.earlyoom.enableDebugInfo
         services.earlyoom.enable
 
-
     })
     (mkIf cfg.usbguard.enable (mkMerge [
       {
