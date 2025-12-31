@@ -594,16 +594,6 @@ in
       };
       services.systembus-notify.enable = true;
 
-      services.smartd = {
-        notifications.systembus-notify.enable = true;
-        enable = true;
-        devices = [
-          {
-            device = "/dev/nvme0"; # FIXME: Change this to your actual disk
-          }
-        ];
-      };
-
     })
     (mkIf cfg.usbguard.enable (mkMerge [
       {
