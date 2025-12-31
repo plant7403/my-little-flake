@@ -532,6 +532,8 @@ in
               "gpg-agent" # avoid killing the gpg agent
             ];
 
+            newList = 
+
             # apps that we would like killed first
             # those are likely the ones draining most memory
             appsToPrefer = concatStringsSep "|" [
