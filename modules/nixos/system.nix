@@ -507,7 +507,7 @@ in
         services.earlyoom.freeSwapKillThreshold
         services.earlyoom.freeMemKillThreshold
         services.earlyoom.enableDebugInfo
-        services.earlyoom.enable
+        services.earlyoom.enable = true;
 
         services.smartd.notifications.systembus-notify.enable
 
