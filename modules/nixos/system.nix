@@ -680,7 +680,7 @@ in
       ];
       zramSwap.enable = true;
       zramSwap.memoryPercent = 100;
-      zramSwap.algoritm = "zstd";
+      zramSwap.algorithm = "zstd";
 
       #boot.tmp.useZram = true;
 
