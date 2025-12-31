@@ -177,6 +177,7 @@ in
       networking.hostName = cfg.hostname; # Define your hostname.
       boot.plymouth = {
         enable = true;
+        tpm2-totp.enable = true;
       };
 
       # Set your time zone.
