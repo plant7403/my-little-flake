@@ -498,16 +498,18 @@ in
       };
     })
     (mkIf cfg.earlyoom {
-      services.earlyoom.killHook = '''';
-      services.earlyoom.extraArgs = [ ];
-      services.earlyoom.freeMemThreshold = "";
-      services.earlyoom.enableNotifications = true;
-      services.earlyoom.reportInterval = "";
-      services.earlyoom.freeSwapThreshold = "";
-      services.earlyoom.freeSwapKillThreshold = "";
-      services.earlyoom.freeMemKillThreshold = "";
-      services.earlyoom.enableDebugInfo = true;
-      services.earlyoom.enable = true;
+      services.earlyoom = {
+        killHook = '''';
+        extraArgs = [ ];
+        freeMemThreshold = "";
+        enableNotifications = true;
+        reportInterval = "";
+        freeSwapThreshold = "";
+        freeSwapKillThreshold = "";
+        freeMemKillThreshold = "";
+        enableDebugInfo = true;
+        enable = true;
+      };
 
       services.systembus-notify.enable = true;
 
