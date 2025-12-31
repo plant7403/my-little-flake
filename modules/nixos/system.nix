@@ -506,8 +506,46 @@ in
         freeMemKillThreshold = "";
         freeMemThreshold = "4";
         freeSwapKillThreshold = "";
-        freeSwapThreshold = "4";
-        killHook = '''';
+        freeSwapThreshold = "2";
+         extraArgs = let
+      # applications that we would like to avoid killing
+      # when system is under high memory pressure
+      appsToAvoid = concatStringsSep "|" [
+        "Hyprland" # avoid killing the graphical session
+        "foot" # terminal, might have unsaved files
+        "cryptsetup" # avoid killing the disk encryption manager
+        "dbus-daemon" # avoid killing the dbus daemon
+        "dbus-broker" # on newer, nixos versions broker is the default
+        "Xwayland" # avoid killing the X11 server
+        "gpg-agent" # avoid killing the gpg agent
+      ];
+
+      # apps that we would like killed first
+      # those are likely the ones draining most memory
+      appsToPrefer = concatStringsSep "|" [
+        # browsers
+        "Web Content"
+        "Isolated Web Co"
+        "chromium"
+        # electron applications
+        "electron" # I wish we could kill electron permanently
+        ".*.exe"
+        "java"
+        # added 2024-05-12: PipeWire locked down my system as it failed to acquire RT privileges
+        "pipewire(.*)" # catch pipewire and pipewire-pulse
+      ];
+    in [
+      "-g" # kill all processes within a process group
+      "--avoid '^(${appsToAvoid})$'" # things we want to not kill
+      "--prefer '^(${appsToPrefer})$'" # things we want to kill as soon as possible
+    ];
+
+    # we should ideally write the logs into a designated log file; or even better, to the journal
+    # for now we can hope this echo sends the log to somewhere we can observe later
+    killHook = pkgs.writeShellScript "earlyoom-kill-hook" ''
+      echo "Process $EARLYOOM_NAME ($EARLYOOM_PID) was killed"
+    '';
+  };
         reportInterval = "";
       };
 
