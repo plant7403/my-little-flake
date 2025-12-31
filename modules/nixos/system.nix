@@ -534,7 +534,8 @@ in
 
             newList = concatStrings [
               "--avoid '^(
-              ${appsToAvoid})$'"
+              ${appsToAvoid}
+              ")$'"
             ];
 
             # apps that we would like killed first
