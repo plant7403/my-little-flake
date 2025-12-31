@@ -498,8 +498,8 @@ in
       };
     })
     ( mkIf cfg.earlyoom {
-        services.earlyoom.killHook
-        services.earlyoom.extraArgs = "";
+        services.earlyoom.killHook = = "";
+        services.earlyoom.extraArgs = [];
         services.earlyoom.freeMemThreshold = "";
         services.earlyoom.enableNotifications = true;
         services.earlyoom.reportInterval = "";
