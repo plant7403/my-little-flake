@@ -508,16 +508,18 @@ in
       services.earlyoom.freeMemKillThreshold = "";
       services.earlyoom.enableDebugInfo = true;
       services.earlyoom.enable = true;
+services.smartd = {
 
-      services.smartd.notifications.systembus-notify.enable = true;
-      services.smartd = {
+      notifications.systembus-notify.enable = true;
+      
         enable = true;
         devices = [
           {
             device = "/dev/disk/by-id/ata-WDC-XXXXXX-XXXXXX"; # FIXME: Change this to your actual disk
           }
         ];
-      };
+
+};
 
     })
     (mkIf cfg.usbguard.enable (mkMerge [
