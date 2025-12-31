@@ -135,8 +135,8 @@ in
 
           #!include ${config.sops.secrets."system/nix-token".path}
         '';
-        #NIX_SHOW_STATS=1
-        #NIX_COUNT_CALLS=1
+                  #NIX_SHOW_STATS=1
+          #NIX_COUNT_CALLS=1
       };
       # NIX_CONFIG="extra-access-tokens = github.com=github_pat_XYZ" nix ...
 
