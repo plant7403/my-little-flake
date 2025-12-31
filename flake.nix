@@ -475,8 +475,6 @@
 
       # This is highly advised, and will prevent many possible mistakes
       checks = builtins.mapAttrs (_system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
-      checks = builtins.eachSystem (pkgs: {
-        formatting = treefmtEval.${pkgs.system}.config.build.check self;
-      });
+
     };
 }
