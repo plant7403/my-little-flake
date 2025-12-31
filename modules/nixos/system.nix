@@ -502,8 +502,8 @@ in
         services.earlyoom.extraArgs
         services.earlyoom.freeMemThreshold
         services.earlyoom.enableNotifications
-        services.earlyoom.reportInterval
-        services.earlyoom.freeSwapThreshold
+        services.earlyoom.reportInterval = "";
+        services.earlyoom.freeSwapThreshold = "";
         services.earlyoom.freeSwapKillThreshold = "";
         services.earlyoom.freeMemKillThreshold = "";
         services.earlyoom.enableDebugInfo = true;
