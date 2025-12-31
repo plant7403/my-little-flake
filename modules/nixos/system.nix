@@ -532,7 +532,7 @@ in
               "gpg-agent" # avoid killing the gpg agent
             ];
 
-            newList = concatStrings [
+            newAvoid = concatStrings [
               "--avoid '^("
               "${appsToAvoid}"
               ")$'"
