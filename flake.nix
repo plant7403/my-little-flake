@@ -6,14 +6,8 @@
     # Home manager
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    /*
-        nix-index-database.url = "github:nix-community/nix-index-database";
-        nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
-    */
-    nix-ld.url = "github:Mic92/nix-ld";
-    nix-ld.inputs.nixpkgs.follows = "nixpkgs";
 
-    direnv-instant.url = "github:Mic92/direnv-instant";
+    flake-parts.url = "github:hercules-ci/flake-parts";
 
     stylix.url = "github:danth/stylix";
 
@@ -99,57 +93,48 @@
 
       rootPath = ./.;
 
-      deployPkgs = import nixpkgs {
-        inherit systems;
-        overlays = [
-          deploy-rs.overlay
-          (_self: super: {
-            deploy-rs = {
-              inherit (pkgs) deploy-rs;
-              lib = super.deploy-rs.lib;
-            };
-          })
-        ];
-      };
     in
-    {
-      # Your custom packages
-      # Accessible through 'nix build', 'nix shell', etc
-      packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
 
-      /*
-        packages = forAllSystems (
-            system:
-            let
-              nixvim' = nixvim.legacyPackages.${system};
-              nvim = nixvim'.makeNixvim.config;
-            in
-            {
-              inherit nvim;
-              default = nvim;
-            }
-          );
-      */
+    flake-parts.lib.mkFlake { inherit inputs; } (
+      top@{
+        config,
+        withSystem,
+        moduleWithSystem,
+        ...
+      }:
+      {
+        imports = [
+          # Optional: use external flake logic, e.g.
+          inputs.foo.flakeModules.default
+        ];
+        flake = {
+          # Put your original flake attributes here.
+        };
+        systems = [
+          # systems for which you want to build the `perSystem` attributes
+          "x86_64-linux"
+          # ...
+        ];
+        perSystem =
+          { config, pkgs, ... }:
+          {
+            # Recommended: move all package definitions here.
+            # e.g. (assuming you have a nixpkgs input)
+            # packages.foo = pkgs.callPackage ./foo/package.nix { };
+            # packages.bar = pkgs.callPackage ./bar/package.nix {
+            #   foo = config.packages.foo;
+            # };
+          };
 
-      # Formatter for your nix files, available through 'nix fmt'
-      # Other options beside 'alejandra' include 'nixpkgs-fmt'
-      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-rfc-style);
+        #packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
+        formatter = eachSystem (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
+        overlays = import ./overlays {
+          inherit inputs;
+        };
+        nixosModules = import ./modules/nixos;
+        homeManagerModules = import ./modules/home-manager;
 
-      # Your custom packages and modifications, exported as overlays
-      overlays = import ./overlays {
-        inherit inputs;
-      };
-
-      # Reusable nixos modules you might want to export
-      # These are usually stuff you would upstream into nixpkgs
-      nixosModules = import ./modules/nixos;
-      # Reusable home-manager modules you might want to export
-      # These are usually stuff you would upstream into home-manager
-      homeManagerModules = import ./modules/home-manager;
-      # NixOS configuration entrypoint
-      # Available through 'nixos-rebuild --flake .#your-hostname'
-      nixosConfigurations = {
-        /*
+        nixosConfigurations = {
           immortal = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
             specialArgs = { inherit inputs outputs; };
@@ -170,6 +155,50 @@
                   ];
 
                   boot.loader.systemd-boot.enable = lib.mkForce false;
+                  boot.loader.systemd-boot.enable = lib.mkForce false;
+
+                  boot.lanzaboote = {
+                    enable = true;
+                    pkiBundle = "/var/lib/sbctl";
+                  };
+                }
+              )
+
+              #vscode-server.nixosModules.default
+              #({...}: {
+              #  services.vscode-server.enable = true;
+              #  services.vscode-server.installPath = "~/.vscodium-server";
+              #})
+            ];
+          };
+          luna = nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
+            specialArgs = { inherit inputs outputs; };
+            modules = [
+              ./hosts/luna/configuration.nix
+              sops-nix.nixosModules.sops
+              home-manager.nixosModules.home-manager
+              {
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+                home-manager.users.egor = import ./home-manager/home.nix;
+                home-manager.extraSpecialArgs = { inherit inputs; };
+                home-manager.backupFileExtension = "backup";
+              }
+              lanzaboote.nixosModules.lanzaboote
+              (
+                {
+                  pkgs,
+                  lib,
+                  ...
+                }:
+                {
+                  environment.systemPackages = [
+                    pkgs.sbctl
+                  ];
+
+                  boot.loader.systemd-boot.enable = lib.mkForce false;
+                  boot.loader.systemd-boot.enable = lib.mkForce false;
 
                   boot.lanzaboote = {
                     enable = true;
@@ -179,26 +208,28 @@
               )
             ];
           };
-        */
-        /*
-          luna = nixpkgs.lib.nixosSystem {
+          horizon = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
             specialArgs = { inherit inputs outputs; };
             modules = [
-              ./hosts/luna/configuration.nix
+              ./hosts/horizon/configuration.nix
               sops-nix.nixosModules.sops
+              jovian.nixosModules.jovian
+              disko.nixosModules.disko
+              stylix.nixosModules.stylix
               home-manager.nixosModules.home-manager
-              (
-                { lib, ... }:
-                {
-                  home-manager.useGlobalPkgs = true;
-                  home-manager.useUserPackages = true;
-                  home-manager.users.egor = import ./home-manager/home.nix;
-                  home-manager.extraSpecialArgs = { inherit inputs; };
-                  home-manager.backupFileExtension = "backup";
-                  #home-manager.backupCommand = lib.literalExpression "''${pkgs.trash-cli}/bin/trash";
-                }
-              )
+              {
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+                home-manager.users.egor = import ./home-manager/saturn.nix;
+                home-manager.extraSpecialArgs = { inherit inputs; };
+                home-manager.backupFileExtension = "backup";
+              }
+              {
+                nixpkgs.overlays = [
+                  nix4vscode.overlays.default
+                ];
+              }
               lanzaboote.nixosModules.lanzaboote
               (
                 {
@@ -221,63 +252,6 @@
               )
             ];
           };
-        */
-        horizon = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs outputs; };
-          modules = [
-            ./hosts/horizon/configuration.nix
-            sops-nix.nixosModules.sops
-            jovian.nixosModules.jovian
-            disko.nixosModules.disko
-            stylix.nixosModules.stylix
-            home-manager.nixosModules.home-manager
-            (
-              { lib, ... }:
-              {
-                home-manager.useGlobalPkgs = true;
-                home-manager.useUserPackages = true;
-                environment.pathsToLink = [
-                  "/share/applications"
-                  "/share/xdg-desktop-portal"
-                ];
-                home-manager.users.egor = import ./home-manager/saturn.nix;
-                home-manager.extraSpecialArgs = { inherit inputs outputs; };
-                home-manager.backupFileExtension = "backup";
-                #home-manager.backupCommand = lib.literalExpression "''${pkgs.trash-cli}/bin/trash";
-              }
-            )
-
-            {
-              nixpkgs.overlays = [
-                nix4vscode.overlays.default
-                self.overlays.modifications
-              ];
-            }
-
-            lanzaboote.nixosModules.lanzaboote
-            (
-              {
-                pkgs,
-                lib,
-                ...
-              }:
-              {
-                environment.systemPackages = [
-                  pkgs.sbctl
-                ];
-
-                boot.loader.systemd-boot.enable = lib.mkForce false;
-
-                boot.lanzaboote = {
-                  enable = true;
-                  pkiBundle = "/var/lib/sbctl";
-                };
-              }
-            )
-          ];
-        };
-        /*
           saturn = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
             specialArgs = { inherit inputs outputs; };
@@ -287,19 +261,15 @@
               disko.nixosModules.disko
               stylix.nixosModules.stylix
               home-manager.nixosModules.home-manager
-              (
-                { lib, ... }:
-                {
-                  home-manager.useGlobalPkgs = true;
-                  home-manager.useUserPackages = true;
-                  home-manager.users.egor = import ./home-manager/saturn.nix;
-                  home-manager.extraSpecialArgs = { inherit inputs; };
-                  home-manager.backupFileExtension = "backup";
-                  #home-manager.backupCommand = lib.literalExpression "''${pkgs.trash-cli}/bin/trash";
-                  # Optionally, use home-manager.extraSpecialArgs to pass
-                  # arguments to home.nix
-                }
-              )
+              {
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+                home-manager.users.egor = import ./home-manager/saturn.nix;
+                home-manager.extraSpecialArgs = { inherit inputs; };
+                home-manager.backupFileExtension = "backup";
+                # Optionally, use home-manager.extraSpecialArgs to pass
+                # arguments to home.nix
+              }
               inputs.musnix.nixosModules.musnix
               {
                 musnix.enable = true;
@@ -310,35 +280,21 @@
               }
             ];
           };
-        */
-        stellar = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs outputs; };
-          modules = [
-            ./hosts/stellar/configuration.nix
-            # ... add this line to the rest of your configuration modules
-            nix-ld.nixosModules.nix-ld
-            #nix-index-database.homeModules.default
-            # The module in this repository defines a new module under (programs.nix-ld.dev) instead of (programs.nix-ld)
-            # to not collide with the nixpkgs version.
-            { programs.nix-ld.dev.enable = true; }
-            sops-nix.nixosModules.sops
-            disko.nixosModules.disko
-            stylix.nixosModules.stylix
-            home-manager.nixosModules.home-manager
-            (
-              { lib, ... }:
+          stellar = nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
+            specialArgs = { inherit inputs outputs; };
+            modules = [
+              ./hosts/stellar/configuration.nix
+              sops-nix.nixosModules.sops
+              disko.nixosModules.disko
+              stylix.nixosModules.stylix
+              home-manager.nixosModules.home-manager
               {
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
-                environment.pathsToLink = [
-                  "/share/applications"
-                  "/share/xdg-desktop-portal"
-                ];
                 home-manager.users.egor = import ./home-manager/saturn.nix;
-                home-manager.extraSpecialArgs = { inherit inputs outputs; };
+                home-manager.extraSpecialArgs = { inherit inputs; };
                 home-manager.backupFileExtension = "backup";
-                #home-manager.backupCommand = lib.literalExpression "''${pkgs.trash-cli}/bin/trash";
 
                 # Optionally, use home-manager.extraSpecialArgs to pass
                 # arguments to home.nix
@@ -346,39 +302,39 @@
                   nix4vscode.overlays.default
                 ];
               }
-            )
 
-            lanzaboote.nixosModules.lanzaboote
-            (
+              lanzaboote.nixosModules.lanzaboote
+              (
+                {
+                  pkgs,
+                  lib,
+                  ...
+                }:
+                {
+                  environment.systemPackages = [ pkgs.sbctl ];
+                  boot.loader.systemd-boot.enable = lib.mkForce false;
+                  boot.lanzaboote = {
+                    enable = true;
+                    pkiBundle = "/var/lib/sbctl";
+                    includeChecksumsFromTPM = true;
+                    autoGenerateKeys.enable = true;
+                    autoEnrollKeys = {
+                      enable = true;
+                      autoReboot = false;
+                    };
+                  };
+                }
+              )
+              inputs.musnix.nixosModules.musnix
               {
-                pkgs,
-                lib,
-                ...
-              }:
-              {
-                environment.systemPackages = [
-                  pkgs.sbctl
-                ];
-
-                boot.loader.systemd-boot.enable = lib.mkForce false;
-
-                boot.lanzaboote = {
-                  enable = true;
-                  pkiBundle = "/var/lib/sbctl";
-                };
+                musnix.enable = true;
+                musnix.alsaSeq.enable = true;
+                musnix.ffado.enable = true;
+                musnix.rtcqs.enable = true;
+                musnix.kernel.realtime = false;
               }
-            )
-            inputs.musnix.nixosModules.musnix
-            {
-              musnix.enable = true;
-              musnix.alsaSeq.enable = true;
-              musnix.ffado.enable = true;
-              musnix.rtcqs.enable = true;
-              musnix.kernel.realtime = false;
-            }
-          ];
-        };
-        /*
+            ];
+          };
           pluto = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
             specialArgs = { inherit inputs outputs; };
@@ -391,7 +347,26 @@
               (
                 { config, ... }:
                 {
-
+                  /*
+                    services.dovecot2.sieve.extensions = [ "fileinto" ];
+                    mailserver = {
+                      enable = true;
+                      fqdn = "mail.egor.wtf";
+                      domains = [ "egor.wtf" ];
+                      # A list of all login accounts. To create the password hashes, use
+                      # nix-shell -p mkpasswd --run 'mkpasswd -sm bcrypt'
+                      loginAccounts = {
+                        "me@egor.wtf" = {
+                          hashedPasswordFile = config.sops.secrets."mail/egor.wtf/me".path;
+                          aliases = [ "postmaster@egor.wtf" ];
+                        };
+                        "hello@egor.wtf" = {
+                          hashedPasswordFile = config.sops.secrets."mail/egor.wtf/me".path;
+                        };
+                      };
+                      certificateScheme = "acme-nginx";
+                    };
+                  */
                   security.acme.acceptTerms = true;
                   security.acme.defaults.email = "ssl@egor.wtf";
 
@@ -402,8 +377,6 @@
               )
             ];
           };
-        */
-        /*
           comet = nixpkgs.lib.nixosSystem {
             system = "aarch64-linux";
             specialArgs = { inherit inputs outputs; };
@@ -412,35 +385,8 @@
               sops-nix.nixosModules.sops
             ];
           };
-        */
-        hole = nixpkgs.lib.nixosSystem {
-          system = "aarch64-linux";
-          specialArgs = { inherit inputs outputs; };
-          modules = with self.nixosModules; [
-            ./hosts/hole/configuration.nix
-            #sops-nix.nixosModules.sops
-            nixos-facter-modules.nixosModules.facter
-            { config.facter.reportPath = ./hosts/hole/facter.json; }
-            disko.nixosModules.disko
-            /*
-              home-manager.nixosModules.home-manager
-              {
-                home-manager.useGlobalPkgs = true;
-                home-manager.useUserPackages = true;
-                home-manager.users.egor = import ./home-manager/saturn.nix;
-                home-manager.extraSpecialArgs = { inherit inputs; };
-                home-manager.backupFileExtension = "backup";
-                #home-manager.backupCommand = lib.literalExpression "''${pkgs.trash-cli}/bin/trash";
-                # Optionally, use home-manager.extraSpecialArgs to pass
-                # arguments to home.nix
-              }
-            */
-          ];
         };
-
-      };
-      deploy.nodes = {
-        /*
+        deploy.nodes = {
           immortal = {
             sshOpts = [
               "-p"
@@ -457,8 +403,7 @@
               };
             };
           };
-        */
-        /*
+
           saturn = {
             sshOpts = [
               "-p"
@@ -475,8 +420,7 @@
               };
             };
           };
-        */
-        /*
+
           luna = {
             sshOpts = [
               "-p"
@@ -492,8 +436,7 @@
               };
             };
           };
-        */
-        /*
+
           pluto = {
             sshOpts = [
               "-p"
@@ -509,73 +452,42 @@
               };
             };
           };
-        */
-        horizon = {
-          sshOpts = [
-            "-p"
-            "3370"
-          ];
-          hostname = "100.64.0.6";
-          fastConnection = true;
-          profiles = {
-            system = {
-              sshUser = "root";
-              path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.horizon;
-              user = "root";
-              remoteBuild = true;
+          horizon = {
+            sshOpts = [
+              "-p"
+              "3370"
+            ];
+            hostname = "100.64.0.6";
+            fastConnection = true;
+            profiles = {
+              system = {
+                sshUser = "root";
+                path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.horizon;
+                user = "root";
+                remoteBuild = true;
+              };
+            };
+          };
+          stellar = {
+            sshOpts = [
+              "-p"
+              "3370"
+            ];
+            hostname = "100.64.0.7";
+            fastConnection = true;
+            profiles = {
+              system = {
+                sshUser = "root";
+                path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.stellar;
+                user = "root";
+                remoteBuild = true;
+              };
             };
           };
         };
-        stellar = {
-          sshOpts = [
-            "-p"
-            "3370"
-          ];
-          hostname = "100.64.0.7";
-          fastConnection = true;
-          profiles = {
-            system = {
-              sshUser = "root";
-              path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.stellar;
-              user = "root";
-              remoteBuild = true;
-            };
-          };
-        };
-        hole = {
-          sshOpts = [
-            "-p"
-            "3370"
-          ];
-          hostname = "192.168.0.123";
-          fastConnection = true;
-          profiles = {
-            system = {
-              sshUser = "root";
-              path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.stellar;
-              user = "root";
-              remoteBuild = true;
-            };
-          };
-        };
-      };
-      # This is highly advised, and will prevent many possible mistakes
-      checks = builtins.mapAttrs (_system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
 
-      devShells.default = pkgs.mkShell {
-
-        packages = with pkgs; [
-          node2nix
-          nodejs
-          pnpm
-          yarn
-        ];
-        shellHook = ''
-
-          echo "node `${pkgs.nodejs}/bin/node --version`"
-
-        '';
-      };
-    };
-
+        # This is highly advised, and will prevent many possible mistakes
+        checks = builtins.mapAttrs (_system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
+      }
+    );
 }
