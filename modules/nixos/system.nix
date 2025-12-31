@@ -497,7 +497,21 @@ in
         builders-use-substitutes = true;
       };
     })
-    ( mkIf cfg.earlyoom {})
+    ( mkIf cfg.earlyoom {
+        services.earlyoom.package
+        services.earlyoom.killHook
+        services.earlyoom.extraArgs
+        services.earlyoom.freeMemThreshold
+        services.earlyoom.enableNotifications
+        services.earlyoom.reportInterval
+        services.earlyoom.freeSwapThreshold
+        services.earlyoom.freeSwapKillThreshold
+        services.earlyoom.freeMemKillThreshold
+        services.earlyoom.enableDebugInfo
+        services.earlyoom.enable
+
+
+    })
     (mkIf cfg.usbguard.enable (mkMerge [
       {
         ## USBGuard
