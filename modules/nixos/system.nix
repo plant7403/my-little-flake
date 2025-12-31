@@ -509,6 +509,17 @@ in
         services.earlyoom.enableDebugInfo
         services.earlyoom.enable
 
+        services.smartd.notifications.systembus-notify.enable
+
+          services.smartd = {
+    enable = true;
+    devices = [
+      {
+        device = "/dev/disk/by-id/ata-WDC-XXXXXX-XXXXXX"; # FIXME: Change this to your actual disk
+      }
+    ];
+  };
+
     })
     (mkIf cfg.usbguard.enable (mkMerge [
       {
