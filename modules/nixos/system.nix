@@ -498,7 +498,7 @@ in
       };
     })
     (mkIf cfg.earlyoom {
-      services.earlyoom.killHook = "";
+      services.earlyoom.killHook = '''';
       services.earlyoom.extraArgs = [ ];
       services.earlyoom.freeMemThreshold = "";
       services.earlyoom.enableNotifications = true;
@@ -509,7 +509,7 @@ in
       services.earlyoom.enableDebugInfo = true;
       services.earlyoom.enable = true;
 
-services.systembus-notify.enable
+      services.systembus-notify.enable = true;
 
       services.smartd = {
         notifications.systembus-notify.enable = true;
