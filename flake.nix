@@ -95,8 +95,18 @@
       #forAllSystems = nixpkgs.lib.genAttrs systems;
 
       #rootPath = ./.;
->>>>>>> c645b353 (changes from stellar on mié 31 dic 2025 10:59:45 CET)
-
+deployPkgs = import nixpkgs {
+          inherit system;
+          overlays = [
+            deploy-rs.overlay
+            (_self: super: {
+              deploy-rs = {
+                inherit (pkgs) deploy-rs;
+                lib = super.deploy-rs.lib;
+              };
+            })
+          ];
+        };
     in
     flake-parts.lib.mkFlake { inherit inputs; } (
       top@{
