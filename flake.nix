@@ -77,6 +77,7 @@
       ];
       # This is a function that generates an attribute by calling a function you
       # pass to it, with each system as an argument
+<<<<<<< HEAD
       forAllSystems = nixpkgs.lib.genAttrs systems;
       #system = builtins.currentSystem;
       # Unmodified nixpkgs
@@ -90,24 +91,13 @@
         ];
       };
       # nixpkgs with deploy-rs overlay but force the nixpkgs package
+=======
+      #forAllSystems = nixpkgs.lib.genAttrs systems;
 
-      rootPath = ./.;
+      #rootPath = ./.;
+>>>>>>> c645b353 (changes from stellar on mié 31 dic 2025 10:59:45 CET)
 
-      deployPkgs = import nixpkgs {
-        inherit system;
-        overlays = [
-          deploy-rs.overlay
-          (_self: super: {
-            deploy-rs = {
-              inherit (pkgs) deploy-rs;
-              lib = super.deploy-rs.lib;
-            };
-          })
-        ];
-      };
-      checks = eachSystem (pkgs: {
-        formatting = treefmtEval.${pkgs.system}.config.build.check self;
-      });
+
     in
 
     flake-parts.lib.mkFlake { inherit inputs; } (
