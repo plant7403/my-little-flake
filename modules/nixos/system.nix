@@ -502,7 +502,7 @@ in
         enable = true;
         enableDebugInfo = true;
         enableNotifications = true;
-        extraArgs = [ ];
+
         freeMemKillThreshold = "";
         freeMemThreshold = "4";
         freeSwapKillThreshold = "";
