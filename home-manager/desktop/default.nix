@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   imports = [
     ./easyeffects.nix
@@ -7,5 +8,9 @@
     ./ghostty.nix
     ./obsidian.nix
     ./chromium.nix
+  ];
+  home.packages = with pkgs; [
+    dnsutils
+    gonzo
   ];
 }
