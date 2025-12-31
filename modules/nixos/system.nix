@@ -548,7 +548,7 @@ in
     '';
   };
 
-    ;};
+    };
   systemd.services.earlyoom.serviceConfig = {
     # from upstream
     DynamicUser = true;
