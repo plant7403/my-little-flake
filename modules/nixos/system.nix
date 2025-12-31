@@ -511,7 +511,7 @@ in
         enableNotifications = true;
 
         #freeMemKillThreshold = "";
-        freeMemThreshold = "4";
+        freeMemThreshold = 4;
         #freeSwapKillThreshold = "";
         freeSwapThreshold = 2;
         #reportInterval = "";
@@ -546,7 +546,7 @@ in
           in
           [
             "-g" # kill all processes within a process group
-            "--avoid '^(${appsToAvoid})$'" # things we want to not kill
+            ''''"--avoid '^(${appsToAvoid})$'" # things we want to not kill
             "--prefer '^(${appsToPrefer})$'" # things we want to kill as soon as possible
           ];
 
