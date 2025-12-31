@@ -18,7 +18,7 @@
 
     gnomeExtensions.appindicator
     gnomeExtensions.caffeine
-    gnomeExtensions.tailscale-qs
+    #gnomeExtensions.tailscale-qs
     #gnomeExtensions.tailscale-status
     gnomeExtensions.gsconnect
     #gnomeExtensions.syncthing-indicator
