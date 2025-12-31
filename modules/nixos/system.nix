@@ -691,7 +691,7 @@ in
       ];
       zramSwap.enable = true;
       zramSwap.memoryPercent = 30;
-      zramSwap.algo
+      zramSwap.algoritm = "zstd";
     })
 
   ];
