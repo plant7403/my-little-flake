@@ -497,7 +497,7 @@ in
         builders-use-substitutes = true;
       };
     })
-    (  )
+    ( mkIf  {})
     (mkIf cfg.usbguard.enable (mkMerge [
       {
         ## USBGuard
