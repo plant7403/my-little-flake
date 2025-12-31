@@ -171,7 +171,7 @@ in
         enable = true;
         clean.enable = true;
         clean.extraArgs = "--keep-since 4d --keep 3";
-        flake = "/home/egor/my-nixos-config"; # sets NH_OS_FLAKE variable for you
+        flake = "/home/egor/my-little-flake"; # sets NH_OS_FLAKE variable for you
       };
 
       #nix.settings.download-buffer-size = 524288000;
