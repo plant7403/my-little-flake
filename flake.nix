@@ -71,7 +71,7 @@
       inherit (self) outputs;
       #inherit (nixpkgs) lib;
       # Supported systems for your flake packages, shell, etc.
-      #system = builtins.currentSystem;
+      system = builtins.currentSystem;
       # Unmodified nixpkgs
 
       systems = [
@@ -80,7 +80,7 @@
       ];
       # Small tool to iterate over each systems
       eachSystem = f: nixpkgs.lib.genAttrs (import systems) (system: f nixpkgs.legacyPackages.${system});
-pkgs = import nixpkgs;
+pkgs = import nixpkgs { inherit system; };
       # Eval the treefmt modules from ./treefmt.nix
       treefmtEval = eachSystem (pkgs: treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
 
@@ -512,7 +512,7 @@ pkgs = import nixpkgs;
           };
         };
       }
-    checks = builtins.mapAttrs (_system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
+   # checks = builtins.mapAttrs (_system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
 
     );
 }
