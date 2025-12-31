@@ -175,7 +175,7 @@ in
       #nix.settings.download-buffer-size = 524288000;
 
       networking.hostName = cfg.hostname; # Define your hostname.
-      boot.plymouth.enable = true;
+      boot.plymouth enable = true;
 
       # Set your time zone.
       time.timeZone = "Europe/Madrid";
