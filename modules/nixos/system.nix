@@ -602,7 +602,6 @@ in
             device = "/dev/nvme0"; # FIXME: Change this to your actual disk
           }
         ];
-
       };
 
     })
