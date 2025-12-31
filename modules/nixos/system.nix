@@ -498,7 +498,6 @@ in
       };
     })
     ( mkIf cfg.earlyoom {
-        services.earlyoom.package
         services.earlyoom.killHook
         services.earlyoom.extraArgs
         services.earlyoom.freeMemThreshold
