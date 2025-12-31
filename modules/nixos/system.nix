@@ -135,8 +135,8 @@ in
 
           #!include ${config.sops.secrets."system/nix-token".path}
         '';
-                  #NIX_SHOW_STATS=1
-          #NIX_COUNT_CALLS=1
+        #NIX_SHOW_STATS=1
+        #NIX_COUNT_CALLS=1
       };
       # NIX_CONFIG="extra-access-tokens = github.com=github_pat_XYZ" nix ...
 
@@ -421,7 +421,7 @@ in
       ## Network hardening and performance
       boot.kernel.sysctl = {
         # Disable magic SysRq key
-        "kernel.sysrq" = 0;
+        "kernel.sysrq" = 1;
         # Ignore ICMP broadcasts to avoid participating in Smurf attacks
         "net.ipv4.icmp_echo_ignore_broadcasts" = 1;
         # Ignore bad ICMP errors
