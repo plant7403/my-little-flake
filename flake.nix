@@ -97,8 +97,8 @@
       #rootPath = ./.;
 >>>>>>> c645b353 (changes from stellar on mié 31 dic 2025 10:59:45 CET)
 
-
-    in  flake-parts.lib.mkFlake { inherit inputs; } (
+    in
+    flake-parts.lib.mkFlake { inherit inputs; } (
       top@{
         config,
         withSystem,
@@ -131,6 +131,21 @@
 
         #packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
         formatter = eachSystem (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
+        deployPkgs = import nixpkgs {
+        inherit system;
+        overlays = [
+          deploy-rs.overlay
+          (_self: super: {
+            deploy-rs = {
+              inherit (pkgs) deploy-rs;
+              lib = super.deploy-rs.lib;
+            };
+          })
+        ];
+      };
+      checks = eachSystem (pkgs: {
+        formatting = treefmtEval.${pkgs.system}.config.build.check self;
+      });
         overlays = import ./overlays {
           inherit inputs;
         };
