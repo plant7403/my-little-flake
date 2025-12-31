@@ -549,7 +549,38 @@ in
   };
 
       '';};
+  systemd.services.earlyoom.serviceConfig = {
+    # from upstream
+    DynamicUser = true;
+    AmbientCapabilities = "CAP_KILL CAP_IPC_LOCK";
+    Nice = -20;
+    OOMScoreAdjust = -100;
+    ProtectSystem = "strict";
+    ProtectHome = true;
+    Restart = "always";
+    TasksMax = 10;
+    MemoryMax = "50M";
 
+    # rotection rules. Mostly from the `systemd-oomd` service
+    # with some of them already included upstream.
+    CapabilityBoundingSet = "CAP_KILL CAP_IPC_LOCK";
+    PrivateDevices = true;
+    ProtectClock = true;
+    ProtectHostname = true;
+    ProtectKernelLogs = true;
+    ProtectKernelModules = true;
+    ProtectKernelTunables = true;
+    ProtectControlGroups = true;
+    RestrictNamespaces = true;
+    RestrictRealtime = true;
+
+    PrivateNetwork = true;
+    IPAddressDeny = "any";
+    RestrictAddressFamilies = "AF_UNIX";
+
+    SystemCallArchitectures = "native";
+    SystemCallFilter = ["@system-service" "~@resources @privileged"];
+  };
       services.systembus-notify.enable = true;
 
       services.smartd = {
