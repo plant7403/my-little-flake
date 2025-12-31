@@ -497,28 +497,28 @@ in
         builders-use-substitutes = true;
       };
     })
-    ( mkIf cfg.earlyoom {
-        services.earlyoom.killHook = = "";
-        services.earlyoom.extraArgs = [];
-        services.earlyoom.freeMemThreshold = "";
-        services.earlyoom.enableNotifications = true;
-        services.earlyoom.reportInterval = "";
-        services.earlyoom.freeSwapThreshold = "";
-        services.earlyoom.freeSwapKillThreshold = "";
-        services.earlyoom.freeMemKillThreshold = "";
-        services.earlyoom.enableDebugInfo = true;
-        services.earlyoom.enable = true;
+    (mkIf cfg.earlyoom {
+      services.earlyoom.killHook = "";
+      services.earlyoom.extraArgs = [ ];
+      services.earlyoom.freeMemThreshold = "";
+      services.earlyoom.enableNotifications = true;
+      services.earlyoom.reportInterval = "";
+      services.earlyoom.freeSwapThreshold = "";
+      services.earlyoom.freeSwapKillThreshold = "";
+      services.earlyoom.freeMemKillThreshold = "";
+      services.earlyoom.enableDebugInfo = true;
+      services.earlyoom.enable = true;
 
-        services.smartd.notifications.systembus-notify.enable
+      services.smartd.notifications.systembus-notify.enable = true;
 
-          services.smartd = {
-    enable = true;
-    devices = [
-      {
-        device = "/dev/disk/by-id/ata-WDC-XXXXXX-XXXXXX"; # FIXME: Change this to your actual disk
-      }
-    ];
-  };
+      services.smartd = {
+        enable = true;
+        devices = [
+          {
+            device = "/dev/disk/by-id/ata-WDC-XXXXXX-XXXXXX"; # FIXME: Change this to your actual disk
+          }
+        ];
+      };
 
     })
     (mkIf cfg.usbguard.enable (mkMerge [
