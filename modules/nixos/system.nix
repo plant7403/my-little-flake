@@ -513,7 +513,7 @@ in
         #freeMemKillThreshold = "";
         freeMemThreshold = "4";
         #freeSwapKillThreshold = "";
-        freeSwapThreshold = "2";
+        freeSwapThreshold = 2;
         #reportInterval = "";
         extraArgs =
           let
