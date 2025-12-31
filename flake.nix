@@ -258,11 +258,7 @@
               }
             )
 
-            #vscode-server.nixosModules.default
-            #({...}: {
-            #  services.vscode-server.enable = true;
-            #  services.vscode-server.installPath = "~/.vscodium-server";
-            #})
+
           ];
         };
         luna = nixpkgs.lib.nixosSystem {
