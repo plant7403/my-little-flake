@@ -148,9 +148,10 @@
         nixosModules = import ./modules/nixos;
         homeManagerModules = import ./modules/home-manager;
 
-checks = eachSystem (pkgs: {
+        checks = eachSystem (pkgs: {
           formatting = treefmtEval.${pkgs.system}.config.build.check self;
-        }) (builtins.mapAttrs (_system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib);
+        });
+        checks = builtins.mapAttrs (_system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
         nixosConfigurations = {
           immortal = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
