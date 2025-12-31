@@ -543,11 +543,11 @@ in
             "--prefer '^(${appsToPrefer})$'" # things we want to kill as soon as possible
           ];
 
+        # we should ideally write the logs into a designated log file; or even better, to the journal
         # for now we can hope this echo sends the log to somewhere we can observe later
         killHook = pkgs.writeShellScript "earlyoom-kill-hook" ''
           echo "Process $EARLYOOM_NAME ($EARLYOOM_PID) was killed"
-        ''
-        # we should ideally write the logs into a designated log file; or even better, to the journal;
+        '';
       };
 
       systemd.services.earlyoom.serviceConfig = {
