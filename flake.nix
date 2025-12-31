@@ -151,7 +151,6 @@
         checks = eachSystem (pkgs: {
           formatting = treefmtEval.${pkgs.system}.config.build.check self;
         });
-        checks = builtins.mapAttrs (_system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
         nixosConfigurations = {
           immortal = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
@@ -504,5 +503,7 @@
           };
         };
       }
+              checks = builtins.mapAttrs (_system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
+
     );
 }
