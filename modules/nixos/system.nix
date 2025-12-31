@@ -51,7 +51,7 @@ in
       type = types.bool;
       default = false;
     };
-    
+    earlyoom =mkOption {}
     tpm = mkOption {
       type = types.bool;
       default = false;
