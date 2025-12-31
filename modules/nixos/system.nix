@@ -552,9 +552,11 @@ in
               # added 2024-05-12: PipeWire locked down my system as it failed to acquire RT privileges
               "pipewire(.*)" # catch pipewire and pipewire-pulse
             ];
-            newPrefer = ["--avoid '^("
+            newPrefer = [
+              "--prefer '^("
               "${appsToAvoid}"
-              ")$'"]
+              ")$'"
+            ];
           in
           [
             "-g" # kill all processes within a process group
