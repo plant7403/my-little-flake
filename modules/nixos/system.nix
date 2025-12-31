@@ -166,13 +166,13 @@ in
           "vscode-extension-github-copilot-chat"
           "obsidian"
         ];
-      /*
-        programs.nh = {
-          enable = true;
-          clean.enable = true;
-          clean.extraArgs = "--keep-since 4d --keep 3";
-          flake = "/home/user/my-nixos-config"; # sets NH_OS_FLAKE variable for you
-        };
+
+      programs.nh = {
+        enable = true;
+        clean.enable = true;
+        clean.extraArgs = "--keep-since 4d --keep 3";
+        flake = "/home/user/my-nixos-config"; # sets NH_OS_FLAKE variable for you
+      };
 
       #nix.settings.download-buffer-size = 524288000;
 
@@ -370,11 +370,13 @@ in
     (mkIf cfg.cleanup {
       ## Garbage collection
       # https://nixos.wiki/wiki/Storage_optimization#Automation
-      nix.gc = {
-        automatic = true;
-        dates = "Monday 01:00 UTC";
-        options = "--delete-older-than 2d";
-      };
+      /*
+        nix.gc = {
+          automatic = true;
+          dates = "Monday 01:00 UTC";
+          options = "--delete-older-than 2d";
+        };
+      */
 
       # Run garbage collection whenever there is less than 500MB free space left
       nix.extraOptions = ''
