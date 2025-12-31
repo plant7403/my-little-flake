@@ -504,7 +504,7 @@ in
         enableNotifications = true;
         extraArgs = [ ];
         freeMemKillThreshold = "";
-        freeMemThreshold = "";
+        freeMemThreshold = "4";
         freeSwapKillThreshold = "";
         freeSwapThreshold = "4";
         killHook = '''';
