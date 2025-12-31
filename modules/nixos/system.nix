@@ -690,8 +690,11 @@ in
         "d /snapshots 0755 root root"
       ];
       zramSwap.enable = true;
-      zramSwap.memoryPercent = 30;
+      zramSwap.memoryPercent = 100;
       zramSwap.algoritm = "zstd";
+
+
+      boot.tmp.useZram = true;
     })
 
   ];
