@@ -554,7 +554,7 @@ in
             ];
             newPrefer = [
               "--prefer '^("
-              "${appsToAvoid}"
+              "${appsToPrefer}"
               ")$'"
             ];
           in
