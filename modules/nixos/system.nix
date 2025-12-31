@@ -514,7 +514,7 @@ in
             # when system is under high memory pressure
             appsToAvoid = concatStringsSep "|" [
               "Gnome" # avoid killing the graphical session
-              "foot" # terminal, might have unsaved files
+              "ghostty" # terminal, might have unsaved files
               "cryptsetup" # avoid killing the disk encryption manager
               "dbus-daemon" # avoid killing the dbus daemon
               "dbus-broker" # on newer, nixos versions broker is the default
