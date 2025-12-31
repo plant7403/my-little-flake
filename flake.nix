@@ -145,7 +145,10 @@
       };
       checks = eachSystem (pkgs: {
         formatting = treefmtEval.${pkgs.system}.config.build.check self;
+        builtins.mapAttrs (_system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
       });
+        checks =
+
         overlays = import ./overlays {
           inherit inputs;
         };
