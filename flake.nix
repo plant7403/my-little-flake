@@ -62,7 +62,6 @@
       stylix,
       nix4vscode,
       nix-ld,
-
       ...
     }@inputs:
     let
@@ -98,8 +97,6 @@
         ];
       };
       # nixpkgs with deploy-rs overlay but force the nixpkgs package
-
-      forAllSystems = nixpkgs.lib.genAttrs systems;
 
       rootPath = ./.;
 
