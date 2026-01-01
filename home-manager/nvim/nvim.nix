@@ -143,11 +143,13 @@
     #plugins.compiler.enable = true;
     #plugins.comment.enable = true;
     plugins.clangd-extensions.enable = true;
-    plugins.lsp = {
-      enable = true;
-      inlayHints = true;
-      servers.clangd.enable = true;
-    };
+    /*
+      plugins.lsp = {
+        enable = true;
+        inlayHints = true;
+        servers.clangd.enable = true;
+      };
+    */
     #plugins.mini-icons.mockDevIcons = true;
     plugins.treesitter = {
       enable = true;
