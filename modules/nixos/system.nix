@@ -80,7 +80,7 @@ in
           # Use the binary cache aggressively
 
           substituters = [
-            "https://aseipp-nix-cache.freetls.fastly.net"
+            "https://aseipp-nix-cache.freetls.fastly.net-1
             "https://cache.nixos.org"
             "https://nix-community.cachix.org"
           ];
