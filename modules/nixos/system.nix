@@ -67,6 +67,10 @@ in
 
   config = mkMerge [
     {
+      environment.sessionVariables = {
+        NH_NO_CHECKS = "true";
+        NH_LOG = "nh=trace";
+      };
       nix = {
         package = pkgs.lixPackageSets.stable.lix;
         settings = {
@@ -136,10 +140,7 @@ in
         #NIX_SHOW_STATS=1
         #NIX_COUNT_CALLS=1
       };
-      environment.sessionVariables = {
-        NH_NO_CHECKS = "true";
-        NH_LOG = "nh=trace";
-      };
+
       # NIX_CONFIG="extra-access-tokens = github.com=github_pat_XYZ" nix ...
 
       # https://github.com/NixOS/nix/issues/6536
@@ -174,6 +175,10 @@ in
         clean.enable = true;
         clean.extraArgs = "--keep-since 4d --keep 3";
         flake = "/home/egor/my-little-flake"; # sets NH_OS_FLAKE variable for you
+      };
+      environment.sessionVariables = {
+        NH_NO_CHECKS = "true";
+        NH_LOG = "nh=trace";
       };
       #services.devmon.enable = true;
       services.tuned.enable = true;
