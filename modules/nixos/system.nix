@@ -112,7 +112,8 @@ in
 
           # Prevent unneeded rebuilds
           commit-lockfile-summary = "Update flake.lock";
-
+keep-outputs = true;       # Nice for developers
+keep-derivations = true;   # Idem
         };
 
         # Garbage collection settings
