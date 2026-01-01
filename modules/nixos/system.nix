@@ -131,8 +131,7 @@ in
         */
         # Enable flakes and modern Nix command features
         extraOptions = ''
-          binarycac
-                    #!include ${config.sops.secrets."system/nix-token".path}
+          #!include ${config.sops.secrets."system/nix-token".path}
         '';
         #NIX_SHOW_STATS=1
         #NIX_COUNT_CALLS=1
