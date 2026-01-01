@@ -74,6 +74,7 @@ in
           experimental-features = [
             "flakes"
             "nix-command"
+            "build"
           ];
 
           always-allow-substitutes = true;
