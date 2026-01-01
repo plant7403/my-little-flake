@@ -173,7 +173,9 @@ in
         clean.extraArgs = "--keep-since 4d --keep 3";
         flake = "/home/egor/my-little-flake"; # sets NH_OS_FLAKE variable for you
       };
-
+  programs.devmon.enable = true;
+  programs.fwupd.enable = true;
+  programs.tuned.enable = true;
       #nix.settings.download-buffer-size = 524288000;
 
       networking.hostName = cfg.hostname; # Define your hostname.
