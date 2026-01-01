@@ -222,10 +222,6 @@ in
         cht-sh
         navi
         openssl
-        nixd
-
-        nixos-rebuild-ng
-
       ];
 
       documentation = {
@@ -236,7 +232,6 @@ in
           man-db.enable = false;
           mandoc.enable = true;
           generateCaches = true;
-
         };
       };
 
