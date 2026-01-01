@@ -20,7 +20,6 @@
     ./../common/users/root.nix
     #./../common/desktop/steam.nix
     ./../common/desktop/virtualbox.nix
-
   ]++ (builtins.attrValues outputs.nixosModules);
 
   modules.gnome = {

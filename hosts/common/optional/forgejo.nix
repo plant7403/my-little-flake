@@ -3,8 +3,7 @@
   outputs,
   ...
 }:
-let
-in
+
 /*
      prefix = "git";
   domain = "egor.wtf";
