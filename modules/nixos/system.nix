@@ -129,9 +129,6 @@ in
                  options = "--delete-older-than 30d";
                };
         */
-        # Optimize builds using different build cores
-        buildCores = 0; # 0 means use all available cores
-
         # Enable flakes and modern Nix command features
         extraOptions = ''
           #!include ${config.sops.secrets."system/nix-token".path}
