@@ -106,8 +106,8 @@ let
 
     "1nvitr0.blocksort"
 
-    "phil294.git-log--graph
-"
+    "phil294.git-log--graph"
+    "lang2hong.githd"
 
   ];
   baseExtensionsVS = [
