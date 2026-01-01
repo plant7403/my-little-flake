@@ -18,7 +18,7 @@ in
     #enable = true;
     enableReleaseChecks = true;
     #stylix.image = /run/current-system/sw/share/backgrounds/gnome/vnc-d.png;
-    image = pkgs.runCommand "dimmed-background.png" { } lib.mkForce ''
+    image = pkgs.runCommand "dimmed-background.png" { } ''
       ${lib.getExe' pkgs.imagemagick "convert"} "${inputImage}" -brightness-contrast ${brightness},${contrast} -fill ${fillColor} $out
     '';
     targets = {
