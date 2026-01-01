@@ -68,7 +68,7 @@ in
   config = mkMerge [
     {
       nix = {
-        #package = pkgs.lixPackageSets.stable.lix;
+
         settings = {
 
           experimental-features = [
@@ -145,7 +145,7 @@ in
         group = config.users.groups.keys.name;
         sopsFile = ../../secrets/common.yaml;
       };
-
+      nix.package = pkgs.lixPackageSets.stable.lix;
       nixpkgs.overlays = [
         (final: prev: {
           inherit (prev.lixPackageSets.stable)
