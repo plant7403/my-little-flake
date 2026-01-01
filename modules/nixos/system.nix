@@ -80,6 +80,7 @@ in
           # Use the binary cache aggressively
           binaryCaches = [ "https://aseipp-nix-cache.freetls.fastly.net" ];
           substituters = [
+            "https://aseipp-nix-cache.freetls.fastly.net"
             "https://cache.nixos.org"
             "https://nix-community.cachix.org"
           ];
@@ -173,9 +174,10 @@ in
         clean.extraArgs = "--keep-since 4d --keep 3";
         flake = "/home/egor/my-little-flake"; # sets NH_OS_FLAKE variable for you
       };
-  programs.devmon.enable = true;
-  programs.fwupd.enable = true;
-  programs.tuned.enable = true;
+      programs.devmon.enable = true;
+      programs.fwupd.enable = true;
+      programs.tuned.enable = true;
+
       #nix.settings.download-buffer-size = 524288000;
 
       networking.hostName = cfg.hostname; # Define your hostname.
