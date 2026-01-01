@@ -174,6 +174,7 @@
       direnv.enable = true;
 
     };
+    lsp.servers.clangd.enable = true
 
     /*
       performance = {
