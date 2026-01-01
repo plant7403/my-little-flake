@@ -70,7 +70,7 @@
       # Supported systems for your flake packages, shell, etc.
       system = builtins.currentSystem;
       # Unmodified nixpkgs
-      pkgs = import nixpkgs { inherit system; };
+      #pkgs = import nixpkgs { inherit system; };
       systems = [
         "x86_64-linux"
         "aarch64-linux"
