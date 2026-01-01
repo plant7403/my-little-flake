@@ -1179,9 +1179,9 @@
               name = "expat food";
               url = "https://expat.food/";
             }
-          ];
-        }
 
+        }
+      ];
     };
   };
 
