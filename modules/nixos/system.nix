@@ -145,20 +145,22 @@ in
         group = config.users.groups.keys.name;
         sopsFile = ../../secrets/common.yaml;
       };
-      nix.package = pkgs.lixPackageSets.stable.lix;
-      nixpkgs.overlays = [
-        (final: prev: {
-          inherit (prev.lixPackageSets.stable)
-            nixpkgs-review
-            nix-eval-jobs
-            nix-fast-build
-            nix-direnv
-            colmena
-            deploy-rs
-            nh
-            ;
-        })
-      ];
+      /*
+        nix.package = pkgs.lixPackageSets.stable.lix;
+        nixpkgs.overlays = [
+          (final: prev: {
+            inherit (prev.lixPackageSets.stable)
+              nixpkgs-review
+              nix-eval-jobs
+              nix-fast-build
+              nix-direnv
+              colmena
+              deploy-rs
+              nh
+              ;
+          })
+        ];
+      */
 
       nixpkgs.config.allowUnfree = true;
       nixpkgs.config.allowUnfreePredicate =
