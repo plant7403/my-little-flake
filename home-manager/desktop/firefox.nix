@@ -1120,7 +1120,7 @@
           name = "Nix sites";
           #force = true;
           toolbar = true;
-          bookmarks = [
+          settings = [
             {
               name = "homepage";
               url = "https://nixos.org/";
@@ -1179,7 +1179,7 @@
               name = "expat food";
               url = "https://expat.food/";
             }
-
+          ];
         }
       ];
     };
