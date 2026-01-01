@@ -124,10 +124,10 @@
   };
 
   programs.direnv-instant.enable = true;
-      devmon.enable = true;
-      fwupd.enable = true;
-      lact.enable = true;
-      tuned.enable = true;
+      programs.devmon.enable = true;
+      programs.fwupd.enable = true;
+      programs.lact.enable = true;
+      programs.tuned.enable = true;
   programs.keepassxc = {
     enable = true;
     autostart = true;
