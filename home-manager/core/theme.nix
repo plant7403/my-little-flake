@@ -14,13 +14,12 @@ let
   fillColor = "black";
 in
 {
+  stylix = {}
   stylix = {
     #enable = true;
     enableReleaseChecks = true;
     #stylix.image = /run/current-system/sw/share/backgrounds/gnome/vnc-d.png;
-    image = pkgs.runCommand "dimmed-background.png" { } ''
-      ${lib.getExe' pkgs.imagemagick "convert"} "${inputImage}" -brightness-contrast ${brightness},${contrast} -fill ${fillColor} $out
-    '';
+
     targets = {
       gtk = {
         flatpakSupport.enable = true;
