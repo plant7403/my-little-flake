@@ -106,6 +106,8 @@ let
 
     "1nvitr0.blocksort"
 
+    "eamodio.gitlens"
+
   ];
   baseExtensionsVS = [
 
