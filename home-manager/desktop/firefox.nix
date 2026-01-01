@@ -1115,12 +1115,12 @@
           google.metaData.alias = "@g";
         };
       };
-      bookmarks ={
+      bookmarks = [
         {
           name = "Nix sites";
           #force = true;
           toolbar = true;
-          settings = [
+          bookmarks = [
             {
               name = "homepage";
               url = "https://nixos.org/";
@@ -1181,7 +1181,7 @@
             }
           ];
         }
-};
+      ];
     };
   };
 
