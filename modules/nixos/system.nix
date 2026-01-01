@@ -78,6 +78,7 @@ in
 
           always-allow-substitutes = true;
           # Use the binary cache aggressively
+          binaryCaches = [ "https://aseipp-nix-cache.global.ssl.fastly.net" ]
           substituters = [
             "https://cache.nixos.org"
             "https://nix-community.cachix.org"
@@ -112,8 +113,11 @@ in
 
           # Prevent unneeded rebuilds
           commit-lockfile-summary = "Update flake.lock";
-keep-outputs = true;       # Nice for developers
-keep-derivations = true;   # Idem
+          keep-outputs = true; # Nice for developers
+          keep-derivations = true; # Idem
+          warn-dirty = false;
+          keep-going = true;
+          log-lines = 20;
         };
 
         # Garbage collection settings
@@ -129,11 +133,6 @@ keep-derivations = true;   # Idem
 
         # Enable flakes and modern Nix command features
         extraOptions = ''
-          experimental-features = nix-command flakes
-          warn-dirty = false
-          keep-going = true
-          log-lines = 20
-
           #!include ${config.sops.secrets."system/nix-token".path}
         '';
         #NIX_SHOW_STATS=1
