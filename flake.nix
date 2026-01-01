@@ -12,6 +12,8 @@
 
     stylix.url = "github:danth/stylix";
 
+    direnv-instant.url = "github:Mic92/direnv-instant";
+
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
