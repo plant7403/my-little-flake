@@ -136,7 +136,9 @@ in
         #NIX_SHOW_STATS=1
         #NIX_COUNT_CALLS=1
       };
-      environment.sessionVariables = rec {
+      environment.sessionVariables = {
+        NH_NO_CHECKS = "true";
+        NH_LOG = "nh=trace";
       };
       # NIX_CONFIG="extra-access-tokens = github.com=github_pat_XYZ" nix ...
 
