@@ -1116,7 +1116,8 @@
         };
       };
       bookmarks = {
-        bookmarks = [
+        #force = true;
+        settings = [
           {
             name = "Nix sites";
             #force = true;
