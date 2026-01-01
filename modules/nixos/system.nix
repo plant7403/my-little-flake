@@ -153,9 +153,7 @@ in
             nixpkgs-review
             nix-eval-jobs
             nix-fast-build
-            nix-direnv
             colmena
-            #deploy-rs
             nh
             ;
         })
