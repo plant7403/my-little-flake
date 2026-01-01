@@ -113,19 +113,6 @@ let
 
 in
 {
-  /*
-    home.packages = with pkgs; [
-      (vscodium.overrideAttrs (oldAttrs: {
-        postInstall = (oldAttrs.postInstall or "") + ''
-          substituteInPlace $out/lib/vscode/resources/app/product.json \
-            --replace \
-            '    "GitHub.copilot": ["inlineCompletionsAdditions"],' \
-            '    "GitHub.copilot": ["inlineCompletions","inlineCompletionsNew","inlineCompletionsAdditions","textDocumentNotebook","interactive","terminalDataWriteEvent"],'
-        '';
-      }))
-    ];
-  */
-
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium;
