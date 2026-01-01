@@ -74,7 +74,7 @@ in
           experimental-features = [
             "flakes"
             "nix-command"
-            "build"
+
           ];
 
           always-allow-substitutes = true;
@@ -119,7 +119,7 @@ in
           warn-dirty = false;
           keep-going = true;
           log-lines = 20;
-          no-reexec = true;
+          reexec = true;
         };
 
         # Garbage collection settings
