@@ -154,7 +154,6 @@ in
             nix-eval-jobs
             nix-fast-build
             colmena
-            nh
             ;
         })
       ];
