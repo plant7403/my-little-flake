@@ -126,7 +126,6 @@
   programs.direnv-instant.enable = true;
       programs.devmon.enable = true;
       programs.fwupd.enable = true;
-      programs.lact.enable = true;
       programs.tuned.enable = true;
   programs.keepassxc = {
     enable = true;
