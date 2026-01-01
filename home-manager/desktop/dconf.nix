@@ -91,12 +91,6 @@ with lib.hm.gvariant;
       ];
       name = "Oficina";
     };
-    "org/gnome/desktop/background" = {
-      color-shading-type = "solid";
-      picture-options = "zoom";
-      picture-uri = "file:///nix/store/ryb7h281iyz59pjm884sg13xrnmjf44a-dimmed-background.png";
-      picture-uri-dark = "file:///nix/store/ryb7h281iyz59pjm884sg13xrnmjf44a-dimmed-background.png";
-    };
 
     "org/gnome/desktop/input-sources" = {
       mru-sources = [
