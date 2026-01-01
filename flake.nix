@@ -64,6 +64,7 @@
       stylix,
       nix4vscode,
       nix-ld,
+      systems,
       ...
     }@inputs:
     let
