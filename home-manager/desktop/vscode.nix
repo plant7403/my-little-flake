@@ -129,7 +129,7 @@ in
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium;
-    #mutableExtensionsDir = false;
+    mutableExtensionsDir = true;
     profiles = {
       default = {
         extensions =
