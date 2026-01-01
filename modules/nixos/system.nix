@@ -78,7 +78,7 @@ in
 
           always-allow-substitutes = true;
           # Use the binary cache aggressively
-          binaryCaches = [ "https://aseipp-nix-cache.freetls.fastly.net" ];
+
           substituters = [
             "https://aseipp-nix-cache.freetls.fastly.net"
             "https://cache.nixos.org"
@@ -131,7 +131,8 @@ in
         */
         # Enable flakes and modern Nix command features
         extraOptions = ''
-          #!include ${config.sops.secrets."system/nix-token".path}
+          binarycac
+                    #!include ${config.sops.secrets."system/nix-token".path}
         '';
         #NIX_SHOW_STATS=1
         #NIX_COUNT_CALLS=1
