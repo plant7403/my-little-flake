@@ -1115,73 +1115,75 @@
           google.metaData.alias = "@g";
         };
       };
-      bookmarks = [
-        {
-          name = "Nix sites";
-          #force = true;
-          toolbar = true;
-          bookmarks = [
-            {
-              name = "homepage";
-              url = "https://nixos.org/";
-            }
-            {
-              name = "wiki";
-              tags = [
-                "wiki"
-                "nix"
-              ];
-              url = "https://wiki.nixos.org/";
-            }
-            {
-              name = "search";
-              tags = [
-                "search"
-                "nix"
-              ];
-              url = "https://search.nixos.org/";
-            }
-            {
-              name = "cheatsheet";
-              tags = [
-                "search"
-                "nix"
-              ];
-              url = "https://wiki.nixos.org/wiki/Cheatsheet";
-            }
-          ];
-        }
-        {
-          name = "Pak Unity";
-          toolbar = true;
-          bookmarks = [
-            {
-              name = "pak academy";
-              url = "https://pak.academy/";
-            }
-            {
-              name = "git.pak.academy";
-              url = "https://git.pak.academy/";
-            }
-            {
-              name = "dash.pak.academy";
-              url = "https://dash.pak.academy/";
-            }
-            {
-              name = "passwords.pak.academy";
-              url = "https://passwords.pak.academy/";
-            }
-            {
-              name = "tasks.pak.academy";
-              url = "https://tasks.pak.academy/";
-            }
-            {
-              name = "expat food";
-              url = "https://expat.food/";
-            }
-          ];
-        }
-      ];
+      bookmarks = {
+        bookmarks = [
+          {
+            name = "Nix sites";
+            #force = true;
+            toolbar = true;
+            bookmarks = [
+              {
+                name = "homepage";
+                url = "https://nixos.org/";
+              }
+              {
+                name = "wiki";
+                tags = [
+                  "wiki"
+                  "nix"
+                ];
+                url = "https://wiki.nixos.org/";
+              }
+              {
+                name = "search";
+                tags = [
+                  "search"
+                  "nix"
+                ];
+                url = "https://search.nixos.org/";
+              }
+              {
+                name = "cheatsheet";
+                tags = [
+                  "search"
+                  "nix"
+                ];
+                url = "https://wiki.nixos.org/wiki/Cheatsheet";
+              }
+            ];
+          }
+          {
+            name = "Pak Unity";
+            toolbar = true;
+            bookmarks = [
+              {
+                name = "pak academy";
+                url = "https://pak.academy/";
+              }
+              {
+                name = "git.pak.academy";
+                url = "https://git.pak.academy/";
+              }
+              {
+                name = "dash.pak.academy";
+                url = "https://dash.pak.academy/";
+              }
+              {
+                name = "passwords.pak.academy";
+                url = "https://passwords.pak.academy/";
+              }
+              {
+                name = "tasks.pak.academy";
+                url = "https://tasks.pak.academy/";
+              }
+              {
+                name = "expat food";
+                url = "https://expat.food/";
+              }
+            ];
+          }
+        ];
+      };
     };
   };
 
