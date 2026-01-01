@@ -106,7 +106,8 @@ let
 
     "1nvitr0.blocksort"
 
-    "eamodio.gitlens"
+    "phil294.git-log--graph
+"
 
   ];
   baseExtensionsVS = [
