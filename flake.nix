@@ -66,6 +66,7 @@
       nix4vscode,
       nix-ld,
       systems,
+      treefmt-nix
       ...
     }@inputs:
     let
