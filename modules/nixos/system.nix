@@ -155,7 +155,7 @@ in
             nix-fast-build
             nix-direnv
             colmena
-            deploy-rs
+            #deploy-rs
             nh
             ;
         })
