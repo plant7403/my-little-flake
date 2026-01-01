@@ -118,6 +118,7 @@ in
           warn-dirty = false;
           keep-going = true;
           log-lines = 20;
+          no-reexec = true;
         };
 
         # Garbage collection settings
