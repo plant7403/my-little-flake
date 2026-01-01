@@ -20,15 +20,8 @@
     ./../common/users/root.nix
     #./../common/desktop/steam.nix
     ./../common/desktop/virtualbox.nix
-    outputs.nixosModules.gnome
-    outputs.nixosModules.impermanence
-    outputs.nixosModules.mullvad
-    outputs.nixosModules.sound
-    outputs.nixosModules.steam
-    outputs.nixosModules.tailscale
-    outputs.nixosModules.system
-    outputs.nixosModules.yubikey
-  ];
+
+  ]++ (builtins.attrValues outputs.nixosModules);
 
   modules.gnome = {
     enable = true;
