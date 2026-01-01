@@ -275,7 +275,7 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.egor = import ./home-manager/saturn.nix;
-              home-manager.extraSpecialArgs = { inherit inputs; };
+              home-manager.extraSpecialArgs = { inherit inputs outputs; };
               home-manager.backupFileExtension = "backup";
 
               # Optionally, use home-manager.extraSpecialArgs to pass
