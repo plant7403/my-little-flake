@@ -78,8 +78,7 @@ in
 
           always-allow-substitutes = true;
           # Use the binary cache aggressively
-          binaryCaches = [ "https://aseipp-nix-cache.freetls.fastly.net
-" ];
+          binaryCaches = [ "https://aseipp-nix-cache.freetls.fastly.net" ];
           substituters = [
             "https://cache.nixos.org"
             "https://nix-community.cachix.org"
