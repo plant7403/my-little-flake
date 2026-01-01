@@ -1116,12 +1116,12 @@
         };
       };
       bookmarks = {
-        #force = true;
+        force = true;
         settings = [
           {
             name = "Nix sites";
             #force = true;
-            toolbar = true;
+            #toolbar = true;
             bookmarks = [
               {
                 name = "homepage";
