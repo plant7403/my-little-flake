@@ -79,9 +79,8 @@ in
           always-allow-substitutes = true;
           # Use the binary cache aggressively
 
-          substituters = [
+          substituters = lib.mkBefore [
             "https://aseipp-nix-cache.freetls.fastly.net"
-            "https://cache.nixos.org"
             "https://nix-community.cachix.org"
           ];
 
