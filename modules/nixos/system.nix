@@ -67,10 +67,6 @@ in
 
   config = mkMerge [
     {
-      environment.sessionVariables = {
-        NH_NO_CHECKS = "true";
-        NH_LOG = "nh=trace";
-      };
       nix = {
         package = pkgs.lixPackageSets.stable.lix;
         settings = {
