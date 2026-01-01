@@ -98,13 +98,10 @@
         ];
       };
       # nixpkgs with deploy-rs overlay but force the nixpkgs package
-=======
-      #forAllSystems = nixpkgs.lib.genAttrs systems;
-=======
+
       forAllSystems = nixpkgs.lib.genAttrs systems;
 
       rootPath = ./.;
->>>>>>> b42080ac (changes from stellar on mié 31 dic 2025 11:26:57 CET)
 
       deployPkgs = import nixpkgs {
         inherit system;
