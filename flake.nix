@@ -64,7 +64,6 @@
       jovian,
       stylix,
       nix4vscode,
-
       systems,
       treefmt-nix,
       ...
