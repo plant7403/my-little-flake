@@ -7,6 +7,9 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    inputs.treefmt-nix.url = "github:numtide/treefmt-nix";
+    inputs.systems.url = "github:nix-systems/default";
+
     stylix.url = "github:danth/stylix";
 
     firefox-addons = {
@@ -79,7 +82,7 @@
       eachSystem = f: nixpkgs.lib.genAttrs (import systems) (system: f nixpkgs.legacyPackages.${system});
 
       # Eval the treefmt modules from ./treefmt.nix
-      #treefmtEval = eachSystem (pkgs: treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
+      treefmtEval = eachSystem (pkgs: treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
 
       # This is a function that generates an attribute by calling a function you
       # pass to it, with each system as an argument
