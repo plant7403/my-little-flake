@@ -1115,7 +1115,7 @@
           google.metaData.alias = "@g";
         };
       };
-      bookmarks = [
+      bookmarks =
         {
           name = "Nix sites";
           #force = true;
@@ -1181,7 +1181,7 @@
             }
           ];
         }
-      ];
+
     };
   };
 
