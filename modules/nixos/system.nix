@@ -175,7 +175,6 @@ in
         flake = "/home/egor/my-little-flake"; # sets NH_OS_FLAKE variable for you
       };
       services.devmon.enable = true;
-      services.fwupd.enable = true;
       services.tuned.enable = true;
 
       #nix.settings.download-buffer-size = 524288000;
