@@ -73,10 +73,7 @@
       system = builtins.currentSystem;
       # Unmodified nixpkgs
       #pkgs = import nixpkgs { inherit system; };
-      systems = [
-        "x86_64-linux"
-        "aarch64-linux"
-      ];
+
       # Small tool to iterate over each systems
       eachSystem = f: nixpkgs.lib.genAttrs (import systems) (system: f nixpkgs.legacyPackages.${system});
 
