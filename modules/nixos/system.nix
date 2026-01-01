@@ -68,7 +68,7 @@ in
   config = mkMerge [
     {
       nix = {
-        package = pkgs.lixPackageSets.stable.lix;
+        #package = pkgs.lixPackageSets.stable.lix;
         settings = {
 
           experimental-features = [
