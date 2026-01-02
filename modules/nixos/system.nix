@@ -171,7 +171,7 @@ in
       };
       environment.sessionVariables = {
         NH_NO_CHECKS = "true";
-        NH_LOG = "nh=trace";
+        #NH_LOG = "nh=trace";
       };
       #services.devmon.enable = true;
       services.tuned.enable = true;
@@ -246,6 +246,7 @@ in
 
       programs.adb.enable = true;
       services.fwupd.enable = true;
+      boot.crashDump.enable = true;
 
       hardware.bluetooth.enable = true; # enables support for Bluetooth
       hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boots

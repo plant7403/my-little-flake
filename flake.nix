@@ -3,6 +3,8 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
+
     # Home manager
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -66,13 +68,14 @@
       jovian,
       stylix,
       nix4vscode,
+      systems,
       ...
     }@inputs:
     let
       inherit (self) outputs;
       #inherit (nixpkgs) lib;
       # Supported systems for your flake packages, shell, etc.
-      system = builtins.currentSystem;
+      #system = builtins.currentSystem;
       # Unmodified nixpkgs
       #pkgs = import nixpkgs { inherit system; };
 
@@ -89,9 +92,10 @@
       #system = builtins.currentSystem;
       # Unmodified nixpkgs
       # pkgs = import nixpkgs { inherit system; };
+      eachSystem = nixpkgs.lib.genAttrs (import systems);
       pkgs = import <nixpkgs> {
         config.allowUnfree = true;
-        system = "x86_64-linux"; # One of supported systems
+        # system = "x86_64-linux"; # One of supported systems
         overlays = [
           nix4vscode.overlays.default
           #self.overlays.no-dochecks
@@ -100,18 +104,20 @@
 
       # rootPath = ./.;
 
-      deployPkgs = import nixpkgs {
-        inherit system;
-        overlays = [
-          deploy-rs.overlay
-          (_self: super: {
-            deploy-rs = {
-              inherit (pkgs) deploy-rs;
-              lib = super.deploy-rs.lib;
-            };
-          })
-        ];
-      };
+      /*
+        deployPkgs = import nixpkgs {
+          inherit system; # ${system}
+          overlays = [
+            deploy-rs.overlay
+            (_self: super: {
+              deploy-rs = {
+                inherit (pkgs) deploy-rs;
+                lib = super.deploy-rs.lib;
+              };
+            })
+          ];
+        };
+      */
     in
     {
 
@@ -192,10 +198,10 @@
           ];
         };
         horizon = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
           specialArgs = { inherit inputs outputs; };
           modules = [
             ./hosts/horizon/configuration.nix
+            { nixpkgs.hostPlatform = "x86_64-linux"; }
             sops-nix.nixosModules.sops
             jovian.nixosModules.jovian
             disko.nixosModules.disko
@@ -236,10 +242,10 @@
           ];
         };
         saturn = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
           specialArgs = { inherit inputs outputs; };
           modules = with self.nixosModules; [
             ./hosts/saturn/configuration.nix
+            { nixpkgs.hostPlatform = "x86_64-linux"; }
             sops-nix.nixosModules.sops
             disko.nixosModules.disko
             stylix.nixosModules.stylix
@@ -264,10 +270,10 @@
           ];
         };
         stellar = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
           specialArgs = { inherit inputs outputs; };
           modules = [
             ./hosts/stellar/configuration.nix
+            { nixpkgs.hostPlatform = "x86_64-linux"; }
             sops-nix.nixosModules.sops
             disko.nixosModules.disko
             stylix.nixosModules.stylix
@@ -382,7 +388,7 @@
           profiles = {
             system = {
               sshUser = "root";
-              path = deployPkgs.deploy-rs.lib.activate.nixos self.nixosConfigurations.immortal;
+              path = deploy-rs.lib.activate.nixos self.nixosConfigurations.immortal;
               user = "root";
               remoteBuild = true;
             };
