@@ -1,4 +1,4 @@
-{outputs, ...}: {
+{ ...}: {
   # TODO - Make it private
   services.ntfy-sh = {
     enable = true;

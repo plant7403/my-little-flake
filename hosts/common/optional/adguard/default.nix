@@ -1,4 +1,4 @@
-{ config, outputs, ... }:
+{ ... }:
 {
   #config.sops.secrets."postgres/forgejo".path;
   #sops.secrets."postgres/forgejo" = {

@@ -1,6 +1,5 @@
 {
   config,
-  pkgs,
   ...
 }: {
   # MONITORING: services run on loopback interface

@@ -13,21 +13,11 @@
   edit .sops.yaml
 */
 {
-  config,
   pkgs,
-  lib,
   inputs,
   outputs,
   ...
 }:
-let
-  my-python-packages =
-    ps: with ps; [
-      pandas
-      requests
-      # other python packages
-    ];
-in
 {
   imports = [
     # Include the results of the hardware scan.

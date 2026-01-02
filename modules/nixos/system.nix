@@ -2,7 +2,6 @@
   lib,
   pkgs,
   config,
-  inputs,
   ...
 }:
 with lib;
@@ -145,7 +144,7 @@ in
 
       nix.package = pkgs.lixPackageSets.stable.lix;
       nixpkgs.overlays = [
-        (final: prev: {
+        (_final: prev: {
           inherit (prev.lixPackageSets.stable)
             nixpkgs-review
             nix-eval-jobs

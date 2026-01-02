@@ -5,9 +5,6 @@
   ...
 }:
 with lib;
-let
-  cfg = config.modules.xonsh;
-in
 {
   options.modules.xonsh = {
     enable = mkEnableOption "service";

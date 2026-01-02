@@ -2,21 +2,11 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {
-  config,
   pkgs,
-  lib,
   inputs,
   outputs,
   ...
 }:
-let
-  my-python-packages =
-    ps: with ps; [
-      pandas
-      requests
-      # other python packages
-    ];
-in
 {
   imports = [
     # Include the results of the hardware scan.

@@ -5,35 +5,20 @@
   pkg-config,
   meson,
   ninja,
-  libfprint,
   glib,
   gusb,
-  udev,
-  nss,
   openssl,
-  pixman,
   fetchFromGitHub,
-  cmake,
   libcap,
   libseccomp,
   dbus,
   innoextract,
-  wget,
   fetchurl,
-  systemd,
-  libgudev,
-  fprintd-tod,
-  fprintd,
   libusb1,
   gccForLibs,
   gccgo15,
 
 }:
-let
-  pname = "synaTudor";
-  rev = "0.1";
-
-in
 stdenv.mkDerivation {
   pname = "synaTudor";
   version = "0.0.9";

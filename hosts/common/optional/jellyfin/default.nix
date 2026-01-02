@@ -1,7 +1,5 @@
 {
   pkgs,
-  config,
-  outputs,
   ...
 }: {
   # 1. enable vaapi on OS-level

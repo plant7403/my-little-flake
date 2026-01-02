@@ -1,9 +1,6 @@
 {
   inputs,
   pkgs,
-  sops-nix,
-  config,
-  systemConfig,
   osConfig,
   ...
 }:

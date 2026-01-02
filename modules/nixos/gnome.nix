@@ -2,7 +2,6 @@
   pkgs,
   lib,
   config,
-  outputs,
   ...
 }:
 with lib;
@@ -82,7 +81,7 @@ in
       services.gvfs.enable = true;
 
       nixpkgs.overlays = [
-        (final: prev: {
+        (_final: prev: {
           nautilus = prev.nautilus.overrideAttrs (nprev: {
             buildInputs =
               nprev.buildInputs

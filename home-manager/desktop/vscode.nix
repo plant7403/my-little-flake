@@ -1,35 +1,11 @@
 # https://nix-community.github.io/nix4vscode/
-{ pkgs, config, ... }:
+{ pkgs, ... }:
 let
   inherit (pkgs.nix4vscode)
     forVscode
-    forVscodeVersion
-    forVscodePrerelease
-    forVscodeVersionPrerelease
 
     forOpenVsx
-    forOpenVsxVersion
-    forOpenVsxPrerelease
-    forOpenVsxVersionPrerelease
-
-    forVscodeExt
-    forVscodeExtVersion
-    forVscodeExtPrerelease
-    forVscodeExtVersionPrerelease
-
-    forOpenVsxExt
-    forOpenVsxExtVersion
-    forOpenVsxExtPrerelease
-    forOpenVsxExtVersionPrerelease
     ;
-
-  myDecorators = {
-    "ms-vscode.cpptools" = {
-      postPatch = ''
-        echo "Custom decorator applied"
-      '';
-    };
-  };
   baseSettings = {
     "editor.inlayHints.enabled" = "on";
     "editor.guides.indentation" = true;

@@ -1,9 +1,7 @@
 {
   lib,
-  pkgs,
   config,
   inputs,
-  options,
   ...
 }:
 with lib;
@@ -13,7 +11,7 @@ let
   # cfg is a typical convention.
   cfg = config.modules.impermanence;
   inherit (lib) filterAttrs mkIf;
-  regularSecrets = filterAttrs (n: v: !v.neededForUsers) config.sops.secrets;
+  regularSecrets = filterAttrs (_n: v: !v.neededForUsers) config.sops.secrets;
 in
 {
   # Declare what settings a user of this "restore-root.nix" module CAN SET.

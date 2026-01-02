@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ ...}: {
   ## I2P Eepsite
   services.i2pd = {
     enable = true;

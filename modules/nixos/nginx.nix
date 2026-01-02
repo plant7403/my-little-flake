@@ -7,8 +7,7 @@ let
   cfg = config.modules.web;
 
   fqdn = c: "${c.prefix}.${c.domain}";
-  fqdn_tor = c: "${c.prefix}.${c.tor.onion}";
-  dnsName = c: "${c.domain}"; # QICKFIX
+  fqdn_tor = c: "${c.prefix}.${c.tor.onion}"; # QICKFIX
 
   vhostConfig = lib.types.submodule {
     options = {

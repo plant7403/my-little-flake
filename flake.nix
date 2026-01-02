@@ -7,7 +7,7 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    treefmt-nix.url = "github:numtide/treefmt-nix";
+    #treefmt-nix.url = "github:numtide/treefmt-nix";
     systems.url = "github:nix-systems/default";
 
     stylix.url = "github:danth/stylix";
@@ -66,8 +66,6 @@
       jovian,
       stylix,
       nix4vscode,
-      systems,
-      treefmt-nix,
       ...
     }@inputs:
     let
@@ -332,7 +330,7 @@
             sops-nix.nixosModules.sops
             # nixos-mailserver.nixosModule
             (
-              { config, ... }:
+              { ... }:
               {
                 /*
                   services.dovecot2.sieve.extensions = [ "fileinto" ];

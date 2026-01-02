@@ -1,7 +1,4 @@
 {
-  config,
-  pkgs,
-  options,
   ...
 }: {
   virtualisation.oci-containers.containers = {
