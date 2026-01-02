@@ -81,7 +81,6 @@ in
           # Use the binary cache aggressively
 
           substituters = lib.mkBefore [
-            "https://aseipp-nix-cache.freetls.fastly.net"
             "https://nix-community.cachix.org"
           ];
 
