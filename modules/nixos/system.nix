@@ -120,6 +120,7 @@ in
           keep-going = true;
           log-lines = 20;
           reexec = true;
+
         };
 
         # Garbage collection settings
