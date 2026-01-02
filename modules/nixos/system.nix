@@ -318,7 +318,7 @@ in
           #inheritParentConfig = false;
           configuration = {
             system.nixos.tags = [ "ooo" ];
-            #services.xserver.desktopManager.gnome.enable = true;
+            #services.xserver.gnome.enable = true;
             users.users.ooo = {
               isNormalUser = true;
               uid = 1002;
