@@ -2,9 +2,10 @@
   description = "Your new nix config";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
+    #nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    #nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
 
+    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0";
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
 
     # Home manager
@@ -185,6 +186,7 @@
           specialArgs = { inherit inputs outputs; };
           modules = [
             ./hosts/horizon/configuration.nix
+            determinate.nixosModules.default
             { nixpkgs.hostPlatform = "x86_64-linux"; }
             sops-nix.nixosModules.sops
             jovian.nixosModules.jovian
@@ -247,6 +249,7 @@
           specialArgs = { inherit inputs outputs; };
           modules = [
             ./hosts/stellar/configuration.nix
+            determinate.nixosModules.default
             { nixpkgs.hostPlatform = "x86_64-linux"; }
             sops-nix.nixosModules.sops
             disko.nixosModules.disko

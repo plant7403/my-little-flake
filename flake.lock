@@ -675,22 +675,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-stable": {
-      "locked": {
-        "lastModified": 1767047869,
-        "narHash": "sha256-tzYsEzXEVa7op1LTnrLSiPGrcCY6948iD0EcNLWcmzo=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "89dbf01df72eb5ebe3b24a86334b12c27d68016a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-25.11",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs_10": {
       "locked": {
         "lastModified": 1764517877,
@@ -801,18 +785,16 @@
     },
     "nixpkgs_8": {
       "locked": {
-        "lastModified": 1767116409,
-        "narHash": "sha256-5vKw92l1GyTnjoLzEagJy5V5mDFck72LiQWZSOnSicw=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "cad22e7d996aea55ecab064e84834289143e44a0",
-        "type": "github"
+        "lastModified": 1767325753,
+        "narHash": "sha256-yA/CuWyqm+AQo2ivGy6PlYrjZBQm7jfbe461+4HF2fo=",
+        "rev": "64049ca74d63e971b627b5f3178d95642e61cedd",
+        "revCount": 904891,
+        "type": "tarball",
+        "url": "https://api.flakehub.com/f/pinned/NixOS/nixpkgs/0.2511.904891%2Brev-64049ca74d63e971b627b5f3178d95642e61cedd/019b7fca-52c9-7721-903e-c22829d2c565/source.tar.gz?rev=64049ca74d63e971b627b5f3178d95642e61cedd&revCount=904891"
       },
       "original": {
-        "owner": "nixos",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
+        "type": "tarball",
+        "url": "https://flakehub.com/f/NixOS/nixpkgs/0"
       }
     },
     "nixpkgs_9": {
@@ -914,7 +896,6 @@
         "nix4vscode": "nix4vscode",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_8",
-        "nixpkgs-stable": "nixpkgs-stable",
         "nixvim": "nixvim",
         "sops-nix": "sops-nix",
         "stylix": "stylix",

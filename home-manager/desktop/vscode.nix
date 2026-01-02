@@ -70,9 +70,6 @@ let
   baseExtensions = [
     "pkief.material-icon-theme"
     "tonybaloney.vscode-pets"
-    "codeandstuff.vscode-navigate-edit-history"
-    "pnw-techpros.code-casefile"
-    "paragdiwan.gitpatch"
     "visbydev.folder-path-color"
 
     "mkhl.direnv"
@@ -87,6 +84,10 @@ let
 
     "mondersky.tabscolor"
     "offensiveedge.regex-le"
+
+    "jgclark.vscode-todo-highlight"
+    "slysherz.comment-box"
+
   ];
   baseExtensionsVS = [
 
