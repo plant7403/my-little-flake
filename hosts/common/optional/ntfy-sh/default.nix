@@ -1,4 +1,4 @@
-{ ... }:
+_:
 {
   # TODO - Make it private
   services.ntfy-sh = {

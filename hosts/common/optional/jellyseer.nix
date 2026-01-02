@@ -1,4 +1,4 @@
-{ ... }:
+_:
 {
   services.jellyseerr = {
     #openFirewall = true;

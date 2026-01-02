@@ -1,4 +1,4 @@
-{ ... }:
+_:
 {
   ## I2P Eepsite
   services.i2pd = {

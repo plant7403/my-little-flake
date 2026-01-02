@@ -3,11 +3,11 @@
   services.openssh.hostKeys = [
     {
       bits = 4096;
-      path = config.sops.secrets."system/hostkeys/luna/rsa`".path;
+      inherit (config.sops.secrets."system/hostkeys/luna/rsa`") path;
       type = "rsa";
     }
     {
-      path = config.sops.secrets."system/hostkeys/luna/ed25519".path;
+      inherit (config.sops.secrets."system/hostkeys/luna/ed25519") path;
       type = "ed25519";
     }
   ];

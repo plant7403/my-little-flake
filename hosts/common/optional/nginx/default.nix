@@ -86,7 +86,7 @@
     commonHttpConfig =
       let
         realIpsFromList = lib.strings.concatMapStringsSep "\n" (x: "set_real_ip_from  ${x};");
-        fileToList = _x: lib.strings.splitString "\n" (builtins.readFile);
+        fileToList = _x: lib.strings.splitString "\n" builtins.readFile;
         cfipv4 = fileToList (
           pkgs.fetchurl {
             url = "https://www.cloudflare.com/ips-v4";

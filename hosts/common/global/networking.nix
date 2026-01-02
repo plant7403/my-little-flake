@@ -1,6 +1,6 @@
 # FIXME - Fix ipv6 address
 ## DNS-over-TLS
-{ ... }:
+_:
 {
   networking = {
     interfaces = {

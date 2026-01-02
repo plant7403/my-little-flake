@@ -143,30 +143,30 @@
         }
         {
           name = pkgs.fzf-zsh.pname;
-          src = pkgs.fzf-zsh.src;
+          inherit (pkgs.fzf-zsh) src;
         }
 
         {
           name = pkgs.zsh-syntax-highlighting.pname;
-          src = pkgs.zsh-syntax-highlighting.src;
+          inherit (pkgs.zsh-syntax-highlighting) src;
         }
         {
           name = pkgs.zsh-fast-syntax-highlighting.pname;
-          src = pkgs.zsh-fast-syntax-highlighting.src;
+          inherit (pkgs.zsh-fast-syntax-highlighting) src;
         }
 
         {
           name = pkgs.zsh-completions.pname;
-          src = pkgs.zsh-completions.src;
+          inherit (pkgs.zsh-completions) src;
         }
         {
           name = pkgs.zsh-history-substring-search.pname;
-          src = pkgs.zsh-history-substring-search.src;
+          inherit (pkgs.zsh-history-substring-search) src;
         }
 
         {
           name = pkgs.zsh-histdb.pname;
-          src = pkgs.zsh-histdb.src;
+          inherit (pkgs.zsh-histdb) src;
         }
         {
           name = "you-should-use";

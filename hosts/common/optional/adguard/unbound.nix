@@ -1,4 +1,4 @@
-{ ... }:
+_:
 {
   # TODO - Look into it, the original setup was brief
   services.unbound = {

@@ -1,4 +1,4 @@
-{ ... }:
+_:
 let
   immichHost = "test.egor.wtf"; # TODO: put your immich domain name here
 

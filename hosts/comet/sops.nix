@@ -1,4 +1,4 @@
-{ ... }:
+_:
 {
   #FIXME - Improve
   #  imports = [inputs.sops-nix.nixosModules.sops];

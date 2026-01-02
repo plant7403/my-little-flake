@@ -1,6 +1,4 @@
-{
-  ...
-}:
+_:
 {
   # Ensure non-users-secrets from sops are only initialised *after*
   # impermanence's persistence module has linked files into place, otherwise we

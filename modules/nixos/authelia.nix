@@ -129,7 +129,7 @@ in
               disable = false;
             };
             file = {
-              path = config.sops.secrets."services/authelia/users.yaml".path;
+              inherit (config.sops.secrets."services/authelia/users.yaml") path;
               watch = false;
               search = {
                 email = false;

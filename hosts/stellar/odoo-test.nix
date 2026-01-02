@@ -1,4 +1,4 @@
-{ ... }:
+_:
 {
   services.odoo = {
     enable = true;

@@ -58,47 +58,30 @@ in
         folders = {
           "${config.xdg.userDirs.documents}" = {
             id = "Documents";
-            devices = [
-
-            ]
-            ++ all_devices;
+            devices = all_devices;
           };
           "${config.xdg.userDirs.music}" = {
             id = "Music";
-            devices = [
-
-            ]
-            ++ all_devices;
+            devices = all_devices;
           };
           "${config.xdg.userDirs.pictures}" = {
             id = "Pictures";
-            devices = [
-            ]
-            ++ all_devices;
+            devices = all_devices;
           };
           "Sync" = {
             id = "Sync";
-            devices = [
-
-            ]
-            ++ all_devices;
+            devices = all_devices;
             path = "${config.home.homeDirectory}/Sync";
           };
 
           ".Secret" = {
             id = ".Secret";
-            devices = [
-
-            ]
-            ++ all_devices;
+            devices = all_devices;
             path = "${config.home.homeDirectory}/.Secret";
           };
           ".DecSync" = {
             id = ".DecSync";
-            devices = [
-
-            ]
-            ++ all_devices;
+            devices = all_devices;
             path = "${config.home.homeDirectory}/.DecSync";
           };
           "DCIM" = {

@@ -1,4 +1,4 @@
-{ ... }:
+_:
 {
   services.grocy = {
     enable = true;

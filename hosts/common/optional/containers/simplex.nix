@@ -1,6 +1,4 @@
-{
-  ...
-}:
+_:
 {
   virtualisation.oci-containers.containers = {
     simplex-smp-server = {

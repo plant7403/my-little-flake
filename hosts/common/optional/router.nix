@@ -1,4 +1,4 @@
-{ ... }:
+_:
 {
   virtualHosts."router.egor.wtf" = {
     enableACME = true;

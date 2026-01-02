@@ -299,7 +299,7 @@
             sops-nix.nixosModules.sops
             # nixos-mailserver.nixosModule
             (
-              { ... }:
+              _:
               {
                 /*
                   services.dovecot2.sieve.extensions = [ "fileinto" ];
