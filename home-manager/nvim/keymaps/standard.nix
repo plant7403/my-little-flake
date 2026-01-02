@@ -8,7 +8,10 @@ in
   # Standard operations
   # https://github.com/AstroNvim/AstroNvim/blob/v4.7.7/lua/astronvim/plugins/_astrocore_mappings.lua#L27-L44
   {
-    mode = [ "n" "x" ];
+    mode = [
+      "n"
+      "x"
+    ];
     key = "j";
     action = "v:count == 0 ? 'gj' : 'j'";
 
@@ -19,7 +22,10 @@ in
     };
   }
   {
-    mode = [ "n" "x" ];
+    mode = [
+      "n"
+      "x"
+    ];
     key = "k";
     action = "v:count == 0 ? 'gk' : 'k'";
 
@@ -60,7 +66,10 @@ in
   }
   {
     inherit (forceWrite) options;
-    mode = [ "i" "x" ];
+    mode = [
+      "i"
+      "x"
+    ];
     key = "<c-s>";
     action = "<esc>" + forceWrite.action;
   }
