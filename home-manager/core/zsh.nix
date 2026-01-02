@@ -1,8 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}:
+{ pkgs, lib, ... }:
 {
   #home.file."${config.xdg.cacheHome}/oh-my-zsh/.keep".text = "";
 
