@@ -118,7 +118,7 @@ in
           warn-dirty = false;
           keep-going = true;
           log-lines = 20;
-          reexec = true;
+          #reexec = true;
 
         };
 
