@@ -109,6 +109,8 @@ in
             "signageos.signageos-vscode-sops"
             "jeff-hykin.better-nix-syntax"
 
+            "coopmoney.nix-embedded-languages"
+
             #"folke.vscode-monorepo-workspace"
             #"moshfeu.compare-folders"
             #pinage404.nix-extension-pack
@@ -132,71 +134,11 @@ in
                   "unused_with"
                 ];
               };
-              /*
-                "formatting" = {
-                             "command" = [
-                               "treefmt"
-                               "--stdin"
-                               "{file}"
-                             ];
-                           };
-              */
             };
-            # check https://github.com/nix-community/nixd/blob/main/nixd/docs/configuration.md for all nixd config
-            /*
-              "nixd" = {
-                "nixpkgs" = {
-                  # For flake.
-                  #"expr" = "import (builtins.getFlake \"/home/egor/my-little-flake\").inputs.nixpkgs { }   ";
-
-                  # This expression will be interpreted as "nixpkgs" toplevel
-                  # Nixd provides package, lib completion/information from it.
-                  #/
-                  # Resource Usage: Entries are lazily evaluated, entire nixpkgs takes 200~300MB for just "names".
-                  #/                Package documentation, versions, are evaluated by-need.
-                  "expr" = "import <nixpkgs> { }";
-                };
-                "formatting" = {
-                  # Which command you would like to do formatting
-                  "command" = [ "nixfmt" ];
-                };
-                # Tell the language server your desired option set, for completion
-                # This is lazily evaluated.
-                "options" = {
-                  # Map of eval information
-                  # By default, this entriy will be read from `import <nixpkgs> { }`
-                  # You can write arbitary nix expression here, to produce valid "options" declaration result.
-                  #
-                  # *NOTE*: Replace "<name>" below with your actual configuration name.
-                  # If you're unsure what to use, you can verify with `nix repl` by evaluating
-                  # the expression directly.
-                  #
-                  "nixos" = {
-                    "expr" = "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.stellar.options";
-                  };
-
-                  # Before configuring Home Manager options, consider your setup:
-                  # Which command do you use for home-manager switching?
-                  #
-                  #  A. home-manager switch --flake .#... (standalone Home Manager)
-                  #  B. nixos-rebuild switch --flake .#... (NixOS with integrated Home Manager)
-                  #
-                  # Configuration examples for both approaches are shown below.
-                  "home-manager" = {
-                    # A:
-                    #"expr"= "(builtins.getFlake (builtins.toString ./.)).homeConfigurations.<name>.options"
-
-                    # B:
-                    "expr" =
-                      "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.stellar.options.home-manager.users.type.getSubOptions []";
-                  };
-                };
-              };
-            */
           };
-          "nix.hiddenLanguageServerErrors" = [
-            "  Code: -32603 "
-          ];
+          # "nix.hiddenLanguageServerErrors" = [
+          # "  Code: -32603 "
+          # ];
 
         }
         // baseSettings;

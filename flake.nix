@@ -5,12 +5,15 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
 
+    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
+
     # Home manager
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     #treefmt-nix.url = "github:numtide/treefmt-nix";
     systems.url = "github:nix-systems/default";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     stylix.url = "github:danth/stylix";
 
@@ -69,6 +72,7 @@
       stylix,
       nix4vscode,
       systems,
+      determinate,
       ...
     }@inputs:
     let
@@ -128,6 +132,7 @@
           specialArgs = { inherit inputs outputs; };
           modules = [
             ./hosts/immortal/configuration.nix
+            determinate.nixosModules.default
             sops-nix.nixosModules.sops
             disko.nixosModules.disko
             lanzaboote.nixosModules.lanzaboote
@@ -298,37 +303,34 @@
             #{disko.devices.disk.disk1.device = "/dev/vda";}
             sops-nix.nixosModules.sops
             # nixos-mailserver.nixosModule
-            (
-              _:
-              {
-                /*
-                  services.dovecot2.sieve.extensions = [ "fileinto" ];
-                  mailserver = {
-                    enable = true;
-                    fqdn = "mail.egor.wtf";
-                    domains = [ "egor.wtf" ];
-                    # A list of all login accounts. To create the password hashes, use
-                    # nix-shell -p mkpasswd --run 'mkpasswd -sm bcrypt'
-                    loginAccounts = {
-                      "me@egor.wtf" = {
-                        hashedPasswordFile = config.sops.secrets."mail/egor.wtf/me".path;
-                        aliases = [ "postmaster@egor.wtf" ];
-                      };
-                      "hello@egor.wtf" = {
-                        hashedPasswordFile = config.sops.secrets."mail/egor.wtf/me".path;
-                      };
+            (_: {
+              /*
+                services.dovecot2.sieve.extensions = [ "fileinto" ];
+                mailserver = {
+                  enable = true;
+                  fqdn = "mail.egor.wtf";
+                  domains = [ "egor.wtf" ];
+                  # A list of all login accounts. To create the password hashes, use
+                  # nix-shell -p mkpasswd --run 'mkpasswd -sm bcrypt'
+                  loginAccounts = {
+                    "me@egor.wtf" = {
+                      hashedPasswordFile = config.sops.secrets."mail/egor.wtf/me".path;
+                      aliases = [ "postmaster@egor.wtf" ];
                     };
-                    certificateScheme = "acme-nginx";
+                    "hello@egor.wtf" = {
+                      hashedPasswordFile = config.sops.secrets."mail/egor.wtf/me".path;
+                    };
                   };
-                */
-                security.acme.acceptTerms = true;
-                security.acme.defaults.email = "ssl@egor.wtf";
-
-                sops.secrets."mail/egor.wtf/me" = {
-                  #owner = "nextcloud";
+                  certificateScheme = "acme-nginx";
                 };
-              }
-            )
+              */
+              security.acme.acceptTerms = true;
+              security.acme.defaults.email = "ssl@egor.wtf";
+
+              sops.secrets."mail/egor.wtf/me" = {
+                #owner = "nextcloud";
+              };
+            })
           ];
         };
         comet = nixpkgs.lib.nixosSystem {

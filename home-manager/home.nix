@@ -95,6 +95,8 @@
     normcap
 
     doctl
+    keep-sorted
+    prek # or -> pre-commit
 
     bat
     lsd
