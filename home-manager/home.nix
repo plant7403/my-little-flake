@@ -472,85 +472,85 @@
   */
 
   home.persistence."/persist/home/egor" = {
-
+    # @blocksort
     directories = [
 
-      "Downloads"
-      "Music"
-      "Pictures"
-      "Documents"
-
-      "Sync"
-      ".Secret"
-      ".DecSync"
-      "DCIM"
-
-      ".gnupg"
-      ".ssh"
-      ".local/share/keyrings"
-      ".local/share/direnv"
-      ".local/state/syncthing"
-      ".config/Element"
+      ".cache/thumbnails"
       ".config/.mozilla/thunderbird"
-      ".thunderbird"
-      ".librewolf/default"
+      ".config/Element"
+      ".config/keepassxc"
+
+      ".config/obsidian"
+      ".config/paperwm"
+      ".config/rbw"
       ".config/Signal"
 
+      ".config/VSCodium/User"
+      ".DecSync"
+      ".gnupg"
+      ".librewolf/default"
+      ".local/share/direnv"
+      ".local/share/keyrings"
+      ".local/share/rbw"
+      ".local/share/zsh"
+      ".local/state/syncthing"
+      ".radicle"
+
+      ".Secret"
+      ".ssh"
+      ".steam"
+
+      ".thunderbird"
+
+      "DCIM"
+      "Documents"
+      "Downloads"
+      "Music"
       "my-little-flake"
       "Pak-Unity"
+      "Pictures"
+
       "Projects"
-
+      "Sync"
       "VirtualBox VMs"
-
-      ".config/VSCodium/User"
-      ".config/obsidian"
-      ".config/keepassxc"
-      #".config/zsh"
-      #".config/gsconnect"
-      # ".cache/nix-index"
-      ".cache/thumbnails"
-
-      #".local/state"
-      #".steam"
-      ".radicle"
       #".local/share/Steam"
 
       {
         directory = ".local/share/Steam/userdata";
         method = "symlink";
       }
-      ".steam"
+      # ".cache/nix-index"
 
-      ".config/paperwm"
-      ".local/share/zsh"
+      #".config/gsconnect"
+      #".config/zsh"
 
-      ".config/rbw"
-      ".local/share/rbw"
+      #".local/state"
+      #".steam"
 
     ];
-
+    # @blocksort
     files = [
+      ".cache/keepassxc/keepassxc.ini"
+      ".config/easyeffects/db/easyeffectsrc"
       ".config/gsconnect/certificate.pem"
       ".config/gsconnect/private.pem"
-      ".config/syncthingtray.ini"
-      ".cache/keepassxc/keepassxc.ini"
-      # ".mozilla/native-messaging-hosts/org.keepassxc.keepassxc_browser.json"
-      #".nix-defexpr/channels"
-      #".nix-defexpr/channels_root"
       ".config/sops/age/keys.txt"
+      ".config/sops/age/keys.txt"
+      ".config/syncthingtray.ini"
       ".screenrc"
 
       /*
         ".config/distrobox/containers.ini"
         ".config/distrobox/distrobox.conf"
       */
+      ".z"
 
-      ".config/easyeffects/db/easyeffectsrc"
-
-      ".config/sops/age/keys.txt"
       # ".config/chromium/NativeMessagingHosts"
 
-      ".z"
+      # ".mozilla/native-messaging-hosts/org.keepassxc.keepassxc_browser.json"
+      #".nix-defexpr/channels_root"
+
+      #".nix-defexpr/channels"
     ];
 
     allowOther = true;
