@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   services.jellyseerr = {
     #openFirewall = true;
     enable = true;
@@ -14,11 +15,11 @@
     #openFirewall = true;
   };
   /*
-     services.jackett = {
-    #group = "media";
-    enable = true;
-    #openFirewall = true;
-  };
+       services.jackett = {
+      #group = "media";
+      enable = true;
+      #openFirewall = true;
+    };
   */
   services.lidarr = {
     group = "media";
@@ -72,13 +73,13 @@
       tor.authelia = false;
     }
     /*
-       {
-      domain = "egor.wtf";
-      prefix = "jackett";
-      upstream = "http://127.0.0.1:9117";
-      tor.enable = true;
-      tor.authelia = false;
-    }
+         {
+        domain = "egor.wtf";
+        prefix = "jackett";
+        upstream = "http://127.0.0.1:9117";
+        tor.enable = true;
+        tor.authelia = false;
+      }
     */
     {
       domain = "egor.wtf";
@@ -95,7 +96,7 @@
     }
   ];
 
-  users.groups.media = {};
+  users.groups.media = { };
 
   environment.persistence."/persist".directories = [
     "/var/lib/prowlarr"
@@ -105,9 +106,9 @@
     "/var/lib/lidarr"
   ];
   /*
-     fileSystems."/var/lib/private/jellyseerr" = {
-    device = "/var/lib/jellyseerr";
-    options = ["bind"];
-  };
+       fileSystems."/var/lib/private/jellyseerr" = {
+      device = "/var/lib/jellyseerr";
+      options = ["bind"];
+    };
   */
 }

@@ -117,7 +117,11 @@
     autoCmd = [
       {
         desc = "Update buffers when adding new buffers";
-        event = [ "BufAdd" "BufEnter" "TabNewEntered" ];
+        event = [
+          "BufAdd"
+          "BufEnter"
+          "TabNewEntered"
+        ];
         group = "bufferline";
 
         callback.__raw = ''
@@ -141,7 +145,10 @@
       }
       {
         desc = "Update buffers when deleting buffers";
-        event = [ "BufDelete" "TermClose" ];
+        event = [
+          "BufDelete"
+          "TermClose"
+        ];
         group = "bufferline";
 
         callback.__raw = ''

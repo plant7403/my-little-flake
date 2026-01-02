@@ -1,4 +1,5 @@
-{config, ...}: {
+{ config, ... }:
+{
   services.openssh.hostKeys = [
     {
       bits = 4096;
@@ -10,6 +11,6 @@
       type = "ed25519";
     }
   ];
-  sops.secrets."system/hostkeys/luna/rsa" = {};
-  sops.secrets."system/hostkeys/luna/ed25519" = {};
+  sops.secrets."system/hostkeys/luna/rsa" = { };
+  sops.secrets."system/hostkeys/luna/ed25519" = { };
 }

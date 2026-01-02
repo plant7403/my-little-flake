@@ -8,7 +8,13 @@ let
   sign_handlers = import ./signs.nix;
 in
 {
-  inherit attributes icon_highlights modes separators sign_handlers;
+  inherit
+    attributes
+    icon_highlights
+    modes
+    separators
+    sign_handlers
+    ;
 
   fallback_colors = colors.fallback;
   setup_colors = colors.setup;

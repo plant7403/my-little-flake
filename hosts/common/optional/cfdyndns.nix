@@ -1,10 +1,11 @@
-{config, ...}: {
-  sops.secrets."cloudflare/cfdyndns" = {};
-  sops.secrets."cloudflare/cf-dns.env" = {};
+{ config, ... }:
+{
+  sops.secrets."cloudflare/cfdyndns" = { };
+  sops.secrets."cloudflare/cf-dns.env" = { };
 
   services.cloudflare-dyndns = {
     enable = true;
-    domains = ["infra.egor.wtf"];
+    domains = [ "infra.egor.wtf" ];
     apiTokenFile = config.sops.secrets."cloudflare/cf-dns.env".path;
     ipv6 = true;
   };
@@ -26,4 +27,3 @@
 #    proxied = false;
 #  }
 #];
-

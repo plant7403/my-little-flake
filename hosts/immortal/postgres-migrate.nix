@@ -2,16 +2,18 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   environment.systemPackages = [
-    (let
-      # XXX specify the postgresql package you'd like to
-      # upgrade to. Do not forget to list the extensions
-      # you need.
-      newPostgres = pkgs.postgresql_15.withPackages (_pp: [
-        # pp.plv8
-      ]);
-    in
+    (
+      let
+        # XXX specify the postgresql package you'd like to
+        # upgrade to. Do not forget to list the extensions
+        # you need.
+        newPostgres = pkgs.postgresql_15.withPackages (_pp: [
+          # pp.plv8
+        ]);
+      in
       pkgs.writeScriptBin "upgrade-pg-cluster" ''
         set -eux
         # XXX it's perhaps advisable to stop all services
@@ -30,6 +32,7 @@
 
 
 
-      '')
+      ''
+    )
   ];
 }

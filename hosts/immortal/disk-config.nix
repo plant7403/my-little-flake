@@ -33,27 +33,42 @@
                 #additionalKeyFiles = ["/tmp/additionalSecret.key"];
                 content = {
                   type = "btrfs";
-                  extraArgs = ["-f"];
+                  extraArgs = [ "-f" ];
                   subvolumes = {
                     "/@ROOT" = {
                       mountpoint = "/";
-                      mountOptions = ["compress=zstd" "noatime"];
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
                     };
                     "/@HOME" = {
                       mountpoint = "/home";
-                      mountOptions = ["compress=zstd" "noatime"];
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
                     };
                     "/@NIX" = {
                       mountpoint = "/nix";
-                      mountOptions = ["compress=zstd" "noatime"];
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
                     };
                     "/@PERSIST" = {
                       mountpoint = "/persist";
-                      mountOptions = ["compress=zstd" "noatime"];
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
                     };
                     "/@LOG" = {
                       mountpoint = "/var/log";
-                      mountOptions = ["compress=zstd" "noatime"];
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
                     };
                     "/@SWAP" = {
                       mountpoint = "/.swapvol";
@@ -68,7 +83,7 @@
       };
       sda = {
         type = "disk";
-        device = "/dev/sda"; #/dev/disk/by-uuid/faaf4823-7b06-4aec-9f6e-701ffc1390c6
+        device = "/dev/sda"; # /dev/disk/by-uuid/faaf4823-7b06-4aec-9f6e-701ffc1390c6
         content = {
           type = "gpt";
           partitions = {
@@ -86,11 +101,14 @@
                 #additionalKeyFiles = ["/tmp/keyfile"];
                 content = {
                   type = "btrfs";
-                  extraArgs = ["-f"];
+                  extraArgs = [ "-f" ];
                   subvolumes = {
                     "/" = {
                       mountpoint = "/hdd";
-                      mountOptions = ["compress=zstd" "noatime"];
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
                     };
                   };
                 };

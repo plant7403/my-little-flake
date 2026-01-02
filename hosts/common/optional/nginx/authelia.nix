@@ -1,4 +1,5 @@
-{config, ...}: {
+{ config, ... }:
+{
   services.authelia.instances = {
     prod = {
       enable = true;
@@ -34,11 +35,14 @@
           default_policy = "two_factor";
           rules = [
             {
-              domain = ["auth.egor.wtf"];
+              domain = [ "auth.egor.wtf" ];
               policy = "bypass";
             }
             {
-              domain = ["*.egor.wtf" "egor.wtf"];
+              domain = [
+                "*.egor.wtf"
+                "egor.wtf"
+              ];
               policy = "bypass";
               networks = [
                 #"internal"
@@ -51,7 +55,7 @@
               ];
             }
             {
-              domain = ["*.egor.wtf"];
+              domain = [ "*.egor.wtf" ];
               policy = "bypass";
               resources = [
                 "^/.well-known([/?].*)?$"
@@ -189,11 +193,14 @@
           default_policy = "two_factor";
           rules = [
             {
-              domain = ["auth.egorwtfz6xxh2qatvpcjodxdo33nlesc5dp7lhqohbackq5rnpvpsqyd.onion"];
+              domain = [ "auth.egorwtfz6xxh2qatvpcjodxdo33nlesc5dp7lhqohbackq5rnpvpsqyd.onion" ];
               policy = "bypass";
             }
             {
-              domain = ["*.egorwtfz6xxh2qatvpcjodxdo33nlesc5dp7lhqohbackq5rnpvpsqyd.onion" "egorwtfz6xxh2qatvpcjodxdo33nlesc5dp7lhqohbackq5rnpvpsqyd.onion"];
+              domain = [
+                "*.egorwtfz6xxh2qatvpcjodxdo33nlesc5dp7lhqohbackq5rnpvpsqyd.onion"
+                "egorwtfz6xxh2qatvpcjodxdo33nlesc5dp7lhqohbackq5rnpvpsqyd.onion"
+              ];
               policy = "bypass";
               networks = [
                 #"internal"
@@ -206,7 +213,7 @@
               ];
             }
             {
-              domain = ["*.egorwtfz6xxh2qatvpcjodxdo33nlesc5dp7lhqohbackq5rnpvpsqyd.onion"];
+              domain = [ "*.egorwtfz6xxh2qatvpcjodxdo33nlesc5dp7lhqohbackq5rnpvpsqyd.onion" ];
               policy = "bypass";
               resources = [
                 "^/.well-known([/?].*)?$"
@@ -313,7 +320,7 @@
   };
 
   services.postgresql = {
-    ensureDatabases = ["authelia-prod"];
+    ensureDatabases = [ "authelia-prod" ];
     ensureUsers = [
       {
         name = "authelia-prod";
@@ -336,12 +343,13 @@
       proxyWebsockets = true;
     };
   };
-  services.nginx.virtualHosts."auth.egorwtfz6xxh2qatvpcjodxdo33nlesc5dp7lhqohbackq5rnpvpsqyd.onion" = {
-    locations."/" = {
-      proxyPass = "http://127.0.0.1:9092";
-      proxyWebsockets = true;
+  services.nginx.virtualHosts."auth.egorwtfz6xxh2qatvpcjodxdo33nlesc5dp7lhqohbackq5rnpvpsqyd.onion" =
+    {
+      locations."/" = {
+        proxyPass = "http://127.0.0.1:9092";
+        proxyWebsockets = true;
+      };
     };
-  };
   sops.secrets = {
     "services/authelia/jwt".owner = "authelia-prod";
     "services/authelia/storage".owner = "authelia-prod";

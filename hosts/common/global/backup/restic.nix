@@ -2,14 +2,15 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   sops.secrets = {
-    "system/restic/encryption" = {};
+    "system/restic/encryption" = { };
     #    "system/restic/b2-id" = {};
     #    "system/restic/b2-key" = {};
-    "system/restic/s3.env" = {};
+    "system/restic/s3.env" = { };
   };
-  environment.systemPackages = [pkgs.restic];
+  environment.systemPackages = [ pkgs.restic ];
 
   services.restic.backups.system = {
     initialize = true;

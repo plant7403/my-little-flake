@@ -59,13 +59,17 @@
     keymaps =
       let
         mkTelescopeKeymap =
-          { key
-          , fn
-          , args ? { __empty = true; }
-          , desc ? ""
-          , extension ? null
-          , mode ? "n"
-          }: {
+          {
+            key,
+            fn,
+            args ? {
+              __empty = true;
+            },
+            desc ? "",
+            extension ? null,
+            mode ? "n",
+          }:
+          {
             inherit key mode;
 
             action.__raw = "function() TelescopeWithTheme('${fn}', ${helpers.toLuaObject args}, '${builtins.toString extension}') end";

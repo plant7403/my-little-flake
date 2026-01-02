@@ -1,4 +1,5 @@
-{ ...}: {
+{ ... }:
+{
   imports = [
     ./../../common/optional/headscale/tailscale-exit.nix
   ];

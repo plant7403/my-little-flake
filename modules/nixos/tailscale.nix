@@ -4,12 +4,14 @@
   config,
   ...
 }:
-with lib; let
+with lib;
+let
   # Shorter name to access final settings a
   # user of ts-custom.nix module HAS ACTUALLY SET.
   # cfg is a typical convention.
   cfg = config.modules.tailscale;
-in {
+in
+{
   # Declare what settings a user of this "ts-custom.nix" module CAN SET.
   options.modules.tailscale = {
     enable = mkEnableOption "ts-custom service";
@@ -34,33 +36,32 @@ in {
     (mkIf cfg.enable {
       services.tailscale = {
         enable = true;
-        useRoutingFeatures =
-          if cfg.exit
-          then "both"
-          else "client";
+        useRoutingFeatures = if cfg.exit then "both" else "client";
 
-        extraUpFlags =
-          [
-            "--login-server https://head.pak.academy"
-            "--hostname=${cfg.hostname}"
-            "--operator=egor"
-          ]
-          ++ mkIf cfg.exit [
-            "--advertise-exit-node"
-          ];
+        extraUpFlags = [
+          "--login-server https://head.pak.academy"
+          "--hostname=${cfg.hostname}"
+          "--operator=egor"
+        ]
+        ++ mkIf cfg.exit [
+          "--advertise-exit-node"
+        ];
       };
 
       networking.firewall = {
         checkReversePath = "loose";
-        trustedInterfaces = ["tailscale0"];
-        allowedUDPPorts = [config.services.tailscale.port];
+        trustedInterfaces = [ "tailscale0" ];
+        allowedUDPPorts = [ config.services.tailscale.port ];
       };
 
       boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
 
       systemd.services.NetworkManager-wait-online = {
         serviceConfig = {
-          ExecStart = ["" "${pkgs.networkmanager}/bin/nm-online -q"];
+          ExecStart = [
+            ""
+            "${pkgs.networkmanager}/bin/nm-online -q"
+          ];
         };
       };
     })
@@ -76,7 +77,10 @@ in {
       services.networkd-dispatcher.enable = true;
       services.networkd-dispatcher.rules = {
         "tailscale-routing" = {
-          onState = ["routable" "off"];
+          onState = [
+            "routable"
+            "off"
+          ];
           script = ''
             ${lib.getExe pkgs.ethtool} -K enp0s31f6 rx-udp-gro-forwarding on rx-gro-list off
           '';
@@ -86,27 +90,26 @@ in {
   ];
 }
 /*
-services.tailscale = {
-  enable = true;
-  useRoutingFeatures = lib.mkDefault "client";
-  extraUpFlags = [
-    "--login-server https://head.pak.academy"
-    "--hostname ${cfg.hostname}"
-  ];
-};
-
-networking.firewall = {
-  checkReversePath = "loose";
-  trustedInterfaces = ["tailscale0"];
-  allowedUDPPorts = [config.services.tailscale.port];
-};
-
-boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
-
-systemd.services.NetworkManager-wait-online = {
-  serviceConfig = {
-    ExecStart = ["" "${pkgs.networkmanager}/bin/nm-online -q"];
+  services.tailscale = {
+    enable = true;
+    useRoutingFeatures = lib.mkDefault "client";
+    extraUpFlags = [
+      "--login-server https://head.pak.academy"
+      "--hostname ${cfg.hostname}"
+    ];
   };
-};
-*/
 
+  networking.firewall = {
+    checkReversePath = "loose";
+    trustedInterfaces = ["tailscale0"];
+    allowedUDPPorts = [config.services.tailscale.port];
+  };
+
+  boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
+
+  systemd.services.NetworkManager-wait-online = {
+    serviceConfig = {
+      ExecStart = ["" "${pkgs.networkmanager}/bin/nm-online -q"];
+    };
+  };
+*/

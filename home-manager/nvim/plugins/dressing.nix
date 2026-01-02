@@ -12,7 +12,10 @@ _:
         title_pos = "center";
       };
 
-      select.backend = [ "telescope" "builtin" ];
+      select.backend = [
+        "telescope"
+        "builtin"
+      ];
     };
   };
 }

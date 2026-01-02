@@ -2,17 +2,16 @@
   pkgs,
   inputs,
   ...
-}: {
+}:
+{
   services.wordpress.sites."xoxo.green" = {
     themes = {
-      inherit
-        (pkgs.wordpressPackages.themes)
+      inherit (pkgs.wordpressPackages.themes)
         twentytwentythree
         ;
     };
     plugins = {
-      inherit
-        (pkgs.wordpressPackages.plugins)
+      inherit (pkgs.wordpressPackages.plugins)
         antispam-bee
         woocommerce
         vietqr
@@ -28,18 +27,18 @@
         best-woocommerce-feed
         two-factor
         #litcommerce
-        
+
         #quan-ly-cua-hang-telpos
-        
+
         #multisite-language-switcher
-        
+
         nginx-helper
         #translatepress-multilingual
-        
+
         #simple-tags
-        
+
         #internal-links
-        
+
         auto-tag-links
         ;
     };
@@ -70,24 +69,20 @@
   nixpkgs.overlays = [
     (_self: super: {
       wordpress = super.wordpress.overrideAttrs (oldAttrs: rec {
-        installPhase =
-          oldAttrs.installPhase
-          + ''
-            ln -s /var/lib/wordpress/xoxo.green/webp-express $out/share/wordpress/wp-content/webp-express
-          '';
+        installPhase = oldAttrs.installPhase + ''
+          ln -s /var/lib/wordpress/xoxo.green/webp-express $out/share/wordpress/wp-content/webp-express
+        '';
       });
     })
     (_self: super: {
       wordpress = super.wordpress.overrideAttrs (oldAttrs: rec {
-        installPhase =
-          oldAttrs.installPhase
-          + ''
-            ln -s /var/lib/wordpress/xoxo.green/mmr $out/share/wordpress/wp-content/mmr
-          '';
+        installPhase = oldAttrs.installPhase + ''
+          ln -s /var/lib/wordpress/xoxo.green/mmr $out/share/wordpress/wp-content/mmr
+        '';
       });
     })
     (_self: _super: {
-      wordpressPackages = pkgs.callPackage inputs.wp4nix {};
+      wordpressPackages = pkgs.callPackage inputs.wp4nix { };
     })
   ];
 

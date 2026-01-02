@@ -3,7 +3,8 @@
   pkgs,
   inputs,
   ...
-}: let
+}:
+let
   # You'll need to edit these values
   # The hostname that will appear in your user and room IDs
   server_name = "egor.wtf";
@@ -35,7 +36,8 @@
       }
     }
   '';
-in {
+in
+{
   # Configure Conduit itself
   services.matrix-conduit = {
     enable = true;
@@ -134,7 +136,7 @@ in {
     upstreams = {
       "backend_conduit" = {
         servers = {
-          "[::1]:${toString config.services.matrix-conduit.settings.global.port}" = {};
+          "[::1]:${toString config.services.matrix-conduit.settings.global.port}" = { };
         };
       };
     };
@@ -145,6 +147,14 @@ in {
   ];
 
   # Open firewall ports for HTTP, HTTPS, and Matrix federation
-  networking.firewall.allowedTCPPorts = [80 443 8448];
-  networking.firewall.allowedUDPPorts = [80 443 8448];
+  networking.firewall.allowedTCPPorts = [
+    80
+    443
+    8448
+  ];
+  networking.firewall.allowedUDPPorts = [
+    80
+    443
+    8448
+  ];
 }

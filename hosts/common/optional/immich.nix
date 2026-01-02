@@ -1,4 +1,5 @@
-{...}: let
+{ ... }:
+let
   immichHost = "test.egor.wtf"; # TODO: put your immich domain name here
 
   immichRoot = "/data/immich"; # TODO: Tweak these to your desired storage locations
@@ -12,7 +13,8 @@
   postgresPassword = "fewmygwdf28e3hf82e3fg82ef8h2e8fj29ef92jef9j2f9";
   postgresUser = "immich";
   postgresDb = "immich";
-in {
+in
+{
   security.unprivilegedUsernsClone = true;
   virtualisation = {
     podman = {
@@ -59,7 +61,7 @@ in {
 
   virtualisation.oci-containers.containers.immich_server = {
     image = "ghcr.io/immich-app/immich-server:${immichVersion}";
-    ports = ["127.0.0.1:2283:3001"];
+    ports = [ "127.0.0.1:2283:3001" ];
     extraOptions = [
       "--pull=newer"
       # Force DNS resolution to only be the podman dnsname name server; by default podman provides a resolv.conf
@@ -67,7 +69,10 @@ in {
       # to be inconsistent.
       "--dns=10.88.0.1"
     ];
-    cmd = ["start.sh" "immich"];
+    cmd = [
+      "start.sh"
+      "immich"
+    ];
     environment = {
       IMMICH_VERSION = immichVersion;
       DB_HOSTNAME = "immich_postgres";
@@ -92,7 +97,10 @@ in {
       # to be inconsistent.
       "--dns=10.88.0.1"
     ];
-    cmd = ["start.sh" "microservices"];
+    cmd = [
+      "start.sh"
+      "microservices"
+    ];
     environment = {
       IMMICH_VERSION = immichVersion;
       DB_HOSTNAME = "immich_postgres";
@@ -110,7 +118,7 @@ in {
 
   virtualisation.oci-containers.containers.immich_machine_learning = {
     image = "ghcr.io/immich-app/immich-machine-learning:${immichVersion}";
-    extraOptions = ["--pull=newer"];
+    extraOptions = [ "--pull=newer" ];
     environment = {
       IMMICH_VERSION = immichVersion;
     };

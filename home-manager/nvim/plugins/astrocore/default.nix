@@ -1,5 +1,11 @@
 # homepage: https://github.com/AstroNvim/astrocore
-{ helpers, icons, lib, pkgs, ... }:
+{
+  helpers,
+  icons,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   diagnostics = import ./diagnostics.nix { inherit icons; };

@@ -1,7 +1,8 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{ ...}: {
+{ ... }:
+{
   imports = [
     <nixos-avf/avf>
     # Include the results of the hardware scan.
@@ -11,23 +12,21 @@
   ];
   #modules.gnome = {
   #  enable = true;
-  /*
-  autologin = true;
-  */
+  # autologin = true;
   #};
   /*
-     modules.impermanence = {
-    enable = true;
-    disk = "vda3";
-  };
+       modules.impermanence = {
+      enable = true;
+      disk = "vda3";
+    };
   */
   /*
-     modules.tailscale = {
-    enable = true;
-    exit = true;
-    hostname = "pluto";
-    impermanence = true;
-  };
+       modules.tailscale = {
+      enable = true;
+      exit = true;
+      hostname = "pluto";
+      impermanence = true;
+    };
   */
   modules.system = {
     hostname = "comet";
@@ -42,9 +41,7 @@
   };
 
   # Bootloader.
-  /*
-  boot.loader.grub.devices = ["/dev/vda3"];
-  */
+  # boot.loader.grub.devices = ["/dev/vda3"];
 
   networking.hostName = "comet"; # Define your hostname.
 

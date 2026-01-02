@@ -7,19 +7,18 @@ let
 
   # Load plugins filenames in list
   definitions = lib.attrNames (
-    lib.filterAttrs
-      (filename: kind:
-        filename != "default.nix"
-        && (kind == "regular" || kind == "directory")
-        # If file is an LSP plugin, respect withLSP flag
-        && (if filename == "lsp.nix" then withLSP else true)
-      )
-      (builtins.readDir ./.)
+    lib.filterAttrs (
+      filename: kind:
+      filename != "default.nix"
+      && (kind == "regular" || kind == "directory")
+      # If file is an LSP plugin, respect withLSP flag
+      && (if filename == "lsp.nix" then withLSP else true)
+    ) (builtins.readDir ./.)
   );
 in
 lib.mkMerge (
-  map
-    (file:
+  map (
+    file:
     let
       pluginName = lib.elemAt (lib.splitString "." file) 0;
       plugin = import ./${file} args;
@@ -34,6 +33,5 @@ lib.mkMerge (
       })
       (plugin.rootOpts or { })
     ]
-    )
-    definitions
+  ) definitions
 )

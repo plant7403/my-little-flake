@@ -4,9 +4,11 @@
   config,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.modules.mullvad;
-in {
+in
+{
   options.modules.mullvad = {
     enable = mkEnableOption "service";
     impermanence = mkOption {

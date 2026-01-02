@@ -2,8 +2,9 @@
   pkgs,
   config,
   ...
-}: {
-  sops.secrets."services/searx" = {};
+}:
+{
+  sops.secrets."services/searx" = { };
   environment.systemPackages = [
     pkgs.searxng
   ];
@@ -56,5 +57,5 @@
       tor.authelia = false;
     }
   ];
-  sops.secrets."services/searx" = {};
+  sops.secrets."services/searx" = { };
 }

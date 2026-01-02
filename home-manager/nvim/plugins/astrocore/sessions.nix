@@ -8,6 +8,9 @@
   ignore = {
     buftypes = { };
     dirs = { };
-    filetypes = [ "gitcommit" "gitrebase" ];
+    filetypes = [
+      "gitcommit"
+      "gitrebase"
+    ];
   };
 }

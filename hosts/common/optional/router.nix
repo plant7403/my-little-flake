@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   virtualHosts."router.egor.wtf" = {
     enableACME = true;
     forceSSL = true;

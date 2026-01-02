@@ -1,7 +1,8 @@
 {
   config,
   ...
-}: {
+}:
+{
   # MONITORING: services run on loopback interface
   #             nginx reverse proxy exposes services to network
   #             - grafana:3010
@@ -18,7 +19,7 @@
     exporters = {
       node = {
         port = 3021;
-        enabledCollectors = ["systemd"];
+        enabledCollectors = [ "systemd" ];
         enable = true;
       };
       graphite.enable = true;
@@ -139,7 +140,7 @@
           };
           relabel_configs = [
             {
-              source_labels = ["__journal__systemd_unit"];
+              source_labels = [ "__journal__systemd_unit" ];
               target_label = "unit";
             }
           ];
@@ -191,22 +192,22 @@
     upstreams = {
       "grafana" = {
         servers = {
-          "127.0.0.1:${toString config.services.grafana.settings.server.http_port}" = {};
+          "127.0.0.1:${toString config.services.grafana.settings.server.http_port}" = { };
         };
       };
       "prometheus" = {
         servers = {
-          "127.0.0.1:${toString config.services.prometheus.port}" = {};
+          "127.0.0.1:${toString config.services.prometheus.port}" = { };
         };
       };
       "loki" = {
         servers = {
-          "127.0.0.1:${toString config.services.loki.configuration.server.http_listen_port}" = {};
+          "127.0.0.1:${toString config.services.loki.configuration.server.http_listen_port}" = { };
         };
       };
       "promtail" = {
         servers = {
-          "127.0.0.1:${toString config.services.promtail.configuration.server.http_listen_port}" = {};
+          "127.0.0.1:${toString config.services.promtail.configuration.server.http_listen_port}" = { };
         };
       };
     };

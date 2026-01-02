@@ -2,8 +2,9 @@
   pkgs,
   config,
   ...
-}: {
-  sops.secrets."services/photoprism/admin/password" = {};
+}:
+{
+  sops.secrets."services/photoprism/admin/password" = { };
   services.photoprism = {
     enable = true;
     port = 2342;
@@ -28,11 +29,13 @@
     enable = true;
     #dataDir = "/data/mysql";
     package = pkgs.mariadb;
-    ensureDatabases = ["photoprism"];
+    ensureDatabases = [ "photoprism" ];
     ensureUsers = [
       {
         name = "photoprism";
-        ensurePermissions = {"photoprism.*" = "ALL PRIVILEGES";};
+        ensurePermissions = {
+          "photoprism.*" = "ALL PRIVILEGES";
+        };
       }
     ];
   };
@@ -48,11 +51,11 @@
   ];
   fileSystems."/var/lib/private/photoprism" = {
     device = "/data/Photos";
-    options = ["bind"];
+    options = [ "bind" ];
   };
   fileSystems."/var/lib/private/photoprism/import" = {
     device = "/data/Import";
-    options = ["bind"];
+    options = [ "bind" ];
   };
   #environment.persistence."/persist".directories = [
   #  "/var/lib/private/photoprism"

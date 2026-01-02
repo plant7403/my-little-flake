@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   services.borgbackup.jobs = {
     libraries = {
       #user = "root";

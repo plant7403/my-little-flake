@@ -33,37 +33,48 @@
                 #additionalKeyFiles = ["/tmp/additionalSecret.key"];
                 content = {
                   type = "btrfs";
-                  extraArgs = ["-f"];
-                  postCreateHook =
-                    /*
-                    sh
-                    */
-                    ''
-                      MNTPOINT=$(mktemp -d)
-                      mount "/dev/mapper/ssd-crypt" "$MNTPOINT" -o subvol=/
-                      trap 'umount $MNTPOINT; rm -rf $MNTPOINT' EXIT
-                      btrfs subvolume snapshot -r $MNTPOINT/@ROOT $MNTPOINT/@ROOT-BLANK
-                    '';
+                  extraArgs = [ "-f" ];
+                  postCreateHook = /* sh */ ''
+                    MNTPOINT=$(mktemp -d)
+                    mount "/dev/mapper/ssd-crypt" "$MNTPOINT" -o subvol=/
+                    trap 'umount $MNTPOINT; rm -rf $MNTPOINT' EXIT
+                    btrfs subvolume snapshot -r $MNTPOINT/@ROOT $MNTPOINT/@ROOT-BLANK
+                  '';
                   subvolumes = {
                     "/@ROOT" = {
                       mountpoint = "/";
-                      mountOptions = ["compress=zstd" "noatime"];
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
                     };
                     "/@HOME" = {
                       mountpoint = "/home";
-                      mountOptions = ["compress=zstd" "noatime"];
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
                     };
                     "/@NIX" = {
                       mountpoint = "/nix";
-                      mountOptions = ["compress=zstd" "noatime"];
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
                     };
                     "/@PERSIST" = {
                       mountpoint = "/persist";
-                      mountOptions = ["compress=zstd" "noatime"];
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
                     };
                     "/@LOG" = {
                       mountpoint = "/var/log";
-                      mountOptions = ["compress=zstd" "noatime"];
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                      ];
                     };
                     "/@SWAP" = {
                       mountpoint = "/.swapvol";

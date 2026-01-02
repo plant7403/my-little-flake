@@ -1,4 +1,5 @@
-{ ...}: {
+{ ... }:
+{
   services.vaultwarden = {
     enable = true;
     dbBackend = "postgresql";
@@ -15,7 +16,7 @@
         host  all      all  samehost     trust
     '';
     enable = true;
-    ensureDatabases = ["vaultwarden"];
+    ensureDatabases = [ "vaultwarden" ];
     ensureUsers = [
       {
         name = "vaultwarden";
@@ -24,17 +25,17 @@
     ];
   };
   /*
-  imports = [outputs.nixosModules.web];
-  modules.web = {
-    enable = true;
-    prefix = "password";
-    port = "8000";
-    authelia = true;
-    tor = {
+    imports = [outputs.nixosModules.web];
+    modules.web = {
       enable = true;
+      prefix = "password";
+      port = "8000";
       authelia = true;
+      tor = {
+        enable = true;
+        authelia = true;
+      };
     };
-  };
   */
   modules.web.vhosts = [
     {
@@ -49,13 +50,13 @@
       access_control = {
         rules = [
           /*
-             {
-            domain = ["password.egor.wtf"];
-            policy = "one_factor";
-          }
+               {
+              domain = ["password.egor.wtf"];
+              policy = "one_factor";
+            }
           */
           {
-            domain = ["password.egor.wtf"];
+            domain = [ "password.egor.wtf" ];
             policy = "bypass";
             networks = [
               #"internal"

@@ -2,7 +2,8 @@
   pkgs,
   config,
   ...
-}: let
+}:
+let
   fqdn = "mtrx.${config.networking.domain}";
   baseUrl = "https://${fqdn}";
   clientConfig."m.homeserver".base_url = baseUrl;
@@ -12,16 +13,22 @@
     add_header Access-Control-Allow-Origin *;
     return 200 '${builtins.toJSON data}';
   '';
-in {
-  sops.secrets."services/matrix-synapse" = {};
-  sops.secrets."postgres/matrix-synapse" = {};
+in
+{
+  sops.secrets."services/matrix-synapse" = { };
+  sops.secrets."postgres/matrix-synapse" = { };
   #networking.hostName "mtrx";
   networking.domain = "egor.wtf";
-  networking.firewall.allowedTCPPorts = [80 443];
+  networking.firewall.allowedTCPPorts = [
+    80
+    443
+  ];
 
   services.postgresql.enable = true;
   services.postgresql.initialScript = pkgs.writeText "synapse-init.sql" ''
-    CREATE ROLE "matrix-synapse" WITH LOGIN PASSWORD '${config.sops.secrets."postgres/matrix-synapse".path}';
+    CREATE ROLE "matrix-synapse" WITH LOGIN PASSWORD '${
+      config.sops.secrets."postgres/matrix-synapse".path
+    }';
     CREATE DATABASE "matrix-synapse" WITH OWNER "matrix-synapse"
       TEMPLATE template0
       LC_COLLATE = "C"
@@ -92,13 +99,16 @@ in {
     settings.listeners = [
       {
         port = 8008;
-        bind_addresses = ["::1"];
+        bind_addresses = [ "::1" ];
         type = "http";
         tls = false;
         x_forwarded = true;
         resources = [
           {
-            names = ["client" "federation"];
+            names = [
+              "client"
+              "federation"
+            ];
             compress = true;
           }
         ];

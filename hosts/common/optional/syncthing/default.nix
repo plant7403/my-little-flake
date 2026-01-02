@@ -1,7 +1,8 @@
 {
   pkgs,
   ...
-}: {
+}:
+{
   services = {
     syncthing = {
       enable = true;
@@ -18,14 +19,17 @@
       overrideFolders = true; # overrides any folders added or deleted through the WebUI
     };
   };
-  users.groups.sync = {};
-  users.users.egor.extraGroups = ["sync"];
+  users.groups.sync = { };
+  users.users.egor.extraGroups = [ "sync" ];
   #users.groups.sync.members = [ "syncthing" "egor"];
   #users.groups.syncthing.members = [ "syncthing" "egor"];
   #users.users.nginx.extraGroups = [
   #  "acme"
   #];
   # Syncthing ports
-  networking.firewall.allowedTCPPorts = [22000];
-  networking.firewall.allowedUDPPorts = [22000 21027];
+  networking.firewall.allowedTCPPorts = [ 22000 ];
+  networking.firewall.allowedUDPPorts = [
+    22000
+    21027
+  ];
 }

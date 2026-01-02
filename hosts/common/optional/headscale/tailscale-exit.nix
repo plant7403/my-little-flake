@@ -1,7 +1,7 @@
 {
-  imports = [./tailscale.nix];
+  imports = [ ./tailscale.nix ];
   services.tailscale = {
     useRoutingFeatures = "both";
-    extraUpFlags = ["--advertise-exit-node"];
+    extraUpFlags = [ "--advertise-exit-node" ];
   };
 }

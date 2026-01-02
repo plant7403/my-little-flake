@@ -1,4 +1,5 @@
-{ ...}: {
+{ ... }:
+{
   # TODO - Make it private
   services.ntfy-sh = {
     enable = true;
@@ -15,17 +16,17 @@
   };
 
   /*
-     imports = [outputs.nixosModules.web];
-  modules.web = {
-    enable = true;
-    prefix = "push";
-    port = "8085";
-    authelia = true;
-    tor = {
+       imports = [outputs.nixosModules.web];
+    modules.web = {
       enable = true;
+      prefix = "push";
+      port = "8085";
       authelia = true;
+      tor = {
+        enable = true;
+        authelia = true;
+      };
     };
-  };
   */
   modules.web.vhosts = [
     {

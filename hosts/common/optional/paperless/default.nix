@@ -1,14 +1,17 @@
-{config, ...}: {
+{ config, ... }:
+{
   services.paperless = {
     enable = false;
-    settings = {PAPERLESS_OCR_LANGUAGE = "eng";};
+    settings = {
+      PAPERLESS_OCR_LANGUAGE = "eng";
+    };
     address = "0.0.0.0";
     port = 28981;
     consumptionDir = "/mnt/share/scanned-documents-copy";
     consumptionDirIsPublic = true;
     passwordFile = config.sops.secrets."services/paperless/admin/password".path;
   };
-  sops.secrets."services/paperless/admin/password" = {};
+  sops.secrets."services/paperless/admin/password" = { };
 
   modules.web.vhosts = [
     {

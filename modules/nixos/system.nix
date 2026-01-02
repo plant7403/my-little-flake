@@ -78,9 +78,7 @@ in
           always-allow-substitutes = true;
           # Use the binary cache aggressively
 
-          substituters = lib.mkBefore [
-            "https://nix-community.cachix.org"
-          ];
+          substituters = lib.mkBefore [ "https://nix-community.cachix.org" ];
 
           trusted-public-keys = [
             #"cachix.cachix.org-1:eWNHQldwUO7G2VkjpnjDbWwy4KQ/HNxht7H4SSoMckM="
@@ -313,8 +311,7 @@ in
       };
       boot.initrd.systemd.emergencyAccess = "$y$j9T$LSLJIAlFbp6k3cetejjE60$vcn.wkp7k/hmYG525hhkID5qCM8DXBQWsoqky.2kQ.4";
 
-      boot.initrd.systemd.initrdBin = [
-      ];
+      boot.initrd.systemd.initrdBin = [ ];
 
       systemd.enableEmergencyMode = true; # !!! TODO !!! TO REMOVE !!!
 
@@ -339,9 +336,7 @@ in
               enable = true;
               user = "ooo";
             };
-            environment.systemPackages = with pkgs; [
-              dune-release
-            ];
+            environment.systemPackages = with pkgs; [ dune-release ];
           };
         };
       };
@@ -461,9 +456,7 @@ in
       };
     })
     (mkIf cfg.av {
-      environment.systemPackages = [
-        pkgs.clamav
-      ];
+      environment.systemPackages = [ pkgs.clamav ];
       services.clamav.daemon.enable = true;
 
       services.clamav.updater.enable = true;
@@ -612,19 +605,13 @@ in
         services.usbguard.enable = true;
         services.usbguard.dbus.enable = true;
         #services.usbguard.IPCAllowedGroups = ["wheel"];
-        services.udev.packages = [
-          pkgs.usbguard-notifier
-        ];
+        services.udev.packages = [ pkgs.usbguard-notifier ];
         systemd.user.services.usbguard-notifier.enable = true;
         systemd.packages = with pkgs; [ usbguard-notifier ];
         services.systembus-notify.enable = true;
-        environment.systemPackages = with pkgs; [
-          usbguard-notifier
-        ];
+        environment.systemPackages = with pkgs; [ usbguard-notifier ];
 
-        environment.persistence."/persist".directories = [
-          "/var/lib/usbguard"
-        ];
+        environment.persistence."/persist".directories = [ "/var/lib/usbguard" ];
       }
       (mkIf cfg.usbguard.sops {
         services.usbguard.ruleFile = config.sops.secrets."usbguard".path;
@@ -689,9 +676,7 @@ in
         };
       };
       # Btrbk does not create snapshot directories automatically, so create one here.
-      systemd.tmpfiles.rules = [
-        "d /snapshots 0755 root root"
-      ];
+      systemd.tmpfiles.rules = [ "d /snapshots 0755 root root" ];
       zramSwap.enable = true;
       zramSwap.memoryPercent = 100;
       zramSwap.algorithm = "zstd";

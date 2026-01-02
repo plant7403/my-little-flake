@@ -2,7 +2,8 @@
   pkgs,
   inputs,
   ...
-}: {
+}:
+{
   system.autoUpgrade = {
     enable = true;
     flake = inputs.self.outPath;
@@ -38,8 +39,8 @@
       };
     };
     timers.clear-log = {
-      wantedBy = ["timers.target"];
-      partOf = ["clear-log.service"];
+      wantedBy = [ "timers.target" ];
+      partOf = [ "clear-log.service" ];
       timerConfig.OnCalendar = "weekly UTC";
     };
   };

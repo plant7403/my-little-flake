@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   services.dolibarr = {
     enable = true;
     domain = "doli.egor.wtf";

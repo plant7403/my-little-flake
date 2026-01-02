@@ -1,10 +1,11 @@
 {
   ...
-}: {
+}:
+{
   virtualisation.oci-containers.containers = {
     simplex-smp-server = {
       image = "simplexchat/smp-server:latest";
-      ports = ["5223:5223"];
+      ports = [ "5223:5223" ];
       volumes = [
         "/var/lib/containers/simplex/smp/config:/etc/opt/simplex:z"
         "/var/lib/containers/simplex/smp/logs:/var/opt/simplex:z"
@@ -20,7 +21,7 @@
     };
     simplex-xftp-server = {
       image = "simplexchat/xftp-server:latest";
-      ports = ["8937:443"];
+      ports = [ "8937:443" ];
       volumes = [
         "/var/lib/containers/simplex/xftp/config:/etc/opt/simplex-xftp:z"
         "/var/lib/containers/simplex/xftp/logs:/var/opt/simplex-xftp:z"
@@ -83,5 +84,5 @@
       };
     };
   };
-  sops.secrets."services/simplex" = {};
+  sops.secrets."services/simplex" = { };
 }

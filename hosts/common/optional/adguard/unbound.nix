@@ -1,11 +1,12 @@
-{...}: {
+{ ... }:
+{
   # TODO - Look into it, the original setup was brief
   services.unbound = {
     enable = true;
 
     settings = {
       server = {
-        interface = ["127.0.0.1"];
+        interface = [ "127.0.0.1" ];
         statistics-interval = "30";
         port = 5335;
       };

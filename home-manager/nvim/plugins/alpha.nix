@@ -1,6 +1,11 @@
 # homepage: https://github.com/goolord/alpha-nvim
 # nixvim doc: https://nix-community.github.io/nixvim/plugins/alpha/index.html
-{ helpers, icons, pkgs, ... }:
+{
+  helpers,
+  icons,
+  pkgs,
+  ...
+}:
 
 let
   header = {
@@ -62,9 +67,15 @@ let
       val.__raw = "vim.fn.max { 2, vim.fn.floor(vim.fn.winheight(0) * 0.2) }";
     }
     header
-    { type = "padding"; val = 5; }
+    {
+      type = "padding";
+      val = 5;
+    }
     buttons
-    { type = "padding"; val = 3; }
+    {
+      type = "padding";
+      val = 3;
+    }
     footer
   ];
 in
@@ -129,7 +140,10 @@ in
     autoCmd = [
       {
         desc = "Disable status, tablines and cmdheight for alpha";
-        event = [ "User" "BufWinEnter" ];
+        event = [
+          "User"
+          "BufWinEnter"
+        ];
         group = "alpha";
 
         callback.__raw = ''

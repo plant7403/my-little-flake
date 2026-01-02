@@ -1,10 +1,11 @@
 {
   pkgs,
   ...
-}: {
+}:
+{
   # 1. enable vaapi on OS-level
   nixpkgs.config.packageOverrides = pkgs: {
-    vaapiIntel = pkgs.vaapiIntel.override {enableHybridCodec = true;};
+    vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
   };
   hardware.graphics = {
     enable = true;
@@ -27,28 +28,31 @@
   networking = {
     firewall = {
       #allowedTCPPorts = [ 3000 ];
-      allowedUDPPorts = [1900 7359];
+      allowedUDPPorts = [
+        1900
+        7359
+      ];
     };
   };
   /*
-  imports = [outputs.nixosModules.web];
-  modules.web = {
-    enable = true;
-    prefix = "jelly";
-    port = "8096";
-    authelia = true;
-    extraConfig = ''
-      # required when the target is also TLS server with multiple hosts
-      proxy_ssl_server_name on;
-
-      # required when the server wants to use HTTP Authentication
-      proxy_pass_header Authorization;
-    '';
-    tor = {
+    imports = [outputs.nixosModules.web];
+    modules.web = {
       enable = true;
+      prefix = "jelly";
+      port = "8096";
       authelia = true;
+      extraConfig = ''
+        # required when the target is also TLS server with multiple hosts
+        proxy_ssl_server_name on;
+
+        # required when the server wants to use HTTP Authentication
+        proxy_pass_header Authorization;
+      '';
+      tor = {
+        enable = true;
+        authelia = true;
+      };
     };
-  };
   */
   modules.web.vhosts = [
     {

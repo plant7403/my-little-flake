@@ -1,7 +1,8 @@
 {
   pkgs,
   ...
-}: {
+}:
+{
   services.asterisk = {
     enable = true;
     confFiles = {
@@ -92,8 +93,8 @@
   # makes things easier if I don't have to keep track of ports
   #networking.firewall.enable = false;
   networking.firewall = {
-    allowedTCPPorts = [5060];
-    allowedUDPPorts = [5060];
+    allowedTCPPorts = [ 5060 ];
+    allowedUDPPorts = [ 5060 ];
   };
   environment.systemPackages = with pkgs; [
     ppp

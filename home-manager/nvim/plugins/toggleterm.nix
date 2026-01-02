@@ -82,7 +82,10 @@ _:
       options.desc = "Switch to normal mode";
     }
     {
-      mode = [ "n" "t" ];
+      mode = [
+        "n"
+        "t"
+      ];
       key = "<Leader>tn";
       action.__raw = ''
         function()
@@ -96,7 +99,10 @@ _:
       options.desc = "Rename current terminal";
     }
     {
-      mode = [ "n" "t" ];
+      mode = [
+        "n"
+        "t"
+      ];
       key = "<Leader>tl";
       action = "<cmd>TermSelect<cr>";
       options.desc = "List terminals";
