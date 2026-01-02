@@ -276,7 +276,6 @@ in
           "importCost.mediumPackageColor" = "#B362FF";
           "importCost.smallPackageColor" = "#B362FF";
           "nixEnvSelector.useFlakes" = true;
-
         }
         // baseSettings;
       };

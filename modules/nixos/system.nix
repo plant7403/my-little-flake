@@ -2,6 +2,7 @@
   lib,
   pkgs,
   config,
+  inputs,
   ...
 }:
 with lib;
@@ -67,6 +68,7 @@ in
   config = mkMerge [
     {
       nix = {
+        nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
         settings = {
           experimental-features = [
             "flakes"
@@ -173,6 +175,11 @@ in
         NH_NO_CHECKS = "true";
         #NH_LOG = "nh=trace";
       };
+      environment.pathsToLink = [
+        "/share/zsh"
+        "/share/xdg-desktop-portal"
+        "/share/applications"
+      ];
       #services.devmon.enable = true;
       services.tuned.enable = true;
 

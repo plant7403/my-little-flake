@@ -113,13 +113,79 @@
   ];
 
   programs.home-manager.enable = true;
+  programs.fastfetch = {
+    enable = true;
+    settings = {
+      logo = {
+        padding = {
+          right = 2;
+        };
+      };
+      display = {
+        size = {
+          binaryPrefix = "si";
+        };
+        color = "magenta";
+        separator = "  ";
+      };
+      modules = [
+        {
+          type = "datetime";
+          key = "Date";
+          format = "{1}-{3}-{11}";
+        }
+        {
+          type = "datetime";
+          key = "Time";
+          format = "{14}:{17}:{20}";
+        }
+        "break"
+        "title"
+        "break"
+        "os"
+        "kernel"
+        "bootmgr"
+        "uptime"
+        {
+          type = "battery";
+          format = "{/4}{-}{/}{4}{?5} [{5}]{?}";
+        }
+        "break"
+        "shell"
+        "display"
+        "terminal"
+        "break"
+        {
+          type = "cpu";
+          showPeCoreCount = true;
+          temp = true;
+        }
+        {
+          type = "gpu";
+          key = "GPU";
+          temp = true;
+        }
+        "monitor"
+        "memory"
+        {
+          type = "swap";
+          separate = true;
+        }
+        "break"
+        "disk"
+        "zpool"
+        "lm"
+        "wm"
+        "theme"
+        "wmtheme"
+        "icons"
+        "cursor"
+      ];
+    };
+  };
 
   programs.git = {
     enable = true;
-    settings = {
-      user.email = "me@o.o";
-      user.name = "me";
-    };
     lfs = {
       enable = true;
     };
@@ -129,7 +195,11 @@
       core.eol = "lf";
       gpg.format = lib.mkForce "ssh";
       commit.gpgsign = true;
-
+      user = {
+        email = "me@o.o";
+        name = "me";
+        signingkey = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC4OqADgjR4tD/2BFBTfhoi8AchffLyayrr0X5FSKC00ONzNpYeynuw9+bVbZ5a+O1EI3PPyCXKlmC4U3ZGl/jJWauhyXvT0068LC+hVwJfBwrHNbaq9b1Urgz2Mcv2tX9jbpi0hnxHwCQDTNtXptgxDvSLdz86gc6cBg48Y0cntSeNbHbvWFrcZ0iXUJYMpSVHNKPyR25r7SeNtXFvXzPTjPq/+wGsfnhXqbNDwec41zMsc4TBxHVKELFa1AaQF4QQ2SPQsWLSJ151EkybM4OfBxLulgqCzBYkHfjlqWuQqCwN9DOgFimoFLWJT9f8PUOHsu8q0ryTx7viyiFXK51enMGvthP4uRLWn6WdDb7zhe48HGbkWkVXETx78u5bL7hyIlMu9L3AB8gWKI7BYD+FrUyZkasK/e+JO0ECoil4c6jasqInvLVcyQY0loVyppL89CGTZZfTreZLv4Tt6rFuF9sBQ/FqDuA2L2wRgPZKRj1HiO3pppiAKuu5EG2Faotoi49WqM+RJD6O1RG7jWjCYKHB8TfiqrObJt9YRjYBctbWlNzZQs6oC1hKsLkfx1fjSA8PLDevPvK5jPgU6cUEFK22GouVxbdp8ZicTsi7AK6xGxJ2uENPAMFIuh6tqU6u9nI7mceK0vv343Y3pvvc0MawH/nS4+kIG57lL8hnNQ== cardno:19_271_673";
+      };
       diff.colorMoved = "zebra";
       fetch.prune = true;
       init.defaultBranch = "main";
@@ -472,7 +542,7 @@
   */
 
   home.persistence."/persist/home/egor" = {
-    # @blocksort
+    # blocksort
     directories = [
 
       ".cache/thumbnails"
@@ -528,7 +598,7 @@
       #".steam"
 
     ];
-    # @blocksort
+    # blocksort
     files = [
       ".cache/keepassxc/keepassxc.ini"
       ".config/easyeffects/db/easyeffectsrc"

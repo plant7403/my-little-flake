@@ -92,15 +92,6 @@
       #system = builtins.currentSystem;
       # Unmodified nixpkgs
       # pkgs = import nixpkgs { inherit system; };
-      eachSystem = nixpkgs.lib.genAttrs (import systems);
-      pkgs = import <nixpkgs> {
-        config.allowUnfree = true;
-        # system = "x86_64-linux"; # One of supported systems
-        overlays = [
-          nix4vscode.overlays.default
-          #self.overlays.no-dochecks
-        ];
-      };
 
       # rootPath = ./.;
 
@@ -243,7 +234,7 @@
         };
         saturn = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs; };
-          modules = with self.nixosModules; [
+          modules = [
             ./hosts/saturn/configuration.nix
             { nixpkgs.hostPlatform = "x86_64-linux"; }
             sops-nix.nixosModules.sops
