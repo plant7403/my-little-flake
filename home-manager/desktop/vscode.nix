@@ -109,6 +109,8 @@ let
     "phil294.git-log--graph"
     "lang2hong.githd"
 
+    "mondersky.tabscolor"
+    "offensiveedge.regex-le"
   ];
   baseExtensionsVS = [
 
@@ -119,7 +121,7 @@ in
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium;
-    mutableExtensionsDir = true;
+    #mutableExtensionsDir = true;
     profiles = {
       default = {
         extensions =

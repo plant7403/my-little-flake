@@ -79,10 +79,10 @@
       #pkgs = import nixpkgs { inherit system; };
 
       # Small tool to iterate over each systems
-      eachSystem = f: nixpkgs.lib.genAttrs (import systems) (system: f nixpkgs.legacyPackages.${system});
+      # eachSystem = f: nixpkgs.lib.genAttrs (import systems) (system: f nixpkgs.legacyPackages.${system});
 
       # Eval the treefmt modules from ./treefmt.nix
-      treefmtEval = eachSystem (pkgs: treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
+      # treefmtEval = eachSystem (pkgs: treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
 
       # This is a function that generates an attribute by calling a function you
       # pass to it, with each system as an argument
@@ -99,9 +99,8 @@
           #self.overlays.no-dochecks
         ];
       };
-      # nixpkgs with deploy-rs overlay but force the nixpkgs package
 
-      rootPath = ./.;
+      # rootPath = ./.;
 
       deployPkgs = import nixpkgs {
         inherit system;
@@ -119,13 +118,15 @@
     {
 
       #packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
-      formatter = eachSystem (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
+      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-tree;
       overlays = import ./overlays { inherit inputs; };
       nixosModules = import ./modules/nixos;
       homeManagerModules = import ./modules/home-manager;
-      checks = eachSystem (pkgs: {
-        formatting = treefmtEval.${pkgs.system}.config.build.check self;
-      });
+      /*
+        checks = eachSystem (pkgs: {
+             formatting = treefmtEval.${pkgs.system}.config.build.check self;
+           });
+      */
       nixosConfigurations = {
         immortal = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";

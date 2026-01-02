@@ -68,13 +68,10 @@ in
   config = mkMerge [
     {
       nix = {
-
         settings = {
-
           experimental-features = [
             "flakes"
             "nix-command"
-
           ];
 
           always-allow-substitutes = true;
@@ -119,7 +116,6 @@ in
           keep-going = true;
           log-lines = 20;
           #reexec = true;
-
         };
 
         # Garbage collection settings
@@ -311,7 +307,6 @@ in
       boot.initrd.systemd.emergencyAccess = "$y$j9T$LSLJIAlFbp6k3cetejjE60$vcn.wkp7k/hmYG525hhkID5qCM8DXBQWsoqky.2kQ.4";
 
       boot.initrd.systemd.initrdBin = [
-
       ];
 
       systemd.enableEmergencyMode = true; # !!! TODO !!! TO REMOVE !!!
@@ -509,7 +504,6 @@ in
       nix.settings = {
         builders-use-substitutes = true;
       };
-
     })
     (mkIf cfg.earlyoom {
       services.earlyoom = {
@@ -558,7 +552,6 @@ in
             # things we want to kill as soon as possible
             "--prefer"
             "'^(${appsToPrefer})$'"
-
           ];
 
         # we should ideally write the logs into a designated log file; or even better, to the journal
@@ -604,7 +597,6 @@ in
         ];
       };
       services.systembus-notify.enable = true;
-
     })
     (mkIf cfg.usbguard.enable (mkMerge [
       {
@@ -633,10 +625,14 @@ in
           sopsFile = ../../secrets/${cfg.hostname}/secrets.yaml;
         };
       })
+      # blocksort
       (mkIf cfg.tpm {
         security.tpm2.enable = true;
         security.tpm2.pkcs11.enable = true; # expose /run/current-system/sw/lib/libtpm2_pkcs11.so
+        security.tpm2.pkcs11.package = pkgs.tpm2-pkcs11-esapi;
         security.tpm2.tctiEnvironment.enable = true; # TPM2TOOLS_TCTI and TPM2_PKCS11_TCTI env variables
+        security.tpm2.abrmd.enable = true;
+
         users.users.egor.extraGroups = [ "tss" ]; # tss group has access to TPM devices
         users.users.inti.extraGroups = [ "tss" ];
       })
@@ -705,7 +701,6 @@ in
         ];
       };
     })
-
   ];
   #path = config.sops.secrets."system/hostkeys/luna/ed25519".path;
   #sops.secrets."system/hostkeys/luna/rsa" = {};

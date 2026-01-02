@@ -5,6 +5,7 @@
   lib,
   outputs,
   inputs,
+  config,
   ...
 }:
 
@@ -48,7 +49,6 @@
     libreoffice
     rnote
 
-    nixpkgs-fmt
     nixfmt-rfc-style
     nil
     nixd
@@ -95,6 +95,21 @@
     normcap
 
     doctl
+
+    bat
+    lsd
+    delta
+    duf
+    fd
+    ripgrep
+    jq
+    tldr
+    gtop
+    gping
+    procs
+    htop
+    smartmontools
+    perf
   ];
 
   programs.home-manager.enable = true;
@@ -105,7 +120,158 @@
       user.email = "me@o.o";
       user.name = "me";
     };
+    lfs = {
+      enable = true;
+    };
+    iniContent.gpg.format = lib.mkForce "ssh";
+    extraConfig = {
+      checkout.defaultRemote = "origin";
+      core.eol = "lf";
+      gpg.format = lib.mkForce "ssh";
+      commit.gpgsign = true;
+      user.signingkey = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC4OqADgjR4tD/2BFBTfhoi8AchffLyayrr0X5FSKC00ONzNpYeynuw9+bVbZ5a+O1EI3PPyCXKlmC4U3ZGl/jJWauhyXvT0068LC+hVwJfBwrHNbaq9b1Urgz2Mcv2tX9jbpi0hnxHwCQDTNtXptgxDvSLdz86gc6cBg48Y0cntSeNbHbvWFrcZ0iXUJYMpSVHNKPyR25r7SeNtXFvXzPTjPq/+wGsfnhXqbNDwec41zMsc4TBxHVKELFa1AaQF4QQ2SPQsWLSJ151EkybM4OfBxLulgqCzBYkHfjlqWuQqCwN9DOgFimoFLWJT9f8PUOHsu8q0ryTx7viyiFXK51enMGvthP4uRLWn6WdDb7zhe48HGbkWkVXETx78u5bL7hyIlMu9L3AB8gWKI7BYD+FrUyZkasK/e+JO0ECoil4c6jasqInvLVcyQY0loVyppL89CGTZZfTreZLv4Tt6rFuF9sBQ/FqDuA2L2wRgPZKRj1HiO3pppiAKuu5EG2Faotoi49WqM+RJD6O1RG7jWjCYKHB8TfiqrObJt9YRjYBctbWlNzZQs6oC1hKsLkfx1fjSA8PLDevPvK5jPgU6cUEFK22GouVxbdp8ZicTsi7AK6xGxJ2uENPAMFIuh6tqU6u9nI7mceK0vv343Y3pvvc0MawH/nS4+kIG57lL8hnNQ== cardno:19_271_673";
+      diff.colorMoved = "zebra";
+      fetch.prune = true;
+      init.defaultBranch = "main";
+      rebase.autostash = true;
+      rebase.autoSquash = true;
+      pull.rebase = true;
+      push.autoSetupRemote = true;
+      merge.tool = "vscode";
+      merge.conflictStyle = "diff3";
+      diff.tool = "vscode";
+      mergeTool = {
+        keepBackup = false;
+        vscode.cmd = "code --wait --new-window $MERGED";
+      };
+      difftool.vscode.cmd = "code --wait --new-window --diff $LOCAL $REMOTE";
+      include.path = "./local";
+    };
   };
+  programs.jujutsu = {
+    enable = true;
+    settings = {
+      # Config reference
+      # https://andre.arko.net/2025/10/15/jj-part-4-configuration/
+      # consider user.name/email unset to encourage setting them per-repo?
+      user.name = config.programs.git.userName;
+      user.email = config.programs.git.userEmail;
+      git.colocate = true;
+
+      signing = {
+        behavior = "own";
+        backend = "ssh";
+        key = config.programs.git.extraConfig.user.signingkey;
+      };
+
+      colors = {
+        commit_id = "magenta";
+        change_id = "cyan";
+        "working_copy empty" = "green";
+        "working_copy placeholder" = "red";
+        "working_copy description placeholder" = "yellow";
+        "working_copy empty description placeholder" = "green";
+        prefix = {
+          bold = true;
+          fg = "cyan";
+        };
+        rest = {
+          bold = false;
+          fg = "bright black";
+        };
+        "node elided" = "yellow";
+        "node working_copy" = "green";
+        "node conflict" = "red";
+        "node immutable" = "red";
+        "node normal" = {
+          bold = false;
+        };
+        "node" = {
+          bold = false;
+        };
+      };
+      git = {
+        sign-on-push = true;
+        write-change-id-header = true;
+      };
+      aliases = {
+        d = [ "diff" ];
+        l = [ "log" ];
+        ll = [
+          "log"
+          "-r"
+          ".."
+        ];
+        tug = [
+          "bookmark"
+          "move"
+          "--from"
+          "heads(::@- & bookmarks())"
+          "--to"
+          "@-"
+        ];
+      };
+      revsets = {
+        log = "current_work";
+      };
+      revset-aliases = {
+        "stack()" = "ancestors(reachable(@, mutable()), 2)";
+        "stack(x)" = "ancestors(reachable(x, mutable()), 2)";
+        "stack(x, n)" = "ancestors(reachable(x, mutable()), n)";
+        "current_work" = "trunk()..@ | @..trunk() | trunk() | @:: | fork_point(trunk() | @)";
+      };
+      template-aliases = {
+        "abbreviate_timestamp_suffix(s, suffix, abbr)" = ''
+          if(
+              s.ends_with(suffix),
+              s.remove_suffix(suffix) ++ label("timestamp", abbr)
+          )
+        '';
+        "abbreviate_relative_timestamp(s)" = ''
+          coalesce(
+              abbreviate_timestamp_suffix(s, " millisecond", "ms"),
+              abbreviate_timestamp_suffix(s, " second", "s"),
+              abbreviate_timestamp_suffix(s, " minute", "m"),
+              abbreviate_timestamp_suffix(s, " hour", "h"),
+              abbreviate_timestamp_suffix(s, " day", "d"),
+              abbreviate_timestamp_suffix(s, " week", "w"),
+              abbreviate_timestamp_suffix(s, " month", "mo"),
+              abbreviate_timestamp_suffix(s, " year", "y"),
+              s
+          )
+        '';
+        "format_timestamp(timestamp)" = ''
+          coalesce(
+              if(timestamp.after("1 minute ago"), label("timestamp", "<=1m")),
+              abbreviate_relative_timestamp(timestamp.ago().remove_suffix(' ago').remove_suffix('s'))
+          )
+        '';
+      };
+      templates = {
+        draft_commit_description = ''
+          concat(
+            coalesce(description, default_commit_description, "\n"),
+            if(
+              config("ui.should-sign-off").as_boolean() && !description.contains("Signed-off-by: " ++ author.name()),
+              "\nSigned-off-by: " ++ author.name() ++ " <" ++ author.email() ++ ">",
+            ),
+            surround(
+              "\nJJ: This commit contains the following changes:\n", "",
+              indent("JJ:     ", diff.stat(72)),
+            ),
+            "\nJJ: ignore-rest\n",
+            diff.git(),
+          )
+        '';
+      };
+    };
+  };
+
+  /*
+    programs.ssh = {
+      agentPKCS11Whitelist = "${pkgs.tpm2-pkcs11-esapi}/lib/*";
+    };
+  */
   programs.gitui.enable = true;
 
   programs.direnv = {
@@ -129,7 +295,6 @@
     enable = true;
     autostart = true;
     settings = {
-      General.ConfigVersion = 2;
       #FdoSecrets.Enabled = true;
       Browser = {
         Enabled = true;
@@ -145,8 +310,7 @@
 
         #CustomExtensionId = "Ds+Kxi99E8PV7sjkisTgnfTkxy8wxQrI3mGLKazeqms=";
       };
-
-      Security.QuickUnlock = true;
+      General.ConfigVersion = 2;
 
       GUI = {
         AdvancedSettings = true;
@@ -159,9 +323,11 @@
         MinimizeOnStartup = true;
         MinimizeOnClose = true;
       };
+
       KeeShare = {
 
       };
+      Security.QuickUnlock = true;
 
       SSHAgent.Enabled = true;
     };
