@@ -194,11 +194,8 @@ in
           #memorySize = 2048;
           cores = 3;
           #diskImage = lib.mkOverride 10 null;
-
         };
-
       };
-
     })
     (mkIf cfg.emergency {
       boot.initrd.systemd.emergencyAccess = "$y$j9T$LSLJIAlFbp6k3cetejjE60$vcn.wkp7k/hmYG525hhkID5qCM8DXBQWsoqky.2kQ.4";

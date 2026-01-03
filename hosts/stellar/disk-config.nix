@@ -2,104 +2,90 @@
 {
   disko.devices = {
     disk = {
-      nvme = {
-        type = "disk";
-        device = "/dev/nvme0n1";
-        content = {
-          type = "gpt";
-          partitions = {
-            ESP = {
-              size = "512M";
-              type = "EF00";
-              content = {
-                type = "filesystem";
-                format = "vfat";
-                mountpoint = "/boot";
-                mountOptions = [
-                  "defaults"
-                  "discard"
-                ];
-              };
-            };
-            luks = {
-              size = "100%";
-              content = {
-                type = "luks";
-                name = "nvme-crypt";
-                # disable settings.keyFile if you want to use interactive password entry
-                #passwordFile = config.sops.secrets."encryption/stellar".path; # Interactive
-                #keyFile = config.sops.secrets."encryption/stellar".path;
-                settings = {
-                  allowDiscards = false;
-                  #keyFile = config.sops.secrets."encryption/stellar".path;
-                };
-                #additionalKeyFiles = ["/tmp/additionalSecret.key"];
-                content = {
-                  type = "btrfs";
-                  extraArgs = [ "-f" ];
-                  postCreateHook =
-                    # syntax: sh
-                    ''
-                      MNTPOINT=$(mktemp -d)
-                      mount "/dev/mapper/nvme-crypt" "$MNTPOINT" -o subvol=/
-                      trap 'umount $MNTPOINT; rm -rf $MNTPOINT' EXIT
-                      btrfs subvolume snapshot -r $MNTPOINT/@ROOT $MNTPOINT/@ROOT-BLANK
-                      MNTPOINT=$(mktemp -d)
-                      mount "/dev/mapper/nvme-crypt" "$MNTPOINT" -o subvol=/
-                      trap 'umount $MNTPOINT; rm -rf $MNTPOINT' EXIT
-                      btrfs subvolume snapshot -r $MNTPOINT/@HOME $MNTPOINT/@HOME-BLANK
-                    '';
-                  subvolumes = {
-                    "/@ROOT" = {
-                      mountpoint = "/";
-                      mountOptions = [
-                        "compress=zstd"
-                        "noatime"
-                      ];
-                    };
-                    "/@HOME" = {
-                      mountpoint = "/home";
-                      mountOptions = [
-                        "compress=zstd"
-                        "noatime"
-                      ];
-                    };
-                    "/@NIX" = {
-                      mountpoint = "/nix";
-                      mountOptions = [
-                        "compress=zstd"
-                        "noatime"
-                      ];
-                    };
-                    "/@PERSIST" = {
-                      mountpoint = "/persist";
-                      mountOptions = [
-                        "compress=zstd"
-                        "noatime"
-                      ];
-                    };
-                    "/@LOG" = {
-                      mountpoint = "/var/log";
-                      mountOptions = [
-                        "compress=zstd"
-                        "noatime"
-                      ];
-                    };
-                    "/@SNAPSHOTS" = {
-                      mountpoint = "/.snapshots";
-                      mountOptions = [
-                        "compress=zstd"
-                        "noatime"
-                      ];
-                    };
-                    "/@SWAP" = {
-                      mountpoint = "/.swapvol";
-                      swap.swapfile.size = "8G";
-                    };
-                  };
-                };
-              };
-            };
+
+      nvme.type = "disk";
+      nvme.device = "/dev/nvme0n1";
+      nvme.content.type = "gpt";
+      nvme.content.partitions = {
+        ESP.size = "512M";
+        ESP.type = "EF00";
+        ESP.content = {
+          type = "filesystem";
+          format = "vfat";
+          mountpoint = "/boot";
+          mountOptions = [
+            "defaults"
+            "discard"
+          ];
+        };
+        luks.size = "100%";
+        luks.content.type = "luks";
+        luks.content.name = "nvme-crypt";
+        luks.content.passwordFile = config.sops.secrets."encryption/stellar".path; # additionalKeyFiles = ["/tmp/additionalSecret.key"];
+        luks.content.settings = {
+          allowDiscards = false;
+          keyFile = config.sops.secrets."encryption/stellar".path;
+        };
+        luks.content.content.type = "btrfs";
+        luks.content.content.extraArgs = [ "-f" ];
+        luks.content.content.postCreateHook =
+          # syntax: sh
+          ''
+            MNTPOINT=$(mktemp -d)
+            mount "/dev/mapper/nvme-crypt" "$MNTPOINT" -o subvol=/
+            trap 'umount $MNTPOINT; rm -rf $MNTPOINT' EXIT
+            btrfs subvolume snapshot -r $MNTPOINT/@ROOT $MNTPOINT/@ROOT-BLANK
+            MNTPOINT=$(mktemp -d)
+            mount "/dev/mapper/nvme-crypt" "$MNTPOINT" -o subvol=/
+            trap 'umount $MNTPOINT; rm -rf $MNTPOINT' EXIT
+            btrfs subvolume snapshot -r $MNTPOINT/@HOME $MNTPOINT/@HOME-BLANK
+          '';
+        luks.content.content.subvolumes = {
+          "/@ROOT" = {
+            mountpoint = "/";
+            mountOptions = [
+              "compress=zstd"
+              "noatime"
+            ];
+          };
+          "/@HOME" = {
+            mountpoint = "/home";
+            mountOptions = [
+              "compress=zstd"
+              "noatime"
+            ];
+          };
+          "/@NIX" = {
+            mountpoint = "/nix";
+            mountOptions = [
+              "compress=zstd"
+              "noatime"
+            ];
+          };
+          "/@PERSIST" = {
+            mountpoint = "/persist";
+            mountOptions = [
+              "compress=zstd"
+              "noatime"
+            ];
+          };
+          "/@LOG" = {
+            mountpoint = "/var/log";
+            mountOptions = [
+              "compress=zstd"
+              "noatime"
+            ];
+          };
+          "/@SNAPSHOTS" = {
+            mountpoint = "/.snapshots";
+            mountOptions = [
+              "compress=zstd"
+              "noatime"
+            ];
+          };
+          "/@SWAP" = {
+            mountpoint = "/.swapvol";
+            swap.swapfile.size = "8G";
           };
         };
       };
