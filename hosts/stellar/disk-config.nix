@@ -2,7 +2,6 @@
 {
   disko.devices = {
     disk = {
-
       nvme.type = "disk";
       nvme.device = "/dev/nvme0n1";
       nvme.content.type = "gpt";
@@ -21,12 +20,18 @@
         luks.size = "100%";
         luks.content.type = "luks";
         luks.content.name = "nvme-crypt";
-        luks.content.passwordFile = lib.mkDefault config.sops.secrets."encryption/stellar".path;
+        luks.content.passwordFile = lib.mkIf (
+          config.boot.initrd.clevis.devices."nvme-crypt".secretFile == null
+        ) config.sops.secrets."encryption/stellar".path;
         luks.content.settings = {
           allowDiscards = false;
-          keyFile = lib.mkDefault config.sops.secrets."encryption/stellar".path;
+          keyFile = lib.mkIf (
+            config.boot.initrd.clevis.devices."nvme-crypt".secretFile == null
+          ) config.sops.secrets."encryption/stellar".path;
         };
-        luks.content.additionalKeyFiles = [ config.sops.secrets."encryption/stellar".path ];
+        luks.content.additionalKeyFiles = lib.mkIf (
+          config.boot.initrd.clevis.devices."nvme-crypt".secretFile == null
+        ) [ config.sops.secrets."encryption/stellar".path ];
         luks.content.content.type = "btrfs";
         luks.content.content.extraArgs = [ "-f" ];
         luks.content.content.postCreateHook =

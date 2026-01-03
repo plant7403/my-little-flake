@@ -543,7 +543,7 @@
       ".config/Signal"
 
       ".config/VSCodium/User"
-      ".DecSaync"
+      ".DecSync"
       ".gnupg"
       ".librewolf/default"
       ".local/share/direnv"
