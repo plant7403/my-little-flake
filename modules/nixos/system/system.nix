@@ -180,10 +180,13 @@ in
 
       virtualisation = {
         vmVariantWithDisko = {
-          fileSystems."/persist".neededForBoot = mkForce true;
-          disko.devices.disk.nvme.imageSize = "10GB";
-          disko.memSize = 2048;
-
+          virtualisation.fileSystems."/persist".neededForBoot = mkForce true;
+          virtualisation.disko.devices.disk.nvme.imageSize = "10GB";
+          virtualisation.disko.memSize = 2048;
+          virtualisation.cores = 3;
+          virtualisation.boot.initrd.secrets = lib.mkForce {
+            "/etc/secret" = /etc/secret;
+          };
           /*
             fileSystems."/persist".neededForBoot = neededForBoot true;
             disko.devices.disk.nvme.content.partitions.luks.content.passwordFile =
@@ -191,7 +194,7 @@ in
               config.sops.secrets."encryption/stellar".path;
           */
           #memorySize = 2048;
-          cores = 3;
+
           #diskImage = lib.mkOverride 10 null;
         };
       };

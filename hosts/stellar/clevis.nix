@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, lib, ... }:
 {
   sops.secrets."encryption/stellar" = { };
 
@@ -21,10 +21,12 @@
 
   #boot.initrd.network.enable = true;
   #boot.initrd.network.udhcpc.enable = true;
-  boot.initrd.clevis.enable = true;
   #boot.initrd.clevis.useTang = false;
-  boot.initrd.clevis.devices."nvme-crypt".secretFile = config.sops.secrets."encryption/stellar".path; # test
-  #boot.initrd.clevis.devices."hdd-crypt".secretFile = config.sops.secrets."encryption/immortal".path; #test
-  #  boot.initrd.clevis.devices."/dev/nvme0n1p3".secretFile = /home/egor/my-little-flake/hosts/luna/manual.jwe;
-  #luks-b490debe-94b7-4b20-9abf-7eccfa36c8d3
+  boot.initrd.clevis.enable = true;
+
+  boot.initrd.clevis.devices."nvme-crypt".secretFile =
+    lib.mkForce
+      config.sops.secrets."encryption/stellar".path;
+
+  sops.secrets."encryption/stellar" = { };
 }

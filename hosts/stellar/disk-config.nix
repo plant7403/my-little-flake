@@ -21,11 +21,12 @@
         luks.size = "100%";
         luks.content.type = "luks";
         luks.content.name = "nvme-crypt";
-        luks.content.passwordFile = lib.mkDefault config.sops.secrets."encryption/stellar".path; # additionalKeyFiles = ["/tmp/additionalSecret.key"];
+        luks.content.passwordFile = lib.mkDefault config.sops.secrets."encryption/stellar".path;
         luks.content.settings = {
           allowDiscards = false;
           keyFile = lib.mkDefault config.sops.secrets."encryption/stellar".path;
         };
+        luks.content.additionalKeyFiles = [ config.sops.secrets."encryption/stellar".path ];
         luks.content.content.type = "btrfs";
         luks.content.content.extraArgs = [ "-f" ];
         luks.content.content.postCreateHook =
