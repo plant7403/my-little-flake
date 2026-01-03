@@ -132,7 +132,9 @@ in
         environment.systemPackages = [ pkgs.usbguard-notifier ];
 
         sops.secrets."usbguard".sopsFile = ../../secrets/${cfg.info.hostname}/secrets.yaml;
-        #environment.persistence."/persist".directories = (mkIf config.CHANGEME) [ "/var/lib/usbguard" ]; # FIXME
+        environment.persistence."/persist".directories =
+          (mkIf inputs.impermanence.nixosModules.impermanence)
+            [ "/var/lib/usbguard" ]; # FIXME
       }
     ]))
     (mkIf cfg.tpm {

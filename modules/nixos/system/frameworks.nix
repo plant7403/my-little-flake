@@ -13,7 +13,8 @@ in
 {
   imports = [
     inputs.home-manager.nixosModules.home-manager
-    inputs.nix4vscode.inputs
+    #inputs.nix4vscode.overlays.forVscode
+    inputs.determinate.nixosModules.default
   ];
 
   options.modules.frameworks = {
@@ -93,7 +94,7 @@ in
       };
       nixpkgs.config.allowUnfree = true;
     }
-    (mkIf cfg.lix {
+    (mkIf (cfg.lix) (mkDefault {
       nix.package = pkgs.lixPackageSets.stable.lix;
       nixpkgs.overlays = [
         (_final: prev: {
@@ -115,7 +116,7 @@ in
           ]
         else
           [ ];
-    })
+    }))
     (mkIf cfg.nh {
       programs.nh.enable = true;
       programs.nh.flake = "/home/egor/my-little-flake";
@@ -145,6 +146,7 @@ in
       home-manager.users.egor = {
         home.enableNixpkgsReleaseCheck = false;
       };
+
     })
 
     (mkIf cfg.homeManager {
@@ -157,7 +159,7 @@ in
       home-manager.sharedModules = [
         inputs.sops-nix.homeManagerModules.sops
       ];
-      nixpkgs.overlays = [ inputs.nix4vscode.overlays.default ];
+      nixpkgs.overlays = [ inputs.nix4vscode.overlays.forVscode ];
     })
 
     (mkIf cfg.distributed {

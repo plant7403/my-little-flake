@@ -244,7 +244,7 @@
           specialArgs = { inherit inputs outputs; };
           modules = [
             ./hosts/stellar/configuration.nix
-            #determinate.nixosModules.default
+
             sops-nix.nixosModules.sops
             disko.nixosModules.disko
             stylix.nixosModules.stylix

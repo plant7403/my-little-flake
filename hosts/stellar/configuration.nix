@@ -78,7 +78,7 @@
     printing = false;
     usbguard = {
       enable = false;
-      sops = true;
+      #sops = true;
     };
   };
   modules.frameworks = {

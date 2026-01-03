@@ -204,7 +204,7 @@ in
     (mkIf cfg.autoupdate {
       system.autoUpgrade = {
         enable = true;
-        flake = "path:${cfg.info.flakePath}#${cfg.info.hostname}";
+        flake = "git:git.disroot.org/me/my-little-flake";
         flags = [
           "--update-input"
           "nixpkgs"
