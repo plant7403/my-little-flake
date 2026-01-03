@@ -7,6 +7,10 @@ let
     forOpenVsx
     ;
   baseSettings = {
+    ############################
+    # VSCODIUM - BASE SETTINGS #
+    # APPLIED TO EVERY PROFILE #
+    ############################
     "editor.inlayHints.enabled" = "on";
     "editor.guides.indentation" = true;
     "editor.guides.bracketPairs" = true;
@@ -87,8 +91,7 @@ let
 
     "jgclark.vscode-todo-highlight"
     "slysherz.comment-box"
-    "christian-kohler.path-intellisense"
-    "oxideops.vscode-code-jump"
+
   ];
   baseExtensionsVS = [
 

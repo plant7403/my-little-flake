@@ -76,7 +76,7 @@ in
           "--avoid"
           "'^(${appsToAvoid})$'"
           "--prefer"
-          "'^(${appsToPrefer})$'"
+          "'^(${appsToPrefer})$'" # TODO: 21423rds
         ];
       services.earlyoom.killHook = pkgs.writeShellScript "earlyoom-kill-hook" ''
         # syntax: sh
