@@ -9,12 +9,6 @@ let
   cfg = config.modules.hardware;
 in
 {
-  /*
-    imports = [
-      ./nix.nix
-
-    ];
-  */
   options.modules.hardware = {
     tpm = mkOption {
       type = types.bool;
@@ -44,7 +38,6 @@ in
     };
   };
   config = mkMerge [
-
     (mkIf cfg.printing {
       services.printing.enable = true;
     })
@@ -124,25 +117,24 @@ in
       };
       services.systembus-notify.enable = true;
     })
-    /*
-      (mkIf cfg.usbguard.enable (mkMerge [
-        {
-          services.usbguard.enable = true;
-          services.usbguard.ruleFile = config.sops.secrets."usbguard".path; # or "/var/lib/usbguard/rules.conf"
-          services.usbguard.dbus.enable = true;
-          services.usbguard.IPCAllowedGroups = [ "wheel" ];
 
-          services.systembus-notify.enable = true;
-          services.udev.packages = [ pkgs.usbguard-notifier ];
-          systemd.user.services.usbguard-notifier.enable = true;
-          systemd.packages = [ pkgs.usbguard-notifier ];
-          environment.systemPackages = [ pkgs.usbguard-notifier ];
+    (mkIf cfg.usbguard.enable (mkMerge [
+      {
+        services.usbguard.enable = true;
+        services.usbguard.ruleFile = config.sops.secrets."usbguard".path; # or "/var/lib/usbguard/rules.conf"
+        services.usbguard.dbus.enable = true;
+        services.usbguard.IPCAllowedGroups = [ "wheel" ];
 
-          sops.secrets."usbguard".sopsFile = ../../secrets/${cfg.info.hostname}/secrets.yaml;
-          environment.persistence."/persist".directories = (mkIf config.CHANGEME) [ "/var/lib/usbguard" ]; # FIXME
-        }
-      ]))
-    */
+        services.systembus-notify.enable = true;
+        services.udev.packages = [ pkgs.usbguard-notifier ];
+        systemd.user.services.usbguard-notifier.enable = true;
+        systemd.packages = [ pkgs.usbguard-notifier ];
+        environment.systemPackages = [ pkgs.usbguard-notifier ];
+
+        sops.secrets."usbguard".sopsFile = ../../secrets/${cfg.info.hostname}/secrets.yaml;
+        #environment.persistence."/persist".directories = (mkIf config.CHANGEME) [ "/var/lib/usbguard" ]; # FIXME
+      }
+    ]))
     (mkIf cfg.tpm {
       security.tpm2.enable = true;
       security.tpm2.pkcs11.enable = true; # expose /run/current-system/sw/lib/libtpm2_pkcs11.so

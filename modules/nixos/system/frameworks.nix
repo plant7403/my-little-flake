@@ -2,6 +2,7 @@
   lib,
   pkgs,
   inputs,
+  outputs,
   config,
   ...
 }:
@@ -10,7 +11,10 @@ let
   cfg = config.modules.frameworks;
 in
 {
-  imports = [ inputs.home-manager.nixosModules.home-manager ];
+  imports = [
+    inputs.home-manager.nixosModules.home-manager
+    inputs.nix4vscode.inputs
+  ];
 
   options.modules.frameworks = {
     lix = mkOption {
@@ -81,7 +85,7 @@ in
           warn-dirty = false;
           keep-going = true;
           log-lines = 20;
-          #download-buffer-size = mkIf (config.nix.package != pkgs.lixPackageSets.stable.lix) 524288000;
+          download-buffer-size = mkIf (config.nix.package != pkgs.lixPackageSets.stable.lix) 524288000;
           #reexec = true;
           #NIX_SHOW_STATS=1
           #NIX_COUNT_CALLS=1
@@ -90,19 +94,27 @@ in
       nixpkgs.config.allowUnfree = true;
     }
     (mkIf cfg.lix {
-      #nix.package = pkgs.lixPackageSets.stable.lix;
-      /*
-        nixpkgs.overlays = [
-          (_final: prev: {
-            inherit (prev.lixPackageSets.stable)
-              nixpkgs-review
-              nix-eval-jobs
-              nix-fast-build
-              colmena
-              ;
-          })
-        ];
-      */
+      nix.package = pkgs.lixPackageSets.stable.lix;
+      nixpkgs.overlays = [
+        (_final: prev: {
+          inherit (prev.lixPackageSets.stable)
+            nixpkgs-review
+            nix-eval-jobs
+            nix-fast-build
+            colmena
+            ;
+        })
+      ];
+      warnings =
+        if (config.nix.package == pkgs.lixPackageSets.stable.lix) then
+          [
+            ''
+              You have enabled the bar feature of the foo service.
+              This is known to cause some specific problems in certain situations.
+            ''
+          ]
+        else
+          [ ];
     })
     (mkIf cfg.nh {
       programs.nh.enable = true;
@@ -133,18 +145,6 @@ in
       home-manager.users.egor = {
         home.enableNixpkgsReleaseCheck = false;
       };
-      /*
-        warnings =
-        if config.services.foo.bar then
-          [
-            ''
-              You have enabled the bar feature of the foo service.
-              This is known to cause some specific problems in certain situations.
-            ''
-          ]
-        else
-          [ ];
-      */
     })
 
     (mkIf cfg.homeManager {
@@ -152,11 +152,12 @@ in
       home-manager.useUserPackages = true;
       home-manager.users.egor = import ../../../home-manager/saturn.nix;
       #../home-manager/saturn.nix;
-      home-manager.extraSpecialArgs = { inherit inputs; };
+      home-manager.extraSpecialArgs = { inherit inputs outputs; };
       home-manager.backupFileExtension = "backup";
       home-manager.sharedModules = [
         inputs.sops-nix.homeManagerModules.sops
       ];
+      nixpkgs.overlays = [ inputs.nix4vscode.overlays.default ];
     })
 
     (mkIf cfg.distributed {

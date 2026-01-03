@@ -68,7 +68,7 @@
     info = {
       hostname = "stellar";
       user = "egor";
-      flakePath = /home/egor/my-little-flake;
+      flakePath = "/home/egor/my-little-flake";
     };
   };
   modules.hardware = {
@@ -85,8 +85,8 @@
     lix = true;
     nh = true;
     ghtoken = true;
-    flakeHub = false;
-    homeManager = false;
+    flakeHub = true;
+    homeManager = true;
     distributed = false;
   };
 
