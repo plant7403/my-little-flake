@@ -480,11 +480,12 @@
       User = "git";
       IdentityFile = "~/.ssh/git-disroot";
     };
-    /*
-        pizza = lib.hm.dag.entryBefore [ "github.com" ] {
-
-        };
-    */
+    pizza = lib.hm.dag.entryBefore [ "git.pak.aacademy" ] {
+      PreferredAuthentications = "publickey";
+      IdentitiesOnly = "yes";
+      User = "git";
+      IdentityFile = "~/.ssh/git-disroot";
+    };
 
   };
 
@@ -521,27 +522,11 @@
     '';
   };
 
-  #home.sessionVariables = {
-  #  MOZ_USE_XINPUT2 = "1";
-  #};
-
   modules.yubikey-unlock = {
     enable = true;
-    #host = "stellar";
   };
 
   modules.syncthing.enable = true;
-  #pam.yubico.authorizedYubiKeys
-  #pam.yubico.authorizedYubiKeys.ids = [
-  #  "19271673"
-  #];
-
-  # pam.yubico.authorizedYubiKeys.ids = [ "19271673" ];
-  /*
-    pam.yubico.authorizedYubiKeys.path
-    services.yubikey-agent.enable
-    services.yubikey-agent.package
-  */
 
   home.persistence."/persist/home/egor" = {
     # blocksort
@@ -558,7 +543,7 @@
       ".config/Signal"
 
       ".config/VSCodium/User"
-      ".DecSync"
+      ".DecSaync"
       ".gnupg"
       ".librewolf/default"
       ".local/share/direnv"
@@ -610,12 +595,11 @@
       ".config/sops/age/keys.txt"
       ".config/syncthingtray.ini"
       ".screenrc"
-
+      ".z"
       /*
         ".config/distrobox/containers.ini"
         ".config/distrobox/distrobox.conf"
       */
-      ".z"
 
       # ".config/chromium/NativeMessagingHosts"
 
@@ -624,7 +608,6 @@
 
       #".nix-defexpr/channels"
     ];
-
     allowOther = true;
   };
 
