@@ -18,5 +18,5 @@ jobs:
         with:
           name: "plant7403/my-little-flake"
           rolling: true
-          visibility: "unlisted"
+          visibility: "public"
           include-output-paths: true
