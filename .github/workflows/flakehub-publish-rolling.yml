@@ -16,7 +16,7 @@ jobs:
       - uses: "DeterminateSystems/determinate-nix-action@v3"
       - uses: "DeterminateSystems/flakehub-push@main"
         with:
-          name: "plant7403/cool-new-flake"
+          name: "plant7403/my-little-flake"
           rolling: true
-          visibility: "public"
+          visibility: "unlisted"
           include-output-paths: true
