@@ -3,4 +3,5 @@
 result/
 #home-manager/temp.txt
 .Trash-1000/
-pkgs/hanabi
+pkgs/hanabi/
+.jj/
