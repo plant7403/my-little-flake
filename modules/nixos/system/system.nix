@@ -178,7 +178,6 @@ in
         };
       */
 
-      fileSystems."/persist".neededForBoot = mkForce true;
       virtualisation = {
         vmVariantWithDisko = {
           fileSystems."/persist".neededForBoot = mkForce true;

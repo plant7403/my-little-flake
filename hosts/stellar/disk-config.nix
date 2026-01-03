@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, lib, ... }:
 {
   disko.devices = {
     disk = {
@@ -21,10 +21,10 @@
         luks.size = "100%";
         luks.content.type = "luks";
         luks.content.name = "nvme-crypt";
-        luks.content.passwordFile = config.sops.secrets."encryption/stellar".path; # additionalKeyFiles = ["/tmp/additionalSecret.key"];
+        luks.content.passwordFile = lib.mkDefault config.sops.secrets."encryption/stellar".path; # additionalKeyFiles = ["/tmp/additionalSecret.key"];
         luks.content.settings = {
           allowDiscards = false;
-          keyFile = config.sops.secrets."encryption/stellar".path;
+          keyFile = lib.mkDefault config.sops.secrets."encryption/stellar".path;
         };
         luks.content.content.type = "btrfs";
         luks.content.content.extraArgs = [ "-f" ];
