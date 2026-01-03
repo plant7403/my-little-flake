@@ -6,6 +6,7 @@
   pkgs,
   outputs,
   inputs,
+  output,
   ...
 }:
 {
@@ -21,7 +22,7 @@
     ./../common/users/root.nix
     #./../common/desktop/steam.nix
     ./../common/desktop/virtualbox.nix
-
+    inputs.home-manager.nixosModules.home-manager
     #./odoo-test.nix # add to specializations or flake/shell
   ]
   ++ (builtins.attrValues outputs.nixosModules);
@@ -33,7 +34,6 @@
   modules.ollama = {
     enable = true;
   };
-
   modules.yggdrasil = {
     enable = false;
     persist = true;
@@ -58,22 +58,46 @@
   };
 
   modules.system = {
-    hostname = "stellar";
     ssh = true;
-    printing = true;
     autoupdate = true;
     cleanup = true;
     hardening = true;
-    usbguard = {
-      enable = false;
-      sops = true;
-    };
-    tpm = true;
-    btrfs = true; # !!! can be  actually done with config.filesystems... like if btrfs is true then this
     av = true;
-    earlyoom = true;
-    distributed = false;
+
+    info = {
+      hostname = "stellar";
+      user = "egor";
+      flakePath = /home/${config.modules.system.info.user}/my-little-flake;
+    };
+    hardware = {
+      tpm = true;
+      btrfs = true;
+      earlyoom = true;
+      printing = false;
+      usbguard = {
+        enable = false;
+        sops = true;
+      };
+    };
+    frameworks = {
+      lix = true;
+      nh = true;
+      ghtoken = true;
+      flakeHub = true;
+      homeManager = true;
+      distributed = false;
+    };
   };
+
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
+  home-manager.users.egor = import ../../../home-manager/saturn.nix;
+  #../home-manager/saturn.nix;
+  home-manager.extraSpecialArgs = { inherit inputs; };
+  home-manager.backupFileExtension = "backup";
+  home-manager.sharedModules = [
+    inputs.sops-nix.homeManagerModules.sops
+  ];
 
   modules.yubikey.enable = true;
 
@@ -103,10 +127,6 @@
   boot.loader.efi.canTouchEfiVariables = true;
   #services.logrotate.checkConfig = false; # TODO check logrotate
 
-  home-manager.sharedModules = [
-    inputs.sops-nix.homeManagerModules.sops
-    # inputs.plasma-manager.homeModules.plasma-manager
-  ];
   environment.systemPackages = with pkgs; [
     xf86_input_wacom
     opentabletdriver

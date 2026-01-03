@@ -2,10 +2,10 @@
   description = "Your new nix config";
 
   inputs = {
-    #nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     #nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
 
-    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0";
+    # nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0";
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
 
     # Home manager
@@ -192,14 +192,7 @@
             jovian.nixosModules.jovian
             disko.nixosModules.disko
             stylix.nixosModules.stylix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.egor = import ./home-manager/saturn.nix;
-              home-manager.extraSpecialArgs = { inherit inputs; };
-              home-manager.backupFileExtension = "backup";
-            }
+
             { nixpkgs.overlays = [ nix4vscode.overlays.default ]; }
             lanzaboote.nixosModules.lanzaboote
             (
@@ -250,20 +243,10 @@
           modules = [
             ./hosts/stellar/configuration.nix
             determinate.nixosModules.default
-            { nixpkgs.hostPlatform = "x86_64-linux"; }
             sops-nix.nixosModules.sops
             disko.nixosModules.disko
             stylix.nixosModules.stylix
-            home-manager.nixosModules.home-manager
             {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.egor = import ./home-manager/saturn.nix;
-              home-manager.extraSpecialArgs = { inherit inputs outputs; };
-              home-manager.backupFileExtension = "backup";
-
-              # Optionally, use home-manager.extraSpecialArgs to pass
-              # arguments to home.nix
               nixpkgs.overlays = [ nix4vscode.overlays.default ];
             }
 

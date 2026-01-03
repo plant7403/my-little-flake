@@ -10,7 +10,6 @@
   #mullvad = import ./mullvad.nix;
   sound = import ./sound.nix;
   yubikey = import ./yubikey.nix;
-  system = import ./system.nix;
   web = import ./nginx.nix;
   transmission = import ./transmission.nix;
   authelia = import ./authelia.nix;
@@ -18,4 +17,8 @@
   yggdrasil = import ./yggdrasil.nix;
   ollama = import ./ollama.nix;
   xonsh = import ./xonsh.nix;
+
+  system = import ./system/system.nix;
+  hardware = import ./system/hardware.nix;
+  frameworks = import ./system/frameworks.nix;
 }

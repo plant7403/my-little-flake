@@ -1,8 +1,47 @@
-{ inputs, lib }:
-with lib;
 {
+  lib,
+  pkgs,
+  config,
+  inputs,
+  outputs,
+  ...
+}:
+with lib;
+let
+  cfg = config.modules.frameworks;
+
+in
+{
+  options.modules.system.frameworks = {
+    lix = mkOption {
+      type = types.bool;
+      default = false;
+    };
+    nh = mkOption {
+      type = types.bool;
+      default = false;
+    };
+    ghtoken = mkOption {
+      type = types.bool;
+      default = false;
+    };
+    flakeHub = mkOption {
+      type = types.bool;
+      default = false;
+    };
+    homeManager = mkOption {
+      type = types.bool;
+      default = false;
+    };
+    distributed = mkOption {
+      type = types.bool;
+      default = false;
+    };
+  };
   config = mkMerge [
+    inputs.home-manager.nixosModules.home-manager
     {
+
       nix = {
         nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
         settings = {
@@ -44,17 +83,15 @@ with lib;
           warn-dirty = false;
           keep-going = true;
           log-lines = 20;
-          download-buffer-size = mkIf (nix.package != pkgs.lixPackageSets.stable.lix) 524288000; # (if )
+          download-buffer-size = mkIf (config.nix.package != pkgs.lixPackageSets.stable.lix) 524288000;
           #reexec = true;
           #NIX_SHOW_STATS=1
           #NIX_COUNT_CALLS=1
         };
       };
-
       nixpkgs.config.allowUnfree = true;
-
     }
-    (mkIf cfg.lix {
+    (mkIf cfg.frameworks.lix {
       nix.package = pkgs.lixPackageSets.stable.lix;
       nixpkgs.overlays = [
         (_final: prev: {
@@ -67,7 +104,7 @@ with lib;
         })
       ];
     })
-    (mkIf cfg.nh {
+    (mkIf cfg.frameworks.nh {
 
       programs.nh.enable = true;
       programs.nh.flake = "/home/egor/my-little-flake";
@@ -81,7 +118,7 @@ with lib;
         # NH_LOG = "nh=trace";
       };
     })
-    (mkIf cfg.ghtoken {
+    (mkIf cfg.frameworks.ghtoken {
       # NIX_CONFIG="extra-access-tokens = github.com=github_pat_XYZ" nix ...
       # https://github.com/NixOS/nix/issues/6536
       nix.extraOptions = ''
@@ -92,6 +129,56 @@ with lib;
         group = config.users.groups.keys.name;
         sopsFile = ../../secrets/common.yaml;
       };
+    })
+    (mkIf cfg.frameworks.flakeHub {
+      home-manager.users.egor = {
+        home.enableNixpkgsReleaseCheck = false;
+      };
+      /*
+        warnings =
+        if config.services.foo.bar then
+          [
+            ''
+              You have enabled the bar feature of the foo service.
+              This is known to cause some specific problems in certain situations.
+            ''
+          ]
+        else
+          [ ];
+      */
+    })
+    /*
+      (mkIf cfg.frameworks.homeManager {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        home-manager.users.egor = import ../../../home-manager/saturn.nix;
+        #../home-manager/saturn.nix;
+        home-manager.extraSpecialArgs = { inherit inputs; };
+        home-manager.backupFileExtension = "backup";
+        home-manager.sharedModules = [
+          inputs.sops-nix.homeManagerModules.sops
+        ];
+      })
+    */
+    (mkIf cfg.frameworks.distributed {
+      nix.distributedBuilds = true;
+      nix.settings.builders-use-substitutes = true;
+      nix.buildMachines = [
+        {
+          hostName = "horizon";
+          system = "x86_64-linux";
+          protocol = "ssh-ng";
+          maxJobs = 0;
+          speedFactor = 0;
+          supportedFeatures = [
+            "nixos-test"
+            "benchmark"
+            "big-parallel"
+            "kvm"
+          ];
+          mandatoryFeatures = [ ];
+        }
+      ];
     })
   ];
 }

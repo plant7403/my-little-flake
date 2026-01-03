@@ -87,7 +87,8 @@ let
 
     "jgclark.vscode-todo-highlight"
     "slysherz.comment-box"
-
+    "christian-kohler.path-intellisense"
+    "oxideops.vscode-code-jump"
   ];
   baseExtensionsVS = [
 
