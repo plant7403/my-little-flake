@@ -4,9 +4,10 @@
 {
   config,
   pkgs,
+  nixosModules,
+  modules,
   outputs,
-  inputs,
-  output,
+  #inputs,
   ...
 }:
 {
@@ -22,8 +23,9 @@
     ./../common/users/root.nix
     #./../common/desktop/steam.nix
     ./../common/desktop/virtualbox.nix
-    inputs.home-manager.nixosModules.home-manager
+
     #./odoo-test.nix # add to specializations or flake/shell
+    #nixosModules
   ]
   ++ (builtins.attrValues outputs.nixosModules);
 
@@ -63,41 +65,30 @@
     cleanup = true;
     hardening = true;
     av = true;
-
     info = {
       hostname = "stellar";
       user = "egor";
-      flakePath = /home/${config.modules.system.info.user}/my-little-flake;
-    };
-    hardware = {
-      tpm = true;
-      btrfs = true;
-      earlyoom = true;
-      printing = false;
-      usbguard = {
-        enable = false;
-        sops = true;
-      };
-    };
-    frameworks = {
-      lix = true;
-      nh = true;
-      ghtoken = true;
-      flakeHub = true;
-      homeManager = true;
-      distributed = false;
+      flakePath = /home/egor/my-little-flake;
     };
   };
-
-  home-manager.useGlobalPkgs = true;
-  home-manager.useUserPackages = true;
-  home-manager.users.egor = import ../../../home-manager/saturn.nix;
-  #../home-manager/saturn.nix;
-  home-manager.extraSpecialArgs = { inherit inputs; };
-  home-manager.backupFileExtension = "backup";
-  home-manager.sharedModules = [
-    inputs.sops-nix.homeManagerModules.sops
-  ];
+  modules.hardware = {
+    tpm = true;
+    btrfs = true;
+    earlyoom = true;
+    printing = false;
+    usbguard = {
+      enable = false;
+      sops = true;
+    };
+  };
+  modules.frameworks = {
+    lix = true;
+    nh = true;
+    ghtoken = true;
+    flakeHub = false;
+    homeManager = false;
+    distributed = false;
+  };
 
   modules.yubikey.enable = true;
 

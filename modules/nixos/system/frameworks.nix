@@ -1,18 +1,18 @@
 {
   lib,
   pkgs,
-  config,
   inputs,
-  outputs,
+  config,
   ...
 }:
 with lib;
 let
   cfg = config.modules.frameworks;
-
 in
 {
-  options.modules.system.frameworks = {
+  imports = [ inputs.home-manager.nixosModules.home-manager ];
+
+  options.modules.frameworks = {
     lix = mkOption {
       type = types.bool;
       default = false;
@@ -39,9 +39,7 @@ in
     };
   };
   config = mkMerge [
-    inputs.home-manager.nixosModules.home-manager
     {
-
       nix = {
         nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
         settings = {
@@ -83,7 +81,7 @@ in
           warn-dirty = false;
           keep-going = true;
           log-lines = 20;
-          download-buffer-size = mkIf (config.nix.package != pkgs.lixPackageSets.stable.lix) 524288000;
+          #download-buffer-size = mkIf (config.nix.package != pkgs.lixPackageSets.stable.lix) 524288000;
           #reexec = true;
           #NIX_SHOW_STATS=1
           #NIX_COUNT_CALLS=1
@@ -91,21 +89,22 @@ in
       };
       nixpkgs.config.allowUnfree = true;
     }
-    (mkIf cfg.frameworks.lix {
-      nix.package = pkgs.lixPackageSets.stable.lix;
-      nixpkgs.overlays = [
-        (_final: prev: {
-          inherit (prev.lixPackageSets.stable)
-            nixpkgs-review
-            nix-eval-jobs
-            nix-fast-build
-            colmena
-            ;
-        })
-      ];
+    (mkIf cfg.lix {
+      #nix.package = pkgs.lixPackageSets.stable.lix;
+      /*
+        nixpkgs.overlays = [
+          (_final: prev: {
+            inherit (prev.lixPackageSets.stable)
+              nixpkgs-review
+              nix-eval-jobs
+              nix-fast-build
+              colmena
+              ;
+          })
+        ];
+      */
     })
-    (mkIf cfg.frameworks.nh {
-
+    (mkIf cfg.nh {
       programs.nh.enable = true;
       programs.nh.flake = "/home/egor/my-little-flake";
       programs.nh.clean = {
@@ -118,7 +117,7 @@ in
         # NH_LOG = "nh=trace";
       };
     })
-    (mkIf cfg.frameworks.ghtoken {
+    (mkIf cfg.ghtoken {
       # NIX_CONFIG="extra-access-tokens = github.com=github_pat_XYZ" nix ...
       # https://github.com/NixOS/nix/issues/6536
       nix.extraOptions = ''
@@ -127,10 +126,10 @@ in
       sops.secrets."system/nix-token" = {
         mode = "0440";
         group = config.users.groups.keys.name;
-        sopsFile = ../../secrets/common.yaml;
+        sopsFile = ../../../secrets/common.yaml;
       };
     })
-    (mkIf cfg.frameworks.flakeHub {
+    (mkIf cfg.flakeHub {
       home-manager.users.egor = {
         home.enableNixpkgsReleaseCheck = false;
       };
@@ -147,20 +146,20 @@ in
           [ ];
       */
     })
-    /*
-      (mkIf cfg.frameworks.homeManager {
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
-        home-manager.users.egor = import ../../../home-manager/saturn.nix;
-        #../home-manager/saturn.nix;
-        home-manager.extraSpecialArgs = { inherit inputs; };
-        home-manager.backupFileExtension = "backup";
-        home-manager.sharedModules = [
-          inputs.sops-nix.homeManagerModules.sops
-        ];
-      })
-    */
-    (mkIf cfg.frameworks.distributed {
+
+    (mkIf cfg.homeManager {
+      home-manager.useGlobalPkgs = true;
+      home-manager.useUserPackages = true;
+      home-manager.users.egor = import ../../../home-manager/saturn.nix;
+      #../home-manager/saturn.nix;
+      home-manager.extraSpecialArgs = { inherit inputs; };
+      home-manager.backupFileExtension = "backup";
+      home-manager.sharedModules = [
+        inputs.sops-nix.homeManagerModules.sops
+      ];
+    })
+
+    (mkIf cfg.distributed {
       nix.distributedBuilds = true;
       nix.settings.builders-use-substitutes = true;
       nix.buildMachines = [

@@ -64,7 +64,7 @@
     {
       self,
       nixpkgs,
-      home-manager,
+
       deploy-rs,
       sops-nix,
       disko,
@@ -72,7 +72,7 @@
       jovian,
       stylix,
       nix4vscode,
-      systems,
+
       determinate,
       ...
     }@inputs:
@@ -80,9 +80,9 @@
       inherit (self) outputs;
       #inherit (nixpkgs) lib;
       # Supported systems for your flake packages, shell, etc.
-      #system = builtins.currentSystem;
+      system = builtins.currentSystem;
       # Unmodified nixpkgs
-      #pkgs = import nixpkgs { inherit system; };
+      pkgs = import nixpkgs { inherit system; };
 
       # Small tool to iterate over each systems
       # eachSystem = f: nixpkgs.lib.genAttrs (import systems) (system: f nixpkgs.legacyPackages.${system});
@@ -182,34 +182,36 @@
         #    )
         #  ];
         #};
-        horizon = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs outputs; };
-          modules = [
-            ./hosts/horizon/configuration.nix
-            determinate.nixosModules.default
-            { nixpkgs.hostPlatform = "x86_64-linux"; }
-            sops-nix.nixosModules.sops
-            jovian.nixosModules.jovian
-            disko.nixosModules.disko
-            stylix.nixosModules.stylix
+        /*
+          horizon = nixpkgs.lib.nixosSystem {
+            specialArgs = { inherit inputs; };
+            modules = [
+              ./hosts/horizon/configuration.nix
+              determinate.nixosModules.default
+              { nixpkgs.hostPlatform = "x86_64-linux"; }
+              sops-nix.nixosModules.sops
+              jovian.nixosModules.jovian
+              disko.nixosModules.disko
+              stylix.nixosModules.stylix
 
-            { nixpkgs.overlays = [ nix4vscode.overlays.default ]; }
-            lanzaboote.nixosModules.lanzaboote
-            (
-              { pkgs, lib, ... }:
-              {
-                environment.systemPackages = [ pkgs.sbctl ];
+              { nixpkgs.overlays = [ nix4vscode.overlays.default ]; }
+              lanzaboote.nixosModules.lanzaboote
+              (
+                { pkgs, lib, ... }:
+                {
+                  environment.systemPackages = [ pkgs.sbctl ];
 
-                boot.loader.systemd-boot.enable = lib.mkForce false;
+                  boot.loader.systemd-boot.enable = lib.mkForce false;
 
-                boot.lanzaboote = {
-                  enable = true;
-                  pkiBundle = "/var/lib/sbctl";
-                };
-              }
-            )
-          ];
-        };
+                  boot.lanzaboote = {
+                    enable = true;
+                    pkiBundle = "/var/lib/sbctl";
+                  };
+                }
+              )
+            ];
+          };
+        */
         #saturn = nixpkgs.lib.nixosSystem {
         #  specialArgs = { inherit inputs outputs; };
         #  modules = [
@@ -242,13 +244,13 @@
           specialArgs = { inherit inputs outputs; };
           modules = [
             ./hosts/stellar/configuration.nix
-            determinate.nixosModules.default
+            #determinate.nixosModules.default
             sops-nix.nixosModules.sops
             disko.nixosModules.disko
             stylix.nixosModules.stylix
-            {
-              nixpkgs.overlays = [ nix4vscode.overlays.default ];
-            }
+            #{
+            #  nixpkgs.overlays = [ nix4vscode.overlays.default ];
+            #}
 
             lanzaboote.nixosModules.lanzaboote
             (

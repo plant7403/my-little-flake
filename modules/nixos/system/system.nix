@@ -2,7 +2,6 @@
   lib,
   pkgs,
   config,
-  inputs,
   ...
 }:
 with lib;
@@ -62,7 +61,7 @@ in
       };
       flakePath = mkOption {
         type = types.str;
-        default = "/home/${cfg.info.user}/my-little-flake";
+        default = "/home/egor/my-little-flake";
       };
     };
 
@@ -184,7 +183,8 @@ in
       };
     })
     (mkIf cfg.cleanup {
-      nix = mkIf (config.programs.nh.clean.enable != true) {
+      nix = {
+        # mkIf (config.programs.nh.clean.enable != true)
         gc.automatic = true;
         gc.dates = "Monday 01:00 UTC";
         gc.options = "--delete-older-than 2d";
@@ -245,6 +245,5 @@ in
       services.clamav.daemon.enable = true;
       services.clamav.updater.enable = true;
     })
-
   ];
 }
