@@ -1,3 +1,4 @@
+{ config, ... }:
 {
   disko.devices = {
     disk = {
@@ -16,6 +17,7 @@
                 mountpoint = "/boot";
                 mountOptions = [
                   "defaults"
+                  "discard"
                 ];
               };
             };
@@ -25,22 +27,27 @@
                 type = "luks";
                 name = "nvme-crypt";
                 # disable settings.keyFile if you want to use interactive password entry
-                #passwordFile = "/tmp/secret.key"; # Interactive
+                #passwordFile = config.sops.secrets."encryption/stellar".path; # Interactive
+                #keyFile = config.sops.secrets."encryption/stellar".path;
                 settings = {
-                  allowDiscards = true;
-                  #keyFile = "/tmp/secret.key";
+                  allowDiscards = false;
+                  #keyFile = config.sops.secrets."encryption/stellar".path;
                 };
                 #additionalKeyFiles = ["/tmp/additionalSecret.key"];
                 content = {
                   type = "btrfs";
                   extraArgs = [ "-f" ];
                   postCreateHook =
-                    # sh
+                    # syntax: sh
                     ''
                       MNTPOINT=$(mktemp -d)
                       mount "/dev/mapper/nvme-crypt" "$MNTPOINT" -o subvol=/
                       trap 'umount $MNTPOINT; rm -rf $MNTPOINT' EXIT
                       btrfs subvolume snapshot -r $MNTPOINT/@ROOT $MNTPOINT/@ROOT-BLANK
+                      MNTPOINT=$(mktemp -d)
+                      mount "/dev/mapper/nvme-crypt" "$MNTPOINT" -o subvol=/
+                      trap 'umount $MNTPOINT; rm -rf $MNTPOINT' EXIT
+                      btrfs subvolume snapshot -r $MNTPOINT/@HOME $MNTPOINT/@HOME-BLANK
                     '';
                   subvolumes = {
                     "/@ROOT" = {
@@ -101,4 +108,6 @@
   fileSystems."/persist".neededForBoot = true;
   fileSystems."/var/log".neededForBoot = true;
   fileSystems."/home".neededForBoot = true;
+
+  sops.secrets."encryption/stellar" = { };
 }

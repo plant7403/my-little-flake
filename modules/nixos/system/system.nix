@@ -154,8 +154,51 @@ in
       users.users.nixosvmtest.initialPassword = "hellohowareyou?";
       users.groups.nixosvmtest = { };
       users.users.nixosvmtest.group = "nixosvmtest";
-      virtualisation.vmVariant.virtualisation.memorySize = 2048;
-      virtualisation.vmVariant.virtualisation.cores = 3;
+
+      sops.secrets."encryption/stellar" = { };
+      #'.#nixosConfigurations.mymachine.config.system.build.vmWithDisko'
+      /*
+        boot.initrd.network.ssh = {
+          enable = true;
+          port = 2222;
+          shell = "/bin/cryptsetup-askpass";
+          authorizedKeys = [
+            "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC4OqADgjR4tD/2BFBTfhoi8AchffLyayrr0X5FSKC00ONzNpYeynuw9+bVbZ5a+O1EI3PPyCXKlmC4U3ZGl/jJWauhyXvT0068LC+hVwJfBwrHNbaq9b1Urgz2Mcv2tX9jbpi0hnxHwCQDTNtXptgxDvSLdz86gc6cBg48Y0cntSeNbHbvWFrcZ0iXUJYMpSVHNKPyR25r7SeNtXFvXzPTjPq/+wGsfnhXqbNDwec41zMsc4TBxHVKELFa1AaQF4QQ2SPQsWLSJ151EkybM4OfBxLulgqCzBYkHfjlqWuQqCwN9DOgFimoFLWJT9f8PUOHsu8q0ryTx7viyiFXK51enMGvthP4uRLWn6WdDb7zhe48HGbkWkVXETx78u5bL7hyIlMu9L3AB8gWKI7BYD+FrUyZkasK/e+JO0ECoil4c6jasqInvLVcyQY0loVyppL89CGTZZfTreZLv4Tt6rFuF9sBQ/FqDuA2L2wRgPZKRj1HiO3pppiAKuu5EG2Faotoi49WqM+RJD6O1RG7jWjCYKHB8TfiqrObJt9YRjYBctbWlNzZQs6oC1hKsLkfx1fjSA8PLDevPvK5jPgU6cUEFK22GouVxbdp8ZicTsi7AK6xGxJ2uENPAMFIuh6tqU6u9nI7mceK0vv343Y3pvvc0MawH/nS4+kIG57lL8hnNQ== cardno:19_271_673"
+          ];
+          hostKeys = [
+            /boot/ssh_host_initrd_ed25519_key
+            /boot/ssh_host_initrd_rsa_key
+          ];
+        };
+      */
+
+      /*
+        boot.initrd.secrets = lib.mkForce {
+          "/etc/secret" = /etc/secret;
+        };
+      */
+
+      fileSystems."/persist".neededForBoot = mkForce true;
+      virtualisation = {
+        vmVariantWithDisko = {
+          fileSystems."/persist".neededForBoot = mkForce true;
+          disko.devices.disk.nvme.imageSize = "10GB";
+          disko.memSize = 2048;
+
+          /*
+            fileSystems."/persist".neededForBoot = neededForBoot true;
+            disko.devices.disk.nvme.content.partitions.luks.content.passwordFile =
+            lib.mkForce
+              config.sops.secrets."encryption/stellar".path;
+          */
+          #memorySize = 2048;
+          cores = 3;
+          #diskImage = lib.mkOverride 10 null;
+
+        };
+
+      };
+
     })
     (mkIf cfg.emergency {
       boot.initrd.systemd.emergencyAccess = "$y$j9T$LSLJIAlFbp6k3cetejjE60$vcn.wkp7k/hmYG525hhkID5qCM8DXBQWsoqky.2kQ.4";
@@ -183,8 +226,7 @@ in
       };
     })
     (mkIf cfg.cleanup {
-      nix = {
-        # mkIf (config.programs.nh.clean.enable != true)
+      nix = mkIf (config.programs.nh.clean.enable != true) {
         gc.automatic = true;
         gc.dates = "Monday 01:00 UTC";
         gc.options = "--delete-older-than 2d";
